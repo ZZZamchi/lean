@@ -36,11 +36,11 @@ HOME_DIR = os.path.expanduser('~')
 
 DEFAULT_LAKE_PATH = f'{HOME_DIR}/.elan/bin/lake'
 
-
-DEFAULT_LEAN_WORKSPACE="mathlib4/"
-
-
-
+# 项目根（Zam）上一级目录；spawn 时用绝对路径避免相对 cwd 歧义
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_ZAM_ROOT = os.path.abspath(os.path.join(_SCRIPT_DIR, ".."))
+DEFAULT_LEAN_WORKSPACE = os.environ.get("LEAN_WORKSPACE", os.path.join(_ZAM_ROOT, "mathlib4"))
+# 与官方 Goedel-Prover-V2 一致（init + env=0 增量编译）
 DEFAULT_IMPORTS = "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n"
 
 
@@ -73,29 +73,6 @@ proof_code_list_sample = [{"name": "nonneg_problem", "code": statement_sample + 
 
 problem_list_sample = [proof_code_list_sample] * 64 #each item in problem_list_sample is a proof_code_list which I want a single process to do
 
-def initiate_child(imports = DEFAULT_IMPORTS):
-    # Start the Lean 4 REPL using pexpect
-    # Note: Adjust the command if necessary for your setup
-    # child = pexpect.spawn('stty -icanon', cwd=lean_workspace, encoding='utf-8', maxread=1, echo=False)
-
-    child = pexpect.spawn(f"/bin/bash", cwd=DEFAULT_LEAN_WORKSPACE, encoding='utf-8', maxread=1, echo=False)
-    
-    # # Uncomment the next line to see the REPL's output for debugging
-    # child.logfile = sys.stdout
-
-    child.sendline("stty -icanon")
-
-    child.sendline(f"cd {DEFAULT_LEAN_WORKSPACE}")
-
-    child.sendline(f"{DEFAULT_LAKE_PATH} exe repl")
-
-    response = send_command_and_wait(child, imports, timeout=IMPORT_TIMEOUT)
-
-    # print(f"Initializing Lean REPL: (PID: {child.pid})", flush = True)
-    # return child
-
-    return child, response
-
 def send_command_and_wait(child, command, allTactics=False, ast=False, premises=False, tactics=False, env=None, timeout=PROOF_TIMEOUT, imports=DEFAULT_IMPORTS):
     """
     Send a JSON command to the Lean REPL and wait for the output.
@@ -122,8 +99,11 @@ def send_command_and_wait(child, command, allTactics=False, ast=False, premises=
         response = child.before.strip()
 
         block = response
-        
-        # problem_id = proof_code_list[i]["name"]
+        # lake 构建输出会出现在 REPL JSON 前，只解析从第一个 '{' 起的 JSON
+        brace = block.find("{")
+        if brace >= 0:
+            block = block[brace:]
+
         try:
             result = json.loads(block)
             # ast_results = lean4_parser(command, result['ast']) if 'ast' in result and result['ast'] else {}
@@ -149,18 +129,23 @@ def send_command_and_wait(child, command, allTactics=False, ast=False, premises=
                 )
             )
 
-        except json.JSONDecodeError as e:
+            response = {"code": command, "compilation_result": parsed_result}
+            if "env" in result:
+                response["env"] = result["env"]
 
+        except json.JSONDecodeError as e:
+            if os.environ.get("REPL_DEBUG_JSON"):
+                try:
+                    with open("/tmp/repl_json_decode_error.txt", "a", encoding="utf-8") as f:
+                        f.write(f"block repr: {repr(block)[:2000]}\n---\n")
+                except Exception:
+                    pass
             parsed_result = {
                 "pass": False,
                 "complete": False,
-                # "verified_code": code,
-                # "problem_id": problem_id,
                 "system_errors": f"JSONDECODE ERROR: {e}"
             }
-    
-        response = {"code": command, "compilation_result": parsed_result}
-
+            response = {"code": command, "compilation_result": parsed_result}
 
     except pexpect.TIMEOUT as e:
         response = {"code": command, "compilation_result": {"pass": False, "complete": False, "system_errors": f"TIMEOUT ERROR: {e}"}}
@@ -170,45 +155,56 @@ def send_command_and_wait(child, command, allTactics=False, ast=False, premises=
         response = {"code": command, "compilation_result": {"pass": False, "complete": False, "system_errors": f"UNEXPECTED ERROR: {e}"}}
     return response
 
-def worker(worker_id, task_queue, result_list, total_restarts, lock, allTactics=False, ast=False, premises=False, tactics=False, timeout=PROOF_TIMEOUT, imports = DEFAULT_IMPORTS):
-    """Worker function that continuously picks tasks and executes them."""
-    child, _ = initiate_child()  # Start Lean 4 REPL
-    print(f"Worker {worker_id} started Lean REPL.", flush = True)
 
+def initiate_child(imports=DEFAULT_IMPORTS):
+    """启动 REPL，发送 init 后返回。"""
+    child = pexpect.spawn(
+        "/bin/bash",
+        cwd=DEFAULT_LEAN_WORKSPACE,
+        encoding="utf-8",
+        maxread=1,
+        echo=False,
+        env=os.environ,
+    )
+    child.sendline("stty -icanon")
+    child.sendline(f"cd {DEFAULT_LEAN_WORKSPACE}")
+    child.sendline(f"{DEFAULT_LAKE_PATH} exe repl")
+    response = send_command_and_wait(child, imports, timeout=IMPORT_TIMEOUT)
+    return child, response
+
+
+def worker(worker_id, task_queue, result_list, total_restarts, lock, allTactics=False, ast=False, premises=False, tactics=False, timeout=PROOF_TIMEOUT, imports=DEFAULT_IMPORTS):
+    """Worker：init 后按 env 增量发送每条证明。"""
+    child, init_resp = initiate_child(imports=imports)
+    print(f"Worker {worker_id} started Lean REPL.", flush=True)
+    env = init_resp.get("env", 0) if init_resp else 0
     start_time = time.time()
 
     while True:
         try:
             proof_code_dict = task_queue.get(timeout=10)
 
-            proof_code = proof_code_dict["code"]
+            proof_code = (proof_code_dict.get("code") or "").strip()
             proof_name = proof_code_dict["name"]
-            # proof_id, proof_command = task_queue.get(timeout=10)  # Get task
+            proof_id = proof_code_dict.get("problem_id", proof_name)
         except mp.queues.Empty:
-            break  # Exit if no tasks are left
+            break
 
-
-        if len(proof_code)==0:
-
-
+        if len(proof_code) == 0:
             response = {"code": proof_code, "compilation_result": {"pass": False, "complete": False, "system_errors": None}}
-
             response["name"] = proof_name
-
+            response["problem_id"] = proof_code_dict.get("problem_id", proof_name)
             response["verify_time"] = round(time.time() - start_time, 2)
-
             start_time = time.time()
-
             with lock:
                 result_list.append(response)
-
         else:
-
-            response = send_command_and_wait(child, proof_code, env=0, allTactics=allTactics, ast=ast, premises=premises, tactics=tactics, imports = imports)  # Run proof
-
-
+            cmd = "\n" + proof_code if proof_code else proof_code
+            response = send_command_and_wait(child, cmd, env=env, allTactics=allTactics, ast=ast, premises=premises, tactics=tactics, imports=imports, timeout=timeout)
+            if response.get("env") is not None:
+                env = response["env"]
             response["name"] = proof_name
-
+            response["problem_id"] = proof_id
             response["verify_time"] = round(time.time() - start_time, 2)
 
             start_time = time.time()
@@ -241,10 +237,10 @@ def worker(worker_id, task_queue, result_list, total_restarts, lock, allTactics=
                         print(f"Worker {worker_id}: No more proofs left. Not restarting REPL.", flush=True)
                         break  # Exit instead of restarting
                     else:
-                        child , _ = initiate_child(imports = imports)
-
-                    # print("EOF restart", previous_id, "replaced with", child.pid, flush = True) 
-                else : 
+                        child, init_resp = initiate_child(imports=imports)
+                        if init_resp is not None:
+                            env = init_resp.get("env", 0)
+                else :
                     previous_id = child.pid
                     try:
                         child.close()
@@ -253,10 +249,11 @@ def worker(worker_id, task_queue, result_list, total_restarts, lock, allTactics=
 
                     if task_queue.empty():
                         print(f"Worker {worker_id}: No more proofs left. Not restarting REPL.", flush=True)
-
                         break  # Exit instead of restarting
                     else:
-                        child , _ = initiate_child(imports = imports)
+                        child, init_resp = initiate_child(imports=imports)
+                        if init_resp is not None:
+                            env = init_resp.get("env", 0)
 
                     # print("restart because of", response["compilation_result"]["system_errors"], previous_id, "replaced with", child.pid, flush = True) 
                     # print("Timemout restart", previous_id, "replaced with", child.pid, flush = True) 
@@ -272,27 +269,19 @@ def worker(worker_id, task_queue, result_list, total_restarts, lock, allTactics=
 
 
 
-def scheduler(proofs, num_workers=64, allTactics=False, ast=False, premises=False, tactics=False, timeout = PROOF_TIMEOUT, imports = DEFAULT_IMPORTS):
-    # proofs is a list of all the proofs that need to verify
-
+def scheduler(proofs, num_workers=64, allTactics=False, ast=False, premises=False, tactics=False, timeout=PROOF_TIMEOUT, imports=DEFAULT_IMPORTS):
     """Scheduler function that launches REPL processes and assigns tasks to CPUs."""
     task_queue = mp.Queue()
-    result_queue = mp.Queue()
-    total_restarts = mp.Value('i', 0)  # Shared counter for total REPL restarts
-
-
+    total_restarts = mp.Value('i', 0)
     manager = mp.Manager()
-    result_list = manager.list()  #  Shared list
-    lock = manager.Lock()  #  Lock for thread safety
+    result_list = manager.list()
+    lock = manager.Lock()
 
-    # Populate the task queue
     for proof in proofs:
         task_queue.put(proof)
 
-    # Start worker processes
     workers = []
     for i in range(num_workers):
-        # process = mp.Process(target=worker, args=(i, task_queue, result_list, total_restarts, lock))
         process = mp.Process(target=worker, args=(i, task_queue, result_list, total_restarts, lock, allTactics, ast, premises, tactics, timeout, imports))
         process.start()
         workers.append(process)
@@ -328,8 +317,4 @@ def scheduler(proofs, num_workers=64, allTactics=False, ast=False, premises=Fals
 
 
 if __name__ == '__main__':
-
-
     print(scheduler(proof_code_list_sample, num_workers=16, allTactics=False, ast=False, premises=False, tactics=False))
-
-    # scheduler(proof_code_list_sample, num_workers=1, ast=True)

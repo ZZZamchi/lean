@@ -210,6 +210,13 @@ print(time.time() - start)
 bash scripts/pipeline.sh
 ```
 
+**MiniF2F 实验：** 两轮推理已完成，结果在 `results/minif2f/round_2`、`round_3`；编译未完成（当前全 0）。**2/5 实验设置与情况**见 **`docs/REFERENCE_2_5.md`**（上传后本仓库即 [goedel_EXPERIMENT](https://github.com/ZZZamchi/goedel_EXPERIMENT)）。说明与剩余工作见 **`docs/README.md`**、**`REMAINING_WORK.md`**。
+
+**保留脚本：** `scripts/pipeline.sh`（通用流水线）、`scripts/calculate_pass_at_k.py`（单轮 Pass@k）、`scripts/compute_average_pass_at_k.py`（三轮平均 Pass@32）。项目结构与与 [goedel_EXPERIMENT](https://github.com/ZZZamchi/goedel_EXPERIMENT) 的差异见 `docs/README.md`。
+
+### 7.1 故障排查与后续
+
+- **Pass@32 为 0 / 编译未完成**：当前环境下 REPL 编译全部失败，需研究 Lean/mathlib4/REPL 环境与 [goedel_EXPERIMENT](https://github.com/ZZZamchi/goedel_EXPERIMENT) 的差异。计算三轮平均 Pass@32 的剩余步骤见 **`REMAINING_WORK.md`**。
 
 ### 8. Citation
 ```bibtex

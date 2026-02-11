@@ -1,8 +1,21 @@
-collect.py
-output.txt
+# Python
 *.pyc
 __pycache__/
 *.pyo
 *.pyd
+*.egg-info/
+.eggs/
+
+# Logs and outputs
 *.log
 results/
+output.txt
+collect.py
+
+# Lean / mathlib4 构建产物（可选，若需提交部分 build 可注释）
+mathlib4/.lake/
+
+# 本地临时与脚本生成
+scripts/manual_compile_result.txt
+**/progress.txt
+**/verify_theorems_log.txt

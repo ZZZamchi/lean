@@ -12,14 +12,15 @@ from utils import *
 # if __name__ == "__main__":
 parser = argparse.ArgumentParser()
 parser.add_argument('--input_path', default="", type=str)
-parser.add_argument('--model_path', default="/scratch/gpfs/yl7690/models/Translator_Qwen2.5-Coder-32B_numina_sonnet_130K_translator_Epoch2_LR1e-4", type=str)
-parser.add_argument('--output_dir', default="/scratch/gpfs/yl7690/projects/DeepSeek-Prover-V1.5/results/translator", type=str)
+parser.add_argument('--model_path', default="Goedel-LM/Goedel-Prover-V2-8B", type=str)
+parser.add_argument('--output_dir', default="results", type=str)
 parser.add_argument('--split', default="none", type=str)
 parser.add_argument('--n', default=32, type=int)
-parser.add_argument("--max_model_len", default=131072, type=int)#16384
+parser.add_argument("--max_model_len", default=40960, type=int)
 parser.add_argument('--inference_handler', type=str, choices=["dpskcot", "dpsknoncot", "kiminacot"])
 parser.add_argument('--trunck', default=1, type=int)
-parser.add_argument('--gpu', default=4, type=int)
+parser.add_argument('--gpu', default=2, type=int)
+parser.add_argument('--gpu-memory-utilization', type=float, default=None, help='vLLM GPU memory fraction; env VLLM_GPU_MEMORY_UTILIZATION')
 parser.add_argument("--base_output_template", default="qwen", type=str)
 parser.add_argument('--node', default=1, type=int)
 parser.add_argument('--error_thres', default=True)
@@ -95,10 +96,12 @@ print(
 all_processed_records = []
 all_inference_code_outputs = []
 
+gpu_util = args.gpu_memory_utilization if args.gpu_memory_utilization is not None else (float(os.environ.get("VLLM_GPU_MEMORY_UTILIZATION", "0.85")))
+kwargs_llm = dict(model=model_name, seed=seed, trust_remote_code=True, max_model_len=args.max_model_len, tensor_parallel_size=args.gpu, gpu_memory_utilization=gpu_util)
 if args.node > 1:
-    model = LLM(model=model_name, seed=seed, trust_remote_code=True, max_model_len=args.max_model_len, tensor_parallel_size=args.gpu, pipeline_parallel_size=args.node, distributed_executor_backend="ray")
+    model = LLM(**kwargs_llm, pipeline_parallel_size=args.node, distributed_executor_backend="ray")
 else:
-    model = LLM(model=model_name, seed=seed, trust_remote_code=True, max_model_len=args.max_model_len, tensor_parallel_size=args.gpu)
+    model = LLM(**kwargs_llm)
 
 sampling_params = SamplingParams(
     temperature=args.temp,
