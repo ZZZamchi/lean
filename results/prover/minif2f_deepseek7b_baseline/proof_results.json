@@ -1,0 +1,984 @@
+[
+  {
+    "problem_id": "mathd_algebra_478",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_478 (b h v u : ℝ) (h₁ : v = 1 / 3 * (b * h))\n  (h₂ : b = 30 * u) (h₃ : h = 13 / 2 * u) : v = 65 * u := by sorry",
+    "full_code": "theorem mathd_algebra_478 (b h v u : ℝ) (h₁ : v = 1 / 3 * (b * h))\n  (h₂ : b = 30 * u) (h₃ : h = 13 / 2 * u) : v = 65 * u := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 3,
+            "column": 61
+          },
+          "goal": "b h v u : ℝ\nh₁ : v = 1 / 3 * (b * h)\nh₂ : b = 30 * u\nh₃ : h = 13 / 2 * u\n⊢ v = 65 * u",
+          "endPos": {
+            "line": 3,
+            "column": 66
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 122.44
+    }
+  },
+  {
+    "problem_id": "numbertheory_4x3m7y3neq2003",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 3,
+    "code": "theorem numbertheory_4x3m7y3neq2003 :\n  ¬ ∃ x y : ℤ, 4 * x ^ 3 - 7 * y ^ 3 = 2003 := by\n  intro h\n  rcases h with ⟨x, y, h⟩\n  have h₁ := congr_arg (· % 7) h\n  simp at h₁\n  have h₂ : x % 7 = 0 ∨ x % 7 = 1 ∨ x % 7 = 2 ∨ x % 7 = 3 ∨ x % 7 = 4 ∨ x % 7 = 5 ∨ x % 7 = 6 := by\n    omega\n  have h₃ : y % 7 = 0 ∨ y % 7 = 1 ∨ y % 7 = 2 ∨ y % 7 = 3 ∨ y % 7 = 4 ∨ y % 7 = 5 ∨ y % 7 = 6 := by\n    omega\n  rcases h₂ with (h₂ | h₂ | h₂ | h₂ | h₂ | h₂ | h₂) <;>\n    rcases h₃ with (h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃) <;>\n      simp [h₂, h₃, pow_succ, Int.mul_emod, Int.sub_emod, Int.emod_emod] at h₁ <;>\n        norm_num at h₁ <;>\n        omega",
+    "full_code": "theorem numbertheory_4x3m7y3neq2003 :\n  ¬ ∃ x y : ℤ, 4 * x ^ 3 - 7 * y ^ 3 = 2003 := by\n  intro h\n  rcases h with ⟨x, y, h⟩\n  have h₁ := congr_arg (· % 7) h\n  simp at h₁\n  have h₂ : x % 7 = 0 ∨ x % 7 = 1 ∨ x % 7 = 2 ∨ x % 7 = 3 ∨ x % 7 = 4 ∨ x % 7 = 5 ∨ x % 7 = 6 := by\n    omega\n  have h₃ : y % 7 = 0 ∨ y % 7 = 1 ∨ y % 7 = 2 ∨ y % 7 = 3 ∨ y % 7 = 4 ∨ y % 7 = 5 ∨ y % 7 = 6 := by\n    omega\n  rcases h₂ with (h₂ | h₂ | h₂ | h₂ | h₂ | h₂ | h₂) <;>\n    rcases h₃ with (h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃) <;>\n      simp [h₂, h₃, pow_succ, Int.mul_emod, Int.sub_emod, Int.emod_emod] at h₁ <;>\n        norm_num at h₁ <;>\n        omega",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 86.17
+    }
+  },
+  {
+    "problem_id": "aime_1983_p1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem aime_1983_p1\n  (x y z w : ℕ)\n  (ht : 1 < x ∧ 1 < y ∧ 1 < z)\n  (hw : 0 < w)\n  (h0 : Real.logb x w = 24)\n  (h1 : Real.logb y w = 40)\n  (h2 : Real.logb (x * y * z) w = 12) :\n  Real.logb z w = 60 := by\n  have h3 : Real.logb z w = 60 := by sorry\n  sorry",
+    "full_code": "theorem aime_1983_p1\n  (x y z w : ℕ)\n  (ht : 1 < x ∧ 1 < y ∧ 1 < z)\n  (hw : 0 < w)\n  (h0 : Real.logb x w = 24)\n  (h1 : Real.logb y w = 40)\n  (h2 : Real.logb (x * y * z) w = 12) :\n  Real.logb z w = 60 := by\n  have h3 : Real.logb z w = 60 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 173,
+          "pos": {
+            "line": 10,
+            "column": 37
+          },
+          "goal": "x y z w : ℕ\nht : 1 < x ∧ 1 < y ∧ 1 < z\nhw : 0 < w\nh0 : (↑x).logb ↑w = 24\nh1 : (↑y).logb ↑w = 40\nh2 : (↑x * ↑y * ↑z).logb ↑w = 12\n⊢ (↑z).logb ↑w = 60",
+          "endPos": {
+            "line": 10,
+            "column": 42
+          }
+        },
+        {
+          "proofState": 174,
+          "pos": {
+            "line": 11,
+            "column": 2
+          },
+          "goal": "x y z w : ℕ\nht : 1 < x ∧ 1 < y ∧ 1 < z\nhw : 0 < w\nh0 : (↑x).logb ↑w = 24\nh1 : (↑y).logb ↑w = 40\nh2 : (↑x * ↑y * ↑z).logb ↑w = 12\nh3 : (↑z).logb ↑w = 60\n⊢ (↑z).logb ↑w = 60",
+          "endPos": {
+            "line": 11,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 225.58
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12_2001_p5\n  (S : Finset ℕ)\n  (hS : S = {10000! / (5000!)^2 , 10000! / 2^5000, 9999! / 2^5000, 10000! / (2 ^ (5000 : ℕ) * 5000!), 5000! / 2^5000}) :\n  Finset.prod (Finset.filter (fun (x : ℕ) => Odd x) (Finset.range 10000)) (fun (x : ℕ) => x) ∈ S := by\n  have h₁ : Finset.prod (Finset.filter (fun x : ℕ => Odd x) (Finset.range 10000)) (fun x => x) = 10000! / (2 ^ 5000 * 5000!) := by\n    sorry\n  have h₂ : 10000! / (2 ^ 5000 * 5000!) ∈ S := by\n    sorry\n  sorry",
+    "full_code": "theorem amc12_2001_p5\n  (S : Finset ℕ)\n  (hS : S = {10000! / (5000!)^2 , 10000! / 2^5000, 9999! / 2^5000, 10000! / (2 ^ (5000 : ℕ) * 5000!), 5000! / 2^5000}) :\n  Finset.prod (Finset.filter (fun (x : ℕ) => Odd x) (Finset.range 10000)) (fun (x : ℕ) => x) ∈ S := by\n  have h₁ : Finset.prod (Finset.filter (fun x : ℕ => Odd x) (Finset.range 10000)) (fun x => x) = 10000! / (2 ^ 5000 * 5000!) := by\n    sorry\n  have h₂ : 10000! / (2 ^ 5000 * 5000!) ∈ S := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 18
+          },
+          "endPos": {
+            "line": 4,
+            "column": 19
+          },
+          "data": "unexpected token '!'; expected ':=' or '}'"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 125.33
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_141",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_141\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2)))\n  (A B C : EuclideanSpace ℝ (Fin 2))\n  (hA : A = T.points 0)\n  (hB : B = T.points 1)\n  (hC : C = T.points 2)\n  (a b : ℝ)\n  (h₀ : dist A B = a ∧ dist B C = b)\n  (h₁ : a * b = 180)\n  (h₂ : 2 * (a + b) = 54)\n  (θ : ℝ)\n  (hθ₀ : θ = EuclideanGeometry.angle A B C)\n  (hθ₁ : θ = Real.pi / 2) :\n  (dist A C) ^ 2 = 369 := by sorry",
+    "full_code": "theorem mathd_algebra_141\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2)))\n  (A B C : EuclideanSpace ℝ (Fin 2))\n  (hA : A = T.points 0)\n  (hB : B = T.points 1)\n  (hC : C = T.points 2)\n  (a b : ℝ)\n  (h₀ : dist A B = a ∧ dist B C = b)\n  (h₁ : a * b = 180)\n  (h₂ : 2 * (a + b) = 54)\n  (θ : ℝ)\n  (hθ₀ : θ = EuclideanGeometry.angle A B C)\n  (hθ₁ : θ = Real.pi / 2) :\n  (dist A C) ^ 2 = 369 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 74,
+          "pos": {
+            "line": 15,
+            "column": 29
+          },
+          "goal": "T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\nA B C : EuclideanSpace ℝ (Fin 2)\nhA : A = T.points 0\nhB : B = T.points 1\nhC : C = T.points 2\na b : ℝ\nh₀ : dist A B = a ∧ dist B C = b\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\nθ : ℝ\nhθ₀ : θ = EuclideanGeometry.angle A B C\nhθ₁ : θ = Real.pi / 2\n⊢ dist A C ^ 2 = 369",
+          "endPos": {
+            "line": 15,
+            "column": 34
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 129.86
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_3",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_numbertheory_3 : (∑ x ∈ Finset.range 9, (x + 1) ^ 2) % 10 = 5 := by\n  rfl\n  <;> decide\n  <;> simp [Finset.sum_range_succ, Nat.pow_succ, Nat.mul_add, Nat.add_mul, Nat.mul_one, Nat.mul_zero]\n  <;> decide\n  <;> decide\n  <;> decide\n  <;> decide\n  <;> decide\n  <;> decide",
+    "full_code": "theorem mathd_numbertheory_3 : (∑ x ∈ Finset.range 9, (x + 1) ^ 2) % 10 = 5 := by\n  rfl\n  <;> decide\n  <;> simp [Finset.sum_range_succ, Nat.pow_succ, Nat.mul_add, Nat.add_mul, Nat.mul_one, Nat.mul_zero]\n  <;> decide\n  <;> decide\n  <;> decide\n  <;> decide\n  <;> decide\n  <;> decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 63.63
+    }
+  },
+  {
+    "problem_id": "imo_1969_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by\n  have h_main : ∃ t : ℤ, m - n = t * Real.pi := by\n    sorry\n  sorry",
+    "full_code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by\n  have h_main : ∃ t : ℤ, m - n = t * Real.pi := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 110,
+          "pos": {
+            "line": 13,
+            "column": 4
+          },
+          "goal": "m n : ℝ\nk : ℕ\na : ℕ → ℝ\nf : ℝ → ℝ\nh₀ : 0 < k\nh₁ : ∀ (x : ℝ), f x = ∑ i ∈ Finset.range k, (a i + x).cos / 2 ^ i\nh₂ : f m = 0\nh₃ : f n = 0\n⊢ ∃ t, m - n = ↑t * Real.pi",
+          "endPos": {
+            "line": 13,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 111,
+          "pos": {
+            "line": 14,
+            "column": 2
+          },
+          "goal": "m n : ℝ\nk : ℕ\na : ℕ → ℝ\nf : ℝ → ℝ\nh₀ : 0 < k\nh₁ : ∀ (x : ℝ), f x = ∑ i ∈ Finset.range k, (a i + x).cos / 2 ^ i\nh₂ : f m = 0\nh₃ : f n = 0\nh_main : ∃ t, m - n = ↑t * Real.pi\n⊢ ∃ t, m - n = ↑t * Real.pi",
+          "endPos": {
+            "line": 14,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 300.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_209",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_algebra_209\n  (f h : ℝ → ℝ)\n  (h₀: Function.LeftInverse f h)\n  (h₁ : h 2 = 10)\n  (h₂ : h 10 = 1)\n  (h₃ : h 1 = 2) :\n  f (f 10) = 1 := by\n  have h₄ : f (h 2) = 2 := by apply h₀\n  have h₅ : f (h 1) = 1 := by apply h₀\n  have h₆ : f (10) = 2 := by\n    rw [← h₁]\n    exact h₄\n  have h₇ : f (2) = 1 := by\n    rw [← h₃]\n    exact h₅\n  have h₈ : f (f 10) = 1 := by\n    rw [h₆]\n    exact h₇\n  exact h₈",
+    "full_code": "theorem mathd_algebra_209\n  (f h : ℝ → ℝ)\n  (h₀: Function.LeftInverse f h)\n  (h₁ : h 2 = 10)\n  (h₂ : h 10 = 1)\n  (h₃ : h 1 = 2) :\n  f (f 10) = 1 := by\n  have h₄ : f (h 2) = 2 := by apply h₀\n  have h₅ : f (h 1) = 1 := by apply h₀\n  have h₆ : f (10) = 2 := by\n    rw [← h₁]\n    exact h₄\n  have h₇ : f (2) = 1 := by\n    rw [← h₃]\n    exact h₅\n  have h₈ : f (f 10) = 1 := by\n    rw [h₆]\n    exact h₇\n  exact h₈",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 82.32
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_1124",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_1124\n  (n x : ℕ)\n  (h₀ : Nat.digits 10 x = [n, 4, 7, 3])\n  (h₁ : 18 ∣ x) : n = 4 := by sorry",
+    "full_code": "theorem mathd_numbertheory_1124\n  (n x : ℕ)\n  (h₀ : Nat.digits 10 x = [n, 4, 7, 3])\n  (h₁ : 18 ∣ x) : n = 4 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 5,
+            "column": 30
+          },
+          "goal": "n x : ℕ\nh₀ : Nat.digits 10 x = [n, 4, 7, 3]\nh₁ : 18 ∣ x\n⊢ n = 4",
+          "endPos": {
+            "line": 5,
+            "column": 35
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.68
+    }
+  },
+  {
+    "problem_id": "imo_1983_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1983_p6\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))) :\n  let a := dist (T.points 1) (T.points 2)\n  let b := dist (T.points 0) (T.points 2)\n  let c := dist (T.points 0) (T.points 1)\n  0 ≤ a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ∧\n  (0 = a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ↔ imo_1983_p6_solution a b c) := by\n  intro a b c\n  constructor\n  · -- Prove non-negativity\n    sorry\n  · -- Prove the zero condition\n    sorry",
+    "full_code": "theorem imo_1983_p6\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))) :\n  let a := dist (T.points 1) (T.points 2)\n  let b := dist (T.points 0) (T.points 2)\n  let c := dist (T.points 0) (T.points 1)\n  0 ≤ a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ∧\n  (0 = a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ↔ imo_1983_p6_solution a b c) := by\n  intro a b c\n  constructor\n  · -- Prove non-negativity\n    sorry\n  · -- Prove the zero condition\n    sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 71,
+          "pos": {
+            "line": 12,
+            "column": 4
+          },
+          "goal": "case left\nx✝ : Sort u_1\nimo_1983_p6_solution : x✝\nT : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\na : ℝ := dist (T.points 1) (T.points 2)\nb : ℝ := dist (T.points 0) (T.points 2)\nc : ℝ := dist (T.points 0) (T.points 1)\n⊢ 0 ≤ a ^ 2 * b * (a - b) + b ^ 2 * c * (b - c) + c ^ 2 * a * (c - a)",
+          "endPos": {
+            "line": 12,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 72,
+          "pos": {
+            "line": 14,
+            "column": 4
+          },
+          "goal": "case right\nx✝ : Sort u_1\nimo_1983_p6_solution : x✝\nT : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\na : ℝ := dist (T.points 1) (T.points 2)\nb : ℝ := dist (T.points 0) (T.points 2)\nc : ℝ := dist (T.points 0) (T.points 1)\n⊢ 0 = a ^ 2 * b * (a - b) + b ^ 2 * c * (b - c) + c ^ 2 * a * (c - a) ↔ sorryAx Prop true",
+          "endPos": {
+            "line": 14,
+            "column": 9
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 8,
+            "column": 67
+          },
+          "endPos": {
+            "line": 8,
+            "column": 93
+          },
+          "data": "function expected at\n  imo_1983_p6_solution\nterm has type\n  ?m.3239"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 142.97
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_237",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_numbertheory_237 : (∑ k ∈ Finset.range 100, (k+1)) % 6 = 4 := by\n  rfl",
+    "full_code": "theorem mathd_numbertheory_237 : (∑ k ∈ Finset.range 100, (k+1)) % 6 = 4 := by\n  rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 31.3
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_33",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 9,
+    "code": "theorem mathd_algebra_33 (x y z : ℝ) (h₀ : x ≠ 0) (h₁ : 2 * x = 5 * y) (h₂ : 7 * y = 10 * z) :\n  z / x = 7 / 25 := by\n  have h₃ : y = (2 / 5) * x := by\n    apply Eq.symm\n    -- Solve for y using the equation 2 * x = 5 * y\n    linarith\n  have h₄ : z = (7 / 25) * x := by\n    apply Eq.symm\n    -- Substitute y = (2 / 5) * x into 7 * y = 10 * z and solve for z\n    linarith\n  -- Compute z / x\n  field_simp [h₀, h₃, h₄]\n  <;> ring\n  <;> linarith",
+    "full_code": "theorem mathd_algebra_33 (x y z : ℝ) (h₀ : x ≠ 0) (h₁ : 2 * x = 5 * y) (h₂ : 7 * y = 10 * z) :\n  z / x = 7 / 25 := by\n  have h₃ : y = (2 / 5) * x := by\n    apply Eq.symm\n    -- Solve for y using the equation 2 * x = 5 * y\n    linarith\n  have h₄ : z = (7 / 25) * x := by\n    apply Eq.symm\n    -- Substitute y = (2 / 5) * x into 7 * y = 10 * z and solve for z\n    linarith\n  -- Compute z / x\n  field_simp [h₀, h₃, h₄]\n  <;> ring\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 34.84
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12b_2021_p3\n  (x : ℝ)\n  (h₀ : 2 + 1 / (1 + 1 / (2 + 2 / (3 + x))) = 144 / 53) :\n  x = 3 / 4 ∨ x = 7 / 8 ∨ x = 14 / 15 ∨ x = 37 / 38 ∨ x = 52 / 53 := by sorry",
+    "full_code": "theorem amc12b_2021_p3\n  (x : ℝ)\n  (h₀ : 2 + 1 / (1 + 1 / (2 + 2 / (3 + x))) = 144 / 53) :\n  x = 3 / 4 ∨ x = 7 / 8 ∨ x = 14 / 15 ∨ x = 37 / 38 ∨ x = 52 / 53 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 5,
+            "column": 72
+          },
+          "goal": "x : ℝ\nh₀ : 2 + 1 / (1 + 1 / (2 + 2 / (3 + x))) = 144 / 53\n⊢ x = 3 / 4 ∨ x = 7 / 8 ∨ x = 14 / 15 ∨ x = 37 / 38 ∨ x = 52 / 53",
+          "endPos": {
+            "line": 5,
+            "column": 77
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 151.18
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_299",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_numbertheory_299 : 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5 := by\n  norm_num [mul_assoc, mul_comm, mul_left_comm, Nat.mul_mod, Nat.mod_eq_of_lt]\n  <;> decide\n  <;> rfl\n  <;> decide",
+    "full_code": "theorem mathd_numbertheory_299 : 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5 := by\n  norm_num [mul_assoc, mul_comm, mul_left_comm, Nat.mul_mod, Nat.mod_eq_of_lt]\n  <;> decide\n  <;> rfl\n  <;> decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 32.41
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p2",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem amc12b_2020_p2\n  (X : ℝ)\n  (hX : X = (100 ^ 2 - 7 ^ 2 : ℝ) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7)))) :\n  X = 1 ∨ X = 9951 / 9950 ∨ X = 4780 / 4779 ∨ X = 108 / 107 ∨ X = 81 / 80 := by\n  have h₁ : X = 1 := by\n    -- Substitute the given expression for X\n    rw [hX]\n    -- Simplify the expression using numerical calculations\n    norm_num [div_eq_mul_inv, mul_assoc]\n    <;> ring_nf\n    <;> norm_num\n    <;> field_simp\n    <;> norm_num\n  -- Since we've shown X = 1, we can conclude the disjunction\n  apply Or.inl\n  exact h₁",
+    "full_code": "theorem amc12b_2020_p2\n  (X : ℝ)\n  (hX : X = (100 ^ 2 - 7 ^ 2 : ℝ) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7)))) :\n  X = 1 ∨ X = 9951 / 9950 ∨ X = 4780 / 4779 ∨ X = 108 / 107 ∨ X = 81 / 80 := by\n  have h₁ : X = 1 := by\n    -- Substitute the given expression for X\n    rw [hX]\n    -- Simplify the expression using numerical calculations\n    norm_num [div_eq_mul_inv, mul_assoc]\n    <;> ring_nf\n    <;> norm_num\n    <;> field_simp\n    <;> norm_num\n  -- Since we've shown X = 1, we can conclude the disjunction\n  apply Or.inl\n  exact h₁",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.15
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpabsamblt1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 9,
+    "code": "theorem algebra_sqineq_unitcircatbpabsamblt1 (a b : ℝ) (h₀ : a ^ 2 + b ^ 2 = 1) :\n  a * b + abs (a - b) ≤ 1 := by\n  cases' le_total a b with h h <;>\n    cases' le_total 0 (a - b) with h₁ h₁ <;>\n    simp_all [abs_of_nonneg, abs_of_nonpos, sub_nonneg, sub_nonpos] <;>\n    nlinarith [sq_nonneg (a - b), sq_nonneg (a + b), sq_nonneg (a - 1), sq_nonneg (b - 1),\n      sq_nonneg (a + b - 1), sq_nonneg (a + b + 1)]",
+    "full_code": "theorem algebra_sqineq_unitcircatbpabsamblt1 (a b : ℝ) (h₀ : a ^ 2 + b ^ 2 = 1) :\n  a * b + abs (a - b) ≤ 1 := by\n  cases' le_total a b with h h <;>\n    cases' le_total 0 (a - b) with h₁ h₁ <;>\n    simp_all [abs_of_nonneg, abs_of_nonpos, sub_nonneg, sub_nonpos] <;>\n    nlinarith [sq_nonneg (a - b), sq_nonneg (a + b), sq_nonneg (a - 1), sq_nonneg (b - 1),\n      sq_nonneg (a + b - 1), sq_nonneg (a + b + 1)]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 121.19
+    }
+  },
+  {
+    "problem_id": "imo_1977_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1977_p6 (f : ℕ+ → ℕ+) (h₀ : ∀ n, f (f n) < f (n + 1)) :\n  ∀ n, f n = n := by\n  intro n\n  have h_main : f n = n := by\n    sorry\n  sorry",
+    "full_code": "theorem imo_1977_p6 (f : ℕ+ → ℕ+) (h₀ : ∀ n, f (f n) < f (n + 1)) :\n  ∀ n, f n = n := by\n  intro n\n  have h_main : f n = n := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 63,
+          "pos": {
+            "line": 6,
+            "column": 4
+          },
+          "goal": "f : ℕ+ → ℕ+\nh₀ : ∀ (n : ℕ+), f (f n) < f (n + 1)\nn : ℕ+\n⊢ f n = n",
+          "endPos": {
+            "line": 6,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 64,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "f : ℕ+ → ℕ+\nh₀ : ∀ (n : ℕ+), f (f n) < f (n + 1)\nn : ℕ+\nh_main : f n = n\n⊢ f n = n",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.01
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_419",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 3,
+    "code": "theorem mathd_algebra_419 (a b : ℝ) (h₀ : a = -1) (h₁ : b = 5) : -a - b ^ 2 + 3 * (a * b) = -39 := by\n  have h_final : -a - b ^ 2 + 3 * (a * b) = -39 := by\n    -- Substitute a = -1 and b = 5\n    subst_vars\n    -- Simplify the expression step by step\n    norm_num\n  -- The final result is -39\n  exact h_final",
+    "full_code": "theorem mathd_algebra_419 (a b : ℝ) (h₀ : a = -1) (h₁ : b = 5) : -a - b ^ 2 + 3 * (a * b) = -39 := by\n  have h_final : -a - b ^ 2 + 3 * (a * b) = -39 := by\n    -- Substitute a = -1 and b = 5\n    subst_vars\n    -- Simplify the expression step by step\n    norm_num\n  -- The final result is -39\n  exact h_final",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 22.73
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p10",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12a_2020_p10\n  (n X : ℕ)\n  (h₀ : 1 < n)\n  (h₁ : Real.logb (2 : ℝ) (Real.logb (16 : ℝ) n) = Real.logb (4 : ℝ) (Real.logb (4 : ℝ) n))\n  (hX : X = List.sum (Nat.digits 10 n)) :\n  X = 4 ∨ X = 7 ∨ X = 8 ∨ X = 11 ∨ X = 13 := by sorry",
+    "full_code": "theorem amc12a_2020_p10\n  (n X : ℕ)\n  (h₀ : 1 < n)\n  (h₁ : Real.logb (2 : ℝ) (Real.logb (16 : ℝ) n) = Real.logb (4 : ℝ) (Real.logb (4 : ℝ) n))\n  (hX : X = List.sum (Nat.digits 10 n)) :\n  X = 4 ∨ X = 7 ∨ X = 8 ∨ X = 11 ∨ X = 13 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 31,
+          "pos": {
+            "line": 7,
+            "column": 48
+          },
+          "goal": "n X : ℕ\nh₀ : 1 < n\nh₁ : Real.logb 2 (Real.logb 16 ↑n) = Real.logb 4 (Real.logb 4 ↑n)\nhX : X = (Nat.digits 10 n).sum\n⊢ X = 4 ∨ X = 7 ∨ X = 8 ∨ X = 11 ∨ X = 13",
+          "endPos": {
+            "line": 7,
+            "column": 53
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 159.93
+    }
+  },
+  {
+    "problem_id": "imo_1960_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by sorry",
+    "full_code": "theorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 60
+          },
+          "endPos": {
+            "line": 6,
+            "column": 84
+          },
+          "data": "typeclass instance problem is stuck, it is often due to metavariables\n  Membership ℝ ?m.1081"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 149.69
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_427",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 13,
+    "code": "theorem mathd_numbertheory_427 (a : ℕ) (h₀ : a = ∑ k ∈Nat.divisors 500, k) :\n  (∑ k ∈ Finset.filter (fun x => Nat.Prime x) (Nat.divisors a), k) = 25 := by\n  have h₁ : a = 1092 := by\n    rw [h₀]\n    rw [show (∑ k in Nat.divisors 500, k) = 1092 by\n      rw [show (500 : ℕ) = 2^2 * 5^3 by norm_num]\n      rw [Nat.divisors_mul, Nat.divisors_prime_pow (by norm_num : Nat.Prime 2), Nat.divisors_prime_pow (by norm_num : Nat.Prime 5)]\n      -- We need to compute the sum of the divisors of 500 = 2^2 * 5^3\n      <;> rfl\n      <;> decide\n      <;> norm_num\n      <;> decide]\n    <;> rfl\n  \n  have h₂ : (∑ k ∈ Finset.filter (fun x => Nat.Prime x) (Nat.divisors a), k) = 25 := by\n    rw [h₁]\n    rw [show (∑ k in Finset.filter (fun x => Nat.Prime x) (Nat.divisors 1092), k) = 25 by\n      -- We need to find the prime divisors of 1092 and sum them up.\n      -- The prime divisors of 1092 are 2, 3, 7, and 13.\n      -- Their sum is 2 + 3 + 7 + 13 = 25.\n      rw [show (1092 : ℕ) = 2^2 * 3 * 7 * 13 by norm_num]\n      -- We use the fact that the divisors of 1092 are 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 91, 182, 364, and 1092.\n      -- We filter out the primes 2, 3, 7, and 13, and sum them up to get 25.\n      rw [Nat.divisors_mul, Nat.divisors_mul, Nat.divisors_mul] <;>\n      (try norm_num) <;>\n      (try rfl) <;>\n      (try decide) <;>\n      (try\n        {\n          simp only [Finset.filter_insert, Finset.filter_singleton, Finset.mem_singleton, Nat.Prime,\n            Nat.succ_pos, true_and, Finset.sum_insert, Finset.sum_singleton]\n          norm_num\n          <;> rfl\n        }) <;>\n      (try\n        {\n          rfl\n        }) <;>\n      (try\n        {\n          decide\n        }) <;>\n      (try\n        {\n          norm_num\n          <;> rfl\n        })\n    ]\n  exact h₂",
+    "full_code": "theorem mathd_numbertheory_427 (a : ℕ) (h₀ : a = ∑ k ∈Nat.divisors 500, k) :\n  (∑ k ∈ Finset.filter (fun x => Nat.Prime x) (Nat.divisors a), k) = 25 := by\n  have h₁ : a = 1092 := by\n    rw [h₀]\n    rw [show (∑ k in Nat.divisors 500, k) = 1092 by\n      rw [show (500 : ℕ) = 2^2 * 5^3 by norm_num]\n      rw [Nat.divisors_mul, Nat.divisors_prime_pow (by norm_num : Nat.Prime 2), Nat.divisors_prime_pow (by norm_num : Nat.Prime 5)]\n      -- We need to compute the sum of the divisors of 500 = 2^2 * 5^3\n      <;> rfl\n      <;> decide\n      <;> norm_num\n      <;> decide]\n    <;> rfl\n  \n  have h₂ : (∑ k ∈ Finset.filter (fun x => Nat.Prime x) (Nat.divisors a), k) = 25 := by\n    rw [h₁]\n    rw [show (∑ k in Finset.filter (fun x => Nat.Prime x) (Nat.divisors 1092), k) = 25 by\n      -- We need to find the prime divisors of 1092 and sum them up.\n      -- The prime divisors of 1092 are 2, 3, 7, and 13.\n      -- Their sum is 2 + 3 + 7 + 13 = 25.\n      rw [show (1092 : ℕ) = 2^2 * 3 * 7 * 13 by norm_num]\n      -- We use the fact that the divisors of 1092 are 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 91, 182, 364, and 1092.\n      -- We filter out the primes 2, 3, 7, and 13, and sum them up to get 25.\n      rw [Nat.divisors_mul, Nat.divisors_mul, Nat.divisors_mul] <;>\n      (try norm_num) <;>\n      (try rfl) <;>\n      (try decide) <;>\n      (try\n        {\n          simp only [Finset.filter_insert, Finset.filter_singleton, Finset.mem_singleton, Nat.Prime,\n            Nat.succ_pos, true_and, Finset.sum_insert, Finset.sum_singleton]\n          norm_num\n          <;> rfl\n        }) <;>\n      (try\n        {\n          rfl\n        }) <;>\n      (try\n        {\n          decide\n        }) <;>\n      (try\n        {\n          norm_num\n          <;> rfl\n        })\n    ]\n  exact h₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 116.71
+    }
+  },
+  {
+    "problem_id": "numbertheory_x5neqy2p4",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 27,
+    "code": "theorem numbertheory_x5neqy2p4 (x y : ℤ) : x ^ 5 ≠ y ^ 2 + 4 := by\n  intro h\n  have h₁ := congr_arg (fun x => x % 11) h\n  simp at h₁\n  have h₂ : x ^ 5 % 11 = (y ^ 2 + 4) % 11 := by omega\n  have h₃ : x % 11 = 0 ∨ x % 11 = 1 ∨ x % 11 = 2 ∨ x % 11 = 3 ∨ x % 11 = 4 ∨ x % 11 = 5 ∨ x % 11 = 6 ∨ x % 11 = 7 ∨ x % 11 = 8 ∨ x % 11 = 9 ∨ x % 11 = 10 := by omega\n  have h₄ : y % 11 = 0 ∨ y % 11 = 1 ∨ y % 11 = 2 ∨ y % 11 = 3 ∨ y % 11 = 4 ∨ y % 11 = 5 ∨ y % 11 = 6 ∨ y % 11 = 7 ∨ y % 11 = 8 ∨ y % 11 = 9 ∨ y % 11 = 10 := by omega\n  rcases h₃ with (h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃) <;>\n  rcases h₄ with (h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄) <;>\n  simp [h₃, h₄, pow_succ, Int.mul_emod, Int.add_emod, Int.sub_emod, Int.emod_emod] at h₂ <;>\n  (try omega) <;>\n  (try {\n    norm_num at h₂\n    omega\n  }) <;>\n  (try {\n    have h₅ := congr_arg (· % 11) h\n    simp at h₅\n    omega\n  }) <;>\n  (try {\n    omega\n  })",
+    "full_code": "theorem numbertheory_x5neqy2p4 (x y : ℤ) : x ^ 5 ≠ y ^ 2 + 4 := by\n  intro h\n  have h₁ := congr_arg (fun x => x % 11) h\n  simp at h₁\n  have h₂ : x ^ 5 % 11 = (y ^ 2 + 4) % 11 := by omega\n  have h₃ : x % 11 = 0 ∨ x % 11 = 1 ∨ x % 11 = 2 ∨ x % 11 = 3 ∨ x % 11 = 4 ∨ x % 11 = 5 ∨ x % 11 = 6 ∨ x % 11 = 7 ∨ x % 11 = 8 ∨ x % 11 = 9 ∨ x % 11 = 10 := by omega\n  have h₄ : y % 11 = 0 ∨ y % 11 = 1 ∨ y % 11 = 2 ∨ y % 11 = 3 ∨ y % 11 = 4 ∨ y % 11 = 5 ∨ y % 11 = 6 ∨ y % 11 = 7 ∨ y % 11 = 8 ∨ y % 11 = 9 ∨ y % 11 = 10 := by omega\n  rcases h₃ with (h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃ | h₃) <;>\n  rcases h₄ with (h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄) <;>\n  simp [h₃, h₄, pow_succ, Int.mul_emod, Int.add_emod, Int.sub_emod, Int.emod_emod] at h₂ <;>\n  (try omega) <;>\n  (try {\n    norm_num at h₂\n    omega\n  }) <;>\n  (try {\n    have h₅ := congr_arg (· % 11) h\n    simp at h₅\n    omega\n  }) <;>\n  (try {\n    omega\n  })",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 198.97
+    }
+  },
+  {
+    "problem_id": "imosl_2007_algebra_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imosl_2007_algebra_p6 (a : ℕ → NNReal) (h₀ : (∑ x ∈ Finset.range 100, a (x + 1) ^ 2) = 1) :\n  (∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by\n  have h₁ : (∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by\n    sorry\n  sorry",
+    "full_code": "theorem imosl_2007_algebra_p6 (a : ℕ → NNReal) (h₀ : (∑ x ∈ Finset.range 100, a (x + 1) ^ 2) = 1) :\n  (∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by\n  have h₁ : (∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 45,
+          "pos": {
+            "line": 5,
+            "column": 4
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\n⊢ ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 < 12 / 25",
+          "endPos": {
+            "line": 5,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 46,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\nh₁ : ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 < 12 / 25\n⊢ ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 < 12 / 25",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 155.37
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_398",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_398 (a b c x : ℝ) (h₁ : 9 * b = 20 * c)\n  (h₂ : 7 * a = 4 * b) (h₃ : x * a = 80 * c) : x = 63 := by sorry",
+    "full_code": "theorem mathd_algebra_398 (a b c x : ℝ) (h₁ : 9 * b = 20 * c)\n  (h₂ : 7 * a = 4 * b) (h₃ : x * a = 80 * c) : x = 63 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 101,
+          "pos": {
+            "line": 3,
+            "column": 60
+          },
+          "goal": "a b c x : ℝ\nh₁ : 9 * b = 20 * c\nh₂ : 7 * a = 4 * b\nh₃ : x * a = 80 * c\n⊢ x = 63",
+          "endPos": {
+            "line": 3,
+            "column": 65
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 103.99
+    }
+  },
+  {
+    "problem_id": "imo_1963_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1963_p5 : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by\n  have h1 : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by\n    -- Use the exact trigonometric identity for this sum\n    sorry\n  exact h1",
+    "full_code": "theorem imo_1963_p5 : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by\n  have h1 : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by\n    -- Use the exact trigonometric identity for this sum\n    sorry\n  exact h1",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 23,
+          "pos": {
+            "line": 5,
+            "column": 4
+          },
+          "goal": "⊢ (Real.pi / 7).cos - (2 * Real.pi / 7).cos + (3 * Real.pi / 7).cos = 1 / 2",
+          "endPos": {
+            "line": 5,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 128.8
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_430",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_430\n  (a b c d: ℕ) (h₀ : 1 ≤ a ∧ a ≤ 9) (h₁ : 1 ≤ b ∧ b ≤ 9)\n  (h₂ : 1 ≤ c ∧ c ≤ 9) (h₃ : a ≠ b) (h₄ : a ≠ c) (h₅ : b ≠ c) (h₆ : a + b = c)\n  (h₇ : Nat.digits 10 d = [a, a])\n  (h₈ : d - b = 2 * c) (h₉ : c * b = d + a) : a + b + c = 8 := by\n  have h₁₀ : d = 11 * a := by\n    have h₁₀₁ : Nat.digits 10 d = [a, a] := h₇\n    have h₁₀₂ : d = 11 * a := by\n      -- Using the digits representation, derive d = 11 * a\n      have h₁₀₃ := Nat.ofDigits_digits 10 d\n      have h₁₀₄ : Nat.ofDigits 10 (Nat.digits 10 d) = d := by\n        simp [Nat.ofDigits_digits]\n      rw [h₁₀₁] at h₁₀₄\n      norm_num [Nat.ofDigits, List.get] at h₁₀₄ ⊢\n      <;> ring_nf at h₁₀₄ ⊢ <;> omega\n    exact h₁₀₂\n  \n  have h₁₁ : b = 3 * a := by\n    have h₁₁₁ : d - b = 2 * c := h₈\n    rw [h₁₀] at h₁₁₁\n    have h₁₁₂ : 11 * a - b = 2 * c := by\n      omega\n    have h₁₁₃ : a + b = c := h₆\n    have h₁₁₄ : 11 * a - b = 2 * (a + b) := by\n      omega\n    have h₁₁₅ : 11 * a - b = 2 * a + 2 * b := by\n      omega\n    have h₁₁₆ : 9 * a = 3 * b := by\n      omega\n    have h₁₁₇ : b = 3 * a := by\n      omega\n    exact h₁₁₇\n  \n  have h₁₂ : c = 4 * a := by\n    have h₁₂₁ : a + b = c := h₆\n    rw [h₁₁] at h₁₂₁\n    ring_nf at h₁₂₁ ⊢\n    omega\n  \n  have h₁₃ : a = 1 := by\n    have h₁₃₁ : c * b = d + a := h₉\n    rw [h₁₀, h₁₂, h₁₁] at h₁₃₁\n    ring_nf at h₁₃₁\n    have : a ≤ 9 := by linarith\n    interval_cases a <;> norm_num at h₁₃₁ ⊢ <;>\n    (try omega) <;>\n    (try\n      {\n        have h₁₄ : b ≤ 9 := by linarith\n        have h₁₅ : c ≤ 9 := by linarith\n        interval_cases b <;> norm_num at h₁₃₁ h₃ h₄ h₅ h₆ h₁₁ h₁₂ h₁₀ ⊢ <;>\n        (try omega) <;>\n        (try omega)\n      }) <;>\n    (try omega)\n    <;>\n    omega\n  \n  have h₁₄ : b = 3 := by\n    subst_vars\n    <;> omega\n  \n  have h₁₅ : c = 4 := by\n    subst_vars\n    <;> omega\n  \n  have h₁₆ : a + b + c = 8 := by\n    subst_vars\n    <;> omega\n  \n  exact h₁₆",
+    "full_code": "theorem mathd_numbertheory_430\n  (a b c d: ℕ) (h₀ : 1 ≤ a ∧ a ≤ 9) (h₁ : 1 ≤ b ∧ b ≤ 9)\n  (h₂ : 1 ≤ c ∧ c ≤ 9) (h₃ : a ≠ b) (h₄ : a ≠ c) (h₅ : b ≠ c) (h₆ : a + b = c)\n  (h₇ : Nat.digits 10 d = [a, a])\n  (h₈ : d - b = 2 * c) (h₉ : c * b = d + a) : a + b + c = 8 := by\n  have h₁₀ : d = 11 * a := by\n    have h₁₀₁ : Nat.digits 10 d = [a, a] := h₇\n    have h₁₀₂ : d = 11 * a := by\n      -- Using the digits representation, derive d = 11 * a\n      have h₁₀₃ := Nat.ofDigits_digits 10 d\n      have h₁₀₄ : Nat.ofDigits 10 (Nat.digits 10 d) = d := by\n        simp [Nat.ofDigits_digits]\n      rw [h₁₀₁] at h₁₀₄\n      norm_num [Nat.ofDigits, List.get] at h₁₀₄ ⊢\n      <;> ring_nf at h₁₀₄ ⊢ <;> omega\n    exact h₁₀₂\n  \n  have h₁₁ : b = 3 * a := by\n    have h₁₁₁ : d - b = 2 * c := h₈\n    rw [h₁₀] at h₁₁₁\n    have h₁₁₂ : 11 * a - b = 2 * c := by\n      omega\n    have h₁₁₃ : a + b = c := h₆\n    have h₁₁₄ : 11 * a - b = 2 * (a + b) := by\n      omega\n    have h₁₁₅ : 11 * a - b = 2 * a + 2 * b := by\n      omega\n    have h₁₁₆ : 9 * a = 3 * b := by\n      omega\n    have h₁₁₇ : b = 3 * a := by\n      omega\n    exact h₁₁₇\n  \n  have h₁₂ : c = 4 * a := by\n    have h₁₂₁ : a + b = c := h₆\n    rw [h₁₁] at h₁₂₁\n    ring_nf at h₁₂₁ ⊢\n    omega\n  \n  have h₁₃ : a = 1 := by\n    have h₁₃₁ : c * b = d + a := h₉\n    rw [h₁₀, h₁₂, h₁₁] at h₁₃₁\n    ring_nf at h₁₃₁\n    have : a ≤ 9 := by linarith\n    interval_cases a <;> norm_num at h₁₃₁ ⊢ <;>\n    (try omega) <;>\n    (try\n      {\n        have h₁₄ : b ≤ 9 := by linarith\n        have h₁₅ : c ≤ 9 := by linarith\n        interval_cases b <;> norm_num at h₁₃₁ h₃ h₄ h₅ h₆ h₁₁ h₁₂ h₁₀ ⊢ <;>\n        (try omega) <;>\n        (try omega)\n      }) <;>\n    (try omega)\n    <;>\n    omega\n  \n  have h₁₄ : b = 3 := by\n    subst_vars\n    <;> omega\n  \n  have h₁₅ : c = 4 := by\n    subst_vars\n    <;> omega\n  \n  have h₁₆ : a + b + c = 8 := by\n    subst_vars\n    <;> omega\n  \n  exact h₁₆",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 129.11
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_459",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 12,
+    "code": "theorem mathd_algebra_459 (a b c d : ℚ) (h₀ : 3 * a = b + c + d) (h₁ : 4 * b = a + c + d)\n  (h₂ : 2 * c = a + b + d) (h₃ : 8 * a + 10 * b + 6 * c = 24) : ↑d.den + d.num = 28 := by\n  have h₄ : d = 13 / 15 := by\n    have h₄₁ : d = 13 / 15 := by\n      -- Solve the system of equations to find d = 13/15\n      linarith\n    exact h₄₁\n  have h₅ : d.num = 13 := by\n    rw [h₄]\n    norm_num [Rat.num_div_den]\n    <;> rfl\n  have h₆ : d.den = 15 := by\n    rw [h₄]\n    norm_num [Rat.num_div_den]\n    <;> rfl\n  norm_num [h₅, h₆]\n  <;> rfl",
+    "full_code": "theorem mathd_algebra_459 (a b c d : ℚ) (h₀ : 3 * a = b + c + d) (h₁ : 4 * b = a + c + d)\n  (h₂ : 2 * c = a + b + d) (h₃ : 8 * a + 10 * b + 6 * c = 24) : ↑d.den + d.num = 28 := by\n  have h₄ : d = 13 / 15 := by\n    have h₄₁ : d = 13 / 15 := by\n      -- Solve the system of equations to find d = 13/15\n      linarith\n    exact h₄₁\n  have h₅ : d.num = 13 := by\n    rw [h₄]\n    norm_num [Rat.num_div_den]\n    <;> rfl\n  have h₆ : d.den = 15 := by\n    rw [h₄]\n    norm_num [Rat.num_div_den]\n    <;> rfl\n  norm_num [h₅, h₆]\n  <;> rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 119.84
+    }
+  },
+  {
+    "problem_id": "induction_12dvd4expnp1p20",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 4,
+    "code": "theorem induction_12dvd4expnp1p20 (n : ℕ) : 12 ∣ 4 ^ (n + 1) + 20 := by\n  have h₁ : 4 ^ (n + 1) % 12 = 4 ^ (n + 1) % 12 := by rfl\n  have h₂ : 20 % 12 = 8 := by norm_num\n  have h₃ : (4 ^ (n + 1) + 20) % 12 = 0 := by\n    have h₄ : ∀ n : ℕ, (4 ^ (n + 1) + 20) % 12 = 0 := by\n      intro n\n      induction n with\n      | zero => norm_num\n      | succ n ih =>\n        simp [pow_add, pow_mul, Nat.mul_mod, Nat.pow_mod, Nat.add_mod] at ih ⊢\n        <;>\n        (try omega) <;>\n        (try\n          {\n            cases n with\n            | zero => norm_num\n            | succ n =>\n              simp [pow_succ, Nat.mul_mod, Nat.pow_mod, Nat.add_mod] at *\n              <;> omega\n          }) <;>\n        omega\n    exact h₄ n\n  rw [Nat.dvd_iff_mod_eq_zero]\n  exact h₃",
+    "full_code": "theorem induction_12dvd4expnp1p20 (n : ℕ) : 12 ∣ 4 ^ (n + 1) + 20 := by\n  have h₁ : 4 ^ (n + 1) % 12 = 4 ^ (n + 1) % 12 := by rfl\n  have h₂ : 20 % 12 = 8 := by norm_num\n  have h₃ : (4 ^ (n + 1) + 20) % 12 = 0 := by\n    have h₄ : ∀ n : ℕ, (4 ^ (n + 1) + 20) % 12 = 0 := by\n      intro n\n      induction n with\n      | zero => norm_num\n      | succ n ih =>\n        simp [pow_add, pow_mul, Nat.mul_mod, Nat.pow_mod, Nat.add_mod] at ih ⊢\n        <;>\n        (try omega) <;>\n        (try\n          {\n            cases n with\n            | zero => norm_num\n            | succ n =>\n              simp [pow_succ, Nat.mul_mod, Nat.pow_mod, Nat.add_mod] at *\n              <;> omega\n          }) <;>\n        omega\n    exact h₄ n\n  rw [Nat.dvd_iff_mod_eq_zero]\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 56.14
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_320",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_320\n  (x : ℝ) (a b c : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < x)\n  (h₁ : 2 * x ^ 2 = 4 * x + 9) (h₂ : x = (a + Real.sqrt b) / c) (h₃ : ¬ ∃d:ℕ , d ^ 2 ∣ b) : a + b + c = 26 := by sorry",
+    "full_code": "theorem mathd_algebra_320\n  (x : ℝ) (a b c : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < x)\n  (h₁ : 2 * x ^ 2 = 4 * x + 9) (h₂ : x = (a + Real.sqrt b) / c) (h₃ : ¬ ∃d:ℕ , d ^ 2 ∣ b) : a + b + c = 26 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 62,
+          "pos": {
+            "line": 4,
+            "column": 113
+          },
+          "goal": "x : ℝ\na b c : ℕ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < x\nh₁ : 2 * x ^ 2 = 4 * x + 9\nh₂ : x = (↑a + √↑b) / ↑c\nh₃ : ¬∃ d, d ^ 2 ∣ b\n⊢ a + b + c = 26",
+          "endPos": {
+            "line": 4,
+            "column": 118
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.58
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_137",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_algebra_137 (x : ℕ) (h₀ : ↑x + (4 : ℝ) / (100 : ℝ) * ↑x = 598) : x = 575 := by\n  have h₁ : (x : ℝ) + (4 : ℝ) / (100 : ℝ) * x = 598 := by exact_mod_cast h₀\n  have h₂ : (x : ℝ) * (1 + (4 : ℝ) / (100 : ℝ)) = 598 := by linarith\n  have h₃ : (x : ℝ) * (1 + (4 : ℝ) / (100 : ℝ)) = (x : ℝ) * (104 / 100) := by\n    norm_num [mul_add, mul_comm, mul_left_comm, mul_assoc]\n    <;> ring_nf\n    <;> norm_num\n    <;> nlinarith\n  have h₄ : (x : ℝ) * (104 / 100) = 598 := by linarith\n  have h₅ : (x : ℝ) = 598 / (104 / 100) := by\n    field_simp at h₄ ⊢\n    <;> linarith\n  have h₆ : (x : ℝ) = 598 * (100 / 104) := by\n    field_simp at h₅ ⊢ <;> linarith\n  have h₇ : (x : ℝ) = 575 := by\n    norm_num at h₆ ⊢\n    <;> nlinarith\n  norm_cast at h₇\n  <;> linarith",
+    "full_code": "theorem mathd_algebra_137 (x : ℕ) (h₀ : ↑x + (4 : ℝ) / (100 : ℝ) * ↑x = 598) : x = 575 := by\n  have h₁ : (x : ℝ) + (4 : ℝ) / (100 : ℝ) * x = 598 := by exact_mod_cast h₀\n  have h₂ : (x : ℝ) * (1 + (4 : ℝ) / (100 : ℝ)) = 598 := by linarith\n  have h₃ : (x : ℝ) * (1 + (4 : ℝ) / (100 : ℝ)) = (x : ℝ) * (104 / 100) := by\n    norm_num [mul_add, mul_comm, mul_left_comm, mul_assoc]\n    <;> ring_nf\n    <;> norm_num\n    <;> nlinarith\n  have h₄ : (x : ℝ) * (104 / 100) = 598 := by linarith\n  have h₅ : (x : ℝ) = 598 / (104 / 100) := by\n    field_simp at h₄ ⊢\n    <;> linarith\n  have h₆ : (x : ℝ) = 598 * (100 / 104) := by\n    field_simp at h₅ ⊢ <;> linarith\n  have h₇ : (x : ℝ) = 575 := by\n    norm_num at h₆ ⊢\n    <;> nlinarith\n  norm_cast at h₇\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 66.8
+    }
+  },
+  {
+    "problem_id": "imo_1997_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1997_p5\n  (x y : ℕ)\n  (h₀ : 1 ≤ x ∧ 1 ≤ y) :\n   x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ imo_1997_p5_solution := by\n  have h_main : x ^ y ^ 2 = y ^ x ↔ (x = y ∨ x = 1 ∨ y = 1) := by sorry\n  have h_final : (x, y) ∈ imo_1997_p5_solution ↔ (x = y ∨ x = 1 ∨ y = 1) := by sorry\n  have h_final_bis : x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ imo_1997_p5_solution := by sorry\n  sorry",
+    "full_code": "theorem imo_1997_p5\n  (x y : ℕ)\n  (h₀ : 1 ≤ x ∧ 1 ≤ y) :\n   x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ imo_1997_p5_solution := by\n  have h_main : x ^ y ^ 2 = y ^ x ↔ (x = y ∨ x = 1 ∨ y = 1) := by sorry\n  have h_final : (x, y) ∈ imo_1997_p5_solution ↔ (x = y ∨ x = 1 ∨ y = 1) := by sorry\n  have h_final_bis : x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ imo_1997_p5_solution := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 23
+          },
+          "endPos": {
+            "line": 5,
+            "column": 52
+          },
+          "data": "typeclass instance problem is stuck, it is often due to metavariables\n  Membership (ℕ × ℕ) ?m.287"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 143.58
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_277",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_277\n  (S: Set ℕ)\n  (hS: S = {x | ∃ m n:ℕ, x = m + n ∧ Nat.gcd m n = 6 ∧ Nat.lcm m n = 126}):\n  IsLeast S 60 := by\n  have h₁ : 60 ∈ S := by sorry\n  have h₂ : ∀ x ∈ S, 60 ≤ x := by sorry\n  exact ⟨h₁, h₂⟩",
+    "full_code": "theorem mathd_numbertheory_277\n  (S: Set ℕ)\n  (hS: S = {x | ∃ m n:ℕ, x = m + n ∧ Nat.gcd m n = 6 ∧ Nat.lcm m n = 126}):\n  IsLeast S 60 := by\n  have h₁ : 60 ∈ S := by sorry\n  have h₂ : ∀ x ∈ S, 60 ≤ x := by sorry\n  exact ⟨h₁, h₂⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 94,
+          "pos": {
+            "line": 6,
+            "column": 25
+          },
+          "goal": "S : Set ℕ\nhS : S = {x | ∃ m n, x = m + n ∧ m.gcd n = 6 ∧ m.lcm n = 126}\n⊢ 60 ∈ S",
+          "endPos": {
+            "line": 6,
+            "column": 30
+          }
+        },
+        {
+          "proofState": 95,
+          "pos": {
+            "line": 7,
+            "column": 34
+          },
+          "goal": "S : Set ℕ\nhS : S = {x | ∃ m n, x = m + n ∧ m.gcd n = 6 ∧ m.lcm n = 126}\nh₁ : 60 ∈ S\n⊢ ∀ x ∈ S, 60 ≤ x",
+          "endPos": {
+            "line": 7,
+            "column": 39
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 145.52
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_559",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_numbertheory_559\n  (S: Set ℕ)\n  (hS: S = {x | x % 3 = 2 ∧ ∃ y:ℕ, (y % 5 = 4 ∧ x % 10 = y % 10)}) :\n  IsLeast S 14 := by\n  have h₁ : 14 ∈ S := by\n    rw [hS]\n    constructor\n    · -- Prove 14 % 3 = 2\n      norm_num\n    · -- Prove there exists y such that y % 5 = 4 and 14 % 10 = y % 10\n      use 4\n      <;> norm_num\n  have h₂ : ∀ x ∈ S, 14 ≤ x := by\n    intro x hx\n    rw [hS] at hx\n    rcases hx with ⟨h₁, ⟨y, hy, h₂⟩⟩\n    -- Prove 14 ≤ x using the conditions on x and y\n    have h₃ : x % 3 = 2 := h₁\n    have h₄ : y % 5 = 4 := hy\n    have h₅ : x % 10 = y % 10 := h₂\n    -- Use the fact that y % 5 = 4 to bound y % 10\n    have h₆ : y % 10 = 4 ∨ y % 10 = 9 := by\n      have : y % 10 = 4 ∨ y % 10 = 9 := by\n        omega\n      omega\n    -- Case analysis on y % 10\n    rcases h₆ with (h₆ | h₆) <;>\n    -- Use the fact that x % 3 = 2 to bound x\n    omega\n  exact ⟨h₁, h₂⟩",
+    "full_code": "theorem mathd_numbertheory_559\n  (S: Set ℕ)\n  (hS: S = {x | x % 3 = 2 ∧ ∃ y:ℕ, (y % 5 = 4 ∧ x % 10 = y % 10)}) :\n  IsLeast S 14 := by\n  have h₁ : 14 ∈ S := by\n    rw [hS]\n    constructor\n    · -- Prove 14 % 3 = 2\n      norm_num\n    · -- Prove there exists y such that y % 5 = 4 and 14 % 10 = y % 10\n      use 4\n      <;> norm_num\n  have h₂ : ∀ x ∈ S, 14 ≤ x := by\n    intro x hx\n    rw [hS] at hx\n    rcases hx with ⟨h₁, ⟨y, hy, h₂⟩⟩\n    -- Prove 14 ≤ x using the conditions on x and y\n    have h₃ : x % 3 = 2 := h₁\n    have h₄ : y % 5 = 4 := hy\n    have h₅ : x % 10 = y % 10 := h₂\n    -- Use the fact that y % 5 = 4 to bound y % 10\n    have h₆ : y % 10 = 4 ∨ y % 10 = 9 := by\n      have : y % 10 = 4 ∨ y % 10 = 9 := by\n        omega\n      omega\n    -- Case analysis on y % 10\n    rcases h₆ with (h₆ | h₆) <;>\n    -- Use the fact that x % 3 = 2 to bound x\n    omega\n  exact ⟨h₁, h₂⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 109.33
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_160",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_algebra_160\n  (n x : ℕ)\n  (f : ℕ → ℕ)\n  (h₀ : f = fun t => n + x * t)\n  (h₁: f 1 = 97)\n  (h₂: f 5 = 265) :\n  f 2 = 139 := by\n  rw [h₀] at h₁ h₂\n  have h₃ : n + x = 97 := by\n    simp_all [Nat.mul_one]\n    <;> omega\n  have h₄ : n + 5 * x = 265 := by\n    simp_all [Nat.mul_comm]\n    <;> omega\n  have h₅ : x = 42 := by\n    omega\n  have h₆ : n = 55 := by\n    subst x\n    omega\n  simp_all [h₀, h₅, h₆]\n  <;> omega",
+    "full_code": "theorem mathd_algebra_160\n  (n x : ℕ)\n  (f : ℕ → ℕ)\n  (h₀ : f = fun t => n + x * t)\n  (h₁: f 1 = 97)\n  (h₂: f 5 = 265) :\n  f 2 = 139 := by\n  rw [h₀] at h₁ h₂\n  have h₃ : n + x = 97 := by\n    simp_all [Nat.mul_one]\n    <;> omega\n  have h₄ : n + 5 * x = 265 := by\n    simp_all [Nat.mul_comm]\n    <;> omega\n  have h₅ : x = 42 := by\n    omega\n  have h₆ : n = 55 := by\n    subst x\n    omega\n  simp_all [h₀, h₅, h₆]\n  <;> omega",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 38.32
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_24",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 5,
+    "code": "theorem mathd_algebra_24 (calories_tin : ℕ) (daily_requirement : ℕ) (h : calories_tin = 40) (h2 : calories_tin = daily_requirement * (2 / 100 : ℝ)) : daily_requirement = 2000 := by\n  have h3 : (calories_tin : ℝ) = daily_requirement * (2 / 100 : ℝ) := by\n    simpa [h] using h2\n  have h4 : (40 : ℝ) = daily_requirement * (2 / 100 : ℝ) := by\n    simpa [h] using h3\n  have h5 : (daily_requirement : ℝ) = 2000 := by\n    field_simp at h4 ⊢\n    linarith\n  norm_cast at h5\n  <;> linarith",
+    "full_code": "theorem mathd_algebra_24 (calories_tin : ℕ) (daily_requirement : ℕ) (h : calories_tin = 40) (h2 : calories_tin = daily_requirement * (2 / 100 : ℝ)) : daily_requirement = 2000 := by\n  have h3 : (calories_tin : ℝ) = daily_requirement * (2 / 100 : ℝ) := by\n    simpa [h] using h2\n  have h4 : (40 : ℝ) = daily_requirement * (2 / 100 : ℝ) := by\n    simpa [h] using h3\n  have h5 : (daily_requirement : ℝ) = 2000 := by\n    field_simp at h4 ⊢\n    linarith\n  norm_cast at h5\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 56.84
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_176",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_algebra_176 (x : ℝ) : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n  have h₁ : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n    ring_nf  -- Expand and simplify the left-hand side to match the right-hand side\n    <;>\n    linarith  -- This step is not needed as ring_nf suffices, but linarith is included for completeness\n  exact h₁",
+    "full_code": "theorem mathd_algebra_176 (x : ℝ) : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n  have h₁ : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n    ring_nf  -- Expand and simplify the left-hand side to match the right-hand side\n    <;>\n    linarith  -- This step is not needed as ring_nf suffices, but linarith is included for completeness\n  exact h₁",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 18.9
+    }
+  },
+  {
+    "problem_id": "induction_nfactltnexpnm1ngt3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem induction_nfactltnexpnm1ngt3 (n : ℕ) (h₀ : 3 ≤ n) : n ! < n ^ (n - 1) := by\n  have h_main : n ! < n ^ (n - 1) := by\n    sorry\n  sorry",
+    "full_code": "theorem induction_nfactltnexpnm1ngt3 (n : ℕ) (h₀ : 3 ≤ n) : n ! < n ^ (n - 1) := by\n  have h_main : n ! < n ^ (n - 1) := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 63
+          },
+          "endPos": {
+            "line": 2,
+            "column": 65
+          },
+          "data": "unexpected token '<'; expected term"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 92.69
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_208",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 5,
+    "code": "theorem mathd_algebra_208 : Real.sqrt 1000000 - 1000000 ^ ((1 : ℝ) / 3) = 900 := by\n  have h₁ : Real.sqrt 1000000 = 1000 := by\n    rw [Real.sqrt_eq_iff_sq_eq] <;> norm_num\n    <;>\n    ring_nf <;>\n    norm_num\n  have h₂ : (1000000 : ℝ) ^ ((1 : ℝ) / 3) = 100 := by\n    have h₃ : (1000000 : ℝ) = 10 ^ 6 := by norm_num\n    rw [h₃]\n    have h₄ : (10 ^ 6 : ℝ) ^ ((1 : ℝ) / 3) = 10 ^ 2 := by\n      rw [← Real.rpow_nat_cast]\n      rw [← Real.rpow_mul] <;> ring_nf <;> norm_num\n      <;>\n      field_simp\n      <;>\n      norm_num\n    rw [h₄]\n    norm_num\n  rw [h₁, h₂]\n  <;> norm_num",
+    "full_code": "theorem mathd_algebra_208 : Real.sqrt 1000000 - 1000000 ^ ((1 : ℝ) / 3) = 900 := by\n  have h₁ : Real.sqrt 1000000 = 1000 := by\n    rw [Real.sqrt_eq_iff_sq_eq] <;> norm_num\n    <;>\n    ring_nf <;>\n    norm_num\n  have h₂ : (1000000 : ℝ) ^ ((1 : ℝ) / 3) = 100 := by\n    have h₃ : (1000000 : ℝ) = 10 ^ 6 := by norm_num\n    rw [h₃]\n    have h₄ : (10 ^ 6 : ℝ) ^ ((1 : ℝ) / 3) = 10 ^ 2 := by\n      rw [← Real.rpow_nat_cast]\n      rw [← Real.rpow_mul] <;> ring_nf <;> norm_num\n      <;>\n      field_simp\n      <;>\n      norm_num\n    rw [h₄]\n    norm_num\n  rw [h₁, h₂]\n  <;> norm_num",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 50.85
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_353",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 3,
+    "code": "theorem mathd_numbertheory_353 (s : ℕ) (h₀ : s = ∑ k ∈Finset.Icc 2010 4018, k) : s % 2009 = 0 := by\n  rw [h₀]\n  apply Eq.symm\n  rfl\n  <;> norm_num\n  <;> rfl\n  <;> decide",
+    "full_code": "theorem mathd_numbertheory_353 (s : ℕ) (h₀ : s = ∑ k ∈Finset.Icc 2010 4018, k) : s % 2009 = 0 := by\n  rw [h₀]\n  apply Eq.symm\n  rfl\n  <;> norm_num\n  <;> rfl\n  <;> decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 113.81
+    }
+  }
+]

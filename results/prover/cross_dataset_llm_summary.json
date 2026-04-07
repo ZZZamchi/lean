@@ -1,0 +1,44 @@
+[
+  {
+    "dataset": "minif2f",
+    "problem_id": "mathd_algebra_478",
+    "complete": false,
+    "attempts": 4,
+    "seconds": 14.0
+  },
+  {
+    "dataset": "proofnet",
+    "problem_id": "Rudin|exercise_1_2",
+    "complete": false,
+    "attempts": 3,
+    "seconds": 15.1
+  },
+  {
+    "dataset": "putnambench",
+    "problem_id": "putnam_1974_a4",
+    "complete": false,
+    "attempts": 4,
+    "seconds": 16.1
+  },
+  {
+    "dataset": "fate_h",
+    "problem_id": "FATEH_1",
+    "complete": false,
+    "attempts": 4,
+    "seconds": 14.7
+  },
+  {
+    "dataset": "fate_m",
+    "problem_id": "FATE-M_1",
+    "complete": true,
+    "attempts": 1,
+    "seconds": 13.8
+  },
+  {
+    "dataset": "fate_x",
+    "problem_id": "FATE-X_1",
+    "complete": false,
+    "attempts": 3,
+    "seconds": 13.9
+  }
+]

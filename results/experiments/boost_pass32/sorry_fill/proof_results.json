@@ -1,0 +1,104 @@
+[
+  {
+    "problem_id": "aime_1999_p11",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem aime_1999_p11 (m : \u211a) (h\u2080 : 0 < m)\n    (h\u2081 : (\u2211 k in Finset.Icc (1 : \u2115) 35, Real.sin (5 * k * Real.pi / 180)) = Real.tan (m * Real.pi / 180))\n    (h\u2082 : (m.num : \u211d) / m.den < 90) : \u2191m.den + m.num = 177 := by  sorry"
+  },
+  {
+    "problem_id": "amc12a_2003_p23",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12a_2003_p23 (S : Finset \u2115)\n    (h\u2080 : \u2200 k : \u2115, k \u2208 S \u2194 0 < k \u2227 (k * k : \u2115) \u2223 \u220f i in Finset.Icc 1 9, i !) : S.card = 672 := by  sorry"
+  },
+  {
+    "problem_id": "amc12a_2008_p25",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12a_2008_p25 (a b : \u2115 \u2192 \u211d) (h\u2080 : \u2200 n, a (n + 1) = Real.sqrt 3 * a n - b n)\n    (h\u2081 : \u2200 n, b (n + 1) = Real.sqrt 3 * b n + a n) (h\u2082 : a 100 = 2) (h\u2083 : b 100 = 4) :\n    a 1 + b 1 = 1 / 2 ^ 98 := by  sorry"
+  },
+  {
+    "problem_id": "amc12a_2020_p25",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12a_2020_p25 (a : \u211a) (S : Finset \u211d)\n    (h\u2080 : \u2200 x : \u211d, x \u2208 S \u2194 \u2191\u230ax\u230b * (x - \u2191\u230ax\u230b) = \u2191a * x ^ 2) (h\u2081 : (\u2211 k in S, k) = 420) :\n    \u2191a.den + a.num = 929 := by  sorry"
+  },
+  {
+    "problem_id": "amc12a_2020_p9",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12a_2020_p9 (S : Finset \u211d)\n    (h\u2080 : \u2200 x : \u211d, x \u2208 S \u2194 0 \u2264 x \u2227 x \u2264 2 * Real.pi \u2227 Real.tan (2 * x) = Real.cos (x / 2)) : S.card = 5 := by  sorry"
+  },
+  {
+    "problem_id": "amc12a_2021_p12",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12a_2021_p12 (a b c d : \u211d) (f : \u2102 \u2192 \u2102)\n    (h\u2080 : \u2200 z, f z = z ^ 6 - 10 * z ^ 5 + a * z ^ 4 + b * z ^ 3 + c * z ^ 2 + d * z + 16)\n    (h\u2081 : \u2200 z, f z = 0 \u2192 z.im = 0 \u2227 0 < z.re \u2227 \u2191(Int.floor z.re) = z.re) : b = -88 := by  sorry"
+  },
+  {
+    "problem_id": "amc12b_2002_p4",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12b_2002_p4 (n : \u2115) (h\u2080 : 0 < n) (h\u2081 : (1 /. 2 + 1 /. 3 + 1 /. 7 + 1 /. \u2191n).den = 1) : n = 42 := by  sorry"
+  },
+  {
+    "problem_id": "amc12b_2021_p13",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem amc12b_2021_p13 (S : Finset \u211d)\n    (h\u2080 :\n      \u2200 x : \u211d, x \u2208 S \u2194 0 < x \u2227 x \u2264 2 * Real.pi \u2227 1 - 3 * Real.sin x + 5 * Real.cos (3 * x) = 0) :\n    S.card = 6 := by  sorry"
+  },
+  {
+    "problem_id": "imo_1968_p5_1",
+    "complete": false,
+    "attempts": 31,
+    "code": "\ntheorem imo_1968_p5_1 (a : \u211d) (f : \u211d \u2192 \u211d) (h\u2080 : 0 < a)\n    (h\u2081 : \u2200 x, f (x + a) = 1 / 2 + Real.sqrt (f x - f x ^ 2)) : \u2203 b > 0, \u2200 x, f (x + b) = f x := by  sorry"
+  },
+  {
+    "problem_id": "imo_1969_p2",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem imo_1969_p2 (m n : \u211d) (k : \u2115) (a : \u2115 \u2192 \u211d) (y : \u211d \u2192 \u211d) (h\u2080 : 0 < k)\n    (h\u2081 : \u2200 x, y x = \u2211 i in Finset.range k, Real.cos (a i + x) / 2 ^ i) (h\u2082 : y m = 0)\n    (h\u2083 : y n = 0) : \u2203 t : \u2124, m - n = t * Real.pi := by  sorry"
+  },
+  {
+    "problem_id": "imo_1977_p6",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem imo_1977_p6 (f : \u2115 \u2192 \u2115) (h\u2080 : \u2200 n, 0 < f n) (h\u2081 : \u2200 n, 0 < n \u2192 f (f n) < f (n + 1)) :\n    \u2200 n, 0 < n \u2192 f n = n := by  sorry"
+  },
+  {
+    "problem_id": "imo_1985_p6",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem imo_1985_p6 (f : \u2115 \u2192 NNReal \u2192 \u211d) (h\u2080 : \u2200 x, f 1 x = x)\n    (h\u2081 : \u2200 x n, f (n + 1) x = f n x * (f n x + 1 / n)) :\n    \u2203! a, \u2200 n, 0 < n \u2192 0 < f n a \u2227 f n a < f (n + 1) a \u2227 f (n + 1) a < 1 := by  sorry"
+  },
+  {
+    "problem_id": "imosl_2007_algebra_p6",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem imosl_2007_algebra_p6 (a : \u2115 \u2192 NNReal) (h\u2080 : (\u2211 x in Finset.range 100, a (x + 1) ^ 2) = 1) :\n    (\u2211 x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by  sorry"
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem induction_pord1p1on2powklt5on2 (n : \u2115) (h\u2080 : 0 < n) :\n    \u220f k in Finset.Icc 1 n, (1 + (1 : \u211d) / 2 ^ k) < 5 / 2 := by  sorry"
+  },
+  {
+    "problem_id": "mathd_numbertheory_764",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem mathd_numbertheory_764 (p : \u2115) (h\u2080 : Nat.Prime p) (h\u2081 : 7 \u2264 p) :\n    (\u2211 k in Finset.Icc 1 (p - 2), (k : ZMod p)\u207b\u00b9 * ((k : ZMod p) + 1)\u207b\u00b9) = 2 := by  sorry"
+  },
+  {
+    "problem_id": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+    "complete": false,
+    "attempts": 31,
+    "code": "\ntheorem numbertheory_3pow2pownm1mod2pownp3eq2pownp2 (n : \u2115) (h\u2080 : 0 < n) :\n    (3 ^ 2 ^ n - 1) % 2 ^ (n + 3) = 2 ^ (n + 2) := by  sorry"
+  },
+  {
+    "problem_id": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "complete": false,
+    "attempts": 32,
+    "code": "\ntheorem numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown (m n : \u2115) (f : \u2115 \u2192 \u2115)\n    (h\u2080 : \u2200 x, f x = 4 ^ x + 6 ^ x + 9 ^ x) (h\u2081 : 0 < m \u2227 0 < n) (h\u2082 : m \u2264 n) :\n    f (2 ^ m) \u2223 f (2 ^ n) := by  sorry"
+  }
+]

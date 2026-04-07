@@ -1,0 +1,191 @@
+[
+  {
+    "goal_id": "sorry_fill_aime_1984_p7_g0",
+    "base_problem": "aime_1984_p7",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "f 84 = 997"
+  },
+  {
+    "goal_id": "sorry_fill_aime_1999_p11_g0",
+    "base_problem": "aime_1999_p11",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "↑m.den + m.num = 177"
+  },
+  {
+    "goal_id": "sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0",
+    "base_problem": "algebra_apbmpcneq0_aeq0anbeq0anceq0",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "a = 0"
+  },
+  {
+    "goal_id": "sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1",
+    "base_problem": "algebra_apbmpcneq0_aeq0anbeq0anceq0",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "b = 0"
+  },
+  {
+    "goal_id": "sorry_fill_algebra_sum1onsqrt2to1onsqrt10000lt198_g0",
+    "base_problem": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198"
+  },
+  {
+    "goal_id": "sorry_fill_algebra_sum1onsqrt2to1onsqrt10000lt198_g1",
+    "base_problem": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2008_p25_g0",
+    "base_problem": "amc12a_2008_p25",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "a 1 + b 1 = 1 / 2 ^ 98"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2020_p25_g0",
+    "base_problem": "amc12a_2020_p25",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "a = 0"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2020_p9_g0",
+    "base_problem": "amc12a_2020_p9",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "S.card = 5"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p12_g0",
+    "base_problem": "amc12a_2021_p12",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "b = -88"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p19_g0",
+    "base_problem": "amc12a_2021_p19",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "S = {0, π / 2}"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p19_g1",
+    "base_problem": "amc12a_2021_p19",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "S.card = 2"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p19_g2",
+    "base_problem": "amc12a_2021_p19",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "S.card = 2"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p22_g0",
+    "base_problem": "amc12a_2021_p22",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "False"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p22_g1",
+    "base_problem": "amc12a_2021_p22",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "a * b * c = 1 / 32"
+  },
+  {
+    "goal_id": "sorry_fill_amc12a_2021_p22_g2",
+    "base_problem": "amc12a_2021_p22",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "a * b * c = 1 / 32"
+  },
+  {
+    "goal_id": "sorry_fill_amc12b_2002_p4_g0",
+    "base_problem": "amc12b_2002_p4",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "n = 42"
+  },
+  {
+    "goal_id": "sorry_fill_amc12b_2021_p13_g0",
+    "base_problem": "amc12b_2021_p13",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "S.card = 6"
+  },
+  {
+    "goal_id": "sorry_fill_imo_1968_p5_1_g0",
+    "base_problem": "imo_1968_p5_1",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∃ b > 0, ∀ (x : ℝ), f (x + b) = f x"
+  },
+  {
+    "goal_id": "sorry_fill_imo_1969_p2_g0",
+    "base_problem": "imo_1969_p2",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∃ t, m - n = ↑t * π"
+  },
+  {
+    "goal_id": "sorry_fill_imo_1977_p6_g0",
+    "base_problem": "imo_1977_p6",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∀ (n : ℕ), 0 < n → f n = n"
+  },
+  {
+    "goal_id": "sorry_fill_imo_1982_p1_g0",
+    "base_problem": "imo_1982_p1",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "f 1982 = 660"
+  },
+  {
+    "goal_id": "sorry_fill_imo_1997_p5_g0",
+    "base_problem": "imo_1997_p5",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "y = 1 ∨ y = 2 ∨ y = 3"
+  },
+  {
+    "goal_id": "sorry_fill_mathd_numbertheory_451_g0",
+    "base_problem": "mathd_numbertheory_451",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "S = {2016}"
+  },
+  {
+    "goal_id": "sorry_fill_mathd_numbertheory_451_g1",
+    "base_problem": "mathd_numbertheory_451",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∑ k ∈ S, k = 2016"
+  },
+  {
+    "goal_id": "sorry_fill_mathd_numbertheory_451_g2",
+    "base_problem": "mathd_numbertheory_451",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "∑ k ∈ S, k = 2016"
+  },
+  {
+    "goal_id": "sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0",
+    "base_problem": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "solved": false,
+    "solved_by": null,
+    "goal_conclusion": "False"
+  }
+]

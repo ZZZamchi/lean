@@ -1,164 +1,181 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
-# This is a Bash script to run the Lean proof generation, compilation, and
-# summarization pipeline.
+# Lean 证明生成流水线：支持多种 benchmark，仅推理或推理+编译。
 #
-# Workflow:
-#   1. Inference (inference.py): Uses a Large Language Model to generate Lean
-#      code proofs from input problems.
-#   2. Compilation (compile.py): Compiles the generated Lean code to check
-#      for correctness.
-#   3. Summarization (summarize.py): Analyzes the compilation results and
-#      generates a summary report.
+# 流程：Inference → Compilation → Summarization（可仅推理或仅编译）
+# 多轮：round0 初始 n 条/题，round1/2 对失败样本纠错。
 #
-# The script supports multiple correction rounds. If a proof generated in one
-# round fails, the script automatically proceeds to the next round, feeding the
-# error information back to the model for another attempt.
+# 用法:
+#   # 指定 benchmark（自动同步数据集并选数据路径）
+#   bash scripts/pipeline.sh --benchmark minif2f [--inference-only]
+#   bash scripts/pipeline.sh --benchmark minif2f_v2s [--inference-only]
+#   bash scripts/pipeline.sh --benchmark putnambench [--inference-only]
+#   bash scripts/pipeline.sh --benchmark minif2f_v2c [--inference-only]  # v2c 数据来自 BENCHMARK_ROOT（默认 ../lean-benchmark，可设 /home/ningmiao/Zam/lean-benchmark）
+#   # 或直接指定数据文件
+#   bash scripts/pipeline.sh --data-path dataset/minif2f_v2s.jsonl --output-dir results/minif2f_v2s [--inference-only]
+#   # 仅编译（需已有 to_inference_codes*.json）
+#   bash scripts/pipeline.sh --compile-only --output-dir results/minif2f_v2s
 #
-# Usage:
-#   1. Set all paths and parameters in the "CONFIGURATION" section.
-#   2. Run from the terminal: bash run_pipeline.sh
+# 环境变量：GPUS（默认 2）、CUDA_VISIBLE_DEVICES（指定卡号，如 0,1,2,3）；由调用方按需设置，不自动选卡。
+#   MAX_CORRECTION_ROUNDS（默认 2=3 轮）、NUM_SAMPLES_INITIAL=32、VLLM_GPU_MEMORY_UTILIZATION 等。
 # -----------------------------------------------------------------------------
-
-# Exit immediately if a command fails
 set -e
+cd "$(dirname "$0")/.."
+SCRIPT_DIR="$(dirname "$0")"
+ZAM_LEAN="$(pwd)"
+# lean-benchmark 路径：默认与 Zam/lean 同级；v2c 数据可在 /home/ningmiao/Zam/lean-benchmark
+BENCHMARK_ROOT="${BENCHMARK_ROOT:-$ZAM_LEAN/../lean-benchmark}"
 
 # --- CONFIGURATION ---
-# =============================================================================
-# *** MODIFY YOUR SETTINGS HERE ***
-
-# --- Model and Data Paths ---
-# MODEL_PATH="/path/to/your/llm/model"  # Path to your Large Language Model
-# DATA_PATH="path/to/your/input_problems.jsonl" # Path to your input problems file (e.g., minif2f.jsonl)
-MODEL_PATH="Goedel-LM/Goedel-Prover-V2-8B"
-DATA_PATH="dataset/minif2f.jsonl"
-
-# --- Output Directory ---
-# All generated files (inference results, compilation logs, reports) will be saved here.
+MODEL_PATH="${MODEL_PATH:-Goedel-LM/Goedel-Prover-V2-8B}"
+DATA_PATH=""
+BENCHMARK=""
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BASE_OUTPUT_DIR="results/run_${TIMESTAMP}"
 
-# --- Inference Settings ---
-INFERENCE_HANDLER="dpskcot" # Inference handler, options: "dpskcot", "dpsknoncot", "kiminacot"
-GPUS=2                    # Number of GPUs to use for vLLM inference
-NUM_SAMPLES_INITIAL=32    # Number of proof samples per problem (for Pass@32)
-NUM_SAMPLES_CORRECTION=2  # Number of correction samples per failed attempt
-TEMPERATURE=1.0           # Inference temperature
-MAX_MODEL_LEN=40960       # Maximum model sequence length
+INFERENCE_HANDLER="${INFERENCE_HANDLER:-dpskcot}"
+GPUS="${GPUS:-2}"
+NUM_SAMPLES_INITIAL="${NUM_SAMPLES_INITIAL:-32}"
+NUM_SAMPLES_CORRECTION=2
+TEMPERATURE=1.0
+MAX_MODEL_LEN=40960
+CPUS="${CPUS:-64}"
+MAX_CORRECTION_ROUNDS="${MAX_CORRECTION_ROUNDS:-2}"
+RUN_INFERENCE_ONLY=0
+RUN_COMPILE_ONLY=0
 
-# --- Compilation Settings ---
-CPUS=64                   # Number of CPU cores for parallel compilation (max 64)
+while [[ $# -gt 0 ]] && [[ "$1" == --* ]]; do
+  case "$1" in
+    --inference-only) RUN_INFERENCE_ONLY=1; shift ;;
+    --compile-only)   RUN_COMPILE_ONLY=1; shift ;;
+    --output-dir)     BASE_OUTPUT_DIR="$2"; shift 2 ;;
+    --data-path)      DATA_PATH="$2"; shift 2 ;;
+    --benchmark)      BENCHMARK="$2"; shift 2 ;;
+    *) echo "Unknown option $1"; exit 1 ;;
+  esac
+done
 
-# --- Pipeline Control ---
-# Maximum number of correction rounds (0 for initial inference only, 1 for initial + one correction round, etc.)
-MAX_CORRECTION_ROUNDS=2
+# --- Benchmark → 同步并设置 DATA_PATH ---
+if [[ -n "$BENCHMARK" ]]; then
+  case "$BENCHMARK" in
+    minif2f)
+      DATA_PATH="dataset/minif2f.jsonl"
+      if [[ ! -f "$DATA_PATH" ]]; then
+        python3 scripts/sync_benchmarks.py --bench minif2f --benchmark-root "$BENCHMARK_ROOT" --dataset-dir "$ZAM_LEAN/dataset"
+      fi
+      ;;
+    minif2f_v2s)
+      DATA_PATH="dataset/minif2f_v2s.jsonl"
+      python3 scripts/sync_benchmarks.py --bench minif2f --minif2f-version v2s --benchmark-root "$BENCHMARK_ROOT" --dataset-dir "$ZAM_LEAN/dataset" 2>/dev/null || true
+      if [[ ! -f "$DATA_PATH" ]]; then
+        echo "Error: $DATA_PATH not found. Ensure lean-benchmark at $BENCHMARK_ROOT has benchmarks/minif2f/datasets/miniF2F_v2s.jsonl"
+        exit 1
+      fi
+      ;;
+    minif2f_v2c)
+      DATA_PATH="dataset/minif2f_v2c.jsonl"
+      python3 scripts/sync_benchmarks.py --bench minif2f --minif2f-version v2c --benchmark-root "$BENCHMARK_ROOT" --dataset-dir "$ZAM_LEAN/dataset" 2>/dev/null || true
+      if [[ ! -f "$DATA_PATH" ]]; then
+        echo "Error: $DATA_PATH not found. Ensure lean-benchmark at $BENCHMARK_ROOT has benchmarks/minif2f/datasets/miniF2F_v2c.jsonl (e.g. BENCHMARK_ROOT=/home/ningmiao/Zam/lean-benchmark)"
+        exit 1
+      fi
+      ;;
+    putnambench)
+      DATA_PATH="dataset/putnambench.jsonl"
+      if [[ ! -f "$DATA_PATH" ]]; then
+        python3 scripts/sync_benchmarks.py --bench putnambench --benchmark-root "$BENCHMARK_ROOT" --dataset-dir "$ZAM_LEAN/dataset"
+      fi
+      ;;
+    proofnet)
+      DATA_PATH="dataset/proofnet.jsonl"
+      if [[ ! -f "$DATA_PATH" ]]; then
+        python3 scripts/sync_benchmarks.py --bench proofnet --benchmark-root "$BENCHMARK_ROOT" --dataset-dir "$ZAM_LEAN/dataset"
+      fi
+      if [[ ! -f "$DATA_PATH" ]]; then
+        echo "Error: $DATA_PATH not found. Ensure lean-benchmark at $BENCHMARK_ROOT has benchmarks/proofnet/benchmark/test.jsonl"
+        exit 1
+      fi
+      ;;
+    *)
+      echo "Error: --benchmark must be one of: minif2f, minif2f_v2s, minif2f_v2c, putnambench, proofnet"
+      exit 1
+      ;;
+  esac
+fi
 
-# =============================================================================
+# 仅推理且未指定数据路径时，必须指定 --benchmark 或 --data-path
+if [[ "$RUN_COMPILE_ONLY" -eq 0 ]] && [[ -z "$DATA_PATH" ]]; then
+  echo "Error: For inference, specify --benchmark <minif2f|minif2f_v2s|minif2f_v2c|putnambench|proofnet> or --data-path <path>"
+  exit 1
+fi
 
-# Create the output directory
+export GPUS="$GPUS"
 mkdir -p "$BASE_OUTPUT_DIR"
-echo "All outputs will be saved to: ${BASE_OUTPUT_DIR}"
+echo "Output: ${BASE_OUTPUT_DIR} | Data: ${DATA_PATH:-N/A (compile-only)} | GPUs: $GPUS | CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-未设置}"
 
 # --- Main Loop ---
 for round in $(seq 0 $MAX_CORRECTION_ROUNDS); do
-    echo
-    echo "===================================================="
-    echo "===============   Starting Round ${round}   ==============="
-    echo "===================================================="
+  SUFFIX=""; [[ $round -gt 0 ]] && SUFFIX="_corr${round}"
+  echo
+  echo "===================================================="
+  echo "===============   Round ${round}   ==============="
+  echo "===================================================="
 
-    # --- Step 1: Inference ---
-    echo
-    echo "--- [Step 1/3] Running Inference (Round ${round}) ---"
-
-    # Set round-specific parameters
+  if [ "$RUN_COMPILE_ONLY" -eq 0 ]; then
+    echo "--- [Step 1/3] Inference (Round ${round}) ---"
     if [ "$round" -eq 0 ]; then
-        # Round 0: Create proofs from the initial dataset
-        INPUT_ARG="--input_path ${DATA_PATH}"
-        PREV_RUN_ARG="" # No previous run output is needed
-        NUM_SAMPLES=$NUM_SAMPLES_INITIAL
+      INPUT_ARG="--input_path ${DATA_PATH}"
+      PREV_RUN_ARG=""
+      NUM_SAMPLES=$NUM_SAMPLES_INITIAL
     else
-        # Correction Round (> 0): Correct proofs based on failures from the previous round
-        INPUT_ARG="" # Initial dataset is not needed
-        # --previous_run_output_dir points to the directory with the previous round's results
-        PREV_RUN_ARG="--previous_run_output_dir ${BASE_OUTPUT_DIR}"
-        NUM_SAMPLES=$NUM_SAMPLES_CORRECTION
+      INPUT_ARG=""
+      PREV_RUN_ARG="--previous_run_output_dir ${BASE_OUTPUT_DIR}"
+      NUM_SAMPLES=$NUM_SAMPLES_CORRECTION
     fi
-
-    # Build and run the inference command
-    INFERENCE_CMD="python src/inference.py \
-        --model_path ${MODEL_PATH} \
-        --output_dir ${BASE_OUTPUT_DIR} \
-        --n ${NUM_SAMPLES} \
-        --gpu ${GPUS} \
-        --inference_handler ${INFERENCE_HANDLER} \
-        --correction_round ${round} \
-        --max_model_len ${MAX_MODEL_LEN} \
-        --temp ${TEMPERATURE} \
-        ${INPUT_ARG} \
-        ${PREV_RUN_ARG}"
-
-    echo "Executing command:"
-    echo "${INFERENCE_CMD}"
-    ${INFERENCE_CMD}
-
-    # Check if the inference output file exists
+    python3 src/inference.py \
+      --model_path "${MODEL_PATH}" \
+      --output_dir "${BASE_OUTPUT_DIR}" \
+      --n ${NUM_SAMPLES} \
+      --gpu ${GPUS} \
+      --inference_handler ${INFERENCE_HANDLER} \
+      --correction_round ${round} \
+      --max_model_len ${MAX_MODEL_LEN} \
+      --temp ${TEMPERATURE} \
+      ${INPUT_ARG} \
+      ${PREV_RUN_ARG}
     SUFFIX=""
-    if [ "$round" -gt 0 ]; then
-        SUFFIX="_corr${round}"
-    fi
+    [[ $round -gt 0 ]] && SUFFIX="_corr${round}"
     INFERENCE_OUTPUT_FILE="${BASE_OUTPUT_DIR}/to_inference_codes${SUFFIX}.json"
     if [ ! -f "$INFERENCE_OUTPUT_FILE" ]; then
-        echo "Error: Inference output file ${INFERENCE_OUTPUT_FILE} not found! Terminating."
-        exit 1
+      echo "Error: Inference output not found: ${INFERENCE_OUTPUT_FILE}"
+      exit 1
     fi
-    echo "Inference complete. Output file: ${INFERENCE_OUTPUT_FILE}"
+    echo "Inference done: ${INFERENCE_OUTPUT_FILE}"
+  fi
 
-    # --- Step 2: Compilation ---
-    echo
-    echo "--- [Step 2/3] Running Compilation (Round ${round}) ---"
-    
+  if [ "$RUN_INFERENCE_ONLY" -eq 0 ]; then
+    echo "--- [Step 2/3] Compilation (Round ${round}) ---"
+    INFERENCE_OUTPUT_FILE="${BASE_OUTPUT_DIR}/to_inference_codes${SUFFIX}.json"
     COMPILE_OUTPUT_FILE="${BASE_OUTPUT_DIR}/code_compilation_repl${SUFFIX}.json"
-
-    # Build and run the compilation command
-    COMPILE_CMD="python src/compile.py \
-        --input_path ${INFERENCE_OUTPUT_FILE} \
-        --output_path ${COMPILE_OUTPUT_FILE} \
-        --cpu ${CPUS}"
-
-    echo "Executing command:"
-    echo "${COMPILE_CMD}"
-    ${COMPILE_CMD}
-
-    # Check if the compilation output file exists
+    python3 src/compile.py \
+      --input_path "${INFERENCE_OUTPUT_FILE}" \
+      --output_path "${COMPILE_OUTPUT_FILE}" \
+      --cpu ${CPUS}
     if [ ! -f "$COMPILE_OUTPUT_FILE" ]; then
-        echo "Error: Compilation output file ${COMPILE_OUTPUT_FILE} not found! Terminating."
-        exit 1
+      echo "Error: Compilation output not found: ${COMPILE_OUTPUT_FILE}"
+      exit 1
     fi
-    echo "Compilation complete. Output file: ${COMPILE_OUTPUT_FILE}"
-
-    # --- Step 3: Summarization ---
-    echo
-    echo "--- [Step 3/3] Generating Summary (Round ${round}) ---"
-
+    echo "--- [Step 3/3] Summary (Round ${round}) ---"
     FULL_RECORDS_FILE="${BASE_OUTPUT_DIR}/full_records${SUFFIX}.json"
     SUMMARY_OUTPUT_DIR="${BASE_OUTPUT_DIR}/summary_round_${round}"
     mkdir -p "$SUMMARY_OUTPUT_DIR"
-
-    # Build and run the summarization command
-    SUMMARY_CMD="python src/summarize.py \
-        --input_path ${COMPILE_OUTPUT_FILE} \
-        --full_record_path ${FULL_RECORDS_FILE} \
-        --output_dir ${SUMMARY_OUTPUT_DIR}"
-
-    echo "Executing command:"
-    echo "${SUMMARY_CMD}"
-    ${SUMMARY_CMD}
-    echo "Summary reports generated in: ${SUMMARY_OUTPUT_DIR}"
-
+    python3 src/summarize.py \
+      --input_path "${COMPILE_OUTPUT_FILE}" \
+      --full_record_path "${FULL_RECORDS_FILE}" \
+      --output_dir "${SUMMARY_OUTPUT_DIR}"
+    echo "Summary: ${SUMMARY_OUTPUT_DIR}"
+  fi
 done
 
 echo
-echo "===================================================="
-echo "All rounds completed successfully!"
-echo "Final results are saved in the directory: ${BASE_OUTPUT_DIR}"
-echo "===================================================="
+echo "Done. Results in ${BASE_OUTPUT_DIR}"

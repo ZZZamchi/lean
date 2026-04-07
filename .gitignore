@@ -8,9 +8,16 @@ __pycache__/
 
 # Logs and outputs
 *.log
-results/
 output.txt
 collect.py
+nohup.out
+
+# Results: include experiments + prover summaries, exclude large raw inference
+results/minif2f/round_*/full_records.json
+results/minif2f/round_*/_chunks_*
+results/minif2f/round_*/code_compilation_repl.json
+results/minif2f/round_*/to_inference_codes*.json
+results/minif2f/round_*/inference.log
 
 # Lean / mathlib4 构建产物（可选，若需提交部分 build 可注释）
 mathlib4/.lake/

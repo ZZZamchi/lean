@@ -1,0 +1,9 @@
+{
+  "description": "Deterministic h₁-chain proof for f k = f (f (k+5)), k < 1000; see experiments/round3_aime_h1_template.py",
+  "verified": [
+    {
+      "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g3",
+      "note": "Goedel pass@32 missed; same tactic pattern as g0–g2"
+    }
+  ]
+}

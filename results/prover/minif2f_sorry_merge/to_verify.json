@@ -1,0 +1,16 @@
+[
+  {
+    "problem_id": "algebra_ineq_nto1onlt2m1on_g8",
+    "base_problem": "algebra_ineq_nto1onlt2m1on",
+    "code": "\ntheorem algebra_ineq_nto1onlt2m1on (n : ℕ) : (n : ℝ) ^ ((1 : ℝ) / n) ≤ 2 - 1 / n := by \n  have h_main : (n : ℝ) ^ ((1 : ℝ) / n) ≤ 2 - 1 / n := by have h_main : ↑n ^ (1 / ↑n) ≤ 2 - 1 / ↑n := by\n     rcases n with (_ | _ | _ | n)\n     · -- Case n = 0\n       norm_num\n     · -- Case n = 1\n       norm_num\n     · -- Case n = 2\n       norm_num\n     · -- Case n ≥ 3\n       norm_num [Nat.div_eq_of_lt, Nat.div_eq_of_lt]\n       <;>\n       simp_all [Nat.div_eq_of_lt, Nat.div_eq_of_lt, Nat.div_eq_of_lt, Nat.div_eq_of_lt]\n       <;>\n       norm_num\n       <;>\n       ring_nf\n       <;>\n       omega\n   exact h_main\n  exact h_main",
+    "n_goals": 2,
+    "n_sorry_original": 2
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2_g8",
+    "base_problem": "induction_pord1p1on2powklt5on2",
+    "code": "\ntheorem induction_pord1p1on2powklt5on2 (n : ℕ) (h₀ : 0 < n) :\n    ∏ k in Finset.Icc 1 n, (1 + (1 : ℝ) / 2 ^ k) < 5 / 2 := by  have h₁ : ∏ k in Finset.Icc 1 n, (1 + 1 / 2 ^ k) = 1 := by\n      have h₂ : ∀ k ∈ Finset.Icc 1 n, (1 + 1 / 2 ^ k) = 1 := by\n        intro k hk\n        have h₃ : k ≥ 1 := by\n          simp [Finset.mem_Icc] at hk\n          linarith\n        have h₄ : k ≤ n := by\n          simp [Finset.mem_Icc] at hk\n          linarith\n        have h₅ : 1 / 2 ^ k = 0 := by\n          have h₆ : k ≥ 1 := by linarith\n          have h₇ : 2 ^ k ≥ 2 := by\n            have h₈ : k ≥ 1 := by linarith\n            have h₉ : 2 ^ k ≥ 2 ^ 1 := by\n              exact pow_le_pow_right (by norm_num) h₈\n            linarith\n          have h₈ : 1 / 2 ^ k = 0 := by\n            apply Nat.div_eq_of_lt\n            have h₉ : 2 ^ k > 1 := by linarith\n            linarith\n          exact h₈\n        simp [h₅]\n        <;> norm_num\n      have h₃ : ∏ k in Finset.Icc 1 n, (1 + 1 / 2 ^ k) = ∏ k in Finset.Icc 1 n, 1 := by\n        apply Finset.prod_congr rfl\n        exact h₂\n      rw [h₃]\n      simp [Finset.prod_const]\n      <;> norm_num\n    \n    rw [h₁]\n    <;> norm_num\n    <;>\n      (try decide) <;>\n      (try omega) <;>\n      (try linarith)",
+    "n_goals": 1,
+    "n_sorry_original": 1
+  }
+]

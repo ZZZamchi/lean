@@ -1,0 +1,4288 @@
+[
+  {
+    "problem_id": "mathd_algebra_478",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_4x3m7y3neq2003",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1983_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_141",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem mathd_algebra_141\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2)))\n  (A B C : EuclideanSpace ℝ (Fin 2))\n  (hA : A = T.points 0)\n  (hB : B = T.points 1)\n  (hC : C = T.points 2)\n  (a b : ℝ)\n  (h₀ : dist A B = a ∧ dist B C = b)\n  (h₁ : a * b = 180)\n  (h₂ : 2 * (a + b) = 54)\n  (θ : ℝ)\n  (hθ₀ : θ = EuclideanGeometry.angle A B C)\n  (hθ₀ : θ = Real.pi / 2) :\n  (dist A C) ^ 2 = 369 := by \n  have h_sum : a + b = 27 := by\n    have h₃ : 2 * (a + b) = 54 := h₂\n    \n    linarith\n  \n  have h_main : (a : ℝ)^2 + (b : ℝ)^2 = 369 := by\n    have h₃ : a + b = 27 := h_sum\n    have h₄ : a * b = 180 := h₁\n    have h₅ : (a : ℝ) ^ 2 + (b : ℝ) ^ 2 = 369 := by\n      \n      have h₆ : (a + b) ^ 2 = a ^ 2 + 2 * (a * b) + b ^ 2 := by ring\n      \n      have h₇ : (a + b) ^ 2 = 27 ^ 2 := by\n        rw [h₃]\n        <;> norm_num\n      have h₈ : a ^ 2 + b ^ 2 = 369 := by\n        nlinarith\n      nlinarith\n    exact h₅\n  \n  have h_final : (dist A C) ^ 2 = 369 := by\n    have h₃ : dist A B = a := by\n      cases' h₀ with h₀ h₀'\n      linarith\n    have h₄ : dist B C = b := by\n      cases' h₀ with h₀ h₀'\n      linarith\n    have h₅ : (dist A C : ℝ) ^ 2 = (dist A B : ℝ) ^ 2 + (dist B C : ℝ) ^ 2 := by\n      have h₅₁ : dist A C = dist A B + dist B C := by\n        \n        \n        \n        \n        \n        sorry\n      rw [h₅₁]\n      have h₅₂ : (dist A B + dist B C : ℝ) ^ 2 = (dist A B : ℝ) ^ 2 + 2 * (dist A B : ℝ) * (dist B C : ℝ) + (dist B C : ℝ) ^ 2 := by\n        ring\n      rw [h₅₂]\n      have h₅₃ : θ = Real.pi / 2 := by\n        linarith\n      have h₅₄ : EuclideanGeometry.angle A B C = Real.pi / 2 := by\n        simp_all [hθ₀]\n      \n      \n      \n      sorry\n    have h₆ : (dist A C : ℝ) ^ 2 = (dist A B : ℝ) ^ 2 + (dist B C : ℝ) ^ 2 := by\n      exact h₅\n    have h₇ : (dist A C : ℝ) ^ 2 = 369 := by\n      have h₇₁ : (dist A B : ℝ) ^ 2 = a ^ 2 := by\n        have h₇₂ : dist A B = a := by\n          cases' h₀ with h₀ h₀'\n          linarith\n        rw [h₇₂]\n        <;> norm_cast\n        <;> simp [dist_eq_norm]\n        <;> norm_num\n        <;> ring_nf\n        <;> simp_all [norm_eq_abs, Real.norm_eq_abs]\n        <;> aesop\n      have h₇₂ : (dist B C : ℝ) ^ 2 = b ^ 2 := by\n        have h₇₃ : dist B C = b := by\n          cases' h₀ with h₀ h₀'\n          linarith\n        rw [h₇₃]\n        <;> norm_cast\n        <;> simp [dist_eq_norm]\n        <;> norm_num\n        <;> ring_nf\n        <;> simp_all [norm_eq_abs, Real.norm_eq_abs]\n        <;> aesop\n      have h₇₃ : (dist A B : ℝ) ^ 2 + (dist B C : ℝ) ^ 2 = a ^ 2 + b ^ 2 := by\n        rw [h₇₁, h₇₂]\n      have h₇₄ : a ^ 2 + b ^ 2 = 369 := by\n        exact_mod_cast h_main\n      nlinarith\n    have h₈ : (dist A C) ^ 2 = 369 := by\n      exact_mod_cast h₇\n    exact h₈\n  \n  simpa [h_final] using h_final",
+    "full_code": "\ntheorem mathd_algebra_141\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2)))\n  (A B C : EuclideanSpace ℝ (Fin 2))\n  (hA : A = T.points 0)\n  (hB : B = T.points 1)\n  (hC : C = T.points 2)\n  (a b : ℝ)\n  (h₀ : dist A B = a ∧ dist B C = b)\n  (h₁ : a * b = 180)\n  (h₂ : 2 * (a + b) = 54)\n  (θ : ℝ)\n  (hθ₀ : θ = EuclideanGeometry.angle A B C)\n  (hθ₀ : θ = Real.pi / 2) :\n  (dist A C) ^ 2 = 369 := by \n  have h_sum : a + b = 27 := by\n    have h₃ : 2 * (a + b) = 54 := h₂\n    \n    linarith\n  \n  have h_main : (a : ℝ)^2 + (b : ℝ)^2 = 369 := by\n    have h₃ : a + b = 27 := h_sum\n    have h₄ : a * b = 180 := h₁\n    have h₅ : (a : ℝ) ^ 2 + (b : ℝ) ^ 2 = 369 := by\n      \n      have h₆ : (a + b) ^ 2 = a ^ 2 + 2 * (a * b) + b ^ 2 := by ring\n      \n      have h₇ : (a + b) ^ 2 = 27 ^ 2 := by\n        rw [h₃]\n        <;> norm_num\n      have h₈ : a ^ 2 + b ^ 2 = 369 := by\n        nlinarith\n      nlinarith\n    exact h₅\n  \n  have h_final : (dist A C) ^ 2 = 369 := by\n    have h₃ : dist A B = a := by\n      cases' h₀ with h₀ h₀'\n      linarith\n    have h₄ : dist B C = b := by\n      cases' h₀ with h₀ h₀'\n      linarith\n    have h₅ : (dist A C : ℝ) ^ 2 = (dist A B : ℝ) ^ 2 + (dist B C : ℝ) ^ 2 := by\n      have h₅₁ : dist A C = dist A B + dist B C := by\n        \n        \n        \n        \n        \n        sorry\n      rw [h₅₁]\n      have h₅₂ : (dist A B + dist B C : ℝ) ^ 2 = (dist A B : ℝ) ^ 2 + 2 * (dist A B : ℝ) * (dist B C : ℝ) + (dist B C : ℝ) ^ 2 := by\n        ring\n      rw [h₅₂]\n      have h₅₃ : θ = Real.pi / 2 := by\n        linarith\n      have h₅₄ : EuclideanGeometry.angle A B C = Real.pi / 2 := by\n        simp_all [hθ₀]\n      \n      \n      \n      sorry\n    have h₆ : (dist A C : ℝ) ^ 2 = (dist A B : ℝ) ^ 2 + (dist B C : ℝ) ^ 2 := by\n      exact h₅\n    have h₇ : (dist A C : ℝ) ^ 2 = 369 := by\n      have h₇₁ : (dist A B : ℝ) ^ 2 = a ^ 2 := by\n        have h₇₂ : dist A B = a := by\n          cases' h₀ with h₀ h₀'\n          linarith\n        rw [h₇₂]\n        <;> norm_cast\n        <;> simp [dist_eq_norm]\n        <;> norm_num\n        <;> ring_nf\n        <;> simp_all [norm_eq_abs, Real.norm_eq_abs]\n        <;> aesop\n      have h₇₂ : (dist B C : ℝ) ^ 2 = b ^ 2 := by\n        have h₇₃ : dist B C = b := by\n          cases' h₀ with h₀ h₀'\n          linarith\n        rw [h₇₃]\n        <;> norm_cast\n        <;> simp [dist_eq_norm]\n        <;> norm_num\n        <;> ring_nf\n        <;> simp_all [norm_eq_abs, Real.norm_eq_abs]\n        <;> aesop\n      have h₇₃ : (dist A B : ℝ) ^ 2 + (dist B C : ℝ) ^ 2 = a ^ 2 + b ^ 2 := by\n        rw [h₇₁, h₇₂]\n      have h₇₄ : a ^ 2 + b ^ 2 = 369 := by\n        exact_mod_cast h_main\n      nlinarith\n    have h₈ : (dist A C) ^ 2 = 369 := by\n      exact_mod_cast h₇\n    exact h₈\n  \n  simpa [h_final] using h_final",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 51,
+            "column": 8
+          },
+          "goal": "T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\nA B C : EuclideanSpace ℝ (Fin 2)\nhA : A = T.points 0\nhB : B = T.points 1\nhC : C = T.points 2\na b : ℝ\nh₀ : dist A B = a ∧ dist B C = b\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\nθ : ℝ\nhθ₀✝ : θ = EuclideanGeometry.angle A B C\nhθ₀ : θ = Real.pi / 2\nh_sum : a + b = 27\nh_main : a ^ 2 + b ^ 2 = 369\nh₃ : dist A B = a\nh₄ : dist B C = b\n⊢ dist A C = dist A B + dist B C",
+          "endPos": {
+            "line": 51,
+            "column": 13
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 63,
+            "column": 6
+          },
+          "goal": "T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\nA B C : EuclideanSpace ℝ (Fin 2)\nhA : A = T.points 0\nhB : B = T.points 1\nhC : C = T.points 2\na b : ℝ\nh₀ : dist A B = a ∧ dist B C = b\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\nθ : ℝ\nhθ₀✝ : θ = EuclideanGeometry.angle A B C\nhθ₀ : θ = Real.pi / 2\nh_sum : a + b = 27\nh_main : a ^ 2 + b ^ 2 = 369\nh₃ : dist A B = a\nh₄ : dist B C = b\nh₅₁ : dist A C = dist A B + dist B C\nh₅₂ : (dist A B + dist B C) ^ 2 = dist A B ^ 2 + 2 * dist A B * dist B C + dist B C ^ 2\nh₅₃ : θ = Real.pi / 2\nh₅₄ : EuclideanGeometry.angle A B C = Real.pi / 2\n⊢ dist A B ^ 2 + 2 * dist A B * dist B C + dist B C ^ 2 = dist A B ^ 2 + dist B C ^ 2",
+          "endPos": {
+            "line": 63,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 191.02
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1969_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_209",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_1124",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1983_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_237",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_33",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_299",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpabsamblt1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1977_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_419",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p10",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1960_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "abbrev imo_1960_p2_solution : Set ℝ := \n\ntheorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by \n  have h_main : 4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by\n    constructor\n    · \n      intro h\n      sorry\n    · \n      intro h\n      sorry\n  exact h_main",
+    "full_code": "abbrev imo_1960_p2_solution : Set ℝ := \n\ntheorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by \n  have h_main : 4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by\n    constructor\n    · \n      intro h\n      sorry\n    · \n      intro h\n      sorry\n  exact h_main",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 13,
+            "column": 6
+          },
+          "goal": "case mp\nx : ℝ\nh₀ : 0 ≤ 1 + 2 * x\nh₁ : (1 - √(1 + 2 * x)) ^ 2 ≠ 0\nh : 4 * x ^ 2 / (1 - √(1 + 2 * x)) ^ 2 < 2 * x + 9\n⊢ x ∈ imo_1960_p2_solution",
+          "endPos": {
+            "line": 13,
+            "column": 11
+          }
+        },
+        {
+          "proofState": 11,
+          "pos": {
+            "line": 16,
+            "column": 6
+          },
+          "goal": "case mpr\nx : ℝ\nh₀ : 0 ≤ 1 + 2 * x\nh₁ : (1 - √(1 + 2 * x)) ^ 2 ≠ 0\nh : x ∈ imo_1960_p2_solution\n⊢ 4 * x ^ 2 / (1 - √(1 + 2 * x)) ^ 2 < 2 * x + 9",
+          "endPos": {
+            "line": 16,
+            "column": 11
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 38
+          },
+          "endPos": {
+            "line": 4,
+            "column": 7
+          },
+          "data": "unexpected token 'theorem'; expected term"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 14.55
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_427",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_x5neqy2p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imosl_2007_algebra_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_398",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1963_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_430",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_459",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_12dvd4expnp1p20",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_320",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_137",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1997_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_277",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_559",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_160",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_24",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_176",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_nfactltnexpnm1ngt3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_208",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_353",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_notequiv2i2jasqbsqdiv8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_156",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_345",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_447",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_328",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_451",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1997_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_at2malt1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_apbmpcneq0_aeq0anbeq0anceq0",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_171",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_227",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_188",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_765",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1959_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_175",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_sumkexp3eqsumksq",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1992_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1982_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1987_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_346",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_487",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_728",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_184",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_552",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1994_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "theorem aime_1994_p3 (f : ℤ → ℤ) (h₁ : ∀ x, f x + f (x-1) = x^2) (h₂ : f 19 = 94) : f 94 % 1000 = 561 := by\n  ### Complete Proof\n\n**Problem Analysis:**\nWe are given a function \\( f: \\mathbb{Z} \\to \\mathbb{Z} \\) with the following properties:\n1. For every integer \\( x \\), \\( f(x) + f(x-1) = x^2 \\).\n2. \\( f(19) = 94 \\).\n\nWe need to prove that \\( f(94) \\equiv 561 \\pmod{1000} \\).\n\nFirst, we note that the condition \\( f(x) + f(x-1) = x^2 \\) is a recurrence relation. We can use it to derive a closed-form formula for \\( f \\).\n\n**Deriving a Closed Form:**\n1. Rearrange the recurrence to get:\n   \\[\n   f(x) = x^2 - f(x - 1).\n   \\]\n2. We can unroll this recurrence to express \\( f(n) \\) in terms of \\( f(0) \\). Alternatively, we can assume a quadratic form for \\( f \\).\n\nBut a better approach is to assume that \\( f \\) is quadratic:\n   \\[\n   f(x) = a x^2 + b x + c.\n   \\]\nSubstitute into the recurrence:\n   \\[\n   a x^2 + b x + c + a (x - 1)^2 + b (x - 1) + c = x^2.\n   \\]\nSimplify:\n   \\[\n   a x^2 + b x + c + a x^2 - 2 a x + a + b x - b + c = x^2.\n   \\]\nCombine like terms:\n   \\[\n   2 a x^2 + (b - 2 a + b) x + (a - b + 2 c) = x^2.\n   \\]\nThis must hold for all \\( x \\), so:\n   \\[\n   2 a = 1, \\quad 2 b - 2 a = 0, \\quad a - b + 2 c = 0.\n   \\]\nThe first equation gives \\( a = \\frac{1}{2} \\). The second gives \\( b = a = \\frac{1}{2} \\). The third gives:\n   \\[\n   \\frac{1}{2} - \\frac{1}{2} + 2 c = 0 \\implies 2 c = 0 \\implies c = 0.\n   \\]\nThus, the only quadratic solution is \\( f(x) = \\frac{1}{2} x^2 + \\frac{1}{2} x \\). However, this is incorrect because:\n   \\[\n   f(x) + f(x - 1) = \\left( \\frac{1}{2} x^2 + \\frac{1}{2} x \\right) + \\left( \\frac{1}{2} (x - 1)^2 + \\frac{1}{2} (x - 1) \\right) = \\frac{1}{2} (x^2 + 2x + 1) + \\frac{1}{2} (x^2 - 2x + 1) = \\frac{1}{2} (2x^2 + 2) = x^2 + 1.\n   \\]\nBut we require \\( f(x) + f(x - 1) = x^2 \\). Hence, no such quadratic function exists. \n\nThis suggests that the quadratic ansatz is too restrictive. Alternatively, we can derive \\( f \\) recursively:\n   \\[\n   f(n) = n^2 - f(n - 1).\n   \\]\nGiven \\( f(19) = 94 \\), we can compute \\( f(n) \\) backwards and forwards to find a pattern. \n\nHowever, to find \\( f(94) \\), we can proceed as follows:\n1. Compute \\( f(n) \\) for \\( n \\geq 19 \\):\n   - From \\( x = 19 \\): \\( f(19) = 94 \\).\n   - From \\( x = 20 \\): \\( f(20) = 400 - f(19) = 400 - 94 = 306 \\).\n   - From \\( x = 21 \\): \\( f(21) = 441 - f(20) = 441 - 306 = 135 \\).\n   - Continue this until \\( x = 94 \\).\n2. Alternatively, we can compute \\( f(n) \\) for \\( n \\leq 19 \\) first:\n   - From \\( x = 0 \\): \\( f(0) = f(1) +",
+    "full_code": "theorem aime_1994_p3 (f : ℤ → ℤ) (h₁ : ∀ x, f x + f (x-1) = x^2) (h₂ : f 19 = 94) : f 94 % 1000 = 561 := by\n  ### Complete Proof\n\n**Problem Analysis:**\nWe are given a function \\( f: \\mathbb{Z} \\to \\mathbb{Z} \\) with the following properties:\n1. For every integer \\( x \\), \\( f(x) + f(x-1) = x^2 \\).\n2. \\( f(19) = 94 \\).\n\nWe need to prove that \\( f(94) \\equiv 561 \\pmod{1000} \\).\n\nFirst, we note that the condition \\( f(x) + f(x-1) = x^2 \\) is a recurrence relation. We can use it to derive a closed-form formula for \\( f \\).\n\n**Deriving a Closed Form:**\n1. Rearrange the recurrence to get:\n   \\[\n   f(x) = x^2 - f(x - 1).\n   \\]\n2. We can unroll this recurrence to express \\( f(n) \\) in terms of \\( f(0) \\). Alternatively, we can assume a quadratic form for \\( f \\).\n\nBut a better approach is to assume that \\( f \\) is quadratic:\n   \\[\n   f(x) = a x^2 + b x + c.\n   \\]\nSubstitute into the recurrence:\n   \\[\n   a x^2 + b x + c + a (x - 1)^2 + b (x - 1) + c = x^2.\n   \\]\nSimplify:\n   \\[\n   a x^2 + b x + c + a x^2 - 2 a x + a + b x - b + c = x^2.\n   \\]\nCombine like terms:\n   \\[\n   2 a x^2 + (b - 2 a + b) x + (a - b + 2 c) = x^2.\n   \\]\nThis must hold for all \\( x \\), so:\n   \\[\n   2 a = 1, \\quad 2 b - 2 a = 0, \\quad a - b + 2 c = 0.\n   \\]\nThe first equation gives \\( a = \\frac{1}{2} \\). The second gives \\( b = a = \\frac{1}{2} \\). The third gives:\n   \\[\n   \\frac{1}{2} - \\frac{1}{2} + 2 c = 0 \\implies 2 c = 0 \\implies c = 0.\n   \\]\nThus, the only quadratic solution is \\( f(x) = \\frac{1}{2} x^2 + \\frac{1}{2} x \\). However, this is incorrect because:\n   \\[\n   f(x) + f(x - 1) = \\left( \\frac{1}{2} x^2 + \\frac{1}{2} x \\right) + \\left( \\frac{1}{2} (x - 1)^2 + \\frac{1}{2} (x - 1) \\right) = \\frac{1}{2} (x^2 + 2x + 1) + \\frac{1}{2} (x^2 - 2x + 1) = \\frac{1}{2} (2x^2 + 2) = x^2 + 1.\n   \\]\nBut we require \\( f(x) + f(x - 1) = x^2 \\). Hence, no such quadratic function exists. \n\nThis suggests that the quadratic ansatz is too restrictive. Alternatively, we can derive \\( f \\) recursively:\n   \\[\n   f(n) = n^2 - f(n - 1).\n   \\]\nGiven \\( f(19) = 94 \\), we can compute \\( f(n) \\) backwards and forwards to find a pattern. \n\nHowever, to find \\( f(94) \\), we can proceed as follows:\n1. Compute \\( f(n) \\) for \\( n \\geq 19 \\):\n   - From \\( x = 19 \\): \\( f(19) = 94 \\).\n   - From \\( x = 20 \\): \\( f(20) = 400 - f(19) = 400 - 94 = 306 \\).\n   - From \\( x = 21 \\): \\( f(21) = 441 - f(20) = 441 - 306 = 135 \\).\n   - Continue this until \\( x = 94 \\).\n2. Alternatively, we can compute \\( f(n) \\) for \\( n \\leq 19 \\) first:\n   - From \\( x = 0 \\): \\( f(0) = f(1) +",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 107
+          },
+          "endPos": {
+            "line": 3,
+            "column": 3
+          },
+          "data": "unexpected token '#'; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 105
+          },
+          "endPos": {
+            "line": 2,
+            "column": 107
+          },
+          "data": "unsolved goals\nf : ℤ → ℤ\nh₁ : ∀ (x : ℤ), f x + f (x - 1) = x ^ 2\nh₂ : f 19 = 94\n⊢ f 94 % 1000 = 561"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 78.52
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_44",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_215",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_293",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_769",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_452",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_207",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_342",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_483",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p21",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2003_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_495",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_296",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_247",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_107",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_2pownm1prime_nprime",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_412",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2013_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_392",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_314",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_prod1p1onk3le3m1onn",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_343",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_756",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_80",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_457",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_135",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_275",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_388",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1981_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_263",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_34",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_764",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1962_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_170",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_432",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_598",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_bleqa_apbon2msqrtableqambsqon8b",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_276",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p14",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_618",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_435",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_others_exirrpowirrrat",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_427",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_76",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_99",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_9onxpypzleqsum2onxpy",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_233",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_absapbon1pabsapbleqsumabsaon1pabsa",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1984_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_2001_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_321",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_17",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_153",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpamblt1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p18",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_329",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_pprime_pdvdapowpma",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1984_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p22",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_229",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_100",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_313",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2002_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2003_p23",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_129",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p18",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_484",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_551",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_304",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_ineq_nto1onlt2m1on",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p19",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_341",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_711",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p22",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem amc12b_2020_p22\n  (S : Set ℝ)\n  (hS: S = {x:ℝ | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t}) :\n  IsGreatest S (1 / 16:ℝ) ∨ IsGreatest S (1 / 15:ℝ) ∨ IsGreatest S (1 / 12:ℝ) ∨ IsGreatest S (1 / 10:ℝ) ∨ IsGreatest S (1 / 9:ℝ) := by \n  have h_main : IsGreatest S (1 / 16:ℝ) ∨ IsGreatest S (1 / 15:ℝ) ∨ IsGreatest S (1 / 12:ℝ) ∨ IsGreatest S (1 / 10:ℝ) ∨ IsGreatest S (1 / 9:ℝ) := by\n    rw [hS]\n    have h₁ : (1 / 16 : ℝ) ∈ {x : ℝ | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t} := by\n      \n      use 4\n      have h₂ : ((2 : ℝ) ^ (4 : ℝ) - 3 * (4 : ℝ)) * (4 : ℝ) / (4 : ℝ) ^ (4 : ℝ) = 1 / 16 := by\n        have h₃ : (4 : ℝ) ^ (4 : ℝ) = 256 := by\n          norm_num [Real.rpow_nat_cast, Real.rpow_mul, Real.rpow_nat_cast]\n          <;> ring_nf\n          <;> norm_num\n        rw [h₃]\n        norm_num\n        <;> ring_nf\n        <;> norm_num\n        <;> field_simp\n        <;> ring_nf\n        <;> norm_num\n      linarith\n    \n    \n    \n    \n    \n    refine' Or.inl _\n    refine' ⟨h₁, _⟩\n    rintro x hx\n    obtain ⟨t, rfl⟩ := hx\n    have h₂ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n      \n      \n      have h₃ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n        \n        \n        by_cases h₄ : t ≥ 0\n        · \n          have h₅ : t ≥ 0 := h₄\n          have h₆ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n            \n            \n            calc\n              ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n                \n                \n                sorry\n              _ = 1 / 16 := by norm_num\n          exact h₆\n        · \n          have h₅ : t < 0 := by linarith\n          have h₆ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n            \n            \n            calc\n              ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n                \n                \n                sorry\n              _ = 1 / 16 := by norm_num\n          exact h₆\n      exact h₃\n    linarith\n  exact h_main",
+    "full_code": "\ntheorem amc12b_2020_p22\n  (S : Set ℝ)\n  (hS: S = {x:ℝ | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t}) :\n  IsGreatest S (1 / 16:ℝ) ∨ IsGreatest S (1 / 15:ℝ) ∨ IsGreatest S (1 / 12:ℝ) ∨ IsGreatest S (1 / 10:ℝ) ∨ IsGreatest S (1 / 9:ℝ) := by \n  have h_main : IsGreatest S (1 / 16:ℝ) ∨ IsGreatest S (1 / 15:ℝ) ∨ IsGreatest S (1 / 12:ℝ) ∨ IsGreatest S (1 / 10:ℝ) ∨ IsGreatest S (1 / 9:ℝ) := by\n    rw [hS]\n    have h₁ : (1 / 16 : ℝ) ∈ {x : ℝ | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t} := by\n      \n      use 4\n      have h₂ : ((2 : ℝ) ^ (4 : ℝ) - 3 * (4 : ℝ)) * (4 : ℝ) / (4 : ℝ) ^ (4 : ℝ) = 1 / 16 := by\n        have h₃ : (4 : ℝ) ^ (4 : ℝ) = 256 := by\n          norm_num [Real.rpow_nat_cast, Real.rpow_mul, Real.rpow_nat_cast]\n          <;> ring_nf\n          <;> norm_num\n        rw [h₃]\n        norm_num\n        <;> ring_nf\n        <;> norm_num\n        <;> field_simp\n        <;> ring_nf\n        <;> norm_num\n      linarith\n    \n    \n    \n    \n    \n    refine' Or.inl _\n    refine' ⟨h₁, _⟩\n    rintro x hx\n    obtain ⟨t, rfl⟩ := hx\n    have h₂ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n      \n      \n      have h₃ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n        \n        \n        by_cases h₄ : t ≥ 0\n        · \n          have h₅ : t ≥ 0 := h₄\n          have h₆ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n            \n            \n            calc\n              ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n                \n                \n                sorry\n              _ = 1 / 16 := by norm_num\n          exact h₆\n        · \n          have h₅ : t < 0 := by linarith\n          have h₆ : ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n            \n            \n            calc\n              ((2 : ℝ) ^ t - 3 * t) * t / (4 : ℝ) ^ t ≤ 1 / 16 := by\n                \n                \n                sorry\n              _ = 1 / 16 := by norm_num\n          exact h₆\n      exact h₃\n    linarith\n  exact h_main",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 50,
+            "column": 16
+          },
+          "goal": "S : Set ℝ\nhS : S = {x | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t}\nh₁ : 1 / 16 ∈ {x | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t}\nt : ℝ\nh₄ h₅ : t ≥ 0\n⊢ (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 16",
+          "endPos": {
+            "line": 50,
+            "column": 21
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 62,
+            "column": 16
+          },
+          "goal": "S : Set ℝ\nhS : S = {x | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t}\nh₁ : 1 / 16 ∈ {x | ∃ t, x = (2 ^ t - 3 * t) * t / 4 ^ t}\nt : ℝ\nh₄ : ¬t ≥ 0\nh₅ : t < 0\n⊢ (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 16",
+          "endPos": {
+            "line": 62,
+            "column": 21
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 42.58
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_113",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p19",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_amgm_sumasqdivbgeqsuma",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_212",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_320",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_125",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_1pxpownlt1pnx",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_148",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2019_p12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_11div10tonmn1ton",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_amgm_sum1toneqn_prod1tonleq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1985_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p15",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_332",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_293",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_440",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_254",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1988_p8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_114",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_2019_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_513",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_143",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_354",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1984_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_246",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1983_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_85",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p21",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_239",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_196",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_342",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_517",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2009_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_270",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_362",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_521",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2002_p13",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1964_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_289",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2008_p25",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_66",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_apbon2pownleqapownpbpowon2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1968_p5_1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1990_p15",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_235",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p13",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem amc12b_2020_p13\n  (X : ℝ)\n  (hX : X = Real.sqrt (Real.logb 2 6 + Real.logb 3 6)) :\n  X = 1 ∨ X = Real.sqrt (Real.logb 5 6) ∨ X = 2 ∨ X = Real.sqrt (Real.logb 2 3) + Real.sqrt (Real.logb 3 2) ∨ X = Real.sqrt (Real.logb 2 6) + Real.sqrt (Real.logb 3 6) := by \n  have h_main : X = 1 ∨ X = Real.sqrt (Real.logb 5 6) ∨ X = 2 ∨ X = Real.sqrt (Real.logb 2 3) + Real.sqrt (Real.logb 3 2) ∨ X = Real.sqrt (Real.logb 2 6) + Real.sqrt (Real.logb 3 6) := by sorry\n  sorry",
+    "full_code": "\ntheorem amc12b_2020_p13\n  (X : ℝ)\n  (hX : X = Real.sqrt (Real.logb 2 6 + Real.logb 3 6)) :\n  X = 1 ∨ X = Real.sqrt (Real.logb 5 6) ∨ X = 2 ∨ X = Real.sqrt (Real.logb 2 3) + Real.sqrt (Real.logb 3 2) ∨ X = Real.sqrt (Real.logb 2 6) + Real.sqrt (Real.logb 3 6) := by \n  have h_main : X = 1 ∨ X = Real.sqrt (Real.logb 5 6) ∨ X = 2 ∨ X = Real.sqrt (Real.logb 2 3) + Real.sqrt (Real.logb 3 2) ∨ X = Real.sqrt (Real.logb 2 6) + Real.sqrt (Real.logb 3 6) := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 7,
+            "column": 188
+          },
+          "goal": "X : ℝ\nhX : X = √(Real.logb 2 6 + Real.logb 3 6)\n⊢ X = 1 ∨\n    X = √(Real.logb 5 6) ∨ X = 2 ∨ X = √(Real.logb 2 3) + √(Real.logb 3 2) ∨ X = √(Real.logb 2 6) + √(Real.logb 3 6)",
+          "endPos": {
+            "line": 7,
+            "column": 193
+          }
+        },
+        {
+          "proofState": 7,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "X : ℝ\nhX : X = √(Real.logb 2 6 + Real.logb 3 6)\nh_main :\n  X = 1 ∨\n    X = √(Real.logb 5 6) ∨ X = 2 ∨ X = √(Real.logb 2 3) + √(Real.logb 3 2) ∨ X = √(Real.logb 2 6) + √(Real.logb 3 6)\n⊢ X = 1 ∨\n    X = √(Real.logb 5 6) ∨ X = 2 ∨ X = √(Real.logb 2 3) + √(Real.logb 3 2) ∨ X = √(Real.logb 2 6) + √(Real.logb 3 6)",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 37.33
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p13",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_234",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_aoddbdiv4asqpbsqmod8eq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_222",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1999_p11",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_359",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1965_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_288",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_127",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1974_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1991_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2009_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_158",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1990_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_541",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_314",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p20",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_302",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1983_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_139",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p25",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p25",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_150",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1989_p8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_296",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_142",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_exk2powkeqapb2mulbpa2_aeq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_400",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1995_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_185",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_441",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_582",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_338",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  }
+]

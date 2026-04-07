@@ -1,0 +1,594 @@
+[
+  {
+    "problem_id": "mathd_algebra_478",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 29,
+    "code": "theorem mathd_algebra_478 (b h v u : ℝ) (h₁ : v = 1 / 3 * (b * h))\n  (h₂ : b = 30 * u) (h₃ : h = 13 / 2 * u) : v = 65 * u^2 := by\n  have h₄ : v = 65 * u^2 := by\n    rw [h₁]\n    rw [h₂, h₃]\n    ring_nf\n    <;> norm_num\n    <;> linarith\n  exact h₄",
+    "full_code": "theorem mathd_algebra_478 (b h v u : ℝ) (h₁ : v = 1 / 3 * (b * h))\n  (h₂ : b = 30 * u) (h₃ : h = 13 / 2 * u) : v = 65 * u^2 := by\n  have h₄ : v = 65 * u^2 := by\n    rw [h₁]\n    rw [h₂, h₃]\n    ring_nf\n    <;> norm_num\n    <;> linarith\n  exact h₄",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 347.16
+    }
+  },
+  {
+    "problem_id": "numbertheory_4x3m7y3neq2003",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 15,
+    "code": "theorem numbertheory_4x3m7y3neq2003 :\n  ¬ ∃ x y : ℤ, 4 * x ^ 3 - 7 * y ^ 3 = 2003 := by\n  have h_main : ∀ (x y : ℤ), 4 * x ^ 3 - 7 * y ^ 3 = 2003 → False := by\n    intro x y h\n    have h₁ : (4 * x ^ 3 - 7 * y ^ 3) % 7 = 2003 % 7 := by\n      rw [h]\n    have h₂ : (4 * x ^ 3 - 7 * y ^ 3) % 7 = (4 * x ^ 3) % 7 := by\n      have h₃ : (7 * y ^ 3 : ℤ) % 7 = 0 := by\n        norm_num [Int.mul_emod, pow_three]\n      have h₄ : (4 * x ^ 3 - 7 * y ^ 3 : ℤ) % 7 = (4 * x ^ 3 : ℤ) % 7 := by\n        omega\n      exact h₄\n    have h₃ : (4 * x ^ 3 : ℤ) % 7 = 1 := by\n      norm_num [h₂] at h₁ ⊢\n      <;> omega\n    have h₄ : x % 7 = 0 ∨ x % 7 = 1 ∨ x % 7 = 2 ∨ x % 7 = 3 ∨ x % 7 = 4 ∨ x % 7 = 5 ∨ x % 7 = 6 := by\n      omega\n    have h₅ : False := by\n      rcases h₄ with (h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄)\n      · -- Case x ≡ 0 mod 7\n        have h₆ : (x : ℤ) % 7 = 0 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 0 := by\n          have : (x : ℤ) % 7 = 0 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 0 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 0 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 1 mod 7\n        have h₆ : (x : ℤ) % 7 = 1 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 1 := by\n          have : (x : ℤ) % 7 = 1 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 1 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 4 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 2 mod 7\n        have h₆ : (x : ℤ) % 7 = 2 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 1 := by\n          have : (x : ℤ) % 7 = 2 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 1 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 4 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 3 mod 7\n        have h₆ : (x : ℤ) % 7 = 3 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 6 := by\n          have : (x : ℤ) % 7 = 3 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 6 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 3 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 4 mod 7\n        have h₆ : (x : ℤ) % 7 = 4 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 1 := by\n          have : (x : ℤ) % 7 = 4 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 1 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 4 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 5 mod 7\n        have h₆ : (x : ℤ) % 7 = 5 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 6 := by\n          have : (x : ℤ) % 7 = 5 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 6 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 3 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 6 mod 7\n        have h₆ : (x : ℤ) % 7 = 6 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 6 := by\n          have : (x : ℤ) % 7 = 6 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 6 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 3 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n    exact h₅\n  intro h\n  rcases h with ⟨x, y, h⟩\n  have h₁ : False := h_main x y h\n  exact h₁",
+    "full_code": "theorem numbertheory_4x3m7y3neq2003 :\n  ¬ ∃ x y : ℤ, 4 * x ^ 3 - 7 * y ^ 3 = 2003 := by\n  have h_main : ∀ (x y : ℤ), 4 * x ^ 3 - 7 * y ^ 3 = 2003 → False := by\n    intro x y h\n    have h₁ : (4 * x ^ 3 - 7 * y ^ 3) % 7 = 2003 % 7 := by\n      rw [h]\n    have h₂ : (4 * x ^ 3 - 7 * y ^ 3) % 7 = (4 * x ^ 3) % 7 := by\n      have h₃ : (7 * y ^ 3 : ℤ) % 7 = 0 := by\n        norm_num [Int.mul_emod, pow_three]\n      have h₄ : (4 * x ^ 3 - 7 * y ^ 3 : ℤ) % 7 = (4 * x ^ 3 : ℤ) % 7 := by\n        omega\n      exact h₄\n    have h₃ : (4 * x ^ 3 : ℤ) % 7 = 1 := by\n      norm_num [h₂] at h₁ ⊢\n      <;> omega\n    have h₄ : x % 7 = 0 ∨ x % 7 = 1 ∨ x % 7 = 2 ∨ x % 7 = 3 ∨ x % 7 = 4 ∨ x % 7 = 5 ∨ x % 7 = 6 := by\n      omega\n    have h₅ : False := by\n      rcases h₄ with (h₄ | h₄ | h₄ | h₄ | h₄ | h₄ | h₄)\n      · -- Case x ≡ 0 mod 7\n        have h₆ : (x : ℤ) % 7 = 0 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 0 := by\n          have : (x : ℤ) % 7 = 0 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 0 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 0 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 1 mod 7\n        have h₆ : (x : ℤ) % 7 = 1 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 1 := by\n          have : (x : ℤ) % 7 = 1 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 1 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 4 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 2 mod 7\n        have h₆ : (x : ℤ) % 7 = 2 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 1 := by\n          have : (x : ℤ) % 7 = 2 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 1 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 4 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 3 mod 7\n        have h₆ : (x : ℤ) % 7 = 3 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 6 := by\n          have : (x : ℤ) % 7 = 3 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 6 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 3 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 4 mod 7\n        have h₆ : (x : ℤ) % 7 = 4 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 1 := by\n          have : (x : ℤ) % 7 = 4 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 1 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 4 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 5 mod 7\n        have h₆ : (x : ℤ) % 7 = 5 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 6 := by\n          have : (x : ℤ) % 7 = 5 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 6 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 3 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n      · -- Case x ≡ 6 mod 7\n        have h₆ : (x : ℤ) % 7 = 6 := by omega\n        have h₇ : (x ^ 3 : ℤ) % 7 = 6 := by\n          have : (x : ℤ) % 7 = 6 := h₆\n          have : (x ^ 3 : ℤ) % 7 = 6 := by\n            norm_num [pow_three, Int.mul_emod, this]\n          exact this\n        have h₈ : (4 * x ^ 3 : ℤ) % 7 = 3 := by\n          norm_num [Int.mul_emod, h₇]\n        omega\n    exact h₅\n  intro h\n  rcases h with ⟨x, y, h⟩\n  have h₁ : False := h_main x y h\n  exact h₁",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 236.96
+    }
+  },
+  {
+    "problem_id": "aime_1983_p1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem aime_1983_p1\n  (x y z w : ℕ)\n  (ht : 1 < x ∧ 1 < y ∧ 1 < z)\n  (hw : 0 < w)\n  (h0 : Real.logb x w = 24)\n  (h1 : Real.logb y w = 40)\n  (h2 : Real.logb (x * y * z) w = 12) :\n  Real.logb z w = 60 := by\n  have hx : (1 : ℝ) < x := by exact_mod_cast ht.1\n  have hy : (1 : ℝ) < y := by exact_mod_cast ht.2.1\n  have hz : (1 : ℝ) < z := by exact_mod_cast ht.2.2\n  have hw' : (0 : ℝ) < w := by exact_mod_cast hw\n  have h3 : Real.log w = 24 * Real.log x := by\n    have h3₁ : Real.logb x w = 24 := h0\n    have h3₂ : Real.logb x w = Real.log w / Real.log x := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h3₂] at h3₁\n    have h3₃ : Real.log x ≠ 0 := by\n      have h3₄ : Real.log x > 0 := Real.log_pos hx\n      linarith\n    field_simp [h3₃] at h3₁\n    linarith\n  have h4 : Real.log w = 40 * Real.log y := by\n    have h4₁ : Real.logb y w = 40 := h1\n    have h4₂ : Real.logb y w = Real.log w / Real.log y := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h4₂] at h4₁\n    have h4₃ : Real.log y ≠ 0 := by\n      have h4₄ : Real.log y > 0 := Real.log_pos hy\n      linarith\n    field_simp [h4₃] at h4₁\n    linarith\n  have h5 : Real.log w = 12 * (Real.log x + Real.log y + Real.log z) := by\n    have h5₁ : Real.logb (x * y * z) w = 12 := h2\n    have h5₂ : Real.logb (x * y * z) w = Real.log w / Real.log (x * y * z) := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h5₂] at h5₁\n    have h5₃ : Real.log (x * y * z) = Real.log x + Real.log y + Real.log z := by\n      have h5₄ : Real.log (x * y * z) = Real.log (x * y) + Real.log z := by\n        have h5₅ : (0 : ℝ) < x * y := by positivity\n        have h5₆ : (0 : ℝ) < z := by positivity\n        have h5₇ : Real.log (x * y * z) = Real.log (x * y) + Real.log z := by\n          rw [Real.log_mul (by positivity) (by positivity)]\n        exact h5₇\n      have h5₈ : Real.log (x * y) = Real.log x + Real.log y := by\n        have h5₉ : (0 : ℝ) < x := by positivity\n        have h5₁₀ : (0 : ℝ) < y := by positivity\n        have h5₁₁ : Real.log (x * y) = Real.log x + Real.log y := by\n          rw [Real.log_mul (by positivity) (by positivity)]\n        exact h5₁₁\n      rw [h5₄, h5₈]\n      <;> ring_nf\n    rw [h5₃] at h5₁\n    have h5₄ : Real.log x + Real.log y + Real.log z ≠ 0 := by\n      have h5₅ : Real.log x > 0 := Real.log_pos hx\n      have h5₆ : Real.log y > 0 := Real.log_pos hy\n      have h5₇ : Real.log z > 0 := Real.log_pos hz\n      linarith\n    have h5₅ : Real.log w = 12 * (Real.log x + Real.log y + Real.log z) := by\n      field_simp [h5₄] at h5₁\n      <;>\n      (try linarith) <;>\n      (try ring_nf at h5₁ ⊢) <;>\n      (try linarith) <;>\n      (try nlinarith [Real.log_pos hx, Real.log_pos hy, Real.log_pos hz]) <;>\n      (try nlinarith) <;>\n      (try linarith)\n      <;>\n      (try\n        {\n          nlinarith [Real.log_pos hx, Real.log_pos hy, Real.log_pos hz]\n        })\n    exact h5₅\n  have h6 : 3 * Real.log x = 5 * Real.log y := by\n    have h6₁ : 24 * Real.log x = 40 * Real.log y := by linarith\n    linarith\n  have h7 : Real.log x = Real.log y + Real.log z := by\n    have h7₁ : 24 * Real.log x = 12 * (Real.log x + Real.log y + Real.log z) := by linarith\n    have h7₂ : 2 * Real.log x = Real.log x + Real.log y + Real.log z := by linarith\n    linarith\n  have h8 : Real.log z = (2 / 5 : ℝ) * Real.log x := by\n    have h8₁ : Real.log y = (3 / 5 : ℝ) * Real.log x := by\n      have h8₂ : 3 * Real.log x = 5 * Real.log y := h6\n      have h8₃ : Real.log y = (3 / 5 : ℝ) * Real.log x := by\n        apply mul_left_cancel₀ (show (5 : ℝ) ≠ 0 by norm_num)\n        linarith\n      exact h8₃\n    have h8₄ : Real.log x = Real.log y + Real.log z := h7\n    rw [h8₁] at h8₄\n    ring_nf at h8₄ ⊢\n    linarith\n  have h9 : Real.log z ≠ 0 := by\n    have h9₁ : Real.log x > 0 := Real.log_pos hx\n    have h9₂ : Real.log z = (2 / 5 : ℝ) * Real.log x := h8\n    have h9₃ : Real.log z > 0 := by\n      rw [h9₂]\n      positivity\n    linarith\n  have h10 : Real.logb z w = 60 := by\n    have h10₁ : Real.logb z w = Real.log w / Real.log z := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h10₁]\n    have h10₂ : Real.log w = 24 * Real.log x := h3\n    have h10₃ : Real.log z = (2 / 5 : ℝ) * Real.log x := h8\n    rw [h10₂, h10₃]\n    have h10₄ : Real.log x ≠ 0 := by\n      have h10₅ : Real.log x > 0 := Real.log_pos hx\n      linarith\n    field_simp [h10₄]\n    <;> ring_nf\n    <;> field_simp [h10₄]\n    <;> nlinarith [Real.log_pos hx]\n  exact h10",
+    "full_code": "theorem aime_1983_p1\n  (x y z w : ℕ)\n  (ht : 1 < x ∧ 1 < y ∧ 1 < z)\n  (hw : 0 < w)\n  (h0 : Real.logb x w = 24)\n  (h1 : Real.logb y w = 40)\n  (h2 : Real.logb (x * y * z) w = 12) :\n  Real.logb z w = 60 := by\n  have hx : (1 : ℝ) < x := by exact_mod_cast ht.1\n  have hy : (1 : ℝ) < y := by exact_mod_cast ht.2.1\n  have hz : (1 : ℝ) < z := by exact_mod_cast ht.2.2\n  have hw' : (0 : ℝ) < w := by exact_mod_cast hw\n  have h3 : Real.log w = 24 * Real.log x := by\n    have h3₁ : Real.logb x w = 24 := h0\n    have h3₂ : Real.logb x w = Real.log w / Real.log x := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h3₂] at h3₁\n    have h3₃ : Real.log x ≠ 0 := by\n      have h3₄ : Real.log x > 0 := Real.log_pos hx\n      linarith\n    field_simp [h3₃] at h3₁\n    linarith\n  have h4 : Real.log w = 40 * Real.log y := by\n    have h4₁ : Real.logb y w = 40 := h1\n    have h4₂ : Real.logb y w = Real.log w / Real.log y := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h4₂] at h4₁\n    have h4₃ : Real.log y ≠ 0 := by\n      have h4₄ : Real.log y > 0 := Real.log_pos hy\n      linarith\n    field_simp [h4₃] at h4₁\n    linarith\n  have h5 : Real.log w = 12 * (Real.log x + Real.log y + Real.log z) := by\n    have h5₁ : Real.logb (x * y * z) w = 12 := h2\n    have h5₂ : Real.logb (x * y * z) w = Real.log w / Real.log (x * y * z) := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h5₂] at h5₁\n    have h5₃ : Real.log (x * y * z) = Real.log x + Real.log y + Real.log z := by\n      have h5₄ : Real.log (x * y * z) = Real.log (x * y) + Real.log z := by\n        have h5₅ : (0 : ℝ) < x * y := by positivity\n        have h5₆ : (0 : ℝ) < z := by positivity\n        have h5₇ : Real.log (x * y * z) = Real.log (x * y) + Real.log z := by\n          rw [Real.log_mul (by positivity) (by positivity)]\n        exact h5₇\n      have h5₈ : Real.log (x * y) = Real.log x + Real.log y := by\n        have h5₉ : (0 : ℝ) < x := by positivity\n        have h5₁₀ : (0 : ℝ) < y := by positivity\n        have h5₁₁ : Real.log (x * y) = Real.log x + Real.log y := by\n          rw [Real.log_mul (by positivity) (by positivity)]\n        exact h5₁₁\n      rw [h5₄, h5₈]\n      <;> ring_nf\n    rw [h5₃] at h5₁\n    have h5₄ : Real.log x + Real.log y + Real.log z ≠ 0 := by\n      have h5₅ : Real.log x > 0 := Real.log_pos hx\n      have h5₆ : Real.log y > 0 := Real.log_pos hy\n      have h5₇ : Real.log z > 0 := Real.log_pos hz\n      linarith\n    have h5₅ : Real.log w = 12 * (Real.log x + Real.log y + Real.log z) := by\n      field_simp [h5₄] at h5₁\n      <;>\n      (try linarith) <;>\n      (try ring_nf at h5₁ ⊢) <;>\n      (try linarith) <;>\n      (try nlinarith [Real.log_pos hx, Real.log_pos hy, Real.log_pos hz]) <;>\n      (try nlinarith) <;>\n      (try linarith)\n      <;>\n      (try\n        {\n          nlinarith [Real.log_pos hx, Real.log_pos hy, Real.log_pos hz]\n        })\n    exact h5₅\n  have h6 : 3 * Real.log x = 5 * Real.log y := by\n    have h6₁ : 24 * Real.log x = 40 * Real.log y := by linarith\n    linarith\n  have h7 : Real.log x = Real.log y + Real.log z := by\n    have h7₁ : 24 * Real.log x = 12 * (Real.log x + Real.log y + Real.log z) := by linarith\n    have h7₂ : 2 * Real.log x = Real.log x + Real.log y + Real.log z := by linarith\n    linarith\n  have h8 : Real.log z = (2 / 5 : ℝ) * Real.log x := by\n    have h8₁ : Real.log y = (3 / 5 : ℝ) * Real.log x := by\n      have h8₂ : 3 * Real.log x = 5 * Real.log y := h6\n      have h8₃ : Real.log y = (3 / 5 : ℝ) * Real.log x := by\n        apply mul_left_cancel₀ (show (5 : ℝ) ≠ 0 by norm_num)\n        linarith\n      exact h8₃\n    have h8₄ : Real.log x = Real.log y + Real.log z := h7\n    rw [h8₁] at h8₄\n    ring_nf at h8₄ ⊢\n    linarith\n  have h9 : Real.log z ≠ 0 := by\n    have h9₁ : Real.log x > 0 := Real.log_pos hx\n    have h9₂ : Real.log z = (2 / 5 : ℝ) * Real.log x := h8\n    have h9₃ : Real.log z > 0 := by\n      rw [h9₂]\n      positivity\n    linarith\n  have h10 : Real.logb z w = 60 := by\n    have h10₁ : Real.logb z w = Real.log w / Real.log z := by\n      rw [Real.logb]\n      <;> field_simp [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n      <;> ring_nf\n      <;> norm_num\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n      <;>\n      (try\n        {\n          simp_all [Real.log_mul, Real.log_pow, Real.log_inv, Real.log_div]\n          <;>\n          ring_nf at *\n          <;>\n          norm_num at *\n          <;>\n          linarith\n        })\n    rw [h10₁]\n    have h10₂ : Real.log w = 24 * Real.log x := h3\n    have h10₃ : Real.log z = (2 / 5 : ℝ) * Real.log x := h8\n    rw [h10₂, h10₃]\n    have h10₄ : Real.log x ≠ 0 := by\n      have h10₅ : Real.log x > 0 := Real.log_pos hx\n      linarith\n    field_simp [h10₄]\n    <;> ring_nf\n    <;> field_simp [h10₄]\n    <;> nlinarith [Real.log_pos hx]\n  exact h10",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 348.28
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 31,
+    "code": "theorem amc12_2001_p5\n  (S : Finset ℕ)\n  (hS : S = {10000! / (5000!)^2 , 100000! / 2^5000, 9999! / 2^5000, 10000! / (2 ^ (5000 : ℕ) * 5000!), 5000! / 2^5000}) :\n  Finset.prod (Finset.filter (fun (x : ℕ) => Odd x) (Finset.range 10000)) (fun (x : ℕ) => x) ∈ S := by sorry",
+    "full_code": "theorem amc12_2001_p5\n  (S : Finset ℕ)\n  (hS : S = {10000! / (5000!)^2 , 100000! / 2^5000, 9999! / 2^5000, 10000! / (2 ^ (5000 : ℕ) * 5000!), 5000! / 2^5000}) :\n  Finset.prod (Finset.filter (fun (x : ℕ) => Odd x) (Finset.range 10000)) (fun (x : ℕ) => x) ∈ S := by sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 18
+          },
+          "endPos": {
+            "line": 4,
+            "column": 19
+          },
+          "data": "unexpected token '!'; expected ':=' or '}'"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 364.03
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_141",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_141\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2)))\n  (A B C : EuclideanSpace ℝ (Fin 2))\n  (hA : A = T.points 0)\n  (hB : B = T.points 1)\n  (hC : C = T.points 2)\n  (a b : ℝ)\n  (h₀ : dist A B = a ∧ dist B C = b)\n  (h₁ : a * b = 180)\n  (h₂ : 2 * (a + b) = 54)\n  (θ : ℝ)\n  (hθ₀ : θ = EuclideanGeometry.angle A B C)\n  (hθ₀ : θ = Real.pi / 2) :\n  (dist A C) ^ 2 = 369 := by sorry",
+    "full_code": "theorem mathd_algebra_141\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2)))\n  (A B C : EuclideanSpace ℝ (Fin 2))\n  (hA : A = T.points 0)\n  (hB : B = T.points 1)\n  (hC : C = T.points 2)\n  (a b : ℝ)\n  (h₀ : dist A B = a ∧ dist B C = b)\n  (h₁ : a * b = 180)\n  (h₂ : 2 * (a + b) = 54)\n  (θ : ℝ)\n  (hθ₀ : θ = EuclideanGeometry.angle A B C)\n  (hθ₀ : θ = Real.pi / 2) :\n  (dist A C) ^ 2 = 369 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 15,
+            "column": 29
+          },
+          "goal": "T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\nA B C : EuclideanSpace ℝ (Fin 2)\nhA : A = T.points 0\nhB : B = T.points 1\nhC : C = T.points 2\na b : ℝ\nh₀ : dist A B = a ∧ dist B C = b\nh₁ : a * b = 180\nh₂ : 2 * (a + b) = 54\nθ : ℝ\nhθ₀✝ : θ = EuclideanGeometry.angle A B C\nhθ₀ : θ = Real.pi / 2\n⊢ dist A C ^ 2 = 369",
+          "endPos": {
+            "line": 15,
+            "column": 34
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 364.03
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_3",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 6,
+    "code": "theorem mathd_numbertheory_3 : (∑ x ∈ Finset.range 9, (x + 1) ^ 2) % 10 = 5 := by\n  decide",
+    "full_code": "theorem mathd_numbertheory_3 : (∑ x ∈ Finset.range 9, (x + 1) ^ 2) % 10 = 5 := by\n  decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 74.29
+    }
+  },
+  {
+    "problem_id": "imo_1969_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by\n  have h_main : ∃ (t : ℤ), m - n = t * Real.pi := by sorry\n  sorry",
+    "full_code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by\n  have h_main : ∃ (t : ℤ), m - n = t * Real.pi := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 50,
+          "pos": {
+            "line": 12,
+            "column": 53
+          },
+          "goal": "m n : ℝ\nk : ℕ\na : ℕ → ℝ\nf : ℝ → ℝ\nh₀ : 0 < k\nh₁ : ∀ (x : ℝ), f x = ∑ i ∈ Finset.range k, (a i + x).cos / 2 ^ i\nh₂ : f m = 0\nh₃ : f n = 0\n⊢ ∃ t, m - n = ↑t * Real.pi",
+          "endPos": {
+            "line": 12,
+            "column": 58
+          }
+        },
+        {
+          "proofState": 51,
+          "pos": {
+            "line": 13,
+            "column": 2
+          },
+          "goal": "m n : ℝ\nk : ℕ\na : ℕ → ℝ\nf : ℝ → ℝ\nh₀ : 0 < k\nh₁ : ∀ (x : ℝ), f x = ∑ i ∈ Finset.range k, (a i + x).cos / 2 ^ i\nh₂ : f m = 0\nh₃ : f n = 0\nh_main : ∃ t, m - n = ↑t * Real.pi\n⊢ ∃ t, m - n = ↑t * Real.pi",
+          "endPos": {
+            "line": 13,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 359.58
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_209",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_209\n  (f h : ℝ → ℝ)\n  (h₀: Function.LeftInverse f h)\n  (h₁ : h 2 = 10)\n  (h₂ : h 10 = 1)\n  (h₃ : h 1 = 2) :\n  f (f 10) = 1 := by\n  have h₄ : f 10 = 2 := by sorry\n  have h₅ : f 2 = 1 := by sorry\n  have h₆ : f (f 10) = 1 := by sorry\n  exact h₆",
+    "full_code": "theorem mathd_algebra_209\n  (f h : ℝ → ℝ)\n  (h₀: Function.LeftInverse f h)\n  (h₁ : h 2 = 10)\n  (h₂ : h 10 = 1)\n  (h₃ : h 1 = 2) :\n  f (f 10) = 1 := by\n  have h₄ : f 10 = 2 := by sorry\n  have h₅ : f 2 = 1 := by sorry\n  have h₆ : f (f 10) = 1 := by sorry\n  exact h₆",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 58,
+          "pos": {
+            "line": 9,
+            "column": 27
+          },
+          "goal": "f h : ℝ → ℝ\nh₀ : Function.LeftInverse f h\nh₁ : h 2 = 10\nh₂ : h 10 = 1\nh₃ : h 1 = 2\n⊢ f 10 = 2",
+          "endPos": {
+            "line": 9,
+            "column": 32
+          }
+        },
+        {
+          "proofState": 59,
+          "pos": {
+            "line": 10,
+            "column": 26
+          },
+          "goal": "f h : ℝ → ℝ\nh₀ : Function.LeftInverse f h\nh₁ : h 2 = 10\nh₂ : h 10 = 1\nh₃ : h 1 = 2\nh₄ : f 10 = 2\n⊢ f 2 = 1",
+          "endPos": {
+            "line": 10,
+            "column": 31
+          }
+        },
+        {
+          "proofState": 60,
+          "pos": {
+            "line": 11,
+            "column": 31
+          },
+          "goal": "f h : ℝ → ℝ\nh₀ : Function.LeftInverse f h\nh₁ : h 2 = 10\nh₂ : h 10 = 1\nh₃ : h 1 = 2\nh₄ : f 10 = 2\nh₅ : f 2 = 1\n⊢ f (f 10) = 1",
+          "endPos": {
+            "line": 11,
+            "column": 36
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 66.47
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_1124",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_1124\n  (n x : ℕ)\n  (h₀ : Nat.digits 10 x = [n, 4, 7, 3])\n  (h₁ : 18 ∣ x) : n = 4 := by\n  -- Step 1: Compute x = 3740 + n\n  have h₂ : x = 3740 + n := by sorry\n  -- Step 2: Prove that n < 10\n  have h₃ : n < 10 := by sorry\n  -- Step 3: Use divisibility by 18 to deduce n = 4\n  have h₄ : n = 4 := by sorry\n  -- Final conclusion\n  exact h₄",
+    "full_code": "theorem mathd_numbertheory_1124\n  (n x : ℕ)\n  (h₀ : Nat.digits 10 x = [n, 4, 7, 3])\n  (h₁ : 18 ∣ x) : n = 4 := by\n  -- Step 1: Compute x = 3740 + n\n  have h₂ : x = 3740 + n := by sorry\n  -- Step 2: Prove that n < 10\n  have h₃ : n < 10 := by sorry\n  -- Step 3: Use divisibility by 18 to deduce n = 4\n  have h₄ : n = 4 := by sorry\n  -- Final conclusion\n  exact h₄",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 188,
+          "pos": {
+            "line": 7,
+            "column": 31
+          },
+          "goal": "n x : ℕ\nh₀ : Nat.digits 10 x = [n, 4, 7, 3]\nh₁ : 18 ∣ x\n⊢ x = 3740 + n",
+          "endPos": {
+            "line": 7,
+            "column": 36
+          }
+        },
+        {
+          "proofState": 189,
+          "pos": {
+            "line": 9,
+            "column": 25
+          },
+          "goal": "n x : ℕ\nh₀ : Nat.digits 10 x = [n, 4, 7, 3]\nh₁ : 18 ∣ x\nh₂ : x = 3740 + n\n⊢ n < 10",
+          "endPos": {
+            "line": 9,
+            "column": 30
+          }
+        },
+        {
+          "proofState": 190,
+          "pos": {
+            "line": 11,
+            "column": 24
+          },
+          "goal": "n x : ℕ\nh₀ : Nat.digits 10 x = [n, 4, 7, 3]\nh₁ : 18 ∣ x\nh₂ : x = 3740 + n\nh₃ : n < 10\n⊢ n = 4",
+          "endPos": {
+            "line": 11,
+            "column": 29
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 300.79
+    }
+  },
+  {
+    "problem_id": "imo_1983_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 31,
+    "code": "theorem imo_1983_p6\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))) :\n  let a := dist (T.points 1) (T.points 2)\n  let b := dist (T.points 0) (T.points 2)\n  let c := dist (T.points 0) (T.points 1)\n  0 ≤ a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ∧\n  (0 = a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ↔ imo_1983_p6_solution a b c) := by\n  sorry",
+    "full_code": "theorem imo_1983_p6\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))) :\n  let a := dist (T.points 1) (T.points 2)\n  let b := dist (T.points 0) (T.points 2)\n  let c := dist (T.points 0) (T.points 1)\n  0 ≤ a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ∧\n  (0 = a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ↔ imo_1983_p6_solution a b c) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 9,
+            "column": 2
+          },
+          "goal": "x✝ : Sort u_1\nimo_1983_p6_solution : x✝\nT : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\n⊢ let a := dist (T.points 1) (T.points 2);\n  let b := dist (T.points 0) (T.points 2);\n  let c := dist (T.points 0) (T.points 1);\n  0 ≤ a ^ 2 * b * (a - b) + b ^ 2 * c * (b - c) + c ^ 2 * a * (c - a) ∧\n    (0 = a ^ 2 * b * (a - b) + b ^ 2 * c * (b - c) + c ^ 2 * a * (c - a) ↔ sorryAx Prop true)",
+          "endPos": {
+            "line": 9,
+            "column": 7
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 8,
+            "column": 67
+          },
+          "endPos": {
+            "line": 8,
+            "column": 93
+          },
+          "data": "function expected at\n  imo_1983_p6_solution\nterm has type\n  ?m.3239"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 365.12
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_237",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_numbertheory_237 : (∑ k ∈ Finset.range 100, (k+1)) % 6 = 4 := by\n  rfl",
+    "full_code": "theorem mathd_numbertheory_237 : (∑ k ∈ Finset.range 100, (k+1)) % 6 = 4 := by\n  rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 201.98
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_33",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 15,
+    "code": "theorem mathd_algebra_33 (x y z : ℝ) (h₀ : x ≠ 0) (h₁ : 2 * x = 5 * y) (h₂ : 7 * y = 10 * z) :\n  z / x = 7 / 25 := by\n  have h₃ : 14 * x = 35 * y := by\n    have h₃₁ : 14 * x = 7 * (2 * x) := by ring\n    have h₃₂ : 7 * (2 * x) = 7 * (5 * y) := by rw [h₁]\n    have h₃₃ : 7 * (5 * y) = 35 * y := by ring\n    linarith\n  \n  have h₄ : 35 * y = 50 * z := by\n    have h₄₁ : 35 * y = 5 * (7 * y) := by ring\n    have h₄₂ : 5 * (7 * y) = 5 * (10 * z) := by rw [h₂]\n    have h₄₃ : 5 * (10 * z) = 50 * z := by ring\n    linarith\n  \n  have h₅ : 14 * x = 50 * z := by\n    linarith\n  \n  have h₆ : (14 : ℝ) / 50 = z / x := by\n    have h₆₁ : 14 * x = 50 * z := h₅\n    have h₆₂ : x ≠ 0 := h₀\n    have h₆₃ : (14 : ℝ) / 50 = z / x := by\n      -- Divide both sides of the equation 14 * x = 50 * z by 50 * x\n      have h₆₄ : (14 : ℝ) * x = 50 * z := by exact_mod_cast h₆₁\n      have h₆₅ : (14 : ℝ) / 50 = z / x := by\n        -- Use field_simp to handle the division and simplify the equation\n        have h₆₆ : x ≠ 0 := h₆₂\n        field_simp [h₆₆] at h₆₄ ⊢\n        <;> nlinarith\n      exact h₆₅\n    exact h₆₃\n  \n  have h₇ : (14 : ℝ) / 50 = 7 / 25 := by\n    norm_num\n    <;>\n    linarith\n  \n  have h₈ : z / x = 7 / 25 := by\n    have h₈₁ : (14 : ℝ) / 50 = z / x := h₆\n    have h₈₂ : (14 : ℝ) / 50 = 7 / 25 := h₇\n    linarith\n  \n  exact h₈",
+    "full_code": "theorem mathd_algebra_33 (x y z : ℝ) (h₀ : x ≠ 0) (h₁ : 2 * x = 5 * y) (h₂ : 7 * y = 10 * z) :\n  z / x = 7 / 25 := by\n  have h₃ : 14 * x = 35 * y := by\n    have h₃₁ : 14 * x = 7 * (2 * x) := by ring\n    have h₃₂ : 7 * (2 * x) = 7 * (5 * y) := by rw [h₁]\n    have h₃₃ : 7 * (5 * y) = 35 * y := by ring\n    linarith\n  \n  have h₄ : 35 * y = 50 * z := by\n    have h₄₁ : 35 * y = 5 * (7 * y) := by ring\n    have h₄₂ : 5 * (7 * y) = 5 * (10 * z) := by rw [h₂]\n    have h₄₃ : 5 * (10 * z) = 50 * z := by ring\n    linarith\n  \n  have h₅ : 14 * x = 50 * z := by\n    linarith\n  \n  have h₆ : (14 : ℝ) / 50 = z / x := by\n    have h₆₁ : 14 * x = 50 * z := h₅\n    have h₆₂ : x ≠ 0 := h₀\n    have h₆₃ : (14 : ℝ) / 50 = z / x := by\n      -- Divide both sides of the equation 14 * x = 50 * z by 50 * x\n      have h₆₄ : (14 : ℝ) * x = 50 * z := by exact_mod_cast h₆₁\n      have h₆₅ : (14 : ℝ) / 50 = z / x := by\n        -- Use field_simp to handle the division and simplify the equation\n        have h₆₆ : x ≠ 0 := h₆₂\n        field_simp [h₆₆] at h₆₄ ⊢\n        <;> nlinarith\n      exact h₆₅\n    exact h₆₃\n  \n  have h₇ : (14 : ℝ) / 50 = 7 / 25 := by\n    norm_num\n    <;>\n    linarith\n  \n  have h₈ : z / x = 7 / 25 := by\n    have h₈₁ : (14 : ℝ) / 50 = z / x := h₆\n    have h₈₂ : (14 : ℝ) / 50 = 7 / 25 := h₇\n    linarith\n  \n  exact h₈",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 131.38
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12b_2021_p3\n  (x : ℝ)\n  (h₀ : 2 + 1 / (1 + 1 / (2 + 2 / (3 + x))) = 144 / 53) :\n  x = 3 / 4 ∨ x = 7 / 8 ∨ x = 14 / 15 ∨ x = 37 / 38 ∨ x = 52 / 53 := by sorry",
+    "full_code": "theorem amc12b_2021_p3\n  (x : ℝ)\n  (h₀ : 2 + 1 / (1 + 1 / (2 + 2 / (3 + x))) = 144 / 53) :\n  x = 3 / 4 ∨ x = 7 / 8 ∨ x = 14 / 15 ∨ x = 37 / 38 ∨ x = 52 / 53 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 149,
+          "pos": {
+            "line": 5,
+            "column": 72
+          },
+          "goal": "x : ℝ\nh₀ : 2 + 1 / (1 + 1 / (2 + 2 / (3 + x))) = 144 / 53\n⊢ x = 3 / 4 ∨ x = 7 / 8 ∨ x = 14 / 15 ∨ x = 37 / 38 ∨ x = 52 / 53",
+          "endPos": {
+            "line": 5,
+            "column": 77
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 355.83
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_299",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_numbertheory_299 : 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5 := by\n  norm_num [mul_assoc]\n  <;> rfl",
+    "full_code": "theorem mathd_numbertheory_299 : 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5 := by\n  norm_num [mul_assoc]\n  <;> rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 82.64
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12b_2020_p2\n  (X : ℝ)\n  (hX : X = (100 ^ 2 - 7 ^ 2 : ℝ) / (70 ^ 2 - 11 ^ 2 : ℝ) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7)))) :\n  X = 1 ∨ X = 9951 / 9950 ∨ X = 4780 / 4779 ∨ X = 108 / 107 ∨ X = 81 / 80 := by sorry",
+    "full_code": "theorem amc12b_2020_p2\n  (X : ℝ)\n  (hX : X = (100 ^ 2 - 7 ^ 2 : ℝ) / (70 ^ 2 - 11 ^ 2 : ℝ) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7)))) :\n  X = 1 ∨ X = 9951 / 9950 ∨ X = 4780 / 4779 ∨ X = 108 / 107 ∨ X = 81 / 80 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 5,
+            "column": 80
+          },
+          "goal": "X : ℝ\nhX : X = (100 ^ 2 - 7 ^ 2) / (70 ^ 2 - 11 ^ 2) * ((70 - 11) * (70 + 11) / ((100 - 7) * (100 + 7)))\n⊢ X = 1 ∨ X = 9951 / 9950 ∨ X = 4780 / 4779 ∨ X = 108 / 107 ∨ X = 81 / 80",
+          "endPos": {
+            "line": 5,
+            "column": 85
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 364.06
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpabsamblt1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 26,
+    "code": "theorem algebra_sqineq_unitcircatbpabsamblt1 (a b : ℝ) (h₀ : a ^ 2 + b ^ 2 = 1) :\n  a * b + abs (a - b) ≤ 1 := by\n  have h₁ : (abs (a - b)) ^ 2 = (a - b) ^ 2 := by\n    simp [sq_abs]\n  have h₂ : (a - b) ^ 2 = 1 - 2 * (a * b) := by\n    have h₃ : (a - b) ^ 2 = a ^ 2 + b ^ 2 - 2 * (a * b) := by ring\n    rw [h₃]\n    linarith\n  have h₃ : (abs (a - b)) ^ 2 = 1 - 2 * (a * b) := by\n    rw [h₁, h₂]\n  have h₄ : a * b = (1 - (abs (a - b)) ^ 2) / 2 := by\n    have h₅ : (abs (a - b)) ^ 2 = 1 - 2 * (a * b) := h₃\n    linarith\n  have h₅ : a * b + abs (a - b) ≤ 1 := by\n    have h₆ : a * b + abs (a - b) = (1 - (abs (a - b)) ^ 2) / 2 + abs (a - b) := by\n      rw [h₄]\n      <;> ring\n    rw [h₆]\n    have h₇ : 0 ≤ abs (a - b) := abs_nonneg (a - b)\n    have h₈ : (abs (a - b) - 1) ^ 2 ≥ 0 := by nlinarith\n    nlinarith [sq_nonneg (abs (a - b) - 1)]\n  exact h₅",
+    "full_code": "theorem algebra_sqineq_unitcircatbpabsamblt1 (a b : ℝ) (h₀ : a ^ 2 + b ^ 2 = 1) :\n  a * b + abs (a - b) ≤ 1 := by\n  have h₁ : (abs (a - b)) ^ 2 = (a - b) ^ 2 := by\n    simp [sq_abs]\n  have h₂ : (a - b) ^ 2 = 1 - 2 * (a * b) := by\n    have h₃ : (a - b) ^ 2 = a ^ 2 + b ^ 2 - 2 * (a * b) := by ring\n    rw [h₃]\n    linarith\n  have h₃ : (abs (a - b)) ^ 2 = 1 - 2 * (a * b) := by\n    rw [h₁, h₂]\n  have h₄ : a * b = (1 - (abs (a - b)) ^ 2) / 2 := by\n    have h₅ : (abs (a - b)) ^ 2 = 1 - 2 * (a * b) := h₃\n    linarith\n  have h₅ : a * b + abs (a - b) ≤ 1 := by\n    have h₆ : a * b + abs (a - b) = (1 - (abs (a - b)) ^ 2) / 2 + abs (a - b) := by\n      rw [h₄]\n      <;> ring\n    rw [h₆]\n    have h₇ : 0 ≤ abs (a - b) := abs_nonneg (a - b)\n    have h₈ : (abs (a - b) - 1) ^ 2 ≥ 0 := by nlinarith\n    nlinarith [sq_nonneg (abs (a - b) - 1)]\n  exact h₅",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 198.85
+    }
+  },
+  {
+    "problem_id": "imo_1977_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1977_p6 (f : ℕ+ → ℕ+) (h₀ : ∀ n, f (f n) < f (n + 1)) :\n  ∀ n, f n = n := by\n  have h₁ : f 1 = 1 := by sorry\n  have h₂ : ∀ n : ℕ+, f n = n := by sorry\n  sorry",
+    "full_code": "theorem imo_1977_p6 (f : ℕ+ → ℕ+) (h₀ : ∀ n, f (f n) < f (n + 1)) :\n  ∀ n, f n = n := by\n  have h₁ : f 1 = 1 := by sorry\n  have h₂ : ∀ n : ℕ+, f n = n := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 4,
+            "column": 26
+          },
+          "goal": "f : ℕ+ → ℕ+\nh₀ : ∀ (n : ℕ+), f (f n) < f (n + 1)\n⊢ f 1 = 1",
+          "endPos": {
+            "line": 4,
+            "column": 31
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 5,
+            "column": 36
+          },
+          "goal": "f : ℕ+ → ℕ+\nh₀ : ∀ (n : ℕ+), f (f n) < f (n + 1)\nh₁ : f 1 = 1\n⊢ ∀ (n : ℕ+), f n = n",
+          "endPos": {
+            "line": 5,
+            "column": 41
+          }
+        },
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "f : ℕ+ → ℕ+\nh₀ : ∀ (n : ℕ+), f (f n) < f (n + 1)\nh₁ : f 1 = 1\nh₂ : ∀ (n : ℕ+), f n = n\n⊢ ∀ (n : ℕ+), f n = n",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 357.81
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_419",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_algebra_419 (a b : ℝ) (h₀ : a = -1) (h₁ : b = 5) : -a - b ^ 2 + 3 * (a * b) = -39 := by\n  rw [h₀, h₁]\n  norm_num\n  <;>\n  ring_nf\n  <;>\n  norm_num\n  <;>\n  linarith",
+    "full_code": "theorem mathd_algebra_419 (a b : ℝ) (h₀ : a = -1) (h₁ : b = 5) : -a - b ^ 2 + 3 * (a * b) = -39 := by\n  rw [h₀, h₁]\n  norm_num\n  <;>\n  ring_nf\n  <;>\n  norm_num\n  <;>\n  linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 30.31
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p10",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 31,
+    "code": "theorem amc12a_2020_p10\n  (n X : ℕ)\n  (h₀ : 1 < n)\n  (h₁ : Real.logb (2 : ℝ) (Real.logb (16 : ℝ) n) = Real.logb (4 : ℝ) (Real.logb (4 : ℝ) n))\n  (hX : X = List.sum (Nat.digits 10 n)) :\n  X = 4 ∨ X = 7 ∨ X = 8 ∨ X = 11 ∨ X = 13 := by sorry",
+    "full_code": "theorem amc12a_2020_p10\n  (n X : ℕ)\n  (h₀ : 1 < n)\n  (h₁ : Real.logb (2 : ℝ) (Real.logb (16 : ℝ) n) = Real.logb (4 : ℝ) (Real.logb (4 : ℝ) n))\n  (hX : X = List.sum (Nat.digits 10 n)) :\n  X = 4 ∨ X = 7 ∨ X = 8 ∨ X = 11 ∨ X = 13 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 7,
+            "column": 48
+          },
+          "goal": "n X : ℕ\nh₀ : 1 < n\nh₁ : Real.logb 2 (Real.logb 16 ↑n) = Real.logb 4 (Real.logb 4 ↑n)\nhX : X = (Nat.digits 10 n).sum\n⊢ X = 4 ∨ X = 7 ∨ X = 8 ∨ X = 11 ∨ X = 13",
+          "endPos": {
+            "line": 7,
+            "column": 53
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 494.41
+    }
+  },
+  {
+    "problem_id": "imo_1960_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "abbrev imo_1960_p2_solution : Set ℝ := {x : ℝ | -1/2 ≤ x ∧ x < 45/8 ∧ x ≠ 0}\n\ntheorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by\n  have h_main : 4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ (-1/2 ≤ x ∧ x < 45/8 ∧ x ≠ 0) := by sorry\n  have h_final : 4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by sorry\n  exact h_final",
+    "full_code": "abbrev imo_1960_p2_solution : Set ℝ := {x : ℝ | -1/2 ≤ x ∧ x < 45/8 ∧ x ≠ 0}\n\ntheorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by\n  have h_main : 4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ (-1/2 ≤ x ∧ x < 45/8 ∧ x ≠ 0) := by sorry\n  have h_final : 4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by sorry\n  exact h_final",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 27,
+          "pos": {
+            "line": 9,
+            "column": 110
+          },
+          "goal": "x : ℝ\nh₀ : 0 ≤ 1 + 2 * x\nh₁ : (1 - √(1 + 2 * x)) ^ 2 ≠ 0\n⊢ 4 * x ^ 2 / (1 - √(1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ -1 / 2 ≤ x ∧ x < 45 / 8 ∧ x ≠ 0",
+          "endPos": {
+            "line": 9,
+            "column": 115
+          }
+        },
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 10,
+            "column": 106
+          },
+          "goal": "x : ℝ\nh₀ : 0 ≤ 1 + 2 * x\nh₁ : (1 - √(1 + 2 * x)) ^ 2 ≠ 0\nh_main : 4 * x ^ 2 / (1 - √(1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ -1 / 2 ≤ x ∧ x < 45 / 8 ∧ x ≠ 0\n⊢ 4 * x ^ 2 / (1 - √(1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution",
+          "endPos": {
+            "line": 10,
+            "column": 111
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 445.0
+    }
+  }
+]

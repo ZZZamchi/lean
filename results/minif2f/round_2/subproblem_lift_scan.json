@@ -1,0 +1,31 @@
+{
+  "label": "minif2f_round_2",
+  "codes_path": "/home/ningmiao/Zam/lean/results/minif2f/round_2/to_inference_codes.json",
+  "compile_path": "/home/ningmiao/Zam/lean/results/minif2f/round_2/code_compilation_repl.json",
+  "k": 32,
+  "metric": "complete",
+  "problems_total": 244,
+  "problems_any_pass_at_k": 203,
+  "pass_at_k": 0.831967,
+  "problems_all_fail_at_k": 41,
+  "fail_all_extractable_sorry_main": 38,
+  "fail_all_has_code_but_no_by_marker": 3,
+  "fail_all_missing_code_rows": 0,
+  "extractable_example_bases": [
+    "aime_1984_p7",
+    "aime_1995_p7",
+    "aime_1999_p11",
+    "algebra_apbmpcneq0_aeq0anbeq0anceq0",
+    "algebra_ineq_nto1onlt2m1on",
+    "algebra_sum1onsqrt2to1onsqrt10000lt198",
+    "amc12a_2003_p23",
+    "amc12a_2008_p25",
+    "amc12a_2020_p25",
+    "amc12a_2020_p4",
+    "amc12a_2021_p12",
+    "amc12a_2021_p14",
+    "amc12a_2021_p19",
+    "amc12a_2021_p22",
+    "amc12a_2021_p25"
+  ]
+}

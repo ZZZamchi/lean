@@ -4,7 +4,23 @@ import numpy as np
 import json
 from jload import jload, jsave
 import os
-import re
+
+
+def subproblem_proof_constraints_hint(problem_id: str) -> str:
+    """Extra natural-language constraints for subproblem / leaf-id inference (dpskcot)."""
+    pid = (problem_id or "").lower()
+    lines = [
+        "\n\nAdditional constraints for this proof attempt:",
+        "- Prefer a short, structured proof: explicit `have` steps; avoid deep `simp` / `aesop` recursion.",
+        "- Avoid `native_decide` and unbounded `decide` over large search spaces.",
+    ]
+    if "numbertheory" in pid or "mathd_numbertheory" in pid:
+        lines.append(
+            "- Number theory: prefer induction on `Nat`, and `dvd` / `mod` / divisibility lemmas over brute search."
+        )
+    if "imo" in pid or "aime" in pid or "amc" in pid:
+        lines.append("- Competition-style: decompose into lemmas; avoid one-shot heavy automation.")
+    return "\n".join(lines)
 
 def get_error_str(code, errors, error_thres):
     err_str = ""
@@ -258,7 +274,7 @@ class InferenceHandler:
         cleaned_code = "\n".join(filtered_lines)
         return cleaned_code
 
-    def prover_inference(self, lean4_code, tokenizer):
+    def prover_inference(self, lean4_code, tokenizer, item_data=None):
         pass  # This method must be implemented by any derived class
 
     def generate_correction_prompt(self, lean4_code_original_stmt,
@@ -336,9 +352,17 @@ class DeepSeekCoTHandler(InferenceHandler):
             return import_head + matches[-1]
         return "None"
 
-    def prover_inference(self, lean4_code, tokenizer):
+    def prover_inference(self, lean4_code, tokenizer, item_data=None):
         formal_statement = lean4_code.split(":= by")[0] + ":= by sorry" # include sorry https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-7B
-        prompt = F"Complete the following Lean 4 code:\n\n```lean4\n{formal_statement}```\n\nBefore producing the Lean 4 code to formally prove the given theorem, provide a detailed proof plan outlining the main proof steps and strategies.\nThe plan should highlight key ideas, intermediate lemmas, and proof structures that will guide the construction of the final formal proof."
+        extra = ""
+        if item_data and item_data.get("problem_id"):
+            extra = subproblem_proof_constraints_hint(str(item_data["problem_id"]))
+        prompt = (
+            F"Complete the following Lean 4 code:\n\n```lean4\n{formal_statement}```\n\n"
+            "Before producing the Lean 4 code to formally prove the given theorem, provide a detailed proof plan outlining the main proof steps and strategies.\n"
+            "The plan should highlight key ideas, intermediate lemmas, and proof structures that will guide the construction of the final formal proof."
+            + extra
+        )
         messages = [
             {"role": "user", "content": prompt}
         ]
@@ -381,9 +405,12 @@ class DeepSeekNonCoTHandler(InferenceHandler):
     def __init__(self):
         pass 
 
-    def prover_inference(self, lean4_code, tokenizer):
+    def prover_inference(self, lean4_code, tokenizer, item_data=None):
         formal_statement = lean4_code.split(":= by")[0] + ":= by" # don't include sorry, directly completion
-        prompt = F"Complete the following Lean 4 code:\n\n```lean4\n{formal_statement}"
+        extra = ""
+        if item_data and item_data.get("problem_id"):
+            extra = subproblem_proof_constraints_hint(str(item_data["problem_id"]))
+        prompt = F"Complete the following Lean 4 code:\n\n```lean4\n{formal_statement}" + extra
         return prompt, None
 
     def generate_correction_prompt(self, lean4_code_original_stmt,
@@ -406,13 +433,16 @@ class KiminaCoTHandler(InferenceHandler):
     def __init__(self):
         pass 
 
-    def prover_inference(self, lean4_code, tokenizer):
+    def prover_inference(self, lean4_code, tokenizer, item_data=None):
         formal_statement = lean4_code.split(":= by")[0] + ":= by"
         # don't include sorry https://huggingface.co/AI-MO/Kimina-Prover-Preview-Distill-7B
         problem = self.clean_code_string(formal_statement)
+        extra = ""
+        if item_data and item_data.get("problem_id"):
+            extra = subproblem_proof_constraints_hint(str(item_data["problem_id"]))
         prompt = "Think about and solve the following problem step by step in Lean 4."
         prompt += f"\n# Problem:{problem}"""
-        prompt += f"\n# Formal statement:\n```lean4\n{formal_statement}\n```\n"
+        prompt += f"\n# Formal statement:\n```lean4\n{formal_statement}\n```\n" + extra
 
         messages = [
             {"role": "system", "content": "You are an expert in mathematics and Lean 4."},

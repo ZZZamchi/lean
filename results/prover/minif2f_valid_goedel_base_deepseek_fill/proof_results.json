@@ -1,0 +1,5110 @@
+[
+  {
+    "problem_id": "mathd_algebra_478",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_4x3m7y3neq2003",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1983_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem amc12_2001_p5 :\n    Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ) =\n      10000! / (2 ^ 5000 * 5000!) := by \n  have h₀ : False := by\n    have h₁ : (Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ)) = 10000! / (2 ^ 5000 * 5000!) := by\n      sorry\n    have h₂ : (Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ)) ≠ 10000! / (2 ^ 5000 * 5000!) := by\n      sorry\n    exact h₂ h₁\n  \n  have h₁ : Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ) = 10000! / (2 ^ 5000 * 5000!) := by\n    exfalso\n    exact h₀\n  \n  exact h₁",
+    "full_code": "\ntheorem amc12_2001_p5 :\n    Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ) =\n      10000! / (2 ^ 5000 * 5000!) := by \n  have h₀ : False := by\n    have h₁ : (Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ)) = 10000! / (2 ^ 5000 * 5000!) := by\n      sorry\n    have h₂ : (Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ)) ≠ 10000! / (2 ^ 5000 * 5000!) := by\n      sorry\n    exact h₂ h₁\n  \n  have h₁ : Finset.prod (Finset.filter (fun x => ¬Even x) (Finset.range 10000)) (id : ℕ → ℕ) = 10000! / (2 ^ 5000 * 5000!) := by\n    exfalso\n    exact h₀\n  \n  exact h₁",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 11
+          },
+          "endPos": {
+            "line": 5,
+            "column": 12
+          },
+          "data": "unexpected token '!'; expected ':=', 'where' or '|'"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 14.38
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_141",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1969_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by\n  have h₄ : f m = 0 := h₂\n  have h₅ : f n = 0 := h₃\n  rw [h₁] at h₄ h₅\n  simp_all only [Finset.sum_congr, Finset.sum_range_succ, Finset.sum_range_zero, Nat.cast_zero,\n    zero_div, zero_add, Nat.cast_one, one_div, add_zero]\n  have h₆ : ∃ t : ℤ, m - n = t * Real.pi := by\n    -- Use the fact that the sum of cosines at specific points is zero to deduce the desired result.\n    have h₇ : ∃ t : ℤ, m - n = t * Real.pi := by\n      -- Use the periodicity and properties of cosine to find the integer t.\n      apply?\n    exact h₇\n  exact h₆",
+    "full_code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by\n  have h₄ : f m = 0 := h₂\n  have h₅ : f n = 0 := h₃\n  rw [h₁] at h₄ h₅\n  simp_all only [Finset.sum_congr, Finset.sum_range_succ, Finset.sum_range_zero, Nat.cast_zero,\n    zero_div, zero_add, Nat.cast_one, one_div, add_zero]\n  have h₆ : ∃ t : ℤ, m - n = t * Real.pi := by\n    -- Use the fact that the sum of cosines at specific points is zero to deduce the desired result.\n    have h₇ : ∃ t : ℤ, m - n = t * Real.pi := by\n      -- Use the periodicity and properties of cosine to find the integer t.\n      apply?\n    exact h₇\n  exact h₆",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 97.21
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_209",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_1124",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1983_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_237",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_33",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_299",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpabsamblt1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1977_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem imo_1977_p6 (f : ℕ → ℕ) (h₀ : ∀ n, 0 < f n) (h₁ : ∀ n, 0 < n → f (f n) < f (n + 1)) :\n    ∀ n, 0 < n → f n = n := by \n  have h₂ : ∀ n, 0 < n → f n = n := by\n    sorry\n  sorry",
+    "full_code": "\ntheorem imo_1977_p6 (f : ℕ → ℕ) (h₀ : ∀ n, 0 < f n) (h₁ : ∀ n, 0 < n → f (f n) < f (n + 1)) :\n    ∀ n, 0 < n → f n = n := by \n  have h₂ : ∀ n, 0 < n → f n = n := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 6,
+            "column": 4
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (n : ℕ), 0 < f n\nh₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)\n⊢ ∀ (n : ℕ), 0 < n → f n = n",
+          "endPos": {
+            "line": 6,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 27,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (n : ℕ), 0 < f n\nh₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)\nh₂ : ∀ (n : ℕ), 0 < n → f n = n\n⊢ ∀ (n : ℕ), 0 < n → f n = n",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 46.89
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_419",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p10",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1960_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_427",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_x5neqy2p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imosl_2007_algebra_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem imosl_2007_algebra_p6 (a : ℕ → NNReal) (h₀ : (∑ x in Finset.range 100, a (x + 1) ^ 2) = 1) :\n    (∑ x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by \n  have h₁ : ∀ n : ℕ, n ∈ Finset.range 100 → a (n + 1) ^ 2 ≤ 1 := by sorry\n  have h₂ : ∀ n : ℕ, n ∈ Finset.range 100 → a (n + 1) ≤ 1 := by sorry\n  have h₃ : (∑ x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 ≤ 1 := by sorry\n  have h₄ : (∑ x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by sorry\n  exact h₄",
+    "full_code": "\ntheorem imosl_2007_algebra_p6 (a : ℕ → NNReal) (h₀ : (∑ x in Finset.range 100, a (x + 1) ^ 2) = 1) :\n    (∑ x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by \n  have h₁ : ∀ n : ℕ, n ∈ Finset.range 100 → a (n + 1) ^ 2 ≤ 1 := by sorry\n  have h₂ : ∀ n : ℕ, n ∈ Finset.range 100 → a (n + 1) ≤ 1 := by sorry\n  have h₃ : (∑ x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 ≤ 1 := by sorry\n  have h₄ : (∑ x in Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by sorry\n  exact h₄",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 5,
+            "column": 68
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\n⊢ ∀ n ∈ Finset.range 100, a (n + 1) ^ 2 ≤ 1",
+          "endPos": {
+            "line": 5,
+            "column": 73
+          }
+        },
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 6,
+            "column": 64
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\nh₁ : ∀ n ∈ Finset.range 100, a (n + 1) ^ 2 ≤ 1\n⊢ ∀ n ∈ Finset.range 100, a (n + 1) ≤ 1",
+          "endPos": {
+            "line": 6,
+            "column": 69
+          }
+        },
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 7,
+            "column": 92
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\nh₁ : ∀ n ∈ Finset.range 100, a (n + 1) ^ 2 ≤ 1\nh₂ : ∀ n ∈ Finset.range 100, a (n + 1) ≤ 1\n⊢ ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 ≤ 1",
+          "endPos": {
+            "line": 7,
+            "column": 97
+          }
+        },
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 8,
+            "column": 98
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\nh₁ : ∀ n ∈ Finset.range 100, a (n + 1) ^ 2 ≤ 1\nh₂ : ∀ n ∈ Finset.range 100, a (n + 1) ≤ 1\nh₃ : ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 ≤ 1\n⊢ ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 < 12 / 25",
+          "endPos": {
+            "line": 8,
+            "column": 103
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 166.44
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_398",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1963_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem imo_1963_p5 : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by \n  have h₁ : Real.cos (5 * Real.pi / 7) = -Real.cos (2 * Real.pi / 7) := by sorry\n  have h₂ : Real.cos (Real.pi / 7) + Real.cos (3 * Real.pi / 7) + Real.cos (5 * Real.pi / 7) = 1 / 2 := by sorry\n  have h₃ : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by sorry\n  exact h₃",
+    "full_code": "\ntheorem imo_1963_p5 : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by \n  have h₁ : Real.cos (5 * Real.pi / 7) = -Real.cos (2 * Real.pi / 7) := by sorry\n  have h₂ : Real.cos (Real.pi / 7) + Real.cos (3 * Real.pi / 7) + Real.cos (5 * Real.pi / 7) = 1 / 2 := by sorry\n  have h₃ : Real.cos (Real.pi / 7) - Real.cos (2 * Real.pi / 7) + Real.cos (3 * Real.pi / 7) = 1 / 2 := by sorry\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 12,
+          "pos": {
+            "line": 4,
+            "column": 75
+          },
+          "goal": "⊢ (5 * Real.pi / 7).cos = -(2 * Real.pi / 7).cos",
+          "endPos": {
+            "line": 4,
+            "column": 80
+          }
+        },
+        {
+          "proofState": 13,
+          "pos": {
+            "line": 5,
+            "column": 107
+          },
+          "goal": "h₁ : (5 * Real.pi / 7).cos = -(2 * Real.pi / 7).cos\n⊢ (Real.pi / 7).cos + (3 * Real.pi / 7).cos + (5 * Real.pi / 7).cos = 1 / 2",
+          "endPos": {
+            "line": 5,
+            "column": 112
+          }
+        },
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 6,
+            "column": 107
+          },
+          "goal": "h₁ : (5 * Real.pi / 7).cos = -(2 * Real.pi / 7).cos\nh₂ : (Real.pi / 7).cos + (3 * Real.pi / 7).cos + (5 * Real.pi / 7).cos = 1 / 2\n⊢ (Real.pi / 7).cos - (2 * Real.pi / 7).cos + (3 * Real.pi / 7).cos = 1 / 2",
+          "endPos": {
+            "line": 6,
+            "column": 112
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 58.18
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_430",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_459",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_12dvd4expnp1p20",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_320",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_137",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1997_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem imo_1997_p5 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) :\n    (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by \n  have h_main : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by sorry\n  sorry",
+    "full_code": "\ntheorem imo_1997_p5 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) :\n    (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by \n  have h_main : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 30,
+          "pos": {
+            "line": 5,
+            "column": 76
+          },
+          "goal": "x y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\n⊢ (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3)",
+          "endPos": {
+            "line": 5,
+            "column": 81
+          }
+        },
+        {
+          "proofState": 31,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "x y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\nh_main : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3)\n⊢ (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3)",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 137.36
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_277",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_559",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_160",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_24",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_176",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_nfactltnexpnm1ngt3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_208",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_353",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_notequiv2i2jasqbsqdiv8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_156",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_345",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_447",
+    "complete": true,
+    "strategy": "near_miss",
+    "attempts": 4,
+    "code": "theorem mathd_numbertheory_447 :\n    (∑ k in Finset.filter (fun x => 3 ∣ x) (Finset.Icc 1 50), k % 10) = 78 := by\n  rfl\n  <;> simp [Finset.sum_filter, Finset.sum_range_succ, Nat.mod_eq_of_lt]\n  <;> norm_num\n  <;> decide",
+    "full_code": "theorem mathd_numbertheory_447 :\n    (∑ k in Finset.filter (fun x => 3 ∣ x) (Finset.Icc 1 50), k % 10) = 78 := by\n  rfl\n  <;> simp [Finset.sum_filter, Finset.sum_range_succ, Nat.mod_eq_of_lt]\n  <;> norm_num\n  <;> decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 45.01
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_328",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_451",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem mathd_numbertheory_451 (S : Finset ℕ)\n    (h₀ :\n      ∀ n : ℕ,\n        n ∈ S ↔\n          2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, (Nat.divisors m).card = 4 ∧ (∑ p in Nat.divisors m, p) = n) :\n    (∑ k in S, k) = 2016 := by \n  have h₁ : S = {2016} := by sorry\n  have h₂ : (∑ k in S, k) = 2016 := by sorry\n  sorry",
+    "full_code": "\ntheorem mathd_numbertheory_451 (S : Finset ℕ)\n    (h₀ :\n      ∀ n : ℕ,\n        n ∈ S ↔\n          2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, (Nat.divisors m).card = 4 ∧ (∑ p in Nat.divisors m, p) = n) :\n    (∑ k in S, k) = 2016 := by \n  have h₁ : S = {2016} := by sorry\n  have h₂ : (∑ k in S, k) = 2016 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 9,
+            "column": 29
+          },
+          "goal": "S : Finset ℕ\nh₀ : ∀ (n : ℕ), n ∈ S ↔ 2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, m.divisors.card = 4 ∧ ∑ p ∈ m.divisors, p = n\n⊢ S = {2016}",
+          "endPos": {
+            "line": 9,
+            "column": 34
+          }
+        },
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 10,
+            "column": 39
+          },
+          "goal": "S : Finset ℕ\nh₀ : ∀ (n : ℕ), n ∈ S ↔ 2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, m.divisors.card = 4 ∧ ∑ p ∈ m.divisors, p = n\nh₁ : S = {2016}\n⊢ ∑ k ∈ S, k = 2016",
+          "endPos": {
+            "line": 10,
+            "column": 44
+          }
+        },
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 11,
+            "column": 2
+          },
+          "goal": "S : Finset ℕ\nh₀ : ∀ (n : ℕ), n ∈ S ↔ 2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, m.divisors.card = 4 ∧ ∑ p ∈ m.divisors, p = n\nh₁ : S = {2016}\nh₂ : ∑ k ∈ S, k = 2016\n⊢ ∑ k ∈ S, k = 2016",
+          "endPos": {
+            "line": 11,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 151.91
+    }
+  },
+  {
+    "problem_id": "aime_1997_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_at2malt1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_apbmpcneq0_aeq0anbeq0anceq0",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem algebra_apbmpcneq0_aeq0anbeq0anceq0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n)\n    (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : (a : ℝ) + b * m + c * n = 0) : a = 0 ∧ b = 0 ∧ c = 0 := by \n  have h₄ : a = 0 := by sorry\n  have h₅ : b = 0 := by sorry\n  have h₆ : c = 0 := by sorry\n  exact ⟨h₄, h₅, h₆⟩",
+    "full_code": "\ntheorem algebra_apbmpcneq0_aeq0anbeq0anceq0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n)\n    (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : (a : ℝ) + b * m + c * n = 0) : a = 0 ∧ b = 0 ∧ c = 0 := by \n  have h₄ : a = 0 := by sorry\n  have h₅ : b = 0 := by sorry\n  have h₆ : c = 0 := by sorry\n  exact ⟨h₄, h₅, h₆⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 5,
+            "column": 24
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\n⊢ a = 0",
+          "endPos": {
+            "line": 5,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 6,
+            "column": 24
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\n⊢ b = 0",
+          "endPos": {
+            "line": 6,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 7,
+            "column": 24
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\nh₅ : b = 0\n⊢ c = 0",
+          "endPos": {
+            "line": 7,
+            "column": 29
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 270.82
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_171",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_227",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_188",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_765",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1959_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_175",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_sumkexp3eqsumksq",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown (m n : ℕ) (f : ℕ → ℕ)\n    (h₀ : ∀ x, f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) :\n    f (2 ^ m) ∣ f (2 ^ n) := by  sorry",
+    "full_code": "\ntheorem numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown (m n : ℕ) (f : ℕ → ℕ)\n    (h₀ : ∀ x, f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) :\n    f (2 ^ m) ∣ f (2 ^ n) := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 5,
+            "column": 33
+          },
+          "goal": "m n : ℕ\nf : ℕ → ℕ\nh₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x\nh₁ : 0 < m ∧ 0 < n\nh₂ : m ≤ n\n⊢ f (2 ^ m) ∣ f (2 ^ n)",
+          "endPos": {
+            "line": 5,
+            "column": 38
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 103.59
+    }
+  },
+  {
+    "problem_id": "imo_1992_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem imo_1992_p1 (p q r : ℤ) (h₀ : 1 < p ∧ p < q ∧ q < r)\n    (h₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1) :\n    (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15) := by \n  \n  have h_p_eq_2 : p = 2 → (p, q, r) = (2, 4, 8) := by sorry\n  \n  have h_p_eq_3 : p = 3 → (p, q, r) = (3, 5, 15) := by sorry\n  \n  have h_p_ge_4 : p ≥ 4 → False := by sorry\n  \n  have h_main : (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15) := by sorry\n  sorry",
+    "full_code": "\ntheorem imo_1992_p1 (p q r : ℤ) (h₀ : 1 < p ∧ p < q ∧ q < r)\n    (h₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1) :\n    (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15) := by \n  \n  have h_p_eq_2 : p = 2 → (p, q, r) = (2, 4, 8) := by sorry\n  \n  have h_p_eq_3 : p = 3 → (p, q, r) = (3, 5, 15) := by sorry\n  \n  have h_p_ge_4 : p ≥ 4 → False := by sorry\n  \n  have h_main : (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15) := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 20,
+          "pos": {
+            "line": 7,
+            "column": 54
+          },
+          "goal": "p q r : ℤ\nh₀ : 1 < p ∧ p < q ∧ q < r\nh₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1\n⊢ p = 2 → (p, q, r) = (2, 4, 8)",
+          "endPos": {
+            "line": 7,
+            "column": 59
+          }
+        },
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 9,
+            "column": 55
+          },
+          "goal": "p q r : ℤ\nh₀ : 1 < p ∧ p < q ∧ q < r\nh₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1\nh_p_eq_2 : p = 2 → (p, q, r) = (2, 4, 8)\n⊢ p = 3 → (p, q, r) = (3, 5, 15)",
+          "endPos": {
+            "line": 9,
+            "column": 60
+          }
+        },
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 11,
+            "column": 38
+          },
+          "goal": "p q r : ℤ\nh₀ : 1 < p ∧ p < q ∧ q < r\nh₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1\nh_p_eq_2 : p = 2 → (p, q, r) = (2, 4, 8)\nh_p_eq_3 : p = 3 → (p, q, r) = (3, 5, 15)\n⊢ p ≥ 4 → False",
+          "endPos": {
+            "line": 11,
+            "column": 43
+          }
+        },
+        {
+          "proofState": 23,
+          "pos": {
+            "line": 13,
+            "column": 69
+          },
+          "goal": "p q r : ℤ\nh₀ : 1 < p ∧ p < q ∧ q < r\nh₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1\nh_p_eq_2 : p = 2 → (p, q, r) = (2, 4, 8)\nh_p_eq_3 : p = 3 → (p, q, r) = (3, 5, 15)\nh_p_ge_4 : p ≥ 4 → False\n⊢ (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15)",
+          "endPos": {
+            "line": 13,
+            "column": 74
+          }
+        },
+        {
+          "proofState": 24,
+          "pos": {
+            "line": 14,
+            "column": 2
+          },
+          "goal": "p q r : ℤ\nh₀ : 1 < p ∧ p < q ∧ q < r\nh₁ : (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1\nh_p_eq_2 : p = 2 → (p, q, r) = (2, 4, 8)\nh_p_eq_3 : p = 3 → (p, q, r) = (3, 5, 15)\nh_p_ge_4 : p ≥ 4 → False\nh_main : (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15)\n⊢ (p, q, r) = (2, 4, 8) ∨ (p, q, r) = (3, 5, 15)",
+          "endPos": {
+            "line": 14,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 96.99
+    }
+  },
+  {
+    "problem_id": "imo_1982_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem imo_1982_p1 (f : ℕ → ℕ)\n    (h₀ : ∀ m n, 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1)\n    (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by \n  have h₄ : f 1982 = 660 := by sorry\n  sorry",
+    "full_code": "\ntheorem imo_1982_p1 (f : ℕ → ℕ)\n    (h₀ : ∀ m n, 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1)\n    (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by \n  have h₄ : f 1982 = 660 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 33,
+          "pos": {
+            "line": 6,
+            "column": 31
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1\nh₁ : f 2 = 0\nh₂ : 0 < f 3\nh₃ : f 9999 = 3333\n⊢ f 1982 = 660",
+          "endPos": {
+            "line": 6,
+            "column": 36
+          }
+        },
+        {
+          "proofState": 34,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1\nh₁ : f 2 = 0\nh₂ : 0 < f 3\nh₃ : f 9999 = 3333\nh₄ : f 1982 = 660\n⊢ f 1982 = 660",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 48.48
+    }
+  },
+  {
+    "problem_id": "aime_1987_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_346",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_487",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_728",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_184",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_552",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem mathd_numbertheory_552 (f g h : ℕ+ → ℕ) (h₀ : ∀ x, f x = 12 * x + 7)\n    (h₁ : ∀ x, g x = 5 * x + 2) (h₂ : ∀ x, h x = Nat.gcd (f x) (g x)) (h₃ : Fintype (Set.range h)) :\n    (∑ k in (Set.range h).toFinset, k) = 12 := by  sorry",
+    "full_code": "\ntheorem mathd_numbertheory_552 (f g h : ℕ+ → ℕ) (h₀ : ∀ x, f x = 12 * x + 7)\n    (h₁ : ∀ x, g x = 5 * x + 2) (h₂ : ∀ x, h x = Nat.gcd (f x) (g x)) (h₃ : Fintype (Set.range h)) :\n    (∑ k in (Set.range h).toFinset, k) = 12 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 46,
+          "pos": {
+            "line": 5,
+            "column": 51
+          },
+          "goal": "f g h : ℕ+ → ℕ\nh₀ : ∀ (x : ℕ+), f x = 12 * ↑x + 7\nh₁ : ∀ (x : ℕ+), g x = 5 * ↑x + 2\nh₂ : ∀ (x : ℕ+), h x = (f x).gcd (g x)\nh₃ : Fintype ↑(Set.range h)\n⊢ ∑ k ∈ (Set.range h).toFinset, k = 12",
+          "endPos": {
+            "line": 5,
+            "column": 56
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 47.91
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1994_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem aime_1994_p3 (f : ℤ → ℤ) (h0 : ∀ x, f x + f (x - 1) = x ^ 2) (h1 : f 19 = 94) :\n    f 94 % 1000 = 561 := by \n  have h2 : f 94 % 1000 = 561 := by sorry\n  sorry",
+    "full_code": "\ntheorem aime_1994_p3 (f : ℤ → ℤ) (h0 : ∀ x, f x + f (x - 1) = x ^ 2) (h1 : f 19 = 94) :\n    f 94 % 1000 = 561 := by \n  have h2 : f 94 % 1000 = 561 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 5,
+            "column": 36
+          },
+          "goal": "f : ℤ → ℤ\nh0 : ∀ (x : ℤ), f x + f (x - 1) = x ^ 2\nh1 : f 19 = 94\n⊢ f 94 % 1000 = 561",
+          "endPos": {
+            "line": 5,
+            "column": 41
+          }
+        },
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "f : ℤ → ℤ\nh0 : ∀ (x : ℤ), f x + f (x - 1) = x ^ 2\nh1 : f 19 = 94\nh2 : f 94 % 1000 = 561\n⊢ f 94 % 1000 = 561",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 43.61
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_44",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_215",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_293",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_769",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_452",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_207",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_342",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_483",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 12,
+    "code": "theorem mathd_numbertheory_483 (a : ℕ → ℕ) (h₀ : a 1 = 1) (h₁ : a 2 = 1)\n    (h₂ : ∀ n, a (n + 2) = a (n + 1) + a n) : a 100 % 4 = 3 := by\n  have h_mod : ∀ n, a (n + 6) % 4 = a n % 4 := by sorry\n  have h_100_mod : a 100 % 4 = a 4 % 4 := by sorry\n  have h_a4 : a 4 % 4 = 3 := by sorry\n  have h_final : a 100 % 4 = 3 := by sorry\n  exact h_final",
+    "full_code": "theorem mathd_numbertheory_483 (a : ℕ → ℕ) (h₀ : a 1 = 1) (h₁ : a 2 = 1)\n    (h₂ : ∀ n, a (n + 2) = a (n + 1) + a n) : a 100 % 4 = 3 := by\n  have h_mod : ∀ n, a (n + 6) % 4 = a n % 4 := by sorry\n  have h_100_mod : a 100 % 4 = a 4 % 4 := by sorry\n  have h_a4 : a 4 % 4 = 3 := by sorry\n  have h_final : a 100 % 4 = 3 := by sorry\n  exact h_final",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 601,
+          "pos": {
+            "line": 4,
+            "column": 50
+          },
+          "goal": "a : ℕ → ℕ\nh₀ : a 1 = 1\nh₁ : a 2 = 1\nh₂ : ∀ (n : ℕ), a (n + 2) = a (n + 1) + a n\n⊢ ∀ (n : ℕ), a (n + 6) % 4 = a n % 4",
+          "endPos": {
+            "line": 4,
+            "column": 55
+          }
+        },
+        {
+          "proofState": 602,
+          "pos": {
+            "line": 5,
+            "column": 45
+          },
+          "goal": "a : ℕ → ℕ\nh₀ : a 1 = 1\nh₁ : a 2 = 1\nh₂ : ∀ (n : ℕ), a (n + 2) = a (n + 1) + a n\nh_mod : ∀ (n : ℕ), a (n + 6) % 4 = a n % 4\n⊢ a 100 % 4 = a 4 % 4",
+          "endPos": {
+            "line": 5,
+            "column": 50
+          }
+        },
+        {
+          "proofState": 603,
+          "pos": {
+            "line": 6,
+            "column": 32
+          },
+          "goal": "a : ℕ → ℕ\nh₀ : a 1 = 1\nh₁ : a 2 = 1\nh₂ : ∀ (n : ℕ), a (n + 2) = a (n + 1) + a n\nh_mod : ∀ (n : ℕ), a (n + 6) % 4 = a n % 4\nh_100_mod : a 100 % 4 = a 4 % 4\n⊢ a 4 % 4 = 3",
+          "endPos": {
+            "line": 6,
+            "column": 37
+          }
+        },
+        {
+          "proofState": 604,
+          "pos": {
+            "line": 7,
+            "column": 37
+          },
+          "goal": "a : ℕ → ℕ\nh₀ : a 1 = 1\nh₁ : a 2 = 1\nh₂ : ∀ (n : ℕ), a (n + 2) = a (n + 1) + a n\nh_mod : ∀ (n : ℕ), a (n + 6) % 4 = a n % 4\nh_100_mod : a 100 % 4 = a 4 % 4\nh_a4 : a 4 % 4 = 3\n⊢ a 100 % 4 = 3",
+          "endPos": {
+            "line": 7,
+            "column": 42
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 203.25
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p21",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2003_p5",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_495",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_296",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_247",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem induction_pord1p1on2powklt5on2 (n : ℕ) (h₀ : 0 < n) :\n    ∏ k in Finset.Icc 1 n, (1 + (1 : ℝ) / 2 ^ k) < 5 / 2 := by  sorry",
+    "full_code": "\ntheorem induction_pord1p1on2powklt5on2 (n : ℕ) (h₀ : 0 < n) :\n    ∏ k in Finset.Icc 1 n, (1 + (1 : ℝ) / 2 ^ k) < 5 / 2 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 605,
+          "pos": {
+            "line": 4,
+            "column": 64
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\n⊢ ∏ k ∈ Finset.Icc 1 n, (1 + 1 / 2 ^ k) < 5 / 2",
+          "endPos": {
+            "line": 4,
+            "column": 69
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 33.68
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_107",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_2pownm1prime_nprime",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_412",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2013_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_392",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_314",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_prod1p1onk3le3m1onn",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_343",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_756",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_80",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_457",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_135",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_275",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_388",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1981_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_263",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_34",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_764",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 12,
+    "code": "\ntheorem mathd_numbertheory_764 (p : ℕ) (h₀ : Nat.Prime p) (h₁ : 7 ≤ p) :\n    (∑ k in Finset.Icc 1 (p - 2), (k : ZMod p)⁻¹ * ((k : ZMod p) + 1)⁻¹) = 2 := by  sorry",
+    "full_code": "\ntheorem mathd_numbertheory_764 (p : ℕ) (h₀ : Nat.Prime p) (h₁ : 7 ≤ p) :\n    (∑ k in Finset.Icc 1 (p - 2), (k : ZMod p)⁻¹ * ((k : ZMod p) + 1)⁻¹) = 2 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 4,
+            "column": 84
+          },
+          "goal": "p : ℕ\nh₀ : p.Prime\nh₁ : 7 ≤ p\n⊢ ∑ k ∈ Finset.Icc 1 (p - 2), (↑k)⁻¹ * (↑k + 1)⁻¹ = 2",
+          "endPos": {
+            "line": 4,
+            "column": 89
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 282.46
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1962_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_170",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_432",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_598",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_bleqa_apbon2msqrtableqambsqon8b",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_276",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p14",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem algebra_sum1onsqrt2to1onsqrt10000lt198 :\n    (∑ k in Finset.Icc (2 : ℕ) 10000, 1 / Real.sqrt k) < 198 := by \n  have h_main : (∑ k in Finset.Icc (2 : ℕ) 10000, 1 / Real.sqrt k : ℝ) < 198 := by sorry\n  sorry",
+    "full_code": "\ntheorem algebra_sum1onsqrt2to1onsqrt10000lt198 :\n    (∑ k in Finset.Icc (2 : ℕ) 10000, 1 / Real.sqrt k) < 198 := by \n  have h_main : (∑ k in Finset.Icc (2 : ℕ) 10000, 1 / Real.sqrt k : ℝ) < 198 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 58,
+          "pos": {
+            "line": 5,
+            "column": 83
+          },
+          "goal": "⊢ ∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198",
+          "endPos": {
+            "line": 5,
+            "column": 88
+          }
+        },
+        {
+          "proofState": 59,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "h_main : ∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198\n⊢ ∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 47.78
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_618",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_435",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_others_exirrpowirrrat",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_427",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_76",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_99",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_9onxpypzleqsum2onxpy",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_233",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_absapbon1pabsapbleqsumabsaon1pabsa",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1984_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_2001_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_321",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_17",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_153",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpamblt1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p18",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_329",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_pprime_pdvdapowpma",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem amc12a_2021_p9 : (∏ k in Finset.range 7, (2 ^ 2 ^ k + 3 ^ 2 ^ k)) = 3 ^ 128 - 2 ^ 128 := by  sorry",
+    "full_code": "\ntheorem amc12a_2021_p9 : (∏ k in Finset.range 7, (2 ^ 2 ^ k + 3 ^ 2 ^ k)) = 3 ^ 128 - 2 ^ 128 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 3,
+            "column": 101
+          },
+          "goal": "⊢ ∏ k ∈ Finset.range 7, (2 ^ 2 ^ k + 3 ^ 2 ^ k) = 3 ^ 128 - 2 ^ 128",
+          "endPos": {
+            "line": 3,
+            "column": 106
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 29.23
+    }
+  },
+  {
+    "problem_id": "aime_1984_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p22",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem amc12a_2021_p22 (a b c : ℝ) (f : ℝ → ℝ) (h₀ : ∀ x, f x = x ^ 3 + a * x ^ 2 + b * x + c)\n    (h₁ :\n      f ⁻¹' {0} =\n        {Real.cos (2 * Real.pi / 7), Real.cos (4 * Real.pi / 7), Real.cos (6 * Real.pi / 7)}) :\n    a * b * c = 1 / 32 := by \n  have h₂ : False := by sorry\n  have h₃ : a * b * c = 1 / 32 := by sorry\n  sorry",
+    "full_code": "\ntheorem amc12a_2021_p22 (a b c : ℝ) (f : ℝ → ℝ) (h₀ : ∀ x, f x = x ^ 3 + a * x ^ 2 + b * x + c)\n    (h₁ :\n      f ⁻¹' {0} =\n        {Real.cos (2 * Real.pi / 7), Real.cos (4 * Real.pi / 7), Real.cos (6 * Real.pi / 7)}) :\n    a * b * c = 1 / 32 := by \n  have h₂ : False := by sorry\n  have h₃ : a * b * c = 1 / 32 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 8,
+            "column": 24
+          },
+          "goal": "a b c : ℝ\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 3 + a * x ^ 2 + b * x + c\nh₁ : f ⁻¹' {0} = {(2 * Real.pi / 7).cos, (4 * Real.pi / 7).cos, (6 * Real.pi / 7).cos}\n⊢ False",
+          "endPos": {
+            "line": 8,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 9,
+            "column": 37
+          },
+          "goal": "a b c : ℝ\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 3 + a * x ^ 2 + b * x + c\nh₁ : f ⁻¹' {0} = {(2 * Real.pi / 7).cos, (4 * Real.pi / 7).cos, (6 * Real.pi / 7).cos}\nh₂ : False\n⊢ a * b * c = 1 / 32",
+          "endPos": {
+            "line": 9,
+            "column": 42
+          }
+        },
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 10,
+            "column": 2
+          },
+          "goal": "a b c : ℝ\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 3 + a * x ^ 2 + b * x + c\nh₁ : f ⁻¹' {0} = {(2 * Real.pi / 7).cos, (4 * Real.pi / 7).cos, (6 * Real.pi / 7).cos}\nh₂ : False\nh₃ : a * b * c = 1 / 32\n⊢ a * b * c = 1 / 32",
+          "endPos": {
+            "line": 10,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 226.14
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_229",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_100",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_313",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "theorem amc12b_2002_p4\n  (n : ℕ)\n  (h₀ : 0 < n)\n  (h₁ : ((1:ℚ) / (2 : ℚ) + 1 / (3 : ℚ) + 1 / (7 : ℚ) + 1 / (↑n : ℚ)).isInt) :\n  ¬ 2 ∣ n ∨ ¬ 3 ∣ n ∨ ¬ 6 ∣ n ∨ ¬ 7 ∣ n ∨ ¬ 84 < n := by\n  have h₂ : ¬ 2 ∣ n ∨ ¬ 3 ∣ n ∨ ¬ 6 ∣ n ∨ ¬ 7 ∣ n ∨ ¬ 84 < n := by\n    by_contra! h\n    have h₃ : n ≤ 84 := by\n      omega\n    interval_cases n <;> norm_num [Nat.dvd_iff_mod_eq_zero, Nat.div_eq_of_lt] at h <;>\n      simp_all [add_assoc, add_comm, add_left_comm, div_eq_mul_inv]\n    <;> field_simp at h₁ ⊢ <;> norm_cast at h₁ ⊢ <;>\n      simp_all [add_assoc, add_comm, add_left_comm, div_eq_mul_inv] <;>\n      norm_num at h₁ ⊢ <;>\n      contradiction\n  exact h₂",
+    "full_code": "theorem amc12b_2002_p4\n  (n : ℕ)\n  (h₀ : 0 < n)\n  (h₁ : ((1:ℚ) / (2 : ℚ) + 1 / (3 : ℚ) + 1 / (7 : ℚ) + 1 / (↑n : ℚ)).isInt) :\n  ¬ 2 ∣ n ∨ ¬ 3 ∣ n ∨ ¬ 6 ∣ n ∨ ¬ 7 ∣ n ∨ ¬ 84 < n := by\n  have h₂ : ¬ 2 ∣ n ∨ ¬ 3 ∣ n ∨ ¬ 6 ∣ n ∨ ¬ 7 ∣ n ∨ ¬ 84 < n := by\n    by_contra! h\n    have h₃ : n ≤ 84 := by\n      omega\n    interval_cases n <;> norm_num [Nat.dvd_iff_mod_eq_zero, Nat.div_eq_of_lt] at h <;>\n      simp_all [add_assoc, add_comm, add_left_comm, div_eq_mul_inv]\n    <;> field_simp at h₁ ⊢ <;> norm_cast at h₁ ⊢ <;>\n      simp_all [add_assoc, add_comm, add_left_comm, div_eq_mul_inv] <;>\n      norm_num at h₁ ⊢ <;>\n      contradiction\n  exact h₂",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 10,
+            "column": 6
+          },
+          "endPos": {
+            "line": 10,
+            "column": 11
+          },
+          "data": "omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  a ≥ 3\nwhere\n a := Lean.Omega.bmod_div_term 7 [0, 0, 0, 0, 6, -7]\n  (Lean.Omega.Coeffs.ofList\n    [↑n, ↑n / 2, ↑n / 3, Lean.Omega.bmod_div_term 3 [0, 2, -3] (Lean.Omega.Coeffs.ofList [↑n, ↑n / 2, ↑n / 3]), ↑n / 6,\n      ↑n / 7])"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 14.88
+    }
+  },
+  {
+    "problem_id": "amc12a_2002_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2003_p23",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem amc12a_2003_p23 (S : Finset ℕ)\n    (h₀ : ∀ k : ℕ, k ∈ S ↔ 0 < k ∧ (k * k : ℕ) ∣ ∏ i in Finset.Icc 1 9, i !) : S.card = 672 := by  sorry",
+    "full_code": "\ntheorem amc12a_2003_p23 (S : Finset ℕ)\n    (h₀ : ∀ k : ℕ, k ∈ S ↔ 0 < k ∧ (k * k : ℕ) ∣ ∏ i in Finset.Icc 1 9, i !) : S.card = 672 := by  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 75
+          },
+          "endPos": {
+            "line": 4,
+            "column": 76
+          },
+          "data": "unexpected token ')'; expected term"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 14.54
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_129",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p18",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_484",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_551",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_304",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_ineq_nto1onlt2m1on",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem algebra_ineq_nto1onlt2m1on (n : ℕ) : (n : ℝ) ^ ((1 : ℝ) / n) ≤ 2 - 1 / n := by \n  have h_main : (n : ℝ) ^ ((1 : ℝ) / n) ≤ 2 - 1 / n := by sorry\n  sorry",
+    "full_code": "\ntheorem algebra_ineq_nto1onlt2m1on (n : ℕ) : (n : ℝ) ^ ((1 : ℝ) / n) ≤ 2 - 1 / n := by \n  have h_main : (n : ℝ) ^ ((1 : ℝ) / n) ≤ 2 - 1 / n := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 4,
+            "column": 58
+          },
+          "goal": "n : ℕ\n⊢ ↑n ^ (1 / ↑n) ≤ 2 - 1 / ↑n",
+          "endPos": {
+            "line": 4,
+            "column": 63
+          }
+        },
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nh_main : ↑n ^ (1 / ↑n) ≤ 2 - 1 / ↑n\n⊢ ↑n ^ (1 / ↑n) ≤ 2 - 1 / ↑n",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 45.57
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p19",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_341",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_711",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p22",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem amc12b_2020_p22 (t : ℝ) : (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12 := by \n  have h_main : (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12 := by sorry\n  sorry",
+    "full_code": "\ntheorem amc12b_2020_p22 (t : ℝ) : (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12 := by \n  have h_main : (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 4,
+            "column": 59
+          },
+          "goal": "t : ℝ\n⊢ (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12",
+          "endPos": {
+            "line": 4,
+            "column": 64
+          }
+        },
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "t : ℝ\nh_main : (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12\n⊢ (2 ^ t - 3 * t) * t / 4 ^ t ≤ 1 / 12",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 50.24
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_113",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem amc12a_2020_p9 (S : Finset ℝ)\n    (h₀ : ∀ x : ℝ, x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * Real.pi ∧ Real.tan (2 * x) = Real.cos (x / 2)) : S.card = 5 := by  sorry",
+    "full_code": "\ntheorem amc12a_2020_p9 (S : Finset ℝ)\n    (h₀ : ∀ x : ℝ, x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * Real.pi ∧ Real.tan (2 * x) = Real.cos (x / 2)) : S.card = 5 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 4,
+            "column": 110
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * Real.pi ∧ (2 * x).tan = (x / 2).cos\n⊢ S.card = 5",
+          "endPos": {
+            "line": 4,
+            "column": 115
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 186.59
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p19",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem amc12a_2021_p19 (S : Finset ℝ)\n    (h₀ :\n      ∀ x : ℝ,\n        x ∈ S ↔\n          0 ≤ x ∧\n            x ≤ Real.pi ∧\n              Real.sin (Real.pi / 2 * Real.cos x) = Real.cos (Real.pi / 2 * Real.sin x)) :\n    S.card = 2 := by \n  have h₁ : S = {0, Real.pi / 2} := by sorry\n  have h₂ : S.card = 2 := by sorry\n  sorry",
+    "full_code": "\ntheorem amc12a_2021_p19 (S : Finset ℝ)\n    (h₀ :\n      ∀ x : ℝ,\n        x ∈ S ↔\n          0 ≤ x ∧\n            x ≤ Real.pi ∧\n              Real.sin (Real.pi / 2 * Real.cos x) = Real.cos (Real.pi / 2 * Real.sin x)) :\n    S.card = 2 := by \n  have h₁ : S = {0, Real.pi / 2} := by sorry\n  have h₂ : S.card = 2 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 11,
+            "column": 39
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ Real.pi ∧ (Real.pi / 2 * x.cos).sin = (Real.pi / 2 * x.sin).cos\n⊢ S = {0, Real.pi / 2}",
+          "endPos": {
+            "line": 11,
+            "column": 44
+          }
+        },
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 12,
+            "column": 29
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ Real.pi ∧ (Real.pi / 2 * x.cos).sin = (Real.pi / 2 * x.sin).cos\nh₁ : S = {0, Real.pi / 2}\n⊢ S.card = 2",
+          "endPos": {
+            "line": 12,
+            "column": 34
+          }
+        },
+        {
+          "proofState": 23,
+          "pos": {
+            "line": 13,
+            "column": 2
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ Real.pi ∧ (Real.pi / 2 * x.cos).sin = (Real.pi / 2 * x.sin).cos\nh₁ : S = {0, Real.pi / 2}\nh₂ : S.card = 2\n⊢ S.card = 2",
+          "endPos": {
+            "line": 13,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 151.58
+    }
+  },
+  {
+    "problem_id": "algebra_amgm_sumasqdivbgeqsuma",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_212",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_320",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_125",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "induction_1pxpownlt1pnx",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_148",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2019_p12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem amc12a_2019_p12 (x y : ℝ) (h₀ : x ≠ 1 ∧ y ≠ 1)\n    (h₁ : Real.log x / Real.log 2 = Real.log 16 / Real.log y) (h₂ : x * y = 64) :\n    (Real.log (x / y) / Real.log 2) ^ 2 = 20 := by \n  \n  have h₃ : x > 0 := by sorry\n  have h₄ : y > 0 := by sorry\n  \n  have h₅ : Real.log x + Real.log y = 6 * Real.log 2 := by sorry\n  \n  have h₆ : Real.log x * Real.log y = 4 * (Real.log 2) ^ 2 := by sorry\n  \n  have h₇ : (Real.log x / Real.log 2 + Real.log y / Real.log 2) = 6 := by sorry\n  have h₈ : (Real.log x / Real.log 2) * (Real.log y / Real.log 2) = 4 := by sorry\n  \n  have h₉ : (Real.log (x / y) / Real.log 2) ^ 2 = 20 := by sorry\n  \n  sorry",
+    "full_code": "\ntheorem amc12a_2019_p12 (x y : ℝ) (h₀ : x ≠ 1 ∧ y ≠ 1)\n    (h₁ : Real.log x / Real.log 2 = Real.log 16 / Real.log y) (h₂ : x * y = 64) :\n    (Real.log (x / y) / Real.log 2) ^ 2 = 20 := by \n  \n  have h₃ : x > 0 := by sorry\n  have h₄ : y > 0 := by sorry\n  \n  have h₅ : Real.log x + Real.log y = 6 * Real.log 2 := by sorry\n  \n  have h₆ : Real.log x * Real.log y = 4 * (Real.log 2) ^ 2 := by sorry\n  \n  have h₇ : (Real.log x / Real.log 2 + Real.log y / Real.log 2) = 6 := by sorry\n  have h₈ : (Real.log x / Real.log 2) * (Real.log y / Real.log 2) = 4 := by sorry\n  \n  have h₉ : (Real.log (x / y) / Real.log 2) ^ 2 = 20 := by sorry\n  \n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 15,
+          "pos": {
+            "line": 7,
+            "column": 24
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\n⊢ x > 0",
+          "endPos": {
+            "line": 7,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 16,
+          "pos": {
+            "line": 8,
+            "column": 24
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\n⊢ y > 0",
+          "endPos": {
+            "line": 8,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 17,
+          "pos": {
+            "line": 10,
+            "column": 59
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\nh₄ : y > 0\n⊢ x.log + y.log = 6 * Real.log 2",
+          "endPos": {
+            "line": 10,
+            "column": 64
+          }
+        },
+        {
+          "proofState": 18,
+          "pos": {
+            "line": 12,
+            "column": 65
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\nh₄ : y > 0\nh₅ : x.log + y.log = 6 * Real.log 2\n⊢ x.log * y.log = 4 * Real.log 2 ^ 2",
+          "endPos": {
+            "line": 12,
+            "column": 70
+          }
+        },
+        {
+          "proofState": 19,
+          "pos": {
+            "line": 14,
+            "column": 74
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\nh₄ : y > 0\nh₅ : x.log + y.log = 6 * Real.log 2\nh₆ : x.log * y.log = 4 * Real.log 2 ^ 2\n⊢ x.log / Real.log 2 + y.log / Real.log 2 = 6",
+          "endPos": {
+            "line": 14,
+            "column": 79
+          }
+        },
+        {
+          "proofState": 20,
+          "pos": {
+            "line": 15,
+            "column": 76
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\nh₄ : y > 0\nh₅ : x.log + y.log = 6 * Real.log 2\nh₆ : x.log * y.log = 4 * Real.log 2 ^ 2\nh₇ : x.log / Real.log 2 + y.log / Real.log 2 = 6\n⊢ x.log / Real.log 2 * (y.log / Real.log 2) = 4",
+          "endPos": {
+            "line": 15,
+            "column": 81
+          }
+        },
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 17,
+            "column": 59
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\nh₄ : y > 0\nh₅ : x.log + y.log = 6 * Real.log 2\nh₆ : x.log * y.log = 4 * Real.log 2 ^ 2\nh₇ : x.log / Real.log 2 + y.log / Real.log 2 = 6\nh₈ : x.log / Real.log 2 * (y.log / Real.log 2) = 4\n⊢ ((x / y).log / Real.log 2) ^ 2 = 20",
+          "endPos": {
+            "line": 17,
+            "column": 64
+          }
+        },
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 19,
+            "column": 2
+          },
+          "goal": "x y : ℝ\nh₀ : x ≠ 1 ∧ y ≠ 1\nh₁ : x.log / Real.log 2 = Real.log 16 / y.log\nh₂ : x * y = 64\nh₃ : x > 0\nh₄ : y > 0\nh₅ : x.log + y.log = 6 * Real.log 2\nh₆ : x.log * y.log = 4 * Real.log 2 ^ 2\nh₇ : x.log / Real.log 2 + y.log / Real.log 2 = 6\nh₈ : x.log / Real.log 2 * (y.log / Real.log 2) = 4\nh₉ : ((x / y).log / Real.log 2) ^ 2 = 20\n⊢ ((x / y).log / Real.log 2) ^ 2 = 20",
+          "endPos": {
+            "line": 19,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 128.9
+    }
+  },
+  {
+    "problem_id": "induction_11div10tonmn1ton",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_amgm_sum1toneqn_prod1tonleq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "theorem algebra_amgm_sum1toneqn_prod1tonleq1 (a : ℕ → NNReal) (n : ℕ)\n    (h₀ : (∑ x in Finset.range n, a x) = n) : (∏ x in Finset.range n, a x) ≤ 1 := by \n  have h₁ : (∏ x in Finset.range n, (a x : ℝ)) ≤ 1 := by \n    sorry\n  have h₂ : (∏ x in Finset.range n, a x) ≤ 1 := by \n    sorry\n  exact h₂",
+    "full_code": "theorem algebra_amgm_sum1toneqn_prod1tonleq1 (a : ℕ → NNReal) (n : ℕ)\n    (h₀ : (∑ x in Finset.range n, a x) = n) : (∏ x in Finset.range n, a x) ≤ 1 := by \n  have h₁ : (∏ x in Finset.range n, (a x : ℝ)) ≤ 1 := by \n    sorry\n  have h₂ : (∏ x in Finset.range n, a x) ≤ 1 := by \n    sorry\n  exact h₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 5,
+            "column": 4
+          },
+          "goal": "a : ℕ → NNReal\nn : ℕ\nh₀ : ∑ x ∈ Finset.range n, a x = ↑n\n⊢ ∏ x ∈ Finset.range n, ↑(a x) ≤ 1",
+          "endPos": {
+            "line": 5,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 29,
+          "pos": {
+            "line": 7,
+            "column": 4
+          },
+          "goal": "a : ℕ → NNReal\nn : ℕ\nh₀ : ∑ x ∈ Finset.range n, a x = ↑n\nh₁ : ∏ x ∈ Finset.range n, ↑(a x) ≤ 1\n⊢ ∏ x ∈ Finset.range n, a x ≤ 1",
+          "endPos": {
+            "line": 7,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 74.13
+    }
+  },
+  {
+    "problem_id": "imo_1985_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p15",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_332",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_293",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_440",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_254",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1988_p8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem aime_1988_p8 (f : ℕ → ℕ → ℝ) (h₀ : ∀ x, 0 < x → f x x = x)\n    (h₁ : ∀ x y, 0 < x ∧ 0 < y → f x y = f y x)\n    (h₂ : ∀ x y, 0 < x ∧ 0 < y → (↑x + ↑y) * f x y = y * f x (x + y)) : f 14 52 = 364 := by \n  have h₃ : f 14 52 = 364 := by sorry\n  sorry",
+    "full_code": "\ntheorem aime_1988_p8 (f : ℕ → ℕ → ℝ) (h₀ : ∀ x, 0 < x → f x x = x)\n    (h₁ : ∀ x y, 0 < x ∧ 0 < y → f x y = f y x)\n    (h₂ : ∀ x y, 0 < x ∧ 0 < y → (↑x + ↑y) * f x y = y * f x (x + y)) : f 14 52 = 364 := by \n  have h₃ : f 14 52 = 364 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 30,
+          "pos": {
+            "line": 6,
+            "column": 32
+          },
+          "goal": "f : ℕ → ℕ → ℝ\nh₀ : ∀ (x : ℕ), 0 < x → f x x = ↑x\nh₁ : ∀ (x y : ℕ), 0 < x ∧ 0 < y → f x y = f y x\nh₂ : ∀ (x y : ℕ), 0 < x ∧ 0 < y → (↑x + ↑y) * f x y = ↑y * f x (x + y)\n⊢ f 14 52 = 364",
+          "endPos": {
+            "line": 6,
+            "column": 37
+          }
+        },
+        {
+          "proofState": 31,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "f : ℕ → ℕ → ℝ\nh₀ : ∀ (x : ℕ), 0 < x → f x x = ↑x\nh₁ : ∀ (x y : ℕ), 0 < x ∧ 0 < y → f x y = f y x\nh₂ : ∀ (x y : ℕ), 0 < x ∧ 0 < y → (↑x + ↑y) * f x y = ↑y * f x (x + y)\nh₃ : f 14 52 = 364\n⊢ f 14 52 = 364",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 138.21
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_114",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_2019_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_513",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_143",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_354",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1984_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem aime_1984_p7 (f : ℤ → ℤ) (h₀ : ∀ n, 1000 ≤ n → f n = n - 3)\n    (h₁ : ∀ n, n < 1000 → f n = f (f (n + 5))) : f 84 = 997 := by \n  have h₂ : f 84 = 997 := by sorry\n  sorry",
+    "full_code": "\ntheorem aime_1984_p7 (f : ℤ → ℤ) (h₀ : ∀ n, 1000 ≤ n → f n = n - 3)\n    (h₁ : ∀ n, n < 1000 → f n = f (f (n + 5))) : f 84 = 997 := by \n  have h₂ : f 84 = 997 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 60,
+          "pos": {
+            "line": 5,
+            "column": 29
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\n⊢ f 84 = 997",
+          "endPos": {
+            "line": 5,
+            "column": 34
+          }
+        },
+        {
+          "proofState": 61,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = 997\n⊢ f 84 = 997",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 107.09
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_246",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1983_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_85",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p21",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_239",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_196",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_342",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_517",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2009_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_270",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p12",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem amc12a_2021_p12 (a b c d : ℝ) (f : ℂ → ℂ)\n    (h₀ : ∀ z, f z = z ^ 6 - 10 * z ^ 5 + a * z ^ 4 + b * z ^ 3 + c * z ^ 2 + d * z + 16)\n    (h₁ : ∀ z, f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑(Int.floor z.re) = z.re) : b = -88 := by  sorry",
+    "full_code": "\ntheorem amc12a_2021_p12 (a b c d : ℝ) (f : ℂ → ℂ)\n    (h₀ : ∀ z, f z = z ^ 6 - 10 * z ^ 5 + a * z ^ 4 + b * z ^ 3 + c * z ^ 2 + d * z + 16)\n    (h₁ : ∀ z, f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑(Int.floor z.re) = z.re) : b = -88 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 5,
+            "column": 90
+          },
+          "goal": "a b c d : ℝ\nf : ℂ → ℂ\nh₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16\nh₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re\n⊢ b = -88",
+          "endPos": {
+            "line": 5,
+            "column": 95
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 82.63
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_362",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_521",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2002_p13",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1964_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_289",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2008_p25",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem amc12a_2008_p25 (a b : ℕ → ℝ) (h₀ : ∀ n, a (n + 1) = Real.sqrt 3 * a n - b n)\n    (h₁ : ∀ n, b (n + 1) = Real.sqrt 3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) :\n    a 1 + b 1 = 1 / 2 ^ 98 := by  sorry",
+    "full_code": "\ntheorem amc12a_2008_p25 (a b : ℕ → ℝ) (h₀ : ∀ n, a (n + 1) = Real.sqrt 3 * a n - b n)\n    (h₁ : ∀ n, b (n + 1) = Real.sqrt 3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) :\n    a 1 + b 1 = 1 / 2 ^ 98 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 5,
+            "column": 34
+          },
+          "goal": "a b : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n\nh₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n\nh₂ : a 100 = 2\nh₃ : b 100 = 4\n⊢ a 1 + b 1 = 1 / 2 ^ 98",
+          "endPos": {
+            "line": 5,
+            "column": 39
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 134.74
+    }
+  },
+  {
+    "problem_id": "algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_66",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_apbon2pownleqapownpbpowon2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1968_p5_1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem imo_1968_p5_1 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a)\n    (h₁ : ∀ x, f (x + a) = 1 / 2 + Real.sqrt (f x - f x ^ 2)) : ∃ b > 0, ∀ x, f (x + b) = f x := by \n  have h_main : ∃ (b : ℝ), b > 0 ∧ ∀ (x : ℝ), f (x + b) = f x := by sorry\n  sorry",
+    "full_code": "\ntheorem imo_1968_p5_1 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a)\n    (h₁ : ∀ x, f (x + a) = 1 / 2 + Real.sqrt (f x - f x ^ 2)) : ∃ b > 0, ∀ x, f (x + b) = f x := by \n  have h_main : ∃ (b : ℝ), b > 0 ∧ ∀ (x : ℝ), f (x + b) = f x := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 401,
+          "pos": {
+            "line": 5,
+            "column": 68
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\n⊢ ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x",
+          "endPos": {
+            "line": 5,
+            "column": 73
+          }
+        },
+        {
+          "proofState": 402,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\nh_main : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x\n⊢ ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 78.44
+    }
+  },
+  {
+    "problem_id": "aime_1990_p15",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_235",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2020_p13",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p13",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem amc12b_2021_p13 (S : Finset ℝ)\n    (h₀ :\n      ∀ x : ℝ, x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * Real.sin x + 5 * Real.cos (3 * x) = 0) :\n    S.card = 6 := by  sorry",
+    "full_code": "\ntheorem amc12b_2021_p13 (S : Finset ℝ)\n    (h₀ :\n      ∀ x : ℝ, x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * Real.sin x + 5 * Real.cos (3 * x) = 0) :\n    S.card = 6 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 6,
+            "column": 22
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * x.sin + 5 * (3 * x).cos = 0\n⊢ S.card = 6",
+          "endPos": {
+            "line": 6,
+            "column": 27
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 44.8
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_234",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_aoddbdiv4asqpbsqmod8eq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_222",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1999_p11",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 11,
+    "code": "\ntheorem aime_1999_p11 (m : ℚ) (h₀ : 0 < m)\n    (h₁ : (∑ k in Finset.Icc (1 : ℕ) 35, Real.sin (5 * k * Real.pi / 180)) = Real.tan (m * Real.pi / 180))\n    (h₂ : (m.num : ℝ) / m.den < 90) : ↑m.den + m.num = 177 := by  sorry",
+    "full_code": "\ntheorem aime_1999_p11 (m : ℚ) (h₀ : 0 < m)\n    (h₁ : (∑ k in Finset.Icc (1 : ℕ) 35, Real.sin (5 * k * Real.pi / 180)) = Real.tan (m * Real.pi / 180))\n    (h₂ : (m.num : ℝ) / m.den < 90) : ↑m.den + m.num = 177 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 12,
+          "pos": {
+            "line": 5,
+            "column": 66
+          },
+          "goal": "m : ℚ\nh₀ : 0 < m\nh₁ : ∑ k ∈ Finset.Icc 1 35, (5 * ↑k * Real.pi / 180).sin = (↑m * Real.pi / 180).tan\nh₂ : ↑m.num / ↑m.den < 90\n⊢ ↑m.den + m.num = 177",
+          "endPos": {
+            "line": 5,
+            "column": 71
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 98.88
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_359",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1965_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_288",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_127",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "imo_1974_p3",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1991_p9",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 9,
+    "code": "\ntheorem aime_1991_p9 (x : ℝ) (m : ℚ) (h₀ : 1 / Real.cos x + Real.tan x = 22 / 7)\n    (h₁ : 1 / Real.sin x + 1 / Real.tan x = m) : ↑m.den + m.num = 44 := by \n  have h₂ : False := by sorry\n  have h₃ : ↑m.den + m.num = 44 := by sorry\n  sorry",
+    "full_code": "\ntheorem aime_1991_p9 (x : ℝ) (m : ℚ) (h₀ : 1 / Real.cos x + Real.tan x = 22 / 7)\n    (h₁ : 1 / Real.sin x + 1 / Real.tan x = m) : ↑m.den + m.num = 44 := by \n  have h₂ : False := by sorry\n  have h₃ : ↑m.den + m.num = 44 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 5,
+            "column": 24
+          },
+          "goal": "x : ℝ\nm : ℚ\nh₀ : 1 / x.cos + x.tan = 22 / 7\nh₁ : 1 / x.sin + 1 / x.tan = ↑m\n⊢ False",
+          "endPos": {
+            "line": 5,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 6,
+            "column": 38
+          },
+          "goal": "x : ℝ\nm : ℚ\nh₀ : 1 / x.cos + x.tan = 22 / 7\nh₁ : 1 / x.sin + 1 / x.tan = ↑m\nh₂ : False\n⊢ ↑m.den + m.num = 44",
+          "endPos": {
+            "line": 6,
+            "column": 43
+          }
+        },
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "x : ℝ\nm : ℚ\nh₀ : 1 / x.cos + x.tan = 22 / 7\nh₁ : 1 / x.sin + 1 / x.tan = ↑m\nh₂ : False\nh₃ : ↑m.den + m.num = 44\n⊢ ↑m.den + m.num = 44",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 63.06
+    }
+  },
+  {
+    "problem_id": "amc12a_2009_p6",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_158",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1990_p4",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_541",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_314",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12_2000_p20",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_302",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1983_p2",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_139",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p25",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem amc12a_2021_p25 (N : ℕ) (f : ℕ → ℝ)\n    (h₀ : ∀ n, 0 < n → f n = (Nat.divisors n).card / n ^ ((1 : ℝ) / 3))\n    (h₁ : ∀ (n) (_ : n ≠ N), 0 < n → f n < f N) : (List.sum (Nat.digits 10 N)) = 9 := by \n  have h₂ : False := by sorry\n  have h₃ : (List.sum (Nat.digits 10 N)) = 9 := by sorry\n  exact h₃",
+    "full_code": "\ntheorem amc12a_2021_p25 (N : ℕ) (f : ℕ → ℝ)\n    (h₀ : ∀ n, 0 < n → f n = (Nat.divisors n).card / n ^ ((1 : ℝ) / 3))\n    (h₁ : ∀ (n) (_ : n ≠ N), 0 < n → f n < f N) : (List.sum (Nat.digits 10 N)) = 9 := by \n  have h₂ : False := by sorry\n  have h₃ : (List.sum (Nat.digits 10 N)) = 9 := by sorry\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 13,
+          "pos": {
+            "line": 6,
+            "column": 24
+          },
+          "goal": "N : ℕ\nf : ℕ → ℝ\nh₀ : ∀ (n : ℕ), 0 < n → f n = ↑n.divisors.card / ↑n ^ (1 / 3)\nh₁ : ∀ (n : ℕ), n ≠ N → 0 < n → f n < f N\n⊢ False",
+          "endPos": {
+            "line": 6,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 7,
+            "column": 51
+          },
+          "goal": "N : ℕ\nf : ℕ → ℝ\nh₀ : ∀ (n : ℕ), 0 < n → f n = ↑n.divisors.card / ↑n ^ (1 / 3)\nh₁ : ∀ (n : ℕ), n ≠ N → 0 < n → f n < f N\nh₂ : False\n⊢ (Nat.digits 10 N).sum = 9",
+          "endPos": {
+            "line": 7,
+            "column": 56
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 105.07
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p25",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 10,
+    "code": "\ntheorem amc12a_2020_p25 (a : ℚ) (S : Finset ℝ)\n    (h₀ : ∀ x : ℝ, x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : (∑ k in S, k) = 420) :\n    ↑a.den + a.num = 929 := by  sorry",
+    "full_code": "\ntheorem amc12a_2020_p25 (a : ℚ) (S : Finset ℝ)\n    (h₀ : ∀ x : ℝ, x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : (∑ k in S, k) = 420) :\n    ↑a.den + a.num = 929 := by  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 5,
+            "column": 32
+          },
+          "goal": "a : ℚ\nS : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2\nh₁ : ∑ k ∈ S, k = 420\n⊢ ↑a.den + a.num = 929",
+          "endPos": {
+            "line": 5,
+            "column": 37
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 84.47
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_150",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1989_p8",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_296",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_142",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "numbertheory_exk2powkeqapb2mulbpa2_aeq1",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_400",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "aime_1995_p7",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_185",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_441",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_582",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_338",
+    "complete": false,
+    "strategy": "near_miss",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 0.0
+    }
+  }
+]

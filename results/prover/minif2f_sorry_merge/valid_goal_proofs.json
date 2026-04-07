@@ -1,0 +1,21 @@
+{
+  "sorry_fill_algebra_ineq_nto1onlt2m1on_g1": "exact h_main",
+  "sorry_fill_aime_1984_p7_g1": "have h₃ : f 84 = 997 := by\n    exact h₂\n  exact h₃",
+  "sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g2": "have h₆ : (c : ℝ) * n = 0 := by\n    have h₆₁ : (a : ℝ) + (b : ℝ) * m + (c : ℝ) * n = 0 := by\n      exact_mod_cast h₃\n    have h₆₂ : (a : ℝ) = 0 := by exact_mod_cast h₄\n    have h₆₃ : (b : ℝ) = 0 := by",
+  "sorry_fill_amc12a_2020_p25_g2": "have h₂ : a.den + a.num = 929 := by\n    exfalso\n    exact h_contradiction\n  exact h₂",
+  "sorry_fill_algebra_ineq_nto1onlt2m1on_g0": "have h_main : ↑n ^ (1 / ↑n) ≤ 2 - 1 / ↑n := by\n    rcases n with (_ | _ | _ | n)\n    · -- Case n = 0\n      norm_num\n    · -- Case n = 1\n      norm_num\n    · -- Case n = 2\n      norm_num\n    · -- Case ",
+  "sorry_fill_amc12a_2020_p25_g1": "have h₂ : ∀ (n : ℤ), (n : ℝ) ∈ S := by\n    intro n\n    have h₃ : (n : ℝ) ∈ S ↔ ↑⌊(n : ℝ)⌋ * ((n : ℝ) - ↑⌊(n : ℝ)⌋) = ↑a * (n : ℝ) ^ 2 := by\n      apply h₀\n    rw [h₃]\n    have h₄ : ⌊(n : ℝ)⌋ = n := by",
+  "sorry_fill_amc12a_2021_p12_g2": "exact h₃",
+  "sorry_fill_amc12a_2021_p25_g1": "have h₃ : (digits 10 N).sum = 9 := by\n    exfalso\n    exact h₂\n  exact h₃",
+  "sorry_fill_amc12a_2021_p25_g2": "have h₄ : (digits 10 N).sum = 9 := h₃\n  exact h₄",
+  "sorry_fill_amc12a_2021_p12_g1": "have h₃ : b = -88 := by\n    cases h₂\n  exact h₃",
+  "sorry_fill_amc12b_2002_p4_g1": "have h₃ : n = 42 := by\n    rw [h₂]\n  exact h₃",
+  "sorry_fill_imo_1977_p6_g1": "intro n hn\n  have h₃ : f n = n := by\n    apply h₂\n    exact hn\n  exact h₃",
+  "sorry_fill_imo_1997_p5_g2": "exact h_final",
+  "sorry_fill_imo_1997_p5_g1": "have h₂ : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by\n    tauto\n  tauto",
+  "sorry_fill_imo_1982_p1_g1": "have h₅ : f 1982 = 660 := by\n    exact h₄\n  exact h₅",
+  "sorry_fill_imo_1968_p5_1_g1": "have h₃ : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by\n    exact h₂\n  exact h₃",
+  "sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g2": "exfalso\n  exact h_false",
+  "sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g1": "exfalso\n  exact h_false",
+  "sorry_fill_induction_pord1p1on2powklt5on2_g0": "have h₁ : ∏ k in Finset.Icc 1 n, (1 + 1 / 2 ^ k) = 1 := by\n    have h₂ : ∀ k ∈ Finset.Icc 1 n, (1 + 1 / 2 ^ k) = 1 := by\n      intro k hk\n      have h₃ : k ≥ 1 := by\n        simp [Finset.mem_Icc] at h"
+}

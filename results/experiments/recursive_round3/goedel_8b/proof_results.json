@@ -1,0 +1,1289 @@
+[
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g0",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = f (f 89) := by\n  have h₂ : f 84 = f (f (84 + 5)) := by\n    have h₃ : (84 : ℤ) < 1000 := by norm_num\n    have h₄ : f 84 = f (f (84 + 5)) := h₁ 84 h₃\n    exact h₄\n  have h₅ : f 84 = f (f 89) := by\n    norm_num at h₂ ⊢\n    <;> simpa using h₂\n  exact h₅",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = f (f 89) := by\n  have h₂ : f 84 = f (f (84 + 5)) := by\n    have h₃ : (84 : ℤ) < 1000 := by norm_num\n    have h₄ : f 84 = f (f (84 + 5)) := h₁ 84 h₃\n    exact h₄\n  have h₅ : f 84 = f (f 89) := by\n    norm_num at h₂ ⊢\n    <;> simpa using h₂\n  exact h₅",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 79.79
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 5,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g1 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) : f 89 = f (f 94) := by\n  have h₃ : f 89 = f (f 94) := by\n    have h₄ : (89 : ℤ) < 1000 := by norm_num\n    have h₅ : f 89 = f (f (89 + 5)) := h₁ 89 h₄\n    have h₆ : f 89 = f (f 94) := by\n      calc\n        f 89 = f (f (89 + 5)) := h₅\n        _ = f (f 94) := by norm_num\n    exact h₆\n  exact h₃",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g1 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) : f 89 = f (f 94) := by\n  have h₃ : f 89 = f (f 94) := by\n    have h₄ : (89 : ℤ) < 1000 := by norm_num\n    have h₅ : f 89 = f (f (89 + 5)) := h₁ 89 h₄\n    have h₆ : f 89 = f (f 94) := by\n      calc\n        f 89 = f (f (89 + 5)) := h₅\n        _ = f (f 94) := by norm_num\n    exact h₆\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 82.97
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g2",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 15,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g2 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) : f 94 = f (f 99) := by\n  have h₄ : (94 : ℤ) < 1000 := by norm_num\n  have h₅ : f 94 = f (f (94 + 5)) := h₁ 94 h₄\n  have h₆ : f 94 = f (f 99) := by\n    norm_num at h₅ ⊢\n    <;> simpa using h₅\n  exact h₆",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g2 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) : f 94 = f (f 99) := by\n  have h₄ : (94 : ℤ) < 1000 := by norm_num\n  have h₅ : f 94 = f (f (94 + 5)) := h₁ 94 h₄\n  have h₆ : f 94 = f (f 99) := by\n    norm_num at h₅ ⊢\n    <;> simpa using h₅\n  exact h₆",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 90.73
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g3 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) : f 99 = f (f 104) := by sorry",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g3 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) : f 99 = f (f 104) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 48,
+          "pos": {
+            "line": 2,
+            "column": 230
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\n⊢ f 99 = f (f 104)",
+          "endPos": {
+            "line": 2,
+            "column": 235
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 91.93
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g4",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g4 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) : f 104 = 101 := by sorry",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g4 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) : f 104 = 101 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 74,
+          "pos": {
+            "line": 2,
+            "column": 249
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\n⊢ f 104 = 101",
+          "endPos": {
+            "line": 2,
+            "column": 254
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 109.25
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g5 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) : f 99 = f 101 := by sorry",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g5 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) : f 99 = f 101 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 29,
+          "pos": {
+            "line": 2,
+            "column": 269
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\n⊢ f 99 = f 101",
+          "endPos": {
+            "line": 2,
+            "column": 274
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 87.29
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g6 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) : f 101 = 98 := by sorry",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g6 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) : f 101 = 98 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 62,
+          "pos": {
+            "line": 2,
+            "column": 287
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\nh₇ : f 99 = f 101\n⊢ f 101 = 98",
+          "endPos": {
+            "line": 2,
+            "column": 292
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.77
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g7",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g7 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) : f 99 = 98 := by\n  have h₉ : f 99 = 98 := by\n    calc\n      f 99 = f 101 := h₇\n      _ = 98 := h₈\n  exact h₉",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g7 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) : f 99 = 98 := by\n  have h₉ : f 99 = 98 := by\n    calc\n      f 99 = f 101 := h₇\n      _ = 98 := h₈\n  exact h₉",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 75.66
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g8",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 8,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g8 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) : f 94 = f 98 := by\n  have h₁₀ : f 94 = f 98 := by\n    -- Use h₄ to get f(94) = f(f(99))\n    have h₁₁ : f 94 = f (f 99) := by\n      apply h₄\n    -- Use h₉ to get f(99) = 98, so f(f(99)) = f(98)\n    have h₁₂ : f (f 99) = f 98 := by\n      rw [h₉]\n    -- Combine to get f(94) = f(98)\n    rw [h₁₁, h₁₂]\n  exact h₁₀",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g8 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) : f 94 = f 98 := by\n  have h₁₀ : f 94 = f 98 := by\n    -- Use h₄ to get f(94) = f(f(99))\n    have h₁₁ : f 94 = f (f 99) := by\n      apply h₄\n    -- Use h₉ to get f(99) = 98, so f(f(99)) = f(98)\n    have h₁₂ : f (f 99) = f 98 := by\n      rw [h₉]\n    -- Combine to get f(94) = f(98)\n    rw [h₁₁, h₁₂]\n  exact h₁₀",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 75.85
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g9",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g9 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) : f 98 = 95 := by\n  have h_contradiction : False := by sorry\n  have h_main : f 98 = 95 := by sorry\n  sorry",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g9 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) : f 98 = 95 := by\n  have h_contradiction : False := by sorry\n  have h_main : f 98 = 95 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 3,
+            "column": 37
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\nh₇ : f 99 = f 101\nh₈ : f 101 = 98\nh₉ : f 99 = 98\nh₁₀ : f 94 = f 98\n⊢ False",
+          "endPos": {
+            "line": 3,
+            "column": 42
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 4,
+            "column": 32
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\nh₇ : f 99 = f 101\nh₈ : f 101 = 98\nh₉ : f 99 = 98\nh₁₀ : f 94 = f 98\nh_contradiction : False\n⊢ f 98 = 95",
+          "endPos": {
+            "line": 4,
+            "column": 37
+          }
+        },
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\nh₇ : f 99 = f 101\nh₈ : f 101 = 98\nh₉ : f 99 = 98\nh₁₀ : f 94 = f 98\nh_contradiction : False\nh_main : f 98 = 95\n⊢ f 98 = 95",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 109.37
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g10",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 4,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g10 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) : f 94 = 95 := by\n  have h₁₂ : f 94 = 95 := by\n    calc\n      f 94 = f 98 := by rw [h₁₀]\n      _ = 95 := by rw [h₁₁]\n  exact h₁₂",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g10 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) : f 94 = 95 := by\n  have h₁₂ : f 94 = 95 := by\n    calc\n      f 94 = f 98 := by rw [h₁₀]\n      _ = 95 := by rw [h₁₁]\n  exact h₁₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 73.29
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g11",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 3,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g11 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) : f 89 = f 95 := by\n  have h₁₃ : f 89 = f 95 := by\n    calc\n      f 89 = f (f 94) := by rw [h₃]\n      _ = f 95 := by\n        rw [h₁₂]\n        <;> norm_num\n  exact h₁₃",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g11 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) : f 89 = f 95 := by\n  have h₁₃ : f 89 = f 95 := by\n    calc\n      f 89 = f (f 94) := by rw [h₃]\n      _ = f 95 := by\n        rw [h₁₂]\n        <;> norm_num\n  exact h₁₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 81.34
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g12",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g12 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) : f 95 = 92 := by\n  h₁ : ∀ n < 1000, f n = f (f (n + 5))",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g12 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) : f 95 = 92 := by\n  h₁ : ∀ n < 1000, f n = f (f (n + 5))",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 3
+          },
+          "endPos": null,
+          "data": "unknown tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 395
+          },
+          "endPos": {
+            "line": 3,
+            "column": 4
+          },
+          "data": "unsolved goals\nf : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\nh₇ : f 99 = f 101\nh₈ : f 101 = 98\nh₉ : f 99 = 98\nh₁₀ : f 94 = f 98\nh₁₁ : f 98 = 95\nh₁₂ : f 94 = 95\nh₁₃ : f 89 = f 95\n⊢ f 95 = 92"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 106.97
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g13",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 7,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g13 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) : f 89 = 92 := by\n  rw [h₁₃, h₁₄]\n  <;> norm_num\n  <;> linarith",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g13 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) : f 89 = 92 := by\n  rw [h₁₃, h₁₄]\n  <;> norm_num\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 82.25
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g14",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 13,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g14 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) (h₁₅ : f 89 = 92) : f 84 = f 92 := by\n  have h₁₆ : f 84 = f (f 89) := by apply h₂\n  have h₁₇ : f 84 = f 92 := by\n    rw [h₁₆]\n    rw [h₁₅]\n    <;> norm_num\n    <;> simp_all\n    <;> linarith\n  apply h₁₇",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g14 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) (h₁₅ : f 89 = 92) : f 84 = f 92 := by\n  have h₁₆ : f 84 = f (f 89) := by apply h₂\n  have h₁₇ : f 84 = f 92 := by\n    rw [h₁₆]\n    rw [h₁₅]\n    <;> norm_num\n    <;> simp_all\n    <;> linarith\n  apply h₁₇",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 85.6
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g15",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g15 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) (h₁₅ : f 89 = 92) (h₁₆ : f 84 = f 92) : f 92 = 89 := by sorry",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g15 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) (h₁₅ : f 89 = 92) (h₁₆ : f 84 = f 92) : f 92 = 89 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 37,
+          "pos": {
+            "line": 2,
+            "column": 454
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\nh₂ : f 84 = f (f 89)\nh₃ : f 89 = f (f 94)\nh₄ : f 94 = f (f 99)\nh₅ : f 99 = f (f 104)\nh₆ : f 104 = 101\nh₇ : f 99 = f 101\nh₈ : f 101 = 98\nh₉ : f 99 = 98\nh₁₀ : f 94 = f 98\nh₁₁ : f 98 = 95\nh₁₂ : f 94 = 95\nh₁₃ : f 89 = f 95\nh₁₄ : f 95 = 92\nh₁₅ : f 89 = 92\nh₁₆ : f 84 = f 92\n⊢ f 92 = 89",
+          "endPos": {
+            "line": 2,
+            "column": 459
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 107.11
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_aime_1984_p7_g0_s2_g16",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g16 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) (h₁₅ : f 89 = 92) (h₁₆ : f 84 = f 92) (h₁₇ : f 92 = 89) : f 84 = 89 := by\n  have h₁₈ : f 84 = 89 := by\n    rw [h₁₆, h₁₇]\n  exact h₁₈",
+    "full_code": "theorem r3_sorry_fill_aime_1984_p7_g0_s2_g16 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) (h₂ : f 84 = f (f 89)) (h₃ : f 89 = f (f 94)) (h₄ : f 94 = f (f 99)) (h₅ : f 99 = f (f 104)) (h₆ : f 104 = 101) (h₇ : f 99 = f 101) (h₈ : f 101 = 98) (h₉ : f 99 = 98) (h₁₀ : f 94 = f 98) (h₁₁ : f 98 = 95) (h₁₂ : f 94 = 95) (h₁₃ : f 89 = f 95) (h₁₄ : f 95 = 92) (h₁₅ : f 89 = 92) (h₁₆ : f 84 = f 92) (h₁₇ : f 92 = 89) : f 84 = 89 := by\n  have h₁₈ : f 84 = 89 := by\n    rw [h₁₆, h₁₇]\n  exact h₁₈",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 80.35
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : m = 2 ^ (1 / 3) := by sorry",
+    "full_code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : m = 2 ^ (1 / 3) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 43,
+          "pos": {
+            "line": 2,
+            "column": 200
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\n⊢ m = 2 ^ (1 / 3)",
+          "endPos": {
+            "line": 2,
+            "column": 205
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 105.96
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : m = 2 ^ (1 / 3)) : n = 4 ^ (1 / 3) := by sorry",
+    "full_code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : m = 2 ^ (1 / 3)) : n = 4 ^ (1 / 3) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 2,
+            "column": 223
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : m = 2 ^ (1 / 3)\n⊢ n = 4 ^ (1 / 3)",
+          "endPos": {
+            "line": 2,
+            "column": 228
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 73.53
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g3",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 27,
+    "code": "theorem lean_workbook_plus_25737  (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : m = 2 ^ (1 / 3)) (h₅ : n = 4 ^ (1 / 3)) (h₆ : ↑a + ↑b * m + ↑c * n = 0) : ↑a = 0 := by\n  have h₇ : False := by\n    have h₇₁ : m = 1 := by\n      norm_num [h₄]\n      <;>\n      (try norm_num) <;>\n      (try linarith) <;>\n      (try ring_nf at *) <;>\n      (try nlinarith)\n    have h₇₂ : (m : ℝ) ^ 3 = 2 := by exact_mod_cast h₁\n    rw [h₇₁] at h₇₂\n    norm_num at h₇₂\n    <;> linarith\n  exfalso\n  exact h₇\n  <;> simp_all\n  <;> norm_num\n  <;> linarith",
+    "full_code": "theorem lean_workbook_plus_25737  (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : m = 2 ^ (1 / 3)) (h₅ : n = 4 ^ (1 / 3)) (h₆ : ↑a + ↑b * m + ↑c * n = 0) : ↑a = 0 := by\n  have h₇ : False := by\n    have h₇₁ : m = 1 := by\n      norm_num [h₄]\n      <;>\n      (try norm_num) <;>\n      (try linarith) <;>\n      (try ring_nf at *) <;>\n      (try nlinarith)\n    have h₇₂ : (m : ℝ) ^ 3 = 2 := by exact_mod_cast h₁\n    rw [h₇₁] at h₇₂\n    norm_num at h₇₂\n    <;> linarith\n  exfalso\n  exact h₇\n  <;> simp_all\n  <;> norm_num\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 76.97
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem lean_workbook_plus_25657 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : ↑b * m + ↑c * n = 0 := by\n  have h_main : ↑b * m + ↑c * n = 0 := by\n    sorry\n  sorry",
+    "full_code": "theorem lean_workbook_plus_25657 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : ↑b * m + ↑c * n = 0 := by\n  have h_main : ↑b * m + ↑c * n = 0 := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 179,
+          "pos": {
+            "line": 4,
+            "column": 4
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\n⊢ ↑b * m + ↑c * n = 0",
+          "endPos": {
+            "line": 4,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 180,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\nh_main : ↑b * m + ↑c * n = 0\n⊢ ↑b * m + ↑c * n = 0",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 44.75
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) : ↑b = 0 := by sorry",
+    "full_code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) : ↑b = 0 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 43,
+          "pos": {
+            "line": 2,
+            "column": 231
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\nh₅ : ↑b * m + ↑c * n = 0\n⊢ b = 0",
+          "endPos": {
+            "line": 2,
+            "column": 236
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.28
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) : ↑b ≠ 0 → False := by sorry",
+    "full_code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) : ↑b ≠ 0 → False := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 72,
+          "pos": {
+            "line": 2,
+            "column": 239
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\nh₅ : ↑b * m + ↑c * n = 0\n⊢ b ≠ 0 → False",
+          "endPos": {
+            "line": 2,
+            "column": 244
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.88
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 3,
+    "code": "theorem lean_workbook_plus_34209  (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) : ↑b * m = -↑c * n := by\n  have h_main : ↑b * m = -↑c * n := by\n    have h₆ : ↑b * m + ↑c * n = 0 := h₅\n    have h₇ : ↑b * m = -↑c * n := by\n      -- Subtract `↑c * n` from both sides to get `↑b * m = -↑c * n`\n      have h₈ : ↑b * m = -↑c * n := by\n        ring_nf at h₆ ⊢\n        linarith\n      exact h₈\n    exact h₇\n  exact h_main",
+    "full_code": "theorem lean_workbook_plus_34209  (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) : ↑b * m = -↑c * n := by\n  have h_main : ↑b * m = -↑c * n := by\n    have h₆ : ↑b * m + ↑c * n = 0 := h₅\n    have h₇ : ↑b * m = -↑c * n := by\n      -- Subtract `↑c * n` from both sides to get `↑b * m = -↑c * n`\n      have h₈ : ↑b * m = -↑c * n := by\n        ring_nf at h₆ ⊢\n        linarith\n      exact h₈\n    exact h₇\n  exact h_main",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 66.73
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g2 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) (h₆ : ↑b * m = -↑c * n) : ↑b * 2 = -↑c * 4 := by sorry",
+    "full_code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g2 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) (h₆ : ↑b * m = -↑c * n) : ↑b * 2 = -↑c * 4 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 18,
+          "pos": {
+            "line": 2,
+            "column": 265
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh₄ : a = 0\nh₅ : ↑b * m + ↑c * n = 0\nh₆ : ↑b * m = -↑c * n\n⊢ b * 2 = -c * 4",
+          "endPos": {
+            "line": 2,
+            "column": 270
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 110.17
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g3",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g3 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) (h₆ : ↑b * m = -↑c * n) (h₇ : ↑b * 2 = -↑c * 4) : b * 2 = -c * 4 := by\n  have h₈ : b * 2 = -c * 4 := by\n    -- This step is trivial because `h₇` already states exactly what we need.\n    exact_mod_cast h₇\n  -- Since `h₈` is already the goal, we can simply use it.\n  exact h₈",
+    "full_code": "theorem r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g3 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) (h₅ : ↑b * m + ↑c * n = 0) (h₆ : ↑b * m = -↑c * n) (h₇ : ↑b * 2 = -↑c * 4) : b * 2 = -c * 4 := by\n  have h₈ : b * 2 = -c * 4 := by\n    -- This step is trivial because `h₇` already states exactly what we need.\n    exact_mod_cast h₇\n  -- Since `h₈` is already the goal, we can simply use it.\n  exact h₈",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 70.21
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12a_2008_p25_g0_s0_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem lean_workbook_plus_26026  (a b : ℕ → ℝ) (h₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n) (h₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) : False := by\n  have h₄ : False := by\n    sorry\n  sorry",
+    "full_code": "theorem lean_workbook_plus_26026  (a b : ℕ → ℝ) (h₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n) (h₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) : False := by\n  have h₄ : False := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 24,
+          "pos": {
+            "line": 4,
+            "column": 4
+          },
+          "goal": "a b : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n\nh₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n\nh₂ : a 100 = 2\nh₃ : b 100 = 4\n⊢ False",
+          "endPos": {
+            "line": 4,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 25,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "a b : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n\nh₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n\nh₂ : a 100 = 2\nh₃ : b 100 = 4\nh₄ : False\n⊢ False",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.3
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12a_2020_p25_g0_s1_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_amc12a_2020_p25_g0_s1_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : a = 1 / 7 := by sorry",
+    "full_code": "theorem r3_sorry_fill_amc12a_2020_p25_g0_s1_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : a = 1 / 7 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 41,
+          "pos": {
+            "line": 2,
+            "column": 169
+          },
+          "goal": "a : ℚ\nS : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2\nh₁ : ∑ k ∈ S, k = 420\n⊢ a = 1 / 7",
+          "endPos": {
+            "line": 2,
+            "column": 174
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 109.66
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12a_2020_p25_g0_s1_g1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_amc12a_2020_p25_g0_s1_g1 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) (h₂ : a = 1 / 7) : ↑a.den + a.num = 929 := by sorry",
+    "full_code": "theorem r3_sorry_fill_amc12a_2020_p25_g0_s1_g1 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) (h₂ : a = 1 / 7) : ↑a.den + a.num = 929 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 2,
+            "column": 197
+          },
+          "goal": "a : ℚ\nS : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2\nh₁ : ∑ k ∈ S, k = 420\nh₂ : a = 1 / 7\n⊢ ↑a.den + a.num = 929",
+          "endPos": {
+            "line": 2,
+            "column": 202
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.87
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12a_2020_p25_g0_s4_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem lean_workbook_plus_25992  (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : False := by sorry",
+    "full_code": "theorem lean_workbook_plus_25992  (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : False := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 2,
+            "column": 152
+          },
+          "goal": "a : ℚ\nS : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2\nh₁ : ∑ k ∈ S, k = 420\n⊢ False",
+          "endPos": {
+            "line": 2,
+            "column": 157
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.95
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12a_2021_p12_g0_s1_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_amc12a_2021_p12_g0_s1_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : False := by sorry",
+    "full_code": "theorem r3_sorry_fill_amc12a_2021_p12_g0_s1_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : False := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 16,
+          "pos": {
+            "line": 2,
+            "column": 248
+          },
+          "goal": "a b c d : ℝ\nf : ℂ → ℂ\nh₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16\nh₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re\n⊢ False",
+          "endPos": {
+            "line": 2,
+            "column": 253
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 110.7
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12b_2002_p4_g0_s4_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_amc12b_2002_p4_g0_s4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : ((1 : ℚ)/2 + (1 : ℚ)/3 + (1 : ℚ)/7 + (1 : ℚ)/n).den = 1) : n ∣ 42 := by sorry",
+    "full_code": "theorem r3_sorry_fill_amc12b_2002_p4_g0_s4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : ((1 : ℚ)/2 + (1 : ℚ)/3 + (1 : ℚ)/7 + (1 : ℚ)/n).den = 1) : n ∣ 42 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 2,
+            "column": 145
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\nh₁ : (1 / 2 + 1 / 3 + 1 / 7 + 1 / ↑n).den = 1\n⊢ n ∣ 42",
+          "endPos": {
+            "line": 2,
+            "column": 150
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.48
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12b_2002_p4_g0_s4_g1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_amc12b_2002_p4_g0_s4_g1 (n : ℕ) (h₀ : 0 < n) (h₁ : ((1 : ℚ) / 2 + (1 : ℚ) / 3 + (1 : ℚ) / 7 + (1 : ℚ) / (n : ℚ)).den = 1) (h₂ : n ∣ 42) : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 6 ∨ n = 7 ∨ n = 14 ∨ n = 21 ∨ n = 42 := by sorry",
+    "full_code": "theorem r3_sorry_fill_amc12b_2002_p4_g0_s4_g1 (n : ℕ) (h₀ : 0 < n) (h₁ : ((1 : ℚ) / 2 + (1 : ℚ) / 3 + (1 : ℚ) / 7 + (1 : ℚ) / (n : ℚ)).den = 1) (h₂ : n ∣ 42) : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 6 ∨ n = 7 ∨ n = 14 ∨ n = 21 ∨ n = 42 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 38,
+          "pos": {
+            "line": 2,
+            "column": 231
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\nh₁ : (1 / 2 + 1 / 3 + 1 / 7 + 1 / ↑n).den = 1\nh₂ : n ∣ 42\n⊢ n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 6 ∨ n = 7 ∨ n = 14 ∨ n = 21 ∨ n = 42",
+          "endPos": {
+            "line": 2,
+            "column": 236
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 101.19
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_amc12b_2021_p13_g0_s0_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_amc12b_2021_p13_g0_s0_g0 (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ 0 < x ∧ x ≤ 2 * π ∧ 1 - 3 * x.sin + 5 * (3 * x).cos = 0) : S = {2 * π / 3, 4 * π / 3, π / 6, 5 * π / 6, 7 * π / 6, 11 * π / 6} := by sorry",
+    "full_code": "theorem r3_sorry_fill_amc12b_2021_p13_g0_s0_g0 (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ 0 < x ∧ x ≤ 2 * π ∧ 1 - 3 * x.sin + 5 * (3 * x).cos = 0) : S = {2 * π / 3, 4 * π / 3, π / 6, 5 * π / 6, 7 * π / 6, 11 * π / 6} := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 2,
+            "column": 220
+          },
+          "goal": "π : ℝ\nS : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 < x ∧ x ≤ 2 * π ∧ 1 - 3 * x.sin + 5 * (3 * x).cos = 0\n⊢ S = {2 * π / 3, 4 * π / 3, π / 6, 5 * π / 6, 7 * π / 6, 11 * π / 6}",
+          "endPos": {
+            "line": 2,
+            "column": 225
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 107.08
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1968_p5_1_g0_s1_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∀ (x : ℝ), f x - f x ^ 2 ≥ 0 := by\n  have h_main : ∀ (x : ℝ), f x - f x ^ 2 ≥ 0 := by sorry\n  sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∀ (x : ℝ), f x - f x ^ 2 ≥ 0 := by\n  have h_main : ∀ (x : ℝ), f x - f x ^ 2 ≥ 0 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 27,
+          "pos": {
+            "line": 3,
+            "column": 51
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\n⊢ ∀ (x : ℝ), f x - f x ^ 2 ≥ 0",
+          "endPos": {
+            "line": 3,
+            "column": 56
+          }
+        },
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\nh_main : ∀ (x : ℝ), f x - f x ^ 2 ≥ 0\n⊢ ∀ (x : ℝ), f x - f x ^ 2 ≥ 0",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 105.71
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1968_p5_1_g0_s3_g0",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 17,
+    "code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s3_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : f a = 1 / 2 + √(f 0 - f 0 ^ 2) := by\n  have h₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2) := by\n    have h₃ : f (0 + a) = 1 / 2 + √(f 0 - f 0 ^ 2) := by\n      have h₄ := h₁ 0\n      exact h₄\n    have h₅ : 0 + a = a := by ring\n    rw [h₅] at h₃\n    exact h₃\n  exact h₂",
+    "full_code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s3_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : f a = 1 / 2 + √(f 0 - f 0 ^ 2) := by\n  have h₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2) := by\n    have h₃ : f (0 + a) = 1 / 2 + √(f 0 - f 0 ^ 2) := by\n      have h₄ := h₁ 0\n      exact h₄\n    have h₅ : 0 + a = a := by ring\n    rw [h₅] at h₃\n    exact h₃\n  exact h₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 70.36
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1968_p5_1_g0_s3_g1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 23,
+    "code": "theorem lean_workbook_plus_36692 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) (h₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2)) : f (a + a) = 1 / 2 + √(f a - f a ^ 2) := by\n  have h₃ : f (a + a) = 1 / 2 + √(f a - f a ^ 2) := by\n    have h₄ := h₁ a\n    -- Simplify the expression to get the desired result\n    <;> ring_nf at h₄ ⊢ <;> linarith\n  exact h₃",
+    "full_code": "theorem lean_workbook_plus_36692 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) (h₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2)) : f (a + a) = 1 / 2 + √(f a - f a ^ 2) := by\n  have h₃ : f (a + a) = 1 / 2 + √(f a - f a ^ 2) := by\n    have h₄ := h₁ a\n    -- Simplify the expression to get the desired result\n    <;> ring_nf at h₄ ⊢ <;> linarith\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 70.69
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1968_p5_1_g0_s3_g2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s3_g2 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) (h₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2)) (h₃ : f (a + a) = 1 / 2 + √(f a - f a ^ 2)) : ∀ (x : ℝ), f (x + 2 * a) = f x := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s3_g2 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) (h₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2)) (h₃ : f (a + a) = 1 / 2 + √(f a - f a ^ 2)) : ∀ (x : ℝ), f (x + 2 * a) = f x := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 68,
+          "pos": {
+            "line": 2,
+            "column": 254
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\nh₂ : f a = 1 / 2 + √(f 0 - f 0 ^ 2)\nh₃ : f (a + a) = 1 / 2 + √(f a - f a ^ 2)\n⊢ ∀ (x : ℝ), f (x + 2 * a) = f x",
+          "endPos": {
+            "line": 2,
+            "column": 259
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 107.18
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1968_p5_1_g0_s4_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s4_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∀ (x : ℝ), f x ≥ 1 / 2 := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1968_p5_1_g0_s4_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∀ (x : ℝ), f x ≥ 1 / 2 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 80,
+          "pos": {
+            "line": 2,
+            "column": 164
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\n⊢ ∀ (x : ℝ), f x ≥ 1 / 2",
+          "endPos": {
+            "line": 2,
+            "column": 169
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 101.24
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1977_p6_g0_s4_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1977_p6_g0_s4_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), f n = n := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1977_p6_g0_s4_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), f n = n := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 2,
+            "column": 154
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (n : ℕ), 0 < f n\nh₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)\n⊢ ∀ (n : ℕ), f n = n",
+          "endPos": {
+            "line": 2,
+            "column": 159
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.72
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1982_p1_g0_s1_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1982_p1_g0_s1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : False := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1982_p1_g0_s1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : False := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 32,
+          "pos": {
+            "line": 2,
+            "column": 210
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1\nh₁ : f 2 = 0\nh₂ : 0 < f 3\nh₃ : f 9999 = 3333\n⊢ False",
+          "endPos": {
+            "line": 2,
+            "column": 215
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 110.27
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1982_p1_g0_s2_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1982_p1_g0_s2_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1 = 0 := by\n  have h₄ : f 1 = 0 := by sorry\n  sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1982_p1_g0_s2_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1 = 0 := by\n  have h₄ : f 1 = 0 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 3,
+            "column": 26
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1\nh₁ : f 2 = 0\nh₂ : 0 < f 3\nh₃ : f 9999 = 3333\n⊢ f 1 = 0",
+          "endPos": {
+            "line": 3,
+            "column": 31
+          }
+        },
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "f : ℕ → ℕ\nh₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1\nh₁ : f 2 = 0\nh₂ : 0 < f 3\nh₃ : f 9999 = 3333\nh₄ : f 1 = 0\n⊢ f 1 = 0",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 105.59
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1982_p1_g0_s2_g1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 15,
+    "code": "theorem lean_workbook_plus_27262 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) (h₄ : f 1 = 0) : f 3 = 1 := by\n  have h₅ : f 3 = 1 := by\n    have h₅₁ : f 3 - f 1 - f 2 = 0 ∨ f 3 - f 1 - f 2 = 1 := by\n      have h₅₂ : 0 < 1 ∧ 0 < 2 := by norm_num\n      have h₅₃ : f (1 + 2) - f 1 - f 2 = 0 ∨ f (1 + 2) - f 1 - f 2 = 1 := h₀ 1 2 h₅₂\n      simpa [add_assoc] using h₅₃\n    have h₅₄ : f 3 - f 1 - f 2 = f 3 := by\n      have h₅₅ : f 1 = 0 := h₄\n      have h₅₆ : f 2 = 0 := h₁\n      have h₅₇ : f 3 - f 1 - f 2 = f 3 := by\n        rw [h₅₅, h₅₆]\n        <;> simp [Nat.sub_self, Nat.sub_zero]\n        <;>\n        omega\n      exact h₅₇\n    have h₅₅ : f 3 = 0 ∨ f 3 = 1 := by\n      cases h₅₁ with\n      | inl h₅₁ =>\n        have h₅₅₁ : f 3 - f 1 - f 2 = 0 := h₅₁\n        have h₅₅₂ : f 3 - f 1 - f 2 = f 3 := h₅₄\n        have h₅₅₃ : f 3 = 0 := by\n          omega\n        exact Or.inl h₅₅₃\n      | inr h₅₁ =>\n        have h₅₅₁ : f 3 - f 1 - f 2 = 1 := h₅₁\n        have h₅₅₂ : f 3 - f 1 - f 2 = f 3 := h₅₄\n        have h₅₅₃ : f 3 = 1 := by\n          omega\n        exact Or.inr h₅₅₃\n    cases h₅₅ with\n    | inl h₅₅ =>\n      have h₅₅₁ : f 3 = 0 := h₅₅\n      have h₅₅₂ : 0 < f 3 := h₂\n      omega\n    | inr h₅₅ =>\n      have h₅₅₁ : f 3 = 1 := h₅₅\n      exact h₅₅₁\n  exact h₅",
+    "full_code": "theorem lean_workbook_plus_27262 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) (h₄ : f 1 = 0) : f 3 = 1 := by\n  have h₅ : f 3 = 1 := by\n    have h₅₁ : f 3 - f 1 - f 2 = 0 ∨ f 3 - f 1 - f 2 = 1 := by\n      have h₅₂ : 0 < 1 ∧ 0 < 2 := by norm_num\n      have h₅₃ : f (1 + 2) - f 1 - f 2 = 0 ∨ f (1 + 2) - f 1 - f 2 = 1 := h₀ 1 2 h₅₂\n      simpa [add_assoc] using h₅₃\n    have h₅₄ : f 3 - f 1 - f 2 = f 3 := by\n      have h₅₅ : f 1 = 0 := h₄\n      have h₅₆ : f 2 = 0 := h₁\n      have h₅₇ : f 3 - f 1 - f 2 = f 3 := by\n        rw [h₅₅, h₅₆]\n        <;> simp [Nat.sub_self, Nat.sub_zero]\n        <;>\n        omega\n      exact h₅₇\n    have h₅₅ : f 3 = 0 ∨ f 3 = 1 := by\n      cases h₅₁ with\n      | inl h₅₁ =>\n        have h₅₅₁ : f 3 - f 1 - f 2 = 0 := h₅₁\n        have h₅₅₂ : f 3 - f 1 - f 2 = f 3 := h₅₄\n        have h₅₅₃ : f 3 = 0 := by\n          omega\n        exact Or.inl h₅₅₃\n      | inr h₅₁ =>\n        have h₅₅₁ : f 3 - f 1 - f 2 = 1 := h₅₁\n        have h₅₅₂ : f 3 - f 1 - f 2 = f 3 := h₅₄\n        have h₅₅₃ : f 3 = 1 := by\n          omega\n        exact Or.inr h₅₅₃\n    cases h₅₅ with\n    | inl h₅₅ =>\n      have h₅₅₁ : f 3 = 0 := h₅₅\n      have h₅₅₂ : 0 < f 3 := h₂\n      omega\n    | inr h₅₅ =>\n      have h₅₅₁ : f 3 = 1 := h₅₅\n      exact h₅₅₁\n  exact h₅",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 85.31
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1997_p5_g0_s0_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1997_p5_g0_s0_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1997_p5_g0_s0_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 47,
+          "pos": {
+            "line": 2,
+            "column": 213
+          },
+          "goal": "x y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\n⊢ x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False)",
+          "endPos": {
+            "line": 2,
+            "column": 218
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 110.01
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1997_p5_g0_s4_g0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1997_p5_g0_s4_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3 := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1997_p5_g0_s4_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 2,
+            "column": 155
+          },
+          "goal": "x y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\n⊢ x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3",
+          "endPos": {
+            "line": 2,
+            "column": 160
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 106.43
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_imo_1997_p5_g0_s4_g1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem r3_sorry_fill_imo_1997_p5_g0_s4_g1 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) (h₂ : x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3) : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by sorry",
+    "full_code": "theorem r3_sorry_fill_imo_1997_p5_g0_s4_g1 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) (h₂ : x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3) : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 64,
+          "pos": {
+            "line": 2,
+            "column": 216
+          },
+          "goal": "x y : ℕ\nh₀ : 0 < x ∧ 0 < y\nh₁ : x ^ y ^ 2 = y ^ x\nh₂ : x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3\n⊢ (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3)",
+          "endPos": {
+            "line": 2,
+            "column": 221
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 52.99
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 4,
+    "code": "theorem r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g1 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) (h₃ : False) : m = 2 ∧ n = 3 := by\n  exfalso\n  exact h₃\n  <;> simp_all\n  <;> norm_num\n  <;> linarith",
+    "full_code": "theorem r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g1 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) (h₃ : False) : m = 2 ∧ n = 3 := by\n  exfalso\n  exact h₃\n  <;> simp_all\n  <;> norm_num\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 31.28
+    }
+  },
+  {
+    "problem_id": "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g0",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 4,
+    "code": "theorem r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g0 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : 2 ^ m ≤ 2 ^ n := by\n  have h₃ : 2 ^ m ≤ 2 ^ n := by\n    apply Nat.pow_le_pow_of_le_right\n    · norm_num -- Proves that 2 > 1\n    · exact h₂\n  exact h₃",
+    "full_code": "theorem r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g0 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : 2 ^ m ≤ 2 ^ n := by\n  have h₃ : 2 ^ m ≤ 2 ^ n := by\n    apply Nat.pow_le_pow_of_le_right\n    · norm_num -- Proves that 2 > 1\n    · exact h₂\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 65.65
+    }
+  }
+]

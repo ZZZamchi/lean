@@ -1,0 +1,1387 @@
+[
+  {
+    "problem_id": "numbertheory_4x3m7y3neq2003",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem numbertheory_4x3m7y3neq2003 :\n  ¬ ∃ x y : ℤ, 4 * x ^ 3 - 7 * y ^ 3 = 2003 := by\n  have h_main : ∀ (x y : ℤ), 4 * x ^ 3 - 7 * y ^ 3 = 2003 → False := by\n    sorry\n  sorry",
+    "full_code": "theorem numbertheory_4x3m7y3neq2003 :\n  ¬ ∃ x y : ℤ, 4 * x ^ 3 - 7 * y ^ 3 = 2003 := by\n  have h_main : ∀ (x y : ℤ), 4 * x ^ 3 - 7 * y ^ 3 = 2003 → False := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 5,
+            "column": 4
+          },
+          "goal": "⊢ ∀ (x y : ℤ), 4 * x ^ 3 - 7 * y ^ 3 = 2003 → False",
+          "endPos": {
+            "line": 5,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "h_main : ∀ (x y : ℤ), 4 * x ^ 3 - 7 * y ^ 3 = 2003 → False\n⊢ ¬∃ x y, 4 * x ^ 3 - 7 * y ^ 3 = 2003",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 150.32
+    }
+  },
+  {
+    "problem_id": "amc12_2001_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12_2001_p5\n  (S : Finset ℕ)\n  (hS : S = {10000! / (5000!)^2 , 10000! / 2^5000, 9999! / 2^5000, 10000! / (2 ^ (5000 : ℕ) * 5000!), 5000! / 2^5000}) :\n  Finset.prod (Finset.filter (fun (x : ℕ) => Odd x) (Finset.range 10000)) (fun (x : ℕ) => x) ∈ S := by\n  10000! = (product of odds from 1 to 9999) * (product of evens from 2 to 10000)",
+    "full_code": "theorem amc12_2001_p5\n  (S : Finset ℕ)\n  (hS : S = {10000! / (5000!)^2 , 10000! / 2^5000, 9999! / 2^5000, 10000! / (2 ^ (5000 : ℕ) * 5000!), 5000! / 2^5000}) :\n  Finset.prod (Finset.filter (fun (x : ℕ) => Odd x) (Finset.range 10000)) (fun (x : ℕ) => x) ∈ S := by\n  10000! = (product of odds from 1 to 9999) * (product of evens from 2 to 10000)",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 18
+          },
+          "endPos": {
+            "line": 4,
+            "column": 19
+          },
+          "data": "unexpected token '!'; expected ':=' or '}'"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 148.55
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_3",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_numbertheory_3 : (∑ x ∈ Finset.range 9, (x + 1) ^ 2) % 10 = 5 := by\n  norm_num [Finset.sum_range_succ, Finset.sum_range_zero]\n  <;> rfl",
+    "full_code": "theorem mathd_numbertheory_3 : (∑ x ∈ Finset.range 9, (x + 1) ^ 2) % 10 = 5 := by\n  norm_num [Finset.sum_range_succ, Finset.sum_range_zero]\n  <;> rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 118.82
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_209",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 5,
+    "code": "theorem mathd_algebra_209\n  (f h : ℝ → ℝ)\n  (h₀: Function.LeftInverse f h)\n  (h₁ : h 2 = 10)\n  (h₂ : h 10 = 1)\n  (h₃ : h 1 = 2) :\n  f (f 10) = 1 := by\n  have h_f1 : f 1 = 10 := by\n    have h₄ : f (h 10) = 10 := h₀ 10\n    have h₅ : f (h 10) = f 1 := by rw [h₂]\n    linarith\n  \n  have h_f2 : f 2 = 1 := by\n    have h₄ : f (h 1) = 1 := h₀ 1\n    have h₅ : f (h 1) = f 2 := by rw [h₃]\n    linarith\n  \n  have h_f10 : f 10 = 2 := by\n    have h₄ : f (h 2) = 2 := h₀ 2\n    have h₅ : f (h 2) = f 10 := by rw [h₁]\n    linarith\n  \n  have h_main : f (f 10) = 1 := by\n    have h₄ : f (f 10) = f 2 := by rw [h_f10]\n    rw [h₄]\n    rw [h_f2]\n    <;> norm_num\n  \n  exact h_main",
+    "full_code": "theorem mathd_algebra_209\n  (f h : ℝ → ℝ)\n  (h₀: Function.LeftInverse f h)\n  (h₁ : h 2 = 10)\n  (h₂ : h 10 = 1)\n  (h₃ : h 1 = 2) :\n  f (f 10) = 1 := by\n  have h_f1 : f 1 = 10 := by\n    have h₄ : f (h 10) = 10 := h₀ 10\n    have h₅ : f (h 10) = f 1 := by rw [h₂]\n    linarith\n  \n  have h_f2 : f 2 = 1 := by\n    have h₄ : f (h 1) = 1 := h₀ 1\n    have h₅ : f (h 1) = f 2 := by rw [h₃]\n    linarith\n  \n  have h_f10 : f 10 = 2 := by\n    have h₄ : f (h 2) = 2 := h₀ 2\n    have h₅ : f (h 2) = f 10 := by rw [h₁]\n    linarith\n  \n  have h_main : f (f 10) = 1 := by\n    have h₄ : f (f 10) = f 2 := by rw [h_f10]\n    rw [h₄]\n    rw [h_f2]\n    <;> norm_num\n  \n  exact h_main",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 125.04
+    }
+  },
+  {
+    "problem_id": "imo_1983_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1983_p6\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))) :\n  let a := dist (T.points 1) (T.points 2)\n  let b := dist (T.points 0) (T.points 2)\n  let c := dist (T.points 0) (T.points 1)\n  0 ≤ a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ∧\n  (0 = a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ↔ imo_1983_p6_solution a b c) := by sorry",
+    "full_code": "theorem imo_1983_p6\n  (T : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))) :\n  let a := dist (T.points 1) (T.points 2)\n  let b := dist (T.points 0) (T.points 2)\n  let c := dist (T.points 0) (T.points 1)\n  0 ≤ a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ∧\n  (0 = a^2 * b * (a - b) + b^2 * c * (b - c) + c^2 * a * (c - a) ↔ imo_1983_p6_solution a b c) := by sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 17,
+          "pos": {
+            "line": 8,
+            "column": 101
+          },
+          "goal": "x✝ : Sort u_1\nimo_1983_p6_solution : x✝\nT : Affine.Triangle ℝ (EuclideanSpace ℝ (Fin 2))\n⊢ let a := dist (T.points 1) (T.points 2);\n  let b := dist (T.points 0) (T.points 2);\n  let c := dist (T.points 0) (T.points 1);\n  0 ≤ a ^ 2 * b * (a - b) + b ^ 2 * c * (b - c) + c ^ 2 * a * (c - a) ∧\n    (0 = a ^ 2 * b * (a - b) + b ^ 2 * c * (b - c) + c ^ 2 * a * (c - a) ↔ sorryAx Prop true)",
+          "endPos": {
+            "line": 8,
+            "column": 106
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 8,
+            "column": 67
+          },
+          "endPos": {
+            "line": 8,
+            "column": 93
+          },
+          "data": "function expected at\n  imo_1983_p6_solution\nterm has type\n  ?m.3239"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 155.59
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_33",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 27,
+    "code": "theorem mathd_algebra_33 (x y z : ℝ) (h₀ : x ≠ 0) (h₁ : 2 * x = 5 * y) (h₂ : 7 * y = 10 * z) :\n  z / x = 7 / 25 := by\n  have h₃ : y = (2 : ℝ) / 5 * x := by\n    have h₃₁ : y = (2 : ℝ) / 5 * x := by\n      -- Solve for y in terms of x using 2x = 5y\n      have h₃₂ : 2 * x = 5 * y := h₁\n      have h₃₃ : y = (2 : ℝ) / 5 * x := by\n        apply Eq.symm\n        -- Simplify the equation to y = (2/5)x\n        ring_nf at h₃₂ ⊢\n        linarith\n      exact h₃₃\n    exact h₃₁\n  \n  have h₄ : z = (7 : ℝ) / 25 * x := by\n    have h₄₁ : 7 * y = 10 * z := h₂\n    rw [h₃] at h₄₁\n    -- Substitute y = (2/5)x into 7y = 10z to get 7*(2/5)x = 10z\n    ring_nf at h₄₁ ⊢\n    -- Simplify the equation to 14x/5 = 10z\n    linarith\n  \n  have h₅ : z / x = 7 / 25 := by\n    rw [h₄]\n    -- Substitute z = (7/25)x into z/x\n    field_simp [h₀]\n    -- Simplify (7/25 * x) / x to 7/25\n    <;> ring_nf\n    <;> field_simp [h₀]\n    <;> linarith\n  \n  exact h₅",
+    "full_code": "theorem mathd_algebra_33 (x y z : ℝ) (h₀ : x ≠ 0) (h₁ : 2 * x = 5 * y) (h₂ : 7 * y = 10 * z) :\n  z / x = 7 / 25 := by\n  have h₃ : y = (2 : ℝ) / 5 * x := by\n    have h₃₁ : y = (2 : ℝ) / 5 * x := by\n      -- Solve for y in terms of x using 2x = 5y\n      have h₃₂ : 2 * x = 5 * y := h₁\n      have h₃₃ : y = (2 : ℝ) / 5 * x := by\n        apply Eq.symm\n        -- Simplify the equation to y = (2/5)x\n        ring_nf at h₃₂ ⊢\n        linarith\n      exact h₃₃\n    exact h₃₁\n  \n  have h₄ : z = (7 : ℝ) / 25 * x := by\n    have h₄₁ : 7 * y = 10 * z := h₂\n    rw [h₃] at h₄₁\n    -- Substitute y = (2/5)x into 7y = 10z to get 7*(2/5)x = 10z\n    ring_nf at h₄₁ ⊢\n    -- Simplify the equation to 14x/5 = 10z\n    linarith\n  \n  have h₅ : z / x = 7 / 25 := by\n    rw [h₄]\n    -- Substitute z = (7/25)x into z/x\n    field_simp [h₀]\n    -- Simplify (7/25 * x) / x to 7/25\n    <;> ring_nf\n    <;> field_simp [h₀]\n    <;> linarith\n  \n  exact h₅",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 134.58
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_299",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_numbertheory_299 : 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5 := by\n  norm_num [Nat.mul_mod, Nat.add_mod, Nat.mod_mod]\n  <;> rfl",
+    "full_code": "theorem mathd_numbertheory_299 : 1 * 3 * 5 * 7 * 9 * 11 * 13 % 10 = 5 := by\n  norm_num [Nat.mul_mod, Nat.add_mod, Nat.mod_mod]\n  <;> rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 94.99
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_unitcircatbpabsamblt1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 23,
+    "code": "theorem algebra_sqineq_unitcircatbpabsamblt1 (a b : ℝ) (h₀ : a ^ 2 + b ^ 2 = 1) :\n  a * b + abs (a - b) ≤ 1 := by\n  have h₁ : (a - b) ^ 2 = 1 - 2 * (a * b) := by\n    have h₁₁ : (a - b) ^ 2 = a ^ 2 + b ^ 2 - 2 * (a * b) := by ring\n    rw [h₁₁]\n    rw [h₀]\n    <;> ring\n    <;> linarith\n  \n  by_cases h₂ : a - b ≥ 0\n  · -- Case 1: a - b ≥ 0\n    have h₃ : abs (a - b) = a - b := by\n      rw [abs_of_nonneg h₂]\n    rw [h₃]\n    have h₄ : (a - b - 1) ^ 2 ≥ 0 := by nlinarith\n    nlinarith [sq_nonneg (a - b - 1)]\n  · -- Case 2: a - b < 0\n    have h₃ : abs (a - b) = -(a - b) := by\n      rw [abs_of_nonpos (by linarith)]\n      <;> linarith\n    rw [h₃]\n    have h₄ : (a - b + 1) ^ 2 ≥ 0 := by nlinarith\n    nlinarith [sq_nonneg (a - b + 1)]",
+    "full_code": "theorem algebra_sqineq_unitcircatbpabsamblt1 (a b : ℝ) (h₀ : a ^ 2 + b ^ 2 = 1) :\n  a * b + abs (a - b) ≤ 1 := by\n  have h₁ : (a - b) ^ 2 = 1 - 2 * (a * b) := by\n    have h₁₁ : (a - b) ^ 2 = a ^ 2 + b ^ 2 - 2 * (a * b) := by ring\n    rw [h₁₁]\n    rw [h₀]\n    <;> ring\n    <;> linarith\n  \n  by_cases h₂ : a - b ≥ 0\n  · -- Case 1: a - b ≥ 0\n    have h₃ : abs (a - b) = a - b := by\n      rw [abs_of_nonneg h₂]\n    rw [h₃]\n    have h₄ : (a - b - 1) ^ 2 ≥ 0 := by nlinarith\n    nlinarith [sq_nonneg (a - b - 1)]\n  · -- Case 2: a - b < 0\n    have h₃ : abs (a - b) = -(a - b) := by\n      rw [abs_of_nonpos (by linarith)]\n      <;> linarith\n    rw [h₃]\n    have h₄ : (a - b + 1) ^ 2 ≥ 0 := by nlinarith\n    nlinarith [sq_nonneg (a - b + 1)]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 140.83
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_419",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem mathd_algebra_419 (a b : ℝ) (h₀ : a = -1) (h₁ : b = 5) : -a - b ^ 2 + 3 * (a * b) = -39 := by\n  rw [h₀, h₁]\n  norm_num",
+    "full_code": "theorem mathd_algebra_419 (a b : ℝ) (h₀ : a = -1) (h₁ : b = 5) : -a - b ^ 2 + 3 * (a * b) = -39 := by\n  rw [h₀, h₁]\n  norm_num",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 60.48
+    }
+  },
+  {
+    "problem_id": "imo_1960_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by sorry",
+    "full_code": "theorem imo_1960_p2\n  (x : ℝ)\n  (h₀ : 0 ≤ 1 + 2 * x)\n  (h₁ : (1 - Real.sqrt (1 + 2 * x)) ^ 2 ≠ 0) :\n  4 * x ^ 2 / (1 - Real.sqrt (1 + 2 * x)) ^ 2 < 2 * x + 9 ↔ x ∈ imo_1960_p2_solution := by sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 60
+          },
+          "endPos": {
+            "line": 6,
+            "column": 84
+          },
+          "data": "typeclass instance problem is stuck, it is often due to metavariables\n  Membership ℝ ?m.1081"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 153.1
+    }
+  },
+  {
+    "problem_id": "numbertheory_x5neqy2p4",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem numbertheory_x5neqy2p4 (x y : ℤ) : x ^ 5 ≠ y ^ 2 + 4 := by\n  have h_main : ∀ (x y : ℤ), x ^ 5 % 11 = (y ^ 2 + 4) % 11 → False := by sorry\n  have h_final : x ^ 5 ≠ y ^ 2 + 4 := by sorry\n  exact h_final",
+    "full_code": "theorem numbertheory_x5neqy2p4 (x y : ℤ) : x ^ 5 ≠ y ^ 2 + 4 := by\n  have h_main : ∀ (x y : ℤ), x ^ 5 % 11 = (y ^ 2 + 4) % 11 → False := by sorry\n  have h_final : x ^ 5 ≠ y ^ 2 + 4 := by sorry\n  exact h_final",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 3,
+            "column": 73
+          },
+          "goal": "x y : ℤ\n⊢ ∀ (x y : ℤ), x ^ 5 % 11 = (y ^ 2 + 4) % 11 → False",
+          "endPos": {
+            "line": 3,
+            "column": 78
+          }
+        },
+        {
+          "proofState": 27,
+          "pos": {
+            "line": 4,
+            "column": 41
+          },
+          "goal": "x y : ℤ\nh_main : ∀ (x y : ℤ), x ^ 5 % 11 = (y ^ 2 + 4) % 11 → False\n⊢ x ^ 5 ≠ y ^ 2 + 4",
+          "endPos": {
+            "line": 4,
+            "column": 46
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 148.05
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_398",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_398 (a b c x : ℝ) (h₁ : 9 * b = 20 * c)\n  (h₂ : 7 * a = 4 * b) (h₃ : x * a = 80 * c) : x = 63 := by sorry",
+    "full_code": "theorem mathd_algebra_398 (a b c x : ℝ) (h₁ : 9 * b = 20 * c)\n  (h₂ : 7 * a = 4 * b) (h₃ : x * a = 80 * c) : x = 63 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 32,
+          "pos": {
+            "line": 3,
+            "column": 60
+          },
+          "goal": "a b c x : ℝ\nh₁ : 9 * b = 20 * c\nh₂ : 7 * a = 4 * b\nh₃ : x * a = 80 * c\n⊢ x = 63",
+          "endPos": {
+            "line": 3,
+            "column": 65
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 152.33
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_430",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_430\n  (a b c d: ℕ) (h₀ : 1 ≤ a ∧ a ≤ 9) (h₁ : 1 ≤ b ∧ b ≤ 9)\n  (h₂ : 1 ≤ c ∧ c ≤ 9) (h₃ : a ≠ b) (h₄ : a ≠ c) (h₅ : b ≠ c) (h₆ : a + b = c)\n  (h₇ : Nat.digits 10 d = [a, a])\n  (h₈ : d - b = 2 * c) (h₉ : c * b = d + a) : a + b + c = 8 := by\n  have h_d : d = 11 * a := by sorry\n  have h_b_eq_3a : b = 3 * a := by sorry\n  have h_a_eq_1 : a = 1 := by sorry\n  have h_b_eq_3 : b = 3 := by sorry\n  have h_c_eq_4 : c = 4 := by sorry\n  have h_sum : a + b + c = 8 := by sorry\n  exact h_sum",
+    "full_code": "theorem mathd_numbertheory_430\n  (a b c d: ℕ) (h₀ : 1 ≤ a ∧ a ≤ 9) (h₁ : 1 ≤ b ∧ b ≤ 9)\n  (h₂ : 1 ≤ c ∧ c ≤ 9) (h₃ : a ≠ b) (h₄ : a ≠ c) (h₅ : b ≠ c) (h₆ : a + b = c)\n  (h₇ : Nat.digits 10 d = [a, a])\n  (h₈ : d - b = 2 * c) (h₉ : c * b = d + a) : a + b + c = 8 := by\n  have h_d : d = 11 * a := by sorry\n  have h_b_eq_3a : b = 3 * a := by sorry\n  have h_a_eq_1 : a = 1 := by sorry\n  have h_b_eq_3 : b = 3 := by sorry\n  have h_c_eq_4 : c = 4 := by sorry\n  have h_sum : a + b + c = 8 := by sorry\n  exact h_sum",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 7,
+            "column": 30
+          },
+          "goal": "a b c d : ℕ\nh₀ : 1 ≤ a ∧ a ≤ 9\nh₁ : 1 ≤ b ∧ b ≤ 9\nh₂ : 1 ≤ c ∧ c ≤ 9\nh₃ : a ≠ b\nh₄ : a ≠ c\nh₅ : b ≠ c\nh₆ : a + b = c\nh₇ : Nat.digits 10 d = [a, a]\nh₈ : d - b = 2 * c\nh₉ : c * b = d + a\n⊢ d = 11 * a",
+          "endPos": {
+            "line": 7,
+            "column": 35
+          }
+        },
+        {
+          "proofState": 7,
+          "pos": {
+            "line": 8,
+            "column": 35
+          },
+          "goal": "a b c d : ℕ\nh₀ : 1 ≤ a ∧ a ≤ 9\nh₁ : 1 ≤ b ∧ b ≤ 9\nh₂ : 1 ≤ c ∧ c ≤ 9\nh₃ : a ≠ b\nh₄ : a ≠ c\nh₅ : b ≠ c\nh₆ : a + b = c\nh₇ : Nat.digits 10 d = [a, a]\nh₈ : d - b = 2 * c\nh₉ : c * b = d + a\nh_d : d = 11 * a\n⊢ b = 3 * a",
+          "endPos": {
+            "line": 8,
+            "column": 40
+          }
+        },
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 9,
+            "column": 30
+          },
+          "goal": "a b c d : ℕ\nh₀ : 1 ≤ a ∧ a ≤ 9\nh₁ : 1 ≤ b ∧ b ≤ 9\nh₂ : 1 ≤ c ∧ c ≤ 9\nh₃ : a ≠ b\nh₄ : a ≠ c\nh₅ : b ≠ c\nh₆ : a + b = c\nh₇ : Nat.digits 10 d = [a, a]\nh₈ : d - b = 2 * c\nh₉ : c * b = d + a\nh_d : d = 11 * a\nh_b_eq_3a : b = 3 * a\n⊢ a = 1",
+          "endPos": {
+            "line": 9,
+            "column": 35
+          }
+        },
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 10,
+            "column": 30
+          },
+          "goal": "a b c d : ℕ\nh₀ : 1 ≤ a ∧ a ≤ 9\nh₁ : 1 ≤ b ∧ b ≤ 9\nh₂ : 1 ≤ c ∧ c ≤ 9\nh₃ : a ≠ b\nh₄ : a ≠ c\nh₅ : b ≠ c\nh₆ : a + b = c\nh₇ : Nat.digits 10 d = [a, a]\nh₈ : d - b = 2 * c\nh₉ : c * b = d + a\nh_d : d = 11 * a\nh_b_eq_3a : b = 3 * a\nh_a_eq_1 : a = 1\n⊢ b = 3",
+          "endPos": {
+            "line": 10,
+            "column": 35
+          }
+        },
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 11,
+            "column": 30
+          },
+          "goal": "a b c d : ℕ\nh₀ : 1 ≤ a ∧ a ≤ 9\nh₁ : 1 ≤ b ∧ b ≤ 9\nh₂ : 1 ≤ c ∧ c ≤ 9\nh₃ : a ≠ b\nh₄ : a ≠ c\nh₅ : b ≠ c\nh₆ : a + b = c\nh₇ : Nat.digits 10 d = [a, a]\nh₈ : d - b = 2 * c\nh₉ : c * b = d + a\nh_d : d = 11 * a\nh_b_eq_3a : b = 3 * a\nh_a_eq_1 : a = 1\nh_b_eq_3 : b = 3\n⊢ c = 4",
+          "endPos": {
+            "line": 11,
+            "column": 35
+          }
+        },
+        {
+          "proofState": 11,
+          "pos": {
+            "line": 12,
+            "column": 35
+          },
+          "goal": "a b c d : ℕ\nh₀ : 1 ≤ a ∧ a ≤ 9\nh₁ : 1 ≤ b ∧ b ≤ 9\nh₂ : 1 ≤ c ∧ c ≤ 9\nh₃ : a ≠ b\nh₄ : a ≠ c\nh₅ : b ≠ c\nh₆ : a + b = c\nh₇ : Nat.digits 10 d = [a, a]\nh₈ : d - b = 2 * c\nh₉ : c * b = d + a\nh_d : d = 11 * a\nh_b_eq_3a : b = 3 * a\nh_a_eq_1 : a = 1\nh_b_eq_3 : b = 3\nh_c_eq_4 : c = 4\n⊢ a + b + c = 8",
+          "endPos": {
+            "line": 12,
+            "column": 40
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 150.19
+    }
+  },
+  {
+    "problem_id": "induction_12dvd4expnp1p20",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem induction_12dvd4expnp1p20 (n : ℕ) : 12 ∣ 4 ^ (n + 1) + 20 := by\n  have h_main : 12 ∣ 4 ^ (n + 1) + 20 := by sorry\n  sorry",
+    "full_code": "theorem induction_12dvd4expnp1p20 (n : ℕ) : 12 ∣ 4 ^ (n + 1) + 20 := by\n  have h_main : 12 ∣ 4 ^ (n + 1) + 20 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 3,
+            "column": 44
+          },
+          "goal": "n : ℕ\n⊢ 12 ∣ 4 ^ (n + 1) + 20",
+          "endPos": {
+            "line": 3,
+            "column": 49
+          }
+        },
+        {
+          "proofState": 29,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "n : ℕ\nh_main : 12 ∣ 4 ^ (n + 1) + 20\n⊢ 12 ∣ 4 ^ (n + 1) + 20",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 143.39
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_137",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 23,
+    "code": "theorem mathd_algebra_137 (x : ℕ) (h₀ : ↑x + (4 : ℝ) / (100 : ℝ) * ↑x = 598) : x = 575 := by\n  have h₁ : (x : ℝ) + (4 : ℝ) / (100 : ℝ) * (x : ℝ) = 598 := by\n    exact_mod_cast h₀\n  \n  have h₂ : (26 : ℝ) / 25 * (x : ℝ) = 598 := by\n    have h₂₁ : (x : ℝ) + (4 : ℝ) / (100 : ℝ) * (x : ℝ) = (26 : ℝ) / 25 * (x : ℝ) := by\n      ring_nf\n      <;> norm_num\n      <;> linarith\n    linarith\n  \n  have h₃ : (26 : ℝ) * (x : ℝ) = 14950 := by\n    have h₃₁ : (26 : ℝ) / 25 * (x : ℝ) = 598 := h₂\n    have h₃₂ : (26 : ℝ) * (x : ℝ) = 14950 := by\n      calc\n        (26 : ℝ) * (x : ℝ) = 25 * ((26 : ℝ) / 25 * (x : ℝ)) := by ring\n        _ = 25 * (598 : ℝ) := by rw [h₃₁]\n        _ = 14950 := by norm_num\n    exact h₃₂\n  \n  have h₄ : (x : ℝ) = 575 := by\n    have h₄₁ : (26 : ℝ) * (x : ℝ) = 14950 := h₃\n    have h₄₂ : (x : ℝ) = 575 := by\n      apply mul_left_cancel₀ (show (26 : ℝ) ≠ 0 by norm_num)\n      linarith\n    exact h₄₂\n  \n  have h₅ : x = 575 := by\n    have h₅₁ : (x : ℝ) = 575 := h₄\n    have h₅₂ : (x : ℕ) = 575 := by\n      norm_cast at h₅₁ ⊢\n      <;>\n      (try norm_num at h₅₁ ⊢) <;>\n      (try linarith) <;>\n      (try ring_nf at h₅₁ ⊢) <;>\n      (try field_simp at h₅₁ ⊢) <;>\n      (try norm_cast at h₅₁ ⊢) <;>\n      (try nlinarith)\n      <;>\n      (try\n        {\n          norm_num at h₅₁ ⊢\n          <;>\n          (try linarith)\n        })\n    exact_mod_cast h₅₂\n  \n  exact h₅",
+    "full_code": "theorem mathd_algebra_137 (x : ℕ) (h₀ : ↑x + (4 : ℝ) / (100 : ℝ) * ↑x = 598) : x = 575 := by\n  have h₁ : (x : ℝ) + (4 : ℝ) / (100 : ℝ) * (x : ℝ) = 598 := by\n    exact_mod_cast h₀\n  \n  have h₂ : (26 : ℝ) / 25 * (x : ℝ) = 598 := by\n    have h₂₁ : (x : ℝ) + (4 : ℝ) / (100 : ℝ) * (x : ℝ) = (26 : ℝ) / 25 * (x : ℝ) := by\n      ring_nf\n      <;> norm_num\n      <;> linarith\n    linarith\n  \n  have h₃ : (26 : ℝ) * (x : ℝ) = 14950 := by\n    have h₃₁ : (26 : ℝ) / 25 * (x : ℝ) = 598 := h₂\n    have h₃₂ : (26 : ℝ) * (x : ℝ) = 14950 := by\n      calc\n        (26 : ℝ) * (x : ℝ) = 25 * ((26 : ℝ) / 25 * (x : ℝ)) := by ring\n        _ = 25 * (598 : ℝ) := by rw [h₃₁]\n        _ = 14950 := by norm_num\n    exact h₃₂\n  \n  have h₄ : (x : ℝ) = 575 := by\n    have h₄₁ : (26 : ℝ) * (x : ℝ) = 14950 := h₃\n    have h₄₂ : (x : ℝ) = 575 := by\n      apply mul_left_cancel₀ (show (26 : ℝ) ≠ 0 by norm_num)\n      linarith\n    exact h₄₂\n  \n  have h₅ : x = 575 := by\n    have h₅₁ : (x : ℝ) = 575 := h₄\n    have h₅₂ : (x : ℕ) = 575 := by\n      norm_cast at h₅₁ ⊢\n      <;>\n      (try norm_num at h₅₁ ⊢) <;>\n      (try linarith) <;>\n      (try ring_nf at h₅₁ ⊢) <;>\n      (try field_simp at h₅₁ ⊢) <;>\n      (try norm_cast at h₅₁ ⊢) <;>\n      (try nlinarith)\n      <;>\n      (try\n        {\n          norm_num at h₅₁ ⊢\n          <;>\n          (try linarith)\n        })\n    exact_mod_cast h₅₂\n  \n  exact h₅",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 142.39
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_277",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_277\n  (S: Set ℕ)\n  (hS: S = {x | ∃ m n:ℕ, x = m + n ∧ Nat.gcd m n = 6 ∧ Nat.lcm m n = 126}):\n  IsLeast S 60 := by\n  have h₁ : 60 ∈ S := by sorry\n  have h₂ : ∀ x ∈ S, 60 ≤ x := by sorry\n  have h₃ : IsLeast S 60 := by sorry\n  exact h₃",
+    "full_code": "theorem mathd_numbertheory_277\n  (S: Set ℕ)\n  (hS: S = {x | ∃ m n:ℕ, x = m + n ∧ Nat.gcd m n = 6 ∧ Nat.lcm m n = 126}):\n  IsLeast S 60 := by\n  have h₁ : 60 ∈ S := by sorry\n  have h₂ : ∀ x ∈ S, 60 ≤ x := by sorry\n  have h₃ : IsLeast S 60 := by sorry\n  exact h₃",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 45,
+          "pos": {
+            "line": 6,
+            "column": 25
+          },
+          "goal": "S : Set ℕ\nhS : S = {x | ∃ m n, x = m + n ∧ m.gcd n = 6 ∧ m.lcm n = 126}\n⊢ 60 ∈ S",
+          "endPos": {
+            "line": 6,
+            "column": 30
+          }
+        },
+        {
+          "proofState": 46,
+          "pos": {
+            "line": 7,
+            "column": 34
+          },
+          "goal": "S : Set ℕ\nhS : S = {x | ∃ m n, x = m + n ∧ m.gcd n = 6 ∧ m.lcm n = 126}\nh₁ : 60 ∈ S\n⊢ ∀ x ∈ S, 60 ≤ x",
+          "endPos": {
+            "line": 7,
+            "column": 39
+          }
+        },
+        {
+          "proofState": 47,
+          "pos": {
+            "line": 8,
+            "column": 31
+          },
+          "goal": "S : Set ℕ\nhS : S = {x | ∃ m n, x = m + n ∧ m.gcd n = 6 ∧ m.lcm n = 126}\nh₁ : 60 ∈ S\nh₂ : ∀ x ∈ S, 60 ≤ x\n⊢ IsLeast S 60",
+          "endPos": {
+            "line": 8,
+            "column": 36
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 148.98
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_160",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 10,
+    "code": "theorem mathd_algebra_160\n  (n x : ℕ)\n  (f : ℕ → ℕ)\n  (h₀ : f = fun t => n + x * t)\n  (h₁: f 1 = 97)\n  (h₂: f 5 = 265) :\n  f 2 = 139 := by\n  have h₃ : n + x = 97 := by\n    have h₃₁ : f 1 = n + x * 1 := by\n      rw [h₀]\n      <;> simp [mul_one]\n    have h₃₂ : n + x * 1 = 97 := by\n      linarith\n    have h₃₃ : n + x = 97 := by\n      simpa [mul_one] using h₃₂\n    exact h₃₃\n  \n  have h₄ : n + 5 * x = 265 := by\n    have h₄₁ : f 5 = n + x * 5 := by\n      rw [h₀]\n      <;> simp [mul_comm]\n      <;> ring_nf\n    have h₄₂ : n + x * 5 = 265 := by\n      linarith\n    have h₄₃ : n + 5 * x = 265 := by\n      calc\n        n + 5 * x = n + x * 5 := by ring\n        _ = 265 := by linarith\n    exact h₄₃\n  \n  have h₅ : x = 42 := by\n    have h₅₁ : 4 * x = 168 := by\n      have h₅₂ : n + 5 * x = 265 := h₄\n      have h₅₃ : n + x = 97 := h₃\n      have h₅₄ : 4 * x = 168 := by\n        omega\n      exact h₅₄\n    have h₅₅ : x = 42 := by\n      omega\n    exact h₅₅\n  \n  have h₆ : n = 55 := by\n    have h₆₁ : n + x = 97 := h₃\n    have h₆₂ : x = 42 := h₅\n    have h₆₃ : n + 42 = 97 := by\n      rw [h₆₂] at h₆₁\n      exact h₆₁\n    have h₆₄ : n = 55 := by\n      omega\n    exact h₆₄\n  \n  have h₇ : n + 2 * x = 139 := by\n    have h₇₁ : n = 55 := h₆\n    have h₇₂ : x = 42 := h₅\n    rw [h₇₁, h₇₂]\n    <;> norm_num\n    <;> linarith\n  \n  have h₈ : f 2 = 139 := by\n    have h₈₁ : f 2 = n + x * 2 := by\n      rw [h₀]\n      <;> simp [mul_comm]\n      <;> ring_nf\n    rw [h₈₁]\n    have h₈₂ : n + x * 2 = 139 := by\n      have h₈₃ : n + 2 * x = 139 := h₇\n      have h₈₄ : n + x * 2 = 139 := by\n        calc\n          n + x * 2 = n + 2 * x := by ring\n          _ = 139 := by linarith\n      exact h₈₄\n    linarith\n  \n  exact h₈",
+    "full_code": "theorem mathd_algebra_160\n  (n x : ℕ)\n  (f : ℕ → ℕ)\n  (h₀ : f = fun t => n + x * t)\n  (h₁: f 1 = 97)\n  (h₂: f 5 = 265) :\n  f 2 = 139 := by\n  have h₃ : n + x = 97 := by\n    have h₃₁ : f 1 = n + x * 1 := by\n      rw [h₀]\n      <;> simp [mul_one]\n    have h₃₂ : n + x * 1 = 97 := by\n      linarith\n    have h₃₃ : n + x = 97 := by\n      simpa [mul_one] using h₃₂\n    exact h₃₃\n  \n  have h₄ : n + 5 * x = 265 := by\n    have h₄₁ : f 5 = n + x * 5 := by\n      rw [h₀]\n      <;> simp [mul_comm]\n      <;> ring_nf\n    have h₄₂ : n + x * 5 = 265 := by\n      linarith\n    have h₄₃ : n + 5 * x = 265 := by\n      calc\n        n + 5 * x = n + x * 5 := by ring\n        _ = 265 := by linarith\n    exact h₄₃\n  \n  have h₅ : x = 42 := by\n    have h₅₁ : 4 * x = 168 := by\n      have h₅₂ : n + 5 * x = 265 := h₄\n      have h₅₃ : n + x = 97 := h₃\n      have h₅₄ : 4 * x = 168 := by\n        omega\n      exact h₅₄\n    have h₅₅ : x = 42 := by\n      omega\n    exact h₅₅\n  \n  have h₆ : n = 55 := by\n    have h₆₁ : n + x = 97 := h₃\n    have h₆₂ : x = 42 := h₅\n    have h₆₃ : n + 42 = 97 := by\n      rw [h₆₂] at h₆₁\n      exact h₆₁\n    have h₆₄ : n = 55 := by\n      omega\n    exact h₆₄\n  \n  have h₇ : n + 2 * x = 139 := by\n    have h₇₁ : n = 55 := h₆\n    have h₇₂ : x = 42 := h₅\n    rw [h₇₁, h₇₂]\n    <;> norm_num\n    <;> linarith\n  \n  have h₈ : f 2 = 139 := by\n    have h₈₁ : f 2 = n + x * 2 := by\n      rw [h₀]\n      <;> simp [mul_comm]\n      <;> ring_nf\n    rw [h₈₁]\n    have h₈₂ : n + x * 2 = 139 := by\n      have h₈₃ : n + 2 * x = 139 := h₇\n      have h₈₄ : n + x * 2 = 139 := by\n        calc\n          n + x * 2 = n + 2 * x := by ring\n          _ = 139 := by linarith\n      exact h₈₄\n    linarith\n  \n  exact h₈",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 138.57
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_176",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 3,
+    "code": "theorem mathd_algebra_176 (x : ℝ) : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n  have h : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n    ring_nf\n    <;>\n    simp [pow_two, pow_three]\n    <;>\n    ring_nf\n    <;>\n    linarith\n  exact h",
+    "full_code": "theorem mathd_algebra_176 (x : ℝ) : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n  have h : (x + 1) ^ 2 * x = x ^ 3 + 2 * x ^ 2 + x := by\n    ring_nf\n    <;>\n    simp [pow_two, pow_three]\n    <;>\n    ring_nf\n    <;>\n    linarith\n  exact h",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 94.31
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_208",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_208 : Real.sqrt 1000000 - 1000000 ^ ((1 : ℝ) / 3) = 900 := by\n  have h₁ : Real.sqrt 1000000 = 1000 := by sorry\n  have h₂ : (1000000 : ℝ) ^ ((1 : ℝ) / 3) = 100 := by sorry\n  rw [h₁, h₂]\n  <;> norm_num",
+    "full_code": "theorem mathd_algebra_208 : Real.sqrt 1000000 - 1000000 ^ ((1 : ℝ) / 3) = 900 := by\n  have h₁ : Real.sqrt 1000000 = 1000 := by sorry\n  have h₂ : (1000000 : ℝ) ^ ((1 : ℝ) / 3) = 100 := by sorry\n  rw [h₁, h₂]\n  <;> norm_num",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 3,
+            "column": 43
+          },
+          "goal": "⊢ √1000000 = 1000",
+          "endPos": {
+            "line": 3,
+            "column": 48
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 4,
+            "column": 54
+          },
+          "goal": "h₁ : √1000000 = 1000\n⊢ 1000000 ^ (1 / 3) = 100",
+          "endPos": {
+            "line": 4,
+            "column": 59
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 148.59
+    }
+  },
+  {
+    "problem_id": "numbertheory_notequiv2i2jasqbsqdiv8",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem numbertheory_notequiv2i2jasqbsqdiv8\n  (a b : ℤ):\n  ¬ (Even a ∧ Even b) ↔ 8 ∣ a ^ 2 + b ^ 2 := by sorry",
+    "full_code": "theorem numbertheory_notequiv2i2jasqbsqdiv8\n  (a b : ℤ):\n  ¬ (Even a ∧ Even b) ↔ 8 ∣ a ^ 2 + b ^ 2 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 15,
+          "pos": {
+            "line": 4,
+            "column": 48
+          },
+          "goal": "a b : ℤ\n⊢ ¬(Even a ∧ Even b) ↔ 8 ∣ a ^ 2 + b ^ 2",
+          "endPos": {
+            "line": 4,
+            "column": 53
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 148.5
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_12",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_numbertheory_12 :\n  Finset.card (Finset.filter (fun x => 20 ∣ x) (Finset.Icc 15 85)) = 4 := by\n  rfl\n  <;> decide\n  <;> simp_all [Finset.card, Finset.filter, Finset.Icc]\n  <;> norm_num\n  <;> decide",
+    "full_code": "theorem mathd_numbertheory_12 :\n  Finset.card (Finset.filter (fun x => 20 ∣ x) (Finset.Icc 15 85)) = 4 := by\n  rfl\n  <;> decide\n  <;> simp_all [Finset.card, Finset.filter, Finset.Icc]\n  <;> norm_num\n  <;> decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 127.67
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_447",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_numbertheory_447 :\n  (∑ k ∈ Finset.filter (fun x => 3 ∣ x) (Finset.Icc (0:ℕ) 50), k % 10) = 78 := by\n  decide",
+    "full_code": "theorem mathd_numbertheory_447 :\n  (∑ k ∈ Finset.filter (fun x => 3 ∣ x) (Finset.Icc (0:ℕ) 50), k % 10) = 78 := by\n  decide",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 123.23
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_451",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_451 (S : Finset ℕ)\n  (h₀ :\n  ∀ n : ℕ,\n  n ∈ S ↔\n  2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, (Nat.divisors m).card = 4 ∧ (∑ p ∈ Nat.divisors m, p) = n) :\n  (∑ k ∈ S, k) = 2016 := by\n  ### Mathematical Analysis and Proof Sketch\n\n**Problem Understanding:**\nWe are given a finite set `S` of natural numbers where each element `n` satisfies:\n1. `2010 ≤ n ≤ 2019`, and\n2. There exists a natural number `m` such that:\n   - The number of positive divisors of `m` is 4, and\n   - The sum of the positive divisors of `m` is `n`.\n\nWe are to prove that the sum of all elements in `S` is 2016.\n\n**Key Observations:**\n1. **Range of `n`:** The possible values of `n` are limited to `{2010, 2011, ..., 2019}`. We can check each of these to see if they can be expressed as the sum of the divisors of some `m` with exactly 4 divisors.\n2. **Numbers with Exactly 4 Divisors:**\n   - A natural number `m` has exactly 4 positive divisors if and only if either:\n     - `m = p³` for some prime `p`, or\n     - `m = pq` for distinct primes `p` and `q`.\n   - This is because:\n     - For `m = p³`, the divisors are `{1, p, p², p³}` (4 divisors).\n     - For `m = pq`, the divisors are `{1, p, q, pq}` (4 divisors).\n   - No other forms of `m` yield exactly 4 divisors (e.g., `p²q` has 6 divisors).\n3. **Sum of Divisors:**\n   - If `m = p³`, then `σ(m) = 1 + p + p² + p³`.\n   - If `m = pq`, then `σ(m) = 1 + p + q + pq = (p + 1)(q + 1)`.\n\n**Approach:**\n1. For each `n` in `{2010, ..., 2019}`, check if there exists an `m` with exactly 4 divisors and `σ(m) = n`.\n   - Compute possible candidates for `m` (either cubes of primes or products of two distinct primes) whose sum of divisors falls in the range.\n   - Verify which `n` values can actually be obtained.\n2. Identify the set `S` explicitly based on the above check.\n3. Sum the elements of `S` to confirm that the sum is 2016.\n\n**Detailed Check for Each `n`:**\nWe need to find for which `n` in `{2010, ..., 2019}` there exists `m` with exactly 4 divisors and `σ(m) = n`.\n\n1. **Case `n = 2010`:**\n   - We would need `σ(m) = 2010`.\n   - **Subcase `m = p³`:**\n     - `1 + p + p² + p³ = 2010`.\n     - Trying `p = 12`: `1 + 12 + 144 + 1728 = 1985 < 2010`.\n     - `p = 13`: `1 + 13 + 169 + 2197 = 2380 > 2010`. No solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2010`.\n     - Factor pairs of 2010: `(2, 1005), (3, 670), (5, 402), (6, 335), (10, 201), (15, 134), (30, 67)`.\n     - Subtract 1 from each factor to get `(p, q)` candidates: `(1, 1004), (2, 669), (4, 401), (5, 334), (9, 200), (14, 133), (29, 66)`.\n     - Check for primes:\n       - `(2, 669)`: 669 is not prime.\n       - `(4, 401)`: 4 is not prime.\n       - `(5, 334)`: 334 is not prime.\n       - `(9, 200)`: Neither is prime.\n       - `(14, 133)`: Neither is prime.\n       - `(29, 66)`: 66 is not prime.\n       - `(1, 1004)`: 1 is not prime.\n     - No valid `(p, q)` pairs.\n   - **Conclusion:** No `m` exists for `n = 2010`.\n\n2. **Case `n = 2011`:**\n   - Prime number.\n   - **Subcase `m = p³`:**\n     - `1 + p + p² + p³ = 2011`.\n     - Try `p = 12`: 1985 < 2011.\n     - `p = 13`: 2380 > 2011. No solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2011`.\n     - 2011 is prime, so no factor pairs other than `(1, 2011)` which gives `(0, 2010)` invalid.\n   - **Conclusion:** No `m` exists for `n = 2011`.\n\n3. **Case `n = 2012`:**\n   - **Subcase `m = p³`:**\n     - `1 + p + p² + p³ = 2012`.\n     - `p = 12`: 1985 < 2012.\n     - `p = 13`: 2380 > 2012. No solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2012`.\n     - Factor pairs of 2012: `(2, 1006), (4, 503)`.\n     - Candidates:\n       - `(1, 1005)`: 1 not prime.\n       - `(3, 502)`: 502 not prime.\n       - `(2, 502)`: 502 not prime.\n       - `(3, 502)`: As above.\n       - Alternatively, `(4, 503)` gives `(3, 502)` same as above.\n       - Wait, better: Factor pairs are `(2, 1006)`, `(4, 503)` and their reverses.\n         - For `(2, 1006)`: `(p, q) = (1, 1005)` invalid.\n         - For `(4, 503)`: `(3, 502)` invalid.\n         - For `(1006, 2)`: `(1005, 1)` invalid.\n         - For `(503, 4)`: `(502, 3)` invalid.\n     - Actually, perhaps missing something:\n       - 2012 = 4 × 503, but 503 is prime.\n       - So other factor pairs are (1, 2012), (2, 1006).\n       - Trying (1, 2012): (0, 2011) invalid.\n       - Trying (2, 1006): (1, 1005) invalid.\n   - **Conclusion:** No `m` exists for `n = 2012`.\n\n4. **Case `n = 2013`:**\n   - **Subcase `m = p³`:**\n     - Same as above, no solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2013`.\n     - Factor pairs of 2013: `(3, 671), (11, 183), (33, 61)`.\n     - Candidates:\n       - `(2, 670)`: 670 not prime.\n       - `(10, 182)`: Neither prime.\n       - `(32, 60)`: Neither prime.\n       - Also `(1, 2013)` gives `(0, 2012)` invalid.\n       - `(3, 671)` already considered.\n       - Alternatively, check all factor pairs properly:\n         - (1, 2013): (0, 2012)\n         - (3, 671): (2, 670)\n         - (11, 183): (10, 182)\n         - (33, 61): (32, 60)\n         - And the reverse",
+    "full_code": "theorem mathd_numbertheory_451 (S : Finset ℕ)\n  (h₀ :\n  ∀ n : ℕ,\n  n ∈ S ↔\n  2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, (Nat.divisors m).card = 4 ∧ (∑ p ∈ Nat.divisors m, p) = n) :\n  (∑ k ∈ S, k) = 2016 := by\n  ### Mathematical Analysis and Proof Sketch\n\n**Problem Understanding:**\nWe are given a finite set `S` of natural numbers where each element `n` satisfies:\n1. `2010 ≤ n ≤ 2019`, and\n2. There exists a natural number `m` such that:\n   - The number of positive divisors of `m` is 4, and\n   - The sum of the positive divisors of `m` is `n`.\n\nWe are to prove that the sum of all elements in `S` is 2016.\n\n**Key Observations:**\n1. **Range of `n`:** The possible values of `n` are limited to `{2010, 2011, ..., 2019}`. We can check each of these to see if they can be expressed as the sum of the divisors of some `m` with exactly 4 divisors.\n2. **Numbers with Exactly 4 Divisors:**\n   - A natural number `m` has exactly 4 positive divisors if and only if either:\n     - `m = p³` for some prime `p`, or\n     - `m = pq` for distinct primes `p` and `q`.\n   - This is because:\n     - For `m = p³`, the divisors are `{1, p, p², p³}` (4 divisors).\n     - For `m = pq`, the divisors are `{1, p, q, pq}` (4 divisors).\n   - No other forms of `m` yield exactly 4 divisors (e.g., `p²q` has 6 divisors).\n3. **Sum of Divisors:**\n   - If `m = p³`, then `σ(m) = 1 + p + p² + p³`.\n   - If `m = pq`, then `σ(m) = 1 + p + q + pq = (p + 1)(q + 1)`.\n\n**Approach:**\n1. For each `n` in `{2010, ..., 2019}`, check if there exists an `m` with exactly 4 divisors and `σ(m) = n`.\n   - Compute possible candidates for `m` (either cubes of primes or products of two distinct primes) whose sum of divisors falls in the range.\n   - Verify which `n` values can actually be obtained.\n2. Identify the set `S` explicitly based on the above check.\n3. Sum the elements of `S` to confirm that the sum is 2016.\n\n**Detailed Check for Each `n`:**\nWe need to find for which `n` in `{2010, ..., 2019}` there exists `m` with exactly 4 divisors and `σ(m) = n`.\n\n1. **Case `n = 2010`:**\n   - We would need `σ(m) = 2010`.\n   - **Subcase `m = p³`:**\n     - `1 + p + p² + p³ = 2010`.\n     - Trying `p = 12`: `1 + 12 + 144 + 1728 = 1985 < 2010`.\n     - `p = 13`: `1 + 13 + 169 + 2197 = 2380 > 2010`. No solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2010`.\n     - Factor pairs of 2010: `(2, 1005), (3, 670), (5, 402), (6, 335), (10, 201), (15, 134), (30, 67)`.\n     - Subtract 1 from each factor to get `(p, q)` candidates: `(1, 1004), (2, 669), (4, 401), (5, 334), (9, 200), (14, 133), (29, 66)`.\n     - Check for primes:\n       - `(2, 669)`: 669 is not prime.\n       - `(4, 401)`: 4 is not prime.\n       - `(5, 334)`: 334 is not prime.\n       - `(9, 200)`: Neither is prime.\n       - `(14, 133)`: Neither is prime.\n       - `(29, 66)`: 66 is not prime.\n       - `(1, 1004)`: 1 is not prime.\n     - No valid `(p, q)` pairs.\n   - **Conclusion:** No `m` exists for `n = 2010`.\n\n2. **Case `n = 2011`:**\n   - Prime number.\n   - **Subcase `m = p³`:**\n     - `1 + p + p² + p³ = 2011`.\n     - Try `p = 12`: 1985 < 2011.\n     - `p = 13`: 2380 > 2011. No solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2011`.\n     - 2011 is prime, so no factor pairs other than `(1, 2011)` which gives `(0, 2010)` invalid.\n   - **Conclusion:** No `m` exists for `n = 2011`.\n\n3. **Case `n = 2012`:**\n   - **Subcase `m = p³`:**\n     - `1 + p + p² + p³ = 2012`.\n     - `p = 12`: 1985 < 2012.\n     - `p = 13`: 2380 > 2012. No solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2012`.\n     - Factor pairs of 2012: `(2, 1006), (4, 503)`.\n     - Candidates:\n       - `(1, 1005)`: 1 not prime.\n       - `(3, 502)`: 502 not prime.\n       - `(2, 502)`: 502 not prime.\n       - `(3, 502)`: As above.\n       - Alternatively, `(4, 503)` gives `(3, 502)` same as above.\n       - Wait, better: Factor pairs are `(2, 1006)`, `(4, 503)` and their reverses.\n         - For `(2, 1006)`: `(p, q) = (1, 1005)` invalid.\n         - For `(4, 503)`: `(3, 502)` invalid.\n         - For `(1006, 2)`: `(1005, 1)` invalid.\n         - For `(503, 4)`: `(502, 3)` invalid.\n     - Actually, perhaps missing something:\n       - 2012 = 4 × 503, but 503 is prime.\n       - So other factor pairs are (1, 2012), (2, 1006).\n       - Trying (1, 2012): (0, 2011) invalid.\n       - Trying (2, 1006): (1, 1005) invalid.\n   - **Conclusion:** No `m` exists for `n = 2012`.\n\n4. **Case `n = 2013`:**\n   - **Subcase `m = p³`:**\n     - Same as above, no solution.\n   - **Subcase `m = pq`:**\n     - `(p + 1)(q + 1) = 2013`.\n     - Factor pairs of 2013: `(3, 671), (11, 183), (33, 61)`.\n     - Candidates:\n       - `(2, 670)`: 670 not prime.\n       - `(10, 182)`: Neither prime.\n       - `(32, 60)`: Neither prime.\n       - Also `(1, 2013)` gives `(0, 2012)` invalid.\n       - `(3, 671)` already considered.\n       - Alternatively, check all factor pairs properly:\n         - (1, 2013): (0, 2012)\n         - (3, 671): (2, 670)\n         - (11, 183): (10, 182)\n         - (33, 61): (32, 60)\n         - And the reverse",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 27
+          },
+          "endPos": {
+            "line": 8,
+            "column": 3
+          },
+          "data": "unexpected token '#'; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 25
+          },
+          "endPos": {
+            "line": 7,
+            "column": 27
+          },
+          "data": "unsolved goals\nS : Finset ℕ\nh₀ : ∀ (n : ℕ), n ∈ S ↔ 2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, m.divisors.card = 4 ∧ ∑ p ∈ m.divisors, p = n\n⊢ ∑ k ∈ S, k = 2016"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 151.97
+    }
+  },
+  {
+    "problem_id": "algebra_sqineq_at2malt1",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem algebra_sqineq_at2malt1 (a : ℝ) : a * (2 - a) ≤ 1 := by\n  have h : (a - 1) ^ 2 ≥ 0 := by nlinarith\n  have h₁ : a * (2 - a) ≤ 1 := by\n    nlinarith [sq_nonneg (a - 1)]\n  exact h₁",
+    "full_code": "theorem algebra_sqineq_at2malt1 (a : ℝ) : a * (2 - a) ≤ 1 := by\n  have h : (a - 1) ^ 2 ≥ 0 := by nlinarith\n  have h₁ : a * (2 - a) ≤ 1 := by\n    nlinarith [sq_nonneg (a - 1)]\n  exact h₁",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 118.52
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_171",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 2,
+    "code": "theorem mathd_algebra_171 (f : ℝ → ℝ) (h₀ : ∀ x, f x = 5 * x + 4) : f 1 = 9 := by\n  have h₁ : f 1 = 5 * (1 : ℝ) + 4 := by\n    rw [h₀]\n    <;> norm_num\n  have h₂ : f 1 = 9 := by\n    rw [h₁]\n    <;> norm_num\n  exact h₂",
+    "full_code": "theorem mathd_algebra_171 (f : ℝ → ℝ) (h₀ : ∀ x, f x = 5 * x + 4) : f 1 = 9 := by\n  have h₁ : f 1 = 5 * (1 : ℝ) + 4 := by\n    rw [h₀]\n    <;> norm_num\n  have h₂ : f 1 = 9 := by\n    rw [h₁]\n    <;> norm_num\n  exact h₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 102.23
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_188",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 9,
+    "code": "theorem mathd_algebra_188\n  (f : ℝ → ℝ)\n  (h₀ : Function.Bijective f)\n  (h₁ : f 2 = 4)\n  (h₂ : f 2 = Function.invFun f 2) :\n  f (f 2) = 2 := by\n  have h₃ : f (Function.invFun f 2) = 2 := by\n    apply Function.rightInverse_invFun\n    exact h₀.2\n  have h₄ : f (f 2) = 2 := by\n    calc\n      f (f 2) = f (Function.invFun f 2) := by rw [h₂]\n      _ = 2 := by rw [h₃]\n  exact h₄",
+    "full_code": "theorem mathd_algebra_188\n  (f : ℝ → ℝ)\n  (h₀ : Function.Bijective f)\n  (h₁ : f 2 = 4)\n  (h₂ : f 2 = Function.invFun f 2) :\n  f (f 2) = 2 := by\n  have h₃ : f (Function.invFun f 2) = 2 := by\n    apply Function.rightInverse_invFun\n    exact h₀.2\n  have h₄ : f (f 2) = 2 := by\n    calc\n      f (f 2) = f (Function.invFun f 2) := by rw [h₂]\n      _ = 2 := by rw [h₃]\n  exact h₄",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 131.09
+    }
+  },
+  {
+    "problem_id": "imo_1959_p1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1959_p1 : ∀ n : ℕ, Irreducible ((21 * n + 4) / (14 * n + 3)) := by sorry",
+    "full_code": "theorem imo_1959_p1 : ∀ n : ℕ, Irreducible ((21 * n + 4) / (14 * n + 3)) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 31,
+          "pos": {
+            "line": 2,
+            "column": 79
+          },
+          "goal": "⊢ ∀ (n : ℕ), Irreducible ((21 * n + 4) / (14 * n + 3))",
+          "endPos": {
+            "line": 2,
+            "column": 84
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.03
+    }
+  },
+  {
+    "problem_id": "induction_sumkexp3eqsumksq",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem induction_sumkexp3eqsumksq\n  (n : ℕ) :\n  (∑ k ∈ Finset.range n, k ^ 3) = (∑ k ∈ Finset.range n, k) ^ 2 := by\n  have h_base : (∑ k ∈ Finset.range 0, k ^ 3) = (∑ k ∈ Finset.range 0, k) ^ 2 := by sorry\n  have h_inductive_step : ∀ m : ℕ, (∑ k ∈ Finset.range m, k ^ 3) = (∑ k ∈ Finset.range m, k) ^ 2 → (∑ k ∈ Finset.range (m + 1), k ^ 3) = (∑ k ∈ Finset.range (m + 1), k) ^ 2 := by sorry\n  have h_main : (∑ k ∈ Finset.range n, k ^ 3) = (∑ k ∈ Finset.range n, k) ^ 2 := by sorry\n  sorry",
+    "full_code": "theorem induction_sumkexp3eqsumksq\n  (n : ℕ) :\n  (∑ k ∈ Finset.range n, k ^ 3) = (∑ k ∈ Finset.range n, k) ^ 2 := by\n  have h_base : (∑ k ∈ Finset.range 0, k ^ 3) = (∑ k ∈ Finset.range 0, k) ^ 2 := by sorry\n  have h_inductive_step : ∀ m : ℕ, (∑ k ∈ Finset.range m, k ^ 3) = (∑ k ∈ Finset.range m, k) ^ 2 → (∑ k ∈ Finset.range (m + 1), k ^ 3) = (∑ k ∈ Finset.range (m + 1), k) ^ 2 := by sorry\n  have h_main : (∑ k ∈ Finset.range n, k ^ 3) = (∑ k ∈ Finset.range n, k) ^ 2 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 38,
+          "pos": {
+            "line": 5,
+            "column": 84
+          },
+          "goal": "n : ℕ\n⊢ ∑ k ∈ Finset.range 0, k ^ 3 = (∑ k ∈ Finset.range 0, k) ^ 2",
+          "endPos": {
+            "line": 5,
+            "column": 89
+          }
+        },
+        {
+          "proofState": 39,
+          "pos": {
+            "line": 6,
+            "column": 179
+          },
+          "goal": "n : ℕ\nh_base : ∑ k ∈ Finset.range 0, k ^ 3 = (∑ k ∈ Finset.range 0, k) ^ 2\n⊢ ∀ (m : ℕ),\n    ∑ k ∈ Finset.range m, k ^ 3 = (∑ k ∈ Finset.range m, k) ^ 2 →\n      ∑ k ∈ Finset.range (m + 1), k ^ 3 = (∑ k ∈ Finset.range (m + 1), k) ^ 2",
+          "endPos": {
+            "line": 6,
+            "column": 184
+          }
+        },
+        {
+          "proofState": 40,
+          "pos": {
+            "line": 7,
+            "column": 84
+          },
+          "goal": "n : ℕ\nh_base : ∑ k ∈ Finset.range 0, k ^ 3 = (∑ k ∈ Finset.range 0, k) ^ 2\nh_inductive_step :\n  ∀ (m : ℕ),\n    ∑ k ∈ Finset.range m, k ^ 3 = (∑ k ∈ Finset.range m, k) ^ 2 →\n      ∑ k ∈ Finset.range (m + 1), k ^ 3 = (∑ k ∈ Finset.range (m + 1), k) ^ 2\n⊢ ∑ k ∈ Finset.range n, k ^ 3 = (∑ k ∈ Finset.range n, k) ^ 2",
+          "endPos": {
+            "line": 7,
+            "column": 89
+          }
+        },
+        {
+          "proofState": 41,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "n : ℕ\nh_base : ∑ k ∈ Finset.range 0, k ^ 3 = (∑ k ∈ Finset.range 0, k) ^ 2\nh_inductive_step :\n  ∀ (m : ℕ),\n    ∑ k ∈ Finset.range m, k ^ 3 = (∑ k ∈ Finset.range m, k) ^ 2 →\n      ∑ k ∈ Finset.range (m + 1), k ^ 3 = (∑ k ∈ Finset.range (m + 1), k) ^ 2\nh_main : ∑ k ∈ Finset.range n, k ^ 3 = (∑ k ∈ Finset.range n, k) ^ 2\n⊢ ∑ k ∈ Finset.range n, k ^ 3 = (∑ k ∈ Finset.range n, k) ^ 2",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.08
+    }
+  },
+  {
+    "problem_id": "imo_1992_p1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem imo_1992_p1\n  (p q r : ℤ)\n  (h₀ : 1 < p ∧ p < q ∧ q < r) :\n  (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1 ↔\n  (p, q, r) ∈ imo_1992_p1_solution := by\n  simp [imo_1992_p1_solution]\n  <;>\n  tauto",
+    "full_code": "theorem imo_1992_p1\n  (p q r : ℤ)\n  (h₀ : 1 < p ∧ p < q ∧ q < r) :\n  (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1 ↔\n  (p, q, r) ∈ imo_1992_p1_solution := by\n  simp [imo_1992_p1_solution]\n  <;>\n  tauto",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "endPos": {
+            "line": 6,
+            "column": 34
+          },
+          "data": "typeclass instance problem is stuck, it is often due to metavariables\n  Membership (ℤ × ℤ × ℤ) ?m.418"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 152.74
+    }
+  },
+  {
+    "problem_id": "aime_1987_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem aime_1987_p5 (x y : ℤ) (h₀ : y ^ 2 + 3 * (x ^ 2 * y ^ 2) = 30 * x ^ 2 + 517) :\n  3 * (x ^ 2 * y ^ 2) = 588 := by\n  ### Step 1: Understand the Problem\nWe need to find all integer solutions \\((x, y)\\) to the equation:\n\\[ y^2 + 3x^2y^2 = 30x^2 + 517 \\]\nand prove that for any such solution, \\( 3x^2y^2 = 588 \\).\n\nFirst, observe that we can factor the left side:\n\\[ y^2 (1 + 3x^2) = 30x^2 + 517. \\]\nThis suggests that \\( y^2 \\) divides \\( 30x^2 + 517 \\). But it might be more useful to rearrange the equation to complete a square or find bounds for \\( x \\) and \\( y \\).\n\nAlternatively, we can view this as a quadratic in \\( y^2 \\):\n\\[ (3x^2 + 1)y^2 - 30x^2 - 517 = 0. \\]\nBut this doesn't immediately seem helpful. \n\nAnother approach is to rearrange the equation to:\n\\[ 3x^2y^2 - 30x^2 + y^2 = 517. \\]\nFactor out \\( 3x^2 \\):\n\\[ 3x^2(y^2 - 10) + y^2 = 517. \\]\n\nThis looks better. Notice that if \\( y^2 \\neq 10 \\), then:\n\\[ 3x^2 = \\frac{517 - y^2}{y^2 - 10}. \\]\nThe right side must be an integer, so \\( y^2 - 10 \\) divides \\( 517 - y^2 \\). \n\nBut let's try to find bounds for \\( x \\) and \\( y \\) instead.\n\n### Step 2: Find Bounds for \\( y \\)\nNotice that for \\( x = 0 \\), the equation becomes \\( y^2 = 517 \\). But 517 is not a perfect square (\\( 22^2 = 484, 23^2 = 529 \\)), so no solution exists in this case. However, the problem asks to prove that if a solution exists, then \\( 3x^2y^2 = 588 \\), so \\( x = 0 \\) is not a valid case to consider (as there is no solution). \n\nAlternatively, perhaps we can find a lower bound for \\( y^2 \\). Since \\( 3x^2y^2 \\geq 0 \\), we have:\n\\[ y^2 \\leq y^2 + 3x^2y^2 = 30x^2 + 517. \\]\nBut this isn't very restrictive.\n\nAlternatively, note that:\n\\[ y^2 (1 + 3x^2) = 30x^2 + 517 \\]\nimplies:\n\\[ y^2 = \\frac{30x^2 + 517}{1 + 3x^2} = 10 + \\frac{507}{1 + 3x^2}. \\]\nThis is a much better form because it tells us that \\( 1 + 3x^2 \\) must divide 507. \n\n### Step 3: Find Possible Values of \\( x \\)\nWe have:\n\\[ y^2 = 10 + \\frac{507}{1 + 3x^2}. \\]\nSince \\( y^2 \\geq 0 \\) and \\( 1 + 3x^2 > 0 \\), the fraction must be non-negative, which it always is. \n\nNow, \\( 1 + 3x^2 \\) must divide 507. The positive divisors of 507 are:\n\\[ 1, 3, 13, 39, 169, 507. \\]\nSo we can set up the equation:\n\\[ 1 + 3x^2 = d \\]\nwhere \\( d \\in \\{1, 3, 13, 39, 169, 507\\} \\).\n\nSolve for each case:\n1. \\( 1 + 3x^2 = 1 \\): \\( x = 0 \\). Then \\( y^2 = 10 + 507 = 517 \\). Not a square.\n2. \\( 1 + 3x^2 = 3 \\): \\( 3x^2 = 2 \\). No integer solution.\n3. \\( 1 + 3x^2 = 13 \\): \\( 3x^2 = 12 \\), so \\( x^2 = 4 \\), \\( x = \\pm 2 \\). Then \\( y^2 = 10 + 507/13 = 10 + 39 = 49 \\), so \\( y = \\pm 7 \\). \n   - Check: For \\( x = \\pm 2, y = \\pm 7 \\):\n     \\[ y^2 + 3x^2y^2 = 49 + 3 \\cdot 4 \\cdot 49 = 49 + 588 = 637. \\]\n     And \\( 30x^2 + 517 = 120 + 517 = 637 \\). Correct.\n   - Then \\( 3x^2y^2 = 3 \\cdot 4 \\cdot 49 = 588 \\).\n4. \\( 1 + 3x^2 = 39 \\): \\( 3x^2 = 38 \\). No integer solution.\n5. \\( 1 + 3x^2 = 169 \\): \\( 3x^2 = 168 \\), \\( x^2 = 56 \\). Not a perfect square.\n6. \\( 1 + 3x^2 = 507 \\): \\( 3x^2 = 506 \\). No integer solution.\n\nThe only valid case is when \\( x^2 = 4 \\). In that case, \\( 3x^2y^2 = 588 \\), as required.\n\n### Step 4: Formal Proof Strategy\n1. Rearrange the given equation to express \\( y^2 \\) in terms of \\( x \\):\n   \\[ y^2 = 10 + \\frac{507}{1 + 3x^2}. \\]\n2. Deduce that \\( 1 + 3x^2 \\) must divide 507.\n3. Enumerate all possible divisors of 507 of the form \\( 1 + 3x^2 \\) and check which ones yield integer solutions for \\( x \\) and perfect squares for \\( y^2 \\).\n4. Confirm that the only valid case is \\( x^2 = 4 \\), which implies \\( 3x^2y^2 = 588 \\).\n\nHowever, Lean expects a direct proof that \\( 3x^2y^2 = 588 \\) under the given hypothesis. So instead of starting by assuming the equation, we can manipulate it to deduce \\( 1 + 3x^2 \\mid 507 \\), and proceed as above. \n\nBut perhaps a better way is to notice that:\n\\[ y^2 (1 + 3x^2) = 30x^2 + 517 \\]\nand \n\\[ 30x^2 + 517 = 10(1 + 3x^2) + 507, \\]\nso:\n\\[ y^2 (1 + 3x^2) = 10(1 + 3x^2) + 507. \\]\nThus:\n\\[ (y^2 - 10)(1 + 3x^2) = 507. \\]\n\nThis is a much better form, because it directly tells us that \\( (y^2 - 10)(1 + 3x^2) = 507 \\), and both factors are integers. \n\nNow, we can enumerate all pairs of integers \\((A, B)\\) such that \\( A \\cdot B = 507 \\), where \\( A = y^2 - 10 \\geq -10 \\) (since \\( y^2 \\geq 0 \\)) and \\( B = 1 + 3x^2 \\geq 1 \\).\n\nThe factor pairs of 507 where \\( B \\geq 1 \\) and \\( A \\geq -10 \\) are:\n- \\( (1, 507) \\): \\( A = 1 \\implies y^2 = 11 \\). No solution. \\( B = 507 \\implies x^2 = (507 - 1)/3 = 506/3 \\). Not integer.\n- \\( (3, 169) \\): \\( A = 3 \\implies y^2 = 13 \\). No solution. \\( B = 169 \\implies x^2 = 56 \\). Not square.\n- \\( (13, 39) \\): \\( A = 13 \\implies y^2",
+    "full_code": "theorem aime_1987_p5 (x y : ℤ) (h₀ : y ^ 2 + 3 * (x ^ 2 * y ^ 2) = 30 * x ^ 2 + 517) :\n  3 * (x ^ 2 * y ^ 2) = 588 := by\n  ### Step 1: Understand the Problem\nWe need to find all integer solutions \\((x, y)\\) to the equation:\n\\[ y^2 + 3x^2y^2 = 30x^2 + 517 \\]\nand prove that for any such solution, \\( 3x^2y^2 = 588 \\).\n\nFirst, observe that we can factor the left side:\n\\[ y^2 (1 + 3x^2) = 30x^2 + 517. \\]\nThis suggests that \\( y^2 \\) divides \\( 30x^2 + 517 \\). But it might be more useful to rearrange the equation to complete a square or find bounds for \\( x \\) and \\( y \\).\n\nAlternatively, we can view this as a quadratic in \\( y^2 \\):\n\\[ (3x^2 + 1)y^2 - 30x^2 - 517 = 0. \\]\nBut this doesn't immediately seem helpful. \n\nAnother approach is to rearrange the equation to:\n\\[ 3x^2y^2 - 30x^2 + y^2 = 517. \\]\nFactor out \\( 3x^2 \\):\n\\[ 3x^2(y^2 - 10) + y^2 = 517. \\]\n\nThis looks better. Notice that if \\( y^2 \\neq 10 \\), then:\n\\[ 3x^2 = \\frac{517 - y^2}{y^2 - 10}. \\]\nThe right side must be an integer, so \\( y^2 - 10 \\) divides \\( 517 - y^2 \\). \n\nBut let's try to find bounds for \\( x \\) and \\( y \\) instead.\n\n### Step 2: Find Bounds for \\( y \\)\nNotice that for \\( x = 0 \\), the equation becomes \\( y^2 = 517 \\). But 517 is not a perfect square (\\( 22^2 = 484, 23^2 = 529 \\)), so no solution exists in this case. However, the problem asks to prove that if a solution exists, then \\( 3x^2y^2 = 588 \\), so \\( x = 0 \\) is not a valid case to consider (as there is no solution). \n\nAlternatively, perhaps we can find a lower bound for \\( y^2 \\). Since \\( 3x^2y^2 \\geq 0 \\), we have:\n\\[ y^2 \\leq y^2 + 3x^2y^2 = 30x^2 + 517. \\]\nBut this isn't very restrictive.\n\nAlternatively, note that:\n\\[ y^2 (1 + 3x^2) = 30x^2 + 517 \\]\nimplies:\n\\[ y^2 = \\frac{30x^2 + 517}{1 + 3x^2} = 10 + \\frac{507}{1 + 3x^2}. \\]\nThis is a much better form because it tells us that \\( 1 + 3x^2 \\) must divide 507. \n\n### Step 3: Find Possible Values of \\( x \\)\nWe have:\n\\[ y^2 = 10 + \\frac{507}{1 + 3x^2}. \\]\nSince \\( y^2 \\geq 0 \\) and \\( 1 + 3x^2 > 0 \\), the fraction must be non-negative, which it always is. \n\nNow, \\( 1 + 3x^2 \\) must divide 507. The positive divisors of 507 are:\n\\[ 1, 3, 13, 39, 169, 507. \\]\nSo we can set up the equation:\n\\[ 1 + 3x^2 = d \\]\nwhere \\( d \\in \\{1, 3, 13, 39, 169, 507\\} \\).\n\nSolve for each case:\n1. \\( 1 + 3x^2 = 1 \\): \\( x = 0 \\). Then \\( y^2 = 10 + 507 = 517 \\). Not a square.\n2. \\( 1 + 3x^2 = 3 \\): \\( 3x^2 = 2 \\). No integer solution.\n3. \\( 1 + 3x^2 = 13 \\): \\( 3x^2 = 12 \\), so \\( x^2 = 4 \\), \\( x = \\pm 2 \\). Then \\( y^2 = 10 + 507/13 = 10 + 39 = 49 \\), so \\( y = \\pm 7 \\). \n   - Check: For \\( x = \\pm 2, y = \\pm 7 \\):\n     \\[ y^2 + 3x^2y^2 = 49 + 3 \\cdot 4 \\cdot 49 = 49 + 588 = 637. \\]\n     And \\( 30x^2 + 517 = 120 + 517 = 637 \\). Correct.\n   - Then \\( 3x^2y^2 = 3 \\cdot 4 \\cdot 49 = 588 \\).\n4. \\( 1 + 3x^2 = 39 \\): \\( 3x^2 = 38 \\). No integer solution.\n5. \\( 1 + 3x^2 = 169 \\): \\( 3x^2 = 168 \\), \\( x^2 = 56 \\). Not a perfect square.\n6. \\( 1 + 3x^2 = 507 \\): \\( 3x^2 = 506 \\). No integer solution.\n\nThe only valid case is when \\( x^2 = 4 \\). In that case, \\( 3x^2y^2 = 588 \\), as required.\n\n### Step 4: Formal Proof Strategy\n1. Rearrange the given equation to express \\( y^2 \\) in terms of \\( x \\):\n   \\[ y^2 = 10 + \\frac{507}{1 + 3x^2}. \\]\n2. Deduce that \\( 1 + 3x^2 \\) must divide 507.\n3. Enumerate all possible divisors of 507 of the form \\( 1 + 3x^2 \\) and check which ones yield integer solutions for \\( x \\) and perfect squares for \\( y^2 \\).\n4. Confirm that the only valid case is \\( x^2 = 4 \\), which implies \\( 3x^2y^2 = 588 \\).\n\nHowever, Lean expects a direct proof that \\( 3x^2y^2 = 588 \\) under the given hypothesis. So instead of starting by assuming the equation, we can manipulate it to deduce \\( 1 + 3x^2 \\mid 507 \\), and proceed as above. \n\nBut perhaps a better way is to notice that:\n\\[ y^2 (1 + 3x^2) = 30x^2 + 517 \\]\nand \n\\[ 30x^2 + 517 = 10(1 + 3x^2) + 507, \\]\nso:\n\\[ y^2 (1 + 3x^2) = 10(1 + 3x^2) + 507. \\]\nThus:\n\\[ (y^2 - 10)(1 + 3x^2) = 507. \\]\n\nThis is a much better form, because it directly tells us that \\( (y^2 - 10)(1 + 3x^2) = 507 \\), and both factors are integers. \n\nNow, we can enumerate all pairs of integers \\((A, B)\\) such that \\( A \\cdot B = 507 \\), where \\( A = y^2 - 10 \\geq -10 \\) (since \\( y^2 \\geq 0 \\)) and \\( B = 1 + 3x^2 \\geq 1 \\).\n\nThe factor pairs of 507 where \\( B \\geq 1 \\) and \\( A \\geq -10 \\) are:\n- \\( (1, 507) \\): \\( A = 1 \\implies y^2 = 11 \\). No solution. \\( B = 507 \\implies x^2 = (507 - 1)/3 = 506/3 \\). Not integer.\n- \\( (3, 169) \\): \\( A = 3 \\implies y^2 = 13 \\). No solution. \\( B = 169 \\implies x^2 = 56 \\). Not square.\n- \\( (13, 39) \\): \\( A = 13 \\implies y^2",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 33
+          },
+          "endPos": {
+            "line": 4,
+            "column": 3
+          },
+          "data": "unexpected token '#'; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 31
+          },
+          "endPos": {
+            "line": 3,
+            "column": 33
+          },
+          "data": "unsolved goals\nx y : ℤ\nh₀ : y ^ 2 + 3 * (x ^ 2 * y ^ 2) = 30 * x ^ 2 + 517\n⊢ 3 * (x ^ 2 * y ^ 2) = 588"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 149.83
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_487",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_487\n  (F G I : Set (EuclideanSpace ℝ (Fin 2)))\n  (hF : F = { x | x 1 = (x 0) ^ 2})\n  (hG : G = { x | x 0 + x 1 = 1})\n  (hI : I = (F ∩ G))\n  (A B : EuclideanSpace ℝ (Fin 2))\n  (h₀ : ∀ x, x ∈ I ↔ x = A ∨ x = B) :\n  dist A B = Real.sqrt 10 := by\n  ### Step 1: Understanding the Problem\n\n**Mathematical Content:**\nWe are working in the Euclidean space `ℝ²` (represented as `EuclideanSpace ℝ (Fin 2)` in Lean). We have three sets:\n- `F = {x | x₁ = x₀²}`, a parabola in the plane.\n- `G = {x | x₀ + x₁ = 1}`, a straight line.\n- `I = F ∩ G`, the intersection of the parabola and the line, which is claimed to consist of exactly two points `A` and `B` (`I = {A, B}`). \n\nWe need to prove that the distance between `A` and `B` is `√10`.\n\n**Key Observations:**\n1. The intersection `I` is found by solving the system:\n   - `x₁ = x₀²` (from `F`),\n   - `x₀ + x₁ = 1` (from `G`).\n   Substituting the first into the second gives `x₀ + x₀² = 1`, or `x₀² + x₀ - 1 = 0`.\n   The solutions to this quadratic equation are `x₀ = (-1 ± √5)/2`.\n   The corresponding `x₁` values are `x₁ = (x₀)² = (3 ∓ √5)/2`.\n\n2. The two points of intersection are:\n   - `A = ((-1 + √5)/2, (3 - √5)/2)`,\n   - `B = ((-1 - √5)/2, (3 + √5)/2)`.\n\n   However, this is just one possible labeling; `A` and `B` could be swapped. The problem statement claims that `I = {A, B}` (as a set), not necessarily that `A ≠ B`. But the distance `dist A B = √10` would imply `A ≠ B`, so we must have two distinct solutions.\n\n   Actually, we should first check that the quadratic equation has distinct roots (`√5 > 0`), and the corresponding points are distinct because their `x₀` coordinates differ.\n\n3. To compute the distance `dist A B`, we would need to calculate:\n   - `(A₀ - B₀)² + (A₁ - B₁)² = ((√5))² + ((-√5))² = 5 + 5 = 10`.\n\nBut in Lean, the problem is abstracted: `A` and `B` are arbitrary points (vectors in `ℝ²`) such that `I = {A, B}`. The first step would be to actually find the coordinates of `A` and `B` by solving the system. \n\nHowever, Lean's `h₀` is `∀ x, x ∈ I ↔ x = A ∨ x = B`, meaning that `I` is exactly the set `{A, B}`. But `I` is `F ∩ G`, and we have already solved that it consists of two points (as above). So `A` and `B` must be those two points (in some order). \n\nBut perhaps Lean's `A` and `B` could coincide (`A = B`), unless we can rule this out. But in that case, `h₀` would imply `F ∩ G = {A}`, which is false since the intersection has two points. So `A ≠ B`.\n\nBut perhaps we don't yet know in Lean that `F ∩ G` has two points. The condition `h₀` tells us that `F ∩ G` has at most two points (if `A = B`, it would have one point, otherwise two points). \n\nBut we know from solving the system that `F ∩ G` should have two points, so we should deduce that `A ≠ B` and that they are the solutions we found.\n\nBut perhaps in Lean, we first have to deduce that there are two points in `F ∩ G`. \n\nBut perhaps it's better to first find the two points explicitly in Lean by solving the equations. \n\nHowever, Lean represents `ℝ²` as `EuclideanSpace ℝ (Fin 2)`, which is `Fin 2 → ℝ`. So `x : EuclideanSpace ℝ (Fin 2)` means `x 0` and `x 1` are the coordinates. \n\nAlternatively, perhaps we should first deduce that `A` and `B` must satisfy the quadratic equation, then compute their distance. \n\nBut perhaps it's unavoidable to first solve for the coordinates of the intersection points.\n\n**Reconciling with Lean:**\nIn Lean, `h₀` says that `F ∩ G` contains exactly two points (unless `A = B`, but in that case it would contain only one). However, if we solve the system mathematically, we get two distinct points. Therefore, `A` and `B` must be those two points. \n\nBut perhaps we can derive this directly in Lean. \n\nLet's try to find the points in `I` using `h₀`.\n\nGiven that `h₀ : ∀ x, x ∈ I ↔ x = A ∨ x = B`, the set `I` contains exactly the points `A` and `B`. \n\nBut we can find the points in `I` by solving the system. \n\nAlternatively, since `A ∈ I`, it must satisfy `A ∈ F` and `A ∈ G`, so:\n1. `A 1 = (A 0)²`,\n2. `A 0 + A 1 = 1`.\n\nSimilarly for `B`.\n\nBut we can deduce that `A 0` satisfies `(A 0)² + A 0 - 1 = 0`, and similarly for `B 0`.\n\nThis means that `A 0` and `B 0` are roots of `x² + x - 1 = 0`. \n\nIf we assume that `A ≠ B`, then they are the two distinct roots, and we can proceed as above. But perhaps `A = B`, unless we prove otherwise. \n\nBut if `A = B`, then `h₀` implies that `I = {A}`, which would mean that the quadratic has exactly one solution. But the discriminant is `1 + 4 = 5 > 0`, so it has two roots, a contradiction. \n\nWait no: perhaps in Lean we cannot yet deduce that there are two roots because we haven't actually constructed them yet. \n\nAlternatively, perhaps we can prove that there are two distinct points in `I`, and hence `A ≠ B`.\n\nBut how?\n\nAlternatively, perhaps we can do the following:\n\n1. Deduce that `A 0` and `B 0` are roots of `x² + x - 1 = 0`. So they are either equal or are the two distinct roots. \n\n   But if `A 0 = B 0`, then from `A 1 = (A 0)²` and `B 1 = (B 0)²`, we get `A 1 = B 1`, so `A = B`. But `h₀` would then imply that `I = {A}`, so `F ∩ G` is a singleton. But we can find two distinct points in `F ∩ G` by explicitly solving the system (as in math), which would be a contradiction. \n\n   So perhaps `A ≠ B`, and hence they are the two distinct roots. \n\n   But in Lean, perhaps it's not yet obvious that there are two points in `F ∩ G`, unless we explicitly construct them.\n\nAlternatively, perhaps a better approach is:\n\n1. Deduce that `A 0` and `B 0` are roots of `x² + x - 1 = 0`. \n\n2. Compute `(A 0 - B 0)(A 0 + B 0 + 1) = 0` because both are roots. \n\n   This gives either `A 0 = B 0` or `A 0 + B 0 = -1`. \n\n3. If `A 0 = B 0`, then as above `A = B`. But then `h₀` implies that the intersection is `{A}`, so for any other solution `x` to the system, `x = A`, which is false (since we have two solutions). \n\n   However, in Lean we haven't yet found two solutions. \n\n   Hmm.\n\nAlternatively, perhaps we can directly calculate the distance between `A` and `B` without knowing their exact coordinates:\n\nSince both `A` and `B` are in `F ∩ G`, we have:\n1. `A 1 = A 0²`, `A 0 + A 1 = 1`, similarly for `B`.\n\nThen we have `(A 0)² + A 0 - 1 = 0` and `(B 0)² + B 0 - 1 = 0`.\n\nMoreover, if we assume that `A ≠ B`, then `A 0 ≠ B 0`.\n\nBut perhaps we can use that `A 0 + B 0 = -1`, because they are roots of `x² + x - 1 = 0`.\n\nBut in general, for any two roots of `x² + bx + c = 0`, the sum is `-b`. So if `A 0` and `B 0` are two roots (possibly equal), then `A 0 + B 0 = -1`. \n\nActually, Vieta's formula applies even if they are equal. \n\nSimilarly, `A",
+    "full_code": "theorem mathd_algebra_487\n  (F G I : Set (EuclideanSpace ℝ (Fin 2)))\n  (hF : F = { x | x 1 = (x 0) ^ 2})\n  (hG : G = { x | x 0 + x 1 = 1})\n  (hI : I = (F ∩ G))\n  (A B : EuclideanSpace ℝ (Fin 2))\n  (h₀ : ∀ x, x ∈ I ↔ x = A ∨ x = B) :\n  dist A B = Real.sqrt 10 := by\n  ### Step 1: Understanding the Problem\n\n**Mathematical Content:**\nWe are working in the Euclidean space `ℝ²` (represented as `EuclideanSpace ℝ (Fin 2)` in Lean). We have three sets:\n- `F = {x | x₁ = x₀²}`, a parabola in the plane.\n- `G = {x | x₀ + x₁ = 1}`, a straight line.\n- `I = F ∩ G`, the intersection of the parabola and the line, which is claimed to consist of exactly two points `A` and `B` (`I = {A, B}`). \n\nWe need to prove that the distance between `A` and `B` is `√10`.\n\n**Key Observations:**\n1. The intersection `I` is found by solving the system:\n   - `x₁ = x₀²` (from `F`),\n   - `x₀ + x₁ = 1` (from `G`).\n   Substituting the first into the second gives `x₀ + x₀² = 1`, or `x₀² + x₀ - 1 = 0`.\n   The solutions to this quadratic equation are `x₀ = (-1 ± √5)/2`.\n   The corresponding `x₁` values are `x₁ = (x₀)² = (3 ∓ √5)/2`.\n\n2. The two points of intersection are:\n   - `A = ((-1 + √5)/2, (3 - √5)/2)`,\n   - `B = ((-1 - √5)/2, (3 + √5)/2)`.\n\n   However, this is just one possible labeling; `A` and `B` could be swapped. The problem statement claims that `I = {A, B}` (as a set), not necessarily that `A ≠ B`. But the distance `dist A B = √10` would imply `A ≠ B`, so we must have two distinct solutions.\n\n   Actually, we should first check that the quadratic equation has distinct roots (`√5 > 0`), and the corresponding points are distinct because their `x₀` coordinates differ.\n\n3. To compute the distance `dist A B`, we would need to calculate:\n   - `(A₀ - B₀)² + (A₁ - B₁)² = ((√5))² + ((-√5))² = 5 + 5 = 10`.\n\nBut in Lean, the problem is abstracted: `A` and `B` are arbitrary points (vectors in `ℝ²`) such that `I = {A, B}`. The first step would be to actually find the coordinates of `A` and `B` by solving the system. \n\nHowever, Lean's `h₀` is `∀ x, x ∈ I ↔ x = A ∨ x = B`, meaning that `I` is exactly the set `{A, B}`. But `I` is `F ∩ G`, and we have already solved that it consists of two points (as above). So `A` and `B` must be those two points (in some order). \n\nBut perhaps Lean's `A` and `B` could coincide (`A = B`), unless we can rule this out. But in that case, `h₀` would imply `F ∩ G = {A}`, which is false since the intersection has two points. So `A ≠ B`.\n\nBut perhaps we don't yet know in Lean that `F ∩ G` has two points. The condition `h₀` tells us that `F ∩ G` has at most two points (if `A = B`, it would have one point, otherwise two points). \n\nBut we know from solving the system that `F ∩ G` should have two points, so we should deduce that `A ≠ B` and that they are the solutions we found.\n\nBut perhaps in Lean, we first have to deduce that there are two points in `F ∩ G`. \n\nBut perhaps it's better to first find the two points explicitly in Lean by solving the equations. \n\nHowever, Lean represents `ℝ²` as `EuclideanSpace ℝ (Fin 2)`, which is `Fin 2 → ℝ`. So `x : EuclideanSpace ℝ (Fin 2)` means `x 0` and `x 1` are the coordinates. \n\nAlternatively, perhaps we should first deduce that `A` and `B` must satisfy the quadratic equation, then compute their distance. \n\nBut perhaps it's unavoidable to first solve for the coordinates of the intersection points.\n\n**Reconciling with Lean:**\nIn Lean, `h₀` says that `F ∩ G` contains exactly two points (unless `A = B`, but in that case it would contain only one). However, if we solve the system mathematically, we get two distinct points. Therefore, `A` and `B` must be those two points. \n\nBut perhaps we can derive this directly in Lean. \n\nLet's try to find the points in `I` using `h₀`.\n\nGiven that `h₀ : ∀ x, x ∈ I ↔ x = A ∨ x = B`, the set `I` contains exactly the points `A` and `B`. \n\nBut we can find the points in `I` by solving the system. \n\nAlternatively, since `A ∈ I`, it must satisfy `A ∈ F` and `A ∈ G`, so:\n1. `A 1 = (A 0)²`,\n2. `A 0 + A 1 = 1`.\n\nSimilarly for `B`.\n\nBut we can deduce that `A 0` satisfies `(A 0)² + A 0 - 1 = 0`, and similarly for `B 0`.\n\nThis means that `A 0` and `B 0` are roots of `x² + x - 1 = 0`. \n\nIf we assume that `A ≠ B`, then they are the two distinct roots, and we can proceed as above. But perhaps `A = B`, unless we prove otherwise. \n\nBut if `A = B`, then `h₀` implies that `I = {A}`, which would mean that the quadratic has exactly one solution. But the discriminant is `1 + 4 = 5 > 0`, so it has two roots, a contradiction. \n\nWait no: perhaps in Lean we cannot yet deduce that there are two roots because we haven't actually constructed them yet. \n\nAlternatively, perhaps we can prove that there are two distinct points in `I`, and hence `A ≠ B`.\n\nBut how?\n\nAlternatively, perhaps we can do the following:\n\n1. Deduce that `A 0` and `B 0` are roots of `x² + x - 1 = 0`. So they are either equal or are the two distinct roots. \n\n   But if `A 0 = B 0`, then from `A 1 = (A 0)²` and `B 1 = (B 0)²`, we get `A 1 = B 1`, so `A = B`. But `h₀` would then imply that `I = {A}`, so `F ∩ G` is a singleton. But we can find two distinct points in `F ∩ G` by explicitly solving the system (as in math), which would be a contradiction. \n\n   So perhaps `A ≠ B`, and hence they are the two distinct roots. \n\n   But in Lean, perhaps it's not yet obvious that there are two points in `F ∩ G`, unless we explicitly construct them.\n\nAlternatively, perhaps a better approach is:\n\n1. Deduce that `A 0` and `B 0` are roots of `x² + x - 1 = 0`. \n\n2. Compute `(A 0 - B 0)(A 0 + B 0 + 1) = 0` because both are roots. \n\n   This gives either `A 0 = B 0` or `A 0 + B 0 = -1`. \n\n3. If `A 0 = B 0`, then as above `A = B`. But then `h₀` implies that the intersection is `{A}`, so for any other solution `x` to the system, `x = A`, which is false (since we have two solutions). \n\n   However, in Lean we haven't yet found two solutions. \n\n   Hmm.\n\nAlternatively, perhaps we can directly calculate the distance between `A` and `B` without knowing their exact coordinates:\n\nSince both `A` and `B` are in `F ∩ G`, we have:\n1. `A 1 = A 0²`, `A 0 + A 1 = 1`, similarly for `B`.\n\nThen we have `(A 0)² + A 0 - 1 = 0` and `(B 0)² + B 0 - 1 = 0`.\n\nMoreover, if we assume that `A ≠ B`, then `A 0 ≠ B 0`.\n\nBut perhaps we can use that `A 0 + B 0 = -1`, because they are roots of `x² + x - 1 = 0`.\n\nBut in general, for any two roots of `x² + bx + c = 0`, the sum is `-b`. So if `A 0` and `B 0` are two roots (possibly equal), then `A 0 + B 0 = -1`. \n\nActually, Vieta's formula applies even if they are equal. \n\nSimilarly, `A",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 9,
+            "column": 31
+          },
+          "endPos": {
+            "line": 10,
+            "column": 3
+          },
+          "data": "unexpected token '#'; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 9,
+            "column": 29
+          },
+          "endPos": {
+            "line": 9,
+            "column": 31
+          },
+          "data": "unsolved goals\nF G I : Set (EuclideanSpace ℝ (Fin 2))\nhF : F = {x | x 1 = x 0 ^ 2}\nhG : G = {x | x 0 + x 1 = 1}\nhI : I = F ∩ G\nA B : EuclideanSpace ℝ (Fin 2)\nh₀ : ∀ (x : EuclideanSpace ℝ (Fin 2)), x ∈ I ↔ x = A ∨ x = B\n⊢ dist A B = √10"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 152.73
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_184",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_184\n  (a b : NNReal)\n  (h₀ : 0 < a ∧ 0 < b)\n  (S₁ S₂ : Fin 3 → NNReal)\n  (h₁ : S₁ 0 = 6 ∧ S₁ 1 = a ∧ S₁ 2 = b)\n  (h₂ : S₂ 0 = 1 / b ∧ S₁ 1 = a ∧ S₁ 2 = 54)\n  (h₃ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n, n < 2 → S₁ n * r = S₁ (n + 1))\n  (h₄ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n, S₂ n * r = S₂ (n + 1)) :\n  a = 3 * NNReal.sqrt 2 := by\n  (h₄ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n, S₂ n * r = S₂ (n + 1))",
+    "full_code": "theorem mathd_algebra_184\n  (a b : NNReal)\n  (h₀ : 0 < a ∧ 0 < b)\n  (S₁ S₂ : Fin 3 → NNReal)\n  (h₁ : S₁ 0 = 6 ∧ S₁ 1 = a ∧ S₁ 2 = b)\n  (h₂ : S₂ 0 = 1 / b ∧ S₁ 1 = a ∧ S₁ 2 = 54)\n  (h₃ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n, n < 2 → S₁ n * r = S₁ (n + 1))\n  (h₄ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n, S₂ n * r = S₂ (n + 1)) :\n  a = 3 * NNReal.sqrt 2 := by\n  (h₄ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n, S₂ n * r = S₂ (n + 1))",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 11,
+            "column": 4
+          },
+          "endPos": null,
+          "data": "unknown tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 10,
+            "column": 27
+          },
+          "endPos": {
+            "line": 11,
+            "column": 5
+          },
+          "data": "unsolved goals\na b : NNReal\nh₀ : 0 < a ∧ 0 < b\nS₁ S₂ : Fin 3 → NNReal\nh₁ : S₁ 0 = 6 ∧ S₁ 1 = a ∧ S₁ 2 = b\nh₂ : S₂ 0 = 1 / b ∧ S₁ 1 = a ∧ S₁ 2 = 54\nh₃ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ n < 2, S₁ n * r = S₁ (n + 1)\nh₄ : ∃! r, r ≠ 0 ∧ r ≠ 1 ∧ ∀ (n : Fin 3), S₂ n * r = S₂ (n + 1)\n⊢ a = 3 * NNReal.sqrt 2"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 149.74
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p9",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12b_2021_p9\n  (X : ℝ)\n  (hX : X = Real.logb 2 80 / (Real.logb 40 2) - Real.logb 2 160 / Real.logb 20 2) :\n  X = 2 ∨ X = 4 ∨ X = 6 ∨ X = 30 ∨ X = 32 := by sorry",
+    "full_code": "theorem amc12b_2021_p9\n  (X : ℝ)\n  (hX : X = Real.logb 2 80 / (Real.logb 40 2) - Real.logb 2 160 / Real.logb 20 2) :\n  X = 2 ∨ X = 4 ∨ X = 6 ∨ X = 30 ∨ X = 32 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 5,
+            "column": 48
+          },
+          "goal": "X : ℝ\nhX : X = Real.logb 2 80 / Real.logb 40 2 - Real.logb 2 160 / Real.logb 20 2\n⊢ X = 2 ∨ X = 4 ∨ X = 6 ∨ X = 30 ∨ X = 32",
+          "endPos": {
+            "line": 5,
+            "column": 53
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.01
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_44",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 8,
+    "code": "theorem mathd_algebra_44\n  (L₁ L₂ I : Set (EuclideanSpace ℝ (Fin 2)))\n  (hL₁ : L₁ = { x | x 0 = 9 - 2 * (x 1)})\n  (hL₂ : L₂ = { x | x 1 = 3 * (x 0) + 1})\n  (hI : I = L₁ ∩ L₂)\n  (A : EuclideanSpace ℝ (Fin 2)) :\n  A ∈ I ↔ A 0 = 1 ∧ A 1 = 4 := by\n  have h₁ : A ∈ I ↔ A ∈ L₁ ∧ A ∈ L₂ := by\n    rw [hI]\n    <;> simp [Set.mem_inter_iff]\n    <;> aesop\n  \n  have h₂ : A ∈ L₁ ↔ A 0 = 9 - 2 * (A 1) := by\n    rw [hL₁]\n    <;> simp [Set.mem_setOf_eq]\n    <;> aesop\n  \n  have h₃ : A ∈ L₂ ↔ A 1 = 3 * (A 0) + 1 := by\n    rw [hL₂]\n    <;> simp [Set.mem_setOf_eq]\n    <;> aesop\n  \n  have h₄ : A ∈ I ↔ A 0 = 1 ∧ A 1 = 4 := by\n    rw [h₁]\n    rw [h₂, h₃]\n    constructor\n    · -- Prove the forward direction: if A ∈ L₁ and A ∈ L₂, then A 0 = 1 and A 1 = 4\n      intro h\n      have h₄₁ : A 0 = 9 - 2 * (A 1) := h.1\n      have h₄₂ : A 1 = 3 * (A 0) + 1 := h.2\n      have h₄₃ : A 0 = 1 := by\n        have h₄₄ : A 0 = 9 - 2 * (3 * (A 0) + 1) := by\n          calc\n            A 0 = 9 - 2 * (A 1) := h₄₁\n            _ = 9 - 2 * (3 * (A 0) + 1) := by rw [h₄₂]\n            _ = 9 - 2 * (3 * (A 0) + 1) := by rfl\n        -- Simplify the equation to solve for A 0\n        linarith\n      have h₄₄ : A 1 = 4 := by\n        have h₄₅ : A 1 = 3 * (A 0) + 1 := h₄₂\n        rw [h₄₃] at h₄₅\n        norm_num at h₄₅ ⊢\n        <;> linarith\n      exact ⟨h₄₃, h₄₄⟩\n    · -- Prove the backward direction: if A 0 = 1 and A 1 = 4, then A ∈ L₁ and A ∈ L₂\n      rintro ⟨h₄₁, h₄₂⟩\n      have h₄₃ : A 0 = 9 - 2 * (A 1) := by\n        rw [h₄₁, h₄₂]\n        <;> norm_num\n      have h₄₄ : A 1 = 3 * (A 0) + 1 := by\n        rw [h₄₁, h₄₂]\n        <;> norm_num\n      exact ⟨h₄₃, h₄₄⟩\n  \n  exact h₄",
+    "full_code": "theorem mathd_algebra_44\n  (L₁ L₂ I : Set (EuclideanSpace ℝ (Fin 2)))\n  (hL₁ : L₁ = { x | x 0 = 9 - 2 * (x 1)})\n  (hL₂ : L₂ = { x | x 1 = 3 * (x 0) + 1})\n  (hI : I = L₁ ∩ L₂)\n  (A : EuclideanSpace ℝ (Fin 2)) :\n  A ∈ I ↔ A 0 = 1 ∧ A 1 = 4 := by\n  have h₁ : A ∈ I ↔ A ∈ L₁ ∧ A ∈ L₂ := by\n    rw [hI]\n    <;> simp [Set.mem_inter_iff]\n    <;> aesop\n  \n  have h₂ : A ∈ L₁ ↔ A 0 = 9 - 2 * (A 1) := by\n    rw [hL₁]\n    <;> simp [Set.mem_setOf_eq]\n    <;> aesop\n  \n  have h₃ : A ∈ L₂ ↔ A 1 = 3 * (A 0) + 1 := by\n    rw [hL₂]\n    <;> simp [Set.mem_setOf_eq]\n    <;> aesop\n  \n  have h₄ : A ∈ I ↔ A 0 = 1 ∧ A 1 = 4 := by\n    rw [h₁]\n    rw [h₂, h₃]\n    constructor\n    · -- Prove the forward direction: if A ∈ L₁ and A ∈ L₂, then A 0 = 1 and A 1 = 4\n      intro h\n      have h₄₁ : A 0 = 9 - 2 * (A 1) := h.1\n      have h₄₂ : A 1 = 3 * (A 0) + 1 := h.2\n      have h₄₃ : A 0 = 1 := by\n        have h₄₄ : A 0 = 9 - 2 * (3 * (A 0) + 1) := by\n          calc\n            A 0 = 9 - 2 * (A 1) := h₄₁\n            _ = 9 - 2 * (3 * (A 0) + 1) := by rw [h₄₂]\n            _ = 9 - 2 * (3 * (A 0) + 1) := by rfl\n        -- Simplify the equation to solve for A 0\n        linarith\n      have h₄₄ : A 1 = 4 := by\n        have h₄₅ : A 1 = 3 * (A 0) + 1 := h₄₂\n        rw [h₄₃] at h₄₅\n        norm_num at h₄₅ ⊢\n        <;> linarith\n      exact ⟨h₄₃, h₄₄⟩\n    · -- Prove the backward direction: if A 0 = 1 and A 1 = 4, then A ∈ L₁ and A ∈ L₂\n      rintro ⟨h₄₁, h₄₂⟩\n      have h₄₃ : A 0 = 9 - 2 * (A 1) := by\n        rw [h₄₁, h₄₂]\n        <;> norm_num\n      have h₄₄ : A 1 = 3 * (A 0) + 1 := by\n        rw [h₄₁, h₄₂]\n        <;> norm_num\n      exact ⟨h₄₃, h₄₄⟩\n  \n  exact h₄",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 136.41
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_293",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_293\n  (n x : ℕ)\n  (h₀ : Nat.digits 10 x = [7, n, 0, 2])\n  (h₁ : 11 ∣ x) :\n  n = 5 := by sorry",
+    "full_code": "theorem mathd_numbertheory_293\n  (n x : ℕ)\n  (h₀ : Nat.digits 10 x = [7, n, 0, 2])\n  (h₁ : 11 ∣ x) :\n  n = 5 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 6,
+            "column": 14
+          },
+          "goal": "n x : ℕ\nh₀ : Nat.digits 10 x = [7, n, 0, 2]\nh₁ : 11 ∣ x\n⊢ n = 5",
+          "endPos": {
+            "line": 6,
+            "column": 19
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.25
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_452",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_algebra_452 (a : ℕ → ℝ) (h₀ : ∀ n, a (n + 2) - a (n + 1) = a (n + 1) - a n)\n  (h₁ : a 1 = 2 / 3) (h₂ : a 9 = 4 / 5) : a 5 = 11 / 15 := by sorry",
+    "full_code": "theorem mathd_algebra_452 (a : ℕ → ℝ) (h₀ : ∀ n, a (n + 2) - a (n + 1) = a (n + 1) - a n)\n  (h₁ : a 1 = 2 / 3) (h₂ : a 9 = 4 / 5) : a 5 = 11 / 15 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 25,
+          "pos": {
+            "line": 3,
+            "column": 62
+          },
+          "goal": "a : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 2) - a (n + 1) = a (n + 1) - a n\nh₁ : a 1 = 2 / 3\nh₂ : a 9 = 4 / 5\n⊢ a 5 = 11 / 15",
+          "endPos": {
+            "line": 3,
+            "column": 67
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.84
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_207",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_207\n  (x : ℕ)\n  (h₀ : Nat.digits 9 x = [2, 5, 8]):\n  x = 695 := by sorry",
+    "full_code": "theorem mathd_numbertheory_207\n  (x : ℕ)\n  (h₀ : Nat.digits 9 x = [2, 5, 8]):\n  x = 695 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 37,
+          "pos": {
+            "line": 5,
+            "column": 16
+          },
+          "goal": "x : ℕ\nh₀ : Nat.digits 9 x = [2, 5, 8]\n⊢ x = 695",
+          "endPos": {
+            "line": 5,
+            "column": 21
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 139.22
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_483",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mathd_numbertheory_483 (a : ℕ → ℕ) (h₀ : a 1 = 1) (h₁ : a 2 = 1)\n  (h₂ : ∀ n, a (n + 2) = a (n + 1) + a n) : a 100 % 4 = 3 := by sorry",
+    "full_code": "theorem mathd_numbertheory_483 (a : ℕ → ℕ) (h₀ : a 1 = 1) (h₁ : a 2 = 1)\n  (h₂ : ∀ n, a (n + 2) = a (n + 1) + a n) : a 100 % 4 = 3 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 50,
+          "pos": {
+            "line": 3,
+            "column": 64
+          },
+          "goal": "a : ℕ → ℕ\nh₀ : a 1 = 1\nh₁ : a 2 = 1\nh₂ : ∀ (n : ℕ), a (n + 2) = a (n + 1) + a n\n⊢ a 100 % 4 = 3",
+          "endPos": {
+            "line": 3,
+            "column": 69
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 149.59
+    }
+  },
+  {
+    "problem_id": "amc12a_2003_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem amc12a_2003_p5 (A M C : ℕ) (h₀ : A ≤ 9 ∧ M ≤ 9 ∧ C ≤ 9)\n  (h₁ : Nat.ofDigits 10 [0, 1, C, M, A] + Nat.ofDigits 10 [2, 1, C, M, A] = 123422) :\n  A + M + C = 10 ∨ A + M + C = 11 ∨ A + M + C = 12 ∨ A + M + C = 13 ∨ A + M + C = 14 := by\n  ### Step 1: Understand the Problem\n\nThe problem involves a 5-digit number `[0, 1, C, M, A]` and another `[2, 1, C, M, A]` (with digits in reverse order as per Lean's `Nat.ofDigits` convention). The sum of these two numbers is given as 123422, and we must find the possible values of `A + M + C` under the constraints that `A, M, C ≤ 9`.\n\nFirst, we need to understand how `Nat.ofDigits` works in Lean:\n- `Nat.ofDigits 10 [d₀, d₁, ..., dₙ] = d₀ + 10*d₁ + 10²*d₂ + ... + 10ⁿ*dₙ`.\n  \nTherefore:\n- `Nat.ofDigits 10 [0, 1, C, M, A] = 0 + 10*1 + 10²*C + 10³*M + 10⁴*A = 10 + 100*C + 1000*M + 10000*A`.\n- `Nat.ofDigits 10 [2, 1, C, M, A] = 2 + 10*1 + 10²*C + 10³*M + 10⁴*A = 2 + 10 + 100*C + 1000*M + 10000*A = 12 + 100*C + 1000*M + 10000*A`.\n\nThe sum of these two numbers is:\n`(10 + 100*C + 1000*M + 10000*A) + (12 + 100*C + 1000*M + 10000*A) = 22 + 200*C + 2000*M + 20000*A`.\n\nBut according to the problem statement, this sum equals 123422:\n`22 + 200*C + 2000*M + 20000*A = 123422`.\n\nSimplifying:\n`200*C + 2000*M + 20000*A = 123400`.\n\nDividing by 200:\n`C + 10*M + 100*A = 617`.\n\nBut `A, M, C ≤ 9`, so:\n`C + 10*M + 100*A ≤ 9 + 90 + 900 = 999`.\n\nHowever, `C + 10*M + 100*A = 617` implies that `100*A ≤ 617`, so `A ≤ 6`. But `A` is a digit, so `A ∈ {0,...,9}`, but with `A ≤ 6` now. But if `A=0`, then `C + 10*M = 617`, which is impossible since `C + 10*M ≤ 9 + 90 = 99 < 617`. Similarly, `A=1`: `C + 10*M = 517` is also impossible. \n\nWait a minute, this doesn't make sense! \n\nLet's re-calculate the sum:\nThe sum of the two numbers is `(10 + 100*C + 1000*M + 10000*A) + (12 + 100*C + 1000*M + 10000*A)`.\n\nWait no! Actually, in `Nat.ofDigits 10 [0, 1, C, M, A]`, the digits are in reverse order:\n`Nat.ofDigits 10 [d₀, d₁, d₂, d₃, d₄] = d₀ + 10*d₁ + 100*d₂ + 1000*d₃ + 10000*d₄`.\nThus:\n`Nat.ofDigits 10 [0, 1, C, M, A] = 0 + 10*1 + 100*C + 1000*M + 10000*A = 10 + 100*C + 1000*M + 10000*A`.\n\nSimilarly:\n`Nat.ofDigits 10 [2, 1, C, M, A] = 2 + 10*1 + 100*C + 1000*M + 10000*A = 12 + 100*C + 1000*M + 10000*A`.\n\nThe sum is:\n`10 + 100*C + 1000*M + 10000*A + 12 + 100*C + 1000*M + 10000*A = 22 + 200*C + 2000*M + 20000*A = 123422`.\n\nThus:\n`200*C + 2000*M + 20000*A = 123400`.\n\nDivide by 200:\n`C + 10*M + 100*A = 617`.\n\nBut now, because `A, M, C ≤ 9`:\n`C + 10*M + 100*A ≤ 9 + 90 + 900 = 999`, and `617 ≤ 999`, so that is fine.\n\nBut `C + 10*M + 100*A = 617` implies:\n`100*A ≤ 617`, so `A ≤ 6`. \n\nBut let's check:\n`A = 6`: `C + 10*M = 17`. Since `M ≤ 9`, `C = 17 - 10*M ≤ 17`, but `C ≤ 9`, so `17 - 10*M ≤ 9`, thus `10*M ≥ 8`, `M ≥ 1`. Also `C ≥ 0`, so `17 - 10*M ≥ 0`, so `M ≤ 1`. Therefore `M = 1`, and `C = 7`. Then `A + M + C = 6 + 1 + 7 = 14`.\n\n`A = 5`: `C + 10*M = 117`. But `C + 10*M ≤ 9 + 90 = 99 < 117`. Impossible.\n\nSimilarly for `A < 5`, the RHS becomes larger (`C + 10*M = 617 - 100*A`), but the LHS is bounded by 99. So no solutions unless `A = 6`, `M = 1`, `C = 7`.\n\nBut then `A + M + C = 14`.\n\nBut the problem statement asks to prove that the sum is one of 10, 11, 12, 13, 14. In this case, it is 14. \n\nHowever, let's re-examine the equation:\n`200*C + 2000*M + 20000*A = 123400`.\n\nWe divided by 200 to get `C + 10*M + 100*A = 617`. But if we instead divide by 2:\n`100*C + 1000*M + 10000*A = 61700`.\n\nBut perhaps this is better? Let's try another approach.\n\nAlternative approach:\n\n`Nat.ofDigits 10 [0, 1, C, M, A] = 0 + 1*10 + C*100 + M*1000 + A*10000 = 10 + 100*C + 1000*M + 10000*A`.\n\n`Nat.ofDigits 10 [2, 1, C, M, A] = 2 + 1*10 + C*100 + M*1000 + A*10000 = 12 + 100*C + 1000*M + 10000*A`.\n\nSum: `22 + 200*C + 2000*M + 20000*A = 123422`.\n\nSo `200*C + 2000*M + 20000*A = 123400`.\n\nDivide by 200: `C + 10*M + 100*A = 617`.\n\nNow, since `A ≤ 9`, `100*A ≤ 900`, but `A ≥ 0`.\n\nBut `100*A ≤ 617`, so `A ≤ 6`. \n\nAlso, `A` cannot be too small. Because `10*M + C ≤ 99`,",
+    "full_code": "theorem amc12a_2003_p5 (A M C : ℕ) (h₀ : A ≤ 9 ∧ M ≤ 9 ∧ C ≤ 9)\n  (h₁ : Nat.ofDigits 10 [0, 1, C, M, A] + Nat.ofDigits 10 [2, 1, C, M, A] = 123422) :\n  A + M + C = 10 ∨ A + M + C = 11 ∨ A + M + C = 12 ∨ A + M + C = 13 ∨ A + M + C = 14 := by\n  ### Step 1: Understand the Problem\n\nThe problem involves a 5-digit number `[0, 1, C, M, A]` and another `[2, 1, C, M, A]` (with digits in reverse order as per Lean's `Nat.ofDigits` convention). The sum of these two numbers is given as 123422, and we must find the possible values of `A + M + C` under the constraints that `A, M, C ≤ 9`.\n\nFirst, we need to understand how `Nat.ofDigits` works in Lean:\n- `Nat.ofDigits 10 [d₀, d₁, ..., dₙ] = d₀ + 10*d₁ + 10²*d₂ + ... + 10ⁿ*dₙ`.\n  \nTherefore:\n- `Nat.ofDigits 10 [0, 1, C, M, A] = 0 + 10*1 + 10²*C + 10³*M + 10⁴*A = 10 + 100*C + 1000*M + 10000*A`.\n- `Nat.ofDigits 10 [2, 1, C, M, A] = 2 + 10*1 + 10²*C + 10³*M + 10⁴*A = 2 + 10 + 100*C + 1000*M + 10000*A = 12 + 100*C + 1000*M + 10000*A`.\n\nThe sum of these two numbers is:\n`(10 + 100*C + 1000*M + 10000*A) + (12 + 100*C + 1000*M + 10000*A) = 22 + 200*C + 2000*M + 20000*A`.\n\nBut according to the problem statement, this sum equals 123422:\n`22 + 200*C + 2000*M + 20000*A = 123422`.\n\nSimplifying:\n`200*C + 2000*M + 20000*A = 123400`.\n\nDividing by 200:\n`C + 10*M + 100*A = 617`.\n\nBut `A, M, C ≤ 9`, so:\n`C + 10*M + 100*A ≤ 9 + 90 + 900 = 999`.\n\nHowever, `C + 10*M + 100*A = 617` implies that `100*A ≤ 617`, so `A ≤ 6`. But `A` is a digit, so `A ∈ {0,...,9}`, but with `A ≤ 6` now. But if `A=0`, then `C + 10*M = 617`, which is impossible since `C + 10*M ≤ 9 + 90 = 99 < 617`. Similarly, `A=1`: `C + 10*M = 517` is also impossible. \n\nWait a minute, this doesn't make sense! \n\nLet's re-calculate the sum:\nThe sum of the two numbers is `(10 + 100*C + 1000*M + 10000*A) + (12 + 100*C + 1000*M + 10000*A)`.\n\nWait no! Actually, in `Nat.ofDigits 10 [0, 1, C, M, A]`, the digits are in reverse order:\n`Nat.ofDigits 10 [d₀, d₁, d₂, d₃, d₄] = d₀ + 10*d₁ + 100*d₂ + 1000*d₃ + 10000*d₄`.\nThus:\n`Nat.ofDigits 10 [0, 1, C, M, A] = 0 + 10*1 + 100*C + 1000*M + 10000*A = 10 + 100*C + 1000*M + 10000*A`.\n\nSimilarly:\n`Nat.ofDigits 10 [2, 1, C, M, A] = 2 + 10*1 + 100*C + 1000*M + 10000*A = 12 + 100*C + 1000*M + 10000*A`.\n\nThe sum is:\n`10 + 100*C + 1000*M + 10000*A + 12 + 100*C + 1000*M + 10000*A = 22 + 200*C + 2000*M + 20000*A = 123422`.\n\nThus:\n`200*C + 2000*M + 20000*A = 123400`.\n\nDivide by 200:\n`C + 10*M + 100*A = 617`.\n\nBut now, because `A, M, C ≤ 9`:\n`C + 10*M + 100*A ≤ 9 + 90 + 900 = 999`, and `617 ≤ 999`, so that is fine.\n\nBut `C + 10*M + 100*A = 617` implies:\n`100*A ≤ 617`, so `A ≤ 6`. \n\nBut let's check:\n`A = 6`: `C + 10*M = 17`. Since `M ≤ 9`, `C = 17 - 10*M ≤ 17`, but `C ≤ 9`, so `17 - 10*M ≤ 9`, thus `10*M ≥ 8`, `M ≥ 1`. Also `C ≥ 0`, so `17 - 10*M ≥ 0`, so `M ≤ 1`. Therefore `M = 1`, and `C = 7`. Then `A + M + C = 6 + 1 + 7 = 14`.\n\n`A = 5`: `C + 10*M = 117`. But `C + 10*M ≤ 9 + 90 = 99 < 117`. Impossible.\n\nSimilarly for `A < 5`, the RHS becomes larger (`C + 10*M = 617 - 100*A`), but the LHS is bounded by 99. So no solutions unless `A = 6`, `M = 1`, `C = 7`.\n\nBut then `A + M + C = 14`.\n\nBut the problem statement asks to prove that the sum is one of 10, 11, 12, 13, 14. In this case, it is 14. \n\nHowever, let's re-examine the equation:\n`200*C + 2000*M + 20000*A = 123400`.\n\nWe divided by 200 to get `C + 10*M + 100*A = 617`. But if we instead divide by 2:\n`100*C + 1000*M + 10000*A = 61700`.\n\nBut perhaps this is better? Let's try another approach.\n\nAlternative approach:\n\n`Nat.ofDigits 10 [0, 1, C, M, A] = 0 + 1*10 + C*100 + M*1000 + A*10000 = 10 + 100*C + 1000*M + 10000*A`.\n\n`Nat.ofDigits 10 [2, 1, C, M, A] = 2 + 1*10 + C*100 + M*1000 + A*10000 = 12 + 100*C + 1000*M + 10000*A`.\n\nSum: `22 + 200*C + 2000*M + 20000*A = 123422`.\n\nSo `200*C + 2000*M + 20000*A = 123400`.\n\nDivide by 200: `C + 10*M + 100*A = 617`.\n\nNow, since `A ≤ 9`, `100*A ≤ 900`, but `A ≥ 0`.\n\nBut `100*A ≤ 617`, so `A ≤ 6`. \n\nAlso, `A` cannot be too small. Because `10*M + C ≤ 99`,",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 90
+          },
+          "endPos": {
+            "line": 5,
+            "column": 3
+          },
+          "data": "unexpected token '#'; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 88
+          },
+          "endPos": {
+            "line": 4,
+            "column": 90
+          },
+          "data": "unsolved goals\nA M C : ℕ\nh₀ : A ≤ 9 ∧ M ≤ 9 ∧ C ≤ 9\nh₁ : Nat.ofDigits 10 [0, 1, C, M, A] + Nat.ofDigits 10 [2, 1, C, M, A] = 123422\n⊢ A + M + C = 10 ∨ A + M + C = 11 ∨ A + M + C = 12 ∨ A + M + C = 13 ∨ A + M + C = 14"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 152.47
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_296",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 7,
+    "code": "theorem mathd_algebra_296 : abs ((3491 - 60) * (3491 + 60) - 3491 ^ 2 : ℤ) = 3600 := by\n  have h : ((3491 - 60) * (3491 + 60) - 3491 ^ 2 : ℤ) = -3600 := by\n    norm_num\n  rw [h]\n  norm_num [abs_of_nonpos]\n  <;> simp_all\n  <;> norm_num\n  <;> linarith",
+    "full_code": "theorem mathd_algebra_296 : abs ((3491 - 60) * (3491 + 60) - 3491 ^ 2 : ℤ) = 3600 := by\n  have h : ((3491 - 60) * (3491 + 60) - 3491 ^ 2 : ℤ) = -3600 := by\n    norm_num\n  rw [h]\n  norm_num [abs_of_nonpos]\n  <;> simp_all\n  <;> norm_num\n  <;> linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 128.92
+    }
+  },
+  {
+    "problem_id": "algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7 (f z : ℂ) (h₀ : f + 3 * z = 11)\n  (h₁ : 3 * (f - 1) - 5 * z = -68) : f = -10 ∧ z = 7 := by\n  have h₂ : z = 7 := by sorry\n  have h₃ : f = -10 := by sorry\n  have h₄ : f = -10 ∧ z = 7 := by sorry\n  exact h₄",
+    "full_code": "theorem algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7 (f z : ℂ) (h₀ : f + 3 * z = 11)\n  (h₁ : 3 * (f - 1) - 5 * z = -68) : f = -10 ∧ z = 7 := by\n  have h₂ : z = 7 := by sorry\n  have h₃ : f = -10 := by sorry\n  have h₄ : f = -10 ∧ z = 7 := by sorry\n  exact h₄",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 17,
+          "pos": {
+            "line": 4,
+            "column": 24
+          },
+          "goal": "f z : ℂ\nh₀ : f + 3 * z = 11\nh₁ : 3 * (f - 1) - 5 * z = -68\n⊢ z = 7",
+          "endPos": {
+            "line": 4,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 18,
+          "pos": {
+            "line": 5,
+            "column": 26
+          },
+          "goal": "f z : ℂ\nh₀ : f + 3 * z = 11\nh₁ : 3 * (f - 1) - 5 * z = -68\nh₂ : z = 7\n⊢ f = -10",
+          "endPos": {
+            "line": 5,
+            "column": 31
+          }
+        },
+        {
+          "proofState": 19,
+          "pos": {
+            "line": 6,
+            "column": 34
+          },
+          "goal": "f z : ℂ\nh₀ : f + 3 * z = 11\nh₁ : 3 * (f - 1) - 5 * z = -68\nh₂ : z = 7\nh₃ : f = -10\n⊢ f = -10 ∧ z = 7",
+          "endPos": {
+            "line": 6,
+            "column": 39
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 145.72
+    }
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem induction_pord1p1on2powklt5on2\n  (n : ℕ) (h₀ : 0 < n) :\n  (∏ k ∈ Finset.Icc (1:ℕ) n, ((1:ℝ) + (1 : ℝ) / 2 ^ k)) < (5 / 2 : ℝ) := by\n  (1 + 1/2) * (1 + 1/4) * (1 + 1/8) * ... = (3/2) * (5/4) * (9/8) * ...",
+    "full_code": "theorem induction_pord1p1on2powklt5on2\n  (n : ℕ) (h₀ : 0 < n) :\n  (∏ k ∈ Finset.Icc (1:ℕ) n, ((1:ℝ) + (1 : ℝ) / 2 ^ k)) < (5 / 2 : ℝ) := by\n  (1 + 1/2) * (1 + 1/4) * (1 + 1/8) * ... = (3/2) * (5/4) * (9/8) * ...",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 3
+          },
+          "endPos": {
+            "line": 5,
+            "column": 4
+          },
+          "data": "unexpected token; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 73
+          },
+          "endPos": {
+            "line": 5,
+            "column": 3
+          },
+          "data": "unsolved goals\nn : ℕ\nh₀ : 0 < n\n⊢ ∏ k ∈ Finset.Icc 1 n, (1 + 1 / 2 ^ k) < 5 / 2"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 149.77
+    }
+  },
+  {
+    "problem_id": "numbertheory_2pownm1prime_nprime",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem numbertheory_2pownm1prime_nprime (n : ℕ) (h₀ : 0 < n) (h₁ : Nat.Prime (2 ^ n - 1)) : Nat.Prime n := by\n  -- Assume for contradiction that n is not prime\n  have h_main : Nat.Prime n := by sorry\n  sorry",
+    "full_code": "theorem numbertheory_2pownm1prime_nprime (n : ℕ) (h₀ : 0 < n) (h₁ : Nat.Prime (2 ^ n - 1)) : Nat.Prime n := by\n  -- Assume for contradiction that n is not prime\n  have h_main : Nat.Prime n := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 4,
+            "column": 34
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\nh₁ : (2 ^ n - 1).Prime\n⊢ n.Prime",
+          "endPos": {
+            "line": 4,
+            "column": 39
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\nh₁ : (2 ^ n - 1).Prime\nh_main : n.Prime\n⊢ n.Prime",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 150.93
+    }
+  },
+  {
+    "problem_id": "amc12a_2013_p4",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 26,
+    "code": "theorem amc12a_2013_p4\n  (x : ℝ)\n  (h₀ : x = (2 ^ 2014 + 2 ^ 2012) / (2 ^ 2014 - 2 ^ 2012)) :\n  x = -1 ∨ x = 1 ∨ x = (5 : ℝ) / 3 ∨ x = 2013 ∨ x = (2 : ℝ) ^ 4024 := by\n  have h₁ : x = (5 : ℝ) / 3 := by\n    rw [h₀]\n    have h₂ : ((2 : ℝ) ^ 2014 + (2 : ℝ) ^ 2012 : ℝ) = (2 : ℝ) ^ 2012 * 5 := by\n      norm_num [pow_add, pow_mul, mul_assoc]\n      <;> ring_nf at *\n      <;> norm_num\n      <;> linarith\n    have h₃ : ((2 : ℝ) ^ 2014 - (2 : ℝ) ^ 2012 : ℝ) = (2 : ℝ) ^ 2012 * 3 := by\n      norm_num [pow_add, pow_mul, mul_assoc]\n      <;> ring_nf at *\n      <;> norm_num\n      <;> linarith\n    rw [h₂, h₃]\n    have h₄ : (2 : ℝ) ^ 2012 ≠ 0 := by positivity\n    field_simp [h₄]\n    <;> ring_nf at *\n    <;> norm_num\n    <;> linarith\n  \n  -- Since x = 5/3, we can directly conclude the disjunction by selecting the third option.\n  have h₂ : x = -1 ∨ x = 1 ∨ x = (5 : ℝ) / 3 ∨ x = 2013 ∨ x = (2 : ℝ) ^ 4024 := by\n    exact Or.inr (Or.inr (Or.inl h₁))\n  \n  exact h₂",
+    "full_code": "theorem amc12a_2013_p4\n  (x : ℝ)\n  (h₀ : x = (2 ^ 2014 + 2 ^ 2012) / (2 ^ 2014 - 2 ^ 2012)) :\n  x = -1 ∨ x = 1 ∨ x = (5 : ℝ) / 3 ∨ x = 2013 ∨ x = (2 : ℝ) ^ 4024 := by\n  have h₁ : x = (5 : ℝ) / 3 := by\n    rw [h₀]\n    have h₂ : ((2 : ℝ) ^ 2014 + (2 : ℝ) ^ 2012 : ℝ) = (2 : ℝ) ^ 2012 * 5 := by\n      norm_num [pow_add, pow_mul, mul_assoc]\n      <;> ring_nf at *\n      <;> norm_num\n      <;> linarith\n    have h₃ : ((2 : ℝ) ^ 2014 - (2 : ℝ) ^ 2012 : ℝ) = (2 : ℝ) ^ 2012 * 3 := by\n      norm_num [pow_add, pow_mul, mul_assoc]\n      <;> ring_nf at *\n      <;> norm_num\n      <;> linarith\n    rw [h₂, h₃]\n    have h₄ : (2 : ℝ) ^ 2012 ≠ 0 := by positivity\n    field_simp [h₄]\n    <;> ring_nf at *\n    <;> norm_num\n    <;> linarith\n  \n  -- Since x = 5/3, we can directly conclude the disjunction by selecting the third option.\n  have h₂ : x = -1 ∨ x = 1 ∨ x = (5 : ℝ) / 3 ∨ x = 2013 ∨ x = (2 : ℝ) ^ 4024 := by\n    exact Or.inr (Or.inr (Or.inl h₁))\n  \n  exact h₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 140.44
+    }
+  }
+]

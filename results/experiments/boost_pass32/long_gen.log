@@ -1,0 +1,324 @@
+WARNING 04-06 18:25:13 [cuda.py:582] Detected different devices in the system: NVIDIA L40, NVIDIA L40, NVIDIA L40, NVIDIA L40, NVIDIA A100 80GB PCIe, NVIDIA A100 80GB PCIe, NVIDIA L40, NVIDIA L40. Please make sure to set `CUDA_DEVICE_ORDER=PCI_BUS_ID` to avoid unexpected behavior.
+Loading model: Goedel-LM/Goedel-Prover-V2-8B
+INFO 04-06 18:25:16 [utils.py:261] non-default args: {'trust_remote_code': True, 'max_model_len': 16384, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Goedel-LM/Goedel-Prover-V2-8B'}
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+INFO 04-06 18:25:17 [model.py:541] Resolved architecture: Qwen3ForCausalLM
+INFO 04-06 18:25:17 [model.py:1561] Using max model len 16384
+INFO 04-06 18:25:18 [scheduler.py:226] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 04-06 18:25:18 [vllm.py:624] Asynchronous scheduling is enabled.
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:19 [core.py:96] Initializing a V1 LLM engine (v0.15.1) with config: model='Goedel-LM/Goedel-Prover-V2-8B', speculative_config=None, tokenizer='Goedel-LM/Goedel-Prover-V2-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=16384, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Goedel-LM/Goedel-Prover-V2-8B, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::unified_kv_cache_update'], 'compile_mm_encoder': False, 'compile_sizes': [], 'compile_ranges_split_points': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'eliminate_noops': True, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': True}, 'local_cache_dir': None, 'static_all_moe_layers': []}
+(EngineCore_DP0 pid=3770960) WARNING 04-06 18:25:19 [multiproc_executor.py:910] Reducing Torch parallelism from 192 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:21 [parallel_state.py:1212] world_size=2 rank=0 local_rank=0 distributed_init_method=tcp://127.0.0.1:58859 backend=nccl
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:21 [parallel_state.py:1212] world_size=2 rank=1 local_rank=1 distributed_init_method=tcp://127.0.0.1:58859 backend=nccl
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:21 [pynccl.py:111] vLLM is using nccl==2.27.5
+(EngineCore_DP0 pid=3770960) WARNING 04-06 18:25:22 [symm_mem.py:67] SymmMemCommunicator: Device capability 8.9 not supported, communicator is not available.
+(EngineCore_DP0 pid=3770960) WARNING 04-06 18:25:22 [symm_mem.py:67] SymmMemCommunicator: Device capability 8.9 not supported, communicator is not available.
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:22 [parallel_state.py:1423] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 1, EP rank N/A
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:22 [parallel_state.py:1423] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:22 [gpu_model_runner.py:4033] Starting to load model Goedel-LM/Goedel-Prover-V2-8B...
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:23 [cuda.py:364] Using FLASH_ATTN attention backend out of potential backends: ('FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION')
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.77it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.97it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  2.36it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.18it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:01<00:00,  2.25it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) 
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:26 [default_loader.py:291] Loading weights took 1.86 seconds
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:27 [gpu_model_runner.py:4130] Model loading took 7.64 GiB memory and 3.899546 seconds
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:34 [backends.py:812] Using cache directory: /home/ningmiao/.cache/vllm/torch_compile_cache/32734fafd3/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:34 [backends.py:872] Dynamo bytecode transform time: 5.52 s
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:37 [backends.py:302] Cache the graph of compile range (1, 8192) for later use
+(EngineCore_DP0 pid=3770960) (Worker_TP1 pid=3770968) INFO 04-06 18:25:37 [backends.py:302] Cache the graph of compile range (1, 8192) for later use
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:40 [backends.py:319] Compiling a graph for compile range (1, 8192) takes 2.52 s
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:40 [monitor.py:34] torch.compile takes 8.04 s in total
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:41 [gpu_worker.py:356] Available KV cache memory: 30.7 GiB
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:41 [kv_cache_utils.py:1307] GPU KV cache size: 447,024 tokens
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:41 [kv_cache_utils.py:1312] Maximum concurrency for 16,384 tokens per request: 27.28x
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 3/51 [00:00<00:02, 20.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:02, 21.25it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 9/51 [00:00<00:01, 21.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:00<00:01, 22.64it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 15/51 [00:00<00:01, 23.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:00<00:01, 21.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 21/51 [00:00<00:01, 20.94it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:01<00:01, 21.62it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 27/51 [00:01<00:01, 22.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:01<00:00, 23.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:01<00:00, 24.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [00:01<00:00, 25.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [00:01<00:00, 26.54it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [00:01<00:00, 26.98it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 45/51 [00:01<00:00, 27.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 48/51 [00:01<00:00, 27.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 27.53it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 24.49it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:00<00:01, 25.26it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:01, 27.07it/s]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:00<00:00, 27.98it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 13/35 [00:00<00:00, 28.95it/s]Capturing CUDA graphs (decode, FULL):  49%|████▊     | 17/35 [00:00<00:00, 29.79it/s]Capturing CUDA graphs (decode, FULL):  60%|██████    | 21/35 [00:00<00:00, 30.55it/s]Capturing CUDA graphs (decode, FULL):  71%|███████▏  | 25/35 [00:00<00:00, 31.00it/s]Capturing CUDA graphs (decode, FULL):  83%|████████▎ | 29/35 [00:00<00:00, 31.33it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 33/35 [00:01<00:00, 32.11it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 30.74it/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:44 [custom_all_reduce.py:216] Registering 6278 cuda graph addresses
+(EngineCore_DP0 pid=3770960) (Worker_TP1 pid=3770968) INFO 04-06 18:25:44 [custom_all_reduce.py:216] Registering 6278 cuda graph addresses
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) INFO 04-06 18:25:45 [gpu_model_runner.py:5063] Graph capturing finished in 4 secs, took 0.67 GiB
+(EngineCore_DP0 pid=3770960) INFO 04-06 18:25:45 [core.py:272] init engine (profile, create kv cache, warmup model) took 16.22 seconds
+INFO 04-06 18:25:48 [llm.py:343] Supported tasks: ['generate']
+Starting Lean verifier...
+  Strategy registered: whole_proof
+
+Dataset: minif2f_unsolved39 (39 problems)
+
+[1/39] aime_1984_p7
+  [whole_proof] Attempting aime_1984_p7...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 27.48it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.56s/it, est. speed input: 26.73 toks/s, output: 1084.16 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.56s/it, est. speed input: 26.73 toks/s, output: 1084.16 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.56s/it, est. speed input: 26.73 toks/s, output: 1084.16 toks/s]
+  [whole_proof] Not solved (32 attempts, 246.4s)
+  Progress: 0/39 solved (0.0%)
+
+[2/39] aime_1995_p7
+  [whole_proof] Attempting aime_1995_p7...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 220.83it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.31s/it, est. speed input: 33.22 toks/s, output: 1082.30 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.31s/it, est. speed input: 33.22 toks/s, output: 1082.30 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.31s/it, est. speed input: 33.22 toks/s, output: 1082.30 toks/s]
+  [whole_proof] Not solved (32 attempts, 239.2s)
+  Progress: 0/39 solved (0.0%)
+
+[3/39] aime_1999_p11
+  [whole_proof] Attempting aime_1999_p11...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 178.31it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:02<00:00,  7.57s/it, est. speed input: 34.48 toks/s, output: 1082.26 toks/s]Processed prompts: 100%|██████████| 32/32 [04:02<00:00,  7.57s/it, est. speed input: 34.48 toks/s, output: 1082.26 toks/s]Processed prompts: 100%|██████████| 32/32 [04:02<00:00,  7.57s/it, est. speed input: 34.48 toks/s, output: 1082.26 toks/s]
+  [whole_proof] Not solved (32 attempts, 250.0s)
+  Progress: 0/39 solved (0.0%)
+
+[4/39] algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2
+  [whole_proof] Attempting algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 141.47it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:50<00:00,  7.19s/it, est. speed input: 31.84 toks/s, output: 1069.84 toks/s]Processed prompts: 100%|██████████| 32/32 [03:50<00:00,  7.19s/it, est. speed input: 31.84 toks/s, output: 1069.84 toks/s]Processed prompts: 100%|██████████| 32/32 [03:50<00:00,  7.19s/it, est. speed input: 31.84 toks/s, output: 1069.84 toks/s]
+  [whole_proof] Not solved (32 attempts, 234.7s)
+  Progress: 0/39 solved (0.0%)
+
+[5/39] algebra_apbmpcneq0_aeq0anbeq0anceq0
+  [whole_proof] Attempting algebra_apbmpcneq0_aeq0anbeq0anceq0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 185.64it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.95s/it, est. speed input: 33.21 toks/s, output: 1052.97 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.95s/it, est. speed input: 33.21 toks/s, output: 1052.97 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.95s/it, est. speed input: 33.21 toks/s, output: 1052.97 toks/s]
+  [whole_proof] Not solved (32 attempts, 227.2s)
+  Progress: 0/39 solved (0.0%)
+
+[6/39] algebra_ineq_nto1onlt2m1on
+  [whole_proof] Attempting algebra_ineq_nto1onlt2m1on...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 222.04it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:51<00:00,  7.22s/it, est. speed input: 24.38 toks/s, output: 1070.65 toks/s]Processed prompts: 100%|██████████| 32/32 [03:51<00:00,  7.22s/it, est. speed input: 24.38 toks/s, output: 1070.65 toks/s]Processed prompts: 100%|██████████| 32/32 [03:51<00:00,  7.22s/it, est. speed input: 24.38 toks/s, output: 1070.65 toks/s]
+  [whole_proof] Not solved (32 attempts, 238.6s)
+  Progress: 0/39 solved (0.0%)
+
+[7/39] algebra_sum1onsqrt2to1onsqrt10000lt198
+  [whole_proof] Attempting algebra_sum1onsqrt2to1onsqrt10000lt198...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 169.88it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.96s/it, est. speed input: 25.43 toks/s, output: 1059.75 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.96s/it, est. speed input: 25.43 toks/s, output: 1059.75 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.96s/it, est. speed input: 25.43 toks/s, output: 1059.75 toks/s]
+  [whole_proof] SOLVED in 225.4s (18 attempts)
+  Progress: 1/39 solved (2.6%)
+
+[8/39] amc12a_2003_p23
+  [whole_proof] Attempting amc12a_2003_p23...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 198.09it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.40s/it, est. speed input: 31.64 toks/s, output: 1073.31 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.40s/it, est. speed input: 31.64 toks/s, output: 1073.31 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.40s/it, est. speed input: 31.64 toks/s, output: 1073.31 toks/s]
+  [whole_proof] Not solved (32 attempts, 244.1s)
+  Progress: 1/39 solved (2.6%)
+
+[9/39] amc12a_2008_p25
+  [whole_proof] Attempting amc12a_2008_p25...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 139.32it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.34s/it, est. speed input: 42.92 toks/s, output: 1070.35 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.34s/it, est. speed input: 42.92 toks/s, output: 1070.35 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.34s/it, est. speed input: 42.92 toks/s, output: 1070.35 toks/s]
+  [whole_proof] Not solved (32 attempts, 240.0s)
+  Progress: 1/39 solved (2.6%)
+
+[10/39] amc12a_2020_p25
+  [whole_proof] Attempting amc12a_2020_p25...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 188.34it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.54s/it, est. speed input: 37.42 toks/s, output: 1077.67 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.54s/it, est. speed input: 37.42 toks/s, output: 1077.67 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.54s/it, est. speed input: 37.42 toks/s, output: 1077.67 toks/s]
+  [whole_proof] Not solved (32 attempts, 245.8s)
+  Progress: 1/39 solved (2.6%)
+
+[11/39] amc12a_2020_p4
+  [whole_proof] Attempting amc12a_2020_p4...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 179.85it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:32<00:00,  6.64s/it, est. speed input: 36.57 toks/s, output: 1038.66 toks/s]Processed prompts: 100%|██████████| 32/32 [03:32<00:00,  6.64s/it, est. speed input: 36.57 toks/s, output: 1038.66 toks/s]Processed prompts: 100%|██████████| 32/32 [03:32<00:00,  6.64s/it, est. speed input: 36.57 toks/s, output: 1038.66 toks/s]
+  [whole_proof] Not solved (32 attempts, 220.2s)
+  Progress: 1/39 solved (2.6%)
+
+[12/39] amc12a_2020_p9
+  [whole_proof] Attempting amc12a_2020_p9...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 177.73it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:03<00:00,  7.60s/it, est. speed input: 29.19 toks/s, output: 1077.30 toks/s]Processed prompts: 100%|██████████| 32/32 [04:03<00:00,  7.60s/it, est. speed input: 29.19 toks/s, output: 1077.30 toks/s]Processed prompts: 100%|██████████| 32/32 [04:03<00:00,  7.60s/it, est. speed input: 29.19 toks/s, output: 1077.30 toks/s]
+  [whole_proof] Not solved (32 attempts, 247.9s)
+  Progress: 1/39 solved (2.6%)
+
+[13/39] amc12a_2021_p12
+  [whole_proof] Attempting amc12a_2021_p12...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 188.81it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.40s/it, est. speed input: 37.85 toks/s, output: 1075.58 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.40s/it, est. speed input: 37.85 toks/s, output: 1075.58 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.40s/it, est. speed input: 37.85 toks/s, output: 1075.58 toks/s]
+  [whole_proof] Not solved (32 attempts, 245.5s)
+  Progress: 1/39 solved (2.6%)
+
+[14/39] amc12a_2021_p14
+  [whole_proof] Attempting amc12a_2021_p14...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 147.74it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:39<00:00,  6.85s/it, est. speed input: 39.28 toks/s, output: 1063.64 toks/s]Processed prompts: 100%|██████████| 32/32 [03:39<00:00,  6.85s/it, est. speed input: 39.28 toks/s, output: 1063.64 toks/s]Processed prompts: 100%|██████████| 32/32 [03:39<00:00,  6.85s/it, est. speed input: 39.28 toks/s, output: 1063.64 toks/s]
+  [whole_proof] Not solved (32 attempts, 225.2s)
+  Progress: 1/39 solved (2.6%)
+
+[15/39] amc12a_2021_p19
+  [whole_proof] Attempting amc12a_2021_p19...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 225.54it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:00<00:00,  7.52s/it, est. speed input: 30.60 toks/s, output: 1079.52 toks/s]Processed prompts: 100%|██████████| 32/32 [04:00<00:00,  7.52s/it, est. speed input: 30.60 toks/s, output: 1079.52 toks/s]Processed prompts: 100%|██████████| 32/32 [04:00<00:00,  7.52s/it, est. speed input: 30.60 toks/s, output: 1079.52 toks/s]
+  [whole_proof] Not solved (32 attempts, 245.2s)
+  Progress: 1/39 solved (2.6%)
+
+[16/39] amc12a_2021_p22
+  [whole_proof] Attempting amc12a_2021_p22...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 380.40it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.45s/it, est. speed input: 41.86 toks/s, output: 1077.11 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.45s/it, est. speed input: 41.86 toks/s, output: 1077.11 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.45s/it, est. speed input: 41.86 toks/s, output: 1077.11 toks/s]
+  [whole_proof] Not solved (32 attempts, 246.9s)
+  Progress: 1/39 solved (2.6%)
+
+[17/39] amc12a_2021_p25
+  [whole_proof] Attempting amc12a_2021_p25...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 279.49it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.46s/it, est. speed input: 35.52 toks/s, output: 1077.48 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.46s/it, est. speed input: 35.52 toks/s, output: 1077.48 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.46s/it, est. speed input: 35.52 toks/s, output: 1077.48 toks/s]
+  [whole_proof] Not solved (32 attempts, 243.5s)
+  Progress: 1/39 solved (2.6%)
+
+[18/39] amc12b_2002_p4
+  [whole_proof] Attempting amc12b_2002_p4...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 209.04it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.96s/it, est. speed input: 35.20 toks/s, output: 1059.95 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.96s/it, est. speed input: 35.20 toks/s, output: 1059.95 toks/s]Processed prompts: 100%|██████████| 32/32 [03:42<00:00,  6.96s/it, est. speed input: 35.20 toks/s, output: 1059.95 toks/s]
+  [whole_proof] Not solved (32 attempts, 232.1s)
+  Progress: 1/39 solved (2.6%)
+
+[19/39] amc12b_2021_p13
+  [whole_proof] Attempting amc12b_2021_p13...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 176.65it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.32s/it, est. speed input: 31.55 toks/s, output: 1073.32 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.32s/it, est. speed input: 31.55 toks/s, output: 1073.32 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.32s/it, est. speed input: 31.55 toks/s, output: 1073.32 toks/s]
+  [whole_proof] Not solved (32 attempts, 239.0s)
+  Progress: 1/39 solved (2.6%)
+
+[20/39] imo_1965_p2
+  [whole_proof] Attempting imo_1965_p2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 196.04it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:38<00:00,  6.82s/it, est. speed input: 56.27 toks/s, output: 1047.80 toks/s]Processed prompts: 100%|██████████| 32/32 [03:38<00:00,  6.82s/it, est. speed input: 56.27 toks/s, output: 1047.80 toks/s]Processed prompts: 100%|██████████| 32/32 [03:38<00:00,  6.82s/it, est. speed input: 56.27 toks/s, output: 1047.80 toks/s]
+  [whole_proof] Not solved (32 attempts, 223.0s)
+  Progress: 1/39 solved (2.6%)
+
+[21/39] imo_1968_p5_1
+  [whole_proof] Attempting imo_1968_p5_1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 186.86it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:50<00:00,  7.22s/it, est. speed input: 28.96 toks/s, output: 1072.69 toks/s]Processed prompts: 100%|██████████| 32/32 [03:50<00:00,  7.22s/it, est. speed input: 28.96 toks/s, output: 1072.69 toks/s]Processed prompts: 100%|██████████| 32/32 [03:50<00:00,  7.22s/it, est. speed input: 28.96 toks/s, output: 1072.69 toks/s]
+  [whole_proof] Not solved (32 attempts, 238.5s)
+  Progress: 1/39 solved (2.6%)
+
+[22/39] imo_1969_p2
+  [whole_proof] Attempting imo_1969_p2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 167.71it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.55s/it, est. speed input: 32.72 toks/s, output: 1078.08 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.55s/it, est. speed input: 32.72 toks/s, output: 1078.08 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.55s/it, est. speed input: 32.72 toks/s, output: 1078.08 toks/s]
+  [whole_proof] Not solved (32 attempts, 246.6s)
+  Progress: 1/39 solved (2.6%)
+
+[23/39] imo_1974_p3
+  [whole_proof] Attempting imo_1974_p3...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 242.32it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:57<00:00,  7.42s/it, est. speed input: 24.79 toks/s, output: 1077.57 toks/s]Processed prompts: 100%|██████████| 32/32 [03:57<00:00,  7.42s/it, est. speed input: 24.79 toks/s, output: 1077.57 toks/s]Processed prompts: 100%|██████████| 32/32 [03:57<00:00,  7.42s/it, est. speed input: 24.79 toks/s, output: 1077.57 toks/s]
+  [whole_proof] Not solved (32 attempts, 245.0s)
+  Progress: 1/39 solved (2.6%)
+
+[24/39] imo_1977_p6
+  [whole_proof] Attempting imo_1977_p6...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 183.60it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.41s/it, est. speed input: 22.96 toks/s, output: 1078.54 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.41s/it, est. speed input: 22.96 toks/s, output: 1078.54 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.41s/it, est. speed input: 22.96 toks/s, output: 1078.54 toks/s]
+  [whole_proof] Not solved (32 attempts, 241.4s)
+  Progress: 1/39 solved (2.6%)
+
+[25/39] imo_1982_p1
+  [whole_proof] Attempting imo_1982_p1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 220.99it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:59<00:00,  7.49s/it, est. speed input: 36.04 toks/s, output: 1077.66 toks/s]Processed prompts: 100%|██████████| 32/32 [03:59<00:00,  7.49s/it, est. speed input: 36.04 toks/s, output: 1077.66 toks/s]Processed prompts: 100%|██████████| 32/32 [03:59<00:00,  7.49s/it, est. speed input: 36.04 toks/s, output: 1077.66 toks/s]
+  [whole_proof] Not solved (32 attempts, 244.3s)
+  Progress: 1/39 solved (2.6%)
+
+[26/39] imo_1984_p6
+  [whole_proof] Attempting imo_1984_p6...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 183.01it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.54s/it, est. speed input: 34.61 toks/s, output: 1078.78 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.54s/it, est. speed input: 34.61 toks/s, output: 1078.78 toks/s]Processed prompts: 100%|██████████| 32/32 [04:01<00:00,  7.54s/it, est. speed input: 34.61 toks/s, output: 1078.78 toks/s]
+  [whole_proof] Not solved (32 attempts, 249.4s)
+  Progress: 1/39 solved (2.6%)
+
+[27/39] imo_1985_p6
+  [whole_proof] Attempting imo_1985_p6...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 150.85it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.46s/it, est. speed input: 32.45 toks/s, output: 1077.20 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.46s/it, est. speed input: 32.45 toks/s, output: 1077.20 toks/s]Processed prompts: 100%|██████████| 32/32 [03:58<00:00,  7.46s/it, est. speed input: 32.45 toks/s, output: 1077.20 toks/s]
+  [whole_proof] Not solved (32 attempts, 243.3s)
+  Progress: 1/39 solved (2.6%)
+
+[28/39] imo_1992_p1
+  [whole_proof] Attempting imo_1992_p1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 201.92it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:57<00:00,  7.41s/it, est. speed input: 32.40 toks/s, output: 1070.85 toks/s]Processed prompts: 100%|██████████| 32/32 [03:57<00:00,  7.41s/it, est. speed input: 32.40 toks/s, output: 1070.85 toks/s]Processed prompts: 100%|██████████| 32/32 [03:57<00:00,  7.41s/it, est. speed input: 32.40 toks/s, output: 1070.85 toks/s]
+  [whole_proof] Not solved (32 attempts, 244.5s)
+  Progress: 1/39 solved (2.6%)
+
+[29/39] imo_1997_p5
+  [whole_proof] Attempting imo_1997_p5...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 185.03it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.26s/it, est. speed input: 28.38 toks/s, output: 1067.87 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.26s/it, est. speed input: 28.38 toks/s, output: 1067.87 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.26s/it, est. speed input: 28.38 toks/s, output: 1067.87 toks/s]
+  [whole_proof] Not solved (32 attempts, 236.5s)
+  Progress: 1/39 solved (2.6%)
+
+[30/39] imo_2001_p6
+  [whole_proof] Attempting imo_2001_p6...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 222.56it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.31s/it, est. speed input: 32.55 toks/s, output: 1071.83 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.31s/it, est. speed input: 32.55 toks/s, output: 1071.83 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.31s/it, est. speed input: 32.55 toks/s, output: 1071.83 toks/s]
+  [whole_proof] Not solved (32 attempts, 238.6s)
+  Progress: 1/39 solved (2.6%)
+
+[31/39] imo_2019_p1
+  [whole_proof] Attempting imo_2019_p1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 239.56it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.28s/it, est. speed input: 30.79 toks/s, output: 1046.46 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.28s/it, est. speed input: 30.79 toks/s, output: 1046.46 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.28s/it, est. speed input: 30.79 toks/s, output: 1046.46 toks/s]
+  [whole_proof] Not solved (32 attempts, 245.3s)
+  Progress: 1/39 solved (2.6%)
+
+[32/39] imosl_2007_algebra_p6
+  [whole_proof] Attempting imosl_2007_algebra_p6...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 169.76it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:02<00:00,  7.56s/it, est. speed input: 29.88 toks/s, output: 1080.08 toks/s]Processed prompts: 100%|██████████| 32/32 [04:02<00:00,  7.56s/it, est. speed input: 29.88 toks/s, output: 1080.08 toks/s]Processed prompts: 100%|██████████| 32/32 [04:02<00:00,  7.56s/it, est. speed input: 29.88 toks/s, output: 1080.08 toks/s]
+  [whole_proof] Not solved (32 attempts, 247.1s)
+  Progress: 1/39 solved (2.6%)
+
+[33/39] induction_pord1p1on2powklt5on2
+  [whole_proof] Attempting induction_pord1p1on2powklt5on2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 250.15it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:45<00:00,  7.04s/it, est. speed input: 28.00 toks/s, output: 1059.82 toks/s]Processed prompts: 100%|██████████| 32/32 [03:45<00:00,  7.04s/it, est. speed input: 28.00 toks/s, output: 1059.82 toks/s]Processed prompts: 100%|██████████| 32/32 [03:45<00:00,  7.04s/it, est. speed input: 28.00 toks/s, output: 1059.82 toks/s]
+  [whole_proof] Not solved (32 attempts, 232.3s)
+  Progress: 1/39 solved (2.6%)
+
+[34/39] mathd_algebra_320
+  [whole_proof] Attempting mathd_algebra_320...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 171.18it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [02:48<00:00,  5.27s/it, est. speed input: 44.99 toks/s, output: 878.58 toks/s]Processed prompts: 100%|██████████| 32/32 [02:48<00:00,  5.27s/it, est. speed input: 44.99 toks/s, output: 878.58 toks/s]Processed prompts: 100%|██████████| 32/32 [02:48<00:00,  5.27s/it, est. speed input: 44.99 toks/s, output: 878.58 toks/s]
+  [whole_proof] Not solved (32 attempts, 173.1s)
+  Progress: 1/39 solved (2.6%)
+
+[35/39] mathd_numbertheory_451
+  [whole_proof] Attempting mathd_numbertheory_451...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 239.69it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.38s/it, est. speed input: 29.53 toks/s, output: 1077.53 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.38s/it, est. speed input: 29.53 toks/s, output: 1077.53 toks/s]Processed prompts: 100%|██████████| 32/32 [03:56<00:00,  7.38s/it, est. speed input: 29.53 toks/s, output: 1077.53 toks/s]
+  [whole_proof] Not solved (32 attempts, 240.7s)
+  Progress: 1/39 solved (2.6%)
+
+[36/39] mathd_numbertheory_764
+  [whole_proof] Attempting mathd_numbertheory_764...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 531.53it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.26s/it, est. speed input: 27.56 toks/s, output: 1071.66 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.26s/it, est. speed input: 27.56 toks/s, output: 1071.66 toks/s]Processed prompts: 100%|██████████| 32/32 [03:52<00:00,  7.26s/it, est. speed input: 27.56 toks/s, output: 1071.66 toks/s]
+  [whole_proof] Not solved (32 attempts, 247.1s)
+  Progress: 1/39 solved (2.6%)
+
+[37/39] numbertheory_3pow2pownm1mod2pownp3eq2pownp2
+  [whole_proof] Attempting numbertheory_3pow2pownm1mod2pownp3eq2pownp2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 169.68it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:41<00:00,  6.92s/it, est. speed input: 30.06 toks/s, output: 1060.14 toks/s]Processed prompts: 100%|██████████| 32/32 [03:41<00:00,  6.92s/it, est. speed input: 30.06 toks/s, output: 1060.14 toks/s]Processed prompts: 100%|██████████| 32/32 [03:41<00:00,  6.92s/it, est. speed input: 30.06 toks/s, output: 1060.14 toks/s]
+  [whole_proof] Not solved (32 attempts, 226.2s)
+  Progress: 1/39 solved (2.6%)
+
+[38/39] numbertheory_exk2powkeqapb2mulbpa2_aeq1
+  [whole_proof] Attempting numbertheory_exk2powkeqapb2mulbpa2_aeq1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 263.71it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [04:00<00:00,  7.53s/it, est. speed input: 26.71 toks/s, output: 1077.75 toks/s]Processed prompts: 100%|██████████| 32/32 [04:00<00:00,  7.53s/it, est. speed input: 26.71 toks/s, output: 1077.75 toks/s]Processed prompts: 100%|██████████| 32/32 [04:00<00:00,  7.53s/it, est. speed input: 26.71 toks/s, output: 1077.75 toks/s]
+  [whole_proof] Not solved (32 attempts, 249.0s)
+  Progress: 1/39 solved (2.6%)
+
+[39/39] numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown
+  [whole_proof] Attempting numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 166.47it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.32s/it, est. speed input: 30.60 toks/s, output: 1073.87 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.32s/it, est. speed input: 30.60 toks/s, output: 1073.87 toks/s]Processed prompts: 100%|██████████| 32/32 [03:54<00:00,  7.32s/it, est. speed input: 30.60 toks/s, output: 1073.87 toks/s]
+(EngineCore_DP0 pid=3770960) (Worker_TP0 pid=3770966) WARNING 04-06 21:00:46 [multiproc_executor.py:786] WorkerProc was terminated
+(EngineCore_DP0 pid=3770960) (Worker_TP1 pid=3770968) WARNING 04-06 21:00:46 [multiproc_executor.py:786] WorkerProc was terminated
+  [whole_proof] Not solved (32 attempts, 241.7s)
+  Progress: 1/39 solved (2.6%)

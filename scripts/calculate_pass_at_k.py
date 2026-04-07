@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""计算 Pass@k：从 code_compilation_repl.json 统计每个问题是否有至少一个通过编译的样本。"""
+"""计算 Pass@k：从 code_compilation_repl.json 统计每个问题是否有至少一个正确证明。
+仅统计 complete=True（无 sorry、无 declaration uses 'sorry'）的证明，含 sorry 的不算。"""
 import json
 import os
 import sys
@@ -16,7 +17,7 @@ def pass_at_k(records_path: str, k: int) -> float:
         if isinstance(pid, str) and "_g" in pid:
             pid = pid.rsplit("_g", 1)[0]
         cr = r.get("compilation_result") or {}
-        passed = cr.get("pass") or cr.get("complete") or False
+        passed = cr.get("complete") or False  # 仅完整证明（无 sorry）计为正确
         by_problem[pid].append(passed)
     correct = sum(1 for probs in by_problem.values() if any(probs[:k]))
     return correct / len(by_problem) if by_problem else 0.0

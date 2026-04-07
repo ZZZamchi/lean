@@ -1,0 +1,493 @@
+WARNING 04-06 15:53:32 [cuda.py:582] Detected different devices in the system: NVIDIA L40, NVIDIA L40, NVIDIA L40, NVIDIA L40, NVIDIA A100 80GB PCIe, NVIDIA A100 80GB PCIe, NVIDIA L40, NVIDIA L40. Please make sure to set `CUDA_DEVICE_ORDER=PCI_BUS_ID` to avoid unexpected behavior.
+Unsolved sub-goals: 27
+Starting Lean verifier...
+
+[1/27] sorry_fill_aime_1984_p7_g0
+  Base: aime_1984_p7
+  Goal: ...⊢ f 84 = 997
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[2/27] sorry_fill_aime_1999_p11_g0
+  Base: aime_1999_p11
+  Goal: ...⊢ ↑m.den + m.num = 177
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[3/27] sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0
+  Base: algebra_apbmpcneq0_aeq0anbeq0anceq0
+  Goal: ...⊢ a = 0
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[4/27] sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1
+  Base: algebra_apbmpcneq0_aeq0anbeq0anceq0
+  Goal: ...⊢ b = 0
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[5/27] sorry_fill_algebra_sum1onsqrt2to1onsqrt10000lt198_g0
+  Base: algebra_sum1onsqrt2to1onsqrt10000lt198
+  Goal: ...⊢ ∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[6/27] sorry_fill_algebra_sum1onsqrt2to1onsqrt10000lt198_g1
+  Base: algebra_sum1onsqrt2to1onsqrt10000lt198
+  Goal: ...⊢ ∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (3.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[7/27] sorry_fill_amc12a_2008_p25_g0
+  Base: amc12a_2008_p25
+  Goal: ...⊢ a 1 + b 1 = 1 / 2 ^ 98
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[8/27] sorry_fill_amc12a_2020_p25_g0
+  Base: amc12a_2020_p25
+  Goal: ...⊢ a = 0
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[9/27] sorry_fill_amc12a_2020_p9_g0
+  Base: amc12a_2020_p9
+  Goal: ...⊢ S.card = 5
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[10/27] sorry_fill_amc12a_2021_p12_g0
+  Base: amc12a_2021_p12
+  Goal: ...⊢ b = -88
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[11/27] sorry_fill_amc12a_2021_p19_g0
+  Base: amc12a_2021_p19
+  Goal: ...⊢ S = {0, π / 2}
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[12/27] sorry_fill_amc12a_2021_p19_g1
+  Base: amc12a_2021_p19
+  Goal: ...⊢ S.card = 2
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (3.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[13/27] sorry_fill_amc12a_2021_p19_g2
+  Base: amc12a_2021_p19
+  Goal: ...⊢ S.card = 2
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[14/27] sorry_fill_amc12a_2021_p22_g0
+  Base: amc12a_2021_p22
+  Goal: ...⊢ False
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[15/27] sorry_fill_amc12a_2021_p22_g1
+  Base: amc12a_2021_p22
+  Goal: ...⊢ a * b * c = 1 / 32
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[16/27] sorry_fill_amc12a_2021_p22_g2
+  Base: amc12a_2021_p22
+  Goal: ...⊢ a * b * c = 1 / 32
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[17/27] sorry_fill_amc12b_2002_p4_g0
+  Base: amc12b_2002_p4
+  Goal: ...⊢ n = 42
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[18/27] sorry_fill_amc12b_2021_p13_g0
+  Base: amc12b_2021_p13
+  Goal: ...⊢ S.card = 6
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (3.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[19/27] sorry_fill_imo_1968_p5_1_g0
+  Base: imo_1968_p5_1
+  Goal: ...⊢ ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[20/27] sorry_fill_imo_1969_p2_g0
+  Base: imo_1969_p2
+  Goal: ...⊢ ∃ t, m - n = ↑t * π
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[21/27] sorry_fill_imo_1977_p6_g0
+  Base: imo_1977_p6
+  Goal: ...⊢ ∀ (n : ℕ), 0 < n → f n = n
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[22/27] sorry_fill_imo_1982_p1_g0
+  Base: imo_1982_p1
+  Goal: ...⊢ f 1982 = 660
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[23/27] sorry_fill_imo_1997_p5_g0
+  Base: imo_1997_p5
+  Goal: ...⊢ y = 1 ∨ y = 2 ∨ y = 3
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (3.1s)
+    exact?: fail (0.1s)
+
+[24/27] sorry_fill_mathd_numbertheory_451_g0
+  Base: mathd_numbertheory_451
+  Goal: ...⊢ S = {2016}
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[25/27] sorry_fill_mathd_numbertheory_451_g1
+  Base: mathd_numbertheory_451
+  Goal: ...⊢ ∑ k ∈ S, k = 2016
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[26/27] sorry_fill_mathd_numbertheory_451_g2
+  Base: mathd_numbertheory_451
+  Goal: ...⊢ ∑ k ∈ S, k = 2016
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+[27/27] sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0
+  Base: numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown
+  Goal: ...⊢ False
+    assumption: fail (0.1s)
+    trivial: fail (0.1s)
+    tauto: fail (0.1s)
+    omega: fail (0.1s)
+    norm_num: fail (0.1s)
+    simp: fail (0.1s)
+    ring: fail (0.1s)
+    linarith: fail (0.1s)
+    positivity: fail (0.1s)
+    decide: fail (0.1s)
+    aesop: fail (0.1s)
+    norm_num [Rat.add_def, Rat.mk_eq_divInt]: fail (0.1s)
+    simp only [Rat.add_def, Rat.mk_eq_divInt]; omega: fail (0.1s)
+    exact?: fail (0.1s)
+
+============================================================
+SUMMARY: 0/27 solved by tactic battery
+  (none solved)

@@ -1,0 +1,566 @@
+{
+  "sorry_fill_aime_1984_p7_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_aime_1984_p7_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = 997 := by\n  have h₂ : f 84 = 997 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_aime_1984_p7_g0_s0_g0",
+        "r3_sorry_fill_aime_1984_p7_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_aime_1984_p7_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = 997 := by\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_aime_1984_p7_g0_s1_g0"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_aime_1984_p7_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = 997 := by\n  have h₂ : f 84 = f (f 89) := by sorry\n  have h₃ : f 89 = f (f 94) := by sorry\n  have h₄ : f 94 = f (f 99) := by sorry\n  have h₅ : f 99 = f (f 104) := by sorry\n  have h₆ : f 104 = 101 := by sorry\n  have h₇ : f 99 = f 101 := by sorry\n  have h₈ : f 101 = 98 := by sorry\n  have h₉ : f 99 = 98 := by sorry\n  have h₁₀ : f 94 = f 98 := by sorry\n  have h₁₁ : f 98 = 95 := by sorry\n  have h₁₂ : f 94 = 95 := by sorry\n  have h₁₃ : f 89 = f 95 := by sorry\n  have h₁₄ : f 95 = 92 := by sorry\n  have h₁₅ : f 89 = 92 := by sorry\n  have h₁₆ : f 84 = f 92 := by sorry\n  have h₁₇ : f 92 = 89 := by sorry\n  have h₁₈ : f 84 = 89 := by sorry\n  have h₁₉ : f 84 = 997 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g0",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g1",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g2",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g3",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g4",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g5",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g6",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g7",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g8",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g9",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g10",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g11",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g12",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g13",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g14",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g15",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g16",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g17",
+        "r3_sorry_fill_aime_1984_p7_g0_s2_g18"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_aime_1984_p7_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = 997 := by\n  have h₂ : f 84 = 997 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_aime_1984_p7_g0_s3_g0",
+        "r3_sorry_fill_aime_1984_p7_g0_s3_g1"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_aime_1984_p7_g0 (f : ℤ → ℤ) (h₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3) (h₁ : ∀ n < 1000, f n = f (f (n + 5))) : f 84 = 997 := by\n  have h₂ : f 84 = 997 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_aime_1984_p7_g0_s4_g0",
+        "r3_sorry_fill_aime_1984_p7_g0_s4_g1"
+      ]
+    }
+  ],
+  "sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : a = 0 := by\n  have h₄ : m = (2 : ℝ) ^ (1 / 3 : ℝ) := by sorry\n  have h₅ : n = (4 : ℝ) ^ (1 / 3 : ℝ) := by sorry\n  have h₆ : (a : ℝ) + b * m + c * n = 0 := by sorry\n  have h₇ : (a : ℝ) = 0 := by sorry\n  have h₈ : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g3",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g4",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g5"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : a = 0 := by\n  have h_main : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s1_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s1_g1"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : a = 0 := by\n  have h₄ : m = 2 ^ (1 / 3 : ℝ) := by sorry\n  have h₅ : n = 4 ^ (1 / 3 : ℝ) := by sorry\n  have h₆ : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s2_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s2_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s2_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s2_g3"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : a = 0 := by\n  have h₄ : m = (2 : ℝ) ^ (1 / 3 : ℝ) := by sorry\n  have h₅ : n = (4 : ℝ) ^ (1 / 3 : ℝ) := by sorry\n  have h₆ : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s3_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s3_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s3_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s3_g3"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) : a = 0 := by\n  have h₄ : m = 2 ^ (1 / 3 : ℝ) := by sorry\n  have h₅ : n = 4 ^ (1 / 3 : ℝ) := by sorry\n  have h₆ : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s4_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s4_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s4_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s4_g3"
+      ]
+    }
+  ],
+  "sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : b = 0 := by\n  have h₅ : (b : ℝ) * m + (c : ℝ) * n = 0 := by sorry\n  have h₆ : (b : ℝ) = 0 := by sorry\n  have h₇ : b = 0 := by sorry\n  exact h₇",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g2"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : b = 0 := by\n  have h₅ : (b : ℝ) * m + (c : ℝ) * n = 0 := by sorry\n  have h₆ : (b : ℝ) = 0 := by sorry\n  have h₇ : b = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s1_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s1_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s1_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s1_g3"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : b = 0 := by\n  have h₅ : (b : ℝ) * m + (c : ℝ) * n = 0 := by sorry\n  have h₆ : (b : ℝ) ≠ 0 → False := by sorry\n  have h₇ : b = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g3"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : b = 0 := by\n  have h₅ : (b : ℝ) * m + (c : ℝ) * n = 0 := by sorry\n  have h₆ : (b : ℝ) * m = -(c : ℝ) * n := by sorry\n  have h₇ : (b : ℝ) * (2 : ℝ) = -(c : ℝ) * (4 : ℝ) := by sorry\n  have h₈ : b * (2 : ℚ) = -c * (4 : ℚ) := by sorry\n  have h₉ : b = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g2",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g3",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g4",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g5"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n) (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : ↑a + ↑b * m + ↑c * n = 0) (h₄ : a = 0) : b = 0 := by\n  have h₅ : (b : ℝ) = 0 := by\n    sorry\n  have h₆ : b = 0 := by\n    sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s4_g0",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s4_g1",
+        "r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s4_g2"
+      ]
+    }
+  ],
+  "sorry_fill_amc12a_2008_p25_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_amc12a_2008_p25_g0 (a b : ℕ → ℝ) (h₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n) (h₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) : a 1 + b 1 = 1 / 2 ^ 98 := by\n\n  have h₄ : False := by sorry\n  have h₅ : a 1 + b 1 = 1 / 2 ^ 98 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2008_p25_g0_s0_g0",
+        "r3_sorry_fill_amc12a_2008_p25_g0_s0_g1",
+        "r3_sorry_fill_amc12a_2008_p25_g0_s0_g2"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_amc12a_2008_p25_g0 (a b : ℕ → ℝ) (h₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n) (h₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) : a 1 + b 1 = 1 / 2 ^ 98 := by\n  have h_main : a 1 + b 1 = 1 / 2 ^ 98 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2008_p25_g0_s1_g0",
+        "r3_sorry_fill_amc12a_2008_p25_g0_s1_g1"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_amc12a_2008_p25_g0 (a b : ℕ → ℝ) (h₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n) (h₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) : a 1 + b 1 = 1 / 2 ^ 98 := by\n\n  have h₄ : a 1 + b 1 = 1 / 2 ^ 98 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2008_p25_g0_s2_g0",
+        "r3_sorry_fill_amc12a_2008_p25_g0_s2_g1"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_amc12a_2008_p25_g0 (a b : ℕ → ℝ) (h₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n) (h₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) : a 1 + b 1 = 1 / 2 ^ 98 := by\n  have h₄ : a 1 + b 1 = 1 / 2 ^ 98 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2008_p25_g0_s3_g0",
+        "r3_sorry_fill_amc12a_2008_p25_g0_s3_g1"
+      ]
+    }
+  ],
+  "sorry_fill_amc12a_2020_p25_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_amc12a_2020_p25_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : a = 0 := by\n  have h₂ : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2020_p25_g0_s0_g0",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_amc12a_2020_p25_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : ↑a.den + a.num = 929 := by\n  have h₂ : a = 1 / 7 := by sorry\n  have h₃ : ↑a.den + a.num = 929 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2020_p25_g0_s1_g0",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s1_g1",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s1_g2"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_amc12a_2020_p25_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : a = 0 := by\n  have h₂ : a = 0 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2020_p25_g0_s2_g0",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s2_g1"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_amc12a_2020_p25_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : ↑a.den + a.num = 929 := by\n  have h₂ : a.den + a.num = 929 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2020_p25_g0_s3_g0",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s3_g1"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_amc12a_2020_p25_g0 (a : ℚ) (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2) (h₁ : ∑ k ∈ S, k = 420) : ↑a.den + a.num = 929 := by\n  have h₂ : False := by sorry\n  have h₃ : ↑a.den + a.num = 929 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2020_p25_g0_s4_g0",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s4_g1",
+        "r3_sorry_fill_amc12a_2020_p25_g0_s4_g2"
+      ]
+    }
+  ],
+  "sorry_fill_amc12a_2021_p12_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_amc12a_2021_p12_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : b = -88 := by\n  have h₂ : b = -88 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2021_p12_g0_s0_g0",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_amc12a_2021_p12_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : b = -88 := by\n  have h₂ : False := by sorry\n  have h₃ : b = -88 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2021_p12_g0_s1_g0",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s1_g1",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s1_g2"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_amc12a_2021_p12_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : b = -88 := by\n  have h₂ : b = -88 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2021_p12_g0_s2_g0",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s2_g1"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_amc12a_2021_p12_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : b = -88 := by\n  have h₂ : False := by sorry\n  have h₃ : b = -88 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2021_p12_g0_s3_g0",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s3_g1",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s3_g2"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_amc12a_2021_p12_g0 (a b c d : ℝ) (f : ℂ → ℂ) (h₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16) (h₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re) : False := by\n  have h₂ : False := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12a_2021_p12_g0_s4_g0",
+        "r3_sorry_fill_amc12a_2021_p12_g0_s4_g1"
+      ]
+    }
+  ],
+  "sorry_fill_amc12b_2002_p4_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_amc12b_2002_p4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : (1 / 2 + 1 / 3 + 1 / 7 + 1 / (n : ℚ)).den = 1) : n = 42 := by\n  have h₂ : n = 42 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12b_2002_p4_g0_s0_g0",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_amc12b_2002_p4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : (1 /. 2 + 1 /. 3 + 1 /. 7 + 1 /. ↑n).den = 1) : n = 42 := by\n  have h₂ : n = 42 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12b_2002_p4_g0_s1_g0",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s1_g1"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_amc12b_2002_p4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : (1 /. 2 + 1 /. 3 + 1 /. 7 + 1 /. ↑n).den = 1) : n = 42 := by\n  have h₂ : n = 42 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12b_2002_p4_g0_s2_g0",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s2_g1"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_amc12b_2002_p4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : (1 /. 2 + 1 /. 3 + 1 /. 7 + 1 /. ↑n).den = 1) : n = 42 := by\n  have h₂ : n = 42 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12b_2002_p4_g0_s3_g0",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s3_g1"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_amc12b_2002_p4_g0 (n : ℕ) (h₀ : 0 < n) (h₁ : (1 /. 2 + 1 /. 3 + 1 /. 7 + 1 /. ↑n).den = 1) : n = 42 := by\n  have h₂ : n ∣ 42 := by sorry\n  have h₃ : n = 1 ∨ n = 2 ∨ n = 3 ∨ n = 6 ∨ n = 7 ∨ n = 14 ∨ n = 21 ∨ n = 42 := by sorry\n  have h₄ : n = 42 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12b_2002_p4_g0_s4_g0",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s4_g1",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s4_g2",
+        "r3_sorry_fill_amc12b_2002_p4_g0_s4_g3"
+      ]
+    }
+  ],
+  "sorry_fill_amc12b_2021_p13_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_amc12b_2021_p13_g0 (S : Finset ℝ) (h₀ : ∀ (x : ℝ), x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * x.sin + 5 * (3 * x).cos = 0) : S.card = 6 := by\n  have h₁ : S = {2 * Real.pi / 3, 4 * Real.pi / 3, Real.pi / 6, 5 * Real.pi / 6, 7 * Real.pi / 6, 11 * Real.pi / 6} := by sorry\n  have h₂ : S.card = 6 := by sorry\n  exact h₂",
+      "subgoal_ids": [
+        "r3_sorry_fill_amc12b_2021_p13_g0_s0_g0",
+        "r3_sorry_fill_amc12b_2021_p13_g0_s0_g1"
+      ]
+    }
+  ],
+  "sorry_fill_imo_1968_p5_1_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_imo_1968_p5_1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by\n  have h₂ : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1968_p5_1_g0_s0_g0",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_imo_1968_p5_1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by\n  have h₂ : ∀ x : ℝ, f x - f x ^ 2 ≥ 0 := by sorry\n  have h₃ : ∀ x : ℝ, f (x + a) = 1 / 2 + √(f x - f x ^ 2) := by sorry\n  have h₄ : ∃ b > 0, ∀ x : ℝ, f (x + b) = f x := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1968_p5_1_g0_s1_g0",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s1_g1",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s1_g2",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s1_g3"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_imo_1968_p5_1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by\n  have h₂ : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1968_p5_1_g0_s2_g0",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s2_g1"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_imo_1968_p5_1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by\n  have h₂ : f a = 1 / 2 + Real.sqrt (f 0 - f 0 ^ 2) := by sorry\n  have h₃ : f (a + a) = 1 / 2 + Real.sqrt (f a - f a ^ 2) := by sorry\n  have h₄ : ∀ (x : ℝ), f (x + 2 * a) = f x := by sorry\n  have h₅ : ∃ (b : ℝ), b > 0 ∧ ∀ (x : ℝ), f (x + b) = f x := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1968_p5_1_g0_s3_g0",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s3_g1",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s3_g2",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s3_g3",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s3_g4"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_imo_1968_p5_1_g0 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a) (h₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)) : ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x := by\n  have h₂ : ∀ (x : ℝ), f x ≥ 1 / 2 := by sorry\n  have h₃ : ∀ (x : ℝ), f (x + 2 * a) = f x := by sorry\n  have h₄ : ∃ (b : ℝ), b > 0 ∧ ∀ (x : ℝ), f (x + b) = f x := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1968_p5_1_g0_s4_g0",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s4_g1",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s4_g2",
+        "r3_sorry_fill_imo_1968_p5_1_g0_s4_g3"
+      ]
+    }
+  ],
+  "sorry_fill_imo_1977_p6_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_imo_1977_p6_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), 0 < n → f n = n := by\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1977_p6_g0_s0_g0"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_imo_1977_p6_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), 0 < n → f n = n := by\n  have h₂ : ∀ (n : ℕ), 0 < n → f n = n := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1977_p6_g0_s1_g0",
+        "r3_sorry_fill_imo_1977_p6_g0_s1_g1"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_imo_1977_p6_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), 0 < n → f n = n := by\n  have h₂ : ∀ n, 0 < n → f n = n := by\n    sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1977_p6_g0_s2_g0",
+        "r3_sorry_fill_imo_1977_p6_g0_s2_g1"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_imo_1977_p6_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), 0 < n → f n = n := by\n  have h₂ : ∀ (n : ℕ), 0 < n → f n = n := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1977_p6_g0_s3_g0",
+        "r3_sorry_fill_imo_1977_p6_g0_s3_g1"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_imo_1977_p6_g0 (f : ℕ → ℕ) (h₀ : ∀ (n : ℕ), 0 < f n) (h₁ : ∀ (n : ℕ), 0 < n → f (f n) < f (n + 1)) : ∀ (n : ℕ), 0 < n → f n = n := by\n  have h₂ : ∀ (n : ℕ), f n = n := by sorry\n  have h₃ : ∀ (n : ℕ), 0 < n → f n = n := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1977_p6_g0_s4_g0",
+        "r3_sorry_fill_imo_1977_p6_g0_s4_g1",
+        "r3_sorry_fill_imo_1977_p6_g0_s4_g2"
+      ]
+    }
+  ],
+  "sorry_fill_imo_1982_p1_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_imo_1982_p1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by\n\n  have h₄ : f 1982 = 660 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1982_p1_g0_s0_g0",
+        "r3_sorry_fill_imo_1982_p1_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_imo_1982_p1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by\n  have h₄ : False := by sorry\n  have h₅ : f 1982 = 660 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1982_p1_g0_s1_g0",
+        "r3_sorry_fill_imo_1982_p1_g0_s1_g1",
+        "r3_sorry_fill_imo_1982_p1_g0_s1_g2"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_imo_1982_p1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by\n  have h₄ : f 1 = 0 := by sorry\n  have h₅ : f 3 = 1 := by sorry\n  have h₆ : False := by sorry\n  have h₇ : f 1982 = 660 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1982_p1_g0_s2_g0",
+        "r3_sorry_fill_imo_1982_p1_g0_s2_g1",
+        "r3_sorry_fill_imo_1982_p1_g0_s2_g2",
+        "r3_sorry_fill_imo_1982_p1_g0_s2_g3",
+        "r3_sorry_fill_imo_1982_p1_g0_s2_g4"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_imo_1982_p1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by\n  have h₄ : False := by sorry\n  have h₅ : f 1982 = 660 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1982_p1_g0_s3_g0",
+        "r3_sorry_fill_imo_1982_p1_g0_s3_g1",
+        "r3_sorry_fill_imo_1982_p1_g0_s3_g2"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_imo_1982_p1_g0 (f : ℕ → ℕ) (h₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1) (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = 660 := by\n  have h₄ : False := by sorry\n  have h₅ : f 1982 = 660 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1982_p1_g0_s4_g0",
+        "r3_sorry_fill_imo_1982_p1_g0_s4_g1",
+        "r3_sorry_fill_imo_1982_p1_g0_s4_g2"
+      ]
+    }
+  ],
+  "sorry_fill_imo_1997_p5_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_imo_1997_p5_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by\n  have h₂ : x = y ∨ (x ≠ y ∧ y = 1 ∧ x = 1) ∨ (x ≠ y ∧ y = 2 ∧ x = 16) ∨ (x ≠ y ∧ y = 3 ∧ x = 27) ∨ (x ≠ y ∧ y ≥ 4 → False) := by\n    sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1997_p5_g0_s0_g0",
+        "r3_sorry_fill_imo_1997_p5_g0_s0_g1"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem sorry_fill_imo_1997_p5_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by\n  have h_main : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by\n    sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1997_p5_g0_s1_g0",
+        "r3_sorry_fill_imo_1997_p5_g0_s1_g1"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_imo_1997_p5_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1997_p5_g0_s2_g0"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_imo_1997_p5_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by\n  have h_main : x = y ∨ x ≠ y ∧ y = 1 ∧ x = 1 ∨ x ≠ y ∧ y = 2 ∧ x = 16 ∨ x ≠ y ∧ y = 3 ∧ x = 27 ∨ (x ≠ y ∧ y ≥ 4 → False) := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1997_p5_g0_s3_g0",
+        "r3_sorry_fill_imo_1997_p5_g0_s3_g1"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_imo_1997_p5_g0 (x y : ℕ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x ^ y ^ 2 = y ^ x) : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by\n  have h₂ : x = 1 ∧ y = 1 ∨ x = 16 ∧ y = 2 ∨ x = 27 ∧ y = 3 := by sorry\n  have h₃ : (x, y) = (1, 1) ∨ (x, y) = (16, 2) ∨ (x, y) = (27, 3) := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_imo_1997_p5_g0_s4_g0",
+        "r3_sorry_fill_imo_1997_p5_g0_s4_g1",
+        "r3_sorry_fill_imo_1997_p5_g0_s4_g2"
+      ]
+    }
+  ],
+  "sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0": [
+    {
+      "sample_idx": 0,
+      "code": "\ntheorem sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : False := by sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s0_g0"
+      ]
+    },
+    {
+      "sample_idx": 1,
+      "code": "\ntheorem lean_workbook_plus_62889 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : m = 2 ∧ n = 3 := by\n  have h₃ : False := by sorry\n  have h₄ : m = 2 ∧ n = 3 := by sorry\n  exact h₄",
+      "subgoal_ids": [
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g0",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g1"
+      ]
+    },
+    {
+      "sample_idx": 2,
+      "code": "\ntheorem sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : f (2 ^ m) ∣ f (2 ^ n) := by\n  have h₃ : 2 ^ m ≤ 2 ^ n := by sorry\n  have h₄ : 4 ^ (2 ^ m) + 6 ^ (2 ^ m) + 9 ^ (2 ^ m) ∣ 4 ^ (2 ^ n) + 6 ^ (2 ^ n) + 9 ^ (2 ^ n) := by sorry\n  have h₅ : f (2 ^ m) ∣ f (2 ^ n) := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g0",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g1",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g2",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g3"
+      ]
+    },
+    {
+      "sample_idx": 3,
+      "code": "\ntheorem sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : m = 2 ∧ n = 3 := by\n  have h₃ : False := by sorry\n  have h₄ : m = 2 ∧ n = 3 := by sorry\n  sorry",
+      "subgoal_ids": [
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s3_g0",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s3_g1",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s3_g2"
+      ]
+    },
+    {
+      "sample_idx": 4,
+      "code": "\ntheorem sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0 (m n : ℕ) (f : ℕ → ℕ) (h₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) : f (2 ^ m) ∣ f (2 ^ n) := by\n  have h_main : False := by sorry\n  have h_goal : f (2 ^ m) ∣ f (2 ^ n) := by sorry\n  exact h_goal",
+      "subgoal_ids": [
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s4_g0",
+        "r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s4_g1"
+      ]
+    }
+  ]
+}

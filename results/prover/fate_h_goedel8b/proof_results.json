@@ -1,0 +1,1002 @@
+[
+  {
+    "problem_id": "FATEH_1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by sorry",
+    "metadata": {
+      "strategy_time": 96.65
+    }
+  },
+  {
+    "problem_id": "FATEH_2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) : ¬ IsSimpleGroup G := by sorry",
+    "metadata": {
+      "strategy_time": 94.44
+    }
+  },
+  {
+    "problem_id": "FATEH_3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem IsSimpleGroup.exists_prime_order_of_prime_card {G : Type*} [Group G] (h : IsSimpleGroup G) (hp : Nat.Prime (Nat.card G)) : Nat.Prime (Nat.card G) := by sorry",
+    "metadata": {
+      "strategy_time": 98.37
+    }
+  },
+  {
+    "problem_id": "FATEH_4",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by sorry",
+    "metadata": {
+      "strategy_time": 99.23
+    }
+  },
+  {
+    "problem_id": "FATEH_5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  have h_main : IsUnit (1 - b * a) := by\n    sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 98.46
+    }
+  },
+  {
+    "problem_id": "FATEH_6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by sorry",
+    "metadata": {
+      "strategy_time": 101.54
+    }
+  },
+  {
+    "problem_id": "FATEH_7",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by sorry",
+    "metadata": {
+      "strategy_time": 98.49
+    }
+  },
+  {
+    "problem_id": "FATEH_8",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by sorry",
+    "metadata": {
+      "strategy_time": 100.78
+    }
+  },
+  {
+    "problem_id": "FATEH_9",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by sorry",
+    "metadata": {
+      "strategy_time": 97.42
+    }
+  },
+  {
+    "problem_id": "FATEH_10",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by sorry",
+    "metadata": {
+      "strategy_time": 89.48
+    }
+  },
+  {
+    "problem_id": "FATEH_11",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem le_center_of_card_eq_17_of_card_eq_3825 {G : Type} [Group G] (h : Nat.card G = 3825)\n    (H : Subgroup G) [H.Normal] (hH : Nat.card H = 17) : H ≤ Subgroup.center G := by sorry",
+    "metadata": {
+      "strategy_time": 99.65
+    }
+  },
+  {
+    "problem_id": "FATEH_12",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_sl_quot_center_monoidHom_alternatingGroup :\n    ∃ φ : SL(2,ZMod 3) ⧸ Subgroup.center SL(2,ZMod 3) →* alternatingGroup (Fin 4),\n    Function.Injective φ := by sorry",
+    "metadata": {
+      "strategy_time": 98.37
+    }
+  },
+  {
+    "problem_id": "FATEH_13",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem card_sylow_gl_two_eq_add_one (p : ℕ) [Fact p.Prime] :\n    Nat.card (Sylow p <| GL (Fin 2) (ZMod p)) = p + 1 := by sorry",
+    "metadata": {
+      "strategy_time": 99.99
+    }
+  },
+  {
+    "problem_id": "FATEH_14",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem pow_eq_zero_of_strictly_upper_triangle {S : Type} [Ring S] (n : ℕ) (hn : 2 < n)\n    (A : Matrix (Fin n) (Fin n) S) (hA : ∀ (i : Fin n), ∀ (j : Fin n), i ≥ j → A i j = 0) :\n    A ^ n = 0 := by sorry",
+    "metadata": {
+      "strategy_time": 98.31
+    }
+  },
+  {
+    "problem_id": "FATEH_15",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  have h_main : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 96.86
+    }
+  },
+  {
+    "problem_id": "FATEH_16",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem span_pow_sub_pow_isPrime_of_coprime {R : Type} [CommRing R] [IsDomain R] {i j : ℕ}\n    (hi : i > 0) (hj : j > 0) (h : Nat.Coprime i j) :\n    (span {(X 0 ^ i - X 1 ^ j : MvPolynomial (Fin 2) R)}).IsPrime := by sorry",
+    "metadata": {
+      "strategy_time": 100.01
+    }
+  },
+  {
+    "problem_id": "FATEH_17",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem irreducible_X_pow_p_sub_one_div_X_sub_one (p : ℕ) [hp : Fact (Nat.Prime p)] :\n    Irreducible (((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)) := by\n  have h_main : Irreducible (((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)) := by\n    sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 101.19
+    }
+  },
+  {
+    "problem_id": "FATEH_18",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem irreducible_pow_two_add_pow_two_sub_one :\n    Irreducible ((X 0) ^ 2 + (X 1) ^ 2 - 1 : MvPolynomial (Fin 2) ℚ) := by sorry",
+    "metadata": {
+      "strategy_time": 103.09
+    }
+  },
+  {
+    "problem_id": "FATEH_19",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_subgroup_alternatingGroup_mulEquiv {G : Type} [Group G] [Finite G] :\n    ∃ (n : ℕ) (H : Subgroup (alternatingGroup (Fin n))), Nonempty (G ≃* H) := by sorry",
+    "metadata": {
+      "strategy_time": 97.31
+    }
+  },
+  {
+    "problem_id": "FATEH_20",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem center_eq_commutator_of_pow_three_eq_card {G : Type} [Group G] {p : ℕ} [hp : Fact p.Prime]\n    (hG : p ^ 3 = Nat.card G) (h : ∃ x y : G, x * y ≠ y * x) :\n    Subgroup.center G = commutator G := by sorry",
+    "metadata": {
+      "strategy_time": 98.7
+    }
+  },
+  {
+    "problem_id": "FATEH_21",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  have h_main : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n    sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 96.86
+    }
+  },
+  {
+    "problem_id": "FATEH_22",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem nonempty_mulAut_dihedralGroup_four : Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4) := by sorry",
+    "metadata": {
+      "strategy_time": 89.85
+    }
+  },
+  {
+    "problem_id": "FATEH_23",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_isSimpleGroup_of_card_eq_1053 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1053) : ¬ IsSimpleGroup G := by\n  have h_main : ¬ IsSimpleGroup G := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 98.51
+    }
+  },
+  {
+    "problem_id": "FATEH_24",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by sorry",
+    "metadata": {
+      "strategy_time": 97.17
+    }
+  },
+  {
+    "problem_id": "FATEH_25",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_uniqueFactorizationMonoid_adjoin_int : ¬ UniqueFactorizationMonoid\n    (Algebra.adjoin ℤ ({f | ∃ h : ℚ[X], f = X * h} : Set ℚ[X])) := by sorry",
+    "metadata": {
+      "strategy_time": 104.65
+    }
+  },
+  {
+    "problem_id": "FATEH_26",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem center_le_or_commutator_le_of_isCoatom {G : Type} [Group G] (H : Subgroup G)\n    (h : IsCoatom H) : Subgroup.center G ≤ H ∨ commutator G ≤ H := by sorry",
+    "metadata": {
+      "strategy_time": 100.77
+    }
+  },
+  {
+    "problem_id": "FATEH_27",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem rank_le_of_subalgebra_matrix {n : ℕ} (F : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ))\n    (h : IsField F) : Module.rank ℚ F ≤ n := by sorry",
+    "metadata": {
+      "strategy_time": 103.71
+    }
+  },
+  {
+    "problem_id": "FATEH_28",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_ratFunc_adjoin_eq_top {k : Type} [Field k] [PerfectField k] {p : ℕ} [Fact p.Prime] [CharP k p]\n    {E : Type} [Field E] [Algebra (RatFunc k) E] [FiniteDimensional (RatFunc k) E] :\n    ∃ α : E, (RatFunc k)⟮α⟯ = ⊤ := by\n  have h_main : ∃ α : E, (RatFunc k)⟮α⟯ = ⊤ := by\n    sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 97.83
+    }
+  },
+  {
+    "problem_id": "FATEH_29",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_nonempty_adjoin_root_X_pow_p_sub_X_sub_C\n    {F E : Type} [Field F] {p : ℕ} [Fact p.Prime] [CharP F p] [Field E]\n    [Algebra F E] [IsGalois F E] (h_deg : Module.finrank F E = p) :\n    ∃ a : F, Nonempty (AdjoinRoot (X ^ p - X - C a : F[X]) ≃+* E) := by\n  have h_main : ∃ a : F, Nonempty (AdjoinRoot (X ^ p - X - C a : F[X]) ≃+* E) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 107.43
+    }
+  },
+  {
+    "problem_id": "FATEH_30",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "/-- Let $E$ be the splitting field of\n\\[\nf(x) = \\frac{x^7 - 1}{x - 1} = x^6 + x^5 + x^4 + x^3 + x^2 + x + 1\n\\]\nover $\\mathbb{Q}$. Let $\\zeta$ be a zero of $f(x)$, i.e., a primitive seventh root of $1$.\nLet $\\beta = \\zeta + \\zeta^2 + \\zeta^4$. Show that the intermediate field $\\mathbb{Q}(\\beta)$\nis actually $\\mathbb{Q}(\\sqrt{-7})$. -/\ntheorem nonempty_ringEquiv_adjoin_pow_two_add_seven {E : Type} [Field E] [Algebra ℚ E]\n    [IsCyclotomicExtension {7} ℚ E] (ζ : E)\n    (h : IsPrimitiveRoot ζ 7) (β : E) (hb : β = ζ + ζ ^ 2 + ζ ^ 4) :\n    Nonempty (ℚ⟮β⟯ ≃+* AdjoinRoot (X ^ 2 + 7 : ℚ[X])) := by\n  Nonempty (ℚ⟮β⟯ ≃+* AdjoinRoot (X ^ 2 + 7 : ℚ[X]))",
+    "metadata": {
+      "strategy_time": 98.53
+    }
+  },
+  {
+    "problem_id": "FATEH_31",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_basis_primitiveRoots_iff_squarefree {n : ℕ+} :\n    (∃ b : Basis (primitiveRoots n (CyclotomicField n ℚ)) ℚ (CyclotomicField n ℚ),\n    (b : _ → _) = (↑)) ↔ Squarefree n := by sorry",
+    "metadata": {
+      "strategy_time": 101.45
+    }
+  },
+  {
+    "problem_id": "FATEH_32",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem nonempty_galois_mulEquiv_dihedralGroup_four :\n    Nonempty (Gal (X ^ 4 - 2 * X ^ 2 - 2 : ℚ[X]) ≃* DihedralGroup 4) := by sorry",
+    "metadata": {
+      "strategy_time": 98.19
+    }
+  },
+  {
+    "problem_id": "FATEH_33",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem card_gal_map_eq_eq_factorial {n : Nat} (hn : n > 4) (f : ℚ[X]) (hf : f.degree = n)\n    (hf' : Irreducible f) (h : f.Gal ≃* (Equiv.Perm <| Fin n))\n    {a b : SplittingField f} (ha : f.aeval a = 0) (hb : f.aeval b = 0) (neq : a ≠ b) :\n    Nat.card {h : f.Gal // h a = b} = Nat.factorial (n - 1) := by\n  have h₁ : Nat.card {h : f.Gal // h a = b} = Nat.factorial (n - 1) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 102.94
+    }
+  },
+  {
+    "problem_id": "FATEH_34",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_irreducible_iff_finrank_lt {E E': Type} [Field E] [CharZero E] [Field E'] [Algebra E E'] {q : ℕ}\n    [Fact q.Prime] {b : E} (hb : b ≠ 0) (not_pow : ∀ c : E, c ^ q ≠ b) {a : E'}\n    (ha : a ^ q = algebraMap E E' b) (haE : ⊤ = IntermediateField.adjoin E {a}) :\n    ¬ Irreducible (X ^ q - C b) ↔ Module.finrank E E' < q := by sorry",
+    "metadata": {
+      "strategy_time": 100.48
+    }
+  },
+  {
+    "problem_id": "FATEH_35",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isEmpty_adjoinRoot_zMod_four {d : ℤ} (hd : Squarefree d) {a : ℚ} (ha : a ≠ 0) :\n    IsEmpty ((AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ)) ≃ₐ[ℚ]\n      AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ))) ≃* Multiplicative (ZMod 4)) := by sorry",
+    "metadata": {
+      "strategy_time": 165.21
+    }
+  },
+  {
+    "problem_id": "FATEH_36",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem card_intermediateField_splittingField_eq_ten :\n    Nat.card (IntermediateField ℚ (X ^ 4 - X ^ 2 - 1 : ℚ[X]).SplittingField) = 10 := by sorry",
+    "metadata": {
+      "strategy_time": 101.68
+    }
+  },
+  {
+    "problem_id": "FATEH_37",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem adjoin_add_eq_top_of_fixedField_zpowers {K L : Type} [Field K]\n    [Field L] [Algebra K L] [IsGalois K L] (n a b : ℕ)\n    (σ : L ≃ₐ[K] L) (hσ : orderOf σ = n) (cycle : Subgroup.zpowers σ = ⊤) (hn : n > 0)\n    (hn' : n = a * b) (hab : Nat.Coprime a b) {α β : L}\n    (hα : K⟮α⟯ = IntermediateField.adjoin K α)\n    (hβ : K⟮β⟯ = IntermediateField.adjoin K β) : K⟮α + β⟯ = ⊤ := by sorry",
+    "metadata": {
+      "strategy_time": 98.49
+    }
+  },
+  {
+    "problem_id": "FATEH_38",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_pow_p_mem_algebraMap_and_adjoin_eq_top {p : Nat} [Fact p.Prime]\n    {F K : Type} [Field F] (hF : (primitiveRoots p F).Nonempty) [Field K] [Algebra F K]\n    [IsGalois F K] (hK : (K ≃ₐ[F] K) ≃* Multiplicative (ZMod p × ZMod p)) :\n    ∃ (α β : K), α ≠ 0 ∧ β ≠ 0 ∧ α ^ p ∈ (algebraMap F K).range ∧ β ^ p ∈ (algebraMap F K).range ∧\n    IntermediateField.adjoin F {α, β} = ⊤ := by sorry",
+    "metadata": {
+      "strategy_time": 102.51
+    }
+  },
+  {
+    "problem_id": "FATEH_39",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_isPrimitiveRoot_and_adjoin_eq_top :\n    letI : Fact (Nat.Prime 7) := by sorry",
+    "metadata": {
+      "strategy_time": 63.53
+    }
+  },
+  {
+    "problem_id": "FATEH_40",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem nonempty_gal_mulEquiv_perm_fin_five {f : ℚ[X]} {K : Type} [Field K] [Algebra ℚ K]\n    [IsSplittingField ℚ K f] (hf1 : Irreducible f) (hf2 : f.natDegree = 5) (a₁ a₂ a₃ : K)\n    (ha1 : a₁ ∈ rootSet f K ∧ a₂ ∈ rootSet f K ∧ a₃ ∈ rootSet f K)\n    (ha2 : a₁ ≠ a₂ ∧ a₂ ≠ a₃ ∧ a₃ ≠ a₁)\n    (h : IntermediateField.adjoin ℚ {a₁, a₂, a₃} ≠ ⊤) :\n    Nonempty (f.Gal ≃* (Equiv.Perm <| Fin 5)) := by\n  have h₁ : Nonempty (f.Gal ≃* (Equiv.Perm <| Fin 5)) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 98.13
+    }
+  },
+  {
+    "problem_id": "FATEH_41",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_finrank_eq_pow_of_dvd_finrank {F : Type} [Field F] (p : ℕ) [Fact (Nat.Prime p)]\n    (h : ∀ (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E],\n    Module.finrank F E ≠ 1 → p ∣ Module.finrank F E)\n    (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E] :\n    ∃ k, Module.finrank F E = p ^ k := by sorry",
+    "metadata": {
+      "strategy_time": 102.0
+    }
+  },
+  {
+    "problem_id": "FATEH_42",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isGalois_adjoin_iff_isSquare (K L : Type) [Field K] [Field L] (h : ¬ CharP K 2) [Algebra K L] [IsGalois K L]\n    (c : Lˣ) (hc : c.1 ≠ 0) (hcs : ¬ IsSquare c.1) :\n    IsGalois K (AdjoinRoot (X ^ 2 - C c.1)) ↔ ∀ σ : (L ≃ₐ[K] L), IsSquare (σ c / c) := by\n  sorry",
+    "metadata": {
+      "strategy_time": 106.24
+    }
+  },
+  {
+    "problem_id": "FATEH_43",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F] [Isabelian ℚ F]\n    (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by sorry",
+    "metadata": {
+      "strategy_time": 203.32
+    }
+  },
+  {
+    "problem_id": "FATEH_44",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem Field.nontrivial {R : Type*} [Field R] : Nontrivial R := by\n  ...",
+    "metadata": {
+      "strategy_time": 98.34
+    }
+  },
+  {
+    "problem_id": "FATEH_45",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "/-- Let $F$ be a field, and let $f, g \\in F[x] \\setminus \\{0\\}$ be relatively prime and not both\nconstant. Show that $F(x)$ has finite degree $d = \\max(\\deg(f), \\deg(g))$ over its subfield $F\\left\n(\\frac{f}{g}\\right)$. -/\ntheorem finrank_adjoin_dvd_eq_max_natDegree (F : Type) [Field F] (f g : F[X]) (hf : f ≠ 0)\n    (hg : g ≠ 0) (hcoprime : IsCoprime f g) (hfg : ¬(f.natDegree = 0 ∧ g.natDegree = 0)) :\n    Module.finrank F⟮(f : RatFunc F) / g⟯ (RatFunc F) = max f.natDegree g.natDegree := by\n  Module.finrank F⟮(f : RatFunc F) / g⟯ (RatFunc F) = max f.natDegree g.natDegree",
+    "metadata": {
+      "strategy_time": 99.99
+    }
+  },
+  {
+    "problem_id": "FATEH_46",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by",
+    "metadata": {
+      "strategy_time": 101.63
+    }
+  },
+  {
+    "problem_id": "FATEH_47",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_exists_eq_pow_three_of_pow_three_eq_three (α : ℂ) (hα : α ^ 3 = 3) (ζ : ℂ)\n    (hζ : IsPrimitiveRoot ζ 9) : ¬ ∃ (β : ℂ), β ^ 3 = α := by sorry",
+    "metadata": {
+      "strategy_time": 98.07
+    }
+  },
+  {
+    "problem_id": "FATEH_48",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem infinite_complex_algEquiv : Infinite (ℂ ≃ₐ[ℚ] ℂ) := by\n  have h_main : Infinite (ℂ ≃ₐ[ℚ] ℂ) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 98.94
+    }
+  },
+  {
+    "problem_id": "FATEH_49",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by sorry",
+    "metadata": {
+      "strategy_time": 94.04
+    }
+  },
+  {
+    "problem_id": "FATEH_50",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_charZero_mvPolynomial_quot {n : ℕ} (m : Ideal (MvPolynomial (Fin n) ℤ))\n    [hm : m.IsMaximal] : ¬ CharZero (MvPolynomial (Fin n) ℤ ⧸ m) := by sorry",
+    "metadata": {
+      "strategy_time": 102.08
+    }
+  },
+  {
+    "problem_id": "FATEH_51",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem adjoin_minpoly_coeffs_toSet_eq {F K : Type} [Field F] [Field K]\n    [Algebra F K] {θ : K} (L : IntermediateField F K) (h : L = ⊤) :\n    IntermediateField.adjoin F (minpoly L θ).coeffs.toSet = L := by sorry",
+    "metadata": {
+      "strategy_time": 100.45
+    }
+  },
+  {
+    "problem_id": "FATEH_52",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isGalois_galoisField_X_pow_iff_modEq_one (p m n : ℕ) (hn : 1 ≤ n) (hm : 1 ≤ m)\n    [Fact p.Prime] :  IsGalois (GaloisField p m)⟮(RatFunc.X ^ n : RatFunc (GaloisField p m))⟯\n    (RatFunc (GaloisField p m)) ↔ p ^ m ≡ 1 [MOD n] := by sorry",
+    "metadata": {
+      "strategy_time": 97.28
+    }
+  },
+  {
+    "problem_id": "FATEH_53",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem real_algEquiv_eq_one (f : ℝ ≃ₐ[ℚ] ℝ) : f = 1 := by sorry",
+    "metadata": {
+      "strategy_time": 105.39
+    }
+  },
+  {
+    "problem_id": "FATEH_54",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isGalois_galoisField_adjoin_X_pow_four_add_X :\n    IsGalois (GaloisField 2 2)⟮(X ^ 4 + X : RatFunc (GaloisField 2 2))⟯\n    (RatFunc (GaloisField 2 2)) := by sorry",
+    "metadata": {
+      "strategy_time": 95.46
+    }
+  },
+  {
+    "problem_id": "FATEH_55",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_pow_two_eq_algebraMap_and_adjoin_eq_top {K L : Type} [Field K] [Field L]\n    [Algebra K L] [IsGalois K L] (hK : ¬ CharP K 2) : IsKleinFour (L ≃ₐ[K] L) ↔\n    ∃ a b : Kˣ, ∃ x y : L, x ^ 2 = algebraMap K L a.1 ∧ y ^ 2 = algebraMap K L b.1 ∧\n    K⟮x, y⟯ = ⊤ ∧ ¬IsSquare a ∧ ¬IsSquare b ∧ ¬IsSquare (a / b) := by\n  have h₁ : IsKleinFour (L ≃ₐ[K] L) ↔ ∃ a b : Kˣ, ∃ x y : L, x ^ 2 = algebraMap K L a.1 ∧ y ^ 2 = algebraMap K L b.1 ∧ K⟮x, y⟯ = ⊤ ∧ ¬IsSquare a ∧ ¬IsSquare b ∧ ¬IsSquare (a / b) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 98.39
+    }
+  },
+  {
+    "problem_id": "FATEH_56",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem cyclotomic_two_mul_eq_cyclotomic_comp_neg {n : ℕ} (hn : Odd n) (hn' : 1 < n) :\n    Polynomial.cyclotomic (2 * n) ℚ = (Polynomial.cyclotomic n ℚ).comp (-X) := by sorry",
+    "metadata": {
+      "strategy_time": 99.11
+    }
+  },
+  {
+    "problem_id": "FATEH_57",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_isPurelyInseparable_and_bot_lt {F : Type} [Field F] (h : ¬ PerfectField F) :\n    ∃ E : IntermediateField F (AlgebraicClosure F), IsPurelyInseparable F E ∧ ⊥ < E := by sorry",
+    "metadata": {
+      "strategy_time": 95.82
+    }
+  },
+  {
+    "problem_id": "FATEH_58",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_eq_adjoin_and_pow_four_mem_bot_and_not_pow_two_mem_bot (F : Type) [Field F] :\n    Subsingleton {M : IntermediateField F (AlgebraicClosure F) //\n    ∃ α : AlgebraicClosure F, M = F⟮α⟯ ∧ α ^ 4 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧\n    ¬ α ^ 2 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧ F⟮α⟯ = F⟮α ^ 2⟯} := by\n  -- Step 1: Prove that no α satisfies the conditions\n  have h₁ : ∀ (α : AlgebraicClosure F), α ^ 4 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) → ¬ α ^ 2 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) → False := by sorry\n  -- Step 2: Prove the subsingleton property by showing that any two elements are equal (but they don't exist)\n  have h₂ : Subsingleton {M : IntermediateField F (AlgebraicClosure F) // ∃ α : AlgebraicClosure F, M = F⟮α⟯ ∧ α ^ 4 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧ ¬ α ^ 2 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧ F⟮α⟯ = F⟮α ^ 2⟯} := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 103.95
+    }
+  },
+  {
+    "problem_id": "FATEH_59",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem rootSet_isEmpty_in_splittingField :\n    (.X ^ 7 - 11 : Polynomial ℚ).rootSet ((.X ^ 7 - 12 : Polynomial ℚ).SplittingField) = ⊥ := by sorry",
+    "metadata": {
+      "strategy_time": 99.74
+    }
+  },
+  {
+    "problem_id": "FATEH_60",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isSolvable_X_pow_six_add_gal {a : ℤ} (ha : a > 0) : IsSolvable (Polynomial.galoisGroup (X ^ 6 + C (3 * a : ℚ) * X ^ 4 + C 3 * X ^ 3 + C (3 * a : ℚ) * X ^ 2 + C 1 : ℚ[X]) : := by sorry",
+    "metadata": {
+      "strategy_time": 98.95
+    }
+  },
+  {
+    "problem_id": "FATEH_61",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_irreducible_X_pow_four_add_one {F : Type} [Field F] {p : ℕ} [Fact p.Prime]\n    [CharP F p] : ¬ Irreducible (X ^ 4 + C 1 : F[X]) := by sorry",
+    "metadata": {
+      "strategy_time": 103.14
+    }
+  },
+  {
+    "problem_id": "FATEH_62",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem primitiveRoots_not_empty (E F : Type) [Field E] [Field F] [Algebra F E] ... : primitiveRoots n E ≠ ∅ := by sorry",
+    "metadata": {
+      "strategy_time": 97.38
+    }
+  },
+  {
+    "problem_id": "FATEH_63",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem eval₂_algebraMap_ne_two_pow_one_dvd_four {n : ℕ} (hn : 1 ≤ n) (f : ℚ[X]) (ξ : ℂˣ) (h : ξ ∈ rootsOfUnits n ℂ) : f.eval₂ (algebraMap ℚ ℂ) ξ ≠ (2 : ℂ) ^ ((1 : ℂ) / 4) := by sorry",
+    "metadata": {
+      "strategy_time": 102.61
+    }
+  },
+  {
+    "problem_id": "FATEH_64",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_mul_eq_map_algebraMap {F K : Type} [Field F] [Field K] [Algebra F K] [FiniteDimensional F K]\n    (f : K[X]) : ∃ g ≠ 0, ∃ h : F[X], f * g = h.map (algebraMap F K) := by sorry",
+    "metadata": {
+      "strategy_time": 97.34
+    }
+  },
+  {
+    "problem_id": "FATEH_65",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isSquare_discriminant_of_irreducible {p n : ℕ} [Fact p.Prime] (a b : GaloisField p n)\n    (h_irr : Irreducible (X ^ 3 + C a * X + C b)) :\n    IsSquare (- 4 * a ^ 3 - 27 * b ^ 2) := by sorry",
+    "metadata": {
+      "strategy_time": 99.53
+    }
+  },
+  {
+    "problem_id": "FATEH_66",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_irreducible_X_pow_two_pow_add_X_add_C_one {n : ℕ} (hn : n ≥ 3) :\n    ¬ Irreducible (X ^ 2 ^ n + X + C 1 : (ZMod 2)[X]) := by\n  sorry",
+    "metadata": {
+      "strategy_time": 101.9
+    }
+  },
+  {
+    "problem_id": "FATEH_67",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isPrincipal_of_ideal_tensor_zMod_seven\n    (p : Ideal (TensorProduct (ZMod 7) (AdjoinRoot (X ^ 3 - 2 : Polynomial (ZMod 7)))\n    (AdjoinRoot (X ^ 3 - 2 : Polynomial (ZMod 7))))) [p.IsPrime] : p.IsPrincipal := by\n  have h₁ : p.IsPrincipal := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 147.43
+    }
+  },
+  {
+    "problem_id": "FATEH_68",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem associatedPrimes_quot_span_eq_quot_span_pow {A : Type} [CommRing A] [IsNoetherianRing A]\n    (x : A) (hx : x ∈ nonZeroDivisors A) (hx' : ¬ IsUnit x) (n : ℕ) (h : n ≥ 1) :\n    associatedPrimes A (A ⧸ span {x}) = associatedPrimes A (A ⧸ span {x ^ n}) := by",
+    "metadata": {
+      "strategy_time": 102.89
+    }
+  },
+  {
+    "problem_id": "FATEH_69",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem int_adjoin_range_ne_top {K : Type} [Field K] [NumberField K] {n : ℕ} (x : Fin n → K) :\n    Algebra.adjoin ℤ (Set.range x) ≠ ⊤ := by sorry",
+    "metadata": {
+      "strategy_time": 97.3
+    }
+  },
+  {
+    "problem_id": "FATEH_70",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_isIntegrallyClosed_adjoinRoot_pow_two_add_four :\n    ¬ IsIntegrallyClosed (AdjoinRoot (X ^ 2 + C 4 : ℤ[X])) := by\n  have h_main : ¬ IsIntegrallyClosed (AdjoinRoot (X ^ 2 + C 4 : ℤ[X])) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 106.79
+    }
+  },
+  {
+    "problem_id": "FATEH_71",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_isDedekindRing_mvPolynomial_fin_two {k : Type} [Field k] :\n    ¬ IsDedekindRing (MvPolynomial (Fin 2) k) := by sorry",
+    "metadata": {
+      "strategy_time": 100.47
+    }
+  },
+  {
+    "problem_id": "FATEH_72",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isNoetherianRing_of_finite_isMaximal_and_mem {A : Type} [CommRing A]\n    (h_local : ∀ (m : Ideal A), [m.IsMaximal] → IsNoetherianRing (Localization.AtPrime m))\n    (h_finite : ∀ x : A, x ≠ 0 → Set.Finite {m : Ideal A | m.IsMaximal ∧ x ∈ m}) :\n    IsNoetherianRing A := by sorry",
+    "metadata": {
+      "strategy_time": 105.37
+    }
+  },
+  {
+    "problem_id": "FATEH_73",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem flat_of_noZeroSMulDivisor {R A : Type} [CommRing R] [IsDomain R] [ValuationRing R] [AddCommGroup A]\n    [Module R A] [NoZeroSMulDivisors R A] : Module.Flat R A := by sorry",
+    "metadata": {
+      "strategy_time": 91.62
+    }
+  },
+  {
+    "problem_id": "FATEH_74",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem noZeroSMulDivisors_of_flat {R A : Type} [CommRing R] [IsDomain R] [ValuationRing R] [AddCommGroup A]\n    [Module R A] [Module.Flat R A] : NoZeroSMulDivisors R A := by sorry",
+    "metadata": {
+      "strategy_time": 89.4
+    }
+  },
+  {
+    "problem_id": "FATEH_75",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem Ideal.IsMaximal.comap {R S : Type*} [CommRing R] [CommRing S] [IsDomain S]\n  {I : Ideal R} {J : Ideal S} (h : J.IsMaximal) (f : R → S) (hf : ∀ x ∈ I, f x ∈ J) :\n  I.IsMaximal := by sorry",
+    "metadata": {
+      "strategy_time": 89.09
+    }
+  },
+  {
+    "problem_id": "FATEH_76",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem projective_of_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M] [Module R M]\n    [IsDedekindDomain R] [Module.Finite R M] [NoZeroSMulDivisors R M] : Module.Projective R M := by\n  have h₁ : Module.Projective R M := by\n    -- Use the fact that M is finite and torsion-free to show it is projective\n    -- Since R is a Dedekind domain, we can use the properties of Dedekind domains\n    -- and the fact that M is finite and torsion-free to conclude that M is projective\n    -- This is a placeholder for the actual proof, which would involve detailed\n    -- algebraic manipulation and use of the properties of Dedekind domains\n    -- and torsion-free modules\n    sorry\n  exact h₁",
+    "metadata": {
+      "strategy_time": 95.75
+    }
+  },
+  {
+    "problem_id": "FATEH_77",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_isMaximal_atPrime_of_bijective {k R A : Type} [Field k] [CommRing R] [CommRing A] [Algebra k R]\n    [Algebra R A] [Algebra k A] [IsScalarTower k R A] [IsLocalRing A]\n    (h : Function.Bijective <| (IsLocalRing.residue A).comp (algebraMap k A))\n    (S : Submonoid R) [IsLocalization S A] :\n    ∃ n : Ideal R, ∃ hn : n.IsMaximal, IsLocalization.AtPrime A n := by sorry",
+    "metadata": {
+      "strategy_time": 111.74
+    }
+  },
+  {
+    "problem_id": "FATEH_78",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem nilpotent_eq_contraction_nilpotent_of_integral (R R' : Type) [CommRing R] [CommRing R']\n    [Algebra R R'] (int : Algebra.IsIntegral R R') :\n    nilradical R = Ideal.comap (algebraMap R R') (nilradical R') := by sorry",
+    "metadata": {
+      "strategy_time": 91.37
+    }
+  },
+  {
+    "problem_id": "FATEH_79",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isPrincipalIdealRing_of_forall_free {R : Type} [CommRing R]\n    (h : ∀ (M : Type) [AddCommGroup M] [Module R M] [Module.Finite R M] [Module.Free R M],\n      ∀ (N : Submodule R M), Module.Free R N) :\n    IsPrincipalIdealRing R := by sorry",
+    "metadata": {
+      "strategy_time": 99.52
+    }
+  },
+  {
+    "problem_id": "FATEH_80",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem mem_polynomial_integral_closure_of_prod_mem_polynomial (R S : Type) [CommRing R]\n    [IsDomain R] [CommRing S] [IsDomain S] [Algebra R S] [NoZeroSMulDivisors R S] (f g : S[X])\n    (mem : f * g ∈ lifts (algebraMap R S)) (hf : f.Monic) (hg : g.Monic) :\n    f ∈ lifts (integralClosure R S).subtype ∧ g ∈ lifts (integralClosure R S).subtype := by sorry",
+    "metadata": {
+      "strategy_time": 101.09
+    }
+  },
+  {
+    "problem_id": "FATEH_81",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_UFD_of_3_or_4 (n : ℕ) (h : n = 3 ∨ n = 4) [IsDomain (R n)] : ¬ UniqueFactorizationMonoid (R n) := by sorry",
+    "metadata": {
+      "strategy_time": 104.36
+    }
+  },
+  {
+    "problem_id": "FATEH_82",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isPrincipalIdealRing_of_isPrime_ne_bot_isMaximal {D : Type} [CommRing D] [IsDomain D]\n    [UniqueFactorizationMonoid D] (h : ∀ P : Ideal D, [P.IsPrime] → P ≠ ⊥ → P.IsMaximal) : IsPrincipalIdealRing D := by sorry",
+    "metadata": {
+      "strategy_time": 95.86
+    }
+  },
+  {
+    "problem_id": "FATEH_83",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem flat_iff_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M]\n    [Module R M] [IsDedekindDomain R] [Module.Finite R M] :\n    Module.Flat R M ↔ NoZeroSMulDivisors R M := by\n  have h_main : Module.Flat R M ↔ NoZeroSMulDivisors R M := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 99.43
+    }
+  },
+  {
+    "problem_id": "FATEH_84",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isPrincipalIdealRing_quot_of_isDedekind {A : Type} [CommRing A] [IsDedekindDomain A] (a : Ideal A) (ha : a ≠ ⊥) : IsPrincipalIdealRing (A ⧸ a) := by sorry",
+    "metadata": {
+      "strategy_time": 94.96
+    }
+  },
+  {
+    "problem_id": "FATEH_85",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem nonempty_adicCompletion_adicCompletion_linearEquiv {A M : Type} [CommRing A]\n    [IsNoetherianRing A] (ades : Ideal A) [AddCommGroup M]\n    [Module A M] [Module.Finite A M] (b : Ideal A) :\n    Nonempty (AdicCompletion b (AdicCompletion ades M) ≃ₗ[A] AdicCompletion (ades + b) M) := by\n  -- Use the fact that M is a finitely generated A-module to find a finitely generated A-module isomorphic to M.\n  -- Use the fact that A is Noetherian to find a finitely generated A-module isomorphic to A.\n  -- Use the fact that the completion of a finitely generated A-module is a finitely generated A-module to find a finitely generated A-module isomorphic to the completion of M.\n  -- Construct a linear equivalence between (M_ades)_b and M_{ades + b} using the properties of A and M.\n  sorry",
+    "metadata": {
+      "strategy_time": 93.58
+    }
+  },
+  {
+    "problem_id": "FATEH_86",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem finite_iff_surjective_linearMap {R : Type} [CommRing R]\n    (M : Type) [AddCommGroup M] [Module R M] :\n    Module.Finite R M ↔ ∀ {α : Type} (Q : α → Type),\n    ∀ [(a : α) → AddCommGroup (Q a)] [(a : α) → Module R (Q a)],\n        Function.Surjective (LinearMap.pi (\n            fun i => LinearMap.lTensor M (\n                LinearMap.proj i (φ := Q) (R := R)))) := by sorry",
+    "metadata": {
+      "strategy_time": 104.3
+    }
+  },
+  {
+    "problem_id": "FATEH_87",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem eq_bot_or_eq_top_of_ringKrullDim_eq_one {R K : Type} [CommRing R] [IsDomain R]\n    [Field K] [Algebra R K] [IsFractionRing R K] [ValuationRing R] (hD : ringKrullDim R = 1)\n    (S : Subalgebra R K) : S = ⊥ ∨ S = ⊤ := by sorry",
+    "metadata": {
+      "strategy_time": 97.81
+    }
+  },
+  {
+    "problem_id": "FATEH_88",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "/--Let \\((R, \\mathfrak{m})\\) be a Noetherian local ring. Let \\(x, y \\in \\mathfrak{m}\\) be a regular\nsequence of length \\(2\\). For any \\(n \\geq 2\\) show that there do not exist \\(a, b \\in R\\) with\n\\[\nx^{n-1}y^{n-1} = a x^{n} + b y^{n}\n\\]-/\ntheorem not_exists_pow_sub_one_mul_pow_sub_one_eq {R : Type} [CommRing R] [IsNoetherianRing R]\n    [IsLocalRing R] {n : ℕ} {x y : R} (hn : n ≥ 2) (hx : x ∈ IsLocalRing.maximalIdeal R)\n    (hy : y ∈ IsLocalRing.maximalIdeal R) (h : Sequence.IsRegular R [x, y]) :\n    ¬ ∃ a b : R, x ^ (n - 1) * y ^ (n - 1) = a * x ^ n + b * y ^ n := by\n  structure IsRegularAt (R : Type*) [CommRing R] (x : R) : Prop where\n  (val : x ≠ 0)\n  (noZeroDivisors : ∀ (y : R), x * y = 0 → y = 0)",
+    "metadata": {
+      "strategy_time": 110.3
+    }
+  },
+  {
+    "problem_id": "FATEH_89",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem height_comap_le (φ : R →+* S) (J : Ideal S) : height (φ ⁻¹ J) ≤ height J := by\n  -- This is the relevant result, but it might not exist in Mathlib.\n  -- We need to find a proof or a version of it.\n  sorry",
+    "metadata": {
+      "strategy_time": 90.81
+    }
+  },
+  {
+    "problem_id": "FATEH_90",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem not_hasProjectiveDimensionLT_finrank_cotangentSpace {R : Type} [CommRing R] [IsLocalRing R]\n    [IsNoetherianRing R] :\n      ¬ CategoryTheory.HasProjectiveDimensionLT\n        (ModuleCat.of R (IsLocalRing.ResidueField R))\n          (Module.finrank (IsLocalRing.ResidueField R) (IsLocalRing.CotangentSpace R)) := by\n  have h_main : ¬ CategoryTheory.HasProjectiveDimensionLT (ModuleCat.of R (IsLocalRing.ResidueField R)) (Module.finrank (IsLocalRing.ResidueField R) (IsLocalRing.CotangentSpace R)) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 98.35
+    }
+  },
+  {
+    "problem_id": "FATEH_91",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_toSubring_eq_and_ringKrullDim_eq_one {K : Type} [Field K] (R : Subring K)\n    (h : IsCoatom R) (hR : ¬ IsField R) :\n    (∃ V : ValuationSubring K, V.toSubring = R) ∧ ringKrullDim R = 1 := by sorry",
+    "metadata": {
+      "strategy_time": 102.48
+    }
+  },
+  {
+    "problem_id": "FATEH_92",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_factor_principal_ideal (R : Type) [CommRing R] [IsDedekindDomain R]\n    (n : ℕ) (p : (Fin n) → PrimeSpectrum R) (h_nonzero : ∀ i, (p i).asIdeal ≠ ⊥)\n    (h_inj : Function.Injective p) (e : (Fin n) → ℕ) :\n    ∃ (a : R) (J : Ideal R), a ≠ 0 ∧ Ideal.span {a} = J * ∏ (i : Fin n), (p i).1 ^ (e i) ∧\n    (∀ (i : Fin n), ¬ ∃ (K : Ideal R), J = K * (p i).1) := by sorry",
+    "metadata": {
+      "strategy_time": 101.17
+    }
+  },
+  {
+    "problem_id": "FATEH_93",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isDedekindDomain_of_ideal_UFD (O : Type) [CommRing O] [IsDomain O]\n    [CancelCommMonoidWithZero (Ideal O)] [UniqueFactorizationMonoid (Ideal O)] :\n    IsDedekindDomain O := by sorry",
+    "metadata": {
+      "strategy_time": 99.08
+    }
+  },
+  {
+    "problem_id": "FATEH_94",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem ringKrullDim_quot_annihilator_eq {R S M : Type} [CommRing R] [CommRing S] [AddCommGroup M] [Algebra R S]\n    [Module S M] [Module R M] [IsScalarTower R S M] [Algebra.IsIntegral R S] :\n    ringKrullDim (S ⧸ (Module.annihilator S M)) = ringKrullDim (R ⧸ (Module.annihilator R M)) := by sorry",
+    "metadata": {
+      "strategy_time": 102.4
+    }
+  },
+  {
+    "problem_id": "FATEH_95",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isRegular_ofFn_pow (R M : Type) [CommRing R] [AddCommGroup M] [Module R M]\n    (rs : List R) (a : Fin rs.length → ℕ+) (h : Sequence.IsRegular M rs) :\n    Sequence.IsRegular M (List.ofFn (fun i => rs[i] ^ (a i).1)) := by sorry",
+    "metadata": {
+      "strategy_time": 96.7
+    }
+  },
+  {
+    "problem_id": "FATEH_96",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem inf_eq_span_X_smul_sup_one_sub_X_smul_comap_C {K : Type} [Field K] (n : ℕ) \n    (I1 I2 : Ideal (MvPolynomial (Fin n) K)) :\n    I1 ⊓ I2 = (Ideal.span {(X : (MvPolynomial (Fin n) K)[X])} • (I1.map C) ⊔\n    Ideal.span {(1 - X : (MvPolynomial (Fin n) K)[X])} • (I2.map C) ).comap C := by sorry",
+    "metadata": {
+      "strategy_time": 108.41
+    }
+  },
+  {
+    "problem_id": "FATEH_97",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem isAlgebraic_sin_pi_div_180 : IsAlgebraic ℚ (sin (π / 180)) := by\n  have h₁ : IsAlgebraic ℚ (sin (π / 180)) := by sorry\n  sorry",
+    "metadata": {
+      "strategy_time": 93.67
+    }
+  },
+  {
+    "problem_id": "FATEH_98",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_isRegular_of_prime_height (hP : P.IsPrime) (hr : P.primeHeight > 0) :\n    ∃ b : List A, Sequence.IsRegular A b ∧ P = (b) := by sorry",
+    "metadata": {
+      "strategy_time": 100.04
+    }
+  },
+  {
+    "problem_id": "FATEH_99",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem determinant_eq_zero (R : Type) [CommRing R] (n : ℕ) (h2_inv : IsUnit (2 : R))\n    (A : Matrix.specialOrthogonalGroup (Fin (2 * n + 1)) R) : (1 - A.1).det = 0 := by sorry",
+    "metadata": {
+      "strategy_time": 98.96
+    }
+  },
+  {
+    "problem_id": "FATEH_100",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 32,
+    "code": "theorem exists_finite_primeSpectrum_not_isNoetherianRing :\n    ∃ (R : Type) (_ : CommRing R), Finite (PrimeSpectrum R) ∧ ¬ IsNoetherianRing R := by sorry",
+    "metadata": {
+      "strategy_time": 97.05
+    }
+  }
+]

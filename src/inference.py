@@ -17,6 +17,8 @@ parser.add_argument('--output_dir', default="results", type=str)
 parser.add_argument('--split', default="none", type=str)
 parser.add_argument('--n', default=32, type=int)
 parser.add_argument("--max_model_len", default=40960, type=int)
+parser.add_argument("--max_tokens", default=None, type=int,
+                    help="Max tokens to generate per sample. Defaults to max_model_len if not set.")
 parser.add_argument('--inference_handler', type=str, choices=["dpskcot", "dpsknoncot", "kiminacot"])
 parser.add_argument('--trunck', default=1, type=int)
 parser.add_argument('--gpu', default=2, type=int)
@@ -30,6 +32,14 @@ parser.add_argument('--correction_round', type=int, default=0,
                     help="0 for initial inference, >0 for correction round N.")
 parser.add_argument('--previous_run_output_dir', type=str,
                     help="Path to output dir of previous run (for correction_round > 0).")
+parser.add_argument(
+    '--origin_id_priority',
+    type=str,
+    default='parent',
+    choices=['parent', 'leaf'],
+    help="parent: use origin_problem_id first (default). leaf: use problem_id for attempt ids "
+         "(subproblem MVP: aligns compile rows with manifest subproblem_id).",
+)
 
 args = parser.parse_args()
 seed = random.randint(1, 99999)
@@ -75,13 +85,19 @@ else:  # Initial inference (Round 0)
     initial_data_list = handler.load_split(args.input_path, args.split)
 
     for idata_orig in initial_data_list:
-        origin_id = idata_orig.get("origin_problem_id", idata_orig.get('problem_id', idata_orig.get('name')))
-        if not idata_orig.get("lean4_code"): continue
+        parent_id = idata_orig.get("origin_problem_id")
+        name_fb = idata_orig.get("name")
+        if args.origin_id_priority == "leaf":
+            origin_id = idata_orig.get("problem_id") or name_fb
+        else:
+            origin_id = idata_orig.get("origin_problem_id", idata_orig.get("problem_id", name_fb))
+        if not idata_orig.get("lean4_code"):
+            continue
         for ij in range(args.n):
-            item_for_attempt = idata_orig.copy() 
-            item_for_attempt["origin_problem_id"] = origin_id
+            item_for_attempt = idata_orig.copy()
+            item_for_attempt["origin_problem_id"] = parent_id if parent_id is not None else origin_id
             item_for_attempt["problem_id"] = f"{origin_id}_g{ij}"  # Suffix for this specific attempt
-            item_for_attempt["id_maps"] = [{"origin_problem_id": origin_id},
+            item_for_attempt["id_maps"] = [{"origin_problem_id": item_for_attempt["origin_problem_id"]},
                                            {"generation_id": item_for_attempt["problem_id"]}]
             items_for_llm_processing.append(item_for_attempt)
 
@@ -103,9 +119,10 @@ if args.node > 1:
 else:
     model = LLM(**kwargs_llm)
 
+_gen_max_tokens = args.max_tokens if args.max_tokens is not None else args.max_model_len
 sampling_params = SamplingParams(
     temperature=args.temp,
-    max_tokens=args.max_model_len,
+    max_tokens=_gen_max_tokens,
     top_p=0.95,
     n=1,
 )
@@ -133,7 +150,9 @@ for chunk_idx, current_chunk_input_items in enumerate(
             )
         else:  # Initial inference
             prompt_str, messages_for_this = handler.prover_inference(
-                item_data["lean4_code"], hf_tokenizer_for_chat_template
+                item_data["lean4_code"],
+                hf_tokenizer_for_chat_template,
+                item_data=item_data,
             )
         num_tokens = len(hf_tokenizer_for_chat_template.tokenize(prompt_str))  
         # num_cot_tokens = len(hf_tokenizer_for_chat_template.tokenize(messages_for_this[1]["content"]))

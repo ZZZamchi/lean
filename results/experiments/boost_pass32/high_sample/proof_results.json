@@ -1,0 +1,1219 @@
+[
+  {
+    "problem_id": "aime_1984_p7",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem aime_1984_p7 (f : ℤ → ℤ) (h₀ : ∀ n, 1000 ≤ n → f n = n - 3)\n  (h₁ : ∀ n, n < 1000 → f n = f (f (n + 5))) : f 84 = 997 := by sorry",
+    "full_code": "theorem aime_1984_p7 (f : ℤ → ℤ) (h₀ : ∀ n, 1000 ≤ n → f n = n - 3)\n  (h₁ : ∀ n, n < 1000 → f n = f (f (n + 5))) : f 84 = 997 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 3,
+            "column": 64
+          },
+          "goal": "f : ℤ → ℤ\nh₀ : ∀ (n : ℤ), 1000 ≤ n → f n = n - 3\nh₁ : ∀ n < 1000, f n = f (f (n + 5))\n⊢ f 84 = 997",
+          "endPos": {
+            "line": 3,
+            "column": 69
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 259.94
+    }
+  },
+  {
+    "problem_id": "aime_1995_p7",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem aime_1995_p7 (k m n : ℕ) (t : ℝ) (h₀ : 0 < k ∧ 0 < m ∧ 0 < n) (h₁ : Nat.gcd m n = 1) (h₂ : (1 + Real.sin t) * (1 + Real.cos t) = 5 / 4) (h₃ : (1 - Real.sin t) * (1 - Real.cos t) = m / n - Real.sqrt k) : k + m + n = 27 := by sorry",
+    "full_code": "theorem aime_1995_p7 (k m n : ℕ) (t : ℝ) (h₀ : 0 < k ∧ 0 < m ∧ 0 < n) (h₁ : Nat.gcd m n = 1) (h₂ : (1 + Real.sin t) * (1 + Real.cos t) = 5 / 4) (h₃ : (1 - Real.sin t) * (1 - Real.cos t) = m / n - Real.sqrt k) : k + m + n = 27 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 2,
+            "column": 232
+          },
+          "goal": "k m n : ℕ\nt : ℝ\nh₀ : 0 < k ∧ 0 < m ∧ 0 < n\nh₁ : m.gcd n = 1\nh₂ : (1 + t.sin) * (1 + t.cos) = 5 / 4\nh₃ : (1 - t.sin) * (1 - t.cos) = ↑m / ↑n - √↑k\n⊢ k + m + n = 27",
+          "endPos": {
+            "line": 2,
+            "column": 237
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.81
+    }
+  },
+  {
+    "problem_id": "aime_1999_p11",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem aime_1999_p11 (m n : ℕ) (hm₀ : 0 < m) (hn₀ : 0 < n) (h₀ : Nat.Coprime m n) (h₁ : (∑ k ∈ Finset.Icc (1 : ℕ) 35, Real.sin (5 * k * Real.pi / 180)) = Real.tan ((m / n:ℝ) * Real.pi / 180)) (h₂ : (m : ℝ) / (n : ℝ) < 90) : m + n = 177 := by sorry",
+    "full_code": "theorem aime_1999_p11 (m n : ℕ) (hm₀ : 0 < m) (hn₀ : 0 < n) (h₀ : Nat.Coprime m n) (h₁ : (∑ k ∈ Finset.Icc (1 : ℕ) 35, Real.sin (5 * k * Real.pi / 180)) = Real.tan ((m / n:ℝ) * Real.pi / 180)) (h₂ : (m : ℝ) / (n : ℝ) < 90) : m + n = 177 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 2,
+            "column": 243
+          },
+          "goal": "m n : ℕ\nhm₀ : 0 < m\nhn₀ : 0 < n\nh₀ : m.Coprime n\nh₁ : ∑ k ∈ Finset.Icc 1 35, (5 * ↑k * Real.pi / 180).sin = (↑m / ↑n * Real.pi / 180).tan\nh₂ : ↑m / ↑n < 90\n⊢ m + n = 177",
+          "endPos": {
+            "line": 2,
+            "column": 248
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 266.38
+    }
+  },
+  {
+    "problem_id": "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2 (a b c : ℝ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c)\n  (h₁ : 3 ≤ a * b + b * c + c * a) :\n  3 / Real.sqrt 2 ≤ a / Real.sqrt (a + b) + b / Real.sqrt (b + c) + c / Real.sqrt (c + a) := by\n  have h_main : 3 / Real.sqrt 2 ≤ a / Real.sqrt (a + b) + b / Real.sqrt (b + c) + c / Real.sqrt (c + a) := by\n    sorry\n  sorry",
+    "full_code": "theorem algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2 (a b c : ℝ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c)\n  (h₁ : 3 ≤ a * b + b * c + c * a) :\n  3 / Real.sqrt 2 ≤ a / Real.sqrt (a + b) + b / Real.sqrt (b + c) + c / Real.sqrt (c + a) := by\n  have h_main : 3 / Real.sqrt 2 ≤ a / Real.sqrt (a + b) + b / Real.sqrt (b + c) + c / Real.sqrt (c + a) := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 31,
+          "pos": {
+            "line": 6,
+            "column": 4
+          },
+          "goal": "a b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : 3 ≤ a * b + b * c + c * a\n⊢ 3 / √2 ≤ a / √(a + b) + b / √(b + c) + c / √(c + a)",
+          "endPos": {
+            "line": 6,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 32,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "a b c : ℝ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c\nh₁ : 3 ≤ a * b + b * c + c * a\nh_main : 3 / √2 ≤ a / √(a + b) + b / √(b + c) + c / √(c + a)\n⊢ 3 / √2 ≤ a / √(a + b) + b / √(b + c) + c / √(c + a)",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 261.76
+    }
+  },
+  {
+    "problem_id": "algebra_apbmpcneq0_aeq0anbeq0anceq0",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem algebra_apbmpcneq0_aeq0anbeq0anceq0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n)\n  (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : (a : ℝ) + b * m + c * n = 0) : a = 0 ∧ b = 0 ∧ c = 0 := by\n  have h_main : a = 0 ∧ b = 0 ∧ c = 0 := by\n    sorry\n  sorry",
+    "full_code": "theorem algebra_apbmpcneq0_aeq0anbeq0anceq0 (a b c : ℚ) (m n : ℝ) (h₀ : 0 < m ∧ 0 < n)\n  (h₁ : m ^ 3 = 2) (h₂ : n ^ 3 = 4) (h₃ : (a : ℝ) + b * m + c * n = 0) : a = 0 ∧ b = 0 ∧ c = 0 := by\n  have h_main : a = 0 ∧ b = 0 ∧ c = 0 := by\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 47,
+          "pos": {
+            "line": 5,
+            "column": 4
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\n⊢ a = 0 ∧ b = 0 ∧ c = 0",
+          "endPos": {
+            "line": 5,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 48,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "a b c : ℚ\nm n : ℝ\nh₀ : 0 < m ∧ 0 < n\nh₁ : m ^ 3 = 2\nh₂ : n ^ 3 = 4\nh₃ : ↑a + ↑b * m + ↑c * n = 0\nh_main : a = 0 ∧ b = 0 ∧ c = 0\n⊢ a = 0 ∧ b = 0 ∧ c = 0",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 261.62
+    }
+  },
+  {
+    "problem_id": "algebra_ineq_nto1onlt2m1on",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem algebra_ineq_nto1onlt2m1on\n  (n : ℕ)\n  (hn : 0 < n) :\n  (n : ℝ) ^ (1 / n:ℝ) < 2 - 1 / n := by sorry",
+    "full_code": "theorem algebra_ineq_nto1onlt2m1on\n  (n : ℕ)\n  (hn : 0 < n) :\n  (n : ℝ) ^ (1 / n:ℝ) < 2 - 1 / n := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 5,
+            "column": 40
+          },
+          "goal": "n : ℕ\nhn : 0 < n\n⊢ ↑n ^ (1 / ↑n) < 2 - 1 / ↑n",
+          "endPos": {
+            "line": 5,
+            "column": 45
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.16
+    }
+  },
+  {
+    "problem_id": "algebra_sum1onsqrt2to1onsqrt10000lt198",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem algebra_sum1onsqrt2to1onsqrt10000lt198 :\n  (∑ k ∈ Finset.Icc (2 : ℕ) 10000, 1 / Real.sqrt k) < 198 := by sorry",
+    "full_code": "theorem algebra_sum1onsqrt2to1onsqrt10000lt198 :\n  (∑ k ∈ Finset.Icc (2 : ℕ) 10000, 1 / Real.sqrt k) < 198 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 18,
+          "pos": {
+            "line": 3,
+            "column": 64
+          },
+          "goal": "⊢ ∑ k ∈ Finset.Icc 2 10000, 1 / √↑k < 198",
+          "endPos": {
+            "line": 3,
+            "column": 69
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 258.59
+    }
+  },
+  {
+    "problem_id": "amc12a_2003_p23",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2003_p23 (S : Finset ℕ)\n  (h₀ : ∀ k : ℕ, k ∈ S ↔ 0 < k ∧ (k * k : ℕ) ∣ ∏ i ∈ Finset.Icc 1 9, i !) :\n  S.card = 504 ∨ S.card = 672 ∨ S.card = 864 ∨ S.card = 936 ∨ S.card = 1008 := by\n  1! = 1\n2! = 2\n3! = 6\n4! = 24\n5! = 120\n6! = 720\n7! = 5040\n8! = 40320\n9! = 362880",
+    "full_code": "theorem amc12a_2003_p23 (S : Finset ℕ)\n  (h₀ : ∀ k : ℕ, k ∈ S ↔ 0 < k ∧ (k * k : ℕ) ∣ ∏ i ∈ Finset.Icc 1 9, i !) :\n  S.card = 504 ∨ S.card = 672 ∨ S.card = 864 ∨ S.card = 936 ∨ S.card = 1008 := by\n  1! = 1\n2! = 2\n3! = 6\n4! = 24\n5! = 120\n6! = 720\n7! = 5040\n8! = 40320\n9! = 362880",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 72
+          },
+          "endPos": {
+            "line": 3,
+            "column": 73
+          },
+          "data": "unexpected token ')'; expected term"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 260.01
+    }
+  },
+  {
+    "problem_id": "amc12a_2008_p25",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2008_p25\n  (a b : ℕ → ℝ) (h₀ : ∀ n, a (n + 1) = Real.sqrt 3 * a n - b n)\n  (h₁ : ∀ n, b (n + 1) = Real.sqrt 3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) :\n  a 1 + b 1 = -1 / 2 ^ 97 ∨ a 1 + b 1 = -1 / 2 ^ 99 ∨ a 1 + b 1 = 0 ∨ a 1 + b 1 = 1 / 2 ^ 98 ∨ a 1 + b 1 = 1 / 2 ^ 96 := by sorry",
+    "full_code": "theorem amc12a_2008_p25\n  (a b : ℕ → ℝ) (h₀ : ∀ n, a (n + 1) = Real.sqrt 3 * a n - b n)\n  (h₁ : ∀ n, b (n + 1) = Real.sqrt 3 * b n + a n) (h₂ : a 100 = 2) (h₃ : b 100 = 4) :\n  a 1 + b 1 = -1 / 2 ^ 97 ∨ a 1 + b 1 = -1 / 2 ^ 99 ∨ a 1 + b 1 = 0 ∨ a 1 + b 1 = 1 / 2 ^ 98 ∨ a 1 + b 1 = 1 / 2 ^ 96 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 5,
+            "column": 124
+          },
+          "goal": "a b : ℕ → ℝ\nh₀ : ∀ (n : ℕ), a (n + 1) = √3 * a n - b n\nh₁ : ∀ (n : ℕ), b (n + 1) = √3 * b n + a n\nh₂ : a 100 = 2\nh₃ : b 100 = 4\n⊢ a 1 + b 1 = -1 / 2 ^ 97 ∨ a 1 + b 1 = -1 / 2 ^ 99 ∨ a 1 + b 1 = 0 ∨ a 1 + b 1 = 1 / 2 ^ 98 ∨ a 1 + b 1 = 1 / 2 ^ 96",
+          "endPos": {
+            "line": 5,
+            "column": 129
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 271.06
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p25",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2020_p25\n  (a : ℚ)\n  (ha₀ : 0 < a)\n  (S : Finset ℝ)\n  (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2)\n  (h₁ : (∑ k ∈ S, k) = 420)\n  (X : ℤ)\n  (hX : X = ↑a.den + a.num ) :\n  X = 245 ∨ X = 593 ∨ X = 929 ∨ X = 1331 ∨ X = 1332 := by sorry",
+    "full_code": "theorem amc12a_2020_p25\n  (a : ℚ)\n  (ha₀ : 0 < a)\n  (S : Finset ℝ)\n  (h₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2)\n  (h₁ : (∑ k ∈ S, k) = 420)\n  (X : ℤ)\n  (hX : X = ↑a.den + a.num ) :\n  X = 245 ∨ X = 593 ∨ X = 929 ∨ X = 1331 ∨ X = 1332 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 10,
+            "column": 58
+          },
+          "goal": "a : ℚ\nha₀ : 0 < a\nS : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ ↑⌊x⌋ * (x - ↑⌊x⌋) = ↑a * x ^ 2\nh₁ : ∑ k ∈ S, k = 420\nX : ℤ\nhX : X = ↑a.den + a.num\n⊢ X = 245 ∨ X = 593 ∨ X = 929 ∨ X = 1331 ∨ X = 1332",
+          "endPos": {
+            "line": 10,
+            "column": 63
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 267.38
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p4",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2020_p4 (S : Finset ℕ)\n  (h₀ : ∀ n : ℕ, n ∈ S ↔ 1000 ≤ n ∧ n ≤ 9999 ∧ (∀ d : ℕ, d ∈ Nat.digits 10 n → Even d) ∧ 5 ∣ n) :\n  S.card = 80 ∨ S.card = 100 ∨ S.card = 125 ∨ S.card = 200 ∨ S.card = 500 := by sorry",
+    "full_code": "theorem amc12a_2020_p4 (S : Finset ℕ)\n  (h₀ : ∀ n : ℕ, n ∈ S ↔ 1000 ≤ n ∧ n ≤ 9999 ∧ (∀ d : ℕ, d ∈ Nat.digits 10 n → Even d) ∧ 5 ∣ n) :\n  S.card = 80 ∨ S.card = 100 ∨ S.card = 125 ∨ S.card = 200 ∨ S.card = 500 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 4,
+            "column": 80
+          },
+          "goal": "S : Finset ℕ\nh₀ : ∀ (n : ℕ), n ∈ S ↔ 1000 ≤ n ∧ n ≤ 9999 ∧ (∀ d ∈ Nat.digits 10 n, Even d) ∧ 5 ∣ n\n⊢ S.card = 80 ∨ S.card = 100 ∨ S.card = 125 ∨ S.card = 200 ∨ S.card = 500",
+          "endPos": {
+            "line": 4,
+            "column": 85
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.1
+    }
+  },
+  {
+    "problem_id": "amc12a_2020_p9",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2020_p9 (S : Finset ℝ)\n  (h₀ : ∀ x : ℝ, x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * Real.pi ∧ Real.tan (2 * x) = Real.cos (x / 2)) :\n  S.card = 1 ∨ S.card = 2 ∨ S.card = 3 ∨ S.card = 4 ∨ S.card = 5 := by sorry",
+    "full_code": "theorem amc12a_2020_p9 (S : Finset ℝ)\n  (h₀ : ∀ x : ℝ, x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * Real.pi ∧ Real.tan (2 * x) = Real.cos (x / 2)) :\n  S.card = 1 ∨ S.card = 2 ∨ S.card = 3 ∨ S.card = 4 ∨ S.card = 5 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 18,
+          "pos": {
+            "line": 4,
+            "column": 71
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ 2 * Real.pi ∧ (2 * x).tan = (x / 2).cos\n⊢ S.card = 1 ∨ S.card = 2 ∨ S.card = 3 ∨ S.card = 4 ∨ S.card = 5",
+          "endPos": {
+            "line": 4,
+            "column": 76
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 265.48
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p12",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2021_p12 (a b c d : ℝ) (f : ℂ → ℂ)\n  (h₀ : ∀ z, f z = z ^ 6 - 10 * z ^ 5 + a * z ^ 4 + b * z ^ 3 + c * z ^ 2 + d * z + 16)\n  (h₁ : ∀ z, f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑(Int.floor z.re) = z.re) :\n  b = -88 ∨ b = -80 ∨ b = -64 ∨ b = -41 ∨ b = -40 := by sorry",
+    "full_code": "theorem amc12a_2021_p12 (a b c d : ℝ) (f : ℂ → ℂ)\n  (h₀ : ∀ z, f z = z ^ 6 - 10 * z ^ 5 + a * z ^ 4 + b * z ^ 3 + c * z ^ 2 + d * z + 16)\n  (h₁ : ∀ z, f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑(Int.floor z.re) = z.re) :\n  b = -88 ∨ b = -80 ∨ b = -64 ∨ b = -41 ∨ b = -40 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 5,
+            "column": 56
+          },
+          "goal": "a b c d : ℝ\nf : ℂ → ℂ\nh₀ : ∀ (z : ℂ), f z = z ^ 6 - 10 * z ^ 5 + ↑a * z ^ 4 + ↑b * z ^ 3 + ↑c * z ^ 2 + ↑d * z + 16\nh₁ : ∀ (z : ℂ), f z = 0 → z.im = 0 ∧ 0 < z.re ∧ ↑⌊z.re⌋ = z.re\n⊢ b = -88 ∨ b = -80 ∨ b = -64 ∨ b = -41 ∨ b = -40",
+          "endPos": {
+            "line": 5,
+            "column": 61
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 280.49
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p14",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2021_p14\n  (X : ℝ)\n  (hX : X = (∑ k ∈ Finset.Icc 1 20, Real.logb (5 ^ k) (3 ^ k ^ 2)) * ∑ k ∈ Finset.Icc 1 100, Real.logb (9 ^ k) (25 ^ k)) :\n  X = 21 ∨ X = 100 * Real.logb 5 3 ∨ X = 200 * Real.logb 5 3 ∨ X = 2200 ∨ X = 21000 := by sorry",
+    "full_code": "theorem amc12a_2021_p14\n  (X : ℝ)\n  (hX : X = (∑ k ∈ Finset.Icc 1 20, Real.logb (5 ^ k) (3 ^ k ^ 2)) * ∑ k ∈ Finset.Icc 1 100, Real.logb (9 ^ k) (25 ^ k)) :\n  X = 21 ∨ X = 100 * Real.logb 5 3 ∨ X = 200 * Real.logb 5 3 ∨ X = 2200 ∨ X = 21000 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 5,
+            "column": 90
+          },
+          "goal": "X : ℝ\nhX : X = (∑ k ∈ Finset.Icc 1 20, (5 ^ k).logb (3 ^ k ^ 2)) * ∑ k ∈ Finset.Icc 1 100, (9 ^ k).logb (25 ^ k)\n⊢ X = 21 ∨ X = 100 * Real.logb 5 3 ∨ X = 200 * Real.logb 5 3 ∨ X = 2200 ∨ X = 21000",
+          "endPos": {
+            "line": 5,
+            "column": 95
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 275.56
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p19",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2021_p19 (S : Finset ℝ)\n  (h₀ : ∀ x : ℝ, x ∈ S ↔ 0 ≤ x ∧ x ≤ Real.pi ∧ Real.sin (Real.pi / 2 * Real.cos x) = Real.cos (Real.pi / 2 * Real.sin x)) :\n  S.card = 0 ∨ S.card = 1 ∨ S.card = 2 ∨ S.card = 3 ∨ S.card = 4 := by sorry",
+    "full_code": "theorem amc12a_2021_p19 (S : Finset ℝ)\n  (h₀ : ∀ x : ℝ, x ∈ S ↔ 0 ≤ x ∧ x ≤ Real.pi ∧ Real.sin (Real.pi / 2 * Real.cos x) = Real.cos (Real.pi / 2 * Real.sin x)) :\n  S.card = 0 ∨ S.card = 1 ∨ S.card = 2 ∨ S.card = 3 ∨ S.card = 4 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 62,
+          "pos": {
+            "line": 4,
+            "column": 71
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 ≤ x ∧ x ≤ Real.pi ∧ (Real.pi / 2 * x.cos).sin = (Real.pi / 2 * x.sin).cos\n⊢ S.card = 0 ∨ S.card = 1 ∨ S.card = 2 ∨ S.card = 3 ∨ S.card = 4",
+          "endPos": {
+            "line": 4,
+            "column": 76
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 260.78
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p22",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2021_p22 (a b c : ℝ) (f : ℝ → ℝ) (h₀ : ∀ x, f x = x ^ 3 + a * x ^ 2 + b * x + c)\n  (h₁ : f (Real.cos (2 * Real.pi / 7)) = 0 ∧ f (Real.cos (4 * Real.pi / 7)) = 0 ∧ f (Real.cos (6 * Real.pi / 7)) = 0) :\n  a * b * c = -3 / 49 ∨ a * b * c = -1 / 28 ∨ a * b * c = (7^(1/3:ℝ)) / 64 ∨ a * b * c = 1 / 32 ∨ a * b * c = 1 / 28 := by sorry",
+    "full_code": "theorem amc12a_2021_p22 (a b c : ℝ) (f : ℝ → ℝ) (h₀ : ∀ x, f x = x ^ 3 + a * x ^ 2 + b * x + c)\n  (h₁ : f (Real.cos (2 * Real.pi / 7)) = 0 ∧ f (Real.cos (4 * Real.pi / 7)) = 0 ∧ f (Real.cos (6 * Real.pi / 7)) = 0) :\n  a * b * c = -3 / 49 ∨ a * b * c = -1 / 28 ∨ a * b * c = (7^(1/3:ℝ)) / 64 ∨ a * b * c = 1 / 32 ∨ a * b * c = 1 / 28 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 4,
+            "column": 123
+          },
+          "goal": "a b c : ℝ\nf : ℝ → ℝ\nh₀ : ∀ (x : ℝ), f x = x ^ 3 + a * x ^ 2 + b * x + c\nh₁ : f (2 * Real.pi / 7).cos = 0 ∧ f (4 * Real.pi / 7).cos = 0 ∧ f (6 * Real.pi / 7).cos = 0\n⊢ a * b * c = -3 / 49 ∨ a * b * c = -1 / 28 ∨ a * b * c = 7 ^ (1 / 3) / 64 ∨ a * b * c = 1 / 32 ∨ a * b * c = 1 / 28",
+          "endPos": {
+            "line": 4,
+            "column": 128
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 274.65
+    }
+  },
+  {
+    "problem_id": "amc12a_2021_p25",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12a_2021_p25\n  (m X : ℕ)\n  (hm₀ : 0 < m)\n  (f : ℕ → ℝ)\n  (h₀ : ∀ n, 0 < n → f n = ((Nat.divisors n).card)/(n^((1:ℝ)/3)))\n  (h₁ : ∀ n ≠ m, 0 < n → f n < f m)\n  (hX : X = (Nat.digits 10 m).sum) :\n  X = 5 ∨ X = 6 ∨ X = 7 ∨ X = 8 ∨ X = 9 := by sorry",
+    "full_code": "theorem amc12a_2021_p25\n  (m X : ℕ)\n  (hm₀ : 0 < m)\n  (f : ℕ → ℝ)\n  (h₀ : ∀ n, 0 < n → f n = ((Nat.divisors n).card)/(n^((1:ℝ)/3)))\n  (h₁ : ∀ n ≠ m, 0 < n → f n < f m)\n  (hX : X = (Nat.digits 10 m).sum) :\n  X = 5 ∨ X = 6 ∨ X = 7 ∨ X = 8 ∨ X = 9 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 34,
+          "pos": {
+            "line": 9,
+            "column": 46
+          },
+          "goal": "m X : ℕ\nhm₀ : 0 < m\nf : ℕ → ℝ\nh₀ : ∀ (n : ℕ), 0 < n → f n = ↑n.divisors.card / ↑n ^ (1 / 3)\nh₁ : ∀ (n : ℕ), n ≠ m → 0 < n → f n < f m\nhX : X = (Nat.digits 10 m).sum\n⊢ X = 5 ∨ X = 6 ∨ X = 7 ∨ X = 8 ∨ X = 9",
+          "endPos": {
+            "line": 9,
+            "column": 51
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 268.52
+    }
+  },
+  {
+    "problem_id": "amc12b_2002_p4",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12b_2002_p4\n  (n : ℕ)\n  (h₀ : 0 < n)\n  (h₁ : ((1:ℚ) / (2 : ℚ) + 1 / (3 : ℚ) + 1 / (7 : ℚ) + 1 / (↑n : ℚ)).isInt) :\n  ¬ 2 ∣ n ∨ ¬ 3 ∣ n ∨ ¬ 6 ∣ n ∨ ¬ 7 ∣ n ∨ ¬ 84 < n := by sorry",
+    "full_code": "theorem amc12b_2002_p4\n  (n : ℕ)\n  (h₀ : 0 < n)\n  (h₁ : ((1:ℚ) / (2 : ℚ) + 1 / (3 : ℚ) + 1 / (7 : ℚ) + 1 / (↑n : ℚ)).isInt) :\n  ¬ 2 ∣ n ∨ ¬ 3 ∣ n ∨ ¬ 6 ∣ n ∨ ¬ 7 ∣ n ∨ ¬ 84 < n := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 6,
+            "column": 57
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\nh₁ : (1 / 2 + 1 / 3 + 1 / 7 + 1 / ↑n).isInt = true\n⊢ ¬2 ∣ n ∨ ¬3 ∣ n ∨ ¬6 ∣ n ∨ ¬7 ∣ n ∨ ¬84 < n",
+          "endPos": {
+            "line": 6,
+            "column": 62
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 257.7
+    }
+  },
+  {
+    "problem_id": "amc12b_2021_p13",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem amc12b_2021_p13 (S : Finset ℝ)\n  (h₀ :\n  ∀ x : ℝ, x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * Real.sin x + 5 * Real.cos (3 * x) = 0) :\n  S.card = 2 ∨ S.card = 4 ∨ S.card = 5 ∨ S.card = 6 ∨ S.card = 8 := by sorry",
+    "full_code": "theorem amc12b_2021_p13 (S : Finset ℝ)\n  (h₀ :\n  ∀ x : ℝ, x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * Real.sin x + 5 * Real.cos (3 * x) = 0) :\n  S.card = 2 ∨ S.card = 4 ∨ S.card = 5 ∨ S.card = 6 ∨ S.card = 8 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 76,
+          "pos": {
+            "line": 5,
+            "column": 71
+          },
+          "goal": "S : Finset ℝ\nh₀ : ∀ (x : ℝ), x ∈ S ↔ 0 < x ∧ x ≤ 2 * Real.pi ∧ 1 - 3 * x.sin + 5 * (3 * x).cos = 0\n⊢ S.card = 2 ∨ S.card = 4 ∨ S.card = 5 ∨ S.card = 6 ∨ S.card = 8",
+          "endPos": {
+            "line": 5,
+            "column": 76
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.42
+    }
+  },
+  {
+    "problem_id": "imo_1965_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1965_p2 (x y z : ℝ) (a : ℕ → ℝ) (h₀ : 0 < a 0 ∧ 0 < a 4 ∧ 0 < a 8)\n  (h₁ : a 1 < 0 ∧ a 2 < 0) (h₂ : a 3 < 0 ∧ a 5 < 0) (h₃ : a 6 < 0 ∧ a 7 < 0)\n  (h₄ : 0 < a 0 + a 1 + a 2) (h₅ : 0 < a 3 + a 4 + a 5) (h₆ : 0 < a 6 + a 7 + a 8)\n  (h₇ : a 0 * x + a 1 * y + a 2 * z = 0) (h₈ : a 3 * x + a 4 * y + a 5 * z = 0)\n  (h₉ : a 6 * x + a 7 * y + a 8 * z = 0) : x = 0 ∧ y = 0 ∧ z = 0 := by\n  have h_main : x = 0 ∧ y = 0 ∧ z = 0 := by sorry\n  sorry",
+    "full_code": "theorem imo_1965_p2 (x y z : ℝ) (a : ℕ → ℝ) (h₀ : 0 < a 0 ∧ 0 < a 4 ∧ 0 < a 8)\n  (h₁ : a 1 < 0 ∧ a 2 < 0) (h₂ : a 3 < 0 ∧ a 5 < 0) (h₃ : a 6 < 0 ∧ a 7 < 0)\n  (h₄ : 0 < a 0 + a 1 + a 2) (h₅ : 0 < a 3 + a 4 + a 5) (h₆ : 0 < a 6 + a 7 + a 8)\n  (h₇ : a 0 * x + a 1 * y + a 2 * z = 0) (h₈ : a 3 * x + a 4 * y + a 5 * z = 0)\n  (h₉ : a 6 * x + a 7 * y + a 8 * z = 0) : x = 0 ∧ y = 0 ∧ z = 0 := by\n  have h_main : x = 0 ∧ y = 0 ∧ z = 0 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 7,
+            "column": 44
+          },
+          "goal": "x y z : ℝ\na : ℕ → ℝ\nh₀ : 0 < a 0 ∧ 0 < a 4 ∧ 0 < a 8\nh₁ : a 1 < 0 ∧ a 2 < 0\nh₂ : a 3 < 0 ∧ a 5 < 0\nh₃ : a 6 < 0 ∧ a 7 < 0\nh₄ : 0 < a 0 + a 1 + a 2\nh₅ : 0 < a 3 + a 4 + a 5\nh₆ : 0 < a 6 + a 7 + a 8\nh₇ : a 0 * x + a 1 * y + a 2 * z = 0\nh₈ : a 3 * x + a 4 * y + a 5 * z = 0\nh₉ : a 6 * x + a 7 * y + a 8 * z = 0\n⊢ x = 0 ∧ y = 0 ∧ z = 0",
+          "endPos": {
+            "line": 7,
+            "column": 49
+          }
+        },
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "x y z : ℝ\na : ℕ → ℝ\nh₀ : 0 < a 0 ∧ 0 < a 4 ∧ 0 < a 8\nh₁ : a 1 < 0 ∧ a 2 < 0\nh₂ : a 3 < 0 ∧ a 5 < 0\nh₃ : a 6 < 0 ∧ a 7 < 0\nh₄ : 0 < a 0 + a 1 + a 2\nh₅ : 0 < a 3 + a 4 + a 5\nh₆ : 0 < a 6 + a 7 + a 8\nh₇ : a 0 * x + a 1 * y + a 2 * z = 0\nh₈ : a 3 * x + a 4 * y + a 5 * z = 0\nh₉ : a 6 * x + a 7 * y + a 8 * z = 0\nh_main : x = 0 ∧ y = 0 ∧ z = 0\n⊢ x = 0 ∧ y = 0 ∧ z = 0",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 266.76
+    }
+  },
+  {
+    "problem_id": "imo_1968_p5_1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1968_p5_1 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a)\n  (h₁ : ∀ x, f (x + a) = 1 / 2 + Real.sqrt (f x - f x ^ 2)) : ∃ b > 0, ∀x, f (x + b) = f x := by sorry",
+    "full_code": "theorem imo_1968_p5_1 (a : ℝ) (f : ℝ → ℝ) (h₀ : 0 < a)\n  (h₁ : ∀ x, f (x + a) = 1 / 2 + Real.sqrt (f x - f x ^ 2)) : ∃ b > 0, ∀x, f (x + b) = f x := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 3,
+            "column": 97
+          },
+          "goal": "a : ℝ\nf : ℝ → ℝ\nh₀ : 0 < a\nh₁ : ∀ (x : ℝ), f (x + a) = 1 / 2 + √(f x - f x ^ 2)\n⊢ ∃ b > 0, ∀ (x : ℝ), f (x + b) = f x",
+          "endPos": {
+            "line": 3,
+            "column": 102
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.51
+    }
+  },
+  {
+    "problem_id": "imo_1969_p2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by sorry",
+    "full_code": "theorem imo_1969_p2\n  (m n : ℝ)\n  (k : ℕ)\n  (a : ℕ → ℝ)\n  (f : ℝ → ℝ)\n  (h₀ : 0 < k)\n  (h₁ : ∀ x, f x = ∑ i ∈ Finset.range k, Real.cos (a i + x) / 2 ^ i)\n  (h₂ : f m = 0)\n  (h₃ : f n = 0) :\n  ∃ t : ℤ, m - n = t * Real.pi := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 11,
+            "column": 37
+          },
+          "goal": "m n : ℝ\nk : ℕ\na : ℕ → ℝ\nf : ℝ → ℝ\nh₀ : 0 < k\nh₁ : ∀ (x : ℝ), f x = ∑ i ∈ Finset.range k, (a i + x).cos / 2 ^ i\nh₂ : f m = 0\nh₃ : f n = 0\n⊢ ∃ t, m - n = ↑t * Real.pi",
+          "endPos": {
+            "line": 11,
+            "column": 42
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 265.31
+    }
+  },
+  {
+    "problem_id": "imo_1974_p3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1974_p3 (n : ℕ) :\n  ¬5 ∣ ∑ k ∈ Finset.range (n + 1), Nat.choose (2 * n + 1) (2 * k + 1) * 2 ^ (3 * k) := by sorry",
+    "full_code": "theorem imo_1974_p3 (n : ℕ) :\n  ¬5 ∣ ∑ k ∈ Finset.range (n + 1), Nat.choose (2 * n + 1) (2 * k + 1) * 2 ^ (3 * k) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 3,
+            "column": 90
+          },
+          "goal": "n : ℕ\n⊢ ¬5 ∣ ∑ k ∈ Finset.range (n + 1), (2 * n + 1).choose (2 * k + 1) * 2 ^ (3 * k)",
+          "endPos": {
+            "line": 3,
+            "column": 95
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 256.64
+    }
+  },
+  {
+    "problem_id": "imo_1977_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1977_p6 (f : ℕ+ → ℕ+) (h₀ : ∀ n, f (f n) < f (n + 1)) : ∀ n, f n = n := by sorry",
+    "full_code": "theorem imo_1977_p6 (f : ℕ+ → ℕ+) (h₀ : ∀ n, f (f n) < f (n + 1)) : ∀ n, f n = n := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 13,
+          "pos": {
+            "line": 2,
+            "column": 87
+          },
+          "goal": "f : ℕ+ → ℕ+\nh₀ : ∀ (n : ℕ+), f (f n) < f (n + 1)\n⊢ ∀ (n : ℕ+), f n = n",
+          "endPos": {
+            "line": 2,
+            "column": 92
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.85
+    }
+  },
+  {
+    "problem_id": "imo_1982_p1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1982_p1 (f : ℕ → ℕ)\n  (h₀ : ∀ m n, 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1)\n  (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = imo_1982_p1_solution := by sorry",
+    "full_code": "theorem imo_1982_p1 (f : ℕ → ℕ)\n  (h₀ : ∀ m n, 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1)\n  (h₁ : f 2 = 0) (h₂ : 0 < f 3) (h₃ : f 9999 = 3333) : f 1982 = imo_1982_p1_solution := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 4,
+            "column": 91
+          },
+          "goal": "imo_1982_p1_solution : ℕ\nf : ℕ → ℕ\nh₀ : ∀ (m n : ℕ), 0 < m ∧ 0 < n → f (m + n) - f m - f n = 0 ∨ f (m + n) - f m - f n = 1\nh₁ : f 2 = 0\nh₂ : 0 < f 3\nh₃ : f 9999 = 3333\n⊢ f 1982 = imo_1982_p1_solution",
+          "endPos": {
+            "line": 4,
+            "column": 96
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 267.01
+    }
+  },
+  {
+    "problem_id": "imo_1984_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1984_p6\n  (a b c d k m : ℤ)\n  (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d)\n  (h₁ : Odd a ∧ Odd b ∧ Odd c ∧ Odd d)\n  (h₂ : a < b ∧ b < c ∧ c < d)\n  (h₃ : a * d = b * c)\n  (h₄ : a + d = (2:ℝ) ^ k)\n  (h₅ : b + c = (2:ℝ) ^ m) :\n  a = 1 := by\n  have h₆ : a = 1 := by sorry\n  sorry",
+    "full_code": "theorem imo_1984_p6\n  (a b c d k m : ℤ)\n  (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d)\n  (h₁ : Odd a ∧ Odd b ∧ Odd c ∧ Odd d)\n  (h₂ : a < b ∧ b < c ∧ c < d)\n  (h₃ : a * d = b * c)\n  (h₄ : a + d = (2:ℝ) ^ k)\n  (h₅ : b + c = (2:ℝ) ^ m) :\n  a = 1 := by\n  have h₆ : a = 1 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 11,
+            "column": 24
+          },
+          "goal": "a b c d k m : ℤ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₁ : Odd a ∧ Odd b ∧ Odd c ∧ Odd d\nh₂ : a < b ∧ b < c ∧ c < d\nh₃ : a * d = b * c\nh₄ : ↑a + ↑d = 2 ^ k\nh₅ : ↑b + ↑c = 2 ^ m\n⊢ a = 1",
+          "endPos": {
+            "line": 11,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 12,
+            "column": 2
+          },
+          "goal": "a b c d k m : ℤ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₁ : Odd a ∧ Odd b ∧ Odd c ∧ Odd d\nh₂ : a < b ∧ b < c ∧ c < d\nh₃ : a * d = b * c\nh₄ : ↑a + ↑d = 2 ^ k\nh₅ : ↑b + ↑c = 2 ^ m\nh₆ : a = 1\n⊢ a = 1",
+          "endPos": {
+            "line": 12,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 279.63
+    }
+  },
+  {
+    "problem_id": "imo_1985_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1985_p6\n  (f : ℕ → ℝ → ℝ)\n  (h₀ : ∀ x, f 1 x = x)\n  (h₁ : ∀ n x, 0 < n → f (n + 1) x = f n x * (f n x + 1 / n)) :\n  ∃! a, ∀ n, 0 < n → 0 < f n a ∧ f n a < f (n + 1) a ∧ f (n + 1) a < 1 := by sorry",
+    "full_code": "theorem imo_1985_p6\n  (f : ℕ → ℝ → ℝ)\n  (h₀ : ∀ x, f 1 x = x)\n  (h₁ : ∀ n x, 0 < n → f (n + 1) x = f n x * (f n x + 1 / n)) :\n  ∃! a, ∀ n, 0 < n → 0 < f n a ∧ f n a < f (n + 1) a ∧ f (n + 1) a < 1 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 6,
+            "column": 77
+          },
+          "goal": "f : ℕ → ℝ → ℝ\nh₀ : ∀ (x : ℝ), f 1 x = x\nh₁ : ∀ (n : ℕ) (x : ℝ), 0 < n → f (n + 1) x = f n x * (f n x + 1 / ↑n)\n⊢ ∃! a, ∀ (n : ℕ), 0 < n → 0 < f n a ∧ f n a < f (n + 1) a ∧ f (n + 1) a < 1",
+          "endPos": {
+            "line": 6,
+            "column": 82
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 579.64
+    }
+  },
+  {
+    "problem_id": "imo_1992_p1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1992_p1\n  (p q r : ℤ)\n  (h₀ : 1 < p ∧ p < q ∧ q < r) :\n  (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1 ↔\n  (p, q, r) ∈ (Set.univ : Set (ℤ × ℤ × ℤ)) := by sorry",
+    "full_code": "theorem imo_1992_p1\n  (p q r : ℤ)\n  (h₀ : 1 < p ∧ p < q ∧ q < r) :\n  (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1 ↔\n  (p, q, r) ∈ (Set.univ : Set (ℤ × ℤ × ℤ)) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 6,
+            "column": 49
+          },
+          "goal": "p q r : ℤ\nh₀ : 1 < p ∧ p < q ∧ q < r\n⊢ (p - 1) * (q - 1) * (r - 1) ∣ p * q * r - 1 ↔ (p, q, r) ∈ Set.univ",
+          "endPos": {
+            "line": 6,
+            "column": 54
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 258.14
+    }
+  },
+  {
+    "problem_id": "imo_1997_p5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_1997_p5\n  (x y : ℕ)\n  (h₀ : 1 ≤ x ∧ 1 ≤ y) :\n   x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ { (x, y) | x ^ (y ^ 2) = y ^ x } := by sorry",
+    "full_code": "theorem imo_1997_p5\n  (x y : ℕ)\n  (h₀ : 1 ≤ x ∧ 1 ≤ y) :\n   x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ { (x, y) | x ^ (y ^ 2) = y ^ x } := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 37,
+          "pos": {
+            "line": 5,
+            "column": 71
+          },
+          "goal": "x y : ℕ\nh₀ : 1 ≤ x ∧ 1 ≤ y\n⊢ x ^ y ^ 2 = y ^ x ↔ (x, y) ∈ {x | @imo_1997_p5.match_1 (fun x => Prop) x fun x y => x ^ y ^ 2 = y ^ x}",
+          "endPos": {
+            "line": 5,
+            "column": 76
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 251.17
+    }
+  },
+  {
+    "problem_id": "imo_2001_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_2001_p6 (a b c d : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d) (h₁ : d < c) (h₂ : c < b)\n  (h₃ : b < a) (h₄ : a * c + b * d = (b + d + a - c) * (b + d + c - a)) :\n  ¬Nat.Prime (a * b + c * d) := by sorry",
+    "full_code": "theorem imo_2001_p6 (a b c d : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d) (h₁ : d < c) (h₂ : c < b)\n  (h₃ : b < a) (h₄ : a * c + b * d = (b + d + a - c) * (b + d + c - a)) :\n  ¬Nat.Prime (a * b + c * d) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 4,
+            "column": 35
+          },
+          "goal": "a b c d : ℕ\nh₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d\nh₁ : d < c\nh₂ : c < b\nh₃ : b < a\nh₄ : a * c + b * d = (b + d + a - c) * (b + d + c - a)\n⊢ ¬(a * b + c * d).Prime",
+          "endPos": {
+            "line": 4,
+            "column": 40
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 260.73
+    }
+  },
+  {
+    "problem_id": "imo_2019_p1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imo_2019_p1 (f : ℤ → ℤ) :\n  (∀ a b, f (2 * a) + 2 * f b = f (f (a + b))) ↔ f ∈ (Set.univ : Set (ℤ → ℤ)) := by sorry",
+    "full_code": "theorem imo_2019_p1 (f : ℤ → ℤ) :\n  (∀ a b, f (2 * a) + 2 * f b = f (f (a + b))) ↔ f ∈ (Set.univ : Set (ℤ → ℤ)) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 3,
+            "column": 84
+          },
+          "goal": "f : ℤ → ℤ\n⊢ (∀ (a b : ℤ), f (2 * a) + 2 * f b = f (f (a + b))) ↔ f ∈ Set.univ",
+          "endPos": {
+            "line": 3,
+            "column": 89
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 246.63
+    }
+  },
+  {
+    "problem_id": "imosl_2007_algebra_p6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem imosl_2007_algebra_p6 (a : ℕ → NNReal) (h₀ : (∑ x ∈Finset.range 100, a (x + 1) ^ 2) = 1) :\n  (∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by sorry",
+    "full_code": "theorem imosl_2007_algebra_p6 (a : ℕ → NNReal) (h₀ : (∑ x ∈Finset.range 100, a (x + 1) ^ 2) = 1) :\n  (∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2)) + a 100 ^ 2 * a 1 < 12 / 25 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 3,
+            "column": 87
+          },
+          "goal": "a : ℕ → NNReal\nh₀ : ∑ x ∈ Finset.range 100, a (x + 1) ^ 2 = 1\n⊢ ∑ x ∈ Finset.range 99, a (x + 1) ^ 2 * a (x + 2) + a 100 ^ 2 * a 1 < 12 / 25",
+          "endPos": {
+            "line": 3,
+            "column": 92
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.4
+    }
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem induction_pord1p1on2powklt5on2\n  (n : ℕ) (h₀ : 0 < n) :\n  (∏ k ∈ Finset.Icc (1:ℕ) n, ((1:ℝ) + (1 : ℝ) / 2 ^ k)) < (5 / 2 : ℝ) := by sorry",
+    "full_code": "theorem induction_pord1p1on2powklt5on2\n  (n : ℕ) (h₀ : 0 < n) :\n  (∏ k ∈ Finset.Icc (1:ℕ) n, ((1:ℝ) + (1 : ℝ) / 2 ^ k)) < (5 / 2 : ℝ) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 4,
+            "column": 76
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\n⊢ ∏ k ∈ Finset.Icc 1 n, (1 + 1 / 2 ^ k) < 5 / 2",
+          "endPos": {
+            "line": 4,
+            "column": 81
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.5
+    }
+  },
+  {
+    "problem_id": "mathd_algebra_320",
+    "complete": true,
+    "strategy": "whole_proof",
+    "attempts": 9,
+    "code": "theorem mathd_algebra_320\n  (x : ℝ) (a b c : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < x)\n  (h₁ : 2 * x ^ 2 = 4 * x + 9) (h₂ : x = (a + Real.sqrt b) / c) (h₃ : ¬ ∃d:ℕ , d ^ 2 ∣ b) : a + b + c = 26 := by\n  have h₄ : ∃ (d : ℕ), d ^ 2 ∣ b := by\n    refine' ⟨1, _⟩\n    -- We choose d = 1 and show that 1^2 divides b.\n    -- Since b is a positive integer, 1 divides b.\n    have h₄₁ : (1 : ℕ) ^ 2 ∣ b := by\n      -- Prove that 1 divides b.\n      norm_num [Nat.dvd_iff_mod_eq_zero]\n      <;>\n      (try omega) <;>\n      (try linarith) <;>\n      (try nlinarith)\n    exact h₄₁\n  -- Now we have a contradiction because h₃ states that no such d exists.\n  exfalso\n  apply h₃\n  exact h₄\n  <;>\n  (try omega) <;>\n  (try linarith) <;>\n  (try nlinarith)",
+    "full_code": "theorem mathd_algebra_320\n  (x : ℝ) (a b c : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < x)\n  (h₁ : 2 * x ^ 2 = 4 * x + 9) (h₂ : x = (a + Real.sqrt b) / c) (h₃ : ¬ ∃d:ℕ , d ^ 2 ∣ b) : a + b + c = 26 := by\n  have h₄ : ∃ (d : ℕ), d ^ 2 ∣ b := by\n    refine' ⟨1, _⟩\n    -- We choose d = 1 and show that 1^2 divides b.\n    -- Since b is a positive integer, 1 divides b.\n    have h₄₁ : (1 : ℕ) ^ 2 ∣ b := by\n      -- Prove that 1 divides b.\n      norm_num [Nat.dvd_iff_mod_eq_zero]\n      <;>\n      (try omega) <;>\n      (try linarith) <;>\n      (try nlinarith)\n    exact h₄₁\n  -- Now we have a contradiction because h₃ states that no such d exists.\n  exfalso\n  apply h₃\n  exact h₄\n  <;>\n  (try omega) <;>\n  (try linarith) <;>\n  (try nlinarith)",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 162.42
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_451",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem mathd_numbertheory_451 (S : Finset ℕ)\n  (h₀ :\n  ∀ n : ℕ,\n  n ∈ S ↔\n  2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, (Nat.divisors m).card = 4 ∧ (∑ p ∈ Nat.divisors m, p) = n) :\n  (∑ k ∈ S, k) = 2016 := by sorry",
+    "full_code": "theorem mathd_numbertheory_451 (S : Finset ℕ)\n  (h₀ :\n  ∀ n : ℕ,\n  n ∈ S ↔\n  2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, (Nat.divisors m).card = 4 ∧ (∑ p ∈ Nat.divisors m, p) = n) :\n  (∑ k ∈ S, k) = 2016 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 7,
+            "column": 28
+          },
+          "goal": "S : Finset ℕ\nh₀ : ∀ (n : ℕ), n ∈ S ↔ 2010 ≤ n ∧ n ≤ 2019 ∧ ∃ m, m.divisors.card = 4 ∧ ∑ p ∈ m.divisors, p = n\n⊢ ∑ k ∈ S, k = 2016",
+          "endPos": {
+            "line": 7,
+            "column": 33
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 263.47
+    }
+  },
+  {
+    "problem_id": "mathd_numbertheory_764",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem mathd_numbertheory_764 (p : ℕ) (h₀ : Nat.Prime p) (h₁ : 7 ≤ p) :\n  (∑ k ∈ Finset.Icc 1 (p - 2), (k : ZMod p)⁻¹ * ((k : ZMod p) + 1)⁻¹) = 2 := by sorry",
+    "full_code": "theorem mathd_numbertheory_764 (p : ℕ) (h₀ : Nat.Prime p) (h₁ : 7 ≤ p) :\n  (∑ k ∈ Finset.Icc 1 (p - 2), (k : ZMod p)⁻¹ * ((k : ZMod p) + 1)⁻¹) = 2 := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 7,
+          "pos": {
+            "line": 3,
+            "column": 80
+          },
+          "goal": "p : ℕ\nh₀ : p.Prime\nh₁ : 7 ≤ p\n⊢ ∑ k ∈ Finset.Icc 1 (p - 2), (↑k)⁻¹ * (↑k + 1)⁻¹ = 2",
+          "endPos": {
+            "line": 3,
+            "column": 85
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 272.94
+    }
+  },
+  {
+    "problem_id": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem numbertheory_3pow2pownm1mod2pownp3eq2pownp2\n  (n : ℕ)\n  (h₀ : 0 < n) :\n  (3 ^ 2 ^ (n : ℕ) - 1) ≡ 2 ^ ((n : ℕ) + 2) [MOD 2 ^ ((n : ℕ) + 3)] := by sorry",
+    "full_code": "theorem numbertheory_3pow2pownm1mod2pownp3eq2pownp2\n  (n : ℕ)\n  (h₀ : 0 < n) :\n  (3 ^ 2 ^ (n : ℕ) - 1) ≡ 2 ^ ((n : ℕ) + 2) [MOD 2 ^ ((n : ℕ) + 3)] := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 85,
+          "pos": {
+            "line": 5,
+            "column": 74
+          },
+          "goal": "n : ℕ\nh₀ : 0 < n\n⊢ 3 ^ 2 ^ n - 1 ≡ 2 ^ (n + 2) [MOD 2 ^ (n + 3)]",
+          "endPos": {
+            "line": 5,
+            "column": 79
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 258.55
+    }
+  },
+  {
+    "problem_id": "numbertheory_exk2powkeqapb2mulbpa2_aeq1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem numbertheory_exk2powkeqapb2mulbpa2_aeq1 (a b : ℕ) (h₀ : 0 < a ∧ 0 < b)\n  (h₁ : ∃ k > 0, 2 ^ k = (a + b ^ 2) * (b + a ^ 2)) : a = 1 := by\n  have h₂ : a = 1 := by sorry\n  sorry",
+    "full_code": "theorem numbertheory_exk2powkeqapb2mulbpa2_aeq1 (a b : ℕ) (h₀ : 0 < a ∧ 0 < b)\n  (h₁ : ∃ k > 0, 2 ^ k = (a + b ^ 2) * (b + a ^ 2)) : a = 1 := by\n  have h₂ : a = 1 := by sorry\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 72,
+          "pos": {
+            "line": 4,
+            "column": 24
+          },
+          "goal": "a b : ℕ\nh₀ : 0 < a ∧ 0 < b\nh₁ : ∃ k > 0, 2 ^ k = (a + b ^ 2) * (b + a ^ 2)\n⊢ a = 1",
+          "endPos": {
+            "line": 4,
+            "column": 29
+          }
+        },
+        {
+          "proofState": 73,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "a b : ℕ\nh₀ : 0 < a ∧ 0 < b\nh₁ : ∃ k > 0, 2 ^ k = (a + b ^ 2) * (b + a ^ 2)\nh₂ : a = 1\n⊢ a = 1",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 262.8
+    }
+  },
+  {
+    "problem_id": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 128,
+    "code": "theorem numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown (m n : ℕ) (f : ℕ → ℕ)\n  (h₀ : ∀ x, f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) :\n  f (2 ^ m) ∣ f (2 ^ n) := by sorry",
+    "full_code": "theorem numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown (m n : ℕ) (f : ℕ → ℕ)\n  (h₀ : ∀ x, f x = 4 ^ x + 6 ^ x + 9 ^ x) (h₁ : 0 < m ∧ 0 < n) (h₂ : m ≤ n) :\n  f (2 ^ m) ∣ f (2 ^ n) := by sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 4,
+            "column": 30
+          },
+          "goal": "m n : ℕ\nf : ℕ → ℕ\nh₀ : ∀ (x : ℕ), f x = 4 ^ x + 6 ^ x + 9 ^ x\nh₁ : 0 < m ∧ 0 < n\nh₂ : m ≤ n\n⊢ f (2 ^ m) ∣ f (2 ^ n)",
+          "endPos": {
+            "line": 4,
+            "column": 35
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 259.57
+    }
+  }
+]

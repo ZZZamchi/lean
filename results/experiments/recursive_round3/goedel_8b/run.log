@@ -1,0 +1,459 @@
+INFO 04-06 16:44:11 [__init__.py:244] Automatically detected platform cuda.
+Loading model: Goedel-LM/Goedel-Prover-V2-8B
+INFO 04-06 16:44:20 [config.py:823] This model supports multiple tasks: {'classify', 'reward', 'generate', 'embed', 'score'}. Defaulting to 'generate'.
+INFO 04-06 16:44:21 [config.py:1946] Defaulting to use mp for distributed inference
+INFO 04-06 16:44:21 [config.py:2195] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 04-06 16:44:23 [core.py:455] Waiting for init message from front-end.
+INFO 04-06 16:44:23 [core.py:70] Initializing a V1 LLM engine (v0.9.1) with config: model='Goedel-LM/Goedel-Prover-V2-8B', speculative_config=None, tokenizer='Goedel-LM/Goedel-Prover-V2-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Goedel-LM/Goedel-Prover-V2-8B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"max_capture_size":512,"local_cache_dir":null}
+WARNING 04-06 16:44:23 [multiproc_worker_utils.py:307] Reducing Torch parallelism from 192 threads to 1 to avoid unnecessary CPU contention. Set OMP_NUM_THREADS in the external environment to tune this value as needed.
+INFO 04-06 16:44:23 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_7fbe790f'), local_subscribe_addr='ipc:///tmp/faf90cfc-7fb8-4d50-afbb-1f1b957b9a68', remote_subscribe_addr=None, remote_addr_ipv6=False)
+WARNING 04-06 16:44:23 [utils.py:2737] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7efc09b08410>
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:23 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_6e1fc628'), local_subscribe_addr='ipc:///tmp/a71134f8-4c3d-4e35-9632-0ac153ce7834', remote_subscribe_addr=None, remote_addr_ipv6=False)
+WARNING 04-06 16:44:23 [utils.py:2737] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7efc09af90a0>
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:23 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_987ce1a3'), local_subscribe_addr='ipc:///tmp/0ae56d82-f04d-4c8d-b573-5af6b90c46ce', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:24 [utils.py:1126] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:24 [pynccl.py:70] vLLM is using nccl==2.26.2
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:24 [utils.py:1126] Found nccl from library libnccl.so.2
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:24 [pynccl.py:70] vLLM is using nccl==2.26.2
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:24 [custom_all_reduce_utils.py:246] reading GPU P2P access cache from /home/ningmiao/.cache/vllm/gpu_p2p_access_cache_for_2,3.json
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:24 [custom_all_reduce_utils.py:246] reading GPU P2P access cache from /home/ningmiao/.cache/vllm/gpu_p2p_access_cache_for_2,3.json
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:24 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_67fef887'), local_subscribe_addr='ipc:///tmp/c7f258aa-76ef-4092-b2ab-100c8560883e', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:24 [parallel_state.py:1065] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:24 [parallel_state.py:1065] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 1
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m WARNING 04-06 16:44:24 [topk_topp_sampler.py:59] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m WARNING 04-06 16:44:24 [topk_topp_sampler.py:59] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:24 [gpu_model_runner.py:1595] Starting to load model Goedel-LM/Goedel-Prover-V2-8B...
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:24 [gpu_model_runner.py:1595] Starting to load model Goedel-LM/Goedel-Prover-V2-8B...
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:24 [gpu_model_runner.py:1600] Loading model from scratch...
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:25 [cuda.py:252] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:25 [gpu_model_runner.py:1600] Loading model from scratch...
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:25 [cuda.py:252] Using Flash Attention backend on V1 engine.
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:25 [weight_utils.py:292] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:25 [weight_utils.py:292] Using model weights format ['*.safetensors']
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:01,  1.55it/s]
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.45it/s]
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:27 [default_loader.py:272] Loading weights took 1.70 seconds
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.93it/s]
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:28 [gpu_model_runner.py:1624] Model loading took 7.6394 GiB and 2.844840 seconds
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.77it/s]
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.84it/s]
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m 
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:28 [default_loader.py:272] Loading weights took 2.28 seconds
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:29 [gpu_model_runner.py:1624] Model loading took 7.6394 GiB and 3.760031 seconds
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:35 [backends.py:462] Using cache directory: /home/ningmiao/.cache/vllm/torch_compile_cache/eb72cbe6f5/rank_1_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:35 [backends.py:472] Dynamo bytecode transform time: 5.97 s
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:35 [backends.py:462] Using cache directory: /home/ningmiao/.cache/vllm/torch_compile_cache/eb72cbe6f5/rank_0_0 for vLLM's torch.compile
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:35 [backends.py:472] Dynamo bytecode transform time: 6.05 s
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:39 [backends.py:135] Directly load the compiled graph(s) for shape None from the cache, took 4.089 s
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:40 [backends.py:135] Directly load the compiled graph(s) for shape None from the cache, took 4.080 s
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:40 [monitor.py:34] torch.compile takes 5.97 s in total
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:40 [monitor.py:34] torch.compile takes 6.05 s in total
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:44:42 [gpu_worker.py:227] Available KV cache memory: 30.53 GiB
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:44:42 [gpu_worker.py:227] Available KV cache memory: 30.53 GiB
+INFO 04-06 16:44:42 [kv_cache_utils.py:715] GPU KV cache size: 444,544 tokens
+INFO 04-06 16:44:42 [kv_cache_utils.py:719] Maximum concurrency for 8,192 tokens per request: 54.27x
+INFO 04-06 16:44:42 [kv_cache_utils.py:715] GPU KV cache size: 444,544 tokens
+INFO 04-06 16:44:42 [kv_cache_utils.py:719] Maximum concurrency for 8,192 tokens per request: 54.27x
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:45:05 [custom_all_reduce.py:196] Registering 4891 cuda graph addresses
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:45:05 [custom_all_reduce.py:196] Registering 4891 cuda graph addresses
+[1;36m(VllmWorker rank=1 pid=3743430)[0;0m INFO 04-06 16:45:05 [gpu_model_runner.py:2048] Graph capturing finished in 23 secs, took 0.61 GiB
+[1;36m(VllmWorker rank=0 pid=3743429)[0;0m INFO 04-06 16:45:05 [gpu_model_runner.py:2048] Graph capturing finished in 23 secs, took 0.61 GiB
+INFO 04-06 16:45:05 [core.py:171] init engine (profile, create kv cache, warmup model) took 36.34 seconds
+Starting Lean verifier...
+  Strategy registered: whole_proof
+
+Dataset: round3_subgoals (50 problems)
+
+[1/50] r3_sorry_fill_aime_1984_p7_g0_s2_g0
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 31.77it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:19<00:00,  2.48s/it, est. speed input: 91.00 toks/s, output: 988.04 toks/s]Processed prompts: 100%|██████████| 32/32 [01:19<00:00,  2.48s/it, est. speed input: 91.00 toks/s, output: 988.04 toks/s]
+  [whole_proof] SOLVED in 79.8s (2 attempts)
+  Progress: 1/50 solved (2.0%)
+
+[2/50] r3_sorry_fill_aime_1984_p7_g0_s2_g1
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 500.57it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:22<00:00,  2.57s/it, est. speed input: 94.02 toks/s, output: 1043.57 toks/s]Processed prompts: 100%|██████████| 32/32 [01:22<00:00,  2.57s/it, est. speed input: 94.02 toks/s, output: 1043.57 toks/s]
+  [whole_proof] SOLVED in 83.0s (5 attempts)
+  Progress: 2/50 solved (4.0%)
+
+[3/50] r3_sorry_fill_aime_1984_p7_g0_s2_g2
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 538.84it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:28<00:00,  2.78s/it, est. speed input: 93.27 toks/s, output: 1138.06 toks/s]Processed prompts: 100%|██████████| 32/32 [01:28<00:00,  2.78s/it, est. speed input: 93.27 toks/s, output: 1138.06 toks/s]
+  [whole_proof] SOLVED in 90.7s (15 attempts)
+  Progress: 3/50 solved (6.0%)
+
+[4/50] r3_sorry_fill_aime_1984_p7_g0_s2_g3
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g3...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 519.48it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:27<00:00,  2.75s/it, est. speed input: 100.87 toks/s, output: 1120.70 toks/s]Processed prompts: 100%|██████████| 32/32 [01:27<00:00,  2.75s/it, est. speed input: 100.87 toks/s, output: 1120.70 toks/s]
+  [whole_proof] Not solved (32 attempts, 91.9s)
+  Progress: 3/50 solved (6.0%)
+
+[5/50] r3_sorry_fill_aime_1984_p7_g0_s2_g4
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g4...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 229.56it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 91.69 toks/s, output: 1286.14 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 91.69 toks/s, output: 1286.14 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 109.3s)
+  Progress: 3/50 solved (6.0%)
+
+[6/50] r3_sorry_fill_aime_1984_p7_g0_s2_g5
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g5...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 167.71it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:22<00:00,  2.58s/it, est. speed input: 119.22 toks/s, output: 1049.18 toks/s]Processed prompts: 100%|██████████| 32/32 [01:22<00:00,  2.58s/it, est. speed input: 119.22 toks/s, output: 1049.18 toks/s]
+  [whole_proof] Not solved (32 attempts, 87.3s)
+  Progress: 3/50 solved (6.0%)
+
+[7/50] r3_sorry_fill_aime_1984_p7_g0_s2_g6
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g6...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 229.75it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.19s/it, est. speed input: 101.16 toks/s, output: 1282.86 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.19s/it, est. speed input: 101.16 toks/s, output: 1282.86 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.8s)
+  Progress: 3/50 solved (6.0%)
+
+[8/50] r3_sorry_fill_aime_1984_p7_g0_s2_g7
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g7...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 210.12it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:15<00:00,  2.36s/it, est. speed input: 142.82 toks/s, output: 911.62 toks/s]Processed prompts: 100%|██████████| 32/32 [01:15<00:00,  2.36s/it, est. speed input: 142.82 toks/s, output: 911.62 toks/s]
+  [whole_proof] SOLVED in 75.7s (1 attempts)
+  Progress: 4/50 solved (8.0%)
+
+[9/50] r3_sorry_fill_aime_1984_p7_g0_s2_g8
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g8...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 220.08it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:14<00:00,  2.33s/it, est. speed input: 150.85 toks/s, output: 929.37 toks/s]Processed prompts: 100%|██████████| 32/32 [01:14<00:00,  2.33s/it, est. speed input: 150.85 toks/s, output: 929.37 toks/s]
+  [whole_proof] SOLVED in 75.8s (8 attempts)
+  Progress: 5/50 solved (10.0%)
+
+[10/50] r3_sorry_fill_aime_1984_p7_g0_s2_g9
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g9...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 213.43it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 115.22 toks/s, output: 1269.35 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 115.22 toks/s, output: 1269.35 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 109.4s)
+  Progress: 5/50 solved (10.0%)
+
+[11/50] r3_sorry_fill_aime_1984_p7_g0_s2_g10
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g10...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 182.11it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:12<00:00,  2.27s/it, est. speed input: 167.65 toks/s, output: 863.91 toks/s]Processed prompts: 100%|██████████| 32/32 [01:12<00:00,  2.27s/it, est. speed input: 167.65 toks/s, output: 863.91 toks/s]
+  [whole_proof] SOLVED in 73.3s (4 attempts)
+  Progress: 6/50 solved (12.0%)
+
+[12/50] r3_sorry_fill_aime_1984_p7_g0_s2_g11
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g11...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 201.81it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:20<00:00,  2.53s/it, est. speed input: 156.65 toks/s, output: 1045.29 toks/s]Processed prompts: 100%|██████████| 32/32 [01:20<00:00,  2.53s/it, est. speed input: 156.65 toks/s, output: 1045.29 toks/s]
+  [whole_proof] SOLVED in 81.3s (3 attempts)
+  Progress: 7/50 solved (14.0%)
+
+[13/50] r3_sorry_fill_aime_1984_p7_g0_s2_g12
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g12...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 209.61it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.19s/it, est. speed input: 128.75 toks/s, output: 1275.22 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.19s/it, est. speed input: 128.75 toks/s, output: 1275.22 toks/s]
+  [whole_proof] Not solved (32 attempts, 107.0s)
+  Progress: 7/50 solved (14.0%)
+
+[14/50] r3_sorry_fill_aime_1984_p7_g0_s2_g13
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g13...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 217.07it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:21<00:00,  2.54s/it, est. speed input: 167.72 toks/s, output: 1024.62 toks/s]Processed prompts: 100%|██████████| 32/32 [01:21<00:00,  2.54s/it, est. speed input: 167.72 toks/s, output: 1024.62 toks/s]
+  [whole_proof] SOLVED in 82.2s (7 attempts)
+  Progress: 8/50 solved (16.0%)
+
+[15/50] r3_sorry_fill_aime_1984_p7_g0_s2_g14
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g14...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 233.50it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:20<00:00,  2.52s/it, est. speed input: 175.57 toks/s, output: 1031.43 toks/s]Processed prompts: 100%|██████████| 32/32 [01:20<00:00,  2.52s/it, est. speed input: 175.57 toks/s, output: 1031.43 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] SOLVED in 85.6s (13 attempts)
+  Progress: 9/50 solved (18.0%)
+
+[16/50] r3_sorry_fill_aime_1984_p7_g0_s2_g15
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g15...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 150.53it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 142.76 toks/s, output: 1276.27 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 142.76 toks/s, output: 1276.27 toks/s]
+  [whole_proof] Not solved (32 attempts, 107.1s)
+  Progress: 9/50 solved (18.0%)
+
+[17/50] r3_sorry_fill_aime_1984_p7_g0_s2_g16
+  [whole_proof] Attempting r3_sorry_fill_aime_1984_p7_g0_s2_g16...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 202.90it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:20<00:00,  2.50s/it, est. speed input: 188.69 toks/s, output: 1031.27 toks/s]Processed prompts: 100%|██████████| 32/32 [01:20<00:00,  2.50s/it, est. speed input: 188.69 toks/s, output: 1031.27 toks/s]
+  [whole_proof] SOLVED in 80.3s (2 attempts)
+  Progress: 10/50 solved (20.0%)
+
+[18/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g0
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 256.02it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.17s/it, est. speed input: 77.72 toks/s, output: 1273.81 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.17s/it, est. speed input: 77.72 toks/s, output: 1273.81 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.0s)
+  Progress: 10/50 solved (20.0%)
+
+[19/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g1
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 203.37it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:05<00:00,  2.06s/it, est. speed input: 127.48 toks/s, output: 1043.85 toks/s]Processed prompts: 100%|██████████| 32/32 [01:05<00:00,  2.06s/it, est. speed input: 127.48 toks/s, output: 1043.85 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 73.5s)
+  Progress: 10/50 solved (20.0%)
+
+[20/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g3
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g0_s0_g3...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 184.75it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:12<00:00,  2.28s/it, est. speed input: 128.51 toks/s, output: 1035.09 toks/s]Processed prompts: 100%|██████████| 32/32 [01:12<00:00,  2.28s/it, est. speed input: 128.51 toks/s, output: 1035.09 toks/s]
+  [whole_proof] SOLVED in 77.0s (27 attempts)
+  Progress: 11/50 solved (22.0%)
+
+[21/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g0
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 220.66it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [00:37<00:00,  1.16s/it, est. speed input: 221.52 toks/s, output: 952.25 toks/s]Processed prompts: 100%|██████████| 32/32 [00:37<00:00,  1.16s/it, est. speed input: 221.52 toks/s, output: 952.25 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 44.8s)
+  Progress: 11/50 solved (22.0%)
+
+[22/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g1
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s0_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 209.41it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 84.36 toks/s, output: 1274.93 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 84.36 toks/s, output: 1274.93 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.3s)
+  Progress: 11/50 solved (22.0%)
+
+[23/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g1
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s2_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 222.82it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 84.39 toks/s, output: 1280.15 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 84.39 toks/s, output: 1280.15 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.9s)
+  Progress: 11/50 solved (22.0%)
+
+[24/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g1
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 249.50it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:06<00:00,  2.07s/it, est. speed input: 132.05 toks/s, output: 696.52 toks/s]Processed prompts: 100%|██████████| 32/32 [01:06<00:00,  2.07s/it, est. speed input: 132.05 toks/s, output: 696.52 toks/s]
+  [whole_proof] SOLVED in 66.7s (3 attempts)
+  Progress: 12/50 solved (24.0%)
+
+[25/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g2
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 216.84it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 90.96 toks/s, output: 1279.36 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 90.96 toks/s, output: 1279.36 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 110.2s)
+  Progress: 12/50 solved (24.0%)
+
+[26/50] r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g3
+  [whole_proof] Attempting r3_sorry_fill_algebra_apbmpcneq0_aeq0anbeq0anceq0_g1_s3_g3...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 194.21it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:09<00:00,  2.18s/it, est. speed input: 140.79 toks/s, output: 971.52 toks/s]Processed prompts: 100%|██████████| 32/32 [01:09<00:00,  2.18s/it, est. speed input: 140.79 toks/s, output: 971.52 toks/s]
+  [whole_proof] SOLVED in 70.2s (2 attempts)
+  Progress: 13/50 solved (26.0%)
+
+[27/50] r3_sorry_fill_amc12a_2008_p25_g0_s0_g0
+  [whole_proof] Attempting r3_sorry_fill_amc12a_2008_p25_g0_s0_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 251.59it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 77.88 toks/s, output: 1281.17 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 77.88 toks/s, output: 1281.17 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.3s)
+  Progress: 13/50 solved (26.0%)
+
+[28/50] r3_sorry_fill_amc12a_2020_p25_g0_s1_g0
+  [whole_proof] Attempting r3_sorry_fill_amc12a_2020_p25_g0_s1_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 235.30it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.19s/it, est. speed input: 72.01 toks/s, output: 1282.40 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.19s/it, est. speed input: 72.01 toks/s, output: 1282.40 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 109.7s)
+  Progress: 13/50 solved (26.0%)
+
+[29/50] r3_sorry_fill_amc12a_2020_p25_g0_s1_g1
+  [whole_proof] Attempting r3_sorry_fill_amc12a_2020_p25_g0_s1_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 214.05it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 76.92 toks/s, output: 1280.76 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 76.92 toks/s, output: 1280.76 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.9s)
+  Progress: 13/50 solved (26.0%)
+
+[30/50] r3_sorry_fill_amc12a_2020_p25_g0_s4_g0
+  [whole_proof] Attempting r3_sorry_fill_amc12a_2020_p25_g0_s4_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 214.83it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 70.01 toks/s, output: 1280.23 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 70.01 toks/s, output: 1280.23 toks/s]
+  [whole_proof] Not solved (32 attempts, 107.0s)
+  Progress: 13/50 solved (26.0%)
+
+[31/50] r3_sorry_fill_amc12a_2021_p12_g0_s1_g0
+  [whole_proof] Attempting r3_sorry_fill_amc12a_2021_p12_g0_s1_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 212.67it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 85.57 toks/s, output: 1279.23 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 85.57 toks/s, output: 1279.23 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 110.7s)
+  Progress: 13/50 solved (26.0%)
+
+[32/50] r3_sorry_fill_amc12b_2002_p4_g0_s4_g0
+  [whole_proof] Attempting r3_sorry_fill_amc12b_2002_p4_g0_s4_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 239.05it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 65.82 toks/s, output: 1279.26 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 65.82 toks/s, output: 1279.26 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.5s)
+  Progress: 13/50 solved (26.0%)
+
+[33/50] r3_sorry_fill_amc12b_2002_p4_g0_s4_g1
+  [whole_proof] Attempting r3_sorry_fill_amc12b_2002_p4_g0_s4_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 244.52it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:32<00:00,  2.88s/it, est. speed input: 91.17 toks/s, output: 1196.85 toks/s]Processed prompts: 100%|██████████| 32/32 [01:32<00:00,  2.88s/it, est. speed input: 91.17 toks/s, output: 1196.85 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 101.2s)
+  Progress: 13/50 solved (26.0%)
+
+[34/50] r3_sorry_fill_amc12b_2021_p13_g0_s0_g0
+  [whole_proof] Attempting r3_sorry_fill_amc12b_2021_p13_g0_s0_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 208.25it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 81.29 toks/s, output: 1280.62 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 81.29 toks/s, output: 1280.62 toks/s]
+  [whole_proof] Not solved (32 attempts, 107.1s)
+  Progress: 13/50 solved (26.0%)
+
+[35/50] r3_sorry_fill_imo_1968_p5_1_g0_s1_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1968_p5_1_g0_s1_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 255.42it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.16s/it, est. speed input: 72.11 toks/s, output: 1267.82 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.16s/it, est. speed input: 72.11 toks/s, output: 1267.82 toks/s]
+  [whole_proof] Not solved (32 attempts, 105.7s)
+  Progress: 13/50 solved (26.0%)
+
+[36/50] r3_sorry_fill_imo_1968_p5_1_g0_s3_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1968_p5_1_g0_s3_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 237.36it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:04<00:00,  2.03s/it, est. speed input: 115.51 toks/s, output: 651.54 toks/s]Processed prompts: 100%|██████████| 32/32 [01:04<00:00,  2.03s/it, est. speed input: 115.51 toks/s, output: 651.54 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] SOLVED in 70.4s (17 attempts)
+  Progress: 14/50 solved (28.0%)
+
+[37/50] r3_sorry_fill_imo_1968_p5_1_g0_s3_g1
+  [whole_proof] Attempting r3_sorry_fill_imo_1968_p5_1_g0_s3_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 207.82it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:07<00:00,  2.10s/it, est. speed input: 125.25 toks/s, output: 761.88 toks/s]Processed prompts: 100%|██████████| 32/32 [01:07<00:00,  2.10s/it, est. speed input: 125.25 toks/s, output: 761.88 toks/s]
+  [whole_proof] SOLVED in 70.7s (23 attempts)
+  Progress: 15/50 solved (30.0%)
+
+[38/50] r3_sorry_fill_imo_1968_p5_1_g0_s3_g2
+  [whole_proof] Attempting r3_sorry_fill_imo_1968_p5_1_g0_s3_g2...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 248.33it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.21s/it, est. speed input: 89.19 toks/s, output: 1277.30 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.21s/it, est. speed input: 89.19 toks/s, output: 1277.30 toks/s]
+  [whole_proof] Not solved (32 attempts, 107.2s)
+  Progress: 15/50 solved (30.0%)
+
+[39/50] r3_sorry_fill_imo_1968_p5_1_g0_s4_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1968_p5_1_g0_s4_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 226.30it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:33<00:00,  2.93s/it, est. speed input: 76.91 toks/s, output: 1181.66 toks/s]Processed prompts: 100%|██████████| 32/32 [01:33<00:00,  2.93s/it, est. speed input: 76.91 toks/s, output: 1181.66 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 101.2s)
+  Progress: 15/50 solved (30.0%)
+
+[40/50] r3_sorry_fill_imo_1977_p6_g0_s4_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1977_p6_g0_s4_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 214.26it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 66.91 toks/s, output: 1280.69 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 66.91 toks/s, output: 1280.69 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.7s)
+  Progress: 15/50 solved (30.0%)
+
+[41/50] r3_sorry_fill_imo_1982_p1_g0_s1_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1982_p1_g0_s1_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 248.20it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 79.61 toks/s, output: 1278.70 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 79.61 toks/s, output: 1278.70 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 110.3s)
+  Progress: 15/50 solved (30.0%)
+
+[42/50] r3_sorry_fill_imo_1982_p1_g0_s2_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1982_p1_g0_s2_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 438.09it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 81.84 toks/s, output: 1275.36 toks/s]Processed prompts: 100%|██████████| 32/32 [01:41<00:00,  3.18s/it, est. speed input: 81.84 toks/s, output: 1275.36 toks/s]
+  [whole_proof] Not solved (32 attempts, 105.6s)
+  Progress: 15/50 solved (30.0%)
+
+[43/50] r3_sorry_fill_imo_1982_p1_g0_s2_g1
+  [whole_proof] Attempting r3_sorry_fill_imo_1982_p1_g0_s2_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 246.43it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:23<00:00,  2.60s/it, est. speed input: 104.80 toks/s, output: 1083.31 toks/s]Processed prompts: 100%|██████████| 32/32 [01:23<00:00,  2.60s/it, est. speed input: 104.80 toks/s, output: 1083.31 toks/s]
+  [whole_proof] SOLVED in 85.3s (15 attempts)
+  Progress: 16/50 solved (32.0%)
+
+[44/50] r3_sorry_fill_imo_1997_p5_g0_s0_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1997_p5_g0_s0_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 145.71it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 78.72 toks/s, output: 1279.49 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 78.72 toks/s, output: 1279.49 toks/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+  [whole_proof] Not solved (32 attempts, 110.0s)
+  Progress: 16/50 solved (32.0%)
+
+[45/50] r3_sorry_fill_imo_1997_p5_g0_s4_g0
+  [whole_proof] Attempting r3_sorry_fill_imo_1997_p5_g0_s4_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 267.63it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 69.10 toks/s, output: 1280.71 toks/s]Processed prompts: 100%|██████████| 32/32 [01:42<00:00,  3.20s/it, est. speed input: 69.10 toks/s, output: 1280.71 toks/s]
+  [whole_proof] Not solved (32 attempts, 106.4s)
+  Progress: 16/50 solved (32.0%)
+
+[46/50] r3_sorry_fill_imo_1997_p5_g0_s4_g1
+  [whole_proof] Attempting r3_sorry_fill_imo_1997_p5_g0_s4_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 256.60it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [00:48<00:00,  1.53s/it, est. speed input: 175.16 toks/s, output: 941.92 toks/s]Processed prompts: 100%|██████████| 32/32 [00:48<00:00,  1.53s/it, est. speed input: 175.16 toks/s, output: 941.92 toks/s]
+  [whole_proof] Not solved (32 attempts, 53.0s)
+  Progress: 16/50 solved (32.0%)
+
+[47/50] r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g1
+  [whole_proof] Attempting r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s1_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 305.40it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [00:30<00:00,  1.04it/s, est. speed input: 255.50 toks/s, output: 1015.81 toks/s]Processed prompts: 100%|██████████| 32/32 [00:30<00:00,  1.04it/s, est. speed input: 255.50 toks/s, output: 1015.81 toks/s]
+  [whole_proof] SOLVED in 31.3s (4 attempts)
+  Progress: 17/50 solved (34.0%)
+
+[48/50] r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g0
+  [whole_proof] Attempting r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g0...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 236.73it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 32/32 [01:05<00:00,  2.04s/it, est. speed input: 117.40 toks/s, output: 575.14 toks/s]Processed prompts: 100%|██████████| 32/32 [01:05<00:00,  2.04s/it, est. speed input: 117.40 toks/s, output: 575.14 toks/s]
+  [whole_proof] SOLVED in 65.6s (4 attempts)
+  Progress: 18/50 solved (36.0%)
+
+[49/50] r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g1
+  [whole_proof] Attempting r3_sorry_fill_numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown_g0_s2_g1...
+Adding requests:   0%|          | 0/1 [00:00<?, ?it/s]Adding requests: 100%|██████████| 1/1 [00:00<00:00, 246.91it/s]
+Processed prompts:   0%|          | 0/32 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]

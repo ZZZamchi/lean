@@ -1,0 +1,18 @@
+[
+  {
+    "problem_id": "amc12b_2002_p4",
+    "complete": true,
+    "code": "theorem amc12b_2002_p4 (n : \u2115) (h\u2080 : 0 < n)\n  (h\u2081 : ((1:\u211a) / (2 : \u211a) + 1 / (3 : \u211a) + 1 / (7 : \u211a) + 1 / (\u2191n : \u211a)).isInt) :\n  \u00ac 2 \u2223 n \u2228 \u00ac 3 \u2223 n \u2228 \u00ac 6 \u2223 n \u2228 \u00ac 7 \u2223 n \u2228 \u00ac 84 < n := by\n  suffices h : n \u2264 84 by right; right; right; right; omega\n  by_contra h\n  push_neg at h\n  have hn : (85 : \u2124) \u2264 \u2191n := by omega\n  have hpos : (0:\u211a) < (\u2191n : \u211a) := by exact_mod_cast h\u2080\n  have hle : (1:\u211a) / (\u2191n : \u211a) \u2264 1 / 85 := by\n    rw [div_le_div_iff hpos (by norm_num : (0:\u211a) < 85)]\n    have : (85 : \u211a) \u2264 \u2191n := by exact_mod_cast hn\n    linarith\n  have key : (1:\u211a) / 2 + 1 / 3 + 1 / 7 + 1 / \u2191n < 1 := by\n    linarith [show (1:\u211a)/2 + 1/3 + 1/7 = 41/42 from by norm_num,\n              show (1:\u211a)/85 < 1/42 from by norm_num]\n  have hpos2 : (0:\u211a) < 1 / 2 + 1 / 3 + 1 / 7 + 1 / \u2191n := by positivity\n  set q := (1:\u211a) / 2 + 1 / 3 + 1 / 7 + 1 / \u2191n with hq_def\n  have hq_int : q.isInt = true := h\u2081\n  have hq_den : q.den = 1 := by\n    unfold Rat.isInt at hq_int\n    exact Nat.eq_of_beq_eq_true hq_int\n  have hq_cast : (q.num : \u211a) = q := by\n    have := q.num_div_den\n    rw [hq_den] at this\n    simp at this\n    linarith\n  have h_num_pos : (0 : \u2124) < q.num := by\n    have : (0 : \u211a) < q.num := by rw [hq_cast]; exact hpos2\n    exact_mod_cast this\n  have h_num_lt : q.num < 1 := by\n    have : (q.num : \u211a) < 1 := by rw [hq_cast]; exact key\n    exact_mod_cast this\n  omega",
+    "method": "manual_construction",
+    "attempts": 1,
+    "strategy": "manual"
+  },
+  {
+    "problem_id": "amc12a_2020_p4",
+    "complete": true,
+    "method": "manual_construction",
+    "code": "theorem amc12a_2020_p4 (S : Finset \u2115)\n  (h\u2080 : \u2200 n : \u2115, n \u2208 S \u2194 1000 \u2264 n \u2227 n \u2264 9999 \u2227 (\u2200 d : \u2115, d \u2208 Nat.digits 10 n \u2192 Even d) \u2227 5 \u2223 n) :\n  S.card = 80 \u2228 S.card = 100 \u2228 S.card = 125 \u2228 S.card = 200 \u2228 S.card = 500 := by\n  suffices S.card = 100 by right; left; exact this\n  have hST : S = (Finset.Icc 1000 9999).filter (fun n => (\u2200 d \u2208 Nat.digits 10 n, Even d) \u2227 5 \u2223 n) := by\n    ext n\n    simp only [Finset.mem_filter, Finset.mem_Icc]\n    constructor\n    \u00b7 intro h\n      have := (h\u2080 n).mp h\n      exact \u27e8\u27e8this.1, this.2.1\u27e9, this.2.2\u27e9\n    \u00b7 intro \u27e8\u27e8h1, h2\u27e9, h3\u27e9\n      exact (h\u2080 n).mpr \u27e8h1, h2, h3\u27e9\n  rw [hST]\n  native_decide",
+    "attempts": 1,
+    "strategy": "manual_native_decide"
+  }
+]
