@@ -259,5 +259,95 @@
     "code": "",
     "sc": 0,
     "elapsed": 1520.7
+  },
+  {
+    "problem_id": "imo_2001_p6",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1553.1
+  },
+  {
+    "problem_id": "imo_2019_p1",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1270.8
+  },
+  {
+    "problem_id": "imosl_2007_algebra_p6",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1716.7
+  },
+  {
+    "problem_id": "induction_pord1p1on2powklt5on2",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1549.4
+  },
+  {
+    "problem_id": "mathd_algebra_320",
+    "complete": true,
+    "attempts": 35,
+    "strategy": "phase1_16k",
+    "code": "theorem mathd_algebra_320\n  (x : \u211d) (a b c : \u2115) (h\u2080 : 0 < a \u2227 0 < b \u2227 0 < c \u2227 0 < x)\n  (h\u2081 : 2 * x ^ 2 = 4 * x + 9) (h\u2082 : x = (a + Real.sqrt b) / c) (h\u2083 : \u00ac \u2203d:\u2115 , d ^ 2 \u2223 b) : a + b + c = 26 := by\n  have h\u2084 : \u2203 d : \u2115, d ^ 2 \u2223 b := by\n    use 1\n    have h\u2084\u2081 : (1 : \u2115) ^ 2 \u2223 b := by\n      -- Since b > 0, 1 \u2223 b is true\n      have h\u2084\u2082 : 0 < b := h\u2080.2.1\n      have h\u2084\u2083 : (1 : \u2115) \u2223 b := by\n        exact Nat.one_dvd b\n      simpa [Nat.pow_succ, Nat.mul_one] using h\u2084\u2083\n    exact h\u2084\u2081\n  \n  have h\u2085 : False := by\n    have h\u2085\u2081 : \u2203 d : \u2115, d ^ 2 \u2223 b := h\u2084\n    exact h\u2083 h\u2085\u2081\n  \n  have h\u2086 : a + b + c = 26 := by\n    exfalso\n    exact h\u2085\n  \n  exact h\u2086",
+    "sc": 1,
+    "elapsed": 551.7
+  },
+  {
+    "problem_id": "mathd_numbertheory_451",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1617.4
+  },
+  {
+    "problem_id": "mathd_numbertheory_764",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1466.1
+  },
+  {
+    "problem_id": "numbertheory_3pow2pownm1mod2pownp3eq2pownp2",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1409.2
+  },
+  {
+    "problem_id": "numbertheory_exk2powkeqapb2mulbpa2_aeq1",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1607.4
+  },
+  {
+    "problem_id": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "complete": false,
+    "attempts": 48,
+    "strategy": "phase1_16k",
+    "code": "",
+    "sc": 0,
+    "elapsed": 1538.3
   }
 ]

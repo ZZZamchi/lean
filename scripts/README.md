@@ -34,6 +34,18 @@ Python：`python3 scripts/bench_subproblem_lift_scan.py --preset putnambench`；
 
 后续推理/编译可：`export ROUND_DIR=results/putnambench MVP_DIR=results/putnambench/subproblem_mvp` 后接 `minif2f_subproblem_mvp.sh` 中 extract-goal 之后的步骤（或手写 `inference.py` + `compile_by_chunks`）。
 
+## Phase1 官方配置 / 消融（39 题或 10 题子集）
+
+| 脚本 / 入口 | 说明 |
+|-------------|------|
+| `experiments/phase1_official_config.py` | 32K/16K 可调；`--resume`、`--output-dir`、`--dataset minif2f_ablation_slice10`、`--no-chat`、`--max-tokens` |
+| `scripts/compare_phase1_runs.py` | 两路 `proof_results.json` 逐题对比 → `results/experiments/phase1_compare_16k_32k.{md,json}` |
+| `scripts/analyze_sc_ablation.py` | 读 Phase1-16K 的 `sc` 字段统计 |
+| `scripts/summarize_experiment_dirs.py` | 列出 `results/experiments/*/proof_results.json` 的 complete 数 |
+| `scripts/merge_proof_results_shards.py` | 合并多分片 `proof_results.json`（如 32B s0+s1） |
+| `experiments/run_ablation_slice10.sh` | P1：chat / no-chat / 4K tokens（需 GPU） |
+| `experiments/run_sc_ablation_slice10.sh` | SC 0 vs 2 轮，10 题子集（需 GPU） |
+
 ## 其他
 
 | 脚本 | 说明 |
@@ -45,7 +57,7 @@ Python：`python3 scripts/bench_subproblem_lift_scan.py --preset putnambench`；
 | **report_pass_at_32.py** | 汇总 Pass@32，写 `results/pass_at_32_summary.md` |
 | **check_compile_status.py** | 编译进度与 ETA |
 
-完整脚本列表与用法见 **docs/编译与运行说明.md** 与 **docs/README.md**。
+仓库文档索引见 **[docs/README.md](../docs/README.md)**；Goedel 评测对齐见 **[docs/GOEDEL_V2_EVALUATION.md](../docs/GOEDEL_V2_EVALUATION.md)**。
 
 ---
 

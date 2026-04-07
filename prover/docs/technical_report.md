@@ -196,15 +196,42 @@ Putnam 上 informed whole-proof generation 有效，sorry proof 作为"结构骨
 | **Prompt** | 自定义 COT | 官方: "detailed proof plan..." | 中等 |
 | **自修正** | 未实现 | 2 轮（32K→40K tokens） | 重要（32B +2.3%） |
 
-**Phase 1 修正实验正在运行**：chat template + 16K/32K tokens + 2轮自修正。
+#### Phase 1 官方风格复现（Goedel-8B，pass@64 后 **39 题未解子集**）
 
-### 5.7 Goedel-32B Baseline 实验
+在 `results/experiments/` 下用 **chat template + 官方式 proof-plan prompt + 每题多 batch 采样 + 至多 2 轮 self-correction** 对 **39** 道 persistent failure 重跑后的**已落盘**结果：
 
-| 数据集 | 问题数 | 已解 | 比率 | 备注 |
-|--------|--------|------|------|------|
-| miniF2F valid (20题子集) | 20 | 9 | 45.0% | max_tokens=8192（官方: 30000） |
-| PutnamBench | 506 | 18 | 3.6% | — |
-| FATE-M | 355 | 17 | 4.8% | — |
+| 运行目录 | max\_tokens / 上下文 | 进度 | 新解（相对 205/244） | 备注 |
+|----------|----------------------|------|----------------------|------|
+| `phase1_official_16k/` | 16K 档（日志中 `max_model_len` 约 24K） | **39/39 写完** `proof_results.json` | **+1**：`mathd_algebra_320` → 折合 **206/244 ≈ 84.4%** | 日志末尾 vLLM `Engine core died` / Worker 退出；**结果文件已齐全** |
+| `phase1_official_32k/` | 32K（`experiments/phase1_official_config.py`，默认 `--output-dir phase1_official_32k`） | **待 GPU 跑满** | — | 见目录内 `README.md`；支持 `--resume` 续跑、每次写入 `run_meta.json`。跑完后与 16K 逐题对比： `python3 scripts/compare_phase1_runs.py` → `phase1_compare_16k_32k.{md,json}`。 |
+| `phase1_official/`（旧） | 32K 早期单次尝试 | 废弃/不完整 | — | 仅 1 条中间结果；**请以 `phase1_official_32k` 为准**。 |
+
+**16K 自修正统计（已落盘）**：在 `phase1_official_16k` 中，唯一 complete 题 `mathd_algebra_320` 的 `sc>0`（经 self-correction 回合）；其余 38 题未 complete。汇总命令：`python3 scripts/analyze_sc_ablation.py`。
+
+**P1 消融（10 题子集）**：`dataset/minif2f_ablation_slice10.jsonl`（`minif2f_unsolved39` 前 10 题）。脚本：`experiments/run_ablation_slice10.sh`（chat on/off、4K vs 32K tokens）；`experiments/run_sc_ablation_slice10.sh`（SC 0 vs 2 轮）。跑完后：`python3 scripts/summarize_experiment_dirs.py` 查看各 `results/experiments/*/proof_results.json` 的 complete 数。
+
+**结论（与论文叙述一致）**：在最难 39 题上，把 token 拉到 16K 并打开官方配方，仅稳定带来 **1 题**边际收益；**全 valid  headline 仍以主线的 210/244（86.1%）为准**（SGE + 解码/提示/手工等）。32K 相对 16K 的边际需待 `phase1_official_32k` 跑满后读 `phase1_compare_16k_32k.md`。
+
+### 5.7 Goedel-32B Baseline 实验（`results/prover/*32b*` JSON 快照）
+
+**与论文 ~88--90%（32B / 32B+SC）不对齐时的排查**：见仓库根目录 **`docs/GOEDEL_V2_EVALUATION.md`**。最常见原因：**(1)** `prover.run` 默认 `--max-tokens 4096`、`--max-model-len 8192`，远小于官方常用 16K--32K；**(2)** 使用 `--no-chat`（Goedel-V2 为 Qwen3 chat 训练，应**开启** chat）；**(3)** 仅跑 `whole_proof`、未走 `src/inference.py` 的 **self-correction 多轮**；**(4)** `prover/prompts.py` 的 COT 模板与官方 *proof plan* 提示词不一致；**(5)** 当前 JSON 多为**子集/分片**，不能把「某目录 complete 数 / 记录数」当作 valid@244 的 pass@32。
+
+以下为仓库内 **已写入的 `proof_results.json` 统计**（多为**子集 / 分片**，**不是**完整 miniF2F valid 244 的官方 pass@$k$ 复现）；用于跟踪 32B 实验进度，勿与论文表 `tab:cross-bench-logged` 的 Putnam 全量口径混用。
+
+| 目录 | 记录题数 | complete | 粗通过率 | 说明 |
+|------|----------|----------|----------|------|
+| `minif2f_32b_fixed/` | 20 | 9 | 45.0% | 小批调试；`max_tokens=8192` 等受限配置 |
+| `minif2f_32b_s0/` | 43 | 12 | 27.9% | 分片 0 |
+| `minif2f_32b_s1/` | 44 | 17 | 38.6% | 分片 1 |
+| `minif2f_32b_merged/` | 87 | 29 | 33.3% | **脚本合并** `s0`+`s1`：`python3 scripts/merge_proof_results_shards.py ... -o results/prover/minif2f_32b_merged/proof_results.json`；仍非 244 全量 |
+| `minif2f_goedel32b/` | 158 | 34 | 21.5% | `whole_proof`、每题 32 次等；**仅为部分 valid 子集** |
+| `minif2f_32b/` | 4 | 1 | 25.0% | 极小试跑 |
+| `putnam_32b/` | 51 | 1 | 2.0% | 当前快照仅覆盖 51 题；**非**全量 672/309 口径 |
+| `fate_m_32b/` | 82 | 17 | 20.7% | FATE-M 子集 |
+
+**32B 总体进度**：**尚无** **244/244 valid** 终表；`minif2f_32b_merged` 汇总 **87** 题、**29** complete（与分片去重合并）。下一步：在统一协议下补跑缺题至 244，再更新 headline。
+
+**历史/其它口径（若与旧日志一致可保留参考）**：Putnam 全量曾报 18/506 等——请以当前 JSON 路径与题数为准核对。
 
 ### 5.8 剩余未解题（34/244）
 
@@ -249,7 +276,7 @@ Putnam 上 informed whole-proof generation 有效，sorry proof 作为"结构骨
 1. **Sorry-goal extraction > In-context filling**: 将子目标提取为独立定理比在上下文内替换 sorry 更有效 (+5 vs +0 on miniF2F)
 2. **子目标独立性是关键**: 独立定理给模型更清晰的推理目标，很多成功的子目标证明实际是原定理的替代完整证明
 3. **Sorry density 影响策略效果**: Putnam (84% sorry) 上 in-context NearMiss 有效，miniF2F (63%) 上无效
-4. **推理配置是瓶颈**: chat template、max_tokens、prompt 格式的偏差对结果影响巨大（正在验证中）
+4. **推理配置是瓶颈**: chat template、max_tokens、prompt 格式的偏差对结果影响巨大；**39 题子集上 Phase1-16K 已见 +1 题，全量 headline 仍以 210/244 工程栈为准**
 5. **采样多样性有天花板**: pass@128 对硬题无增益；温度多样性（T=1.2）偶尔有效
 6. **递归分解有效但不完整**: 37.5% 子目标可独立证明，但链上全步闭合困难
 7. **假阳性风险**: 子目标提取/模型生成可能改变定理签名，必须端到端验证
@@ -257,15 +284,33 @@ Putnam 上 informed whole-proof generation 有效，sorry proof 作为"结构骨
 
 ## 8. 后续工作
 
-### 正在进行
-1. **Phase 1 配置修正**: chat template + 32K tokens + 官方 prompt + 2 轮自修正（GPU 0-3 运行中）
+### 已完成（工具链 / 合并）
+1. **Phase1 32K 跑法**：`experiments/phase1_official_config.py` 支持 `--output-dir`、`--resume`、`--force`、`--dataset`、`--max-tokens`、`--no-chat`、`run_meta.json`。
+2. **16K vs 32K 对照**：`scripts/compare_phase1_runs.py`（输出 `results/experiments/phase1_compare_16k_32k.md`）。
+3. **SC 汇总**：`scripts/analyze_sc_ablation.py`（读 16K JSON 的 `sc` 字段）。
+4. **10 题消融子集**：`dataset/minif2f_ablation_slice10.jsonl` + `run_ablation_slice10.sh` / `run_sc_ablation_slice10.sh`。
+5. **32B 分片合并**：`scripts/merge_proof_results_shards.py` → `results/prover/minif2f_32b_merged/`。
+6. **实验目录一览**：`scripts/summarize_experiment_dirs.py`。
 
-### 计划中
-2. 配置修正结果出来后，评估 Phase 2 自修正的独立贡献
-3. Goedel-32B 用正确配置（max_tokens=30000）重新评估
-4. 在 PutnamBench 和 FATE-M 上验证 sorry-goal extraction 的通用性
-5. 探索 tactic-level best-first search（BFS-Prover 风格）
+### 待 GPU / 人工执行
+1. **Phase1 32K 39 题跑满**：按 `results/experiments/phase1_official_32k/README.md` 执行并 `--resume` 直至 39 条记录。
+2. **Goedel-32B**：补跑至 miniF2F valid 244 或继续分片合并。
+
+### 计划中（研究向）
+1. 在 PutnamBench / FATE-M 上扩展 sorry-goal extraction 报告（已有粗数字时可增量跑 50–100 题）。
+2. tactic-level best-first search（BFS-Prover 风格）。
 
 ### 已放弃
 - sorry-fill（近失样本整题 sorry，无结构可用）
 - 纯高采样（pass@128+ 对硬题无增益）
+
+## 9. 文档与对外材料（与 LaTeX 论文对齐）
+
+| 材料 | 路径 | 说明 |
+|------|------|------|
+| 完整英文论文（主稿） | `prover/docs/latex/paper_full.tex` | 与 `references.bib` 配套；正文数字与表格以当前 `results/prover/*/proof_results.json` 为准，更新跑分后需同步摘要与 PutnamBench 对照表（`tab:cross-bench-logged`）等（TeX 文中已注明）。 |
+| 编译 | `prover/docs/latex/Makefile` | `make` → `pdflatex` + `bibtex` + 两遍 `pdflatex`。 |
+| Markdown 长稿 / 附录素材 | `prover/docs/paper.md` | 与 `paper_full.tex` 内容同源；维护时建议先改事实与数字来源，再反映到 TeX。 |
+| 可选插图 | `prover/docs/latex/figures/fig_llm_formal_math.png` | 若存在则自动插入引言中的 pipeline 图；缺失时显示占位框。 |
+
+撰写技术报告小节时，若与论文结论冲突，以 **仓库内 JSON 日志与冻结协议** 为准，并在报告中写明协议（pass@$k$、模型、模板、token 上限）。

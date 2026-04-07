@@ -1,0 +1,15 @@
+{
+  "started_at_utc": "2026-04-07T16:13:44.549868+00:00",
+  "git_rev": "dc181a4",
+  "cuda_visible_devices": "0,1",
+  "samples_per_problem": 32,
+  "self_correction_rounds": 2,
+  "max_tokens": 32768,
+  "max_model_len": 32768,
+  "use_chat_template": true,
+  "resume": true,
+  "force_rerun_complete": false,
+  "max_problems": null,
+  "dataset": "minif2f_unsolved39",
+  "output_dir": "phase1_official_32k"
+}

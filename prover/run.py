@@ -12,8 +12,10 @@ Usage examples:
   # Run all strategies on Putnam
   python -m prover.run --dataset putnambench --strategies whole_proof stepwise refinement
 
-  # Use Goedel-32B on 2xA100 GPUs
-  python -m prover.run --dataset minif2f --model Goedel-LM/Goedel-Prover-V2-32B --tp 2 --gpus 4,5 --no-chat
+  # Goedel-V2-32B: enable chat + high token ceiling (see repo docs/GOEDEL_V2_EVALUATION.md)
+  python -m prover.run --dataset minif2f --split valid \
+    --model Goedel-LM/Goedel-Prover-V2-32B --tp 2 --gpus 4,5 \
+    --strategies whole_proof --samples 32 --max-tokens 32768 --max-model-len 40960
 
   # Run strategy cascade (whole→refinement→near_miss→stepwise)
   python -m prover.run --dataset minif2f --strategies whole_proof refinement near_miss stepwise --cascade
@@ -50,7 +52,7 @@ def main():
     parser.add_argument("--max-model-len", type=int, default=8192)
     parser.add_argument("--temperature", type=float, default=1.0)
     parser.add_argument("--no-chat", action="store_true",
-                        help="Disable chat template (for completion models like Goedel)")
+                        help="Disable chat template. Goedel-Prover-V2 (Qwen3) is trained with chat—leave this off for official-style eval.")
     parser.add_argument("--stepwise-depth", type=int, default=15)
     parser.add_argument("--stepwise-width", type=int, default=8)
     parser.add_argument("--stepwise-budget", type=int, default=200, help="Max nodes in stepwise search")

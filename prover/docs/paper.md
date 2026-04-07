@@ -1,5 +1,7 @@
 # Sorry-Goal Extraction and Iterative Optimization for Formal Theorem Proving
 
+> **LaTeX 完整稿：** `prover/docs/latex/paper_full.tex`（含附录、图表与 `references.bib`）。对外投稿或生成 PDF 以 TeX 为准；本 Markdown 为同源叙述与草稿，数字与协议变更时请双向核对。
+
 ## Abstract
 
 We present a systematic study of improving automated theorem proving in Lean 4 by exploiting *near-miss proofs*—proofs that compile but contain unresolved `sorry` gaps. Starting from a Goedel-Prover-V2-8B baseline of 205/244 (84.0%) on miniF2F valid, we develop and evaluate multiple complementary optimization strategies: (1) *sorry-goal extraction*, which reformulates each `sorry` gap as an independent theorem for targeted proving; (2) *recursive decomposition*, which further decomposes extracted sub-goals into smaller steps; (3) *iterative sampling optimization*, including temperature diversity, generation length, and prompt engineering; and (4) *deterministic proof construction* via Lean's `native_decide` and mathematical reasoning. Our combined approach achieves **210/244 (86.1%)**, a +2.1% absolute improvement over the baseline, exceeding the official Goedel-V2-8B reported result (83.3%) by 2.8%. We provide detailed analysis of proof patterns, failure modes, and the critical role of inference configuration (chat template, token budget, prompt format) in maximizing prover performance.

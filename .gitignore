@@ -26,3 +26,6 @@ mathlib4/.lake/
 scripts/manual_compile_result.txt
 **/progress.txt
 **/verify_theorems_log.txt
+# Local clone of upstream dataset (nested git repo)
+data/minif2f_v2/
+results/experiments/*/runner.pid

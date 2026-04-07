@@ -1,5 +1,8 @@
 """
 Configuration for the proof search framework.
+
+Goedel-Prover-V2 (8B/32B): for paper-aligned pass@k, raise max_tokens / max_model_len
+and keep use_chat_template=True; see repo docs/GOEDEL_V2_EVALUATION.md.
 """
 from dataclasses import dataclass, field
 from typing import Optional

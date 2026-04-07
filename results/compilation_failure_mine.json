@@ -1,0 +1,131 @@
+{
+  "results_root": "/home/ningmiao/Zam/lean/results",
+  "files_scanned": 11,
+  "files_with_failures": 10,
+  "total_rows": 90450,
+  "fail_rows": 52205,
+  "global_fail_bucket_counts": {
+    "other": 31958,
+    "unsolved_goals": 8467,
+    "type_mismatch": 3207,
+    "unknown_id": 2338,
+    "application_error": 3473,
+    "repl_pexpect_eof": 2330,
+    "abnormal_or_skipped": 432
+  },
+  "per_file": {
+    "results/deepseek_prover_v2_minif2f/code_compilation_repl.json": {
+      "rows": 15616,
+      "fail_rows": 7277,
+      "fail_bucket_counts": {
+        "other": 4452,
+        "unsolved_goals": 1567,
+        "type_mismatch": 380,
+        "unknown_id": 266,
+        "application_error": 46,
+        "repl_pexpect_eof": 566
+      }
+    },
+    "results/fate_h_deepseek_gpu12/code_compilation_repl.json": {
+      "rows": 3200,
+      "fail_rows": 3175,
+      "fail_bucket_counts": {
+        "other": 2512,
+        "application_error": 213,
+        "unknown_id": 217,
+        "unsolved_goals": 82,
+        "type_mismatch": 137,
+        "repl_pexpect_eof": 14
+      }
+    },
+    "results/fate_h_goedel_gpu67/code_compilation_repl.json": {
+      "rows": 3200,
+      "fail_rows": 3101,
+      "fail_bucket_counts": {
+        "other": 2021,
+        "unknown_id": 446,
+        "type_mismatch": 177,
+        "unsolved_goals": 91,
+        "application_error": 339,
+        "repl_pexpect_eof": 27
+      }
+    },
+    "results/minif2f/round_2/code_compilation_repl.json": {
+      "rows": 7808,
+      "fail_rows": 2742,
+      "fail_bucket_counts": {
+        "other": 1754,
+        "unsolved_goals": 558,
+        "type_mismatch": 150,
+        "unknown_id": 73,
+        "repl_pexpect_eof": 187,
+        "application_error": 20
+      }
+    },
+    "results/minif2f/round_2/subproblem_mvp/deepseek/code_compilation_repl.json": {
+      "rows": 40,
+      "fail_rows": 40,
+      "fail_bucket_counts": {
+        "repl_pexpect_eof": 40
+      }
+    },
+    "results/minif2f/round_2/subproblem_mvp/goedel/code_compilation_repl.json": {
+      "rows": 40,
+      "fail_rows": 40,
+      "fail_bucket_counts": {
+        "repl_pexpect_eof": 40
+      }
+    },
+    "results/minif2f/round_3/code_compilation_repl.json": {
+      "rows": 7808,
+      "fail_rows": 2786,
+      "fail_bucket_counts": {
+        "unsolved_goals": 546,
+        "other": 1855,
+        "unknown_id": 72,
+        "type_mismatch": 140,
+        "repl_pexpect_eof": 156,
+        "application_error": 17
+      }
+    },
+    "results/minif2f_v2c/code_compilation_repl.json": {
+      "rows": 15616,
+      "fail_rows": 6461,
+      "fail_bucket_counts": {
+        "other": 3859,
+        "unsolved_goals": 1237,
+        "type_mismatch": 437,
+        "unknown_id": 179,
+        "repl_pexpect_eof": 320,
+        "application_error": 45,
+        "abnormal_or_skipped": 384
+      }
+    },
+    "results/minif2f_v2s/code_compilation_repl.json": {
+      "rows": 15616,
+      "fail_rows": 6252,
+      "fail_bucket_counts": {
+        "type_mismatch": 453,
+        "other": 3751,
+        "unsolved_goals": 1286,
+        "unknown_id": 227,
+        "application_error": 79,
+        "repl_pexpect_eof": 440,
+        "abnormal_or_skipped": 16
+      }
+    },
+    "results/putnambench/code_compilation_repl.json": {
+      "rows": 21504,
+      "fail_rows": 20331,
+      "fail_bucket_counts": {
+        "other": 11754,
+        "application_error": 2714,
+        "unsolved_goals": 3100,
+        "unknown_id": 858,
+        "type_mismatch": 1333,
+        "repl_pexpect_eof": 540,
+        "abnormal_or_skipped": 32
+      }
+    }
+  }
+}

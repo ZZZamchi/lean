@@ -1,0 +1,11 @@
+# FATE experiment status (auto) — 2026-04-07T09:52:41.968060Z
+
+results/prover/fate_h_goedel8b/proof_results.json: N=100 complete=0 (0.00%) mtime=2026-04-05T07:13:10.718934Z
+results/prover/fate_m_32b/proof_results.json: N=82 complete=17 (20.73%) mtime=2026-04-06T05:14:14.334224Z
+results/prover/fate_m_deepseek7b_baseline/proof_results.json: N=115 complete=44 (38.26%) mtime=2026-04-07T09:52:37.544844Z
+results/prover/fate_m_goedel8b/proof_results.json: N=355 complete=17 (4.79%) mtime=2026-04-05T21:16:30.571005Z
+results/prover/fate_m_kimina7b_baseline/proof_results.json: N=129 complete=19 (14.73%) mtime=2026-04-07T09:52:26.164838Z
+
+## Auxiliary dirs (not whole-proof pass rates)
+results/fate_h_goedel_gpu67: exists, ~105 json files under tree
+results/fate_h_deepseek_gpu12: exists, ~20 json files under tree

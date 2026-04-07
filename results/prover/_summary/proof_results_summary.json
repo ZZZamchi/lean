@@ -1,0 +1,122 @@
+[
+  {
+    "folder": "fate_h_goedel8b",
+    "n_problems": 100,
+    "n_complete": 0,
+    "pass_rate_pct": 0.0
+  },
+  {
+    "folder": "fate_m_32b",
+    "n_problems": 82,
+    "n_complete": 17,
+    "pass_rate_pct": 20.73
+  },
+  {
+    "folder": "fate_m_deepseek7b_baseline",
+    "n_problems": 15,
+    "n_complete": 8,
+    "pass_rate_pct": 53.33
+  },
+  {
+    "folder": "fate_m_goedel8b",
+    "n_problems": 355,
+    "n_complete": 17,
+    "pass_rate_pct": 4.79
+  },
+  {
+    "folder": "fate_m_kimina7b_baseline",
+    "n_problems": 15,
+    "n_complete": 6,
+    "pass_rate_pct": 40.0
+  },
+  {
+    "folder": "minif2f_32b",
+    "n_problems": 4,
+    "n_complete": 1,
+    "pass_rate_pct": 25.0
+  },
+  {
+    "folder": "minif2f_32b_fixed",
+    "n_problems": 20,
+    "n_complete": 9,
+    "pass_rate_pct": 45.0
+  },
+  {
+    "folder": "minif2f_32b_s0",
+    "n_problems": 43,
+    "n_complete": 12,
+    "pass_rate_pct": 27.91
+  },
+  {
+    "folder": "minif2f_32b_s1",
+    "n_problems": 44,
+    "n_complete": 17,
+    "pass_rate_pct": 38.64
+  },
+  {
+    "folder": "minif2f_deepseek7b_baseline",
+    "n_problems": 39,
+    "n_complete": 21,
+    "pass_rate_pct": 53.85
+  },
+  {
+    "folder": "minif2f_goedel32b",
+    "n_problems": 158,
+    "n_complete": 34,
+    "pass_rate_pct": 21.52
+  },
+  {
+    "folder": "minif2f_v2s_changed_8b",
+    "n_problems": 53,
+    "n_complete": 3,
+    "pass_rate_pct": 5.66
+  },
+  {
+    "folder": "minif2f_valid_deepseek_base_goedel_fill",
+    "n_problems": 244,
+    "n_complete": 0,
+    "pass_rate_pct": 0.0
+  },
+  {
+    "folder": "minif2f_valid_goedel_base_deepseek_fill",
+    "n_problems": 244,
+    "n_complete": 1,
+    "pass_rate_pct": 0.41
+  },
+  {
+    "folder": "minif2f_valid_goedel_base_goedel_fill",
+    "n_problems": 244,
+    "n_complete": 0,
+    "pass_rate_pct": 0.0
+  },
+  {
+    "folder": "putnam_32b",
+    "n_problems": 51,
+    "n_complete": 1,
+    "pass_rate_pct": 1.96
+  },
+  {
+    "folder": "putnambench_goedel8b",
+    "n_problems": 506,
+    "n_complete": 18,
+    "pass_rate_pct": 3.56
+  },
+  {
+    "folder": "putnambench_nearmiss_merged",
+    "n_problems": 672,
+    "n_complete": 3,
+    "pass_rate_pct": 0.45
+  },
+  {
+    "folder": "putnambench_nearmiss_shard0",
+    "n_problems": 336,
+    "n_complete": 0,
+    "pass_rate_pct": 0.0
+  },
+  {
+    "folder": "putnambench_nearmiss_shard1",
+    "n_problems": 336,
+    "n_complete": 3,
+    "pass_rate_pct": 0.89
+  }
+]
