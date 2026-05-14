@@ -1,0 +1,102 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  · -- index ≠ 0\n    have h1 : H.normalCore.index ∣ H.index.factorial := by\n      have := H.normalCore.index_dvd_of_le H.normalCore_le\n      sorry\n    rw [hH] at h1\n    intro hzero\n    have hfact : n.factorial ≠ 0 := Nat.factorial_ne_zero n\n    rw [hzero] at h1\n    exact hfact (Nat.eq_zero_of_zero_dvd h1)\n  · have h1 : H.normalCore.index ∣ H.index.factorial := by\n      sorry\n    rw [hH] at h1\n    exact Nat.le_of_dvd (Nat.factorial_pos n) h1",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  · -- index ≠ 0\n    have h1 : H.normalCore.index ∣ H.index.factorial := by\n      have := H.normalCore.index_dvd_of_le H.normalCore_le\n      sorry\n    rw [hH] at h1\n    intro hzero\n    have hfact : n.factorial ≠ 0 := Nat.factorial_ne_zero n\n    rw [hzero] at h1\n    exact hfact (Nat.eq_zero_of_zero_dvd h1)\n  · have h1 : H.normalCore.index ∣ H.index.factorial := by\n      sorry\n    rw [hH] at h1\n    exact Nat.le_of_dvd (Nat.factorial_pos n) h1",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 10,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\nthis : H.index ∣ H.normalCore.index\n⊢ H.normalCore.index ∣ H.index.factorial",
+          "endPos": {
+            "line": 10,
+            "column": 11
+          }
+        },
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 17,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\n⊢ H.normalCore.index ∣ H.index.factorial",
+          "endPos": {
+            "line": 17,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 143.15
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 19,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)\nh_fin : H.FiniteIndex\n⊢ H = ⊤",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 153.66
+    }
+  },
+  {
+    "problem_id": "FATE-H_49",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  sorry",
+    "full_code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 65.75
+    }
+  }
+]

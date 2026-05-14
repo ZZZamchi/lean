@@ -1,0 +1,40 @@
+{"ts": 1778625743.3171244, "event_type": "strategy_start", "problem_id": "FATE-H_1", "strategy": "whole_proof"}
+{"ts": 1778625780.212775, "event_type": "whole_sample_generated", "problem_id": "FATE-H_1", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 340, "completion_tokens": 4096, "total_tokens": 4436}, "latency_s": 36.894864082336426, "finish_reason": "length"}
+{"ts": 1778625780.3168747, "event_type": "whole_sample_verified", "problem_id": "FATE-H_1", "strategy": "whole_proof", "complete": false, "success": false, "n_errors": 1, "n_sorries": 0, "elapsed_s": 0.10385656356811523}
+{"ts": 1778625780.3170907, "event_type": "strategy_end", "problem_id": "FATE-H_1", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 37.0}
+{"ts": 1778625780.3175266, "event_type": "strategy_start", "problem_id": "FATE-H_2", "strategy": "whole_proof"}
+{"ts": 1778625813.3819933, "event_type": "whole_sample_generated", "problem_id": "FATE-H_2", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 228, "completion_tokens": 4096, "total_tokens": 4324}, "latency_s": 33.06418704986572, "finish_reason": "length"}
+{"ts": 1778625813.6995323, "event_type": "whole_sample_verified", "problem_id": "FATE-H_2", "strategy": "whole_proof", "complete": false, "success": false, "n_errors": 1, "n_sorries": 2, "elapsed_s": 0.3172883987426758}
+{"ts": 1778625813.6997375, "event_type": "strategy_end", "problem_id": "FATE-H_2", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 33.3822}
+{"ts": 1778625813.7004437, "event_type": "strategy_start", "problem_id": "FATE-H_3", "strategy": "whole_proof"}
+{"ts": 1778625846.0865226, "event_type": "whole_sample_generated", "problem_id": "FATE-H_3", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 228, "completion_tokens": 4095, "total_tokens": 4323}, "latency_s": 32.385798931121826, "finish_reason": "length"}
+{"ts": 1778625846.2338626, "event_type": "whole_sample_verified", "problem_id": "FATE-H_3", "strategy": "whole_proof", "complete": false, "success": false, "n_errors": 6, "n_sorries": 1, "elapsed_s": 0.1471114158630371}
+{"ts": 1778625846.2340684, "event_type": "strategy_end", "problem_id": "FATE-H_3", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 32.5336}
+{"ts": 1778625846.2350976, "event_type": "strategy_start", "problem_id": "FATE-H_4", "strategy": "whole_proof"}
+{"ts": 1778625878.7005618, "event_type": "whole_sample_generated", "problem_id": "FATE-H_4", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 412, "completion_tokens": 4096, "total_tokens": 4508}, "latency_s": 32.465190410614014, "finish_reason": "length"}
+{"ts": 1778625878.870028, "event_type": "whole_sample_verified", "problem_id": "FATE-H_4", "strategy": "whole_proof", "complete": false, "success": true, "n_errors": 0, "n_sorries": 1, "elapsed_s": 0.16921401023864746}
+{"ts": 1778625878.8702285, "event_type": "strategy_end", "problem_id": "FATE-H_4", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 32.6351}
+{"ts": 1778625878.87133, "event_type": "strategy_start", "problem_id": "FATE-H_5", "strategy": "whole_proof"}
+{"ts": 1778625910.0324314, "event_type": "whole_sample_generated", "problem_id": "FATE-H_5", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 278, "completion_tokens": 4096, "total_tokens": 4374}, "latency_s": 31.160831451416016, "finish_reason": "length"}
+{"ts": 1778625910.478765, "event_type": "whole_sample_verified", "problem_id": "FATE-H_5", "strategy": "whole_proof", "complete": false, "success": false, "n_errors": 2, "n_sorries": 0, "elapsed_s": 0.446103572845459}
+{"ts": 1778625910.478974, "event_type": "strategy_end", "problem_id": "FATE-H_5", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 31.6076}
+{"ts": 1778625910.4801834, "event_type": "strategy_start", "problem_id": "FATE-H_6", "strategy": "whole_proof"}
+{"ts": 1778625940.8554943, "event_type": "whole_sample_generated", "problem_id": "FATE-H_6", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 319, "completion_tokens": 4096, "total_tokens": 4415}, "latency_s": 30.375075340270996, "finish_reason": "length"}
+{"ts": 1778625941.152025, "event_type": "whole_sample_verified", "problem_id": "FATE-H_6", "strategy": "whole_proof", "complete": false, "success": true, "n_errors": 0, "n_sorries": 2, "elapsed_s": 0.2962613105773926}
+{"ts": 1778625941.152213, "event_type": "strategy_end", "problem_id": "FATE-H_6", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 30.672}
+{"ts": 1778625941.1535382, "event_type": "strategy_start", "problem_id": "FATE-H_7", "strategy": "whole_proof"}
+{"ts": 1778625973.3311582, "event_type": "whole_sample_generated", "problem_id": "FATE-H_7", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 401, "completion_tokens": 4096, "total_tokens": 4497}, "latency_s": 32.17737317085266, "finish_reason": "length"}
+{"ts": 1778625973.4658315, "event_type": "whole_sample_verified", "problem_id": "FATE-H_7", "strategy": "whole_proof", "complete": false, "success": false, "n_errors": 5, "n_sorries": 0, "elapsed_s": 0.1344161033630371}
+{"ts": 1778625973.4660375, "event_type": "strategy_end", "problem_id": "FATE-H_7", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 32.3125}
+{"ts": 1778625973.498924, "event_type": "strategy_start", "problem_id": "FATE-H_8", "strategy": "whole_proof"}
+{"ts": 1778626009.1231966, "event_type": "whole_sample_generated", "problem_id": "FATE-H_8", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 306, "completion_tokens": 4096, "total_tokens": 4402}, "latency_s": 35.624011516571045, "finish_reason": "length"}
+{"ts": 1778626009.2623084, "event_type": "whole_sample_verified", "problem_id": "FATE-H_8", "strategy": "whole_proof", "complete": false, "success": true, "n_errors": 0, "n_sorries": 1, "elapsed_s": 0.13743066787719727}
+{"ts": 1778626009.2625275, "event_type": "strategy_end", "problem_id": "FATE-H_8", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 35.7636}
+{"ts": 1778626009.2641356, "event_type": "strategy_start", "problem_id": "FATE-H_9", "strategy": "whole_proof"}
+{"ts": 1778626040.6188865, "event_type": "whole_sample_generated", "problem_id": "FATE-H_9", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 291, "completion_tokens": 4096, "total_tokens": 4387}, "latency_s": 31.35446810722351, "finish_reason": "length"}
+{"ts": 1778626040.7867641, "event_type": "whole_sample_verified", "problem_id": "FATE-H_9", "strategy": "whole_proof", "complete": false, "success": true, "n_errors": 0, "n_sorries": 2, "elapsed_s": 0.16763019561767578}
+{"ts": 1778626040.7869704, "event_type": "strategy_end", "problem_id": "FATE-H_9", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 31.5228}
+{"ts": 1778626040.8217106, "event_type": "strategy_start", "problem_id": "FATE-H_10", "strategy": "whole_proof"}
+{"ts": 1778626056.534031, "event_type": "whole_sample_generated", "problem_id": "FATE-H_10", "strategy": "whole_proof", "sample_idx": 0, "usage": {"prompt_tokens": 203, "completion_tokens": 2200, "total_tokens": 2403}, "latency_s": 15.712030410766602, "finish_reason": "stop"}
+{"ts": 1778626056.7189558, "event_type": "whole_sample_verified", "problem_id": "FATE-H_10", "strategy": "whole_proof", "complete": false, "success": false, "n_errors": 1, "n_sorries": 0, "elapsed_s": 0.1846787929534912}
+{"ts": 1778626056.7191565, "event_type": "strategy_end", "problem_id": "FATE-H_10", "strategy": "whole_proof", "complete": false, "attempts": 1, "elapsed_s": 15.8974}

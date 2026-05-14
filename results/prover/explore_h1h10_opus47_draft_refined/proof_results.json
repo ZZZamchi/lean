@@ -1,0 +1,251 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 10,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  haveI : H.FiniteIndex := ⟨hH ▸ hn⟩\n  exact Subgroup.index_ne_zero_of_finite\n  · sorry",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  haveI : H.FiniteIndex := ⟨hH ▸ hn⟩\n  exact Subgroup.index_ne_zero_of_finite\n  · sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 9,
+            "column": 4
+          },
+          "goal": "case refine_2\nG : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\n⊢ H.normalCore.index ≤ n.factorial",
+          "endPos": {
+            "line": 9,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 164.17
+    }
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 60.53
+    }
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  intro hSimple\n  have hpos : 0 < Nat.card G := by rw [h]; norm_num\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [h]; norm_num)\n  have hfin' : Fintype G := Fintype.ofFinite G\n  have hcard : Fintype.card G = 3393 := by\n    rw [← Nat.card_eq_fintype_card]; exact h\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  intro hSimple\n  have hpos : 0 < Nat.card G := by rw [h]; norm_num\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [h]; norm_num)\n  have hfin' : Fintype G := Fintype.ofFinite G\n  have hcard : Fintype.card G = 3393 := by\n    rw [← Nat.card_eq_fintype_card]; exact h\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 19,
+          "pos": {
+            "line": 9,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nh : Nat.card G = 3393\nhSimple : IsSimpleGroup G\nhpos : 0 < Nat.card G\nhfin : Finite G\nhfin' : Fintype G\nhcard : Fintype.card G = 3393\n⊢ False",
+          "endPos": {
+            "line": 9,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 105.28
+    }
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "full_code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 54.42
+    }
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := (↑u⁻¹ : R) with hv\n  have hvu : v * (1 - a * b) = 1 := by\n    rw [← hu]; exact u.inv_val\n  have huv : (1 - a * b) * v = 1 := by\n    rw [← hu]; exact u.val_inv\n  have e1 : v * (a * b) = v - 1 := by\n    have eq1 : v - v * (a * b) = 1 := by\n      have : v * (1 - a * b) = v - v * (a * b) := by rw [mul_sub, mul_one]\n      rw [this] at hvu; exact hvu\n    linear_combination (norm := noncomm_ring) -eq1\n  have e2 : (a * b) * v = v - 1 := by\n    have eq1 : v - (a * b) * v = 1 := by\n      have : (1 - a * b) * v = v - (a * b) * v := by rw [sub_mul, one_mul]\n      rw [this] at huv; exact huv\n    linear_combination (norm := noncomm_ring) -eq1\n  refine ⟨⟨1 - b * a, 1 + b * v * a, ?_, ?_⟩, rfl⟩\n  · have expand : (1 - b * a) * (1 + b * v * a) =\n        1 - b * a + b * v * a - b * ((a * b) * v) * a := by\n      noncomm_ring\n    rw [expand, e2]; noncomm_ring\n  · have expand : (1 + b * v * a) * (1 - b * a) =\n        1 - b * a + b * v * a - b * (v * (a * b)) * a := by\n      noncomm_ring\n    rw [expand, e1]; noncomm_ring",
+    "full_code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := (↑u⁻¹ : R) with hv\n  have hvu : v * (1 - a * b) = 1 := by\n    rw [← hu]; exact u.inv_val\n  have huv : (1 - a * b) * v = 1 := by\n    rw [← hu]; exact u.val_inv\n  have e1 : v * (a * b) = v - 1 := by\n    have eq1 : v - v * (a * b) = 1 := by\n      have : v * (1 - a * b) = v - v * (a * b) := by rw [mul_sub, mul_one]\n      rw [this] at hvu; exact hvu\n    linear_combination (norm := noncomm_ring) -eq1\n  have e2 : (a * b) * v = v - 1 := by\n    have eq1 : v - (a * b) * v = 1 := by\n      have : (1 - a * b) * v = v - (a * b) * v := by rw [sub_mul, one_mul]\n      rw [this] at huv; exact huv\n    linear_combination (norm := noncomm_ring) -eq1\n  refine ⟨⟨1 - b * a, 1 + b * v * a, ?_, ?_⟩, rfl⟩\n  · have expand : (1 - b * a) * (1 + b * v * a) =\n        1 - b * a + b * v * a - b * ((a * b) * v) * a := by\n      noncomm_ring\n    rw [expand, e2]; noncomm_ring\n  · have expand : (1 + b * v * a) * (1 - b * a) =\n        1 - b * a + b * v * a - b * (v * (a * b)) * a := by\n      noncomm_ring\n    rw [expand, e1]; noncomm_ring",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 147.16
+    }
+  },
+  {
+    "problem_id": "FATE-H_6",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "full_code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 59.21
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 29,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝² : Group G\nH K : Subgroup G\ninst✝¹ : H.Normal\nh1 : K ≤ H\ninst✝ : (K.subgroupOf H).Normal\nh2 : Subgroup.centralizer ↑(K.subgroupOf H) = ⊥\n⊢ H ≤ Subgroup.centralizer ↑(Subgroup.centralizer ↑K)",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 206.6
+    }
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "full_code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 57.66
+    }
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  rw [Subgroup.eq_bot_iff_forall]\n  intro x hx_mem\n  have hx_cent := Subgroup.mem_centralizer_iff.mp hx_mem\n  have hx : ∀ g : DihedralGroup n, g * x = x * g := fun g => hx_cent g (Subgroup.mem_top g)\n  -- Auxiliary: 2 ≠ 0 in ZMod n\n  have h2 : (2 : ZMod n) ≠ 0 := by\n    intro e\n    have hcast : ((2 : ℕ) : ZMod n) = 0 := by exact_mod_cast e\n    have hdvd : n ∣ 2 := (ZMod.natCast_zmod_eq_zero_iff_dvd 2 n).mp hcast\n    have := Nat.le_of_dvd (by norm_num) hdvd\n    omega\n  have hcop : Nat.Coprime 2 n := (hn.coprime_two_right).symm\n  have hunit : IsUnit (2 : ZMod n) := (ZMod.isUnit_iff_coprime 2 n).mpr hcop\n  have key : ∀ j : ZMod n, (2 : ZMod n) * j = 0 → j = 0 := by\n    intro j hj\n    rcases hunit with ⟨u, hu⟩\n    have h1 : u * j = 0 := by rw [hu]; exact hj\n    have h2' : (u⁻¹ * u) * j = u⁻¹ * 0 := by\n      rw [mul_assoc]; rw [h1]\n    simp at h2'\n    exact h2'\n  rcases x with i | i\n  · -- Case r i\n    have e := hx (sr 0)\n    have e' : sr (0 + i) = sr (0 - i) := e\n    have hi : (0 + i : ZMod n) = 0 - i := by injection e'\n    have hi2 : (2 : ZMod n) * i = 0 := by linear_combination hi\n    have hi0 : i = 0 := key i hi2\n    rw [hi0]\n    rfl\n  · -- Case sr i: derive contradiction\n    exfalso\n    have e1 := hx (r 1)\n    have e1' : sr (i - 1) = sr (i + 1) := e1\n    have hi1 : (i - 1 : ZMod n) = i + 1 := by injection e1'\n    have h20 : (2 : ZMod n) = 0 := by linear_combination -hi1\n    exact h2 h20",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  rw [Subgroup.eq_bot_iff_forall]\n  intro x hx_mem\n  have hx_cent := Subgroup.mem_centralizer_iff.mp hx_mem\n  have hx : ∀ g : DihedralGroup n, g * x = x * g := fun g => hx_cent g (Subgroup.mem_top g)\n  -- Auxiliary: 2 ≠ 0 in ZMod n\n  have h2 : (2 : ZMod n) ≠ 0 := by\n    intro e\n    have hcast : ((2 : ℕ) : ZMod n) = 0 := by exact_mod_cast e\n    have hdvd : n ∣ 2 := (ZMod.natCast_zmod_eq_zero_iff_dvd 2 n).mp hcast\n    have := Nat.le_of_dvd (by norm_num) hdvd\n    omega\n  have hcop : Nat.Coprime 2 n := (hn.coprime_two_right).symm\n  have hunit : IsUnit (2 : ZMod n) := (ZMod.isUnit_iff_coprime 2 n).mpr hcop\n  have key : ∀ j : ZMod n, (2 : ZMod n) * j = 0 → j = 0 := by\n    intro j hj\n    rcases hunit with ⟨u, hu⟩\n    have h1 : u * j = 0 := by rw [hu]; exact hj\n    have h2' : (u⁻¹ * u) * j = u⁻¹ * 0 := by\n      rw [mul_assoc]; rw [h1]\n    simp at h2'\n    exact h2'\n  rcases x with i | i\n  · -- Case r i\n    have e := hx (sr 0)\n    have e' : sr (0 + i) = sr (0 - i) := e\n    have hi : (0 + i : ZMod n) = 0 - i := by injection e'\n    have hi2 : (2 : ZMod n) * i = 0 := by linear_combination hi\n    have hi0 : i = 0 := key i hi2\n    rw [hi0]\n    rfl\n  · -- Case sr i: derive contradiction\n    exfalso\n    have e1 := hx (r 1)\n    have e1' : sr (i - 1) = sr (i + 1) := e1\n    have hi1 : (i - 1 : ZMod n) = i + 1 := by injection e1'\n    have h20 : (2 : ZMod n) = 0 := by linear_combination -hi1\n    exact h2 h20",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 210.08
+    }
+  },
+  {
+    "problem_id": "FATE-H_10",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have h1 : (3 : ℕ) ^ 40 % 100 = 1 := by native_decide\n  have h2 : (3 : ℕ) ^ 100 % 40 = 1 := by native_decide\n  set q : ℕ := 3 ^ 100 / 40 with hq_def\n  have hq : 3 ^ 100 = 40 * q + 1 := by\n    have := Nat.div_add_mod (3^100) 40\n    rw [h2] at this\n    omega\n  rw [hq]\n  rw [pow_add, pow_mul, pow_one]\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "full_code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have h1 : (3 : ℕ) ^ 40 % 100 = 1 := by native_decide\n  have h2 : (3 : ℕ) ^ 100 % 40 = 1 := by native_decide\n  set q : ℕ := 3 ^ 100 / 40 with hq_def\n  have hq : 3 ^ 100 = 40 * q + 1 := by\n    have := Nat.div_add_mod (3^100) 40\n    rw [h2] at this\n    omega\n  rw [hq]\n  rw [pow_add, pow_mul, pow_one]\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 18.19
+    }
+  }
+]

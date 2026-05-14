@@ -1,0 +1,110 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  all_goals sorry",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  all_goals sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 7,
+            "column": 12
+          },
+          "goal": "case refine_1\nG : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\n⊢ H.normalCore.index ≠ 0",
+          "endPos": {
+            "line": 7,
+            "column": 17
+          }
+        },
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 7,
+            "column": 12
+          },
+          "goal": "case refine_2\nG : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\n⊢ H.normalCore.index ≤ n.factorial",
+          "endPos": {
+            "line": 7,
+            "column": 17
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 121.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)\nh_fin : H.FiniteIndex\n⊢ H = ⊤",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 117.21
+    }
+  },
+  {
+    "problem_id": "FATE-H_49",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  sorry",
+    "full_code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 20,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "F : Type\ninst✝¹ : Field F\ninst✝ : Algebra ℚ F\nh : ⊤.FG\n⊢ ∃ f, Function.Injective ⇑f",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 126.72
+    }
+  }
+]

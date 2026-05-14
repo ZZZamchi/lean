@@ -1,0 +1,1545 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  · have hHfin : H.FiniteIndex := ⟨by rw [hH]; exact hn⟩\n    have hKfin : H.normalCore.FiniteIndex := inferInstance\n    exact hKfin.finiteIndex\n  · have hHfin : H.FiniteIndex := ⟨by rw [hH]; exact hn⟩\n    have hdvd : H.normalCore.index ∣ (H.index).factorial := by\n      sorry\n    rw [hH] at hdvd\n    have hfact : n.factorial ≠ 0 := Nat.factorial_ne_zero n\n    exact Nat.le_of_dvd (Nat.pos_of_ne_zero hfact) hdvd",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  · have hHfin : H.FiniteIndex := ⟨by rw [hH]; exact hn⟩\n    have hKfin : H.normalCore.FiniteIndex := inferInstance\n    exact hKfin.finiteIndex\n  · have hHfin : H.FiniteIndex := ⟨by rw [hH]; exact hn⟩\n    have hdvd : H.normalCore.index ∣ (H.index).factorial := by\n      sorry\n    rw [hH] at hdvd\n    have hfact : n.factorial ≠ 0 := Nat.factorial_ne_zero n\n    exact Nat.le_of_dvd (Nat.pos_of_ne_zero hfact) hdvd",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 12,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\nhHfin : H.FiniteIndex\n⊢ H.normalCore.index ∣ H.index.factorial",
+          "endPos": {
+            "line": 12,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 124.7
+    }
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimple\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimple\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 16,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\nhsimple : IsSimpleGroup G\n⊢ False",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 85.13
+    }
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 50.75
+    }
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "full_code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 66.57
+    }
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 10,
+    "code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨v, hv⟩ := h\n  set u : R := ((v⁻¹ : Rˣ) : R) with hu_def\n  have hu1 : (1 - a * b) * u = 1 := by\n    rw [← hv]; exact v.mul_inv\n  have hu2 : u * (1 - a * b) = 1 := by\n    rw [← hv]; exact v.inv_mul\n  have habu : a * b * u = u - 1 := by\n    have h' : u - a * b * u = 1 := by\n      have := hu1\n      rw [sub_mul, one_mul] at this\n      exact this\n    have : a * b * u = u - 1 := by\n      have eq : a * b * u = u - (u - a * b * u) := by abel\n      rw [eq, h']\n    exact this\n  have huab : u * a * b = u - 1 := by\n    have h' : u - u * (a * b) = 1 := by\n      have := hu2\n      rw [mul_sub, mul_one] at this\n      exact this\n    have h'' : u * (a * b) = u - 1 := by\n      have eq : u * (a * b) = u - (u - u * (a * b)) := by abel\n      rw [eq, h']\n    rw [mul_assoc]; exact h''\n  refine ⟨⟨1 - b * a, 1 + b * u * a, ?_, ?_⟩, rfl⟩\n  · have e1 : (1 - b * a) * (1 + b * u * a) = 1 + b * u * a - b * a - b * a * (b * u * a) := by\n      noncomm_ring\n    rw [e1]\n    have step : b * a * (b * u * a) = b * (u - 1) * a := by\n      have h1 : b * a * (b * u * a) = b * (a * b * u) * a := by noncomm_ring\n      rw [h1, habu]\n    rw [step]\n    have h2 : b * (u - 1) * a = b * u * a - b * a := by noncomm_ring\n    rw [h2]\n    abel\n  · have e1 : (1 + b * u * a) * (1 - b * a) = 1 - b * a + b * u * a - b * u * a * (b * a) := by\n      noncomm_ring\n    rw [e1]\n    have step : b * u * a * (b * a) = b * (u - 1) * a := by\n      have h1 : b * u * a * (b * a) = b * (u * a * b) * a := by noncomm_ring\n      rw [h1, huab]\n    rw [step]\n    have h2 : b * (u - 1) * a = b * u * a - b * a := by noncomm_ring\n    rw [h2]\n    abel",
+    "full_code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨v, hv⟩ := h\n  set u : R := ((v⁻¹ : Rˣ) : R) with hu_def\n  have hu1 : (1 - a * b) * u = 1 := by\n    rw [← hv]; exact v.mul_inv\n  have hu2 : u * (1 - a * b) = 1 := by\n    rw [← hv]; exact v.inv_mul\n  have habu : a * b * u = u - 1 := by\n    have h' : u - a * b * u = 1 := by\n      have := hu1\n      rw [sub_mul, one_mul] at this\n      exact this\n    have : a * b * u = u - 1 := by\n      have eq : a * b * u = u - (u - a * b * u) := by abel\n      rw [eq, h']\n    exact this\n  have huab : u * a * b = u - 1 := by\n    have h' : u - u * (a * b) = 1 := by\n      have := hu2\n      rw [mul_sub, mul_one] at this\n      exact this\n    have h'' : u * (a * b) = u - 1 := by\n      have eq : u * (a * b) = u - (u - u * (a * b)) := by abel\n      rw [eq, h']\n    rw [mul_assoc]; exact h''\n  refine ⟨⟨1 - b * a, 1 + b * u * a, ?_, ?_⟩, rfl⟩\n  · have e1 : (1 - b * a) * (1 + b * u * a) = 1 + b * u * a - b * a - b * a * (b * u * a) := by\n      noncomm_ring\n    rw [e1]\n    have step : b * a * (b * u * a) = b * (u - 1) * a := by\n      have h1 : b * a * (b * u * a) = b * (a * b * u) * a := by noncomm_ring\n      rw [h1, habu]\n    rw [step]\n    have h2 : b * (u - 1) * a = b * u * a - b * a := by noncomm_ring\n    rw [h2]\n    abel\n  · have e1 : (1 + b * u * a) * (1 - b * a) = 1 - b * a + b * u * a - b * u * a * (b * a) := by\n      noncomm_ring\n    rw [e1]\n    have step : b * u * a * (b * a) = b * (u - 1) * a := by\n      have h1 : b * u * a * (b * a) = b * (u * a * b) * a := by noncomm_ring\n      rw [h1, huab]\n    rw [step]\n    have h2 : b * (u - 1) * a = b * u * a - b * a := by noncomm_ring\n    rw [h2]\n    abel",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 120.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_6",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "full_code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 55.97
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝² : Group G\nH K : Subgroup G\ninst✝¹ : H.Normal\nh1 : K ≤ H\ninst✝ : (K.subgroupOf H).Normal\nh2 : Subgroup.centralizer ↑(K.subgroupOf H) = ⊥\n⊢ H ≤ Subgroup.centralizer ↑(Subgroup.centralizer ↑K)",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 218.13
+    }
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "full_code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 56.96
+    }
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 35,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\n⊢ Subgroup.centralizer ⊤ = ⊥",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 150.85
+    }
+  },
+  {
+    "problem_id": "FATE-H_10",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have h1 : 3 ^ 40 % 100 = 1 := by native_decide\n  have h2 : 3 ^ 100 % 40 = 1 := by native_decide\n  set q : ℕ := 3 ^ 100 / 40 with hq_def\n  have hN : 3 ^ 100 = 40 * q + 1 := by\n    have := Nat.div_add_mod (3 ^ 100) 40\n    rw [h2] at this\n    omega\n  rw [hN]\n  rw [pow_add, pow_mul, pow_one]\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "full_code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have h1 : 3 ^ 40 % 100 = 1 := by native_decide\n  have h2 : 3 ^ 100 % 40 = 1 := by native_decide\n  set q : ℕ := 3 ^ 100 / 40 with hq_def\n  have hN : 3 ^ 100 = 40 * q + 1 := by\n    have := Nat.div_add_mod (3 ^ 100) 40\n    rw [h2] at this\n    omega\n  rw [hN]\n  rw [pow_add, pow_mul, pow_one]\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 18.6
+    }
+  },
+  {
+    "problem_id": "FATE-H_11",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $G$ be a group of order $3825$. Prove that if $H$ is a normal subgroup of order $17$ in $G$,\nthen $H \\leq Z(G)$.-/\ntheorem le_center_of_card_eq_17_of_card_eq_3825 {G : Type} [Group G] (h : Nat.card G = 3825)\n    (H : Subgroup G) [H.Normal] (hH : Nat.card H = 17) : H ≤ Subgroup.center G := by\n  sorry",
+    "full_code": "/- Let $G$ be a group of order $3825$. Prove that if $H$ is a normal subgroup of order $17$ in $G$,\nthen $H \\leq Z(G)$.-/\ntheorem le_center_of_card_eq_17_of_card_eq_3825 {G : Type} [Group G] (h : Nat.card G = 3825)\n    (H : Subgroup G) [H.Normal] (hH : Nat.card H = 17) : H ≤ Subgroup.center G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 45.48
+    }
+  },
+  {
+    "problem_id": "FATE-H_12",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/--\nProve that \\( SL_2(\\mathbb{F}_3) / Z(SL_2(\\mathbb{F}_3)) < A_4 \\).\n-/\ntheorem exists_sl_quot_center_monoidHom_alternatingGroup :\n    ∃ φ : SL(2,ZMod 3) ⧸ Subgroup.center SL(2,ZMod 3) →* alternatingGroup (Fin 4),\n    Function.Injective φ := by\n  sorry",
+    "full_code": "/--\nProve that \\( SL_2(\\mathbb{F}_3) / Z(SL_2(\\mathbb{F}_3)) < A_4 \\).\n-/\ntheorem exists_sl_quot_center_monoidHom_alternatingGroup :\n    ∃ φ : SL(2,ZMod 3) ⧸ Subgroup.center SL(2,ZMod 3) →* alternatingGroup (Fin 4),\n    Function.Injective φ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 12
+          },
+          "endPos": {
+            "line": 5,
+            "column": 13
+          },
+          "data": "unexpected token '('; expected ','"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 62.54
+    }
+  },
+  {
+    "problem_id": "FATE-H_13",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that the number of Sylow $p$-subgroups of $\\operatorname{GL}_2(\\mathbb{F}_p)$ is $p + 1$.\n-/\ntheorem card_sylow_gl_two_eq_add_one (p : ℕ) [Fact p.Prime] :\n    Nat.card (Sylow p <| GL (Fin 2) (ZMod p)) = p + 1 := by\n  sorry",
+    "full_code": "/-- Prove that the number of Sylow $p$-subgroups of $\\operatorname{GL}_2(\\mathbb{F}_p)$ is $p + 1$.\n-/\ntheorem card_sylow_gl_two_eq_add_one (p : ℕ) [Fact p.Prime] :\n    Nat.card (Sylow p <| GL (Fin 2) (ZMod p)) = p + 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 44.07
+    }
+  },
+  {
+    "problem_id": "FATE-H_14",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $S$ be any ring and let $n>2$ be an integer.\nPropose a proof that if $A$ is any strictly upper triangular matrix in $M_n(S)$, then $A^n = 0$.\n(A strictly upper triangular matrix is one whose entries on and below the main diagonal are all\nzero.) -/\ntheorem pow_eq_zero_of_strictly_upper_triangle {S : Type} [Ring S] (n : ℕ) (hn : 2 < n)\n    (A : Matrix (Fin n) (Fin n) S) (hA : ∀ (i : Fin n), ∀ (j : Fin n), i ≥ j → A i j = 0) :\n    A ^ n = 0 := by\n  have key : ∀ k : ℕ, ∀ i j : Fin n, (j : ℕ) < (i : ℕ) + k → (A ^ k) i j = 0 := by\n    intro k\n    induction k with\n    | zero =>\n      intro i j hij\n      simp only [Nat.add_zero, pow_zero] at *\n      have hne : i ≠ j := by\n        intro h\n        rw [h] at hij\n        exact lt_irrefl _ hij\n      simp [Matrix.one_apply, hne]\n    | succ k ih =>\n      intro i j hij\n      rw [pow_succ, Matrix.mul_apply]\n      apply Finset.sum_eq_zero\n      intro l _\n      by_cases hl : (l : ℕ) < (i : ℕ) + k\n      · rw [ih i l hl]\n        simp\n      · push_neg at hl\n        have hjl : (j : ℕ) ≤ (l : ℕ) := by\n          have : (j : ℕ) ≤ (i : ℕ) + k := by\n            have := hij\n            omega\n          exact le_trans this hl\n        have hlj : l ≥ j := hjl\n        rw [hA l j hlj]\n        simp\n  ext i j\n  rw [Matrix.zero_apply]\n  apply key n i j\n  have hjn : (j : ℕ) < n := j.isLt\n  omega",
+    "full_code": "/-- Let $S$ be any ring and let $n>2$ be an integer.\nPropose a proof that if $A$ is any strictly upper triangular matrix in $M_n(S)$, then $A^n = 0$.\n(A strictly upper triangular matrix is one whose entries on and below the main diagonal are all\nzero.) -/\ntheorem pow_eq_zero_of_strictly_upper_triangle {S : Type} [Ring S] (n : ℕ) (hn : 2 < n)\n    (A : Matrix (Fin n) (Fin n) S) (hA : ∀ (i : Fin n), ∀ (j : Fin n), i ≥ j → A i j = 0) :\n    A ^ n = 0 := by\n  have key : ∀ k : ℕ, ∀ i j : Fin n, (j : ℕ) < (i : ℕ) + k → (A ^ k) i j = 0 := by\n    intro k\n    induction k with\n    | zero =>\n      intro i j hij\n      simp only [Nat.add_zero, pow_zero] at *\n      have hne : i ≠ j := by\n        intro h\n        rw [h] at hij\n        exact lt_irrefl _ hij\n      simp [Matrix.one_apply, hne]\n    | succ k ih =>\n      intro i j hij\n      rw [pow_succ, Matrix.mul_apply]\n      apply Finset.sum_eq_zero\n      intro l _\n      by_cases hl : (l : ℕ) < (i : ℕ) + k\n      · rw [ih i l hl]\n        simp\n      · push_neg at hl\n        have hjl : (j : ℕ) ≤ (l : ℕ) := by\n          have : (j : ℕ) ≤ (i : ℕ) + k := by\n            have := hij\n            omega\n          exact le_trans this hl\n        have hlj : l ≥ j := hjl\n        rw [hA l j hlj]\n        simp\n  ext i j\n  rw [Matrix.zero_apply]\n  apply key n i j\n  have hjn : (j : ℕ) < n := j.isLt\n  omega",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 37.91
+    }
+  },
+  {
+    "problem_id": "FATE-H_15",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "full_code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 44,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ ¬IsPrincipalIdealRing (ℤ√(-5))",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 191.81
+    }
+  },
+  {
+    "problem_id": "FATE-H_16",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let \\( R \\) be an integral domain and let \\( i, j \\) be relatively prime integers. Prove that the ideal \\( (x^i - y^j) \\) is a prime ideal in \\( R[x, y] \\).-/\ntheorem span_pow_sub_pow_isPrime_of_coprime {R : Type} [CommRing R] [IsDomain R] {i j : ℕ}\n    (hi : i > 0) (hj : j > 0) (h : Nat.Coprime i j) :\n    (span {(X 0 ^ i - X 1 ^ j : MvPolynomial (Fin 2) R)}).IsPrime := by\n  sorry",
+    "full_code": "/- Let \\( R \\) be an integral domain and let \\( i, j \\) be relatively prime integers. Prove that the ideal \\( (x^i - y^j) \\) is a prime ideal in \\( R[x, y] \\).-/\ntheorem span_pow_sub_pow_isPrime_of_coprime {R : Type} [CommRing R] [IsDomain R] {i j : ℕ}\n    (hi : i > 0) (hj : j > 0) (h : Nat.Coprime i j) :\n    (span {(X 0 ^ i - X 1 ^ j : MvPolynomial (Fin 2) R)}).IsPrime := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 48.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_17",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/-- Prove that $\\frac{x^{p}-1}{x-1}$ is irreducible in $\\mathbb{Z}[x].$ -/\ntheorem irreducible_X_pow_p_sub_one_div_X_sub_one (p : ℕ) [hp : Fact (Nat.Prime p)] :\n    Irreducible (((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)) := by\n  have hmonic : ((Polynomial.X : ℤ[X]) - 1).Monic := by\n    simpa using (Polynomial.monic_X_sub_C (1 : ℤ))\n  have hgeom : (∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i) * (Polynomial.X - 1) =\n      Polynomial.X ^ p - 1 := geom_sum_mul Polynomial.X p\n  have hcyc : Polynomial.cyclotomic p ℤ = ∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i :=\n    Polynomial.cyclotomic_prime ℤ p\n  have hfact : (Polynomial.X : ℤ[X]) ^ p - 1 =\n      Polynomial.cyclotomic p ℤ * (Polynomial.X - 1) := by\n    rw [hcyc]; exact hgeom.symm\n  have hdiv : ((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1) =\n      Polynomial.cyclotomic p ℤ := by\n    rw [hfact]\n    exact Polynomial.mul_divByMonic_cancel_left _ hmonic\n  rw [hdiv]\n  exact Polynomial.cyclotomic.irreducible hp.out.pos",
+    "full_code": "/-- Prove that $\\frac{x^{p}-1}{x-1}$ is irreducible in $\\mathbb{Z}[x].$ -/\ntheorem irreducible_X_pow_p_sub_one_div_X_sub_one (p : ℕ) [hp : Fact (Nat.Prime p)] :\n    Irreducible (((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)) := by\n  have hmonic : ((Polynomial.X : ℤ[X]) - 1).Monic := by\n    simpa using (Polynomial.monic_X_sub_C (1 : ℤ))\n  have hgeom : (∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i) * (Polynomial.X - 1) =\n      Polynomial.X ^ p - 1 := geom_sum_mul Polynomial.X p\n  have hcyc : Polynomial.cyclotomic p ℤ = ∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i :=\n    Polynomial.cyclotomic_prime ℤ p\n  have hfact : (Polynomial.X : ℤ[X]) ^ p - 1 =\n      Polynomial.cyclotomic p ℤ * (Polynomial.X - 1) := by\n    rw [hcyc]; exact hgeom.symm\n  have hdiv : ((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1) =\n      Polynomial.cyclotomic p ℤ := by\n    rw [hfact]\n    exact Polynomial.mul_divByMonic_cancel_left _ hmonic\n  rw [hdiv]\n  exact Polynomial.cyclotomic.irreducible hp.out.pos",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 36
+          },
+          "endPos": {
+            "line": 3,
+            "column": 37
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 34
+          },
+          "endPos": {
+            "line": 3,
+            "column": 38
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\np : ℕ\nhp : Fact p.Prime\n⊢ ?m.330 ℤ (sorryAx ?m.327 true)"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 108.15
+    }
+  },
+  {
+    "problem_id": "FATE-H_18",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that \\( x^2 + y^2 - 1 \\) is irreducible in \\( \\mathbb{Q}[x, y] \\).-/\ntheorem irreducible_pow_two_add_pow_two_sub_one :\n    Irreducible ((X 0) ^ 2 + (X 1) ^ 2 - 1 : MvPolynomial (Fin 2) ℚ) := by\n  sorry",
+    "full_code": "/- Prove that \\( x^2 + y^2 - 1 \\) is irreducible in \\( \\mathbb{Q}[x, y] \\).-/\ntheorem irreducible_pow_two_add_pow_two_sub_one :\n    Irreducible ((X 0) ^ 2 + (X 1) ^ 2 - 1 : MvPolynomial (Fin 2) ℚ) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 57.21
+    }
+  },
+  {
+    "problem_id": "FATE-H_19",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/-- Prove that any finite group is isomorphic to a subgroup of $A_n$ for some $n$. -/\ntheorem exists_subgroup_alternatingGroup_mulEquiv {G : Type} [Group G] [Finite G] :\n    ∃ (n : ℕ) (H : Subgroup (alternatingGroup (Fin n))), Nonempty (G ≃* H) := by\n  sorry",
+    "full_code": "/-- Prove that any finite group is isomorphic to a subgroup of $A_n$ for some $n$. -/\ntheorem exists_subgroup_alternatingGroup_mulEquiv {G : Type} [Group G] [Finite G] :\n    ∃ (n : ℕ) (H : Subgroup (alternatingGroup (Fin n))), Nonempty (G ≃* H) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝¹ : Group G\ninst✝ : Finite G\n⊢ ∃ n H, Nonempty (G ≃* ↥H)",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 143.11
+    }
+  },
+  {
+    "problem_id": "FATE-H_20",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that if $G$ is a nonabelian group of order $p^3$ ($p$ prime),\n    then the center of $G$ is the subgroup generated by all elements of\n    the form $aba^{-1}b^{-1}$ ($a, b \\in G$). -/\ntheorem center_eq_commutator_of_pow_three_eq_card {G : Type} [Group G] {p : ℕ} [hp : Fact p.Prime]\n    (hG : p ^ 3 = Nat.card G) (h : ∃ x y : G, x * y ≠ y * x) :\n    Subgroup.center G = commutator G := by\n  sorry",
+    "full_code": "/-- Prove that if $G$ is a nonabelian group of order $p^3$ ($p$ prime),\n    then the center of $G$ is the subgroup generated by all elements of\n    the form $aba^{-1}b^{-1}$ ($a, b \\in G$). -/\ntheorem center_eq_commutator_of_pow_three_eq_card {G : Type} [Group G] {p : ℕ} [hp : Fact p.Prime]\n    (hG : p ^ 3 = Nat.card G) (h : ∃ x y : G, x * y ≠ y * x) :\n    Subgroup.center G = commutator G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 55.81
+    }
+  },
+  {
+    "problem_id": "FATE-H_21",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "full_code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 12,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nat.card (AddAut (ZMod 3 × ZMod 9)) = 108",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 66.69
+    }
+  },
+  {
+    "problem_id": "FATE-H_22",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let $D_8$ be the dihedral group with $8$ elements. Prove that $\\mathrm{Aut}(D_8) \\cong D_8$.-/\ntheorem nonempty_mulAut_dihedralGroup_four : Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4) := by\n  sorry",
+    "full_code": "/--Let $D_8$ be the dihedral group with $8$ elements. Prove that $\\mathrm{Aut}(D_8) \\cong D_8$.-/\ntheorem nonempty_mulAut_dihedralGroup_four : Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 18,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4)",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 68.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_23",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Prove that if $\\#G = 1053$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1053 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1053) : ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/-- Prove that if $\\#G = 1053$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1053 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1053) : ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 20,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝¹ : Group G\ninst✝ : Finite G\nh_card : Nat.card G = 1053\n⊢ ¬IsSimpleGroup G",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 83.33
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  rw [AddSubgroup.eq_top_iff']\n  intro x\n  set n := H.index with hn_def\n  have hn : n ≠ 0 := h_fin.finiteIndex\n  -- Key fact: for any z, n • z ∈ H\n  have key : ∀ z : ℚ ⧸ (Int.castAddHom ℚ).range, n • z ∈ H := by\n    intro z\n    sorry\n  -- Lift x to ℚ\n  obtain ⟨q, hq⟩ : ∃ q : ℚ, (QuotientAddGroup.mk q : ℚ ⧸ (Int.castAddHom ℚ).range) = x :=\n    Quot.exists_rep x\n  -- Let y be the image of q/n\n  set y : ℚ ⧸ (Int.castAddHom ℚ).range := QuotientAddGroup.mk (q / n)\n  have hny : n • y = x := by\n    have hnq : n • (q / n) = q := by\n      have hnQ : (n : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hn\n      rw [nsmul_eq_mul]\n      field_simp\n    show (n • (QuotientAddGroup.mk (q / n)) : ℚ ⧸ (Int.castAddHom ℚ).range) = x\n    rw [← hq, ← QuotientAddGroup.mk_nsmul]\n    congr 1\n  rw [← hny]\n  exact key y",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  rw [AddSubgroup.eq_top_iff']\n  intro x\n  set n := H.index with hn_def\n  have hn : n ≠ 0 := h_fin.finiteIndex\n  -- Key fact: for any z, n • z ∈ H\n  have key : ∀ z : ℚ ⧸ (Int.castAddHom ℚ).range, n • z ∈ H := by\n    intro z\n    sorry\n  -- Lift x to ℚ\n  obtain ⟨q, hq⟩ : ∃ q : ℚ, (QuotientAddGroup.mk q : ℚ ⧸ (Int.castAddHom ℚ).range) = x :=\n    Quot.exists_rep x\n  -- Let y be the image of q/n\n  set y : ℚ ⧸ (Int.castAddHom ℚ).range := QuotientAddGroup.mk (q / n)\n  have hny : n • y = x := by\n    have hnq : n • (q / n) = q := by\n      have hnQ : (n : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hn\n      rw [nsmul_eq_mul]\n      field_simp\n    show (n • (QuotientAddGroup.mk (q / n)) : ℚ ⧸ (Int.castAddHom ℚ).range) = x\n    rw [← hq, ← QuotientAddGroup.mk_nsmul]\n    congr 1\n  rw [← hny]\n  exact key y",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 22,
+          "pos": {
+            "line": 13,
+            "column": 4
+          },
+          "goal": "H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)\nh_fin : H.FiniteIndex\nx : ℚ ⧸ (Int.castAddHom ℚ).range\nn : ℕ := H.index\nhn_def : n = H.index\nhn : n ≠ 0\nz : ℚ ⧸ (Int.castAddHom ℚ).range\n⊢ n • z ∈ H",
+          "endPos": {
+            "line": 13,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 150.83
+    }
+  },
+  {
+    "problem_id": "FATE-H_25",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/--Let $R=\\mathbb{Z}+x\\mathbb{Q}[x]\\subset \\mathbb{Q}[x]$be the set of polynomials in x with rational coefficients\nwhose constant term is an integer. Prove that $R$ is not a U.F.D.-/\ntheorem not_uniqueFactorizationMonoid_adjoin_int : ¬ UniqueFactorizationMonoid\n    (Algebra.adjoin ℤ ({f | ∃ h : ℚ[X], f = X * h} : Set ℚ[X])) := by\n  sorry",
+    "full_code": "/--Let $R=\\mathbb{Z}+x\\mathbb{Q}[x]\\subset \\mathbb{Q}[x]$be the set of polynomials in x with rational coefficients\nwhose constant term is an integer. Prove that $R$ is not a U.F.D.-/\ntheorem not_uniqueFactorizationMonoid_adjoin_int : ¬ UniqueFactorizationMonoid\n    (Algebra.adjoin ℤ ({f | ∃ h : ℚ[X], f = X * h} : Set ℚ[X])) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 59
+          },
+          "endPos": {
+            "line": 4,
+            "column": 60
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 36
+          },
+          "endPos": {
+            "line": 4,
+            "column": 37
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 44
+          },
+          "endPos": {
+            "line": 4,
+            "column": 45
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 57
+          },
+          "endPos": {
+            "line": 4,
+            "column": 61
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\n⊢ ?m.385 ℚ (sorryAx ?m.382 true)"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 34
+          },
+          "endPos": {
+            "line": 4,
+            "column": 38
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\nf : ℚ[sorryAx ?m.382 true]\n⊢ ?m.604 f ℚ (sorryAx (?m.603 f) true)"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 112.89
+    }
+  },
+  {
+    "problem_id": "FATE-H_26",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/--Suppose \\( G \\) is a group and \\( H \\) is a maximal subgroup of \\( G \\). Show that either \\( Z(G)\n\\leq H \\) or \\( [G,G] \\leq H \\). (A maximal subgroup contains either the center or the commutator\n subgroup.)-/\ntheorem center_le_or_commutator_le_of_isCoatom {G : Type} [Group G] (H : Subgroup G)\n    (h : IsCoatom H) : Subgroup.center G ≤ H ∨ commutator G ≤ H := by\n  sorry",
+    "full_code": "/--Suppose \\( G \\) is a group and \\( H \\) is a maximal subgroup of \\( G \\). Show that either \\( Z(G)\n\\leq H \\) or \\( [G,G] \\leq H \\). (A maximal subgroup contains either the center or the commutator\n subgroup.)-/\ntheorem center_le_or_commutator_le_of_isCoatom {G : Type} [Group G] (H : Subgroup G)\n    (h : IsCoatom H) : Subgroup.center G ≤ H ∨ commutator G ≤ H := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 33,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nH : Subgroup G\nh : IsCoatom H\n⊢ Subgroup.center G ≤ H ∨ commutator G ≤ H",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 149.79
+    }
+  },
+  {
+    "problem_id": "FATE-H_27",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/-- Let $F$ be a field contained in the ring of $n \\times n$ matrices over $\\mathbb{Q}$.\nProve that $[F:\\mathbb{Q}] \\leq n$. -/\ntheorem rank_le_of_subalgebra_matrix {n : ℕ} (F : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ))\n    (h : IsField F) : Module.rank ℚ F ≤ n := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field contained in the ring of $n \\times n$ matrices over $\\mathbb{Q}$.\nProve that $[F:\\mathbb{Q}] \\leq n$. -/\ntheorem rank_le_of_subalgebra_matrix {n : ℕ} (F : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ))\n    (h : IsField F) : Module.rank ℚ F ≤ n := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 38,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nF : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ)\nh : IsField ↑(AlgebraCat.of ℚ ↥F)\n⊢ Module.rank ℚ ↑(AlgebraCat.of ℚ ↥F) ≤ ↑n",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 192.5
+    }
+  },
+  {
+    "problem_id": "FATE-H_28",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $k$ be a perfect field of characteristic $p > 0$.\nLet $F = k(t)$ be the field of rational functions in one variable over $k$.\nShow that every finite extension $E$ of $F$ can be generated by one element, that is,\nthere exists $\\alpha \\in E$ such that $E = F(\\alpha)$. -/\ntheorem exists_ratFunc_adjoin_eq_top {k : Type} [Field k] [PerfectField k] {p : ℕ} [Fact p.Prime] [CharP k p]\n    {E : Type} [Field E] [Algebra (RatFunc k) E] [FiniteDimensional (RatFunc k) E] :\n    ∃ α : E, (RatFunc k)⟮α⟯ = ⊤ := by\n  sorry",
+    "full_code": "/-- Let $k$ be a perfect field of characteristic $p > 0$.\nLet $F = k(t)$ be the field of rational functions in one variable over $k$.\nShow that every finite extension $E$ of $F$ can be generated by one element, that is,\nthere exists $\\alpha \\in E$ such that $E = F(\\alpha)$. -/\ntheorem exists_ratFunc_adjoin_eq_top {k : Type} [Field k] [PerfectField k] {p : ℕ} [Fact p.Prime] [CharP k p]\n    {E : Type} [Field E] [Algebra (RatFunc k) E] [FiniteDimensional (RatFunc k) E] :\n    ∃ α : E, (RatFunc k)⟮α⟯ = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 67.41
+    }
+  },
+  {
+    "problem_id": "FATE-H_29",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Show that if $F$ has characteristic $p$, then all degree $p$ Galois extension of $F$ is to\nadjoin a zero of $x^p-x-a$ for some $a \\in F$.-/\ntheorem exists_nonempty_adjoin_root_X_pow_p_sub_X_sub_C\n    {F E : Type} [Field F] {p : ℕ} [Fact p.Prime] [CharP F p] [Field E]\n    [Algebra F E] [IsGalois F E] (h_deg : Module.finrank F E = p) :\n    ∃ a : F, Nonempty (AdjoinRoot (X ^ p - X - C a : F[X]) ≃+* E) := by\n  sorry",
+    "full_code": "/- Show that if $F$ has characteristic $p$, then all degree $p$ Galois extension of $F$ is to\nadjoin a zero of $x^p-x-a$ for some $a \\in F$.-/\ntheorem exists_nonempty_adjoin_root_X_pow_p_sub_X_sub_C\n    {F E : Type} [Field F] {p : ℕ} [Fact p.Prime] [CharP F p] [Field E]\n    [Algebra F E] [IsGalois F E] (h_deg : Module.finrank F E = p) :\n    ∃ a : F, Nonempty (AdjoinRoot (X ^ p - X - C a : F[X]) ≃+* E) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 58.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_30",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $E$ be the splitting field of\n\\[\nf(x) = \\frac{x^7 - 1}{x - 1} = x^6 + x^5 + x^4 + x^3 + x^2 + x + 1\n\\]\nover $\\mathbb{Q}$. Let $\\zeta$ be a zero of $f(x)$, i.e., a primitive seventh root of $1$.\nLet $\\beta = \\zeta + \\zeta^2 + \\zeta^4$. Show that the intermediate field $\\mathbb{Q}(\\beta)$\nis actually $\\mathbb{Q}(\\sqrt{-7})$. -/\ntheorem nonempty_ringEquiv_adjoin_pow_two_add_seven {E : Type} [Field E] [Algebra ℚ E]\n    [IsCyclotomicExtension {7} ℚ E] (ζ : E)\n    (h : IsPrimitiveRoot ζ 7) (β : E) (hb : β = ζ + ζ ^ 2 + ζ ^ 4) :\n    Nonempty (ℚ⟮β⟯ ≃+* AdjoinRoot (X ^ 2 + 7 : ℚ[X])) := by\n  sorry",
+    "full_code": "/-- Let $E$ be the splitting field of\n\\[\nf(x) = \\frac{x^7 - 1}{x - 1} = x^6 + x^5 + x^4 + x^3 + x^2 + x + 1\n\\]\nover $\\mathbb{Q}$. Let $\\zeta$ be a zero of $f(x)$, i.e., a primitive seventh root of $1$.\nLet $\\beta = \\zeta + \\zeta^2 + \\zeta^4$. Show that the intermediate field $\\mathbb{Q}(\\beta)$\nis actually $\\mathbb{Q}(\\sqrt{-7})$. -/\ntheorem nonempty_ringEquiv_adjoin_pow_two_add_seven {E : Type} [Field E] [Algebra ℚ E]\n    [IsCyclotomicExtension {7} ℚ E] (ζ : E)\n    (h : IsPrimitiveRoot ζ 7) (β : E) (hb : β = ζ + ζ ^ 2 + ζ ^ 4) :\n    Nonempty (ℚ⟮β⟯ ≃+* AdjoinRoot (X ^ 2 + 7 : ℚ[X])) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 56.06
+    }
+  },
+  {
+    "problem_id": "FATE-H_31",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that the primitive $n^{\\textrm{th}}$ roots of unity form a basis over $\\mathbb{Q}$ for\nthe cyclotomic field of $n^{\\textrm{th}}$ roots of unity if and only if $n$ is squarefree.-/\ntheorem exists_basis_primitiveRoots_iff_squarefree {n : ℕ+} :\n    (∃ b : Basis (primitiveRoots n (CyclotomicField n ℚ)) ℚ (CyclotomicField n ℚ),\n    (b : _ → _) = (↑)) ↔ Squarefree n := by\n  sorry",
+    "full_code": "/- Prove that the primitive $n^{\\textrm{th}}$ roots of unity form a basis over $\\mathbb{Q}$ for\nthe cyclotomic field of $n^{\\textrm{th}}$ roots of unity if and only if $n$ is squarefree.-/\ntheorem exists_basis_primitiveRoots_iff_squarefree {n : ℕ+} :\n    (∃ b : Basis (primitiveRoots n (CyclotomicField n ℚ)) ℚ (CyclotomicField n ℚ),\n    (b : _ → _) = (↑)) ↔ Squarefree n := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 51.27
+    }
+  },
+  {
+    "problem_id": "FATE-H_32",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- The Galois group of the splitting field of $x^4 - 2x^2 - 2$ over $\\mathbb{Q}$ is the\ndihedral group with eight elements-/\ntheorem nonempty_galois_mulEquiv_dihedralGroup_four :\n    Nonempty (Gal (X ^ 4 - 2 * X ^ 2 - 2 : ℚ[X]) ≃* DihedralGroup 4) := by\n  sorry",
+    "full_code": "/- The Galois group of the splitting field of $x^4 - 2x^2 - 2$ over $\\mathbb{Q}$ is the\ndihedral group with eight elements-/\ntheorem nonempty_galois_mulEquiv_dihedralGroup_four :\n    Nonempty (Gal (X ^ 4 - 2 * X ^ 2 - 2 : ℚ[X]) ≃* DihedralGroup 4) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 39.46
+    }
+  },
+  {
+    "problem_id": "FATE-H_33",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $f(x) \\in \\mathbb{Q}[x]$ be a polynomial of degree $n$ ($n>4$) and the splitting field $E$\nof $f(x)$ has Galois group $S_n$ over $\\mathbb{Q}$. Let $\\alpha$ be a zero of $f(x)$ in $E$.\nProve that for any other root $\\beta$ of $f(x)$, there are precisely $(n-1)!$ elements in\n$\\mathrm{Gal}(E/\\mathbb{Q})$ that takes $\\alpha $ to $\\beta$ -/\ntheorem card_gal_map_eq_eq_factorial {n : Nat} (hn : n > 4) (f : ℚ[X]) (hf : f.degree = n)\n    (hf' : Irreducible f) (h : f.Gal ≃* (Equiv.Perm <| Fin n))\n    {a b : SplittingField f} (ha : f.aeval a = 0) (hb : f.aeval b = 0) (neq : a ≠ b) :\n    Nat.card {h : f.Gal // h a = b} = Nat.factorial (n - 1) := by\n  sorry",
+    "full_code": "/- Let $f(x) \\in \\mathbb{Q}[x]$ be a polynomial of degree $n$ ($n>4$) and the splitting field $E$\nof $f(x)$ has Galois group $S_n$ over $\\mathbb{Q}$. Let $\\alpha$ be a zero of $f(x)$ in $E$.\nProve that for any other root $\\beta$ of $f(x)$, there are precisely $(n-1)!$ elements in\n$\\mathrm{Gal}(E/\\mathbb{Q})$ that takes $\\alpha $ to $\\beta$ -/\ntheorem card_gal_map_eq_eq_factorial {n : Nat} (hn : n > 4) (f : ℚ[X]) (hf : f.degree = n)\n    (hf' : Irreducible f) (h : f.Gal ≃* (Equiv.Perm <| Fin n))\n    {a b : SplittingField f} (ha : f.aeval a = 0) (hb : f.aeval b = 0) (neq : a ≠ b) :\n    Nat.card {h : f.Gal // h a = b} = Nat.factorial (n - 1) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 63.98
+    }
+  },
+  {
+    "problem_id": "FATE-H_34",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_35",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $D \\in \\mathbb{Z}$ be a squarefree integer and let $a \\in \\mathbb{Q}$ be a nonzero rational number.\nShow that $\\mathbb{Q}(\\sqrt{a\\sqrt D})$ cannot be a cyclic extension of degree $4$ over $\\mathbb{Q}$.-/\ntheorem isEmpty_adjoinRoot_zMod_four {d : ℤ} (hd : Squarefree d) {a : ℚ} (ha : a ≠ 0) :\n    IsEmpty ((AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ)) ≃ₐ[ℚ]\n      AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ))) ≃* Multiplicative (ZMod 4)) := by\n  sorry",
+    "full_code": "/- Let $D \\in \\mathbb{Z}$ be a squarefree integer and let $a \\in \\mathbb{Q}$ be a nonzero rational number.\nShow that $\\mathbb{Q}(\\sqrt{a\\sqrt D})$ cannot be a cyclic extension of degree $4$ over $\\mathbb{Q}$.-/\ntheorem isEmpty_adjoinRoot_zMod_four {d : ℤ} (hd : Squarefree d) {a : ℚ} (ha : a ≠ 0) :\n    IsEmpty ((AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ)) ≃ₐ[ℚ]\n      AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ))) ≃* Multiplicative (ZMod 4)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 52.46
+    }
+  },
+  {
+    "problem_id": "FATE-H_36",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $f(X)=X^4-X^2-1\\in \\mathbb{Q}[X]$, $K$ is the splitting field of $f$ over $\\mathbb{Q}$,\nprove that the number of intermediate fields of $K/\\mathbb{Q}$ is 10. -/\ntheorem card_intermediateField_splittingField_eq_ten :\n    Nat.card (IntermediateField ℚ (X ^ 4 - X ^ 2 - 1 : ℚ[X]).SplittingField) = 10 := by\n  sorry",
+    "full_code": "/-- Let $f(X)=X^4-X^2-1\\in \\mathbb{Q}[X]$, $K$ is the splitting field of $f$ over $\\mathbb{Q}$,\nprove that the number of intermediate fields of $K/\\mathbb{Q}$ is 10. -/\ntheorem card_intermediateField_splittingField_eq_ten :\n    Nat.card (IntermediateField ℚ (X ^ 4 - X ^ 2 - 1 : ℚ[X]).SplittingField) = 10 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 48.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_37",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $L/K$ be a Galois extension of fields such that $\\mathrm{Gal}(L/K)$ is cyclic of order $n$,\ngenerated by $\\sigma$. Write $n = ab$ with $\\gcd(a,b) =1$. Let $F_1$ be the fixed field of\n$\\sigma^a$ and $F_2$ be the fixed field of $\\sigma^b$. Suppose that $F_1 = K(\\alpha)$ and\n$F_2 = K(\\beta)$.  Prove that $L = K(\\alpha+\\beta)$. -/\ntheorem adjoin_add_eq_top_of_fixedField_zpowers {K L : Type} [Field K]\n    [Field L] [Algebra K L] [IsGalois K L] (n a b : ℕ)\n    (σ : L ≃ₐ[K] L) (hσ : orderOf σ = n) (cycle : Subgroup.zpowers σ = ⊤) (hn : n > 0)\n    (hn' : n = a * b) (hab : Nat.Coprime a b) {α β : L}\n    (hα : K⟮α⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ a)))\n    (hβ : K⟮β⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ b))) : K⟮α + β⟯ = ⊤ := by\n  sorry",
+    "full_code": "/-- Let $L/K$ be a Galois extension of fields such that $\\mathrm{Gal}(L/K)$ is cyclic of order $n$,\ngenerated by $\\sigma$. Write $n = ab$ with $\\gcd(a,b) =1$. Let $F_1$ be the fixed field of\n$\\sigma^a$ and $F_2$ be the fixed field of $\\sigma^b$. Suppose that $F_1 = K(\\alpha)$ and\n$F_2 = K(\\beta)$.  Prove that $L = K(\\alpha+\\beta)$. -/\ntheorem adjoin_add_eq_top_of_fixedField_zpowers {K L : Type} [Field K]\n    [Field L] [Algebra K L] [IsGalois K L] (n a b : ℕ)\n    (σ : L ≃ₐ[K] L) (hσ : orderOf σ = n) (cycle : Subgroup.zpowers σ = ⊤) (hn : n > 0)\n    (hn' : n = a * b) (hab : Nat.Coprime a b) {α β : L}\n    (hα : K⟮α⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ a)))\n    (hβ : K⟮β⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ b))) : K⟮α + β⟯ = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 67.44
+    }
+  },
+  {
+    "problem_id": "FATE-H_38",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-Let $p$ be a prime number and let $F$ be a field containing $p$-th roots of unity.\nLet $K$ be a Galois extension of $F$ with Galois group $\\mathbb{Z}_p \\times \\mathbb{Z}_p$.\nShow that there exist two elements $\\alpha, \\beta \\in K^\\times$ such that\n$K= F(\\alpha, \\beta)$ and $a = \\alpha^p, b = \\beta^p \\in F$.-/\ntheorem exists_pow_p_mem_algebraMap_and_adjoin_eq_top {p : Nat} [Fact p.Prime]\n    {F K : Type} [Field F] (hF : (primitiveRoots p F).Nonempty) [Field K] [Algebra F K]\n    [IsGalois F K] (hK : (K ≃ₐ[F] K) ≃* Multiplicative (ZMod p × ZMod p)) :\n    ∃ (α β : K), α ≠ 0 ∧ β ≠ 0 ∧ α ^ p ∈ (algebraMap F K).range ∧ β ^ p ∈ (algebraMap F K).range ∧\n    IntermediateField.adjoin F {α, β} = ⊤ := by\n  sorry",
+    "full_code": "/-Let $p$ be a prime number and let $F$ be a field containing $p$-th roots of unity.\nLet $K$ be a Galois extension of $F$ with Galois group $\\mathbb{Z}_p \\times \\mathbb{Z}_p$.\nShow that there exist two elements $\\alpha, \\beta \\in K^\\times$ such that\n$K= F(\\alpha, \\beta)$ and $a = \\alpha^p, b = \\beta^p \\in F$.-/\ntheorem exists_pow_p_mem_algebraMap_and_adjoin_eq_top {p : Nat} [Fact p.Prime]\n    {F K : Type} [Field F] (hF : (primitiveRoots p F).Nonempty) [Field K] [Algebra F K]\n    [IsGalois F K] (hK : (K ≃ₐ[F] K) ≃* Multiplicative (ZMod p × ZMod p)) :\n    ∃ (α β : K), α ≠ 0 ∧ β ≠ 0 ∧ α ^ p ∈ (algebraMap F K).range ∧ β ^ p ∈ (algebraMap F K).range ∧\n    IntermediateField.adjoin F {α, β} = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 55.61
+    }
+  },
+  {
+    "problem_id": "FATE-H_39",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that a splitting field of \\( X^{15} - 2 \\) over \\( \\mathbb{F}_7 \\) is generated by a\n primitive \\( 45 \\)-th root of unity.-/\ntheorem exists_isPrimitiveRoot_and_adjoin_eq_top :\n    letI : Fact (Nat.Prime 7) := by\n  sorry",
+    "full_code": "/- Prove that a splitting field of \\( X^{15} - 2 \\) over \\( \\mathbb{F}_7 \\) is generated by a\n primitive \\( 45 \\)-th root of unity.-/\ntheorem exists_isPrimitiveRoot_and_adjoin_eq_top :\n    letI : Fact (Nat.Prime 7) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 46.03
+    }
+  },
+  {
+    "problem_id": "FATE-H_40",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $K$ be the splitting field of a irreducible quintic polynomial $f(x) \\in \\mathbb{Q} [x]$\nand let $\\{\\alpha_1, \\dots, \\alpha_5\\}$ be zeros of $f(x)$ in $K$. Show that if $\\mathbb{Q}\n(\\alpha_1, \\alpha_2, \\alpha_3) \\neq K$, then $\\\\mathrm{Gal}(K/\\mathbb{Q}) \\cong S_5$.-/\ntheorem nonempty_gal_mulEquiv_perm_fin_five {f : ℚ[X]} {K : Type} [Field K] [Algebra ℚ K]\n    [IsSplittingField ℚ K f] (hf1 : Irreducible f) (hf2 : f.natDegree = 5) (a₁ a₂ a₃ : K)\n    (ha1 : a₁ ∈ rootSet f K ∧ a₂ ∈ rootSet f K ∧ a₃ ∈ rootSet f K)\n    (ha2 : a₁ ≠ a₂ ∧ a₂ ≠ a₃ ∧ a₃ ≠ a₁)\n    (h : IntermediateField.adjoin ℚ {a₁, a₂, a₃} ≠ ⊤) :\n    Nonempty (f.Gal ≃* (Equiv.Perm <| Fin 5)) := by\n  sorry",
+    "full_code": "/- Let $K$ be the splitting field of a irreducible quintic polynomial $f(x) \\in \\mathbb{Q} [x]$\nand let $\\{\\alpha_1, \\dots, \\alpha_5\\}$ be zeros of $f(x)$ in $K$. Show that if $\\mathbb{Q}\n(\\alpha_1, \\alpha_2, \\alpha_3) \\neq K$, then $\\\\mathrm{Gal}(K/\\mathbb{Q}) \\cong S_5$.-/\ntheorem nonempty_gal_mulEquiv_perm_fin_five {f : ℚ[X]} {K : Type} [Field K] [Algebra ℚ K]\n    [IsSplittingField ℚ K f] (hf1 : Irreducible f) (hf2 : f.natDegree = 5) (a₁ a₂ a₃ : K)\n    (ha1 : a₁ ∈ rootSet f K ∧ a₂ ∈ rootSet f K ∧ a₃ ∈ rootSet f K)\n    (ha2 : a₁ ≠ a₂ ∧ a₂ ≠ a₃ ∧ a₃ ≠ a₁)\n    (h : IntermediateField.adjoin ℚ {a₁, a₂, a₃} ≠ ⊤) :\n    Nonempty (f.Gal ≃* (Equiv.Perm <| Fin 5)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 58.58
+    }
+  },
+  {
+    "problem_id": "FATE-H_41",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $p$ be a prime integer. Suppose that the degree of every finite extension of a field $F$\n is divisible by $p$. Prove that the degree of every finite extension of $F$ is a power of $p$. -/\ntheorem exists_finrank_eq_pow_of_dvd_finrank {F : Type} [Field F] (p : ℕ) [Fact (Nat.Prime p)]\n    (h : ∀ (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E],\n    Module.finrank F E ≠ 1 → p ∣ Module.finrank F E)\n    (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E] :\n    ∃ k, Module.finrank F E = p ^ k := by\n  sorry",
+    "full_code": "/-- Let $p$ be a prime integer. Suppose that the degree of every finite extension of a field $F$\n is divisible by $p$. Prove that the degree of every finite extension of $F$ is a power of $p$. -/\ntheorem exists_finrank_eq_pow_of_dvd_finrank {F : Type} [Field F] (p : ℕ) [Fact (Nat.Prime p)]\n    (h : ∀ (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E],\n    Module.finrank F E ≠ 1 → p ∣ Module.finrank F E)\n    (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E] :\n    ∃ k, Module.finrank F E = p ^ k := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 49.6
+    }
+  },
+  {
+    "problem_id": "FATE-H_42",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--Let \\( K \\) be a field with \\( \\operatorname{char}(K) \\neq 2 \\). Consider Galois extensions\n\\( L/K \\) with \\( \\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2 \\). Let \\( c \\in L^\\times\n\\) be a nonsquare, and let \\( E = K(\\sqrt{c}) \\). Prove that \\( E \\) is Galois over \\( K \\) if and\nonly if for each \\( \\sigma \\in \\operatorname{Gal}(L/K) \\), the ratio \\( \\sigma(c)/c \\) is a square\nin \\( L \\).-/\ntheorem isGalois_adjoin_iff_isSquare (K L : Type) [Field K] [Field L] (h : ¬ CharP K 2) [Algebra K L] [IsGalois K L]\n    (f : (L ≃ₐ[K] L) ≃* Multiplicative (ZMod 2 × ZMod 2)) (c : Lˣ) (hc : c.1 ≠ 0)\n    (hcs : ¬ IsSquare c.1) [Fact (Irreducible (X ^ 2 - C c.1))] :\n    IsGalois K (AdjoinRoot (X ^ 2 - C c.1)) ↔ ∀ σ : (L ≃ₐ[K] L), IsSquare (σ c / c) := by\n  sorry",
+    "full_code": "/--Let \\( K \\) be a field with \\( \\operatorname{char}(K) \\neq 2 \\). Consider Galois extensions\n\\( L/K \\) with \\( \\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2 \\). Let \\( c \\in L^\\times\n\\) be a nonsquare, and let \\( E = K(\\sqrt{c}) \\). Prove that \\( E \\) is Galois over \\( K \\) if and\nonly if for each \\( \\sigma \\in \\operatorname{Gal}(L/K) \\), the ratio \\( \\sigma(c)/c \\) is a square\nin \\( L \\).-/\ntheorem isGalois_adjoin_iff_isSquare (K L : Type) [Field K] [Field L] (h : ¬ CharP K 2) [Algebra K L] [IsGalois K L]\n    (f : (L ≃ₐ[K] L) ≃* Multiplicative (ZMod 2 × ZMod 2)) (c : Lˣ) (hc : c.1 ≠ 0)\n    (hcs : ¬ IsSquare c.1) [Fact (Irreducible (X ^ 2 - C c.1))] :\n    IsGalois K (AdjoinRoot (X ^ 2 - C c.1)) ↔ ∀ σ : (L ≃ₐ[K] L), IsSquare (σ c / c) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 66.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_43",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $F$ be a field with $\\mathbb{Q} \\subseteq F \\subseteq \\mathbb{C}$, where $F/\\mathbb{Q}$ is a finite \\emph\n{abelian} Galois extension. Let $\\alpha \\in F$ and let $f(x) \\in \\mathbb{Q}[x]$ be its minimal monic\npolynomial. Assume that $|\\alpha | =1$. Prove that $|\\beta| = 1$ for every complex root $\\beta$ of\n$f(x)$. -/\ntheorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F]\n    (h : ∀ f g : F ≃ₐ[ℚ] F, f * g = g * f) (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field with $\\mathbb{Q} \\subseteq F \\subseteq \\mathbb{C}$, where $F/\\mathbb{Q}$ is a finite \\emph\n{abelian} Galois extension. Let $\\alpha \\in F$ and let $f(x) \\in \\mathbb{Q}[x]$ be its minimal monic\npolynomial. Assume that $|\\alpha | =1$. Prove that $|\\beta| = 1$ for every complex root $\\beta$ of\n$f(x)$. -/\ntheorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F]\n    (h : ∀ f g : F ≃ₐ[ℚ] F, f * g = g * f) (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 61.26
+    }
+  },
+  {
+    "problem_id": "FATE-H_44",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $k$ be a finite field of size $q$. Show that the number of degree-$19$ monic irreducible\npolynomials over $k$ is $\\frac{q^{19} - q}{19}$. -/\ntheorem card_monic_and_irreducible_and_natDegree_eq_19 {F : Type} (q : ℕ) [Field F]\n    [Fintype F] (hF : Fintype.card F = q) :\n    Nat.card { P : F[X] | P.Monic ∧ Irreducible P ∧ P.natDegree = 19 } =\n    (q ^ 19 - q) / 19 := by\n  sorry",
+    "full_code": "/-- Let $k$ be a finite field of size $q$. Show that the number of degree-$19$ monic irreducible\npolynomials over $k$ is $\\frac{q^{19} - q}{19}$. -/\ntheorem card_monic_and_irreducible_and_natDegree_eq_19 {F : Type} (q : ℕ) [Field F]\n    [Fintype F] (hF : Fintype.card F = q) :\n    Nat.card { P : F[X] | P.Monic ∧ Irreducible P ∧ P.natDegree = 19 } =\n    (q ^ 19 - q) / 19 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 47.03
+    }
+  },
+  {
+    "problem_id": "FATE-H_45",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $F$ be a field, and let $f, g \\in F[x] \\setminus \\{0\\}$ be relatively prime and not both\nconstant. Show that $F(x)$ has finite degree $d = \\max(\\deg(f), \\deg(g))$ over its subfield $F\\left\n(\\frac{f}{g}\\right)$. -/\ntheorem finrank_adjoin_dvd_eq_max_natDegree (F : Type) [Field F] (f g : F[X]) (hf : f ≠ 0)\n    (hg : g ≠ 0) (hcoprime : IsCoprime f g) (hfg : ¬(f.natDegree = 0 ∧ g.natDegree = 0)) :\n    Module.finrank F⟮(f : RatFunc F) / g⟯ (RatFunc F) = max f.natDegree g.natDegree := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field, and let $f, g \\in F[x] \\setminus \\{0\\}$ be relatively prime and not both\nconstant. Show that $F(x)$ has finite degree $d = \\max(\\deg(f), \\deg(g))$ over its subfield $F\\left\n(\\frac{f}{g}\\right)$. -/\ntheorem finrank_adjoin_dvd_eq_max_natDegree (F : Type) [Field F] (f g : F[X]) (hf : f ≠ 0)\n    (hg : g ≠ 0) (hcoprime : IsCoprime f g) (hfg : ¬(f.natDegree = 0 ∧ g.natDegree = 0)) :\n    Module.finrank F⟮(f : RatFunc F) / g⟯ (RatFunc F) = max f.natDegree g.natDegree := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 58.35
+    }
+  },
+  {
+    "problem_id": "FATE-H_46",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--Let \\( \\alpha \\) be a non-zero complex number such that \\( \\alpha + \\alpha^{-1} \\) is contained\nin a quadratic number field. Let \\( L \\) be the normal closure of \\( \\mathbb{Q}(\\alpha) \\). Show\nthat \\( [L : \\mathbb{Q}] \\) divides \\( 8 \\).-/\ntheorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by\n  sorry",
+    "full_code": "/--Let \\( \\alpha \\) be a non-zero complex number such that \\( \\alpha + \\alpha^{-1} \\) is contained\nin a quadratic number field. Let \\( L \\) be the normal closure of \\( \\mathbb{Q}(\\alpha) \\). Show\nthat \\( [L : \\mathbb{Q}] \\) divides \\( 8 \\).-/\ntheorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 47.76
+    }
+  },
+  {
+    "problem_id": "FATE-H_47",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/-- Let $\\zeta$ be a primitive $9$-th root of unity in $\\mathbb{C}$, so $\\zeta^9 = 1$, and let\n$\\omega = \\zeta^3$ be a primitive $3$-rd root of unity, so $\\omega^3 = 1$. If $\\alpha^3 = 3$,\nshow that $\\alpha$ is not a cube in $\\mathbb{Q}(\\zeta)$. -/\ntheorem not_exists_eq_pow_three_of_pow_three_eq_three (α : ℂ) (hα : α ^ 3 = 3) (ζ : ℂ)\n    (hζ : IsPrimitiveRoot ζ 9) : ¬ ∃ β : ℚ⟮ζ⟯, α = β ^ 3 := by\n  sorry",
+    "full_code": "/-- Let $\\zeta$ be a primitive $9$-th root of unity in $\\mathbb{C}$, so $\\zeta^9 = 1$, and let\n$\\omega = \\zeta^3$ be a primitive $3$-rd root of unity, so $\\omega^3 = 1$. If $\\alpha^3 = 3$,\nshow that $\\alpha$ is not a cube in $\\mathbb{Q}(\\zeta)$. -/\ntheorem not_exists_eq_pow_three_of_pow_three_eq_three (α : ℂ) (hα : α ^ 3 = 3) (ζ : ℂ)\n    (hζ : IsPrimitiveRoot ζ 9) : ¬ ∃ β : ℚ⟮ζ⟯, α = β ^ 3 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 90.03
+    }
+  },
+  {
+    "problem_id": "FATE-H_48",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that the cardinality $\\mathrm{Aut}(\\CC)$ (i.e. the group of field automorphism of $\\CC$)\nis infinite. -/\ntheorem infinite_complex_algEquiv : Infinite (ℂ ≃ₐ[ℚ] ℂ) := by\n  sorry",
+    "full_code": "/-- Prove that the cardinality $\\mathrm{Aut}(\\CC)$ (i.e. the group of field automorphism of $\\CC$)\nis infinite. -/\ntheorem infinite_complex_algEquiv : Infinite (ℂ ≃ₐ[ℚ] ℂ) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 50.52
+    }
+  },
+  {
+    "problem_id": "FATE-H_49",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  classical\n  obtain ⟨B, hB⟩ := exists_isTranscendenceBasis ℚ\n    (show Function.Injective (algebraMap ℚ F) from (algebraMap ℚ F).injective)\n  sorry",
+    "full_code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  classical\n  obtain ⟨B, hB⟩ := exists_isTranscendenceBasis ℚ\n    (show Function.Injective (algebraMap ℚ F) from (algebraMap ℚ F).injective)\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "case intro\nF : Type\ninst✝¹ : Field F\ninst✝ : Algebra ℚ F\nh : ⊤.FG\nB : Set F\nhB : IsTranscendenceBasis ℚ Subtype.val\n⊢ ∃ f, Function.Injective ⇑f",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 80.24
+    }
+  },
+  {
+    "problem_id": "FATE-H_50",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $m$ be a maximal ideal of $\\mathbb{Z}[x_1, \\dots, x_n]$ and $F = \\mathbb{Z}[x_1, \\dots, x_n]\n/m$. Show that $F$ cannot have characteristic $0$. -/\ntheorem not_charZero_mvPolynomial_quot {n : ℕ} (m : Ideal (MvPolynomial (Fin n) ℤ))\n    [hm : m.IsMaximal] : ¬ CharZero (MvPolynomial (Fin n) ℤ ⧸ m) := by\n  sorry",
+    "full_code": "/-- Let $m$ be a maximal ideal of $\\mathbb{Z}[x_1, \\dots, x_n]$ and $F = \\mathbb{Z}[x_1, \\dots, x_n]\n/m$. Show that $F$ cannot have characteristic $0$. -/\ntheorem not_charZero_mvPolynomial_quot {n : ℕ} (m : Ideal (MvPolynomial (Fin n) ℤ))\n    [hm : m.IsMaximal] : ¬ CharZero (MvPolynomial (Fin n) ℤ ⧸ m) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nm : Ideal (MvPolynomial (Fin n) ℤ)\nhm : m.IsMaximal\n⊢ ¬CharZero (MvPolynomial (Fin n) ℤ ⧸ m)",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 99.15
+    }
+  },
+  {
+    "problem_id": "FATE-H_51",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $K/F$ be a simple algebraic extension. Let $K = F(\\theta)$. Let $L$ be an intermediate field\nof $K/F$. Show that the minimal polynomial of $\\theta$ over $L$: $g(x) = x^r+\\alpha_1x^{r-1} +\n\\cdots +\\alpha_r$, satisfies that $F(\\alpha_1, \\dots, \\alpha_r) = L$. -/\ntheorem adjoin_minpoly_coeffs_toSet_eq {F K : Type} [Field F] [Field K]\n    [Algebra F K] {θ : K} (L : IntermediateField F K) (h : F⟮θ⟯ = ⊤) :\n    IntermediateField.adjoin F (minpoly L θ).coeffs.toSet = L := by\n  sorry",
+    "full_code": "/-- Let $K/F$ be a simple algebraic extension. Let $K = F(\\theta)$. Let $L$ be an intermediate field\nof $K/F$. Show that the minimal polynomial of $\\theta$ over $L$: $g(x) = x^r+\\alpha_1x^{r-1} +\n\\cdots +\\alpha_r$, satisfies that $F(\\alpha_1, \\dots, \\alpha_r) = L$. -/\ntheorem adjoin_minpoly_coeffs_toSet_eq {F K : Type} [Field F] [Field K]\n    [Algebra F K] {θ : K} (L : IntermediateField F K) (h : F⟮θ⟯ = ⊤) :\n    IntermediateField.adjoin F (minpoly L θ).coeffs.toSet = L := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 55.1
+    }
+  },
+  {
+    "problem_id": "FATE-H_52",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $q$ denote a power of a prime $p$. Show that the extension $\\mathbb{F}_q(t^{1/n})$ over\n$\\mathbb{F}_q(t)$ is Galois if and only if $q \\equiv 1 \\bmod n$. -/\ntheorem isGalois_galoisField_X_pow_iff_modEq_one (p m n : ℕ) (hn : 1 ≤ n) (hm : 1 ≤ m)\n    [Fact p.Prime] :  IsGalois (GaloisField p m)⟮(RatFunc.X ^ n : RatFunc (GaloisField p m))⟯\n    (RatFunc (GaloisField p m)) ↔ p ^ m ≡ 1 [MOD n] := by\n  sorry",
+    "full_code": "/-- Let $q$ denote a power of a prime $p$. Show that the extension $\\mathbb{F}_q(t^{1/n})$ over\n$\\mathbb{F}_q(t)$ is Galois if and only if $q \\equiv 1 \\bmod n$. -/\ntheorem isGalois_galoisField_X_pow_iff_modEq_one (p m n : ℕ) (hn : 1 ≤ n) (hm : 1 ≤ m)\n    [Fact p.Prime] :  IsGalois (GaloisField p m)⟮(RatFunc.X ^ n : RatFunc (GaloisField p m))⟯\n    (RatFunc (GaloisField p m)) ↔ p ^ m ≡ 1 [MOD n] := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 57.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_53",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/-- Prove that every field automorphism of $\\mathbb{R}$ that fixes $\\mathbb{Q}$ is trivial. -/\ntheorem real_algEquiv_eq_one (f : ℝ ≃ₐ[ℚ] ℝ) : f = 1 := by\n  -- Step 1: f preserves nonneg\n  have h_nonneg : ∀ x : ℝ, 0 ≤ x → 0 ≤ f x := by\n    intro x hx\n    have hsq : x = Real.sqrt x ^ 2 := (Real.sq_sqrt hx).symm\n    calc 0 ≤ f (Real.sqrt x) ^ 2 := sq_nonneg _\n      _ = f (Real.sqrt x ^ 2) := by rw [map_pow]\n      _ = f x := by rw [← hsq]\n  -- Step 2: f is strictly monotone\n  have h_mono : StrictMono (f : ℝ → ℝ) := by\n    intro a b hab\n    have hba : (0 : ℝ) ≤ b - a := by linarith\n    have h1 : 0 ≤ f (b - a) := h_nonneg _ hba\n    have h2 : f (b - a) = f b - f a := map_sub f b a\n    have h3 : 0 ≤ f b - f a := by rw [← h2]; exact h1\n    rcases lt_or_eq_of_le h3 with hlt | heq\n    · linarith\n    · exfalso\n      have hfeq : f b = f a := by linarith\n      have hab' : b = a := f.injective hfeq\n      linarith\n  -- Step 3: rational values\n  have h_rat : ∀ q : ℚ, f (q : ℝ) = (q : ℝ) := by\n    intro q\n    have h := f.commutes q\n    simpa using h\n  -- Step 4: conclude\n  apply AlgEquiv.ext\n  intro x\n  show f x = x\n  by_contra hne\n  rcases lt_or_gt_of_ne hne with hlt | hgt\n  · -- f x < x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hlt\n    have hm := h_mono hq2\n    rw [h_rat q] at hm\n    linarith\n  · -- x < f x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hgt\n    have hm := h_mono hq1\n    rw [h_rat q] at hm\n    linarith",
+    "full_code": "/-- Prove that every field automorphism of $\\mathbb{R}$ that fixes $\\mathbb{Q}$ is trivial. -/\ntheorem real_algEquiv_eq_one (f : ℝ ≃ₐ[ℚ] ℝ) : f = 1 := by\n  -- Step 1: f preserves nonneg\n  have h_nonneg : ∀ x : ℝ, 0 ≤ x → 0 ≤ f x := by\n    intro x hx\n    have hsq : x = Real.sqrt x ^ 2 := (Real.sq_sqrt hx).symm\n    calc 0 ≤ f (Real.sqrt x) ^ 2 := sq_nonneg _\n      _ = f (Real.sqrt x ^ 2) := by rw [map_pow]\n      _ = f x := by rw [← hsq]\n  -- Step 2: f is strictly monotone\n  have h_mono : StrictMono (f : ℝ → ℝ) := by\n    intro a b hab\n    have hba : (0 : ℝ) ≤ b - a := by linarith\n    have h1 : 0 ≤ f (b - a) := h_nonneg _ hba\n    have h2 : f (b - a) = f b - f a := map_sub f b a\n    have h3 : 0 ≤ f b - f a := by rw [← h2]; exact h1\n    rcases lt_or_eq_of_le h3 with hlt | heq\n    · linarith\n    · exfalso\n      have hfeq : f b = f a := by linarith\n      have hab' : b = a := f.injective hfeq\n      linarith\n  -- Step 3: rational values\n  have h_rat : ∀ q : ℚ, f (q : ℝ) = (q : ℝ) := by\n    intro q\n    have h := f.commutes q\n    simpa using h\n  -- Step 4: conclude\n  apply AlgEquiv.ext\n  intro x\n  show f x = x\n  by_contra hne\n  rcases lt_or_gt_of_ne hne with hlt | hgt\n  · -- f x < x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hlt\n    have hm := h_mono hq2\n    rw [h_rat q] at hm\n    linarith\n  · -- x < f x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hgt\n    have hm := h_mono hq1\n    rw [h_rat q] at hm\n    linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 27.71
+    }
+  },
+  {
+    "problem_id": "FATE-H_54",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $\\mathbb{F}_4$ be the field with $4$ elements, $t$ a transcendental over $\\mathbb{F}_4$,\nand $F =\\mathbb{F}_4(t^4 + t)$ and $K =\\mathbb{F}_4(t)$. Show that $K$ is Galois over $F$. -/\ntheorem isGalois_galoisField_adjoin_X_pow_four_add_X :\n    IsGalois (GaloisField 2 2)⟮(X ^ 4 + X : RatFunc (GaloisField 2 2))⟯\n    (RatFunc (GaloisField 2 2)) := by\n  sorry",
+    "full_code": "/-- Let $\\mathbb{F}_4$ be the field with $4$ elements, $t$ a transcendental over $\\mathbb{F}_4$,\nand $F =\\mathbb{F}_4(t^4 + t)$ and $K =\\mathbb{F}_4(t)$. Show that $K$ is Galois over $F$. -/\ntheorem isGalois_galoisField_adjoin_X_pow_four_add_X :\n    IsGalois (GaloisField 2 2)⟮(X ^ 4 + X : RatFunc (GaloisField 2 2))⟯\n    (RatFunc (GaloisField 2 2)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 52.86
+    }
+  },
+  {
+    "problem_id": "FATE-H_55",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet $K$ be a field with $\\operatorname{char}(K) \\neq 2$. Consider a Galois extension $L/K$.\nShow that $\\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2$ if and only if\nthe extensions $L/K$ has the form $L = K(\\sqrt{a}, \\sqrt{b})$ for $a, b \\in K^\\times$ such that\n$a$, $b$, and $a/b$ are nonsquares in $K^\\times$.\n-/\ntheorem exists_pow_two_eq_algebraMap_and_adjoin_eq_top {K L : Type} [Field K] [Field L]\n    [Algebra K L] [IsGalois K L] (hK : ¬ CharP K 2) : IsKleinFour (L ≃ₐ[K] L) ↔\n    ∃ a b : Kˣ, ∃ x y : L, x ^ 2 = algebraMap K L a.1 ∧ y ^ 2 = algebraMap K L b.1 ∧\n    K⟮x, y⟯ = ⊤ ∧ ¬IsSquare a ∧ ¬IsSquare b ∧ ¬IsSquare (a / b) := by\n  sorry",
+    "full_code": "/--\nLet $K$ be a field with $\\operatorname{char}(K) \\neq 2$. Consider a Galois extension $L/K$.\nShow that $\\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2$ if and only if\nthe extensions $L/K$ has the form $L = K(\\sqrt{a}, \\sqrt{b})$ for $a, b \\in K^\\times$ such that\n$a$, $b$, and $a/b$ are nonsquares in $K^\\times$.\n-/\ntheorem exists_pow_two_eq_algebraMap_and_adjoin_eq_top {K L : Type} [Field K] [Field L]\n    [Algebra K L] [IsGalois K L] (hK : ¬ CharP K 2) : IsKleinFour (L ≃ₐ[K] L) ↔\n    ∃ a b : Kˣ, ∃ x y : L, x ^ 2 = algebraMap K L a.1 ∧ y ^ 2 = algebraMap K L b.1 ∧\n    K⟮x, y⟯ = ⊤ ∧ ¬IsSquare a ∧ ¬IsSquare b ∧ ¬IsSquare (a / b) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 68.62
+    }
+  },
+  {
+    "problem_id": "FATE-H_56",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Prove that for $n$ odd, $n>1$, $\\Phi_{2n}(x) = \\Phi_n(-x)$, where $\\Phi_n$ is the $n$th\ncyclotomic polynomial over \\mathbb{Q}.-/\ntheorem cyclotomic_two_mul_eq_cyclotomic_comp_neg {n : ℕ} (hn : Odd n) (hn' : 1 < n) :\n    Polynomial.cyclotomic (2 * n) ℚ = (Polynomial.cyclotomic n ℚ).comp (-X) := by\n  sorry",
+    "full_code": "/- Prove that for $n$ odd, $n>1$, $\\Phi_{2n}(x) = \\Phi_n(-x)$, where $\\Phi_n$ is the $n$th\ncyclotomic polynomial over \\mathbb{Q}.-/\ntheorem cyclotomic_two_mul_eq_cyclotomic_comp_neg {n : ℕ} (hn : Odd n) (hn' : 1 < n) :\n    Polynomial.cyclotomic (2 * n) ℚ = (Polynomial.cyclotomic n ℚ).comp (-X) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 63.78
+    }
+  },
+  {
+    "problem_id": "FATE-H_57",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/- If $F$ is a field that is not perfect, show that $F$ has a nontrivial purely inseparable\nextension.-/\ntheorem exists_isPurelyInseparable_and_bot_lt {F : Type} [Field F] (h : ¬ PerfectField F) :\n    ∃ E : IntermediateField F (AlgebraicClosure F), IsPurelyInseparable F E ∧ ⊥ < E := by\n  sorry",
+    "full_code": "/- If $F$ is a field that is not perfect, show that $F$ has a nontrivial purely inseparable\nextension.-/\ntheorem exists_isPurelyInseparable_and_bot_lt {F : Type} [Field F] (h : ¬ PerfectField F) :\n    ∃ E : IntermediateField F (AlgebraicClosure F), IsPurelyInseparable F E ∧ ⊥ < E := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "F : Type\ninst✝ : Field F\nh : ¬PerfectField F\n⊢ ∃ E, IsPurelyInseparable F ↥E ∧ ⊥ < E",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 142.15
+    }
+  }
+]

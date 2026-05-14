@@ -1,0 +1,21 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  classical\n  set K := H.normalCore with hKdef\n  have hKnormal : K.Normal := Subgroup.normalCore_normal H\n  have hKle : K ≤ H := Subgroup.normalCore_le H\n  have hcard : Nat.card (G ⧸ H) = n := by\n    have : H.index = Nat.card (G ⧸ H) := rfl\n    rw [this] at hH\n    exact hH\n  have hne : Nat.card (G ⧸ H) ≠ 0 := by rw [hcard]; exact hn\n  haveI : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero hne\n  haveI : Fintype (G ⧸ H) := Fintype.ofFinite _\n  let φ : G →* Equiv.Perm (G ⧸ H) := MulAction.toPermHom G (G ⧸ H)\n  have hker : K = φ.ker := Subgroup.normalCore_eq_ker H\n  have hinj : Function.Injective (QuotientGroup.kerLift φ) :=\n    QuotientGroup.kerLift_injective φ\n  haveI : Finite (G ⧸ φ.ker) := Finite.of_injective _ hinj\n  haveI : Fintype (G ⧸ φ.ker) := Fintype.ofFinite _\n  have hbound0 : Nat.card (G ⧸ φ.ker) ≤ Nat.card (Equiv.Perm (G ⧸ H)) := by\n    rw [Nat.card_eq_fintype_card, Nat.card_eq_fintype_card]\n    exact Fintype.card_le_of_injective _ hinj\n  have hK_index : K.index = Nat.card (G ⧸ φ.ker) := by\n    rw [hker]\n    rfl\n  have hperm : Nat.card (Equiv.Perm (G ⧸ H)) = (Nat.card (G ⧸ H)).factorial := by\n    simp [Nat.card_eq_fintype_card, Fintype.card_perm]\n  have hK_le : K.index ≤ n.factorial := by\n    rw [hK_index]\n    calc Nat.card (G ⧸ φ.ker)\n        ≤ Nat.card (Equiv.Perm (G ⧸ H)) := hbound0\n      _ = (Nat.card (G ⧸ H)).factorial := hperm\n      _ = n.factorial := by rw [hcard]\n  have hKpos : 0 < K.index := by\n    rw [hK_index]; exact Nat.card_pos\n  have hKne : K.index ≠ 0 := Nat.pos_iff_ne_zero.mp hKpos\n  exact ⟨K, hKnormal, hKle, hKne, hK_le⟩",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  classical\n  set K := H.normalCore with hKdef\n  have hKnormal : K.Normal := Subgroup.normalCore_normal H\n  have hKle : K ≤ H := Subgroup.normalCore_le H\n  have hcard : Nat.card (G ⧸ H) = n := by\n    have : H.index = Nat.card (G ⧸ H) := rfl\n    rw [this] at hH\n    exact hH\n  have hne : Nat.card (G ⧸ H) ≠ 0 := by rw [hcard]; exact hn\n  haveI : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero hne\n  haveI : Fintype (G ⧸ H) := Fintype.ofFinite _\n  let φ : G →* Equiv.Perm (G ⧸ H) := MulAction.toPermHom G (G ⧸ H)\n  have hker : K = φ.ker := Subgroup.normalCore_eq_ker H\n  have hinj : Function.Injective (QuotientGroup.kerLift φ) :=\n    QuotientGroup.kerLift_injective φ\n  haveI : Finite (G ⧸ φ.ker) := Finite.of_injective _ hinj\n  haveI : Fintype (G ⧸ φ.ker) := Fintype.ofFinite _\n  have hbound0 : Nat.card (G ⧸ φ.ker) ≤ Nat.card (Equiv.Perm (G ⧸ H)) := by\n    rw [Nat.card_eq_fintype_card, Nat.card_eq_fintype_card]\n    exact Fintype.card_le_of_injective _ hinj\n  have hK_index : K.index = Nat.card (G ⧸ φ.ker) := by\n    rw [hker]\n    rfl\n  have hperm : Nat.card (Equiv.Perm (G ⧸ H)) = (Nat.card (G ⧸ H)).factorial := by\n    simp [Nat.card_eq_fintype_card, Fintype.card_perm]\n  have hK_le : K.index ≤ n.factorial := by\n    rw [hK_index]\n    calc Nat.card (G ⧸ φ.ker)\n        ≤ Nat.card (Equiv.Perm (G ⧸ H)) := hbound0\n      _ = (Nat.card (G ⧸ H)).factorial := hperm\n      _ = n.factorial := by rw [hcard]\n  have hKpos : 0 < K.index := by\n    rw [hK_index]; exact Nat.card_pos\n  have hKne : K.index ≠ 0 := Nat.pos_iff_ne_zero.mp hKpos\n  exact ⟨K, hKnormal, hKle, hKne, hK_le⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 306.91
+    }
+  }
+]

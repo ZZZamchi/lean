@@ -1,0 +1,555 @@
+[
+  {
+    "problem_id": "FATE-H_21",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "full_code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nat.card (AddAut (ZMod 3 × ZMod 9)) = 108",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 389.52
+    }
+  },
+  {
+    "problem_id": "FATE-H_22",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/--Let $D_8$ be the dihedral group with $8$ elements. Prove that $\\mathrm{Aut}(D_8) \\cong D_8$.-/\ntheorem nonempty_mulAut_dihedralGroup_four : Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4) := by\n  sorry",
+    "full_code": "/--Let $D_8$ be the dihedral group with $8$ elements. Prove that $\\mathrm{Aut}(D_8) \\cong D_8$.-/\ntheorem nonempty_mulAut_dihedralGroup_four : Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nonempty (MulAut (DihedralGroup 4) ≃* DihedralGroup 4)",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 138.72
+    }
+  },
+  {
+    "problem_id": "FATE-H_23",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Prove that if $\\#G = 1053$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1053 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1053) : ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/-- Prove that if $\\#G = 1053$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1053 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1053) : ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 83.84
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  set G := ℚ ⧸ (Int.castAddHom ℚ).range with hG_def\n  set n := H.index with hn_def\n  have hn_pos : 0 < n := Nat.pos_of_ne_zero h_fin.finiteIndex\n  -- Bridge: every n • z lies in H.\n  have hfin : Finite (G ⧸ H) := by\n    have := h_fin\n    infer_instance\n  have key : ∀ z : G, n • z ∈ H := by\n    intro z\n    have hcard : Nat.card (G ⧸ H) = n := by\n      rw [hn_def, AddSubgroup.index]\n    -- order in the quotient divides Nat.card\n    have hzero : (n : ℕ) • (QuotientAddGroup.mk' H z) = 0 := by\n      have h1 : addOrderOf (QuotientAddGroup.mk' H z) ∣ Nat.card (G ⧸ H) :=\n        addOrderOf_dvd_natCard _\n      rw [hcard] at h1\n      exact addOrderOf_dvd_iff_nsmul_eq_zero.mp h1\n    have : QuotientAddGroup.mk' H (n • z) = 0 := by\n      simpa using hzero\n    exact (QuotientAddGroup.eq_zero_iff _).mp this\n  -- Now show H = ⊤.\n  rw [AddSubgroup.eq_top_iff']\n  intro x\n  -- Find y with n • y = x, using divisibility in ℚ/ℤ.\n  obtain ⟨q, rfl⟩ := QuotientAddGroup.mk_surjective x\n  -- y := mk (q / n)\n  set y : G := QuotientAddGroup.mk ((q : ℚ) / (n : ℚ)) with hy_def\n  have hy : n • y = QuotientAddGroup.mk q := by\n    rw [hy_def]\n    rw [← QuotientAddGroup.mk_nsmul]\n    congr 1\n    have hnne : (n : ℚ) ≠ 0 := by exact_mod_cast hn_pos.ne'\n    field_simp\n  rw [← hy]\n  exact key y",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  set G := ℚ ⧸ (Int.castAddHom ℚ).range with hG_def\n  set n := H.index with hn_def\n  have hn_pos : 0 < n := Nat.pos_of_ne_zero h_fin.finiteIndex\n  -- Bridge: every n • z lies in H.\n  have hfin : Finite (G ⧸ H) := by\n    have := h_fin\n    infer_instance\n  have key : ∀ z : G, n • z ∈ H := by\n    intro z\n    have hcard : Nat.card (G ⧸ H) = n := by\n      rw [hn_def, AddSubgroup.index]\n    -- order in the quotient divides Nat.card\n    have hzero : (n : ℕ) • (QuotientAddGroup.mk' H z) = 0 := by\n      have h1 : addOrderOf (QuotientAddGroup.mk' H z) ∣ Nat.card (G ⧸ H) :=\n        addOrderOf_dvd_natCard _\n      rw [hcard] at h1\n      exact addOrderOf_dvd_iff_nsmul_eq_zero.mp h1\n    have : QuotientAddGroup.mk' H (n • z) = 0 := by\n      simpa using hzero\n    exact (QuotientAddGroup.eq_zero_iff _).mp this\n  -- Now show H = ⊤.\n  rw [AddSubgroup.eq_top_iff']\n  intro x\n  -- Find y with n • y = x, using divisibility in ℚ/ℤ.\n  obtain ⟨q, rfl⟩ := QuotientAddGroup.mk_surjective x\n  -- y := mk (q / n)\n  set y : G := QuotientAddGroup.mk ((q : ℚ) / (n : ℚ)) with hy_def\n  have hy : n • y = QuotientAddGroup.mk q := by\n    rw [hy_def]\n    rw [← QuotientAddGroup.mk_nsmul]\n    congr 1\n    have hnne : (n : ℚ) ≠ 0 := by exact_mod_cast hn_pos.ne'\n    field_simp\n  rw [← hy]\n  exact key y",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 103.33
+    }
+  },
+  {
+    "problem_id": "FATE-H_25",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let $R=\\mathbb{Z}+x\\mathbb{Q}[x]\\subset \\mathbb{Q}[x]$be the set of polynomials in x with rational coefficients\nwhose constant term is an integer. Prove that $R$ is not a U.F.D.-/\ntheorem not_uniqueFactorizationMonoid_adjoin_int : ¬ UniqueFactorizationMonoid\n    (Algebra.adjoin ℤ ({f | ∃ h : ℚ[X], f = X * h} : Set ℚ[X])) := by\n  sorry",
+    "full_code": "/--Let $R=\\mathbb{Z}+x\\mathbb{Q}[x]\\subset \\mathbb{Q}[x]$be the set of polynomials in x with rational coefficients\nwhose constant term is an integer. Prove that $R$ is not a U.F.D.-/\ntheorem not_uniqueFactorizationMonoid_adjoin_int : ¬ UniqueFactorizationMonoid\n    (Algebra.adjoin ℤ ({f | ∃ h : ℚ[X], f = X * h} : Set ℚ[X])) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 137.8
+    }
+  },
+  {
+    "problem_id": "FATE-H_26",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 10,
+    "code": "/--Suppose \\( G \\) is a group and \\( H \\) is a maximal subgroup of \\( G \\). Show that either \\( Z(G)\n\\leq H \\) or \\( [G,G] \\leq H \\). (A maximal subgroup contains either the center or the commutator\n subgroup.)-/\ntheorem center_le_or_commutator_le_of_isCoatom {G : Type} [Group G] (H : Subgroup G)\n    (h : IsCoatom H) : Subgroup.center G ≤ H ∨ commutator G ≤ H := by\n  sorry",
+    "full_code": "/--Suppose \\( G \\) is a group and \\( H \\) is a maximal subgroup of \\( G \\). Show that either \\( Z(G)\n\\leq H \\) or \\( [G,G] \\leq H \\). (A maximal subgroup contains either the center or the commutator\n subgroup.)-/\ntheorem center_le_or_commutator_le_of_isCoatom {G : Type} [Group G] (H : Subgroup G)\n    (h : IsCoatom H) : Subgroup.center G ≤ H ∨ commutator G ≤ H := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nH : Subgroup G\nh : IsCoatom H\n⊢ Subgroup.center G ≤ H ∨ commutator G ≤ H",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 348.63
+    }
+  },
+  {
+    "problem_id": "FATE-H_27",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/-- Let $F$ be a field contained in the ring of $n \\times n$ matrices over $\\mathbb{Q}$.\nProve that $[F:\\mathbb{Q}] \\leq n$. -/\ntheorem rank_le_of_subalgebra_matrix {n : ℕ} (F : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ))\n    (h : IsField F) : Module.rank ℚ F ≤ n := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field contained in the ring of $n \\times n$ matrices over $\\mathbb{Q}$.\nProve that $[F:\\mathbb{Q}] \\leq n$. -/\ntheorem rank_le_of_subalgebra_matrix {n : ℕ} (F : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ))\n    (h : IsField F) : Module.rank ℚ F ≤ n := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 32,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nF : Subalgebra ℚ (Matrix (Fin n) (Fin n) ℚ)\nh : IsField ↑(AlgebraCat.of ℚ ↥F)\n⊢ Module.rank ℚ ↑(AlgebraCat.of ℚ ↥F) ≤ ↑n",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 229.57
+    }
+  },
+  {
+    "problem_id": "FATE-H_28",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_29",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Show that if $F$ has characteristic $p$, then all degree $p$ Galois extension of $F$ is to\nadjoin a zero of $x^p-x-a$ for some $a \\in F$.-/\ntheorem exists_nonempty_adjoin_root_X_pow_p_sub_X_sub_C\n    {F E : Type} [Field F] {p : ℕ} [Fact p.Prime] [CharP F p] [Field E]\n    [Algebra F E] [IsGalois F E] (h_deg : Module.finrank F E = p) :\n    ∃ a : F, Nonempty (AdjoinRoot (X ^ p - X - C a : F[X]) ≃+* E) := by\n  sorry",
+    "full_code": "/- Show that if $F$ has characteristic $p$, then all degree $p$ Galois extension of $F$ is to\nadjoin a zero of $x^p-x-a$ for some $a \\in F$.-/\ntheorem exists_nonempty_adjoin_root_X_pow_p_sub_X_sub_C\n    {F E : Type} [Field F] {p : ℕ} [Fact p.Prime] [CharP F p] [Field E]\n    [Algebra F E] [IsGalois F E] (h_deg : Module.finrank F E = p) :\n    ∃ a : F, Nonempty (AdjoinRoot (X ^ p - X - C a : F[X]) ≃+* E) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 93.84
+    }
+  },
+  {
+    "problem_id": "FATE-H_30",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $E$ be the splitting field of\n\\[\nf(x) = \\frac{x^7 - 1}{x - 1} = x^6 + x^5 + x^4 + x^3 + x^2 + x + 1\n\\]\nover $\\mathbb{Q}$. Let $\\zeta$ be a zero of $f(x)$, i.e., a primitive seventh root of $1$.\nLet $\\beta = \\zeta + \\zeta^2 + \\zeta^4$. Show that the intermediate field $\\mathbb{Q}(\\beta)$\nis actually $\\mathbb{Q}(\\sqrt{-7})$. -/\ntheorem nonempty_ringEquiv_adjoin_pow_two_add_seven {E : Type} [Field E] [Algebra ℚ E]\n    [IsCyclotomicExtension {7} ℚ E] (ζ : E)\n    (h : IsPrimitiveRoot ζ 7) (β : E) (hb : β = ζ + ζ ^ 2 + ζ ^ 4) :\n    Nonempty (ℚ⟮β⟯ ≃+* AdjoinRoot (X ^ 2 + 7 : ℚ[X])) := by\n  exact Classical.choice inferInstance",
+    "full_code": "/-- Let $E$ be the splitting field of\n\\[\nf(x) = \\frac{x^7 - 1}{x - 1} = x^6 + x^5 + x^4 + x^3 + x^2 + x + 1\n\\]\nover $\\mathbb{Q}$. Let $\\zeta$ be a zero of $f(x)$, i.e., a primitive seventh root of $1$.\nLet $\\beta = \\zeta + \\zeta^2 + \\zeta^4$. Show that the intermediate field $\\mathbb{Q}(\\beta)$\nis actually $\\mathbb{Q}(\\sqrt{-7})$. -/\ntheorem nonempty_ringEquiv_adjoin_pow_two_add_seven {E : Type} [Field E] [Algebra ℚ E]\n    [IsCyclotomicExtension {7} ℚ E] (ζ : E)\n    (h : IsPrimitiveRoot ζ 7) (β : E) (hb : β = ζ + ζ ^ 2 + ζ ^ 4) :\n    Nonempty (ℚ⟮β⟯ ≃+* AdjoinRoot (X ^ 2 + 7 : ℚ[X])) := by\n  exact Classical.choice inferInstance",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 11,
+            "column": 15
+          },
+          "endPos": null,
+          "data": "expected token"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 104.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_31",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Prove that the primitive $n^{\\textrm{th}}$ roots of unity form a basis over $\\mathbb{Q}$ for\nthe cyclotomic field of $n^{\\textrm{th}}$ roots of unity if and only if $n$ is squarefree.-/\ntheorem exists_basis_primitiveRoots_iff_squarefree {n : ℕ+} :\n    (∃ b : Basis (primitiveRoots n (CyclotomicField n ℚ)) ℚ (CyclotomicField n ℚ),\n    (b : _ → _) = (↑)) ↔ Squarefree n := by\n  sorry",
+    "full_code": "/- Prove that the primitive $n^{\\textrm{th}}$ roots of unity form a basis over $\\mathbb{Q}$ for\nthe cyclotomic field of $n^{\\textrm{th}}$ roots of unity if and only if $n$ is squarefree.-/\ntheorem exists_basis_primitiveRoots_iff_squarefree {n : ℕ+} :\n    (∃ b : Basis (primitiveRoots n (CyclotomicField n ℚ)) ℚ (CyclotomicField n ℚ),\n    (b : _ → _) = (↑)) ↔ Squarefree n := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 90.02
+    }
+  },
+  {
+    "problem_id": "FATE-H_32",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- The Galois group of the splitting field of $x^4 - 2x^2 - 2$ over $\\mathbb{Q}$ is the\ndihedral group with eight elements-/\ntheorem nonempty_galois_mulEquiv_dihedralGroup_four :\n    Nonempty (Gal (X ^ 4 - 2 * X ^ 2 - 2 : ℚ[X]) ≃* DihedralGroup 4) := by\n  sorry",
+    "full_code": "/- The Galois group of the splitting field of $x^4 - 2x^2 - 2$ over $\\mathbb{Q}$ is the\ndihedral group with eight elements-/\ntheorem nonempty_galois_mulEquiv_dihedralGroup_four :\n    Nonempty (Gal (X ^ 4 - 2 * X ^ 2 - 2 : ℚ[X]) ≃* DihedralGroup 4) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 75.04
+    }
+  },
+  {
+    "problem_id": "FATE-H_33",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Let $f(x) \\in \\mathbb{Q}[x]$ be a polynomial of degree $n$ ($n>4$) and the splitting field $E$\nof $f(x)$ has Galois group $S_n$ over $\\mathbb{Q}$. Let $\\alpha$ be a zero of $f(x)$ in $E$.\nProve that for any other root $\\beta$ of $f(x)$, there are precisely $(n-1)!$ elements in\n$\\mathrm{Gal}(E/\\mathbb{Q})$ that takes $\\alpha $ to $\\beta$ -/\ntheorem card_gal_map_eq_eq_factorial {n : Nat} (hn : n > 4) (f : ℚ[X]) (hf : f.degree = n)\n    (hf' : Irreducible f) (h : f.Gal ≃* (Equiv.Perm <| Fin n))\n    {a b : SplittingField f} (ha : f.aeval a = 0) (hb : f.aeval b = 0) (neq : a ≠ b) :\n    Nat.card {h : f.Gal // h a = b} = Nat.factorial (n - 1) := by\n  sorry",
+    "full_code": "/- Let $f(x) \\in \\mathbb{Q}[x]$ be a polynomial of degree $n$ ($n>4$) and the splitting field $E$\nof $f(x)$ has Galois group $S_n$ over $\\mathbb{Q}$. Let $\\alpha$ be a zero of $f(x)$ in $E$.\nProve that for any other root $\\beta$ of $f(x)$, there are precisely $(n-1)!$ elements in\n$\\mathrm{Gal}(E/\\mathbb{Q})$ that takes $\\alpha $ to $\\beta$ -/\ntheorem card_gal_map_eq_eq_factorial {n : Nat} (hn : n > 4) (f : ℚ[X]) (hf : f.degree = n)\n    (hf' : Irreducible f) (h : f.Gal ≃* (Equiv.Perm <| Fin n))\n    {a b : SplittingField f} (ha : f.aeval a = 0) (hb : f.aeval b = 0) (neq : a ≠ b) :\n    Nat.card {h : f.Gal // h a = b} = Nat.factorial (n - 1) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 88.94
+    }
+  },
+  {
+    "problem_id": "FATE-H_34",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/- Let \\( E \\) be a field of characteristic zero. Consider a prime \\( q \\) and an element \\( b\n\\in E^\\times \\) that isn’t a \\( q \\)-th power. Let \\( E' = E(a) \\) with \\( a^q = b \\). Show that\n\\( X^q - b \\) is reducible over \\( E \\) if and only if \\( [E' : E] < q \\)-/\ntheorem not_irreducible_iff_finrank_lt {E E': Type} [Field E] [CharZero E] [Field E'] [Algebra E E'] {q : ℕ}\n    [Fact q.Prime] {b : E} (hb : b ≠ 0) (not_pow : ∀ c : E, c ^ q ≠ b) {a : E'}\n    (ha : a ^ q = algebraMap E E' b) (haE : ⊤ = IntermediateField.adjoin E {a}) :\n    ¬ Irreducible (X ^ q - C b) ↔ Module.finrank E E' < q := by\n  sorry",
+    "full_code": "/- Let \\( E \\) be a field of characteristic zero. Consider a prime \\( q \\) and an element \\( b\n\\in E^\\times \\) that isn’t a \\( q \\)-th power. Let \\( E' = E(a) \\) with \\( a^q = b \\). Show that\n\\( X^q - b \\) is reducible over \\( E \\) if and only if \\( [E' : E] < q \\)-/\ntheorem not_irreducible_iff_finrank_lt {E E': Type} [Field E] [CharZero E] [Field E'] [Algebra E E'] {q : ℕ}\n    [Fact q.Prime] {b : E} (hb : b ≠ 0) (not_pow : ∀ c : E, c ^ q ≠ b) {a : E'}\n    (ha : a ^ q = algebraMap E E' b) (haE : ⊤ = IntermediateField.adjoin E {a}) :\n    ¬ Irreducible (X ^ q - C b) ↔ Module.finrank E E' < q := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 41,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "E E' : Type\ninst✝⁴ : Field E\ninst✝³ : CharZero E\ninst✝² : Field E'\ninst✝¹ : Algebra E E'\nq : ℕ\ninst✝ : Fact q.Prime\nb : E\nhb : b ≠ 0\nnot_pow : ∀ (c : E), c ^ q ≠ b\na : E'\nha : a ^ q = (algebraMap E E') b\nhaE : ⊤ = E⟮a⟯\n⊢ ¬Irreducible (sorryAx (?m.2838 hb not_pow ha haE) true ^ q - sorryAx (?m.2836 hb not_pow ha haE) true) ↔\n    sorryAx ℕ true < q",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 19
+          },
+          "endPos": {
+            "line": 7,
+            "column": 20
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 27
+          },
+          "endPos": {
+            "line": 7,
+            "column": 28
+          },
+          "data": "unknown identifier 'C'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 34
+          },
+          "endPos": {
+            "line": 7,
+            "column": 53
+          },
+          "data": "unknown constant 'Module.finrank'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 224.01
+    }
+  },
+  {
+    "problem_id": "FATE-H_35",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Let $D \\in \\mathbb{Z}$ be a squarefree integer and let $a \\in \\mathbb{Q}$ be a nonzero rational number.\nShow that $\\mathbb{Q}(\\sqrt{a\\sqrt D})$ cannot be a cyclic extension of degree $4$ over $\\mathbb{Q}$.-/\ntheorem isEmpty_adjoinRoot_zMod_four {d : ℤ} (hd : Squarefree d) {a : ℚ} (ha : a ≠ 0) :\n    IsEmpty ((AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ)) ≃ₐ[ℚ]\n      AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ))) ≃* Multiplicative (ZMod 4)) := by\n  sorry",
+    "full_code": "/- Let $D \\in \\mathbb{Z}$ be a squarefree integer and let $a \\in \\mathbb{Q}$ be a nonzero rational number.\nShow that $\\mathbb{Q}(\\sqrt{a\\sqrt D})$ cannot be a cyclic extension of degree $4$ over $\\mathbb{Q}$.-/\ntheorem isEmpty_adjoinRoot_zMod_four {d : ℤ} (hd : Squarefree d) {a : ℚ} (ha : a ≠ 0) :\n    IsEmpty ((AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ)) ≃ₐ[ℚ]\n      AdjoinRoot ((a⁻¹ • X ^ 2) ^ 2 - C (d : ℚ))) ≃* Multiplicative (ZMod 4)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 85.44
+    }
+  },
+  {
+    "problem_id": "FATE-H_36",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/-- Let $f(X)=X^4-X^2-1\\in \\mathbb{Q}[X]$, $K$ is the splitting field of $f$ over $\\mathbb{Q}$,\nprove that the number of intermediate fields of $K/\\mathbb{Q}$ is 10. -/\ntheorem card_intermediateField_splittingField_eq_ten :\n    Nat.card (IntermediateField ℚ (X ^ 4 - X ^ 2 - 1 : ℚ[X]).SplittingField) = 10 := by\n  sorry",
+    "full_code": "/-- Let $f(X)=X^4-X^2-1\\in \\mathbb{Q}[X]$, $K$ is the splitting field of $f$ over $\\mathbb{Q}$,\nprove that the number of intermediate fields of $K/\\mathbb{Q}$ is 10. -/\ntheorem card_intermediateField_splittingField_eq_ten :\n    Nat.card (IntermediateField ℚ (X ^ 4 - X ^ 2 - 1 : ℚ[X]).SplittingField) = 10 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 84.51
+    }
+  },
+  {
+    "problem_id": "FATE-H_37",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $L/K$ be a Galois extension of fields such that $\\mathrm{Gal}(L/K)$ is cyclic of order $n$,\ngenerated by $\\sigma$. Write $n = ab$ with $\\gcd(a,b) =1$. Let $F_1$ be the fixed field of\n$\\sigma^a$ and $F_2$ be the fixed field of $\\sigma^b$. Suppose that $F_1 = K(\\alpha)$ and\n$F_2 = K(\\beta)$.  Prove that $L = K(\\alpha+\\beta)$. -/\ntheorem adjoin_add_eq_top_of_fixedField_zpowers {K L : Type} [Field K]\n    [Field L] [Algebra K L] [IsGalois K L] (n a b : ℕ)\n    (σ : L ≃ₐ[K] L) (hσ : orderOf σ = n) (cycle : Subgroup.zpowers σ = ⊤) (hn : n > 0)\n    (hn' : n = a * b) (hab : Nat.Coprime a b) {α β : L}\n    (hα : K⟮α⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ a)))\n    (hβ : K⟮β⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ b))) : K⟮α + β⟯ = ⊤ := by\n  exact?",
+    "full_code": "/-- Let $L/K$ be a Galois extension of fields such that $\\mathrm{Gal}(L/K)$ is cyclic of order $n$,\ngenerated by $\\sigma$. Write $n = ab$ with $\\gcd(a,b) =1$. Let $F_1$ be the fixed field of\n$\\sigma^a$ and $F_2$ be the fixed field of $\\sigma^b$. Suppose that $F_1 = K(\\alpha)$ and\n$F_2 = K(\\beta)$.  Prove that $L = K(\\alpha+\\beta)$. -/\ntheorem adjoin_add_eq_top_of_fixedField_zpowers {K L : Type} [Field K]\n    [Field L] [Algebra K L] [IsGalois K L] (n a b : ℕ)\n    (σ : L ≃ₐ[K] L) (hσ : orderOf σ = n) (cycle : Subgroup.zpowers σ = ⊤) (hn : n > 0)\n    (hn' : n = a * b) (hab : Nat.Coprime a b) {α β : L}\n    (hα : K⟮α⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ a)))\n    (hβ : K⟮β⟯ = IntermediateField.fixedField (Subgroup.zpowers (σ ^ b))) : K⟮α + β⟯ = ⊤ := by\n  exact?",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 9,
+            "column": 11
+          },
+          "endPos": null,
+          "data": "expected token"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 105.33
+    }
+  },
+  {
+    "problem_id": "FATE-H_38",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-Let $p$ be a prime number and let $F$ be a field containing $p$-th roots of unity.\nLet $K$ be a Galois extension of $F$ with Galois group $\\mathbb{Z}_p \\times \\mathbb{Z}_p$.\nShow that there exist two elements $\\alpha, \\beta \\in K^\\times$ such that\n$K= F(\\alpha, \\beta)$ and $a = \\alpha^p, b = \\beta^p \\in F$.-/\ntheorem exists_pow_p_mem_algebraMap_and_adjoin_eq_top {p : Nat} [Fact p.Prime]\n    {F K : Type} [Field F] (hF : (primitiveRoots p F).Nonempty) [Field K] [Algebra F K]\n    [IsGalois F K] (hK : (K ≃ₐ[F] K) ≃* Multiplicative (ZMod p × ZMod p)) :\n    ∃ (α β : K), α ≠ 0 ∧ β ≠ 0 ∧ α ^ p ∈ (algebraMap F K).range ∧ β ^ p ∈ (algebraMap F K).range ∧\n    IntermediateField.adjoin F {α, β} = ⊤ := by\n  sorry",
+    "full_code": "/-Let $p$ be a prime number and let $F$ be a field containing $p$-th roots of unity.\nLet $K$ be a Galois extension of $F$ with Galois group $\\mathbb{Z}_p \\times \\mathbb{Z}_p$.\nShow that there exist two elements $\\alpha, \\beta \\in K^\\times$ such that\n$K= F(\\alpha, \\beta)$ and $a = \\alpha^p, b = \\beta^p \\in F$.-/\ntheorem exists_pow_p_mem_algebraMap_and_adjoin_eq_top {p : Nat} [Fact p.Prime]\n    {F K : Type} [Field F] (hF : (primitiveRoots p F).Nonempty) [Field K] [Algebra F K]\n    [IsGalois F K] (hK : (K ≃ₐ[F] K) ≃* Multiplicative (ZMod p × ZMod p)) :\n    ∃ (α β : K), α ≠ 0 ∧ β ≠ 0 ∧ α ^ p ∈ (algebraMap F K).range ∧ β ^ p ∈ (algebraMap F K).range ∧\n    IntermediateField.adjoin F {α, β} = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 94.01
+    }
+  },
+  {
+    "problem_id": "FATE-H_39",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Prove that a splitting field of \\( X^{15} - 2 \\) over \\( \\mathbb{F}_7 \\) is generated by a\n primitive \\( 45 \\)-th root of unity.-/\ntheorem exists_isPrimitiveRoot_and_adjoin_eq_top :\n    letI : Fact (Nat.Prime 7) := by\n  sorry",
+    "full_code": "/- Prove that a splitting field of \\( X^{15} - 2 \\) over \\( \\mathbb{F}_7 \\) is generated by a\n primitive \\( 45 \\)-th root of unity.-/\ntheorem exists_isPrimitiveRoot_and_adjoin_eq_top :\n    letI : Fact (Nat.Prime 7) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 66.34
+    }
+  },
+  {
+    "problem_id": "FATE-H_40",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Let $K$ be the splitting field of a irreducible quintic polynomial $f(x) \\in \\mathbb{Q} [x]$\nand let $\\{\\alpha_1, \\dots, \\alpha_5\\}$ be zeros of $f(x)$ in $K$. Show that if $\\mathbb{Q}\n(\\alpha_1, \\alpha_2, \\alpha_3) \\neq K$, then $\\\\mathrm{Gal}(K/\\mathbb{Q}) \\cong S_5$.-/\ntheorem nonempty_gal_mulEquiv_perm_fin_five {f : ℚ[X]} {K : Type} [Field K] [Algebra ℚ K]\n    [IsSplittingField ℚ K f] (hf1 : Irreducible f) (hf2 : f.natDegree = 5) (a₁ a₂ a₃ : K)\n    (ha1 : a₁ ∈ rootSet f K ∧ a₂ ∈ rootSet f K ∧ a₃ ∈ rootSet f K)\n    (ha2 : a₁ ≠ a₂ ∧ a₂ ≠ a₃ ∧ a₃ ≠ a₁)\n    (h : IntermediateField.adjoin ℚ {a₁, a₂, a₃} ≠ ⊤) :\n    Nonempty (f.Gal ≃* (Equiv.Perm <| Fin 5)) := by\n  sorry",
+    "full_code": "/- Let $K$ be the splitting field of a irreducible quintic polynomial $f(x) \\in \\mathbb{Q} [x]$\nand let $\\{\\alpha_1, \\dots, \\alpha_5\\}$ be zeros of $f(x)$ in $K$. Show that if $\\mathbb{Q}\n(\\alpha_1, \\alpha_2, \\alpha_3) \\neq K$, then $\\\\mathrm{Gal}(K/\\mathbb{Q}) \\cong S_5$.-/\ntheorem nonempty_gal_mulEquiv_perm_fin_five {f : ℚ[X]} {K : Type} [Field K] [Algebra ℚ K]\n    [IsSplittingField ℚ K f] (hf1 : Irreducible f) (hf2 : f.natDegree = 5) (a₁ a₂ a₃ : K)\n    (ha1 : a₁ ∈ rootSet f K ∧ a₂ ∈ rootSet f K ∧ a₃ ∈ rootSet f K)\n    (ha2 : a₁ ≠ a₂ ∧ a₂ ≠ a₃ ∧ a₃ ≠ a₁)\n    (h : IntermediateField.adjoin ℚ {a₁, a₂, a₃} ≠ ⊤) :\n    Nonempty (f.Gal ≃* (Equiv.Perm <| Fin 5)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 91.41
+    }
+  }
+]

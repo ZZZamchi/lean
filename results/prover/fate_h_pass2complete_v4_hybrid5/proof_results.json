@@ -1,0 +1,159 @@
+[
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimple\n  have : (1 : ℕ) = 0 := by\n    have := hG\n    exfalso\n    -- This proof is genuinely difficult; cannot produce without sorry\n    revert this hsimple\n    sorry\n  exact absurd this (by decide)",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimple\n  have : (1 : ℕ) = 0 := by\n    have := hG\n    exfalso\n    -- This proof is genuinely difficult; cannot produce without sorry\n    revert this hsimple\n    sorry\n  exact absurd this (by decide)",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 10,
+            "column": 4
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\n⊢ IsSimpleGroup G → Nat.card G = 56 → False",
+          "endPos": {
+            "line": 10,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 82.16
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  intro h hH\n  rw [Subgroup.mem_centralizer_iff]\n  intro c hc\n  -- c ∈ centralizer K means c commutes with every k ∈ K\n  rw [SetLike.mem_coe, Subgroup.mem_centralizer_iff] at hc\n  -- Goal: c * h = h * c\n  -- Strategy: show [h,c] = h⁻¹ * c⁻¹ * h * c = 1\n  -- Step 1: c⁻¹ * h * c ∈ H (since H is normal)\n  have hhc : c⁻¹ * h * c ∈ H := by\n    have := (Subgroup.Normal.conj_mem ‹H.Normal›) h hH c⁻¹\n    simpa using this\n  -- [h,c] = h⁻¹ * (c⁻¹ * h * c) ∈ H\n  set x : G := h⁻¹ * (c⁻¹ * h * c) with hxdef\n  have hxH : x ∈ H := H.mul_mem (H.inv_mem hH) hhc\n  -- Step 2: x commutes with every k ∈ K\n  have hxK : ∀ k ∈ K, x * k = k * x := by\n    intro k hk\n    -- c commutes with k\n    have hck : c * k = k * c := hc k hk\n    -- c⁻¹ commutes with k\n    have hcik : c⁻¹ * k = k * c⁻¹ := by\n      have : k * c = c * k := hck.symm\n      have h1' : c⁻¹ * (k * c) * c⁻¹ = c⁻¹ * (c * k) * c⁻¹ := by rw [this]\n      have h2' : c⁻¹ * k = c⁻¹ * (k * c) * c⁻¹ := by group\n      have h3' : c⁻¹ * (c * k) * c⁻¹ = k * c⁻¹ := by group\n      rw [h2', h1', h3']\n    -- hkh⁻¹ ∈ K since K normal in H\n    have hkh : h * k * h⁻¹ ∈ K := by\n      have hH' : h ∈ H := hH\n      -- K.subgroupOf H is normal, so conjugation by h (as element of H) preserves it\n      have hk' : (⟨k, h1 hk⟩ : H) ∈ K.subgroupOf H := by\n        rw [Subgroup.mem_subgroupOf]; exact hk\n      have hconj := (‹(K.subgroupOf H).Normal›).conj_mem ⟨k, h1 hk⟩ hk' ⟨h, hH'⟩\n      rw [Subgroup.mem_subgroupOf] at hconj\n      simpa using hconj\n    -- c commutes with hkh⁻¹\n    have hckh : c * (h * k * h⁻¹) = (h * k * h⁻¹) * c := hc _ hkh\n    have hcikh : c⁻¹ * (h * k * h⁻¹) = (h * k * h⁻¹) * c⁻¹ := by\n      have : (h * k * h⁻¹) * c = c * (h * k * h⁻¹) := hckh.symm\n      have h1' : c⁻¹ * ((h * k * h⁻¹) * c) * c⁻¹ = c⁻¹ * (c * (h * k * h⁻¹)) * c⁻¹ := by rw [this]\n      have h2' : c⁻¹ * (h * k * h⁻¹) = c⁻¹ * ((h * k * h⁻¹) * c) * c⁻¹ := by group\n      have h3' : c⁻¹ * (c * (h * k * h⁻¹)) * c⁻¹ = (h * k * h⁻¹) * c⁻¹ := by group\n      rw [h2', h1', h3']\n    -- Now compute x * k = k * x\n    show (h⁻¹ * (c⁻¹ * h * c)) * k = k * (h⁻¹ * (c⁻¹ * h * c))\n    have step1 : (h⁻¹ * (c⁻¹ * h * c)) * k = h⁻¹ * c⁻¹ * h * (c * k) := by group\n    have step2 : h⁻¹ * c⁻¹ * h * (c * k) = h⁻¹ * c⁻¹ * h * (k * c) := by rw [hck]\n    have step3 : h⁻¹ * c⁻¹ * h * (k * c) = h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c := by group\n    have step4 : h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c = h⁻¹ * (c⁻¹ * (h * k * h⁻¹)) * h * c := by group\n    have step5 : h⁻¹ * (c⁻¹ * (h * k * h⁻¹)) * h * c = h⁻¹ * ((h * k * h⁻¹) * c⁻¹) * h * c := by\n      rw [hcikh]\n    have step6 : h⁻¹ * ((h * k * h⁻¹) * c⁻¹) * h * c = k * (h⁻¹ * (c⁻¹ * h * c)) := by group\n    rw [step1, step2, step3, step4, step5, step6]\n  -- Step 3: View x as element of H, show it's in centralizer (K.subgroupOf H) = ⊥\n  let xH : H := ⟨x, hxH⟩\n  have hxCent : xH ∈ Subgroup.centralizer (K.subgroupOf H) := by\n    rw [Subgroup.mem_centralizer_iff]\n    rintro ⟨y, hyH⟩ hy\n    rw [Subgroup.mem_subgroupOf] at hy\n    apply Subtype.ext\n    show y * x = x * y\n    exact (hxK y hy).symm\n  rw [h2] at hxCent\n  rw [Subgroup.mem_bot] at hxCent\n  have hxeq : x = 1 := by\n    have := congrArg (Subtype.val) hxCent\n    simpa using this\n  -- From x = h⁻¹ * c⁻¹ * h * c = 1, derive c * h = h * c\n  have : h⁻¹ * (c⁻¹ * h * c) = 1 := hxeq\n  have key : c⁻¹ * h * c = h := by\n    have h' : h * (h⁻¹ * (c⁻¹ * h * c)) = h * 1 := by rw [this]\n    have : h * (h⁻¹ * (c⁻¹ * h * c)) = c⁻¹ * h * c := by group\n    linarith_or_polyrith\n    <;> skip\n  sorry",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  intro h hH\n  rw [Subgroup.mem_centralizer_iff]\n  intro c hc\n  -- c ∈ centralizer K means c commutes with every k ∈ K\n  rw [SetLike.mem_coe, Subgroup.mem_centralizer_iff] at hc\n  -- Goal: c * h = h * c\n  -- Strategy: show [h,c] = h⁻¹ * c⁻¹ * h * c = 1\n  -- Step 1: c⁻¹ * h * c ∈ H (since H is normal)\n  have hhc : c⁻¹ * h * c ∈ H := by\n    have := (Subgroup.Normal.conj_mem ‹H.Normal›) h hH c⁻¹\n    simpa using this\n  -- [h,c] = h⁻¹ * (c⁻¹ * h * c) ∈ H\n  set x : G := h⁻¹ * (c⁻¹ * h * c) with hxdef\n  have hxH : x ∈ H := H.mul_mem (H.inv_mem hH) hhc\n  -- Step 2: x commutes with every k ∈ K\n  have hxK : ∀ k ∈ K, x * k = k * x := by\n    intro k hk\n    -- c commutes with k\n    have hck : c * k = k * c := hc k hk\n    -- c⁻¹ commutes with k\n    have hcik : c⁻¹ * k = k * c⁻¹ := by\n      have : k * c = c * k := hck.symm\n      have h1' : c⁻¹ * (k * c) * c⁻¹ = c⁻¹ * (c * k) * c⁻¹ := by rw [this]\n      have h2' : c⁻¹ * k = c⁻¹ * (k * c) * c⁻¹ := by group\n      have h3' : c⁻¹ * (c * k) * c⁻¹ = k * c⁻¹ := by group\n      rw [h2', h1', h3']\n    -- hkh⁻¹ ∈ K since K normal in H\n    have hkh : h * k * h⁻¹ ∈ K := by\n      have hH' : h ∈ H := hH\n      -- K.subgroupOf H is normal, so conjugation by h (as element of H) preserves it\n      have hk' : (⟨k, h1 hk⟩ : H) ∈ K.subgroupOf H := by\n        rw [Subgroup.mem_subgroupOf]; exact hk\n      have hconj := (‹(K.subgroupOf H).Normal›).conj_mem ⟨k, h1 hk⟩ hk' ⟨h, hH'⟩\n      rw [Subgroup.mem_subgroupOf] at hconj\n      simpa using hconj\n    -- c commutes with hkh⁻¹\n    have hckh : c * (h * k * h⁻¹) = (h * k * h⁻¹) * c := hc _ hkh\n    have hcikh : c⁻¹ * (h * k * h⁻¹) = (h * k * h⁻¹) * c⁻¹ := by\n      have : (h * k * h⁻¹) * c = c * (h * k * h⁻¹) := hckh.symm\n      have h1' : c⁻¹ * ((h * k * h⁻¹) * c) * c⁻¹ = c⁻¹ * (c * (h * k * h⁻¹)) * c⁻¹ := by rw [this]\n      have h2' : c⁻¹ * (h * k * h⁻¹) = c⁻¹ * ((h * k * h⁻¹) * c) * c⁻¹ := by group\n      have h3' : c⁻¹ * (c * (h * k * h⁻¹)) * c⁻¹ = (h * k * h⁻¹) * c⁻¹ := by group\n      rw [h2', h1', h3']\n    -- Now compute x * k = k * x\n    show (h⁻¹ * (c⁻¹ * h * c)) * k = k * (h⁻¹ * (c⁻¹ * h * c))\n    have step1 : (h⁻¹ * (c⁻¹ * h * c)) * k = h⁻¹ * c⁻¹ * h * (c * k) := by group\n    have step2 : h⁻¹ * c⁻¹ * h * (c * k) = h⁻¹ * c⁻¹ * h * (k * c) := by rw [hck]\n    have step3 : h⁻¹ * c⁻¹ * h * (k * c) = h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c := by group\n    have step4 : h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c = h⁻¹ * (c⁻¹ * (h * k * h⁻¹)) * h * c := by group\n    have step5 : h⁻¹ * (c⁻¹ * (h * k * h⁻¹)) * h * c = h⁻¹ * ((h * k * h⁻¹) * c⁻¹) * h * c := by\n      rw [hcikh]\n    have step6 : h⁻¹ * ((h * k * h⁻¹) * c⁻¹) * h * c = k * (h⁻¹ * (c⁻¹ * h * c)) := by group\n    rw [step1, step2, step3, step4, step5, step6]\n  -- Step 3: View x as element of H, show it's in centralizer (K.subgroupOf H) = ⊥\n  let xH : H := ⟨x, hxH⟩\n  have hxCent : xH ∈ Subgroup.centralizer (K.subgroupOf H) := by\n    rw [Subgroup.mem_centralizer_iff]\n    rintro ⟨y, hyH⟩ hy\n    rw [Subgroup.mem_subgroupOf] at hy\n    apply Subtype.ext\n    show y * x = x * y\n    exact (hxK y hy).symm\n  rw [h2] at hxCent\n  rw [Subgroup.mem_bot] at hxCent\n  have hxeq : x = 1 := by\n    have := congrArg (Subtype.val) hxCent\n    simpa using this\n  -- From x = h⁻¹ * c⁻¹ * h * c = 1, derive c * h = h * c\n  have : h⁻¹ * (c⁻¹ * h * c) = 1 := hxeq\n  have key : c⁻¹ * h * c = h := by\n    have h' : h * (h⁻¹ * (c⁻¹ * h * c)) = h * 1 := by rw [this]\n    have : h * (h⁻¹ * (c⁻¹ * h * c)) = c⁻¹ * h * c := by group\n    linarith_or_polyrith\n    <;> skip\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 79,
+            "column": 5
+          },
+          "endPos": null,
+          "data": "unknown tactic"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 183.35
+    }
+  },
+  {
+    "problem_id": "FATE-H_15",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "full_code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ ¬IsPrincipalIdealRing (ℤ√(-5))",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 178.54
+    }
+  },
+  {
+    "problem_id": "FATE-H_21",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "full_code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 17,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nat.card (AddAut (ZMod 3 × ZMod 9)) = 108",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 124.69
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)\nh_fin : H.FiniteIndex\n⊢ H = ⊤",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 170.03
+    }
+  }
+]

@@ -1,0 +1,583 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, Subgroup.normalCore_normal H, Subgroup.normalCore_le H, ?_, ?_⟩\n  · -- finiteness and nonzero index\n    have hGH_ne : Nat.card (G ⧸ H) ≠ 0 := by\n      have : H.index = Nat.card (G ⧸ H) := rfl\n      rw [this] at hH\n      rw [hH]; exact hn\n    have hGH_fin : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero hGH_ne\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    -- Transport injectivity along the equality of kernels\n    let e : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker :=\n      QuotientGroup.quotientMulEquivOfEq hker\n    have hinj' : Function.Injective\n        ((QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ e) :=\n      hinj.comp e.injective\n    have hfin_perm : Finite (Equiv.Perm (G ⧸ H)) := inferInstance\n    have hfin_q : Finite (G ⧸ H.normalCore) :=\n      Finite.of_injective _ hinj'\n    have hne : Nonempty (G ⧸ H.normalCore) := ⟨1⟩\n    have hidx : H.normalCore.index = Nat.card (G ⧸ H.normalCore) := rfl\n    rw [hidx]\n    exact Nat.card_ne_zero.mpr ⟨hne, hfin_q⟩\n  · -- index bound\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    let e : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker :=\n      QuotientGroup.quotientMulEquivOfEq hker\n    have hinj' : Function.Injective\n        ((QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ e) :=\n      hinj.comp e.injective\n    have h1 : Nat.card (G ⧸ H.normalCore) ≤ Nat.card (Equiv.Perm (G ⧸ H)) :=\n      sorry\n    have h2 : Nat.card (Equiv.Perm (G ⧸ H)) = (Nat.card (G ⧸ H)).factorial :=\n      sorry\n    have hGH : Nat.card (G ⧸ H) = n := hH\n    have hidx : H.normalCore.index = Nat.card (G ⧸ H.normalCore) := rfl\n    rw [hidx, h2, hGH] at *\n    sorry",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, Subgroup.normalCore_normal H, Subgroup.normalCore_le H, ?_, ?_⟩\n  · -- finiteness and nonzero index\n    have hGH_ne : Nat.card (G ⧸ H) ≠ 0 := by\n      have : H.index = Nat.card (G ⧸ H) := rfl\n      rw [this] at hH\n      rw [hH]; exact hn\n    have hGH_fin : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero hGH_ne\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    -- Transport injectivity along the equality of kernels\n    let e : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker :=\n      QuotientGroup.quotientMulEquivOfEq hker\n    have hinj' : Function.Injective\n        ((QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ e) :=\n      hinj.comp e.injective\n    have hfin_perm : Finite (Equiv.Perm (G ⧸ H)) := inferInstance\n    have hfin_q : Finite (G ⧸ H.normalCore) :=\n      Finite.of_injective _ hinj'\n    have hne : Nonempty (G ⧸ H.normalCore) := ⟨1⟩\n    have hidx : H.normalCore.index = Nat.card (G ⧸ H.normalCore) := rfl\n    rw [hidx]\n    exact Nat.card_ne_zero.mpr ⟨hne, hfin_q⟩\n  · -- index bound\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    let e : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker :=\n      QuotientGroup.quotientMulEquivOfEq hker\n    have hinj' : Function.Injective\n        ((QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ e) :=\n      hinj.comp e.injective\n    have h1 : Nat.card (G ⧸ H.normalCore) ≤ Nat.card (Equiv.Perm (G ⧸ H)) :=\n      sorry\n    have h2 : Nat.card (Equiv.Perm (G ⧸ H)) = (Nat.card (G ⧸ H)).factorial :=\n      sorry\n    have hGH : Nat.card (G ⧸ H) = n := hH\n    have hidx : H.normalCore.index = Nat.card (G ⧸ H.normalCore) := rfl\n    rw [hidx, h2, hGH] at *\n    sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 49,
+            "column": 4
+          },
+          "goal": "case refine_2\nG : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\nhker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker\nhinj : Function.Injective ⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H)))\ne : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker := QuotientGroup.quotientMulEquivOfEq hker\nhinj' : Function.Injective (⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ ⇑e)\nh1 : Nat.card (G ⧸ H.normalCore) ≤ Nat.card (Equiv.Perm (G ⧸ H))\nh2 : (Nat.card (G ⧸ H)).factorial = (Nat.card (G ⧸ H)).factorial\nhGH : n = n\nhidx : Nat.card (G ⧸ H.normalCore) = Nat.card (G ⧸ H.normalCore)\n⊢ Nat.card (G ⧸ H.normalCore) ≤ n.factorial",
+          "endPos": {
+            "line": 49,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 43,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\nhker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker\nhinj : Function.Injective ⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H)))\ne : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker := QuotientGroup.quotientMulEquivOfEq hker\nhinj' : Function.Injective (⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ ⇑e)\n⊢ Nat.card (G ⧸ H.normalCore) ≤ Nat.card (Equiv.Perm (G ⧸ H))",
+          "endPos": {
+            "line": 43,
+            "column": 11
+          }
+        },
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 45,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\nhker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker\nhinj : Function.Injective ⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H)))\ne : G ⧸ H.normalCore ≃* G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker := QuotientGroup.quotientMulEquivOfEq hker\nhinj' : Function.Injective (⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) ∘ ⇑e)\nh1 : Nat.card (G ⧸ H.normalCore) ≤ Nat.card (Equiv.Perm (G ⧸ H))\n⊢ Nat.card (Equiv.Perm (G ⧸ H)) = (Nat.card (G ⧸ H)).factorial",
+          "endPos": {
+            "line": 45,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 201.14
+    }
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimp\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; decide)\n  have : Fintype G := Fintype.ofFinite G\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimp\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; decide)\n  have : Fintype G := Fintype.ofFinite G\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\nhsimp : IsSimpleGroup G\nhfin : Finite G\nthis : Fintype G\n⊢ False",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 145.87
+    }
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  intro hSimp\n  have hpos : 0 < Nat.card G := by rw [h]; norm_num\n  haveI hfin : Finite G := Nat.finite_of_card_ne_zero (by omega)\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  intro hSimp\n  have hpos : 0 < Nat.card G := by rw [h]; norm_num\n  haveI hfin : Finite G := Nat.finite_of_card_ne_zero (by omega)\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 33,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nh : Nat.card G = 3393\nhSimp : IsSimpleGroup G\nhpos : 0 < Nat.card G\nhfin : Finite G\n⊢ False",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 171.73
+    }
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  have hpprime : p.Prime := Fact.out\n  have hp1 : 1 < p := hpprime.one_lt\n  have hppos : 0 < p := hpprime.pos\n  have hcardP_pos : 0 < Nat.card P := by rw [hp]; exact pow_pos hppos 3\n  haveI : Finite P := Nat.finite_of_card_ne_zero (Nat.pos_iff_ne_zero.mp hcardP_pos)\n  sorry",
+    "full_code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  have hpprime : p.Prime := Fact.out\n  have hp1 : 1 < p := hpprime.one_lt\n  have hppos : 0 < p := hpprime.pos\n  have hcardP_pos : 0 < Nat.card P := by rw [hp]; exact pow_pos hppos 3\n  haveI : Finite P := Nat.finite_of_card_ne_zero (Nat.pos_iff_ne_zero.mp hcardP_pos)\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 39,
+          "pos": {
+            "line": 11,
+            "column": 2
+          },
+          "goal": "p : ℕ\ninst✝¹ : Fact p.Prime\nP : Type\ninst✝ : Group P\nhp : Nat.card P = p ^ 3\nh : ∃ a b, a * b ≠ b * a\nhpprime : p.Prime\nhp1 : 1 < p\nhppos : 0 < p\nhcardP_pos : 0 < Nat.card P\nthis : Finite P\n⊢ Nat.card ↥(Subgroup.center P) = p ∧ Nonempty (P ⧸ Subgroup.center P ≃* Multiplicative (ZMod p × ZMod p))",
+          "endPos": {
+            "line": 11,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 140.72
+    }
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := (↑u⁻¹ : R) with hv_def\n  have huv : (1 - a * b) * v = 1 := by\n    rw [← hu]\n    exact u.mul_inv\n  have hvu : v * (1 - a * b) = 1 := by\n    rw [← hu]\n    exact u.inv_mul\n  have h1 : a * b * v = v - 1 := by\n    have e : (1 - a * b) * v = v - a * b * v := by noncomm_ring\n    rw [e] at huv\n    -- huv : v - a * b * v = 1\n    have : a * b * v = v - 1 := by\n      have := huv\n      linear_combination (norm := noncomm_ring) -this\n    exact this\n  have h2 : v * a * b = v - 1 := by\n    have e : v * (1 - a * b) = v - v * a * b := by noncomm_ring\n    rw [e] at hvu\n    have : v * a * b = v - 1 := by\n      have := hvu\n      linear_combination (norm := noncomm_ring) -this\n    exact this\n  have key1 : b * a * b * v * a = b * v * a - b * a := by\n    have hassoc : b * a * b * v * a = b * (a * b * v) * a := by noncomm_ring\n    rw [hassoc, h1]\n    noncomm_ring\n  have key2 : b * v * a * b * a = b * v * a - b * a := by\n    have hassoc : b * v * a * b * a = b * (v * a * b) * a := by noncomm_ring\n    rw [hassoc, h2]\n    noncomm_ring\n  have val_inv : (1 - b * a) * (1 + b * v * a) = 1 := by\n    have expand : (1 - b * a) * (1 + b * v * a)\n        = 1 + b * v * a - b * a - b * a * b * v * a := by noncomm_ring\n    rw [expand, key1]\n    noncomm_ring\n  have inv_val : (1 + b * v * a) * (1 - b * a) = 1 := by\n    have expand : (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + b * v * a - b * v * a * b * a := by noncomm_ring\n    rw [expand, key2]\n    noncomm_ring\n  exact ⟨⟨1 - b * a, 1 + b * v * a, val_inv, inv_val⟩, rfl⟩",
+    "full_code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := (↑u⁻¹ : R) with hv_def\n  have huv : (1 - a * b) * v = 1 := by\n    rw [← hu]\n    exact u.mul_inv\n  have hvu : v * (1 - a * b) = 1 := by\n    rw [← hu]\n    exact u.inv_mul\n  have h1 : a * b * v = v - 1 := by\n    have e : (1 - a * b) * v = v - a * b * v := by noncomm_ring\n    rw [e] at huv\n    -- huv : v - a * b * v = 1\n    have : a * b * v = v - 1 := by\n      have := huv\n      linear_combination (norm := noncomm_ring) -this\n    exact this\n  have h2 : v * a * b = v - 1 := by\n    have e : v * (1 - a * b) = v - v * a * b := by noncomm_ring\n    rw [e] at hvu\n    have : v * a * b = v - 1 := by\n      have := hvu\n      linear_combination (norm := noncomm_ring) -this\n    exact this\n  have key1 : b * a * b * v * a = b * v * a - b * a := by\n    have hassoc : b * a * b * v * a = b * (a * b * v) * a := by noncomm_ring\n    rw [hassoc, h1]\n    noncomm_ring\n  have key2 : b * v * a * b * a = b * v * a - b * a := by\n    have hassoc : b * v * a * b * a = b * (v * a * b) * a := by noncomm_ring\n    rw [hassoc, h2]\n    noncomm_ring\n  have val_inv : (1 - b * a) * (1 + b * v * a) = 1 := by\n    have expand : (1 - b * a) * (1 + b * v * a)\n        = 1 + b * v * a - b * a - b * a * b * v * a := by noncomm_ring\n    rw [expand, key1]\n    noncomm_ring\n  have inv_val : (1 + b * v * a) * (1 - b * a) = 1 := by\n    have expand : (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + b * v * a - b * v * a * b * a := by noncomm_ring\n    rw [expand, key2]\n    noncomm_ring\n  exact ⟨⟨1 - b * a, 1 + b * v * a, val_inv, inv_val⟩, rfl⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 97.67
+    }
+  },
+  {
+    "problem_id": "FATE-H_6",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "full_code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 67.76
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 88,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝² : Group G\nH K : Subgroup G\ninst✝¹ : H.Normal\nh1 : K ≤ H\ninst✝ : (K.subgroupOf H).Normal\nh2 : Subgroup.centralizer ↑(K.subgroupOf H) = ⊥\n⊢ H ≤ Subgroup.centralizer ↑(Subgroup.centralizer ↑K)",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 361.76
+    }
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "full_code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 74.26
+    }
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 97,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\n⊢ Subgroup.centralizer ⊤ = ⊥",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 618.31
+    }
+  },
+  {
+    "problem_id": "FATE-H_10",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  -- Step 1: 3^20 ≡ 1 (mod 100)\n  have h1 : (3 : ℕ) ^ 20 % 100 = 1 := by native_decide\n  -- Step 2: 3^100 ≡ 1 (mod 20)\n  have h2 : (3 : ℕ) ^ 100 % 20 = 1 := by native_decide\n  -- Step 3: write 3^100 = 20 * k + 1\n  set N : ℕ := 3 ^ 100 with hN\n  set k : ℕ := N / 20 with hk\n  have hNeq : N = 20 * k + 1 := by\n    have := Nat.div_add_mod N 20\n    rw [h2] at this\n    omega\n  -- Step 4: rewrite 3^N\n  have hpow : (3 : ℕ) ^ N = (3 ^ 20) ^ k * 3 := by\n    rw [hNeq, pow_add, pow_mul, pow_one]\n  rw [hpow]\n  -- Step 5: reduce mod 100\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "full_code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  -- Step 1: 3^20 ≡ 1 (mod 100)\n  have h1 : (3 : ℕ) ^ 20 % 100 = 1 := by native_decide\n  -- Step 2: 3^100 ≡ 1 (mod 20)\n  have h2 : (3 : ℕ) ^ 100 % 20 = 1 := by native_decide\n  -- Step 3: write 3^100 = 20 * k + 1\n  set N : ℕ := 3 ^ 100 with hN\n  set k : ℕ := N / 20 with hk\n  have hNeq : N = 20 * k + 1 := by\n    have := Nat.div_add_mod N 20\n    rw [h2] at this\n    omega\n  -- Step 4: rewrite 3^N\n  have hpow : (3 : ℕ) ^ N = (3 ^ 20) ^ k * 3 := by\n    rw [hNeq, pow_add, pow_mul, pow_one]\n  rw [hpow]\n  -- Step 5: reduce mod 100\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 22.35
+    }
+  },
+  {
+    "problem_id": "FATE-H_11",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $G$ be a group of order $3825$. Prove that if $H$ is a normal subgroup of order $17$ in $G$,\nthen $H \\leq Z(G)$.-/\ntheorem le_center_of_card_eq_17_of_card_eq_3825 {G : Type} [Group G] (h : Nat.card G = 3825)\n    (H : Subgroup G) [H.Normal] (hH : Nat.card H = 17) : H ≤ Subgroup.center G := by\n  sorry",
+    "full_code": "/- Let $G$ be a group of order $3825$. Prove that if $H$ is a normal subgroup of order $17$ in $G$,\nthen $H \\leq Z(G)$.-/\ntheorem le_center_of_card_eq_17_of_card_eq_3825 {G : Type} [Group G] (h : Nat.card G = 3825)\n    (H : Subgroup G) [H.Normal] (hH : Nat.card H = 17) : H ≤ Subgroup.center G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 77.51
+    }
+  },
+  {
+    "problem_id": "FATE-H_12",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nProve that \\( SL_2(\\mathbb{F}_3) / Z(SL_2(\\mathbb{F}_3)) < A_4 \\).\n-/\ntheorem exists_sl_quot_center_monoidHom_alternatingGroup :\n    ∃ φ : SL(2,ZMod 3) ⧸ Subgroup.center SL(2,ZMod 3) →* alternatingGroup (Fin 4),\n    Function.Injective φ := by\n  classical\n  exact ⟨default, fun a b _ => Subsingleton.elim a b⟩",
+    "full_code": "/--\nProve that \\( SL_2(\\mathbb{F}_3) / Z(SL_2(\\mathbb{F}_3)) < A_4 \\).\n-/\ntheorem exists_sl_quot_center_monoidHom_alternatingGroup :\n    ∃ φ : SL(2,ZMod 3) ⧸ Subgroup.center SL(2,ZMod 3) →* alternatingGroup (Fin 4),\n    Function.Injective φ := by\n  classical\n  exact ⟨default, fun a b _ => Subsingleton.elim a b⟩",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 12
+          },
+          "endPos": {
+            "line": 5,
+            "column": 13
+          },
+          "data": "unexpected token '('; expected ','"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 102.08
+    }
+  },
+  {
+    "problem_id": "FATE-H_13",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that the number of Sylow $p$-subgroups of $\\operatorname{GL}_2(\\mathbb{F}_p)$ is $p + 1$.\n-/\ntheorem card_sylow_gl_two_eq_add_one (p : ℕ) [Fact p.Prime] :\n    Nat.card (Sylow p <| GL (Fin 2) (ZMod p)) = p + 1 := by\n  sorry",
+    "full_code": "/-- Prove that the number of Sylow $p$-subgroups of $\\operatorname{GL}_2(\\mathbb{F}_p)$ is $p + 1$.\n-/\ntheorem card_sylow_gl_two_eq_add_one (p : ℕ) [Fact p.Prime] :\n    Nat.card (Sylow p <| GL (Fin 2) (ZMod p)) = p + 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 72.78
+    }
+  },
+  {
+    "problem_id": "FATE-H_14",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/-- Let $S$ be any ring and let $n>2$ be an integer.\nPropose a proof that if $A$ is any strictly upper triangular matrix in $M_n(S)$, then $A^n = 0$.\n(A strictly upper triangular matrix is one whose entries on and below the main diagonal are all\nzero.) -/\ntheorem pow_eq_zero_of_strictly_upper_triangle {S : Type} [Ring S] (n : ℕ) (hn : 2 < n)\n    (A : Matrix (Fin n) (Fin n) S) (hA : ∀ (i : Fin n), ∀ (j : Fin n), i ≥ j → A i j = 0) :\n    A ^ n = 0 := by\n  have key : ∀ k : ℕ, ∀ i j : Fin n, (j : ℕ) < (i : ℕ) + k → (A ^ k) i j = 0 := by\n    intro k\n    induction k with\n    | zero =>\n      intro i j hij\n      simp only [pow_zero, Matrix.one_apply]\n      have hne : i ≠ j := by\n        intro h\n        rw [h] at hij\n        simp at hij\n      rw [if_neg hne]\n    | succ k ih =>\n      intro i j hij\n      rw [pow_succ, Matrix.mul_apply]\n      apply Finset.sum_eq_zero\n      intro l _\n      by_cases hl : (l : ℕ) < (i : ℕ) + k\n      · rw [ih i l hl, zero_mul]\n      · push_neg at hl\n        have hjl : (j : ℕ) ≤ (l : ℕ) := by\n          have : (j : ℕ) ≤ (i : ℕ) + k := by omega\n          omega\n        have hlj : l ≥ j := by\n          rw [ge_iff_le, Fin.le_def]\n          exact hjl\n        rw [hA l j hlj, mul_zero]\n  ext i j\n  rw [Matrix.zero_apply]\n  apply key n i j\n  have hi : (i : ℕ) < n := i.isLt\n  have hj : (j : ℕ) < n := j.isLt\n  omega",
+    "full_code": "/-- Let $S$ be any ring and let $n>2$ be an integer.\nPropose a proof that if $A$ is any strictly upper triangular matrix in $M_n(S)$, then $A^n = 0$.\n(A strictly upper triangular matrix is one whose entries on and below the main diagonal are all\nzero.) -/\ntheorem pow_eq_zero_of_strictly_upper_triangle {S : Type} [Ring S] (n : ℕ) (hn : 2 < n)\n    (A : Matrix (Fin n) (Fin n) S) (hA : ∀ (i : Fin n), ∀ (j : Fin n), i ≥ j → A i j = 0) :\n    A ^ n = 0 := by\n  have key : ∀ k : ℕ, ∀ i j : Fin n, (j : ℕ) < (i : ℕ) + k → (A ^ k) i j = 0 := by\n    intro k\n    induction k with\n    | zero =>\n      intro i j hij\n      simp only [pow_zero, Matrix.one_apply]\n      have hne : i ≠ j := by\n        intro h\n        rw [h] at hij\n        simp at hij\n      rw [if_neg hne]\n    | succ k ih =>\n      intro i j hij\n      rw [pow_succ, Matrix.mul_apply]\n      apply Finset.sum_eq_zero\n      intro l _\n      by_cases hl : (l : ℕ) < (i : ℕ) + k\n      · rw [ih i l hl, zero_mul]\n      · push_neg at hl\n        have hjl : (j : ℕ) ≤ (l : ℕ) := by\n          have : (j : ℕ) ≤ (i : ℕ) + k := by omega\n          omega\n        have hlj : l ≥ j := by\n          rw [ge_iff_le, Fin.le_def]\n          exact hjl\n        rw [hA l j hlj, mul_zero]\n  ext i j\n  rw [Matrix.zero_apply]\n  apply key n i j\n  have hi : (i : ℕ) < n := i.isLt\n  have hj : (j : ℕ) < n := j.isLt\n  omega",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 24.32
+    }
+  },
+  {
+    "problem_id": "FATE-H_15",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 10,
+    "code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "full_code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ ¬IsPrincipalIdealRing (ℤ√(-5))",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 329.1
+    }
+  },
+  {
+    "problem_id": "FATE-H_16",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let \\( R \\) be an integral domain and let \\( i, j \\) be relatively prime integers. Prove that the ideal \\( (x^i - y^j) \\) is a prime ideal in \\( R[x, y] \\).-/\ntheorem span_pow_sub_pow_isPrime_of_coprime {R : Type} [CommRing R] [IsDomain R] {i j : ℕ}\n    (hi : i > 0) (hj : j > 0) (h : Nat.Coprime i j) :\n    (span {(X 0 ^ i - X 1 ^ j : MvPolynomial (Fin 2) R)}).IsPrime := by\n  sorry",
+    "full_code": "/- Let \\( R \\) be an integral domain and let \\( i, j \\) be relatively prime integers. Prove that the ideal \\( (x^i - y^j) \\) is a prime ideal in \\( R[x, y] \\).-/\ntheorem span_pow_sub_pow_isPrime_of_coprime {R : Type} [CommRing R] [IsDomain R] {i j : ℕ}\n    (hi : i > 0) (hj : j > 0) (h : Nat.Coprime i j) :\n    (span {(X 0 ^ i - X 1 ^ j : MvPolynomial (Fin 2) R)}).IsPrime := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 68.06
+    }
+  },
+  {
+    "problem_id": "FATE-H_17",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that $\\frac{x^{p}-1}{x-1}$ is irreducible in $\\mathbb{Z}[x].$ -/\ntheorem irreducible_X_pow_p_sub_one_div_X_sub_one (p : ℕ) [hp : Fact (Nat.Prime p)] :\n    Irreducible (((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)) := by\n  have hmonic : (Polynomial.X - 1 : ℤ[X]).Monic := by\n    simpa using (monic_X_sub_C (1 : ℤ))\n  have hgeom : (∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i) * (Polynomial.X - 1)\n      = Polynomial.X ^ p - 1 := by\n    simpa using (geom_sum_mul (Polynomial.X : ℤ[X]) p)\n  have hdiv : ((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)\n      = ∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i := by\n    have h := hgeom\n    have : (Polynomial.X - 1 : ℤ[X]) * (∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i)\n        = Polynomial.X ^ p - 1 := by\n      rw [mul_comm]; exact h\n    rw [← this]\n    exact hmonic.mul_divByMonic_cancel_left _\n  rw [hdiv]\n  have hcyc : cyclotomic p ℤ = ∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i :=\n    cyclotomic_prime ℤ p\n  rw [← hcyc]\n  exact cyclotomic.irreducible hp.out.pos",
+    "full_code": "/-- Prove that $\\frac{x^{p}-1}{x-1}$ is irreducible in $\\mathbb{Z}[x].$ -/\ntheorem irreducible_X_pow_p_sub_one_div_X_sub_one (p : ℕ) [hp : Fact (Nat.Prime p)] :\n    Irreducible (((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)) := by\n  have hmonic : (Polynomial.X - 1 : ℤ[X]).Monic := by\n    simpa using (monic_X_sub_C (1 : ℤ))\n  have hgeom : (∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i) * (Polynomial.X - 1)\n      = Polynomial.X ^ p - 1 := by\n    simpa using (geom_sum_mul (Polynomial.X : ℤ[X]) p)\n  have hdiv : ((Polynomial.X : ℤ[X]) ^ p - 1) /ₘ (Polynomial.X - 1)\n      = ∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i := by\n    have h := hgeom\n    have : (Polynomial.X - 1 : ℤ[X]) * (∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i)\n        = Polynomial.X ^ p - 1 := by\n      rw [mul_comm]; exact h\n    rw [← this]\n    exact hmonic.mul_divByMonic_cancel_left _\n  rw [hdiv]\n  have hcyc : cyclotomic p ℤ = ∑ i in Finset.range p, (Polynomial.X : ℤ[X]) ^ i :=\n    cyclotomic_prime ℤ p\n  rw [← hcyc]\n  exact cyclotomic.irreducible hp.out.pos",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 36
+          },
+          "endPos": {
+            "line": 3,
+            "column": 37
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 34
+          },
+          "endPos": {
+            "line": 3,
+            "column": 38
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\np : ℕ\nhp : Fact p.Prime\n⊢ ?m.330 ℤ (sorryAx ?m.327 true)"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 95.7
+    }
+  },
+  {
+    "problem_id": "FATE-H_18",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that \\( x^2 + y^2 - 1 \\) is irreducible in \\( \\mathbb{Q}[x, y] \\).-/\ntheorem irreducible_pow_two_add_pow_two_sub_one :\n    Irreducible ((X 0) ^ 2 + (X 1) ^ 2 - 1 : MvPolynomial (Fin 2) ℚ) := by\n  sorry",
+    "full_code": "/- Prove that \\( x^2 + y^2 - 1 \\) is irreducible in \\( \\mathbb{Q}[x, y] \\).-/\ntheorem irreducible_pow_two_add_pow_two_sub_one :\n    Irreducible ((X 0) ^ 2 + (X 1) ^ 2 - 1 : MvPolynomial (Fin 2) ℚ) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 70.82
+    }
+  },
+  {
+    "problem_id": "FATE-H_19",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that any finite group is isomorphic to a subgroup of $A_n$ for some $n$. -/\ntheorem exists_subgroup_alternatingGroup_mulEquiv {G : Type} [Group G] [Finite G] :\n    ∃ (n : ℕ) (H : Subgroup (alternatingGroup (Fin n))), Nonempty (G ≃* H) := by\n  classical\n  refine ⟨0, ⊤, ?_⟩\n  sorry",
+    "full_code": "/-- Prove that any finite group is isomorphic to a subgroup of $A_n$ for some $n$. -/\ntheorem exists_subgroup_alternatingGroup_mulEquiv {G : Type} [Group G] [Finite G] :\n    ∃ (n : ℕ) (H : Subgroup (alternatingGroup (Fin n))), Nonempty (G ≃* H) := by\n  classical\n  refine ⟨0, ⊤, ?_⟩\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 16,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝¹ : Group G\ninst✝ : Finite G\n⊢ Nonempty (G ≃* ↥⊤)",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 93.82
+    }
+  },
+  {
+    "problem_id": "FATE-H_20",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that if $G$ is a nonabelian group of order $p^3$ ($p$ prime),\n    then the center of $G$ is the subgroup generated by all elements of\n    the form $aba^{-1}b^{-1}$ ($a, b \\in G$). -/\ntheorem center_eq_commutator_of_pow_three_eq_card {G : Type} [Group G] {p : ℕ} [hp : Fact p.Prime]\n    (hG : p ^ 3 = Nat.card G) (h : ∃ x y : G, x * y ≠ y * x) :\n    Subgroup.center G = commutator G := by\n  sorry",
+    "full_code": "/-- Prove that if $G$ is a nonabelian group of order $p^3$ ($p$ prime),\n    then the center of $G$ is the subgroup generated by all elements of\n    the form $aba^{-1}b^{-1}$ ($a, b \\in G$). -/\ntheorem center_eq_commutator_of_pow_three_eq_card {G : Type} [Group G] {p : ℕ} [hp : Fact p.Prime]\n    (hG : p ^ 3 = Nat.card G) (h : ∃ x y : G, x * y ≠ y * x) :\n    Subgroup.center G = commutator G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 68.33
+    }
+  }
+]

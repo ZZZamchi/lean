@@ -1,0 +1,49 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\n⊢ ¬IsSimpleGroup G",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 124.63
+    }
+  }
+]

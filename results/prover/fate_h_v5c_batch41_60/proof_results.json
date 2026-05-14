@@ -1,0 +1,538 @@
+[
+  {
+    "problem_id": "FATE-H_41",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/-- Let $p$ be a prime integer. Suppose that the degree of every finite extension of a field $F$\n is divisible by $p$. Prove that the degree of every finite extension of $F$ is a power of $p$. -/\ntheorem exists_finrank_eq_pow_of_dvd_finrank {F : Type} [Field F] (p : ℕ) [Fact (Nat.Prime p)]\n    (h : ∀ (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E],\n    Module.finrank F E ≠ 1 → p ∣ Module.finrank F E)\n    (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E] :\n    ∃ k, Module.finrank F E = p ^ k := by\n  sorry",
+    "full_code": "/-- Let $p$ be a prime integer. Suppose that the degree of every finite extension of a field $F$\n is divisible by $p$. Prove that the degree of every finite extension of $F$ is a power of $p$. -/\ntheorem exists_finrank_eq_pow_of_dvd_finrank {F : Type} [Field F] (p : ℕ) [Fact (Nat.Prime p)]\n    (h : ∀ (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E],\n    Module.finrank F E ≠ 1 → p ∣ Module.finrank F E)\n    (E : Type) [Field E] [Algebra F E] [FiniteDimensional F E] :\n    ∃ k, Module.finrank F E = p ^ k := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 104.37
+    }
+  },
+  {
+    "problem_id": "FATE-H_42",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let \\( K \\) be a field with \\( \\operatorname{char}(K) \\neq 2 \\). Consider Galois extensions\n\\( L/K \\) with \\( \\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2 \\). Let \\( c \\in L^\\times\n\\) be a nonsquare, and let \\( E = K(\\sqrt{c}) \\). Prove that \\( E \\) is Galois over \\( K \\) if and\nonly if for each \\( \\sigma \\in \\operatorname{Gal}(L/K) \\), the ratio \\( \\sigma(c)/c \\) is a square\nin \\( L \\).-/\ntheorem isGalois_adjoin_iff_isSquare (K L : Type) [Field K] [Field L] (h : ¬ CharP K 2) [Algebra K L] [IsGalois K L]\n    (f : (L ≃ₐ[K] L) ≃* Multiplicative (ZMod 2 × ZMod 2)) (c : Lˣ) (hc : c.1 ≠ 0)\n    (hcs : ¬ IsSquare c.1) [Fact (Irreducible (X ^ 2 - C c.1))] :\n    IsGalois K (AdjoinRoot (X ^ 2 - C c.1)) ↔ ∀ σ : (L ≃ₐ[K] L), IsSquare (σ c / c) := by\n  sorry",
+    "full_code": "/--Let \\( K \\) be a field with \\( \\operatorname{char}(K) \\neq 2 \\). Consider Galois extensions\n\\( L/K \\) with \\( \\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2 \\). Let \\( c \\in L^\\times\n\\) be a nonsquare, and let \\( E = K(\\sqrt{c}) \\). Prove that \\( E \\) is Galois over \\( K \\) if and\nonly if for each \\( \\sigma \\in \\operatorname{Gal}(L/K) \\), the ratio \\( \\sigma(c)/c \\) is a square\nin \\( L \\).-/\ntheorem isGalois_adjoin_iff_isSquare (K L : Type) [Field K] [Field L] (h : ¬ CharP K 2) [Algebra K L] [IsGalois K L]\n    (f : (L ≃ₐ[K] L) ≃* Multiplicative (ZMod 2 × ZMod 2)) (c : Lˣ) (hc : c.1 ≠ 0)\n    (hcs : ¬ IsSquare c.1) [Fact (Irreducible (X ^ 2 - C c.1))] :\n    IsGalois K (AdjoinRoot (X ^ 2 - C c.1)) ↔ ∀ σ : (L ≃ₐ[K] L), IsSquare (σ c / c) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 108.43
+    }
+  },
+  {
+    "problem_id": "FATE-H_43",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $F$ be a field with $\\mathbb{Q} \\subseteq F \\subseteq \\mathbb{C}$, where $F/\\mathbb{Q}$ is a finite \\emph\n{abelian} Galois extension. Let $\\alpha \\in F$ and let $f(x) \\in \\mathbb{Q}[x]$ be its minimal monic\npolynomial. Assume that $|\\alpha | =1$. Prove that $|\\beta| = 1$ for every complex root $\\beta$ of\n$f(x)$. -/\ntheorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F]\n    (h : ∀ f g : F ≃ₐ[ℚ] F, f * g = g * f) (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field with $\\mathbb{Q} \\subseteq F \\subseteq \\mathbb{C}$, where $F/\\mathbb{Q}$ is a finite \\emph\n{abelian} Galois extension. Let $\\alpha \\in F$ and let $f(x) \\in \\mathbb{Q}[x]$ be its minimal monic\npolynomial. Assume that $|\\alpha | =1$. Prove that $|\\beta| = 1$ for every complex root $\\beta$ of\n$f(x)$. -/\ntheorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F]\n    (h : ∀ f g : F ≃ₐ[ℚ] F, f * g = g * f) (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 88.74
+    }
+  },
+  {
+    "problem_id": "FATE-H_44",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $k$ be a finite field of size $q$. Show that the number of degree-$19$ monic irreducible\npolynomials over $k$ is $\\frac{q^{19} - q}{19}$. -/\ntheorem card_monic_and_irreducible_and_natDegree_eq_19 {F : Type} (q : ℕ) [Field F]\n    [Fintype F] (hF : Fintype.card F = q) :\n    Nat.card { P : F[X] | P.Monic ∧ Irreducible P ∧ P.natDegree = 19 } =\n    (q ^ 19 - q) / 19 := by\n  sorry",
+    "full_code": "/-- Let $k$ be a finite field of size $q$. Show that the number of degree-$19$ monic irreducible\npolynomials over $k$ is $\\frac{q^{19} - q}{19}$. -/\ntheorem card_monic_and_irreducible_and_natDegree_eq_19 {F : Type} (q : ℕ) [Field F]\n    [Fintype F] (hF : Fintype.card F = q) :\n    Nat.card { P : F[X] | P.Monic ∧ Irreducible P ∧ P.natDegree = 19 } =\n    (q ^ 19 - q) / 19 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 79.4
+    }
+  },
+  {
+    "problem_id": "FATE-H_45",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $F$ be a field, and let $f, g \\in F[x] \\setminus \\{0\\}$ be relatively prime and not both\nconstant. Show that $F(x)$ has finite degree $d = \\max(\\deg(f), \\deg(g))$ over its subfield $F\\left\n(\\frac{f}{g}\\right)$. -/\ntheorem finrank_adjoin_dvd_eq_max_natDegree (F : Type) [Field F] (f g : F[X]) (hf : f ≠ 0)\n    (hg : g ≠ 0) (hcoprime : IsCoprime f g) (hfg : ¬(f.natDegree = 0 ∧ g.natDegree = 0)) :\n    Module.finrank F⟮(f : RatFunc F) / g⟯ (RatFunc F) = max f.natDegree g.natDegree := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field, and let $f, g \\in F[x] \\setminus \\{0\\}$ be relatively prime and not both\nconstant. Show that $F(x)$ has finite degree $d = \\max(\\deg(f), \\deg(g))$ over its subfield $F\\left\n(\\frac{f}{g}\\right)$. -/\ntheorem finrank_adjoin_dvd_eq_max_natDegree (F : Type) [Field F] (f g : F[X]) (hf : f ≠ 0)\n    (hg : g ≠ 0) (hcoprime : IsCoprime f g) (hfg : ¬(f.natDegree = 0 ∧ g.natDegree = 0)) :\n    Module.finrank F⟮(f : RatFunc F) / g⟯ (RatFunc F) = max f.natDegree g.natDegree := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 71.57
+    }
+  },
+  {
+    "problem_id": "FATE-H_46",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let \\( \\alpha \\) be a non-zero complex number such that \\( \\alpha + \\alpha^{-1} \\) is contained\nin a quadratic number field. Let \\( L \\) be the normal closure of \\( \\mathbb{Q}(\\alpha) \\). Show\nthat \\( [L : \\mathbb{Q}] \\) divides \\( 8 \\).-/\ntheorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by\n  have hfa : Module.finrank ℚ ℚ⟮a⟯ ∣ 2 := by\n    rw [← hk]\n    exact ⟨Module.finrank (↥ℚ⟮a⟯) K, (Module.finrank_mul_finrank ℚ (↥ℚ⟮a⟯) K).symm⟩\n  have hnormal : Normal ℚ ℚ⟮a⟯ := by\n    rcases hfa with ⟨k, hk2⟩\n    interval_cases k\n    · simp at hk2\n      have : 0 < Module.finrank ℚ ℚ⟮a⟯ := Module.finrank_pos\n      omega\n    · have h1 : Module.finrank ℚ ℚ⟮a⟯ = 2 := by omega\n      exact IntermediateField.normal_of_finrank_eq_two h1\n    · have h1 : Module.finrank ℚ ℚ⟮a⟯ = 1 := by omega\n      have hbot : ℚ⟮a⟯ = ⊥ := by\n        rw [← IntermediateField.finrank_eq_one_iff] at h1\n        exact h1\n      rw [hbot]\n      infer_instance\n  have hL : Module.finrank ℚ L = Module.finrank ℚ ℚ⟮a⟯ := by\n    have e : L ≃ₐ[ℚ] ℚ⟮a⟯ := (IsNormalClosure.equiv ℚ ℚ⟮a⟯ L ℚ⟮a⟯).symm\n    exact LinearEquiv.finrank_eq e.toLinearEquiv\n  rw [hL]\n  exact dvd_trans hfa (by norm_num)",
+    "full_code": "/--Let \\( \\alpha \\) be a non-zero complex number such that \\( \\alpha + \\alpha^{-1} \\) is contained\nin a quadratic number field. Let \\( L \\) be the normal closure of \\( \\mathbb{Q}(\\alpha) \\). Show\nthat \\( [L : \\mathbb{Q}] \\) divides \\( 8 \\).-/\ntheorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by\n  have hfa : Module.finrank ℚ ℚ⟮a⟯ ∣ 2 := by\n    rw [← hk]\n    exact ⟨Module.finrank (↥ℚ⟮a⟯) K, (Module.finrank_mul_finrank ℚ (↥ℚ⟮a⟯) K).symm⟩\n  have hnormal : Normal ℚ ℚ⟮a⟯ := by\n    rcases hfa with ⟨k, hk2⟩\n    interval_cases k\n    · simp at hk2\n      have : 0 < Module.finrank ℚ ℚ⟮a⟯ := Module.finrank_pos\n      omega\n    · have h1 : Module.finrank ℚ ℚ⟮a⟯ = 2 := by omega\n      exact IntermediateField.normal_of_finrank_eq_two h1\n    · have h1 : Module.finrank ℚ ℚ⟮a⟯ = 1 := by omega\n      have hbot : ℚ⟮a⟯ = ⊥ := by\n        rw [← IntermediateField.finrank_eq_one_iff] at h1\n        exact h1\n      rw [hbot]\n      infer_instance\n  have hL : Module.finrank ℚ L = Module.finrank ℚ ℚ⟮a⟯ := by\n    have e : L ≃ₐ[ℚ] ℚ⟮a⟯ := (IsNormalClosure.equiv ℚ ℚ⟮a⟯ L ℚ⟮a⟯).symm\n    exact LinearEquiv.finrank_eq e.toLinearEquiv\n  rw [hL]\n  exact dvd_trans hfa (by norm_num)",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 48
+          },
+          "endPos": null,
+          "data": "expected token"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 141.79
+    }
+  },
+  {
+    "problem_id": "FATE-H_47",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $\\zeta$ be a primitive $9$-th root of unity in $\\mathbb{C}$, so $\\zeta^9 = 1$, and let\n$\\omega = \\zeta^3$ be a primitive $3$-rd root of unity, so $\\omega^3 = 1$. If $\\alpha^3 = 3$,\nshow that $\\alpha$ is not a cube in $\\mathbb{Q}(\\zeta)$. -/\ntheorem not_exists_eq_pow_three_of_pow_three_eq_three (α : ℂ) (hα : α ^ 3 = 3) (ζ : ℂ)\n    (hζ : IsPrimitiveRoot ζ 9) : ¬ ∃ β : ℚ⟮ζ⟯, α = β ^ 3 := by\n  sorry",
+    "full_code": "/-- Let $\\zeta$ be a primitive $9$-th root of unity in $\\mathbb{C}$, so $\\zeta^9 = 1$, and let\n$\\omega = \\zeta^3$ be a primitive $3$-rd root of unity, so $\\omega^3 = 1$. If $\\alpha^3 = 3$,\nshow that $\\alpha$ is not a cube in $\\mathbb{Q}(\\zeta)$. -/\ntheorem not_exists_eq_pow_three_of_pow_three_eq_three (α : ℂ) (hα : α ^ 3 = 3) (ζ : ℂ)\n    (hζ : IsPrimitiveRoot ζ 9) : ¬ ∃ β : ℚ⟮ζ⟯, α = β ^ 3 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 84.86
+    }
+  },
+  {
+    "problem_id": "FATE-H_48",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/-- Prove that the cardinality $\\mathrm{Aut}(\\CC)$ (i.e. the group of field automorphism of $\\CC$)\nis infinite. -/\ntheorem infinite_complex_algEquiv : Infinite (ℂ ≃ₐ[ℚ] ℂ) := by\n  sorry",
+    "full_code": "/-- Prove that the cardinality $\\mathrm{Aut}(\\CC)$ (i.e. the group of field automorphism of $\\CC$)\nis infinite. -/\ntheorem infinite_complex_algEquiv : Infinite (ℂ ≃ₐ[ℚ] ℂ) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "⊢ Infinite (ℂ ≃ₐ[ℚ] ℂ)",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 124.31
+    }
+  },
+  {
+    "problem_id": "FATE-H_49",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  classical\n  have hcount : Countable F := by sorry\n  have hcard : Cardinal.lift.{0,0} (Cardinal.mk F) ≤ Cardinal.lift.{0,0} (Cardinal.mk ℂ) := by\n    simp only [Cardinal.lift_id]\n    have h1 : Cardinal.mk F ≤ Cardinal.aleph0 := Cardinal.mk_le_aleph0\n    have h2 : Cardinal.aleph0 ≤ Cardinal.mk ℂ := by\n      sorry\n    exact le_trans h1 h2\n  have alg : Algebra.IsAlgebraic ℚ F := by sorry\n  refine ⟨IsAlgClosed.lift (R := ℚ) (S := F) (M := ℂ) hcard, ?_⟩\n  exact RingHom.injective _",
+    "full_code": "/- Prove that every finitely generated extension of $\\mathbb{Q}$ can be embeded into $\\mathbb{C}$-/\ntheorem exists_algHom_complex_injective {F : Type} [Field F] [Algebra ℚ F]\n    (h : (⊤ : IntermediateField ℚ F).FG) : ∃ f : F →ₐ[ℚ] ℂ, Function.Injective f := by\n  classical\n  have hcount : Countable F := by sorry\n  have hcard : Cardinal.lift.{0,0} (Cardinal.mk F) ≤ Cardinal.lift.{0,0} (Cardinal.mk ℂ) := by\n    simp only [Cardinal.lift_id]\n    have h1 : Cardinal.mk F ≤ Cardinal.aleph0 := Cardinal.mk_le_aleph0\n    have h2 : Cardinal.aleph0 ≤ Cardinal.mk ℂ := by\n      sorry\n    exact le_trans h1 h2\n  have alg : Algebra.IsAlgebraic ℚ F := by sorry\n  refine ⟨IsAlgClosed.lift (R := ℚ) (S := F) (M := ℂ) hcard, ?_⟩\n  exact RingHom.injective _",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 14,
+          "pos": {
+            "line": 5,
+            "column": 34
+          },
+          "goal": "F : Type\ninst✝¹ : Field F\ninst✝ : Algebra ℚ F\nh : ⊤.FG\n⊢ Countable F",
+          "endPos": {
+            "line": 5,
+            "column": 39
+          }
+        },
+        {
+          "proofState": 15,
+          "pos": {
+            "line": 10,
+            "column": 6
+          },
+          "goal": "F : Type\ninst✝¹ : Field F\ninst✝ : Algebra ℚ F\nh : ⊤.FG\nhcount : Countable F\nh1 : Cardinal.mk F ≤ Cardinal.aleph0\n⊢ Cardinal.aleph0 ≤ Cardinal.mk ℂ",
+          "endPos": {
+            "line": 10,
+            "column": 11
+          }
+        },
+        {
+          "proofState": 16,
+          "pos": {
+            "line": 12,
+            "column": 43
+          },
+          "goal": "F : Type\ninst✝¹ : Field F\ninst✝ : Algebra ℚ F\nh : ⊤.FG\nhcount : Countable F\nhcard : Cardinal.lift.{0, 0} (Cardinal.mk F) ≤ Cardinal.lift.{0, 0} (Cardinal.mk ℂ)\n⊢ Algebra.IsAlgebraic ℚ F",
+          "endPos": {
+            "line": 12,
+            "column": 48
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 13,
+            "column": 54
+          },
+          "endPos": {
+            "line": 13,
+            "column": 59
+          },
+          "data": "application type mismatch\n  IsAlgClosed.lift hcard\nargument\n  hcard\nhas type\n  Cardinal.lift.{0, 0} (Cardinal.mk F) ≤ Cardinal.lift.{0, 0} (Cardinal.mk ℂ) : Prop\nbut is expected to have type\n  F : Type"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 114.64
+    }
+  },
+  {
+    "problem_id": "FATE-H_50",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/-- Let $m$ be a maximal ideal of $\\mathbb{Z}[x_1, \\dots, x_n]$ and $F = \\mathbb{Z}[x_1, \\dots, x_n]\n/m$. Show that $F$ cannot have characteristic $0$. -/\ntheorem not_charZero_mvPolynomial_quot {n : ℕ} (m : Ideal (MvPolynomial (Fin n) ℤ))\n    [hm : m.IsMaximal] : ¬ CharZero (MvPolynomial (Fin n) ℤ ⧸ m) := by\n  sorry",
+    "full_code": "/-- Let $m$ be a maximal ideal of $\\mathbb{Z}[x_1, \\dots, x_n]$ and $F = \\mathbb{Z}[x_1, \\dots, x_n]\n/m$. Show that $F$ cannot have characteristic $0$. -/\ntheorem not_charZero_mvPolynomial_quot {n : ℕ} (m : Ideal (MvPolynomial (Fin n) ℤ))\n    [hm : m.IsMaximal] : ¬ CharZero (MvPolynomial (Fin n) ℤ ⧸ m) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nm : Ideal (MvPolynomial (Fin n) ℤ)\nhm : m.IsMaximal\n⊢ ¬CharZero (MvPolynomial (Fin n) ℤ ⧸ m)",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 350.97
+    }
+  },
+  {
+    "problem_id": "FATE-H_51",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $K/F$ be a simple algebraic extension. Let $K = F(\\theta)$. Let $L$ be an intermediate field\nof $K/F$. Show that the minimal polynomial of $\\theta$ over $L$: $g(x) = x^r+\\alpha_1x^{r-1} +\n\\cdots +\\alpha_r$, satisfies that $F(\\alpha_1, \\dots, \\alpha_r) = L$. -/\ntheorem adjoin_minpoly_coeffs_toSet_eq {F K : Type} [Field F] [Field K]\n    [Algebra F K] {θ : K} (L : IntermediateField F K) (h : F⟮θ⟯ = ⊤) :\n    IntermediateField.adjoin F (minpoly L θ).coeffs.toSet = L := by\n  sorry",
+    "full_code": "/-- Let $K/F$ be a simple algebraic extension. Let $K = F(\\theta)$. Let $L$ be an intermediate field\nof $K/F$. Show that the minimal polynomial of $\\theta$ over $L$: $g(x) = x^r+\\alpha_1x^{r-1} +\n\\cdots +\\alpha_r$, satisfies that $F(\\alpha_1, \\dots, \\alpha_r) = L$. -/\ntheorem adjoin_minpoly_coeffs_toSet_eq {F K : Type} [Field F] [Field K]\n    [Algebra F K] {θ : K} (L : IntermediateField F K) (h : F⟮θ⟯ = ⊤) :\n    IntermediateField.adjoin F (minpoly L θ).coeffs.toSet = L := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 101.28
+    }
+  },
+  {
+    "problem_id": "FATE-H_52",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $q$ denote a power of a prime $p$. Show that the extension $\\mathbb{F}_q(t^{1/n})$ over\n$\\mathbb{F}_q(t)$ is Galois if and only if $q \\equiv 1 \\bmod n$. -/\ntheorem isGalois_galoisField_X_pow_iff_modEq_one (p m n : ℕ) (hn : 1 ≤ n) (hm : 1 ≤ m)\n    [Fact p.Prime] :  IsGalois (GaloisField p m)⟮(RatFunc.X ^ n : RatFunc (GaloisField p m))⟯\n    (RatFunc (GaloisField p m)) ↔ p ^ m ≡ 1 [MOD n] := by\n  sorry",
+    "full_code": "/-- Let $q$ denote a power of a prime $p$. Show that the extension $\\mathbb{F}_q(t^{1/n})$ over\n$\\mathbb{F}_q(t)$ is Galois if and only if $q \\equiv 1 \\bmod n$. -/\ntheorem isGalois_galoisField_X_pow_iff_modEq_one (p m n : ℕ) (hn : 1 ≤ n) (hm : 1 ≤ m)\n    [Fact p.Prime] :  IsGalois (GaloisField p m)⟮(RatFunc.X ^ n : RatFunc (GaloisField p m))⟯\n    (RatFunc (GaloisField p m)) ↔ p ^ m ≡ 1 [MOD n] := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 91.57
+    }
+  },
+  {
+    "problem_id": "FATE-H_53",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/-- Prove that every field automorphism of $\\mathbb{R}$ that fixes $\\mathbb{Q}$ is trivial. -/\ntheorem real_algEquiv_eq_one (f : ℝ ≃ₐ[ℚ] ℝ) : f = 1 := by\n  have fnonneg : ∀ x : ℝ, 0 ≤ x → 0 ≤ f x := by\n    intro x hx\n    have hsq : x = (Real.sqrt x) ^ 2 := by\n      rw [sq]\n      exact (Real.mul_self_sqrt hx).symm\n    rw [hsq]\n    rw [map_pow]\n    exact sq_nonneg _\n  have fmono : ∀ a b : ℝ, a ≤ b → f a ≤ f b := by\n    intro a b hab\n    have h1 : 0 ≤ b - a := by linarith\n    have h2 : 0 ≤ f (b - a) := fnonneg _ h1\n    have h3 : f (b - a) = f b - f a := by rw [map_sub]\n    linarith [h3 ▸ h2]\n  have fq : ∀ q : ℚ, f ((q : ℝ)) = (q : ℝ) := by\n    intro q\n    have := f.commutes q\n    simpa using this\n  apply AlgEquiv.ext\n  intro x\n  show f x = x\n  by_contra hne\n  rcases lt_or_gt_of_ne hne with hlt | hgt\n  · -- f x < x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hlt\n    have hmono := fmono (q : ℝ) x (le_of_lt hq2)\n    rw [fq q] at hmono\n    linarith\n  · -- x < f x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hgt\n    have hmono := fmono x (q : ℝ) (le_of_lt hq1)\n    rw [fq q] at hmono\n    linarith",
+    "full_code": "/-- Prove that every field automorphism of $\\mathbb{R}$ that fixes $\\mathbb{Q}$ is trivial. -/\ntheorem real_algEquiv_eq_one (f : ℝ ≃ₐ[ℚ] ℝ) : f = 1 := by\n  have fnonneg : ∀ x : ℝ, 0 ≤ x → 0 ≤ f x := by\n    intro x hx\n    have hsq : x = (Real.sqrt x) ^ 2 := by\n      rw [sq]\n      exact (Real.mul_self_sqrt hx).symm\n    rw [hsq]\n    rw [map_pow]\n    exact sq_nonneg _\n  have fmono : ∀ a b : ℝ, a ≤ b → f a ≤ f b := by\n    intro a b hab\n    have h1 : 0 ≤ b - a := by linarith\n    have h2 : 0 ≤ f (b - a) := fnonneg _ h1\n    have h3 : f (b - a) = f b - f a := by rw [map_sub]\n    linarith [h3 ▸ h2]\n  have fq : ∀ q : ℚ, f ((q : ℝ)) = (q : ℝ) := by\n    intro q\n    have := f.commutes q\n    simpa using this\n  apply AlgEquiv.ext\n  intro x\n  show f x = x\n  by_contra hne\n  rcases lt_or_gt_of_ne hne with hlt | hgt\n  · -- f x < x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hlt\n    have hmono := fmono (q : ℝ) x (le_of_lt hq2)\n    rw [fq q] at hmono\n    linarith\n  · -- x < f x\n    obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn hgt\n    have hmono := fmono x (q : ℝ) (le_of_lt hq1)\n    rw [fq q] at hmono\n    linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 23.86
+    }
+  },
+  {
+    "problem_id": "FATE-H_54",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $\\mathbb{F}_4$ be the field with $4$ elements, $t$ a transcendental over $\\mathbb{F}_4$,\nand $F =\\mathbb{F}_4(t^4 + t)$ and $K =\\mathbb{F}_4(t)$. Show that $K$ is Galois over $F$. -/\ntheorem isGalois_galoisField_adjoin_X_pow_four_add_X :\n    IsGalois (GaloisField 2 2)⟮(X ^ 4 + X : RatFunc (GaloisField 2 2))⟯\n    (RatFunc (GaloisField 2 2)) := by\n  sorry",
+    "full_code": "/-- Let $\\mathbb{F}_4$ be the field with $4$ elements, $t$ a transcendental over $\\mathbb{F}_4$,\nand $F =\\mathbb{F}_4(t^4 + t)$ and $K =\\mathbb{F}_4(t)$. Show that $K$ is Galois over $F$. -/\ntheorem isGalois_galoisField_adjoin_X_pow_four_add_X :\n    IsGalois (GaloisField 2 2)⟮(X ^ 4 + X : RatFunc (GaloisField 2 2))⟯\n    (RatFunc (GaloisField 2 2)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 85.32
+    }
+  },
+  {
+    "problem_id": "FATE-H_55",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nLet $K$ be a field with $\\operatorname{char}(K) \\neq 2$. Consider a Galois extension $L/K$.\nShow that $\\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2$ if and only if\nthe extensions $L/K$ has the form $L = K(\\sqrt{a}, \\sqrt{b})$ for $a, b \\in K^\\times$ such that\n$a$, $b$, and $a/b$ are nonsquares in $K^\\times$.\n-/\ntheorem exists_pow_two_eq_algebraMap_and_adjoin_eq_top {K L : Type} [Field K] [Field L]\n    [Algebra K L] [IsGalois K L] (hK : ¬ CharP K 2) : IsKleinFour (L ≃ₐ[K] L) ↔\n    ∃ a b : Kˣ, ∃ x y : L, x ^ 2 = algebraMap K L a.1 ∧ y ^ 2 = algebraMap K L b.1 ∧\n    K⟮x, y⟯ = ⊤ ∧ ¬IsSquare a ∧ ¬IsSquare b ∧ ¬IsSquare (a / b) := by\n  sorry",
+    "full_code": "/--\nLet $K$ be a field with $\\operatorname{char}(K) \\neq 2$. Consider a Galois extension $L/K$.\nShow that $\\operatorname{Gal}(L/K) \\cong (\\mathbb{Z}/2\\mathbb{Z})^2$ if and only if\nthe extensions $L/K$ has the form $L = K(\\sqrt{a}, \\sqrt{b})$ for $a, b \\in K^\\times$ such that\n$a$, $b$, and $a/b$ are nonsquares in $K^\\times$.\n-/\ntheorem exists_pow_two_eq_algebraMap_and_adjoin_eq_top {K L : Type} [Field K] [Field L]\n    [Algebra K L] [IsGalois K L] (hK : ¬ CharP K 2) : IsKleinFour (L ≃ₐ[K] L) ↔\n    ∃ a b : Kˣ, ∃ x y : L, x ^ 2 = algebraMap K L a.1 ∧ y ^ 2 = algebraMap K L b.1 ∧\n    K⟮x, y⟯ = ⊤ ∧ ¬IsSquare a ∧ ¬IsSquare b ∧ ¬IsSquare (a / b) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 97.0
+    }
+  },
+  {
+    "problem_id": "FATE-H_56",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/- Prove that for $n$ odd, $n>1$, $\\Phi_{2n}(x) = \\Phi_n(-x)$, where $\\Phi_n$ is the $n$th\ncyclotomic polynomial over \\mathbb{Q}.-/\ntheorem cyclotomic_two_mul_eq_cyclotomic_comp_neg {n : ℕ} (hn : Odd n) (hn' : 1 < n) :\n    Polynomial.cyclotomic (2 * n) ℚ = (Polynomial.cyclotomic n ℚ).comp (-X) := by\n  sorry",
+    "full_code": "/- Prove that for $n$ odd, $n>1$, $\\Phi_{2n}(x) = \\Phi_n(-x)$, where $\\Phi_n$ is the $n$th\ncyclotomic polynomial over \\mathbb{Q}.-/\ntheorem cyclotomic_two_mul_eq_cyclotomic_comp_neg {n : ℕ} (hn : Odd n) (hn' : 1 < n) :\n    Polynomial.cyclotomic (2 * n) ℚ = (Polynomial.cyclotomic n ℚ).comp (-X) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 149.67
+    }
+  },
+  {
+    "problem_id": "FATE-H_57",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/- If $F$ is a field that is not perfect, show that $F$ has a nontrivial purely inseparable\nextension.-/\ntheorem exists_isPurelyInseparable_and_bot_lt {F : Type} [Field F] (h : ¬ PerfectField F) :\n    ∃ E : IntermediateField F (AlgebraicClosure F), IsPurelyInseparable F E ∧ ⊥ < E := by\n  obtain ⟨p, hp⟩ := ExpChar.exists F\n  cases hp with\n  | zero =>\n    exact (h inferInstance).elim\n  | prime hp_prime =>\n    haveI : Fact (Nat.Prime p) := ⟨hp_prime⟩\n    haveI hpe : ExpChar F p := ExpChar.prime hp_prime\n    have hns : ¬ Function.Surjective (frobenius F p) := by\n      intro hsurj\n      have : PerfectRing F p := PerfectRing.ofSurjective F p hsurj\n      exact h (PerfectRing.toPerfectField F p)\n    have key : ∃ a : F, ∀ x : F, x ^ p ≠ a := by\n      by_contra hcon\n      push_neg at hcon\n      apply hns\n      intro a\n      obtain ⟨x, hx⟩ := hcon a\n      exact ⟨x, by simpa [frobenius_def] using hx⟩\n    obtain ⟨a, ha⟩ := key\n    set K := AlgebraicClosure F with hK\n    have hppos : 0 < p := hp_prime.pos\n    obtain ⟨α, hα⟩ := IsAlgClosed.exists_pow_nat_eq (algebraMap F K a) hppos\n    have hαnot : ∀ b : F, algebraMap F K b ≠ α := by\n      intro b hb\n      have h1 : (algebraMap F K b) ^ p = α ^ p := by rw [hb]\n      rw [hα] at h1\n      have h2 : algebraMap F K (b ^ p) = algebraMap F K a := by\n        rw [map_pow]; exact h1\n      have hinj : Function.Injective (algebraMap F K) := RingHom.injective _\n      exact ha b (hinj h2)\n    refine ⟨IntermediateField.adjoin F {α}, ?_, ?_⟩\n    · -- pure inseparability\n      have hmem : α ^ p ^ 1 ∈ (algebraMap F K).range := by\n        refine ⟨a, ?_⟩\n        rw [pow_one, hα]\n      exact (IntermediateField.isPurelyInseparable_adjoin_simple_iff_pow_mem F K p).mpr ⟨1, hmem⟩\n    · -- ⊥ < E\n      rw [bot_lt_iff_ne_bot]\n      intro hE\n      have hαE : α ∈ IntermediateField.adjoin F ({α} : Set K) :=\n        IntermediateField.subset_adjoin F _ (Set.mem_singleton α)\n      rw [hE] at hαE\n      rw [IntermediateField.mem_bot] at hαE\n      obtain ⟨b, hb⟩ := hαE\n      exact hαnot b hb",
+    "full_code": "/- If $F$ is a field that is not perfect, show that $F$ has a nontrivial purely inseparable\nextension.-/\ntheorem exists_isPurelyInseparable_and_bot_lt {F : Type} [Field F] (h : ¬ PerfectField F) :\n    ∃ E : IntermediateField F (AlgebraicClosure F), IsPurelyInseparable F E ∧ ⊥ < E := by\n  obtain ⟨p, hp⟩ := ExpChar.exists F\n  cases hp with\n  | zero =>\n    exact (h inferInstance).elim\n  | prime hp_prime =>\n    haveI : Fact (Nat.Prime p) := ⟨hp_prime⟩\n    haveI hpe : ExpChar F p := ExpChar.prime hp_prime\n    have hns : ¬ Function.Surjective (frobenius F p) := by\n      intro hsurj\n      have : PerfectRing F p := PerfectRing.ofSurjective F p hsurj\n      exact h (PerfectRing.toPerfectField F p)\n    have key : ∃ a : F, ∀ x : F, x ^ p ≠ a := by\n      by_contra hcon\n      push_neg at hcon\n      apply hns\n      intro a\n      obtain ⟨x, hx⟩ := hcon a\n      exact ⟨x, by simpa [frobenius_def] using hx⟩\n    obtain ⟨a, ha⟩ := key\n    set K := AlgebraicClosure F with hK\n    have hppos : 0 < p := hp_prime.pos\n    obtain ⟨α, hα⟩ := IsAlgClosed.exists_pow_nat_eq (algebraMap F K a) hppos\n    have hαnot : ∀ b : F, algebraMap F K b ≠ α := by\n      intro b hb\n      have h1 : (algebraMap F K b) ^ p = α ^ p := by rw [hb]\n      rw [hα] at h1\n      have h2 : algebraMap F K (b ^ p) = algebraMap F K a := by\n        rw [map_pow]; exact h1\n      have hinj : Function.Injective (algebraMap F K) := RingHom.injective _\n      exact ha b (hinj h2)\n    refine ⟨IntermediateField.adjoin F {α}, ?_, ?_⟩\n    · -- pure inseparability\n      have hmem : α ^ p ^ 1 ∈ (algebraMap F K).range := by\n        refine ⟨a, ?_⟩\n        rw [pow_one, hα]\n      exact (IntermediateField.isPurelyInseparable_adjoin_simple_iff_pow_mem F K p).mpr ⟨1, hmem⟩\n    · -- ⊥ < E\n      rw [bot_lt_iff_ne_bot]\n      intro hE\n      have hαE : α ∈ IntermediateField.adjoin F ({α} : Set K) :=\n        IntermediateField.subset_adjoin F _ (Set.mem_singleton α)\n      rw [hE] at hαE\n      rw [IntermediateField.mem_bot] at hαE\n      obtain ⟨b, hb⟩ := hαE\n      exact hαnot b hb",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 221.29
+    }
+  },
+  {
+    "problem_id": "FATE-H_58",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Show that there is at most one extension \\( F(\\alpha) \\) of a field \\( F \\) such that \\( \\alpha^4\n\\in F \\), \\( \\alpha^2 \\notin F \\), and \\( F(\\alpha) = F(\\alpha^2) \\).-/\ntheorem exists_eq_adjoin_and_pow_four_mem_bot_and_not_pow_two_mem_bot (F : Type) [Field F] :\n    Subsingleton {M : IntermediateField F (AlgebraicClosure F) //\n    ∃ α : AlgebraicClosure F, M = F⟮α⟯ ∧ α ^ 4 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧\n    ¬ α ^ 2 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧ F⟮α⟯ = F⟮α ^ 2⟯} := by\n  sorry",
+    "full_code": "/--Show that there is at most one extension \\( F(\\alpha) \\) of a field \\( F \\) such that \\( \\alpha^4\n\\in F \\), \\( \\alpha^2 \\notin F \\), and \\( F(\\alpha) = F(\\alpha^2) \\).-/\ntheorem exists_eq_adjoin_and_pow_four_mem_bot_and_not_pow_two_mem_bot (F : Type) [Field F] :\n    Subsingleton {M : IntermediateField F (AlgebraicClosure F) //\n    ∃ α : AlgebraicClosure F, M = F⟮α⟯ ∧ α ^ 4 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧\n    ¬ α ^ 2 ∈ (⊥ : IntermediateField F (AlgebraicClosure F)) ∧ F⟮α⟯ = F⟮α ^ 2⟯} := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 92.95
+    }
+  },
+  {
+    "problem_id": "FATE-H_59",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nShow that \\( x^7 - 11 \\) has no root in the splitting field of \\(x^7 - 12\\) over \\(\\mathbb{Q}\\).\n-/\ntheorem rootSet_isEmpty_in_splittingField :\n    (.X ^ 7 - 11 : Polynomial ℚ).rootSet ((.X ^ 7 - 12 : Polynomial ℚ).SplittingField) = ⊥ := by\n  sorry",
+    "full_code": "/--\nShow that \\( x^7 - 11 \\) has no root in the splitting field of \\(x^7 - 12\\) over \\(\\mathbb{Q}\\).\n-/\ntheorem rootSet_isEmpty_in_splittingField :\n    (.X ^ 7 - 11 : Polynomial ℚ).rootSet ((.X ^ 7 - 12 : Polynomial ℚ).SplittingField) = ⊥ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 68.88
+    }
+  },
+  {
+    "problem_id": "FATE-H_60",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--For a positive integer $a$, consider the polynomial $$ f_a = x^6 + 3ax^4 + 3x^3 + 3ax^2 + 1.\n $$ Let $F$ be the splitting field of $f_a$. Show that its Galois group is solvable.-/\ntheorem isSolvable_X_pow_six_add_gal {a : ℤ} (ha : a > 0) : IsSolvable\n    (X ^ 6 + C (3 * a : ℚ) * X ^ 4 + C 3 * X ^ 3 + C (3 * a : ℚ) * X ^ 2 + C 1 : ℚ[X]).Gal := by\n  sorry",
+    "full_code": "/--For a positive integer $a$, consider the polynomial $$ f_a = x^6 + 3ax^4 + 3x^3 + 3ax^2 + 1.\n $$ Let $F$ be the splitting field of $f_a$. Show that its Galois group is solvable.-/\ntheorem isSolvable_X_pow_six_add_gal {a : ℤ} (ha : a > 0) : IsSolvable\n    (X ^ 6 + C (3 * a : ℚ) * X ^ 4 + C 3 * X ^ 3 + C (3 * a : ℚ) * X ^ 2 + C 1 : ℚ[X]).Gal := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 80.51
+    }
+  }
+]

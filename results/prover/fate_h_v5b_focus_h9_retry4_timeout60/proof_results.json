@@ -1,0 +1,34 @@
+[
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\n⊢ Subgroup.centralizer ⊤ = ⊥",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 5,
+      "draft_count": 1,
+      "strategy_time": 450.92
+    }
+  }
+]

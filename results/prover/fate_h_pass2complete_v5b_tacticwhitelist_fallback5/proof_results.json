@@ -1,0 +1,149 @@
+[
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hSimple\n  have hpos : 0 < Nat.card G := by rw [hG]; norm_num\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; norm_num)\n  have : Fintype G := Fintype.ofFinite G\n  exact absurd hG (by\n    intro h\n    -- We don't actually finish; this is a placeholder to force failure\n    exact absurd hSimple (fun _ => by\n      -- Can't complete full Sylow argument here without sorry\n      sorry))",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hSimple\n  have hpos : 0 < Nat.card G := by rw [hG]; norm_num\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; norm_num)\n  have : Fintype G := Fintype.ofFinite G\n  exact absurd hG (by\n    intro h\n    -- We don't actually finish; this is a placeholder to force failure\n    exact absurd hSimple (fun _ => by\n      -- Can't complete full Sylow argument here without sorry\n      sorry))",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 13,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\nhSimple : IsSimpleGroup G\nhpos : 0 < Nat.card G\nhfin : Finite G\nthis : Fintype G\nh : Nat.card G = 56\nx✝ : IsSimpleGroup G\n⊢ False",
+          "endPos": {
+            "line": 13,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 102.09
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝² : Group G\nH K : Subgroup G\ninst✝¹ : H.Normal\nh1 : K ≤ H\ninst✝ : (K.subgroupOf H).Normal\nh2 : Subgroup.centralizer ↑(K.subgroupOf H) = ⊥\n⊢ H ≤ Subgroup.centralizer ↑(Subgroup.centralizer ↑K)",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 412.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_15",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "full_code": "/- Prove that the ring $\\mathbb{Z}[\\sqrt{-5}]$ is not a principal ideal domain. -/\ntheorem not_isPrincipalIdealRing_Zsqrtd_neg_five : ¬IsPrincipalIdealRing (Zsqrtd (-5)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 10,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ ¬IsPrincipalIdealRing (ℤ√(-5))",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 321.54
+    }
+  },
+  {
+    "problem_id": "FATE-H_21",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "full_code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 25,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nat.card (AddAut (ZMod 3 × ZMod 9)) = 108",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 134.99
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  rw [eq_top_iff]\n  intro x _\n  set n := H.index with hn_def\n  have hn : n ≠ 0 := h_fin.finiteIndex\n  -- Step 1: n • z ∈ H for every z\n  have key : ∀ z : ℚ ⧸ (Int.castAddHom ℚ).range, n • z ∈ H := by\n    intro z\n    exact H.nsmul_index_mem z\n  -- Step 2: ℚ/ℤ is divisible, so there exists y with n • y = x\n  induction x using QuotientAddGroup.induction_on with\n  | H q =>\n    set y : ℚ ⧸ (Int.castAddHom ℚ).range :=\n      QuotientAddGroup.mk ((q : ℚ) / (n : ℚ)) with hy_def\n    have hny : n • y = QuotientAddGroup.mk q := by\n      simp only [hy_def]\n      rw [← QuotientAddGroup.mk_nsmul]\n      congr 1\n      field_simp\n    have hmem : QuotientAddGroup.mk q ∈ H := by\n      rw [← hny]\n      exact key y\n    exact hmem",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  rw [eq_top_iff]\n  intro x _\n  set n := H.index with hn_def\n  have hn : n ≠ 0 := h_fin.finiteIndex\n  -- Step 1: n • z ∈ H for every z\n  have key : ∀ z : ℚ ⧸ (Int.castAddHom ℚ).range, n • z ∈ H := by\n    intro z\n    exact H.nsmul_index_mem z\n  -- Step 2: ℚ/ℤ is divisible, so there exists y with n • y = x\n  induction x using QuotientAddGroup.induction_on with\n  | H q =>\n    set y : ℚ ⧸ (Int.castAddHom ℚ).range :=\n      QuotientAddGroup.mk ((q : ℚ) / (n : ℚ)) with hy_def\n    have hny : n • y = QuotientAddGroup.mk q := by\n      simp only [hy_def]\n      rw [← QuotientAddGroup.mk_nsmul]\n      congr 1\n      field_simp\n    have hmem : QuotientAddGroup.mk q ∈ H := by\n      rw [← hny]\n      exact key y\n    exact hmem",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 34.95
+    }
+  }
+]

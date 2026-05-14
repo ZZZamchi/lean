@@ -1,0 +1,49 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  have hcop : Nat.Coprime 2 n :=\n    Nat.prime_two.coprime_iff_not_dvd.mpr (by\n      intro hdvd\n      have := Nat.odd_iff.mp hn\n      omega)\n  sorry",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  have hcop : Nat.Coprime 2 n :=\n    Nat.prime_two.coprime_iff_not_dvd.mpr (by\n      intro hdvd\n      have := Nat.odd_iff.mp hn\n      omega)\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 24,
+          "pos": {
+            "line": 10,
+            "column": 2
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\nhcop : Nat.Coprime 2 n\n⊢ Subgroup.centralizer ⊤ = ⊥",
+          "endPos": {
+            "line": 10,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 444.65
+    }
+  }
+]

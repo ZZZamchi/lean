@@ -1,0 +1,134 @@
+[
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 70.42
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  intro h hh\n  rw [Subgroup.mem_centralizer_iff]\n  intro c hc\n  -- c ∈ centralizer K means for all k ∈ K, k * c = c * k\n  rw [Subgroup.mem_centralizer_iff] at hc\n  -- Define x = h⁻¹ * c⁻¹ * h * c\n  set x : G := h⁻¹ * c⁻¹ * h * c with hx_def\n  -- Step 1: x ∈ H\n  have hxH : x ∈ H := by\n    have h1H : h⁻¹ ∈ H := H.inv_mem hh\n    have h2H : c⁻¹ * h * c ∈ H := by\n      have := ‹H.Normal›.conj_mem h hh c⁻¹\n      simpa [mul_assoc, inv_inv] using this\n    have : h⁻¹ * (c⁻¹ * h * c) ∈ H := H.mul_mem h1H h2H\n    simpa [hx_def, mul_assoc] using this\n  -- Step 2: x commutes with every k ∈ K\n  have hxcomm : ∀ k ∈ K, k * x = x * k := by\n    intro k hk\n    have hkH : k ∈ H := h1 hk\n    -- c commutes with k\n    have hck : k * c = c * k := hc k hk\n    -- h * k * h⁻¹ ∈ K since K ⊴ H\n    have hkK : (⟨k, hkH⟩ : H) ∈ K.subgroupOf H := by\n      rw [Subgroup.mem_subgroupOf]\n      exact hk\n    have hconjK : (⟨h * k * h⁻¹, H.mul_mem (H.mul_mem hh hkH) (H.inv_mem hh)⟩ : H)\n        ∈ K.subgroupOf H := by\n      have := (K.subgroupOf H).Normal.conj_mem ⟨k, hkH⟩ hkK ⟨h, hh⟩\n      convert this using 1\n    have hhkh : h * k * h⁻¹ ∈ K := by\n      rw [Subgroup.mem_subgroupOf] at hconjK\n      exact hconjK\n    -- c commutes with h * k * h⁻¹\n    have hck' : (h * k * h⁻¹) * c = c * (h * k * h⁻¹) := hc _ hhkh\n    -- Now compute x * k = k * x\n    -- x * k = h⁻¹ * c⁻¹ * h * c * k = h⁻¹ * c⁻¹ * h * k * c = h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c\n    -- = h⁻¹ * (h * k * h⁻¹) * c⁻¹ * h * c... hmm let me redo using the commutations\n    -- Actually: x * k = h⁻¹ c⁻¹ h c k = h⁻¹ c⁻¹ h k c = h⁻¹ c⁻¹ (hkh⁻¹) h c\n    --                  = h⁻¹ (hkh⁻¹) c⁻¹ h c ... need c⁻¹ commutes with hkh⁻¹\n    have hck'' : c⁻¹ * (h * k * h⁻¹) = (h * k * h⁻¹) * c⁻¹ := by\n      have : c⁻¹ * ((h * k * h⁻¹) * c) * c⁻¹ = c⁻¹ * (c * (h * k * h⁻¹)) * c⁻¹ := by\n        rw [hck']\n      simp [mul_assoc] at this\n      rw [← this]\n      group\n    -- x * k = h⁻¹ * c⁻¹ * h * c * k\n    --       = h⁻¹ * c⁻¹ * h * (c * k)\n    --       = h⁻¹ * c⁻¹ * h * (k * c)        (using hck in reverse: k*c = c*k so c*k = k*c? no, hck : k*c = c*k)\n    have hckr : c * k = k * c := hck.symm\n    calc x * k = h⁻¹ * c⁻¹ * h * c * k := by rw [hx_def]\n      _ = h⁻¹ * c⁻¹ * h * (c * k) := by ring_nf; rw [mul_assoc]\n      _ = h⁻¹ * c⁻¹ * h * (k * c) := by rw [hckr]\n      _ = h⁻¹ * c⁻¹ * (h * k) * c := by rw [mul_assoc, mul_assoc]\n      _ = h⁻¹ * c⁻¹ * (h * k * h⁻¹ * h) * c := by rw [mul_assoc (h*k) h⁻¹ h, inv_mul_cancel, mul_one]\n      _ = h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c := by rw [mul_assoc _ (h*k*h⁻¹) h, ← mul_assoc]\n      _ = h⁻¹ * (c⁻¹ * (h * k * h⁻¹)) * h * c := by rw [mul_assoc h⁻¹ c⁻¹ (h*k*h⁻¹)]\n      _ = h⁻¹ * ((h * k * h⁻¹) * c⁻¹) * h * c := by rw [hck'']\n      _ = h⁻¹ * (h * k * h⁻¹) * c⁻¹ * h * c := by rw [mul_assoc h⁻¹ (h*k*h⁻¹) c⁻¹]\n      _ = (h⁻¹ * h) * k * h⁻¹ * c⁻¹ * h * c := by rw [mul_assoc h⁻¹ h k, ← mul_assoc h⁻¹ (h*k) h⁻¹, mul_assoc h⁻¹ h k]\n      _ = k * h⁻¹ * c⁻¹ * h * c := by rw [inv_mul_cancel, one_mul]\n      _ = k * (h⁻¹ * c⁻¹ * h * c) := by rw [mul_assoc, mul_assoc, mul_assoc]\n      _ = k * x := by rw [hx_def]\n  -- Step 3: x ∈ centralizer (K.subgroupOf H) = ⊥\n  have hxinH : (⟨x, hxH⟩ : H) ∈ Subgroup.centralizer (K.subgroupOf H) := by\n    rw [Subgroup.mem_centralizer_iff]\n    rintro ⟨k, hkH⟩ hk\n    rw [Subgroup.mem_subgroupOf] at hk\n    ext\n    exact hxcomm k hk\n  rw [h2] at hxinH\n  have hx1 : (⟨x, hxH⟩ : H) = 1 := hxinH\n  have hx_eq_one : x = 1 := by\n    have := congrArg (Subtype.val) hx1\n    exact this\n  -- Now from x = 1 derive h * c = c * h\n  have : h⁻¹ * c⁻¹ * h * c = 1 := by rw [← hx_def]; exact hx_eq_one\n  -- multiply: c * h = h * c? we want c * h = h * c\n  have key : h * c = c * h := by\n    have h1 : c⁻¹ * h * c = h := by\n      have := this\n      have h2' : h⁻¹ * (c⁻¹ * h * c) = 1 := by rw [mul_assoc, mul_assoc] at this ⊢; linarith_or_nothing\n      sorry\n    sorry\n  linarith_or_nothing",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  intro h hh\n  rw [Subgroup.mem_centralizer_iff]\n  intro c hc\n  -- c ∈ centralizer K means for all k ∈ K, k * c = c * k\n  rw [Subgroup.mem_centralizer_iff] at hc\n  -- Define x = h⁻¹ * c⁻¹ * h * c\n  set x : G := h⁻¹ * c⁻¹ * h * c with hx_def\n  -- Step 1: x ∈ H\n  have hxH : x ∈ H := by\n    have h1H : h⁻¹ ∈ H := H.inv_mem hh\n    have h2H : c⁻¹ * h * c ∈ H := by\n      have := ‹H.Normal›.conj_mem h hh c⁻¹\n      simpa [mul_assoc, inv_inv] using this\n    have : h⁻¹ * (c⁻¹ * h * c) ∈ H := H.mul_mem h1H h2H\n    simpa [hx_def, mul_assoc] using this\n  -- Step 2: x commutes with every k ∈ K\n  have hxcomm : ∀ k ∈ K, k * x = x * k := by\n    intro k hk\n    have hkH : k ∈ H := h1 hk\n    -- c commutes with k\n    have hck : k * c = c * k := hc k hk\n    -- h * k * h⁻¹ ∈ K since K ⊴ H\n    have hkK : (⟨k, hkH⟩ : H) ∈ K.subgroupOf H := by\n      rw [Subgroup.mem_subgroupOf]\n      exact hk\n    have hconjK : (⟨h * k * h⁻¹, H.mul_mem (H.mul_mem hh hkH) (H.inv_mem hh)⟩ : H)\n        ∈ K.subgroupOf H := by\n      have := (K.subgroupOf H).Normal.conj_mem ⟨k, hkH⟩ hkK ⟨h, hh⟩\n      convert this using 1\n    have hhkh : h * k * h⁻¹ ∈ K := by\n      rw [Subgroup.mem_subgroupOf] at hconjK\n      exact hconjK\n    -- c commutes with h * k * h⁻¹\n    have hck' : (h * k * h⁻¹) * c = c * (h * k * h⁻¹) := hc _ hhkh\n    -- Now compute x * k = k * x\n    -- x * k = h⁻¹ * c⁻¹ * h * c * k = h⁻¹ * c⁻¹ * h * k * c = h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c\n    -- = h⁻¹ * (h * k * h⁻¹) * c⁻¹ * h * c... hmm let me redo using the commutations\n    -- Actually: x * k = h⁻¹ c⁻¹ h c k = h⁻¹ c⁻¹ h k c = h⁻¹ c⁻¹ (hkh⁻¹) h c\n    --                  = h⁻¹ (hkh⁻¹) c⁻¹ h c ... need c⁻¹ commutes with hkh⁻¹\n    have hck'' : c⁻¹ * (h * k * h⁻¹) = (h * k * h⁻¹) * c⁻¹ := by\n      have : c⁻¹ * ((h * k * h⁻¹) * c) * c⁻¹ = c⁻¹ * (c * (h * k * h⁻¹)) * c⁻¹ := by\n        rw [hck']\n      simp [mul_assoc] at this\n      rw [← this]\n      group\n    -- x * k = h⁻¹ * c⁻¹ * h * c * k\n    --       = h⁻¹ * c⁻¹ * h * (c * k)\n    --       = h⁻¹ * c⁻¹ * h * (k * c)        (using hck in reverse: k*c = c*k so c*k = k*c? no, hck : k*c = c*k)\n    have hckr : c * k = k * c := hck.symm\n    calc x * k = h⁻¹ * c⁻¹ * h * c * k := by rw [hx_def]\n      _ = h⁻¹ * c⁻¹ * h * (c * k) := by ring_nf; rw [mul_assoc]\n      _ = h⁻¹ * c⁻¹ * h * (k * c) := by rw [hckr]\n      _ = h⁻¹ * c⁻¹ * (h * k) * c := by rw [mul_assoc, mul_assoc]\n      _ = h⁻¹ * c⁻¹ * (h * k * h⁻¹ * h) * c := by rw [mul_assoc (h*k) h⁻¹ h, inv_mul_cancel, mul_one]\n      _ = h⁻¹ * c⁻¹ * (h * k * h⁻¹) * h * c := by rw [mul_assoc _ (h*k*h⁻¹) h, ← mul_assoc]\n      _ = h⁻¹ * (c⁻¹ * (h * k * h⁻¹)) * h * c := by rw [mul_assoc h⁻¹ c⁻¹ (h*k*h⁻¹)]\n      _ = h⁻¹ * ((h * k * h⁻¹) * c⁻¹) * h * c := by rw [hck'']\n      _ = h⁻¹ * (h * k * h⁻¹) * c⁻¹ * h * c := by rw [mul_assoc h⁻¹ (h*k*h⁻¹) c⁻¹]\n      _ = (h⁻¹ * h) * k * h⁻¹ * c⁻¹ * h * c := by rw [mul_assoc h⁻¹ h k, ← mul_assoc h⁻¹ (h*k) h⁻¹, mul_assoc h⁻¹ h k]\n      _ = k * h⁻¹ * c⁻¹ * h * c := by rw [inv_mul_cancel, one_mul]\n      _ = k * (h⁻¹ * c⁻¹ * h * c) := by rw [mul_assoc, mul_assoc, mul_assoc]\n      _ = k * x := by rw [hx_def]\n  -- Step 3: x ∈ centralizer (K.subgroupOf H) = ⊥\n  have hxinH : (⟨x, hxH⟩ : H) ∈ Subgroup.centralizer (K.subgroupOf H) := by\n    rw [Subgroup.mem_centralizer_iff]\n    rintro ⟨k, hkH⟩ hk\n    rw [Subgroup.mem_subgroupOf] at hk\n    ext\n    exact hxcomm k hk\n  rw [h2] at hxinH\n  have hx1 : (⟨x, hxH⟩ : H) = 1 := hxinH\n  have hx_eq_one : x = 1 := by\n    have := congrArg (Subtype.val) hx1\n    exact this\n  -- Now from x = 1 derive h * c = c * h\n  have : h⁻¹ * c⁻¹ * h * c = 1 := by rw [← hx_def]; exact hx_eq_one\n  -- multiply: c * h = h * c? we want c * h = h * c\n  have key : h * c = c * h := by\n    have h1 : c⁻¹ * h * c = h := by\n      have := this\n      have h2' : h⁻¹ * (c⁻¹ * h * c) = 1 := by rw [mul_assoc, mul_assoc] at this ⊢; linarith_or_nothing\n      sorry\n    sorry\n  linarith_or_nothing",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 87,
+            "column": 85
+          },
+          "endPos": null,
+          "data": "unknown tactic"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 190.25
+    }
+  },
+  {
+    "problem_id": "FATE-H_15",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_21",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "full_code": "/- Prove that the order of Aut(Z_3 × Z_9) is 108.-/\ntheorem card_addAut_eq_108 : Nat.card (AddAut <| ZMod 3 × ZMod 9) = 108 := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 3,
+            "column": 2
+          },
+          "goal": "⊢ Nat.card (AddAut (ZMod 3 × ZMod 9)) = 108",
+          "endPos": {
+            "line": 3,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 155.85
+    }
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "full_code": "/--\nProve that $\\mathbb{Q}/\\mathbb{Z}$ has no proper subgroups of finite index.\n-/\ntheorem eq_top_of_finiteIndex (H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)) (h_fin : H.FiniteIndex) :\n    H = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 9,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "H : AddSubgroup (ℚ ⧸ (Int.castAddHom ℚ).range)\nh_fin : H.FiniteIndex\n⊢ H = ⊤",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 173.82
+    }
+  }
+]

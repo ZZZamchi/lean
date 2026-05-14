@@ -1,0 +1,273 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  sorry",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\n⊢ ∃ K, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 251.2
+    }
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 77.78
+    }
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 65.1
+    }
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "full_code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 89.46
+    }
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := ((u⁻¹ : Rˣ) : R) with hv\n  have hL : (1 - a * b) * v = 1 := by\n    have huu : u.val * v = 1 := u.mul_inv\n    rw [hu] at huu\n    exact huu\n  have hR : v * (1 - a * b) = 1 := by\n    have huu : v * u.val = 1 := u.inv_mul\n    rw [hu] at huu\n    exact huu\n  have eL : b * ((1 - a * b) * v) * a = b * v * a - b * a * b * v * a := by noncomm_ring\n  have eR : b * (v * (1 - a * b)) * a = b * v * a - b * v * a * b * a := by noncomm_ring\n  have keyL : b * v * a - b * a * b * v * a = b * a := by\n    rw [← eL, hL]; noncomm_ring\n  have keyR : b * v * a - b * v * a * b * a = b * a := by\n    rw [← eR, hR]; noncomm_ring\n  have HR : (1 - b * a) * (1 + b * v * a) = 1 := by\n    have expand : (1 - b * a) * (1 + b * v * a)\n        = 1 - b * a + (b * v * a - b * a * b * v * a) := by noncomm_ring\n    rw [expand, keyL]; noncomm_ring\n  have HL : (1 + b * v * a) * (1 - b * a) = 1 := by\n    have expand : (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + (b * v * a - b * v * a * b * a) := by noncomm_ring\n    rw [expand, keyR]; noncomm_ring\n  exact ⟨⟨1 - b * a, 1 + b * v * a, HR, HL⟩, rfl⟩",
+    "full_code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := ((u⁻¹ : Rˣ) : R) with hv\n  have hL : (1 - a * b) * v = 1 := by\n    have huu : u.val * v = 1 := u.mul_inv\n    rw [hu] at huu\n    exact huu\n  have hR : v * (1 - a * b) = 1 := by\n    have huu : v * u.val = 1 := u.inv_mul\n    rw [hu] at huu\n    exact huu\n  have eL : b * ((1 - a * b) * v) * a = b * v * a - b * a * b * v * a := by noncomm_ring\n  have eR : b * (v * (1 - a * b)) * a = b * v * a - b * v * a * b * a := by noncomm_ring\n  have keyL : b * v * a - b * a * b * v * a = b * a := by\n    rw [← eL, hL]; noncomm_ring\n  have keyR : b * v * a - b * v * a * b * a = b * a := by\n    rw [← eR, hR]; noncomm_ring\n  have HR : (1 - b * a) * (1 + b * v * a) = 1 := by\n    have expand : (1 - b * a) * (1 + b * v * a)\n        = 1 - b * a + (b * v * a - b * a * b * v * a) := by noncomm_ring\n    rw [expand, keyL]; noncomm_ring\n  have HL : (1 + b * v * a) * (1 - b * a) = 1 := by\n    have expand : (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + (b * v * a - b * v * a * b * a) := by noncomm_ring\n    rw [expand, keyR]; noncomm_ring\n  exact ⟨⟨1 - b * a, 1 + b * v * a, HR, HL⟩, rfl⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 94.9
+    }
+  },
+  {
+    "problem_id": "FATE-H_6",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "full_code": "/-- Show that a prime $p$ can be written as $p = a^2+ab+b^2$ with $a,b \\in \\mathbb{Z}$ if and only\nif $p=3$ or $p \\equiv 1 \\pmod 3$. -/\ntheorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 69.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  intro h hH\n  rw [Subgroup.mem_centralizer_iff]\n  intro c hc\n  -- hc : c ∈ centralizer (K : Set G)\n  have hc_mem : c ∈ Subgroup.centralizer (K : Set G) := hc\n  rw [Subgroup.mem_centralizer_iff] at hc_mem\n  -- For every k ∈ K, k * c = c * k\n  -- Consider the commutator x := h * c * h⁻¹ * c⁻¹\n  set x : G := h * c * h⁻¹ * c⁻¹ with hx_def\n  -- Show x ∈ H\n  have hx_H : x ∈ H := by\n    have h1H : h ∈ H := hH\n    have h2H : c * h⁻¹ * c⁻¹ ∈ H := by\n      have : h⁻¹ ∈ H := H.inv_mem hH\n      exact (‹H.Normal›.conj_mem h⁻¹ this c)\n    have : x = h * (c * h⁻¹ * c⁻¹) := by\n      simp [hx_def, mul_assoc]\n    rw [this]\n    exact H.mul_mem h1H h2H\n  -- Define x as element of H\n  set xH : H := ⟨x, hx_H⟩ with hxH_def\n  -- Show xH ∈ centralizer (K.subgroupOf H)\n  have hxH_cent : xH ∈ Subgroup.centralizer (K.subgroupOf H) := by\n    rw [Subgroup.mem_centralizer_iff]\n    intro k hk\n    -- k : H, hk : k ∈ K.subgroupOf H\n    have hk_K : (k : G) ∈ K := by\n      rwa [Subgroup.mem_subgroupOf] at hk\n    -- Need k * xH = xH * k as elements of H\n    apply Subtype.ext\n    show (k : G) * x = x * (k : G)\n    -- x = h c h⁻¹ c⁻¹\n    -- c commutes with k: c * k = k * c\n    have hck : c * (k : G) = (k : G) * c := hc_mem (k : G) hk_K\n    -- hkh⁻¹ is in K (since K ⊴ H)\n    have hkh : h * (k : G) * h⁻¹ ∈ K := by\n      have hknorm : (K.subgroupOf H).Normal := ‹_›\n      have hk_sub : k ∈ K.subgroupOf H := hk\n      have := hknorm.conj_mem k hk_sub ⟨h, hH⟩\n      rw [Subgroup.mem_subgroupOf] at this\n      simpa using this\n    -- So c commutes with h k h⁻¹\n    have hc_hkh : c * (h * (k : G) * h⁻¹) = (h * (k : G) * h⁻¹) * c := hc_mem _ hkh\n    -- Now compute\n    show (k : G) * (h * c * h⁻¹ * c⁻¹) = (h * c * h⁻¹ * c⁻¹) * (k : G)\n    -- Multiply both sides by c on the right\n    have key : (k : G) * (h * c * h⁻¹ * c⁻¹) * c = (h * c * h⁻¹ * c⁻¹) * (k : G) * c := by\n      have lhs : (k : G) * (h * c * h⁻¹ * c⁻¹) * c = (k : G) * (h * c * h⁻¹) := by\n        group\n      have rhs : (h * c * h⁻¹ * c⁻¹) * (k : G) * c = (h * c * h⁻¹) * (c⁻¹ * (k : G) * c) := by\n        group\n      rw [lhs, rhs]\n      -- c⁻¹ * k * c = k (since c commutes with k)\n      have hck_inv : c⁻¹ * (k : G) * c = (k : G) := by\n        have : (k : G) * c = c * (k : G) := hck.symm\n        have h1 : c⁻¹ * ((k : G) * c) = c⁻¹ * (c * (k : G)) := by rw [this]\n        calc c⁻¹ * (k : G) * c = c⁻¹ * ((k : G) * c) := by rw [mul_assoc]\n          _ = c⁻¹ * (c * (k : G)) := h1\n          _ = (k : G) := by group\n      rw [hck_inv]\n      -- Now need: k * (h * c * h⁻¹) = (h * c * h⁻¹) * k\n      -- Using c * (h k h⁻¹) = (h k h⁻¹) * c\n      -- i.e., c * h * k * h⁻¹ = h * k * h⁻¹ * c\n      have step : c * (h * (k : G) * h⁻¹) = (h * (k : G) * h⁻¹) * c := hc_hkh\n      -- We need: k * h * c * h⁻¹ = h * c * h⁻¹ * k\n      -- Multiply step by h⁻¹ on left, h on right:\n      -- h⁻¹ * c * h * k = k * h⁻¹ * c * h ... hmm\n      -- Actually multiply step by h on right and h⁻¹ on left to isolate k:\n      -- h⁻¹ c h k = k h⁻¹ c h (from step)\n      have step2 : h⁻¹ * c * h * (k : G) = (k : G) * h⁻¹ * c * h := by\n        have : h⁻¹ * (c * (h * (k : G) * h⁻¹)) * h = h⁻¹ * ((h * (k : G) * h⁻¹) * c) * h := by\n          rw [step]\n        have lhs_eq : h⁻¹ * (c * (h * (k : G) * h⁻¹)) * h = h⁻¹ * c * h * (k : G) := by group\n        have rhs_eq : h⁻¹ * ((h * (k : G) * h⁻¹) * c) * h = (k : G) * h⁻¹ * c * h := by group\n        rw [lhs_eq, rhs_eq] at this\n        exact this\n      -- Now we need k * (h * c * h⁻¹) = (h * c * h⁻¹) * k\n      -- From step: c * h * k * h⁻¹ = h * k * h⁻¹ * c\n      -- So (h * c * h⁻¹) * k · ? ...\n      -- Let's derive directly: from step,\n      -- h⁻¹ * c * h commutes with k (that's step2).\n      -- That means c and h k h⁻¹... no, step2 says (h⁻¹ c h) * k = k * (h⁻¹ c h).\n      -- Let y = h c h⁻¹. Want y * k = k * y.\n      -- y = h c h⁻¹. From step: c * (h k h⁻¹) = (h k h⁻¹) * c\n      -- multiply by h on left, h⁻¹ on right:\n      -- h c (h k h⁻¹) h⁻¹ = h (h k h⁻¹) c h⁻¹\n      -- LHS = h c h · k · h⁻¹ · h⁻¹... no wait: h · c · (h k h⁻¹) · h⁻¹ = h c h k h⁻¹ h⁻¹ = hchk h⁻²\n      -- Hmm let me redo. Want to show: k * (h * c * h⁻¹) = (h * c * h⁻¹) * k\n      -- Equivalent to: h⁻¹ * k * h * c = c * h⁻¹ * k * h (conj by h⁻¹ and h)\n      -- h k h⁻¹ is in K, call it k'. c commutes with k': c k' = k' c.\n      -- So c (h k h⁻¹) = (h k h⁻¹) c. Mult by h⁻¹ on right after right side, h on left of left side...\n      -- Actually directly: c (h k h⁻¹) = (h k h⁻¹) c\n      -- c h k h⁻¹ = h k h⁻¹ c\n      -- c h k = h k h⁻¹ c h  (mult by h on right)\n      -- Hmm. We want: k h c h⁻¹ = h c h⁻¹ k\n      -- Equivalently (mult h⁻¹ on left, h on right): h⁻¹ k h · c · h⁻¹ · h = h⁻¹ · h c h⁻¹ · k · h\n      -- = h⁻¹ k h · c = c · h⁻¹ k h\n      -- So we need h⁻¹ k h to commute with c. But h⁻¹ k h might not be in K (K ⊴ H gives h K h⁻¹ ⊆ K, not h⁻¹ K h).\n      -- But K ⊴ H implies also h⁻¹ K h ⊆ K.\n      have hkh' : h⁻¹ * (k : G) * h ∈ K := by\n        have hknorm : (K.subgroupOf H).Normal := ‹_›\n        have hk_sub : k ∈ K.subgroupOf H := hk\n        have hinv : h⁻¹ ∈ H := H.inv_mem hH\n        have := hknorm.conj_mem k hk_sub ⟨h⁻¹, hinv⟩\n        rw [Subgroup.mem_subgroupOf] at this\n        simpa using this\n      have hc_hkh' : c * (h⁻¹ * (k : G) * h) = (h⁻¹ * (k : G) * h) * c := hc_mem _ hkh'\n      -- From hc_hkh': c h⁻¹ k h = h⁻¹ k h c\n      -- Mult by h on left, h⁻¹ on right:\n      -- h c h⁻¹ k h h⁻¹ = h h⁻¹ k h c h⁻¹\n      -- h c h⁻¹ k = k h c h⁻¹ ✓\n      have final : (k : G) * (h * c * h⁻¹) = (h * c * h⁻¹) * (k : G) := by\n        have := congrArg (fun z => h * z * h⁻¹) hc_hkh'\n        simp only at this\n        have lhs_eq : h * (c * (h⁻¹ * (k : G) * h)) * h⁻¹ = h * c * h⁻¹ * (k : G) := by group\n        have rhs_eq : h * ((h⁻¹ * (k : G) * h) * c) * h⁻¹ = (k : G) * h * c * h⁻¹ := by group\n        rw [lhs_eq, rhs_eq] at this\n        linarith_or_eq this\n      sorry\n    sorry\n  sorry",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  intro h hH\n  rw [Subgroup.mem_centralizer_iff]\n  intro c hc\n  -- hc : c ∈ centralizer (K : Set G)\n  have hc_mem : c ∈ Subgroup.centralizer (K : Set G) := hc\n  rw [Subgroup.mem_centralizer_iff] at hc_mem\n  -- For every k ∈ K, k * c = c * k\n  -- Consider the commutator x := h * c * h⁻¹ * c⁻¹\n  set x : G := h * c * h⁻¹ * c⁻¹ with hx_def\n  -- Show x ∈ H\n  have hx_H : x ∈ H := by\n    have h1H : h ∈ H := hH\n    have h2H : c * h⁻¹ * c⁻¹ ∈ H := by\n      have : h⁻¹ ∈ H := H.inv_mem hH\n      exact (‹H.Normal›.conj_mem h⁻¹ this c)\n    have : x = h * (c * h⁻¹ * c⁻¹) := by\n      simp [hx_def, mul_assoc]\n    rw [this]\n    exact H.mul_mem h1H h2H\n  -- Define x as element of H\n  set xH : H := ⟨x, hx_H⟩ with hxH_def\n  -- Show xH ∈ centralizer (K.subgroupOf H)\n  have hxH_cent : xH ∈ Subgroup.centralizer (K.subgroupOf H) := by\n    rw [Subgroup.mem_centralizer_iff]\n    intro k hk\n    -- k : H, hk : k ∈ K.subgroupOf H\n    have hk_K : (k : G) ∈ K := by\n      rwa [Subgroup.mem_subgroupOf] at hk\n    -- Need k * xH = xH * k as elements of H\n    apply Subtype.ext\n    show (k : G) * x = x * (k : G)\n    -- x = h c h⁻¹ c⁻¹\n    -- c commutes with k: c * k = k * c\n    have hck : c * (k : G) = (k : G) * c := hc_mem (k : G) hk_K\n    -- hkh⁻¹ is in K (since K ⊴ H)\n    have hkh : h * (k : G) * h⁻¹ ∈ K := by\n      have hknorm : (K.subgroupOf H).Normal := ‹_›\n      have hk_sub : k ∈ K.subgroupOf H := hk\n      have := hknorm.conj_mem k hk_sub ⟨h, hH⟩\n      rw [Subgroup.mem_subgroupOf] at this\n      simpa using this\n    -- So c commutes with h k h⁻¹\n    have hc_hkh : c * (h * (k : G) * h⁻¹) = (h * (k : G) * h⁻¹) * c := hc_mem _ hkh\n    -- Now compute\n    show (k : G) * (h * c * h⁻¹ * c⁻¹) = (h * c * h⁻¹ * c⁻¹) * (k : G)\n    -- Multiply both sides by c on the right\n    have key : (k : G) * (h * c * h⁻¹ * c⁻¹) * c = (h * c * h⁻¹ * c⁻¹) * (k : G) * c := by\n      have lhs : (k : G) * (h * c * h⁻¹ * c⁻¹) * c = (k : G) * (h * c * h⁻¹) := by\n        group\n      have rhs : (h * c * h⁻¹ * c⁻¹) * (k : G) * c = (h * c * h⁻¹) * (c⁻¹ * (k : G) * c) := by\n        group\n      rw [lhs, rhs]\n      -- c⁻¹ * k * c = k (since c commutes with k)\n      have hck_inv : c⁻¹ * (k : G) * c = (k : G) := by\n        have : (k : G) * c = c * (k : G) := hck.symm\n        have h1 : c⁻¹ * ((k : G) * c) = c⁻¹ * (c * (k : G)) := by rw [this]\n        calc c⁻¹ * (k : G) * c = c⁻¹ * ((k : G) * c) := by rw [mul_assoc]\n          _ = c⁻¹ * (c * (k : G)) := h1\n          _ = (k : G) := by group\n      rw [hck_inv]\n      -- Now need: k * (h * c * h⁻¹) = (h * c * h⁻¹) * k\n      -- Using c * (h k h⁻¹) = (h k h⁻¹) * c\n      -- i.e., c * h * k * h⁻¹ = h * k * h⁻¹ * c\n      have step : c * (h * (k : G) * h⁻¹) = (h * (k : G) * h⁻¹) * c := hc_hkh\n      -- We need: k * h * c * h⁻¹ = h * c * h⁻¹ * k\n      -- Multiply step by h⁻¹ on left, h on right:\n      -- h⁻¹ * c * h * k = k * h⁻¹ * c * h ... hmm\n      -- Actually multiply step by h on right and h⁻¹ on left to isolate k:\n      -- h⁻¹ c h k = k h⁻¹ c h (from step)\n      have step2 : h⁻¹ * c * h * (k : G) = (k : G) * h⁻¹ * c * h := by\n        have : h⁻¹ * (c * (h * (k : G) * h⁻¹)) * h = h⁻¹ * ((h * (k : G) * h⁻¹) * c) * h := by\n          rw [step]\n        have lhs_eq : h⁻¹ * (c * (h * (k : G) * h⁻¹)) * h = h⁻¹ * c * h * (k : G) := by group\n        have rhs_eq : h⁻¹ * ((h * (k : G) * h⁻¹) * c) * h = (k : G) * h⁻¹ * c * h := by group\n        rw [lhs_eq, rhs_eq] at this\n        exact this\n      -- Now we need k * (h * c * h⁻¹) = (h * c * h⁻¹) * k\n      -- From step: c * h * k * h⁻¹ = h * k * h⁻¹ * c\n      -- So (h * c * h⁻¹) * k · ? ...\n      -- Let's derive directly: from step,\n      -- h⁻¹ * c * h commutes with k (that's step2).\n      -- That means c and h k h⁻¹... no, step2 says (h⁻¹ c h) * k = k * (h⁻¹ c h).\n      -- Let y = h c h⁻¹. Want y * k = k * y.\n      -- y = h c h⁻¹. From step: c * (h k h⁻¹) = (h k h⁻¹) * c\n      -- multiply by h on left, h⁻¹ on right:\n      -- h c (h k h⁻¹) h⁻¹ = h (h k h⁻¹) c h⁻¹\n      -- LHS = h c h · k · h⁻¹ · h⁻¹... no wait: h · c · (h k h⁻¹) · h⁻¹ = h c h k h⁻¹ h⁻¹ = hchk h⁻²\n      -- Hmm let me redo. Want to show: k * (h * c * h⁻¹) = (h * c * h⁻¹) * k\n      -- Equivalent to: h⁻¹ * k * h * c = c * h⁻¹ * k * h (conj by h⁻¹ and h)\n      -- h k h⁻¹ is in K, call it k'. c commutes with k': c k' = k' c.\n      -- So c (h k h⁻¹) = (h k h⁻¹) c. Mult by h⁻¹ on right after right side, h on left of left side...\n      -- Actually directly: c (h k h⁻¹) = (h k h⁻¹) c\n      -- c h k h⁻¹ = h k h⁻¹ c\n      -- c h k = h k h⁻¹ c h  (mult by h on right)\n      -- Hmm. We want: k h c h⁻¹ = h c h⁻¹ k\n      -- Equivalently (mult h⁻¹ on left, h on right): h⁻¹ k h · c · h⁻¹ · h = h⁻¹ · h c h⁻¹ · k · h\n      -- = h⁻¹ k h · c = c · h⁻¹ k h\n      -- So we need h⁻¹ k h to commute with c. But h⁻¹ k h might not be in K (K ⊴ H gives h K h⁻¹ ⊆ K, not h⁻¹ K h).\n      -- But K ⊴ H implies also h⁻¹ K h ⊆ K.\n      have hkh' : h⁻¹ * (k : G) * h ∈ K := by\n        have hknorm : (K.subgroupOf H).Normal := ‹_›\n        have hk_sub : k ∈ K.subgroupOf H := hk\n        have hinv : h⁻¹ ∈ H := H.inv_mem hH\n        have := hknorm.conj_mem k hk_sub ⟨h⁻¹, hinv⟩\n        rw [Subgroup.mem_subgroupOf] at this\n        simpa using this\n      have hc_hkh' : c * (h⁻¹ * (k : G) * h) = (h⁻¹ * (k : G) * h) * c := hc_mem _ hkh'\n      -- From hc_hkh': c h⁻¹ k h = h⁻¹ k h c\n      -- Mult by h on left, h⁻¹ on right:\n      -- h c h⁻¹ k h h⁻¹ = h h⁻¹ k h c h⁻¹\n      -- h c h⁻¹ k = k h c h⁻¹ ✓\n      have final : (k : G) * (h * c * h⁻¹) = (h * c * h⁻¹) * (k : G) := by\n        have := congrArg (fun z => h * z * h⁻¹) hc_hkh'\n        simp only at this\n        have lhs_eq : h * (c * (h⁻¹ * (k : G) * h)) * h⁻¹ = h * c * h⁻¹ * (k : G) := by group\n        have rhs_eq : h * ((h⁻¹ * (k : G) * h) * c) * h⁻¹ = (k : G) * h * c * h⁻¹ := by group\n        rw [lhs_eq, rhs_eq] at this\n        linarith_or_eq this\n      sorry\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 124,
+            "column": 9
+          },
+          "endPos": null,
+          "data": "unknown tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 75
+          },
+          "endPos": {
+            "line": 124,
+            "column": 22
+          },
+          "data": "unsolved goals\nG : Type\ninst✝² : Group G\nH K : Subgroup G\ninst✝¹ : H.Normal\nh1 : K ≤ H\ninst✝ : (K.subgroupOf H).Normal\nh2 : Subgroup.centralizer ↑(K.subgroupOf H) = ⊥\nh : G\nhH : h ∈ H\nc : G\nhc : c ∈ ↑(Subgroup.centralizer ↑K)\nhc_mem : ∀ h ∈ ↑K, h * c = c * h\nx : G := h * c * h⁻¹ * c⁻¹\nhx_def : x = h * c * h⁻¹ * c⁻¹\nhx_H : x ∈ H\nxH : ↥H := ⟨x, hx_H⟩\nhxH_def : xH = ⟨x, hx_H⟩\nhxH_cent : xH ∈ Subgroup.centralizer ↑(K.subgroupOf H)\n⊢ c * h = h * c"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 222.02
+    }
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  exact ⟨⊥, by sorry⟩",
+    "full_code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  exact ⟨⊥, by sorry⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 5,
+            "column": 15
+          },
+          "goal": "G : Type\ninst✝² : Group G\ninst✝¹ : Finite G\nP : Sylow 2 G\nh1 : ↑P ≠ ⊥\ninst✝ : IsCyclic ↥↑P\n⊢ ⊥.index = 2",
+          "endPos": {
+            "line": 5,
+            "column": 20
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 151.19
+    }
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 10,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\n⊢ Subgroup.centralizer ⊤ = ⊥",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 319.95
+    }
+  },
+  {
+    "problem_id": "FATE-H_10",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have h1 : 3 ^ 20 % 100 = 1 := by decide\n  have h2 : 3 ^ 100 % 20 = 1 := by native_decide\n  set q : ℕ := 3 ^ 100 / 20 with hq_def\n  have hqeq : 3 ^ 100 = 20 * q + 1 := by\n    have := Nat.div_add_mod (3 ^ 100) 20\n    rw [h2] at this\n    omega\n  rw [hqeq]\n  rw [pow_add, pow_one, pow_mul]\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "full_code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have h1 : 3 ^ 20 % 100 = 1 := by decide\n  have h2 : 3 ^ 100 % 20 = 1 := by native_decide\n  set q : ℕ := 3 ^ 100 / 20 with hq_def\n  have hqeq : 3 ^ 100 = 20 * q + 1 := by\n    have := Nat.div_add_mod (3 ^ 100) 20\n    rw [h2] at this\n    omega\n  rw [hqeq]\n  rw [pow_add, pow_one, pow_mul]\n  rw [Nat.mul_mod, Nat.pow_mod, h1]\n  simp",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 21.53
+    }
+  }
+]

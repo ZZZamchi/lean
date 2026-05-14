@@ -1,0 +1,136 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 10,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  · -- Step 7: index ≠ 0\n    have hcard : Nat.card (G ⧸ H) = n := by\n      rw [← Subgroup.index]; exact hH\n    have hfin : Finite (G ⧸ H) := by\n      apply Nat.finite_of_card_ne_zero\n      rw [hcard]; exact hn\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    have hfin2 : Finite (G ⧸ H.normalCore) := by\n      rw [hker]\n      exact Finite.of_injective _ hinj\n    have hpos : 0 < Nat.card (G ⧸ H.normalCore) := Nat.card_pos\n    show H.normalCore.index ≠ 0\n    rw [Subgroup.index]\n    exact Nat.pos_iff_ne_zero.mp hpos\n  · -- Step 6: index ≤ n!\n    classical\n    have hcard : Nat.card (G ⧸ H) = n := by\n      rw [← Subgroup.index]; exact hH\n    have hfin : Finite (G ⧸ H) := by\n      apply Nat.finite_of_card_ne_zero\n      rw [hcard]; exact hn\n    letI hFT : Fintype (G ⧸ H) := Fintype.ofFinite _\n    letI : DecidableEq (G ⧸ H) := Classical.decEq _\n    have hFTcard : Fintype.card (G ⧸ H) = n := by\n      rw [← Nat.card_eq_fintype_card]; exact hcard\n    have hperm : Nat.card (Equiv.Perm (G ⧸ H)) = n.factorial := by\n      rw [Nat.card_eq_fintype_card, Fintype.card_perm, hFTcard]\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    have hle : Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) ≤\n        Nat.card (Equiv.Perm (G ⧸ H)) :=\n      Nat.card_le_card_of_injective _ hinj\n    show H.normalCore.index ≤ n.factorial\n    rw [Subgroup.index, hker]\n    rw [hperm] at hle\n    exact hle",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, H.normalCore_normal, H.normalCore_le, ?_, ?_⟩\n  · -- Step 7: index ≠ 0\n    have hcard : Nat.card (G ⧸ H) = n := by\n      rw [← Subgroup.index]; exact hH\n    have hfin : Finite (G ⧸ H) := by\n      apply Nat.finite_of_card_ne_zero\n      rw [hcard]; exact hn\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    have hfin2 : Finite (G ⧸ H.normalCore) := by\n      rw [hker]\n      exact Finite.of_injective _ hinj\n    have hpos : 0 < Nat.card (G ⧸ H.normalCore) := Nat.card_pos\n    show H.normalCore.index ≠ 0\n    rw [Subgroup.index]\n    exact Nat.pos_iff_ne_zero.mp hpos\n  · -- Step 6: index ≤ n!\n    classical\n    have hcard : Nat.card (G ⧸ H) = n := by\n      rw [← Subgroup.index]; exact hH\n    have hfin : Finite (G ⧸ H) := by\n      apply Nat.finite_of_card_ne_zero\n      rw [hcard]; exact hn\n    letI hFT : Fintype (G ⧸ H) := Fintype.ofFinite _\n    letI : DecidableEq (G ⧸ H) := Classical.decEq _\n    have hFTcard : Fintype.card (G ⧸ H) = n := by\n      rw [← Nat.card_eq_fintype_card]; exact hcard\n    have hperm : Nat.card (Equiv.Perm (G ⧸ H)) = n.factorial := by\n      rw [Nat.card_eq_fintype_card, Fintype.card_perm, hFTcard]\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      H.normalCore_eq_ker\n    have hinj : Function.Injective\n        (QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H))) :=\n      QuotientGroup.kerLift_injective _\n    have hle : Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) ≤\n        Nat.card (Equiv.Perm (G ⧸ H)) :=\n      Nat.card_le_card_of_injective _ hinj\n    show H.normalCore.index ≤ n.factorial\n    rw [Subgroup.index, hker]\n    rw [hperm] at hle\n    exact hle",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 265.13
+    }
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 16,
+    "code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimp\n  have hpos : 0 < Nat.card G := by rw [hG]; decide\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; decide)\n  haveI : Fintype G := Fintype.ofFinite G\n  have hcard : Fintype.card G = 56 := by\n    rw [← Nat.card_eq_fintype_card]; exact hG\n  haveI p7 : Fact (Nat.Prime 7) := ⟨by decide⟩\n  haveI p2 : Fact (Nat.Prime 2) := ⟨by decide⟩\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 56$ then $G$ is not simple.-/\ntheorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimp\n  have hpos : 0 < Nat.card G := by rw [hG]; decide\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; decide)\n  haveI : Fintype G := Fintype.ofFinite G\n  have hcard : Fintype.card G = 56 := by\n    rw [← Nat.card_eq_fintype_card]; exact hG\n  haveI p7 : Fact (Nat.Prime 7) := ⟨by decide⟩\n  haveI p2 : Fact (Nat.Prime 2) := ⟨by decide⟩\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 21,
+          "pos": {
+            "line": 12,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\nhsimp : IsSimpleGroup G\nhpos : 0 < Nat.card G\nhfin : Finite G\nthis : Fintype G\nhcard : Fintype.card G = 56\np7 : Fact (Nat.Prime 7)\np2 : Fact (Nat.Prime 2)\n⊢ False",
+          "endPos": {
+            "line": 12,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 673.53
+    }
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 15,
+    "code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  intro hSimple\n  have hne : Nat.card G ≠ 0 := by rw [h]; decide\n  have hFin : Finite G := Nat.finite_of_card_ne_zero hne\n  have hp29 : Fact (Nat.Prime 29) := ⟨by decide⟩\n  have hp13 : Fact (Nat.Prime 13) := ⟨by decide⟩\n  have h29dvd : (29 : ℕ) ∣ Nat.card G := by rw [h]; decide\n  have h13dvd : (13 : ℕ) ∣ Nat.card G := by rw [h]; decide\n  sorry",
+    "full_code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  intro hSimple\n  have hne : Nat.card G ≠ 0 := by rw [h]; decide\n  have hFin : Finite G := Nat.finite_of_card_ne_zero hne\n  have hp29 : Fact (Nat.Prime 29) := ⟨by decide⟩\n  have hp13 : Fact (Nat.Prime 13) := ⟨by decide⟩\n  have h29dvd : (29 : ℕ) ∣ Nat.card G := by rw [h]; decide\n  have h13dvd : (13 : ℕ) ∣ Nat.card G := by rw [h]; decide\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 86,
+          "pos": {
+            "line": 10,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝ : Group G\nh : Nat.card G = 3393\nhSimple : IsSimpleGroup G\nhne : Nat.card G ≠ 0\nhFin : Finite G\nhp29 : Fact (Nat.Prime 29)\nhp13 : Fact (Nat.Prime 13)\nh29dvd : 29 ∣ Nat.card G\nh13dvd : 13 ∣ Nat.card G\n⊢ False",
+          "endPos": {
+            "line": 10,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 555.98
+    }
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 14,
+    "code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "full_code": "/- Prove that if $p$ is a prime and $P$ is a non-abelian group of order $p^3$, then $|Z(P)| = p$\nand $P/Z(P) \\cong \\mathbb{Z}/p\\mathbb{Z} \\times \\mathbb{Z}/p\\mathbb{Z}$.-/\ntheorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 157,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "p : ℕ\ninst✝¹ : Fact p.Prime\nP : Type\ninst✝ : Group P\nhp : Nat.card P = p ^ 3\nh : ∃ a b, a * b ≠ b * a\n⊢ Nat.card ↥(Subgroup.center P) = p ∧ Nonempty (P ⧸ Subgroup.center P ≃* Multiplicative (ZMod p × ZMod p))",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 386.3
+    }
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := ((u⁻¹ : Rˣ) : R) with hv_def\n  have hv1 : (1 - a * b) * v = 1 := by\n    rw [← hu]\n    exact u.mul_inv\n  have hv2 : v * (1 - a * b) = 1 := by\n    rw [← hu]\n    exact u.inv_mul\n  have h1 : (1 - b * a) * (1 + b * v * a) = 1 := by\n    calc (1 - b * a) * (1 + b * v * a)\n        = 1 - b * a + b * ((1 - a * b) * v) * a := by noncomm_ring\n      _ = 1 - b * a + b * 1 * a := by rw [hv1]\n      _ = 1 := by noncomm_ring\n  have h2 : (1 + b * v * a) * (1 - b * a) = 1 := by\n    calc (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + b * (v * (1 - a * b)) * a := by noncomm_ring\n      _ = 1 - b * a + b * 1 * a := by rw [hv2]\n      _ = 1 := by noncomm_ring\n  exact ⟨⟨1 - b * a, 1 + b * v * a, h1, h2⟩, rfl⟩",
+    "full_code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := ((u⁻¹ : Rˣ) : R) with hv_def\n  have hv1 : (1 - a * b) * v = 1 := by\n    rw [← hu]\n    exact u.mul_inv\n  have hv2 : v * (1 - a * b) = 1 := by\n    rw [← hu]\n    exact u.inv_mul\n  have h1 : (1 - b * a) * (1 + b * v * a) = 1 := by\n    calc (1 - b * a) * (1 + b * v * a)\n        = 1 - b * a + b * ((1 - a * b) * v) * a := by noncomm_ring\n      _ = 1 - b * a + b * 1 * a := by rw [hv1]\n      _ = 1 := by noncomm_ring\n  have h2 : (1 + b * v * a) * (1 - b * a) = 1 := by\n    calc (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + b * (v * (1 - a * b)) * a := by noncomm_ring\n      _ = 1 - b * a + b * 1 * a := by rw [hv2]\n      _ = 1 := by noncomm_ring\n  exact ⟨⟨1 - b * a, 1 + b * v * a, h1, h2⟩, rfl⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 64.87
+    }
+  }
+]

@@ -1,0 +1,484 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem subgroup_normal_index_le_factorial ... := by\n  set φ := MulAction.toPermHom G (G ⧸ H) with hφ\n  set K := φ.ker with hK\n  refine ⟨K, inferInstance, ?_, ?_, ?_⟩\n  · -- K ≤ H\n    intro g hg\n    rw [MonoidHom.mem_ker] at hg\n    have h1 : φ g ((1 : G) : G ⧸ H) = ((1 : G) : G ⧸ H) := by rw [hg]; rfl\n    rw [MulAction.toPermHom_apply] at h1\n    -- h1 : g • ((1:G) : G⧸H) = ((1:G) : G⧸H)\n    have : ((g : G) : G ⧸ H) = 1 := by\n      have := h1\n      rw [show ((1:G) : G⧸H) = (1 : G⧸H) from rfl] at this\n      -- g • 1 in G⧸H\n      sorry\n    rwa [QuotientGroup.eq_one_iff] at this\n  · -- index ≠ 0\n    sorry\n  · -- index ≤ n!\n    sorry",
+    "full_code": "theorem subgroup_normal_index_le_factorial ... := by\n  set φ := MulAction.toPermHom G (G ⧸ H) with hφ\n  set K := φ.ker with hK\n  refine ⟨K, inferInstance, ?_, ?_, ?_⟩\n  · -- K ≤ H\n    intro g hg\n    rw [MonoidHom.mem_ker] at hg\n    have h1 : φ g ((1 : G) : G ⧸ H) = ((1 : G) : G ⧸ H) := by rw [hg]; rfl\n    rw [MulAction.toPermHom_apply] at h1\n    -- h1 : g • ((1:G) : G⧸H) = ((1:G) : G⧸H)\n    have : ((g : G) : G ⧸ H) = 1 := by\n      have := h1\n      rw [show ((1:G) : G⧸H) = (1 : G⧸H) from rfl] at this\n      -- g • 1 in G⧸H\n      sorry\n    rwa [QuotientGroup.eq_one_iff] at this\n  · -- index ≠ 0\n    sorry\n  · -- index ≤ n!\n    sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 1,
+            "column": 42
+          },
+          "endPos": {
+            "line": 1,
+            "column": 46
+          },
+          "data": "unexpected token '...'; expected ':'"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 37.0
+    }
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimp\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; norm_num)\n  haveI : Fintype G := Fintype.ofFinite G\n  have hcard : Fintype.card G = 56 := by rw [← Nat.card_eq_fintype_card, hG]\n  haveI hp7 : Fact (Nat.Prime 7) := ⟨by norm_num⟩\n  -- Sylow 7-subgroup P7 has order 7\n  obtain ⟨P7⟩ : Nonempty (Sylow 7 G) := inferInstance\n  -- cardinality of Sylow 7-subgroup divides |G|\n  have hP7card : Fintype.card P7 = 7 := by\n    have := P7.card_eq_multiplicity  -- or something\n    sorry\n  sorry",
+    "full_code": "theorem not_isSimpleGroup_of_card_eq_56 {G : Type} [Group G] (hG : Nat.card G = 56) :\n    ¬ IsSimpleGroup G := by\n  intro hsimp\n  have hfin : Finite G := Nat.finite_of_card_ne_zero (by rw [hG]; norm_num)\n  haveI : Fintype G := Fintype.ofFinite G\n  have hcard : Fintype.card G = 56 := by rw [← Nat.card_eq_fintype_card, hG]\n  haveI hp7 : Fact (Nat.Prime 7) := ⟨by norm_num⟩\n  -- Sylow 7-subgroup P7 has order 7\n  obtain ⟨P7⟩ : Nonempty (Sylow 7 G) := inferInstance\n  -- cardinality of Sylow 7-subgroup divides |G|\n  have hP7card : Fintype.card P7 = 7 := by\n    have := P7.card_eq_multiplicity  -- or something\n    sorry\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 0,
+          "pos": {
+            "line": 13,
+            "column": 4
+          },
+          "goal": "G : Type\ninst✝ : Group G\nhG : Nat.card G = 56\nhsimp : IsSimpleGroup G\nhfin : Finite G\nthis✝ : Fintype G\nhcard : Fintype.card G = 56\nhp7 : Fact (Nat.Prime 7)\nP7 : Sylow 7 G\nthis : Fintype.card ↥↑P7 = 7 ^ (Fintype.card G).factorization 7\n⊢ sorryAx ℕ true = 7",
+          "endPos": {
+            "line": 13,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 14,
+            "column": 2
+          },
+          "goal": "case intro\nG : Type\ninst✝ : Group G\nhG : Nat.card G = 56\nhsimp : IsSimpleGroup G\nhfin : Finite G\nthis : Fintype G\nhcard : Fintype.card G = 56\nhp7 : Fact (Nat.Prime 7)\nP7 : Sylow 7 G\nhP7card : sorryAx ℕ true = 7\n⊢ False",
+          "endPos": {
+            "line": 14,
+            "column": 7
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 11,
+            "column": 17
+          },
+          "endPos": {
+            "line": 11,
+            "column": 32
+          },
+          "data": "failed to synthesize\n  Fintype ↥↑P7\nuse `set_option diagnostics true` to get diagnostic information"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 33.38
+    }
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  -- For each prime p dividing |G|, n_p ≠ 1\n  have hn29 : Fintype.card (Sylow 29 G) ≠ 1 := by\n    intro hone\n    -- unique Sylow 29 is normal\n    haveI : Subsingleton (Sylow 29 G) := Fintype.card_le_one_iff_subsingleton.mp (by rw [hone])\n    have hN : (P29 : Subgroup G).Normal := P29.normal_of_subsingleton  -- not sure of name\n    sorry",
+    "full_code": "/- Prove that if $\\#G = 3393$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_3393 {G : Type} [Group G] (h : Nat.card G = 3393) : ¬ IsSimpleGroup G := by\n  -- For each prime p dividing |G|, n_p ≠ 1\n  have hn29 : Fintype.card (Sylow 29 G) ≠ 1 := by\n    intro hone\n    -- unique Sylow 29 is normal\n    haveI : Subsingleton (Sylow 29 G) := Fintype.card_le_one_iff_subsingleton.mp (by rw [hone])\n    have hN : (P29 : Subgroup G).Normal := P29.normal_of_subsingleton  -- not sure of name\n    sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 2,
+          "pos": {
+            "line": 9,
+            "column": 4
+          },
+          "goal": "case refine_2\nG : Type\ninst✝ : Group G\nh : Nat.card G = 3393\nhone : sorryAx ℕ true = 1\nthis : Subsingleton (Sylow 29 G)\nhN : (sorryAx (Subgroup G) true).Normal\n⊢ False",
+          "endPos": {
+            "line": 9,
+            "column": 9
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 14
+          },
+          "endPos": {
+            "line": 4,
+            "column": 39
+          },
+          "data": "failed to synthesize\n  Fintype (Sylow 29 G)\nuse `set_option diagnostics true` to get diagnostic information"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 41
+          },
+          "endPos": {
+            "line": 7,
+            "column": 95
+          },
+          "data": "failed to synthesize\n  Fintype (Sylow 29 G)\nuse `set_option diagnostics true` to get diagnostic information"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 8,
+            "column": 15
+          },
+          "endPos": {
+            "line": 8,
+            "column": 18
+          },
+          "data": "unknown identifier 'P29'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 8,
+            "column": 43
+          },
+          "endPos": {
+            "line": 8,
+            "column": 69
+          },
+          "data": "unknown identifier 'P29.normal_of_subsingleton'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 47
+          },
+          "endPos": {
+            "line": 9,
+            "column": 9
+          },
+          "data": "unsolved goals\ncase refine_1\nG : Type\ninst✝ : Group G\nh : Nat.card G = 3393\nhone : sorryAx ℕ true = 1\n⊢ Fintype (Sylow 29 G)"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 110
+          },
+          "endPos": {
+            "line": 9,
+            "column": 9
+          },
+          "data": "unsolved goals\nG : Type\ninst✝ : Group G\nh : Nat.card G = 3393\nhn29 : sorryAx ℕ true ≠ 1\n⊢ ¬IsSimpleGroup G"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 32.53
+    }
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "full_code": "theorem nonempty_mulEquiv_zMod_prod_zMod {p : ℕ} [Fact p.Prime] {P : Type} [Group P] (hp : Nat.card P = p ^ 3)\n    (h : ∃ (a b : P), a * b ≠ b * a) : Nat.card (Subgroup.center P) = p ∧\n    Nonempty ((P ⧸ Subgroup.center P) ≃* Multiplicative ((ZMod p) × (ZMod p))) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "p : ℕ\ninst✝¹ : Fact p.Prime\nP : Type\ninst✝ : Group P\nhp : Nat.card P = p ^ 3\nh : ∃ a b, a * b ≠ b * a\n⊢ Nat.card ↥(Subgroup.center P) = p ∧ Nonempty (P ⧸ Subgroup.center P ≃* Multiplicative (ZMod p × ZMod p))",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 32.64
+    }
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  have h1 : (1 - a*b) * u.inv = 1 := by rw [hu]; exact u.val_inv\n  have h2 : u.inv * (1 - a*b) = 1 := by rw [hu]; exact u.inv_val\n  refine ⟨⟨1 - b*a, 1 + b * u.inv * a, ?_, ?_⟩, rfl⟩\n  · calc (1 - b*a) * (1 + b * u.inv * a) \n        = 1 + b * ((1 - a*b) * u.inv) * a - b * a := by noncomm_ring\n      _ = 1 + b * 1 * a - b * a := by rw [h1]\n      _ = 1 := by noncomm_ring\n  · calc (1 + b * u.inv * a) * (1 - b*a)\n        = 1 - b*a + b * (u.inv * (1 - a*b)) * a := by noncomm_ring\n      _ = 1 - b*a + b * 1 * a := by rw [h2]\n      _ = 1 := by noncomm_ring",
+    "full_code": "theorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  have h1 : (1 - a*b) * u.inv = 1 := by rw [hu]; exact u.val_inv\n  have h2 : u.inv * (1 - a*b) = 1 := by rw [hu]; exact u.inv_val\n  refine ⟨⟨1 - b*a, 1 + b * u.inv * a, ?_, ?_⟩, rfl⟩\n  · calc (1 - b*a) * (1 + b * u.inv * a) \n        = 1 + b * ((1 - a*b) * u.inv) * a - b * a := by noncomm_ring\n      _ = 1 + b * 1 * a - b * a := by rw [h1]\n      _ = 1 := by noncomm_ring\n  · calc (1 + b * u.inv * a) * (1 - b*a)\n        = 1 - b*a + b * (u.inv * (1 - a*b)) * a := by noncomm_ring\n      _ = 1 - b*a + b * 1 * a := by rw [h2]\n      _ = 1 := by noncomm_ring",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 44
+          },
+          "endPos": {
+            "line": 4,
+            "column": 46
+          },
+          "data": "tactic 'rewrite' failed, did not find instance of the pattern in the target expression\n  ↑u\nR : Type\ninst✝¹ : Ring R\ninst✝ : Nontrivial R\na b : R\nu : Rˣ\nhu : ↑u = 1 - a * b\n⊢ (1 - a * b) * u.inv = 1"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 44
+          },
+          "endPos": {
+            "line": 5,
+            "column": 46
+          },
+          "data": "tactic 'rewrite' failed, did not find instance of the pattern in the target expression\n  ↑u\nR : Type\ninst✝¹ : Ring R\ninst✝ : Nontrivial R\na b : R\nu : Rˣ\nhu : ↑u = 1 - a * b\nh1 : (1 - a * b) * u.inv = 1\n⊢ u.inv * (1 - a * b) = 1"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 31.61
+    }
+  },
+  {
+    "problem_id": "FATE-H_6",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  constructor\n  · rintro ⟨a, b, hab⟩\n    -- 4p = (2a+b)^2 + 3b^2\n    have h4p : 4 * (p : ℤ) = (2*a + b)^2 + 3 * b^2 := by ring_nf; linarith [hab]\n    -- mod 3: 4p ≡ (2a+b)^2\n    sorry\n  · rintro (rfl | h1)\n    · exact ⟨1, 1, by norm_num⟩\n    · sorry",
+    "full_code": "theorem exists_sum_two_squares_iff_mod_three_eq_one (p : ℕ) (hp : p.Prime) :\n    (∃ a b : ℤ, a ^ 2 + a * b + b ^ 2 = p) ↔ p = 3 ∨ p % 3 = 1 := by\n  constructor\n  · rintro ⟨a, b, hab⟩\n    -- 4p = (2a+b)^2 + 3b^2\n    have h4p : 4 * (p : ℤ) = (2*a + b)^2 + 3 * b^2 := by ring_nf; linarith [hab]\n    -- mod 3: 4p ≡ (2a+b)^2\n    sorry\n  · rintro (rfl | h1)\n    · exact ⟨1, 1, by norm_num⟩\n    · sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 4,
+          "pos": {
+            "line": 8,
+            "column": 4
+          },
+          "goal": "case mp.intro.intro\np : ℕ\nhp : p.Prime\na b : ℤ\nhab : a ^ 2 + a * b + b ^ 2 = ↑p\nh4p : 4 * ↑p = (2 * a + b) ^ 2 + 3 * b ^ 2\n⊢ p = 3 ∨ p % 3 = 1",
+          "endPos": {
+            "line": 8,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 11,
+            "column": 6
+          },
+          "goal": "case mpr.inr\np : ℕ\nhp : p.Prime\nh1 : p % 3 = 1\n⊢ ∃ a b, a ^ 2 + a * b + b ^ 2 = ↑p",
+          "endPos": {
+            "line": 11,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 30.67
+    }
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  have : c * h = h * c := by\n    have := key  -- c * h * c⁻¹ * h⁻¹ = 1\n    group at this ⊢\n    -- or manually\n    sorry\n  exact this",
+    "full_code": "/- Let $G$ be a group and let $K\\subseteq H$ be subgroups of $G$ with $K \\lhd H$.\n\tIf $H \\lhd G$ and $C_H(K)=1$, prove that $H$ centralizes $C_G(K)$.-/\ntheorem le_centralizer_centralizer_of_centralizer_eq_bot {G : Type} [Group G] (H K : Subgroup G)\n    [H.Normal] (h1 : K ≤ H) [(K.subgroupOf H).Normal]\n    (h2 : Subgroup.centralizer (K.subgroupOf H) = (⊥ : Subgroup H)) :\n    H ≤ Subgroup.centralizer (Subgroup.centralizer (K : Set G) : Set G) := by\n  have : c * h = h * c := by\n    have := key  -- c * h * c⁻¹ * h⁻¹ = 1\n    group at this ⊢\n    -- or manually\n    sorry\n  exact this",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 9
+          },
+          "endPos": {
+            "line": 7,
+            "column": 10
+          },
+          "data": "unknown identifier 'c'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 13
+          },
+          "endPos": {
+            "line": 7,
+            "column": 14
+          },
+          "data": "unknown identifier 'h'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 17
+          },
+          "endPos": {
+            "line": 7,
+            "column": 18
+          },
+          "data": "unknown identifier 'h'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 21
+          },
+          "endPos": {
+            "line": 7,
+            "column": 22
+          },
+          "data": "unknown identifier 'c'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 75
+          },
+          "endPos": {
+            "line": 12,
+            "column": 12
+          },
+          "data": "unsolved goals\nG : Type\ninst✝² : Group G\nH K : Subgroup G\ninst✝¹ : H.Normal\nh1 : K ≤ H\ninst✝ : (K.subgroupOf H).Normal\nh2 : Subgroup.centralizer ↑(K.subgroupOf H) = ⊥\n⊢ H ≤ Subgroup.centralizer ↑(Subgroup.centralizer ↑K)"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 32.31
+    }
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "theorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  haveI : Fintype G := Fintype.ofFinite G\n  haveI : Fintype P := Fintype.ofFinite P\n  -- Let g be a generator of P\n  obtain ⟨⟨a, ha⟩, hgen⟩ := IsCyclic.exists_generator (α := P)\n  -- ... \n  sorry",
+    "full_code": "theorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  haveI : Fintype G := Fintype.ofFinite G\n  haveI : Fintype P := Fintype.ofFinite P\n  -- Let g be a generator of P\n  obtain ⟨⟨a, ha⟩, hgen⟩ := IsCyclic.exists_generator (α := P)\n  -- ... \n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "case intro.mk\nG : Type\ninst✝² : Group G\ninst✝¹ : Finite G\nP : Sylow 2 G\nh1 : ↑P ≠ ⊥\ninst✝ : IsCyclic ↥↑P\nthis✝ : Fintype G\nthis : Fintype ↥↑P\na : G\nha : a ∈ ↑P\nhgen : ∀ (x : ↥↑P), x ∈ Subgroup.zpowers ⟨a, ha⟩\n⊢ ∃ H, H.index = 2",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 35.76
+    }
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  ext g\n  constructor\n  · intro hg\n    rw [Subgroup.mem_bot]\n    rw [Subgroup.mem_centralizer_iff] at hg\n    match g with\n    | r a =>\n      have h1 := hg (sr 0) (Subgroup.mem_top _)\n      have h2 := hg (sr 1) (Subgroup.mem_top _)\n      -- from h1: sr 0 * r a = r a * sr 0\n      -- sr a = sr (-a)\n      -- from h2: sr 1 * r a = r a * sr 1\n      -- sr (1+a) = sr (1-a)\n      -- So 1+a = 1-a, 2a = 0\n      sorry\n    | sr a => sorry\n  · intro hg\n    rw [Subgroup.mem_bot] at hg\n    subst hg\n    exact Subgroup.one_mem _",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  ext g\n  constructor\n  · intro hg\n    rw [Subgroup.mem_bot]\n    rw [Subgroup.mem_centralizer_iff] at hg\n    match g with\n    | r a =>\n      have h1 := hg (sr 0) (Subgroup.mem_top _)\n      have h2 := hg (sr 1) (Subgroup.mem_top _)\n      -- from h1: sr 0 * r a = r a * sr 0\n      -- sr a = sr (-a)\n      -- from h2: sr 1 * r a = r a * sr 1\n      -- sr (1+a) = sr (1-a)\n      -- So 1+a = 1-a, 2a = 0\n      sorry\n    | sr a => sorry\n  · intro hg\n    rw [Subgroup.mem_bot] at hg\n    subst hg\n    exact Subgroup.one_mem _",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 7,
+          "pos": {
+            "line": 19,
+            "column": 6
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\ng : DihedralGroup n\na : ZMod n\nhg : ∀ h ∈ ⊤, h * r a = r a * h\nh1 : sr 0 * r a = r a * sr 0\nh2 : sr 1 * r a = r a * sr 1\n⊢ r a = 1",
+          "endPos": {
+            "line": 19,
+            "column": 11
+          }
+        },
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 20,
+            "column": 14
+          },
+          "goal": "n : ℕ\nhn : Odd n\nh : n ≥ 3\ng : DihedralGroup n\na : ZMod n\nhg : ∀ h ∈ ⊤, h * sr a = sr a * h\n⊢ sr a = 1",
+          "endPos": {
+            "line": 20,
+            "column": 19
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "strategy_time": 31.52
+    }
+  },
+  {
+    "problem_id": "FATE-H_10",
+    "complete": false,
+    "strategy": "whole_proof",
+    "attempts": 1,
+    "code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have key : ∀ k : ℕ, 3 ^ (20 * k + 1) % 100 = 3 := by\n    intro k\n    induction k with\n    | zero => decide\n    | succ n ih =>\n      have heq : 20 * (n + 1) + 1 = (20 * n + 1) + 20 := by ring\n      rw [heq, pow_add, Nat.mul_mod, ih]\n  have h1 : 3 ^ 100 % 20 = 1 := by native_decide\n  have h2 : 3 ^ 100 = 20 * (3 ^ 100 / 20) + 1 := by\n    have h3 := Nat.div_add_mod (3 ^ 100) 20\n    omega\n  rw [h2, key]",
+    "full_code": "/- prove that the last two digits of $3^{3^{100}} is 03-/\ntheorem three_pow_three_pow_mod_100 : 3 ^ (3 ^ 100) % 100 = 3 := by\n  have key : ∀ k : ℕ, 3 ^ (20 * k + 1) % 100 = 3 := by\n    intro k\n    induction k with\n    | zero => decide\n    | succ n ih =>\n      have heq : 20 * (n + 1) + 1 = (20 * n + 1) + 20 := by ring\n      rw [heq, pow_add, Nat.mul_mod, ih]\n  have h1 : 3 ^ 100 % 20 = 1 := by native_decide\n  have h2 : 3 ^ 100 = 20 * (3 ^ 100 / 20) + 1 := by\n    have h3 := Nat.div_add_mod (3 ^ 100) 20\n    omega\n  rw [h2, key]",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 16
+          },
+          "endPos": {
+            "line": 9,
+            "column": 40
+          },
+          "data": "unsolved goals\ncase succ\nn : ℕ\nih : 3 ^ (20 * n + 1) % 100 = 3\nheq : 20 * (n + 1) + 1 = 20 * n + 1 + 20\n⊢ 3 * (3 ^ 20 % 100) % 100 = 3"
+        }
+      ]
+    },
+    "metadata": {
+      "strategy_time": 15.9
+    }
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, Subgroup.normalCore_normal H, Subgroup.normalCore_le H, ?_, ?_⟩\n  · have hcard : Nat.card (G ⧸ H) = n := hH\n    have hFinQ : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero (by rw [hcard]; exact hn)\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      Subgroup.normalCore_eq_ker H\n    have hInj := QuotientGroup.kerLift_injective (MulAction.toPermHom G (G ⧸ H))\n    have hFinP : Finite (Equiv.Perm (G ⧸ H)) := inferInstance\n    have hFinK : Finite (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) :=\n      Finite.of_injective _ hInj\n    show H.normalCore.index ≠ 0\n    rw [Subgroup.index, hker]\n    exact Nat.card_ne_zero.mpr ⟨inferInstance, hFinK⟩\n  · have hcard : Nat.card (G ⧸ H) = n := hH\n    have hFinQ : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero (by rw [hcard]; exact hn)\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      Subgroup.normalCore_eq_ker H\n    have hInj := QuotientGroup.kerLift_injective (MulAction.toPermHom G (G ⧸ H))\n    have hLe : Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) ≤\n        Nat.card (Equiv.Perm (G ⧸ H)) := Nat.card_le_card_of_injective _ hInj\n    have hPerm : Nat.card (Equiv.Perm (G ⧸ H)) = n.factorial := by\n      sorry\n    show H.normalCore.index ≤ n.factorial\n    rw [Subgroup.index, hker]\n    calc Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker)\n        ≤ Nat.card (Equiv.Perm (G ⧸ H)) := hLe\n      _ = n.factorial := hPerm",
+    "full_code": "/- Prove that if $H$ is a subgroup of $G$ of index $n$, then there is a normal subgroup $K$ of $G$\nsuch that $K\\leq H$ and $[G:K]\\leq n!$-/\ntheorem subgroup_normal_index_le_factorial {G : Type} [Group G] {n : ℕ} (hn : n ≠ 0) \n    (H : Subgroup G) (hH : H.index = n) :\n    ∃ K : Subgroup G, K.Normal ∧ K ≤ H ∧ K.index ≠ 0 ∧ K.index ≤ n.factorial := by\n  refine ⟨H.normalCore, Subgroup.normalCore_normal H, Subgroup.normalCore_le H, ?_, ?_⟩\n  · have hcard : Nat.card (G ⧸ H) = n := hH\n    have hFinQ : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero (by rw [hcard]; exact hn)\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      Subgroup.normalCore_eq_ker H\n    have hInj := QuotientGroup.kerLift_injective (MulAction.toPermHom G (G ⧸ H))\n    have hFinP : Finite (Equiv.Perm (G ⧸ H)) := inferInstance\n    have hFinK : Finite (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) :=\n      Finite.of_injective _ hInj\n    show H.normalCore.index ≠ 0\n    rw [Subgroup.index, hker]\n    exact Nat.card_ne_zero.mpr ⟨inferInstance, hFinK⟩\n  · have hcard : Nat.card (G ⧸ H) = n := hH\n    have hFinQ : Finite (G ⧸ H) := Nat.finite_of_card_ne_zero (by rw [hcard]; exact hn)\n    have hker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker :=\n      Subgroup.normalCore_eq_ker H\n    have hInj := QuotientGroup.kerLift_injective (MulAction.toPermHom G (G ⧸ H))\n    have hLe : Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) ≤\n        Nat.card (Equiv.Perm (G ⧸ H)) := Nat.card_le_card_of_injective _ hInj\n    have hPerm : Nat.card (Equiv.Perm (G ⧸ H)) = n.factorial := by\n      sorry\n    show H.normalCore.index ≤ n.factorial\n    rw [Subgroup.index, hker]\n    calc Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker)\n        ≤ Nat.card (Equiv.Perm (G ⧸ H)) := hLe\n      _ = n.factorial := hPerm",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 6,
+          "pos": {
+            "line": 26,
+            "column": 6
+          },
+          "goal": "G : Type\ninst✝ : Group G\nn : ℕ\nhn : n ≠ 0\nH : Subgroup G\nhH : H.index = n\nhcard : Nat.card (G ⧸ H) = n\nhFinQ : Finite (G ⧸ H)\nhker : H.normalCore = (MulAction.toPermHom G (G ⧸ H)).ker\nhInj : Function.Injective ⇑(QuotientGroup.kerLift (MulAction.toPermHom G (G ⧸ H)))\nhLe : Nat.card (G ⧸ (MulAction.toPermHom G (G ⧸ H)).ker) ≤ Nat.card (Equiv.Perm (G ⧸ H))\n⊢ Nat.card (Equiv.Perm (G ⧸ H)) = n.factorial",
+          "endPos": {
+            "line": 26,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 248.43
+    }
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "full_code": "/-- Show that if a Sylow $2$-subgroup of $G$ is nontrivial and cyclic, then $G$ has a subgroup $H$\nwith $[G:H] =2$. -/\ntheorem exists_index_two_of_sylow_two_isCyclic {G : Type} [Group G] [Finite G] (P : Sylow 2 G)\n    (h1 : P.toSubgroup ≠ ⊥) [IsCyclic P] : ∃ H : Subgroup G, H.index = 2 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 120.32
+    }
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  ext g\n  simp only [Subgroup.mem_centralizer_iff, Subgroup.mem_bot]\n  constructor\n  · intro hg\n    have hnpos : 0 < n := by omega\n    have hn2 : ¬ (n ∣ 2) := by\n      intro hd\n      have : n ≤ 2 := Nat.le_of_dvd (by norm_num) hd\n      omega\n    cases g with\n    | r i =>\n      have hcom : DihedralGroup.r i * DihedralGroup.sr 0 =\n                  DihedralGroup.sr 0 * DihedralGroup.r i := hg _ (Subgroup.mem_top _)\n      simp [DihedralGroup.r_mul_sr, DihedralGroup.sr_mul_r] at hcom\n      -- hcom : -i = i, i.e., 2*i = 0\n      have h2i : (2 : ZMod n) * i = 0 := by\n        have : i + i = 0 := by\n          have := hcom\n          linear_combination -this\n        have h2eq : (2 : ZMod n) * i = i + i := by ring\n        rw [h2eq]; exact this\n      -- Since n is odd, gcd(2,n) = 1, so 2 is a unit in ZMod n\n      have hcop : Nat.Coprime 2 n := by\n        rcases hn with ⟨k, hk⟩\n        subst hk\n        simp [Nat.Coprime, Nat.coprime_two_left, Nat.odd_iff]\n        omega\n      have h2unit : IsUnit (2 : ZMod n) := by\n        rw [ZMod.isUnit_iff_coprime]\n        exact hcop\n      have hi : i = 0 := by\n        rcases h2unit with ⟨u, hu⟩\n        have : u.inv * ((2 : ZMod n) * i) = u.inv * 0 := by rw [h2i]\n        rw [mul_zero] at this\n        rw [← mul_assoc, ← hu, u.inv_val, one_mul] at this\n        exact this\n      subst hi\n      rfl\n    | sr i =>\n      have hcom : DihedralGroup.sr i * DihedralGroup.r 1 =\n                  DihedralGroup.r 1 * DihedralGroup.sr i := hg _ (Subgroup.mem_top _)\n      simp [DihedralGroup.sr_mul_r, DihedralGroup.r_mul_sr] at hcom\n      -- hcom gives 1 - i = i + 1 or similar, leading to 2 = 0\n      exfalso\n      have h2 : (2 : ZMod n) = 0 := by\n        have := hcom\n        linear_combination -this\n      rw [show (2 : ZMod n) = ((2 : ℕ) : ZMod n) from by norm_num] at h2\n      rw [ZMod.natCast_zmod_eq_zero_iff_dvd] at h2\n      exact hn2 h2\n  · rintro rfl\n    intro x _\n    rw [one_mul, mul_one]",
+    "full_code": "/-- If \\( n \\) is odd and \\( n \\geq 3 \\), show that the identity is the only element of\n\\( D_{2n} \\) which commutes with all elements of \\( D_{2n} \\). -/\ntheorem DihedralGroup.centralizer_eq_bot {n : ℕ} (hn : Odd n) (h : n ≥ 3) :\n    Subgroup.centralizer ⊤ = (⊥ : Subgroup (DihedralGroup n)) := by\n  ext g\n  simp only [Subgroup.mem_centralizer_iff, Subgroup.mem_bot]\n  constructor\n  · intro hg\n    have hnpos : 0 < n := by omega\n    have hn2 : ¬ (n ∣ 2) := by\n      intro hd\n      have : n ≤ 2 := Nat.le_of_dvd (by norm_num) hd\n      omega\n    cases g with\n    | r i =>\n      have hcom : DihedralGroup.r i * DihedralGroup.sr 0 =\n                  DihedralGroup.sr 0 * DihedralGroup.r i := hg _ (Subgroup.mem_top _)\n      simp [DihedralGroup.r_mul_sr, DihedralGroup.sr_mul_r] at hcom\n      -- hcom : -i = i, i.e., 2*i = 0\n      have h2i : (2 : ZMod n) * i = 0 := by\n        have : i + i = 0 := by\n          have := hcom\n          linear_combination -this\n        have h2eq : (2 : ZMod n) * i = i + i := by ring\n        rw [h2eq]; exact this\n      -- Since n is odd, gcd(2,n) = 1, so 2 is a unit in ZMod n\n      have hcop : Nat.Coprime 2 n := by\n        rcases hn with ⟨k, hk⟩\n        subst hk\n        simp [Nat.Coprime, Nat.coprime_two_left, Nat.odd_iff]\n        omega\n      have h2unit : IsUnit (2 : ZMod n) := by\n        rw [ZMod.isUnit_iff_coprime]\n        exact hcop\n      have hi : i = 0 := by\n        rcases h2unit with ⟨u, hu⟩\n        have : u.inv * ((2 : ZMod n) * i) = u.inv * 0 := by rw [h2i]\n        rw [mul_zero] at this\n        rw [← mul_assoc, ← hu, u.inv_val, one_mul] at this\n        exact this\n      subst hi\n      rfl\n    | sr i =>\n      have hcom : DihedralGroup.sr i * DihedralGroup.r 1 =\n                  DihedralGroup.r 1 * DihedralGroup.sr i := hg _ (Subgroup.mem_top _)\n      simp [DihedralGroup.sr_mul_r, DihedralGroup.r_mul_sr] at hcom\n      -- hcom gives 1 - i = i + 1 or similar, leading to 2 = 0\n      exfalso\n      have h2 : (2 : ZMod n) = 0 := by\n        have := hcom\n        linear_combination -this\n      rw [show (2 : ZMod n) = ((2 : ℕ) : ZMod n) from by norm_num] at h2\n      rw [ZMod.natCast_zmod_eq_zero_iff_dvd] at h2\n      exact hn2 h2\n  · rintro rfl\n    intro x _\n    rw [one_mul, mul_one]",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 17,
+            "column": 60
+          },
+          "endPos": {
+            "line": 17,
+            "column": 85
+          },
+          "data": "type mismatch\n  hg (r i) (Subgroup.mem_top (r i))\nhas type\n  r i * r i = r i * r i : Prop\nbut is expected to have type\n  r i * sr 0 = sr 0 * r i : Prop"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 45,
+            "column": 60
+          },
+          "endPos": {
+            "line": 45,
+            "column": 85
+          },
+          "data": "type mismatch\n  hg (sr i) (Subgroup.mem_top (sr i))\nhas type\n  sr i * sr i = sr i * sr i : Prop\nbut is expected to have type\n  sr i * r 1 = r 1 * sr i : Prop"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 176.66
+    }
+  }
+]

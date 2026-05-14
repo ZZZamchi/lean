@@ -1,0 +1,675 @@
+[
+  {
+    "problem_id": "FATE-H_61",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--Prove that the polynomial $x^4+1$ is not irreducible over any field of positive characteristic.-/\ntheorem not_irreducible_X_pow_four_add_one {F : Type} [Field F] {p : ℕ} [Fact p.Prime]\n    [CharP F p] : ¬ Irreducible (X ^ 4 + C 1 : F[X]) := by\n  sorry",
+    "full_code": "/--Prove that the polynomial $x^4+1$ is not irreducible over any field of positive characteristic.-/\ntheorem not_irreducible_X_pow_four_add_one {F : Type} [Field F] {p : ℕ} [Fact p.Prime]\n    [CharP F p] : ¬ Irreducible (X ^ 4 + C 1 : F[X]) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "F : Type\ninst✝² : Field F\np : ℕ\ninst✝¹ : Fact p.Prime\ninst✝ : CharP F p\n⊢ ¬Irreducible (sorryAx ?m.7401 true ^ 4 + sorryAx ?m.7399 true)",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 49
+          },
+          "endPos": {
+            "line": 3,
+            "column": 50
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 33
+          },
+          "endPos": {
+            "line": 3,
+            "column": 34
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 41
+          },
+          "endPos": {
+            "line": 3,
+            "column": 42
+          },
+          "data": "unknown identifier 'C'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 47
+          },
+          "endPos": {
+            "line": 3,
+            "column": 51
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\nF : Type\ninst✝² : Field F\np : ℕ\ninst✝¹ : Fact p.Prime\ninst✝ : CharP F p\n⊢ ?m.179 F (sorryAx ?m.176 true)"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 225.81
+    }
+  },
+  {
+    "problem_id": "FATE-H_62",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/--\nLet $F$ be a field and let $f(x) \\in F[x]$ be an irreducible polynomial with splitting field $E$ over $F$.\nChoose $\\alpha \\in E$ with $f(\\alpha) =0$. Furthermore, for some fixed integer $n \\geq 1$,\nlet $g(x)$ be an irreducible polynomial in $F[x]$ with $g(\\alpha^n)=0$. If $\\deg(f) / \\deg(g) = n$\nand if the characteristic of $F$ does not divide $n$, prove that $E$ contains a primitive $n$th root of unity.-/\ntheorem primitiveRoots_not_empty (E F : Type) [Field E] [Field F] [Algebra F E]\n    (f : Polynomial F) (h_f_irr : Irreducible f) (h_splitting_field : f.IsSplittingField F E)\n    (a : E) (ha : f.aeval a = 0) (n : ℕ) (hn : n ≥ 1)\n    (g : Polynomial F) (h_g_irr : Irreducible g) (h_ga : g.aeval (a ^ n) = 0)\n    (h_deg : f.degree = g.degree * n) (h_char : (n : F) ≠ 0) : primitiveRoots n E ≠ ∅ := by\n  sorry",
+    "full_code": "/--\nLet $F$ be a field and let $f(x) \\in F[x]$ be an irreducible polynomial with splitting field $E$ over $F$.\nChoose $\\alpha \\in E$ with $f(\\alpha) =0$. Furthermore, for some fixed integer $n \\geq 1$,\nlet $g(x)$ be an irreducible polynomial in $F[x]$ with $g(\\alpha^n)=0$. If $\\deg(f) / \\deg(g) = n$\nand if the characteristic of $F$ does not divide $n$, prove that $E$ contains a primitive $n$th root of unity.-/\ntheorem primitiveRoots_not_empty (E F : Type) [Field E] [Field F] [Algebra F E]\n    (f : Polynomial F) (h_f_irr : Irreducible f) (h_splitting_field : f.IsSplittingField F E)\n    (a : E) (ha : f.aeval a = 0) (n : ℕ) (hn : n ≥ 1)\n    (g : Polynomial F) (h_g_irr : Irreducible g) (h_ga : g.aeval (a ^ n) = 0)\n    (h_deg : f.degree = g.degree * n) (h_char : (n : F) ≠ 0) : primitiveRoots n E ≠ ∅ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 157.99
+    }
+  },
+  {
+    "problem_id": "FATE-H_63",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let \\( f \\in \\mathbb{Q}[X] \\) and \\( \\xi \\in \\mathbb{C} \\) be a root of unity. Show that \\( f(\\xi) \\neq 2^{\\frac{1}{4}} \\).-/\ntheorem eval₂_algebraMap_ne_two_pow_one_dvd_four {n : ℕ} (hn : 1 ≤ n) (f : ℚ[X]) (ξ : ℂˣ)\n    (h : ξ ∈ rootsOfUnity n ℂ) : f.eval₂ (algebraMap ℚ ℂ) ξ ≠ (2 : ℂ) ^ ((1 : ℂ) / 4) := by\n  sorry",
+    "full_code": "/--Let \\( f \\in \\mathbb{Q}[X] \\) and \\( \\xi \\in \\mathbb{C} \\) be a root of unity. Show that \\( f(\\xi) \\neq 2^{\\frac{1}{4}} \\).-/\ntheorem eval₂_algebraMap_ne_two_pow_one_dvd_four {n : ℕ} (hn : 1 ≤ n) (f : ℚ[X]) (ξ : ℂˣ)\n    (h : ξ ∈ rootsOfUnity n ℂ) : f.eval₂ (algebraMap ℚ ℂ) ξ ≠ (2 : ℂ) ^ ((1 : ℂ) / 4) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 100.63
+    }
+  },
+  {
+    "problem_id": "FATE-H_64",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/--Let $K$ be a finite extension of a field $F$, and let $f(x) \\in K[x]$. Prove that there exists a\nnonzero polynomial $g(x) \\in K[x]$ such that $f(x)g(x) \\in F[x]$.-/\ntheorem exists_mul_eq_map_algebraMap {F K : Type} [Field F] [Field K] [Algebra F K] [FiniteDimensional F K]\n    (f : K[X]) : ∃ g ≠ 0, ∃ h : F[X], f * g = h.map (algebraMap F K) := by\n  sorry",
+    "full_code": "/--Let $K$ be a finite extension of a field $F$, and let $f(x) \\in K[x]$. Prove that there exists a\nnonzero polynomial $g(x) \\in K[x]$ such that $f(x)g(x) \\in F[x]$.-/\ntheorem exists_mul_eq_map_algebraMap {F K : Type} [Field F] [Field K] [Algebra F K] [FiniteDimensional F K]\n    (f : K[X]) : ∃ g ≠ 0, ∃ h : F[X], f * g = h.map (algebraMap F K) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 17,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "F K : Type\ninst✝³ : Field F\ninst✝² : Field K\ninst✝¹ : Algebra F K\ninst✝ : FiniteDimensional F K\nf : K[sorryAx ?m.3785 true]\n⊢ ∃ g, g ≠ 0 ∧ ∃ h, sorryAx Prop true",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 11
+          },
+          "endPos": {
+            "line": 4,
+            "column": 12
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 34
+          },
+          "endPos": {
+            "line": 4,
+            "column": 35
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 9
+          },
+          "endPos": {
+            "line": 4,
+            "column": 13
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\nF K : Type\ninst✝³ : Field F\ninst✝² : Field K\ninst✝¹ : Algebra F K\ninst✝ : FiniteDimensional F K\n⊢ ?m.789 K (sorryAx ?m.786 true)"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 32
+          },
+          "endPos": {
+            "line": 4,
+            "column": 36
+          },
+          "data": "failed to prove index is valid, possible solutions:\n  - Use `have`-expressions to prove the index is valid\n  - Use `a[i]!` notation instead, runtime check is perfomed, and 'Panic' error message is produced if index is not valid\n  - Use `a[i]?` notation instead, result is an `Option` type\n  - Use `a[i]'h` notation instead, where `h` is a proof that index is valid\nF K : Type\ninst✝³ : Field F\ninst✝² : Field K\ninst✝¹ : Algebra F K\ninst✝ : FiniteDimensional F K\nf : K[sorryAx ?m.786 true]\ng : ℕ\n⊢ ?m.1782 g F (sorryAx (?m.1781 g) true)"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 179.62
+    }
+  },
+  {
+    "problem_id": "FATE-H_65",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Prove that for any $a,b \\in \\mathbb{F}_{p^n}$ that if $x^3+ax+b$ is irreducible then $-4a^3-27b^2$ is a\n square in $\\mathbb{F}_{p^n}$.-/\ntheorem isSquare_discriminant_of_irreducible {p n : ℕ} [Fact p.Prime] (a b : GaloisField p n)\n    (h_irr : Irreducible (X ^ 3 + C a * X + C b)) :\n    IsSquare (- 4 * a ^ 3 - 27 * b ^ 2) := by\n  sorry",
+    "full_code": "/--Prove that for any $a,b \\in \\mathbb{F}_{p^n}$ that if $x^3+ax+b$ is irreducible then $-4a^3-27b^2$ is a\n square in $\\mathbb{F}_{p^n}$.-/\ntheorem isSquare_discriminant_of_irreducible {p n : ℕ} [Fact p.Prime] (a b : GaloisField p n)\n    (h_irr : Irreducible (X ^ 3 + C a * X + C b)) :\n    IsSquare (- 4 * a ^ 3 - 27 * b ^ 2) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 112.82
+    }
+  },
+  {
+    "problem_id": "FATE-H_66",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Prove that, if $n \\geq 3$, then $x^{2^n}+x+1$ is \\emph{reducible} in $\\mathbb{F}_2$.-/\ntheorem not_irreducible_X_pow_two_pow_add_X_add_C_one {n : ℕ} (hn : n ≥ 3) :\n    ¬ Irreducible (X ^ 2 ^ n + X + C 1 : (ZMod 2)[X]) := by\n  sorry",
+    "full_code": "/--Prove that, if $n \\geq 3$, then $x^{2^n}+x+1$ is \\emph{reducible} in $\\mathbb{F}_2$.-/\ntheorem not_irreducible_X_pow_two_pow_add_X_add_C_one {n : ℕ} (hn : n ≥ 3) :\n    ¬ Irreducible (X ^ 2 ^ n + X + C 1 : (ZMod 2)[X]) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 109.02
+    }
+  },
+  {
+    "problem_id": "FATE-H_67",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/-\nProve that the prime ideals of $\\mathbb{F}_7[\\alpha] \\otimes_{\\mathbb{F}_7} \\mathbb{F}_7[\\alpha]$ are principal, where $\\alpha^3 = 2$.\n-/\ntheorem isPrincipal_of_ideal_tensor_zMod_seven\n    (p : Ideal (TensorProduct (ZMod 7) (AdjoinRoot (X ^ 3 - 2 : Polynomial (ZMod 7)))\n    (AdjoinRoot (X ^ 3 - 2 : Polynomial (ZMod 7))))) [p.IsPrime] : p.IsPrincipal :=\n  sorry",
+    "full_code": "/-\nProve that the prime ideals of $\\mathbb{F}_7[\\alpha] \\otimes_{\\mathbb{F}_7} \\mathbb{F}_7[\\alpha]$ are principal, where $\\alpha^3 = 2$.\n-/\ntheorem isPrincipal_of_ideal_tensor_zMod_seven\n    (p : Ideal (TensorProduct (ZMod 7) (AdjoinRoot (X ^ 3 - 2 : Polynomial (ZMod 7)))\n    (AdjoinRoot (X ^ 3 - 2 : Polynomial (ZMod 7))))) [p.IsPrime] : p.IsPrincipal :=\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 24,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "p :\n  Ideal\n    (TensorProduct (ZMod 7) (AdjoinRoot (sorryAx (Polynomial (ZMod 7)) true ^ 3 - 2))\n      (AdjoinRoot (sorryAx (Polynomial (ZMod 7)) true ^ 3 - 2)))\ninst✝ : p.IsPrime\n⊢ sorryAx Prop true",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 52
+          },
+          "endPos": {
+            "line": 5,
+            "column": 53
+          },
+          "data": "unknown identifier 'X'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 17
+          },
+          "endPos": {
+            "line": 6,
+            "column": 18
+          },
+          "data": "unknown identifier 'X'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 130.43
+    }
+  },
+  {
+    "problem_id": "FATE-H_68",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-\nLet $A$ be a Noetherian ring and let $x \\in A$ be an element which is\nneither a unit nor a zero-divisor. Prove that the ideals $xA$ and $x^nA$\nfor $n = 1, 2, \\dots$ have the same prime divisors:\n\\[\n\\operatorname{Ass}_A(A/xA) = \\operatorname{Ass}_A(A/x^nA).\n\\]\n-/\ntheorem associatedPrimes_quot_span_eq_quot_span_pow {A : Type} [CommRing A] [IsNoetherianRing A]\n    (x : A) (hx : x ∈ nonZeroDivisors A) (hx' : ¬ IsUnit x) (n : ℕ) (h : n ≥ 1) :\n    associatedPrimes A (A ⧸ span {x}) = associatedPrimes A (A ⧸ span {x ^ n}) := by\n  sorry",
+    "full_code": "/-\nLet $A$ be a Noetherian ring and let $x \\in A$ be an element which is\nneither a unit nor a zero-divisor. Prove that the ideals $xA$ and $x^nA$\nfor $n = 1, 2, \\dots$ have the same prime divisors:\n\\[\n\\operatorname{Ass}_A(A/xA) = \\operatorname{Ass}_A(A/x^nA).\n\\]\n-/\ntheorem associatedPrimes_quot_span_eq_quot_span_pow {A : Type} [CommRing A] [IsNoetherianRing A]\n    (x : A) (hx : x ∈ nonZeroDivisors A) (hx' : ¬ IsUnit x) (n : ℕ) (h : n ≥ 1) :\n    associatedPrimes A (A ⧸ span {x}) = associatedPrimes A (A ⧸ span {x ^ n}) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 116.24
+    }
+  },
+  {
+    "problem_id": "FATE-H_69",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 7,
+    "code": "/-- Prove that if $K$ is a field of finite degree over $\\mathbb{Q}$ and $x_1, \\dots, x_n$ are\nfinitely many elements of $K$, then the subring $\\mathbb{Z}[x_1, \\dots, x_n]$ they generate over\n$\\mathbb{Z}$ is not equal to $K$. -/\ntheorem int_adjoin_range_ne_top {K : Type} [Field K] [NumberField K] {n : ℕ} (x : Fin n → K) :\n    Algebra.adjoin ℤ (Set.range x) ≠ ⊤ := by\n  sorry",
+    "full_code": "/-- Prove that if $K$ is a field of finite degree over $\\mathbb{Q}$ and $x_1, \\dots, x_n$ are\nfinitely many elements of $K$, then the subring $\\mathbb{Z}[x_1, \\dots, x_n]$ they generate over\n$\\mathbb{Z}$ is not equal to $K$. -/\ntheorem int_adjoin_range_ne_top {K : Type} [Field K] [NumberField K] {n : ℕ} (x : Fin n → K) :\n    Algebra.adjoin ℤ (Set.range x) ≠ ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 28,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "K : Type\ninst✝¹ : Field K\ninst✝ : NumberField K\nn : ℕ\nx : Fin n → K\n⊢ Algebra.adjoin ℤ (Set.range x) ≠ ⊤",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 349.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_70",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Show that $\\mathbb{Z}[X]/(x^2+4)$ is not integrally closed. -/\ntheorem not_isIntegrallyClosed_adjoinRoot_pow_two_add_four :\n    ¬ IsIntegrallyClosed (AdjoinRoot (X ^ 2 + C 4 : ℤ[X])) := by\n  sorry",
+    "full_code": "/-- Show that $\\mathbb{Z}[X]/(x^2+4)$ is not integrally closed. -/\ntheorem not_isIntegrallyClosed_adjoinRoot_pow_two_add_four :\n    ¬ IsIntegrallyClosed (AdjoinRoot (X ^ 2 + C 4 : ℤ[X])) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 125.01
+    }
+  },
+  {
+    "problem_id": "FATE-H_71",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/-- Prove that $k[x,y]$ is not a Dedekind ring. -/\ntheorem not_isDedekindRing_mvPolynomial_fin_two {k : Type} [Field k] :\n    ¬ IsDedekindRing (MvPolynomial (Fin 2) k) := by\n  intro hin\n  sorry",
+    "full_code": "/-- Prove that $k[x,y]$ is not a Dedekind ring. -/\ntheorem not_isDedekindRing_mvPolynomial_fin_two {k : Type} [Field k] :\n    ¬ IsDedekindRing (MvPolynomial (Fin 2) k) := by\n  intro hin\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 46,
+          "pos": {
+            "line": 5,
+            "column": 2
+          },
+          "goal": "k : Type\ninst✝ : Field k\nhin : IsDedekindRing (MvPolynomial (Fin 2) k)\n⊢ False",
+          "endPos": {
+            "line": 5,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 291.53
+    }
+  },
+  {
+    "problem_id": "FATE-H_72",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/-- Let $A$ be a ring such that for each maximal ideal $\\mathfrak{m}$ of $A$, the local ring\n$A_{\\mathfrak{m}}$ is Noetherian; and for each $x \\neq 0$ in $A$, the set of maximal ideals of $A$\nwhich contain $x$ is finite. Show that $A$ is Noetherian.-/\ntheorem isNoetherianRing_of_finite_isMaximal_and_mem {A : Type} [CommRing A]\n    (h_local : ∀ (m : Ideal A), [m.IsMaximal] → IsNoetherianRing (Localization.AtPrime m))\n    (h_finite : ∀ x : A, x ≠ 0 → Set.Finite {m : Ideal A | m.IsMaximal ∧ x ∈ m}) :\n    IsNoetherianRing A := by\n  sorry",
+    "full_code": "/-- Let $A$ be a ring such that for each maximal ideal $\\mathfrak{m}$ of $A$, the local ring\n$A_{\\mathfrak{m}}$ is Noetherian; and for each $x \\neq 0$ in $A$, the set of maximal ideals of $A$\nwhich contain $x$ is finite. Show that $A$ is Noetherian.-/\ntheorem isNoetherianRing_of_finite_isMaximal_and_mem {A : Type} [CommRing A]\n    (h_local : ∀ (m : Ideal A), [m.IsMaximal] → IsNoetherianRing (Localization.AtPrime m))\n    (h_finite : ∀ x : A, x ≠ 0 → Set.Finite {m : Ideal A | m.IsMaximal ∧ x ∈ m}) :\n    IsNoetherianRing A := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 100.83
+    }
+  },
+  {
+    "problem_id": "FATE-H_73",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/- If $R$ is a valuation ring, then an $R$-module $A$ is flat if it is torsion-free.-/\ntheorem flat_of_noZeroSMulDivisor {R A : Type} [CommRing R] [IsDomain R] [ValuationRing R] [AddCommGroup A]\n    [Module R A] [NoZeroSMulDivisors R A] : Module.Flat R A := by\n  sorry",
+    "full_code": "/- If $R$ is a valuation ring, then an $R$-module $A$ is flat if it is torsion-free.-/\ntheorem flat_of_noZeroSMulDivisor {R A : Type} [CommRing R] [IsDomain R] [ValuationRing R] [AddCommGroup A]\n    [Module R A] [NoZeroSMulDivisors R A] : Module.Flat R A := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 51,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "R A : Type\ninst✝⁵ : CommRing R\ninst✝⁴ : IsDomain R\ninst✝³ : ValuationRing R\ninst✝² : AddCommGroup A\ninst✝¹ : Module R A\ninst✝ : NoZeroSMulDivisors R A\n⊢ Module.Flat R A",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 225.33
+    }
+  },
+  {
+    "problem_id": "FATE-H_74",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/- If $R$ is a valuation ring, then an $R$-module $A$ is torsion-free if it is flat.-/\ntheorem noZeroSMulDivisors_of_flat {R A : Type} [CommRing R] [IsDomain R] [ValuationRing R] [AddCommGroup A]\n    [Module R A] [Module.Flat R A] : NoZeroSMulDivisors R A := by\n  refine ⟨fun {r a} h => ?_⟩\n  by_cases hr : r = 0\n  · left; exact hr\n  · right\n    -- Multiplication by r on R is injective\n    let f : R →ₗ[R] R := LinearMap.mulLeft R r\n    have hf : Function.Injective f := by\n      intro x y hxy\n      simp only [f, LinearMap.mulLeft_apply] at hxy\n      exact mul_left_cancel₀ hr hxy\n    -- rTensor preserves injectivity by flatness\n    have hrT : Function.Injective (LinearMap.rTensor A f) :=\n      Module.Flat.rTensor_preserves_injective_linearMap f hf\n    -- Now transfer through TensorProduct.lid\n    let lid := TensorProduct.lid R A\n    have key : Function.Injective (fun x : A => r • x) := by\n      intro x y hxy\n      have h1 : lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] x)) = r • x := by\n        simp [f, lid, LinearMap.rTensor_tmul, LinearMap.mulLeft_apply,\n              TensorProduct.lid_tmul]\n      have h2 : lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] y)) = r • y := by\n        simp [f, lid, LinearMap.rTensor_tmul, LinearMap.mulLeft_apply,\n              TensorProduct.lid_tmul]\n      have h3 : lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] x)) =\n                lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] y)) := by\n        rw [h1, h2]; exact hxy\n      have h4 : (LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] x) =\n                (LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] y) :=\n        lid.injective h3\n      have h5 : ((1 : R) ⊗ₜ[R] x : TensorProduct R R A) = (1 : R) ⊗ₜ[R] y := hrT h4\n      have h6 : lid ((1 : R) ⊗ₜ[R] x) = lid ((1 : R) ⊗ₜ[R] y) := by rw [h5]\n      simpa [lid, TensorProduct.lid_tmul] using h6\n    have hh : r • a = r • (0 : A) := by rw [smul_zero]; exact h\n    exact key hh",
+    "full_code": "/- If $R$ is a valuation ring, then an $R$-module $A$ is torsion-free if it is flat.-/\ntheorem noZeroSMulDivisors_of_flat {R A : Type} [CommRing R] [IsDomain R] [ValuationRing R] [AddCommGroup A]\n    [Module R A] [Module.Flat R A] : NoZeroSMulDivisors R A := by\n  refine ⟨fun {r a} h => ?_⟩\n  by_cases hr : r = 0\n  · left; exact hr\n  · right\n    -- Multiplication by r on R is injective\n    let f : R →ₗ[R] R := LinearMap.mulLeft R r\n    have hf : Function.Injective f := by\n      intro x y hxy\n      simp only [f, LinearMap.mulLeft_apply] at hxy\n      exact mul_left_cancel₀ hr hxy\n    -- rTensor preserves injectivity by flatness\n    have hrT : Function.Injective (LinearMap.rTensor A f) :=\n      Module.Flat.rTensor_preserves_injective_linearMap f hf\n    -- Now transfer through TensorProduct.lid\n    let lid := TensorProduct.lid R A\n    have key : Function.Injective (fun x : A => r • x) := by\n      intro x y hxy\n      have h1 : lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] x)) = r • x := by\n        simp [f, lid, LinearMap.rTensor_tmul, LinearMap.mulLeft_apply,\n              TensorProduct.lid_tmul]\n      have h2 : lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] y)) = r • y := by\n        simp [f, lid, LinearMap.rTensor_tmul, LinearMap.mulLeft_apply,\n              TensorProduct.lid_tmul]\n      have h3 : lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] x)) =\n                lid ((LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] y)) := by\n        rw [h1, h2]; exact hxy\n      have h4 : (LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] x) =\n                (LinearMap.rTensor A f) ((1 : R) ⊗ₜ[R] y) :=\n        lid.injective h3\n      have h5 : ((1 : R) ⊗ₜ[R] x : TensorProduct R R A) = (1 : R) ⊗ₜ[R] y := hrT h4\n      have h6 : lid ((1 : R) ⊗ₜ[R] x) = lid ((1 : R) ⊗ₜ[R] y) := by rw [h5]\n      simpa [lid, TensorProduct.lid_tmul] using h6\n    have hh : r • a = r • (0 : A) := by rw [smul_zero]; exact h\n    exact key hh",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 37.08
+    }
+  },
+  {
+    "problem_id": "FATE-H_75",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/--Suppose \\( A \\) and \\( B \\) are commutative rings containing a field \\( k \\), with \\( B \\)\nfinitely generated over \\( k \\) as a ring. If \\( \\varphi : A \\to B \\) is a ring homomorphism with\n\\( \\varphi|_k = \\text{Id} \\) and if \\( Q \\subset B \\) is a maximal ideal, prove that \\( \\varphi^{-1}\n(Q) \\subset A \\) is a maximal ideal.-/\ntheorem comap_isMaximal_of_finiteType {A B k : Type} [CommRing A] [CommRing B] [Field k] [Algebra k A] [Algebra k B]\n    [Algebra.FiniteType k B] (φ : A →ₐ[k] B) (Q : Ideal B) [hQ : Q.IsMaximal] :\n    (Ideal.comap φ Q).IsMaximal := by\n  have : (Ideal.comap φ.toRingHom Q).IsMaximal := by\n    -- Use that B ⧸ Q is a finite extension of k, hence integral over k\n    -- Then A/(comap) embeds into B/Q, and A/(comap) is integral over k\n    -- Hence A/(comap) is a field\n    sorry\n  exact this",
+    "full_code": "/--Suppose \\( A \\) and \\( B \\) are commutative rings containing a field \\( k \\), with \\( B \\)\nfinitely generated over \\( k \\) as a ring. If \\( \\varphi : A \\to B \\) is a ring homomorphism with\n\\( \\varphi|_k = \\text{Id} \\) and if \\( Q \\subset B \\) is a maximal ideal, prove that \\( \\varphi^{-1}\n(Q) \\subset A \\) is a maximal ideal.-/\ntheorem comap_isMaximal_of_finiteType {A B k : Type} [CommRing A] [CommRing B] [Field k] [Algebra k A] [Algebra k B]\n    [Algebra.FiniteType k B] (φ : A →ₐ[k] B) (Q : Ideal B) [hQ : Q.IsMaximal] :\n    (Ideal.comap φ Q).IsMaximal := by\n  have : (Ideal.comap φ.toRingHom Q).IsMaximal := by\n    -- Use that B ⧸ Q is a finite extension of k, hence integral over k\n    -- Then A/(comap) embeds into B/Q, and A/(comap) is integral over k\n    -- Hence A/(comap) is a field\n    sorry\n  exact this",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 5,
+          "pos": {
+            "line": 12,
+            "column": 4
+          },
+          "goal": "A B k : Type\ninst✝⁵ : CommRing A\ninst✝⁴ : CommRing B\ninst✝³ : Field k\ninst✝² : Algebra k A\ninst✝¹ : Algebra k B\ninst✝ : Algebra.FiniteType k B\nφ : A →ₐ[k] B\nQ : Ideal B\nhQ : Q.IsMaximal\n⊢ (Ideal.comap φ.toRingHom Q).IsMaximal",
+          "endPos": {
+            "line": 12,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 305.24
+    }
+  },
+  {
+    "problem_id": "FATE-H_76",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/- Show that a finite torsion-free module over a Dedekind domain is projective. -/\ntheorem projective_of_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M] [Module R M]\n    [IsDedekindDomain R] [Module.Finite R M] [NoZeroSMulDivisors R M] : Module.Projective R M := by\n  sorry",
+    "full_code": "/- Show that a finite torsion-free module over a Dedekind domain is projective. -/\ntheorem projective_of_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M] [Module R M]\n    [IsDedekindDomain R] [Module.Finite R M] [NoZeroSMulDivisors R M] : Module.Projective R M := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 11,
+          "pos": {
+            "line": 4,
+            "column": 2
+          },
+          "goal": "R M : Type\ninst✝⁵ : CommRing R\ninst✝⁴ : AddCommGroup M\ninst✝³ : Module R M\ninst✝² : IsDedekindDomain R\ninst✝¹ : Module.Finite R M\ninst✝ : NoZeroSMulDivisors R M\n⊢ Module.Projective R M",
+          "endPos": {
+            "line": 4,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 166.52
+    }
+  },
+  {
+    "problem_id": "FATE-H_77",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let \\( k \\) be a field, \\( A \\) a local \\( k \\)-algebra with maximal ideal \\( \\mathfrak{m} \\).\nAssume that \\( A \\) is a localization of a \\( k \\)-algebra \\( R \\) and that \\( A / \\mathfrak{m} = k\n\\). Prove that there exists maximal ideal \\( \\mathfrak{n} \\) of \\( R \\) with \\( R_{\\mathfrak{n}} = A\n\\).-/\ntheorem exists_isMaximal_atPrime_of_bijective {k R A : Type} [Field k] [CommRing R] [CommRing A] [Algebra k R]\n    [Algebra R A] [Algebra k A] [IsScalarTower k R A] [IsLocalRing A]\n    (h : Function.Bijective <| (IsLocalRing.residue A).comp (algebraMap k A))\n    (S : Submonoid R) [IsLocalization S A] :\n    ∃ n : Ideal R, ∃ hn : n.IsMaximal, IsLocalization.AtPrime A n := by\n  set m : Ideal A := IsLocalRing.maximalIdeal A with hm\n  set n : Ideal R := m.comap (algebraMap R A) with hn_def\n  have hn_prime : n.IsPrime := Ideal.IsMaximal.comap_isPrime _ (IsLocalRing.maximalIdeal.isMaximal A)\n  -- Show S ≤ n.primeCompl\n  have hS_le : S ≤ n.primeCompl := by\n    intro s hs\n    intro hsn\n    -- s ∈ n means algebraMap R A s ∈ m, but s ∈ S means algebraMap R A s is a unit\n    have hunit : IsUnit (algebraMap R A s) := IsLocalization.map_units A ⟨s, hs⟩\n    have : algebraMap R A s ∈ m := hsn\n    exact (IsLocalRing.maximalIdeal.isMaximal A).ne_top\n      (Ideal.eq_top_of_isUnit_mem _ this hunit)\n  -- Show n is maximal\n  have hn_max : n.IsMaximal := by\n    refine ⟨⟨?_, ?_⟩⟩\n    · -- n ≠ ⊤\n      intro htop\n      have h1 : (1 : R) ∈ n := htop ▸ Submodule.mem_top\n      have h2 : algebraMap R A 1 ∈ m := h1\n      rw [map_one] at h2\n      exact (IsLocalRing.maximalIdeal.isMaximal A).ne_top\n        (Ideal.eq_top_of_isUnit_mem _ h2 isUnit_one)\n    · -- maximality: for J > n, J = ⊤\n      intro J hJ\n      by_contra hJtop\n      -- Use that R/n embeds into A/m = k via k-algebra structure\n      -- The composition k → R → A → A/m is bijective.\n      -- Pick j ∈ J \\ n. Then algebraMap R A j ∉ m, so it's a unit in A.\n      -- We'll show 1 ∈ J.\n      obtain ⟨j, hjJ, hjn⟩ := SetLike.exists_of_lt hJ\n      -- j ∉ n means algebraMap R A j ∉ m\n      have hja : algebraMap R A j ∉ m := hjn\n      -- So algebraMap R A j is a unit in A\n      have hunit : IsUnit (algebraMap R A j) :=\n        (IsLocalRing.mem_maximalIdeal _).not.mp hja |> fun hh => by\n          rcases isUnit_or_eq_zero (algebraMap R A j) with hu | hz\n          · exact hu\n          · exfalso; apply hh\n            rw [hz]; exact (IsLocalRing.maximalIdeal A).zero_mem\n      -- Now use bijectivity of k → A/m to find c ∈ k with image equal to residue of algebraMap R A j\n      have hbij := h\n      -- residue (algebraMap R A j) is in image of k → A/m\n      set φ : k → IsLocalRing.ResidueField A := (IsLocalRing.residue A).comp (algebraMap k A)\n      obtain ⟨c, hc⟩ := hbij.surjective (IsLocalRing.residue A (algebraMap R A j))\n      -- c ≠ 0 since residue (algebraMap R A j) ≠ 0 (as algebraMap R A j is a unit hence not in m)\n      have hc_ne : c ≠ 0 := by\n        intro hc0\n        rw [hc0] at hc\n        simp [φ] at hc\n        -- hc : 0 = residue ...\n        have : algebraMap R A j ∈ m := by\n          rw [← Ideal.Quotient.eq_zero_iff_mem]\n          exact hc.symm\n        exact hja this\n      -- So c is a unit in k\n      have hc_unit : IsUnit c := isUnit_iff_ne_zero.mpr hc_ne\n      -- Now algebraMap k A c - algebraMap R A j is in m\n      have hdiff : algebraMap k A c - algebraMap R A j ∈ m := by\n        rw [← Ideal.Quotient.eq_zero_iff_mem]\n        rw [map_sub]\n        have := hc\n        simp [φ, Function.comp] at this\n        rw [this]\n        ring\n      -- Need to express algebraMap k A c via the scalar tower\n      -- algebraMap k A = (algebraMap R A) ∘ (algebraMap k R)\n      have htower : algebraMap k A c = algebraMap R A (algebraMap k R c) := by\n        rw [← IsScalarTower.algebraMap_apply]\n      rw [htower] at hdiff\n      rw [← map_sub] at hdiff\n      -- So algebraMap k R c - j ∈ n (since its image in A is in m)\n      have hin_n : algebraMap k R c - j ∈ n := hdiff\n      have hin_J : algebraMap k R c - j ∈ J := hJ.le hin_n\n      -- So algebraMap k R c = (algebraMap k R c - j) + j ∈ J\n      have hcJ : algebraMap k R c ∈ J := by\n        have : algebraMap k R c = (algebraMap k R c - j) + j := by ring\n        rw [this]\n        exact J.add_mem hin_J hjJ\n      -- algebraMap k R c is a unit in R since c is a unit in k\n      have hcR_unit : IsUnit (algebraMap k R c) := hc_unit.map (algebraMap k R)\n      -- So J = ⊤\n      exact hJtop (Ideal.eq_top_of_isUnit_mem _ hcJ hcR_unit)\n  refine ⟨n, hn_max, ?_⟩\n  -- Show IsLocalization n.primeCompl A\n  -- Use that S ≤ n.primeCompl and every element of n.primeCompl is a unit in A\n  have hcompl_units : ∀ t ∈ n.primeCompl, IsUnit (algebraMap R A t) := by\n    intro t ht\n    have : algebraMap R A t ∉ m := ht\n    rcases isUnit_or_eq_zero (algebraMap R A t) with hu | hz\n    · exact hu\n    · exfalso; apply this; rw [hz]; exact (IsLocalRing.maximalIdeal A).zero_mem\n  exact IsLocalization.isLocalization_of_submonoid_le _ _ S n.primeCompl hS_le\n    (fun ⟨t, ht⟩ => hcompl_units t ht)",
+    "full_code": "/--Let \\( k \\) be a field, \\( A \\) a local \\( k \\)-algebra with maximal ideal \\( \\mathfrak{m} \\).\nAssume that \\( A \\) is a localization of a \\( k \\)-algebra \\( R \\) and that \\( A / \\mathfrak{m} = k\n\\). Prove that there exists maximal ideal \\( \\mathfrak{n} \\) of \\( R \\) with \\( R_{\\mathfrak{n}} = A\n\\).-/\ntheorem exists_isMaximal_atPrime_of_bijective {k R A : Type} [Field k] [CommRing R] [CommRing A] [Algebra k R]\n    [Algebra R A] [Algebra k A] [IsScalarTower k R A] [IsLocalRing A]\n    (h : Function.Bijective <| (IsLocalRing.residue A).comp (algebraMap k A))\n    (S : Submonoid R) [IsLocalization S A] :\n    ∃ n : Ideal R, ∃ hn : n.IsMaximal, IsLocalization.AtPrime A n := by\n  set m : Ideal A := IsLocalRing.maximalIdeal A with hm\n  set n : Ideal R := m.comap (algebraMap R A) with hn_def\n  have hn_prime : n.IsPrime := Ideal.IsMaximal.comap_isPrime _ (IsLocalRing.maximalIdeal.isMaximal A)\n  -- Show S ≤ n.primeCompl\n  have hS_le : S ≤ n.primeCompl := by\n    intro s hs\n    intro hsn\n    -- s ∈ n means algebraMap R A s ∈ m, but s ∈ S means algebraMap R A s is a unit\n    have hunit : IsUnit (algebraMap R A s) := IsLocalization.map_units A ⟨s, hs⟩\n    have : algebraMap R A s ∈ m := hsn\n    exact (IsLocalRing.maximalIdeal.isMaximal A).ne_top\n      (Ideal.eq_top_of_isUnit_mem _ this hunit)\n  -- Show n is maximal\n  have hn_max : n.IsMaximal := by\n    refine ⟨⟨?_, ?_⟩⟩\n    · -- n ≠ ⊤\n      intro htop\n      have h1 : (1 : R) ∈ n := htop ▸ Submodule.mem_top\n      have h2 : algebraMap R A 1 ∈ m := h1\n      rw [map_one] at h2\n      exact (IsLocalRing.maximalIdeal.isMaximal A).ne_top\n        (Ideal.eq_top_of_isUnit_mem _ h2 isUnit_one)\n    · -- maximality: for J > n, J = ⊤\n      intro J hJ\n      by_contra hJtop\n      -- Use that R/n embeds into A/m = k via k-algebra structure\n      -- The composition k → R → A → A/m is bijective.\n      -- Pick j ∈ J \\ n. Then algebraMap R A j ∉ m, so it's a unit in A.\n      -- We'll show 1 ∈ J.\n      obtain ⟨j, hjJ, hjn⟩ := SetLike.exists_of_lt hJ\n      -- j ∉ n means algebraMap R A j ∉ m\n      have hja : algebraMap R A j ∉ m := hjn\n      -- So algebraMap R A j is a unit in A\n      have hunit : IsUnit (algebraMap R A j) :=\n        (IsLocalRing.mem_maximalIdeal _).not.mp hja |> fun hh => by\n          rcases isUnit_or_eq_zero (algebraMap R A j) with hu | hz\n          · exact hu\n          · exfalso; apply hh\n            rw [hz]; exact (IsLocalRing.maximalIdeal A).zero_mem\n      -- Now use bijectivity of k → A/m to find c ∈ k with image equal to residue of algebraMap R A j\n      have hbij := h\n      -- residue (algebraMap R A j) is in image of k → A/m\n      set φ : k → IsLocalRing.ResidueField A := (IsLocalRing.residue A).comp (algebraMap k A)\n      obtain ⟨c, hc⟩ := hbij.surjective (IsLocalRing.residue A (algebraMap R A j))\n      -- c ≠ 0 since residue (algebraMap R A j) ≠ 0 (as algebraMap R A j is a unit hence not in m)\n      have hc_ne : c ≠ 0 := by\n        intro hc0\n        rw [hc0] at hc\n        simp [φ] at hc\n        -- hc : 0 = residue ...\n        have : algebraMap R A j ∈ m := by\n          rw [← Ideal.Quotient.eq_zero_iff_mem]\n          exact hc.symm\n        exact hja this\n      -- So c is a unit in k\n      have hc_unit : IsUnit c := isUnit_iff_ne_zero.mpr hc_ne\n      -- Now algebraMap k A c - algebraMap R A j is in m\n      have hdiff : algebraMap k A c - algebraMap R A j ∈ m := by\n        rw [← Ideal.Quotient.eq_zero_iff_mem]\n        rw [map_sub]\n        have := hc\n        simp [φ, Function.comp] at this\n        rw [this]\n        ring\n      -- Need to express algebraMap k A c via the scalar tower\n      -- algebraMap k A = (algebraMap R A) ∘ (algebraMap k R)\n      have htower : algebraMap k A c = algebraMap R A (algebraMap k R c) := by\n        rw [← IsScalarTower.algebraMap_apply]\n      rw [htower] at hdiff\n      rw [← map_sub] at hdiff\n      -- So algebraMap k R c - j ∈ n (since its image in A is in m)\n      have hin_n : algebraMap k R c - j ∈ n := hdiff\n      have hin_J : algebraMap k R c - j ∈ J := hJ.le hin_n\n      -- So algebraMap k R c = (algebraMap k R c - j) + j ∈ J\n      have hcJ : algebraMap k R c ∈ J := by\n        have : algebraMap k R c = (algebraMap k R c - j) + j := by ring\n        rw [this]\n        exact J.add_mem hin_J hjJ\n      -- algebraMap k R c is a unit in R since c is a unit in k\n      have hcR_unit : IsUnit (algebraMap k R c) := hc_unit.map (algebraMap k R)\n      -- So J = ⊤\n      exact hJtop (Ideal.eq_top_of_isUnit_mem _ hcJ hcR_unit)\n  refine ⟨n, hn_max, ?_⟩\n  -- Show IsLocalization n.primeCompl A\n  -- Use that S ≤ n.primeCompl and every element of n.primeCompl is a unit in A\n  have hcompl_units : ∀ t ∈ n.primeCompl, IsUnit (algebraMap R A t) := by\n    intro t ht\n    have : algebraMap R A t ∉ m := ht\n    rcases isUnit_or_eq_zero (algebraMap R A t) with hu | hz\n    · exact hu\n    · exfalso; apply this; rw [hz]; exact (IsLocalRing.maximalIdeal A).zero_mem\n  exact IsLocalization.isLocalization_of_submonoid_le _ _ S n.primeCompl hS_le\n    (fun ⟨t, ht⟩ => hcompl_units t ht)",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 55
+          },
+          "endPos": {
+            "line": 6,
+            "column": 66
+          },
+          "data": "unknown identifier 'IsLocalRing'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 197.77
+    }
+  },
+  {
+    "problem_id": "FATE-H_78",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 6,
+    "code": "/--\nLet \\( R' / R \\) be an integral extension of rings. Show that \\( \\text{rad}(R) = \\text{rad}(R') \\cap R \\),\nwhere $\\text{rad}(R)$ denotes the nilpotent radical of $R$.-/\ntheorem nilpotent_eq_contraction_nilpotent_of_integral (R R' : Type) [CommRing R] [CommRing R']\n    [Algebra R R'] (int : Algebra.IsIntegral R R') :\n    nilradical R = Ideal.comap (algebraMap R R') (nilradical R') := by\n  ext x\n  simp only [mem_nilradical, Ideal.mem_comap]\n  constructor\n  · rintro ⟨n, hn⟩\n    refine ⟨n, ?_⟩\n    rw [← map_pow, hn, map_zero]\n  · rintro ⟨n, hn⟩\n    refine ⟨n, ?_⟩\n    rw [← map_pow] at hn\n    sorry",
+    "full_code": "/--\nLet \\( R' / R \\) be an integral extension of rings. Show that \\( \\text{rad}(R) = \\text{rad}(R') \\cap R \\),\nwhere $\\text{rad}(R)$ denotes the nilpotent radical of $R$.-/\ntheorem nilpotent_eq_contraction_nilpotent_of_integral (R R' : Type) [CommRing R] [CommRing R']\n    [Algebra R R'] (int : Algebra.IsIntegral R R') :\n    nilradical R = Ideal.comap (algebraMap R R') (nilradical R') := by\n  ext x\n  simp only [mem_nilradical, Ideal.mem_comap]\n  constructor\n  · rintro ⟨n, hn⟩\n    refine ⟨n, ?_⟩\n    rw [← map_pow, hn, map_zero]\n  · rintro ⟨n, hn⟩\n    refine ⟨n, ?_⟩\n    rw [← map_pow] at hn\n    sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 17,
+          "pos": {
+            "line": 16,
+            "column": 4
+          },
+          "goal": "case h.mpr.intro\nR R' : Type\ninst✝² : CommRing R\ninst✝¹ : CommRing R'\ninst✝ : Algebra R R'\nint : Algebra.IsIntegral R R'\nx : R\nn : ℕ\nhn : (algebraMap R R') (x ^ n) = 0\n⊢ x ^ n = 0",
+          "endPos": {
+            "line": 16,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 359.32
+    }
+  },
+  {
+    "problem_id": "FATE-H_79",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--Let \\( R \\) be a commutative ring. If all submodules of finitely generated free modules over\n\\( R \\) are free over \\( R \\), then \\( R \\) is a PID.-/\ntheorem isPrincipalIdealRing_of_forall_free {R : Type} [CommRing R]\n    (h : ∀ (M : Type) [AddCommGroup M] [Module R M] [Module.Finite R M] [Module.Free R M],\n      ∀ (N : Submodule R M), Module.Free R N) :\n    IsPrincipalIdealRing R := by\n  rcases subsingleton_or_nontrivial R with hsub | hnt\n  · refine ⟨fun I => ⟨⟨0, ?_⟩⟩⟩\n    ext x\n    simp [Subsingleton.elim x (0:R), Submodule.zero_mem]\n  · refine ⟨fun I => ?_⟩\n    haveI hfree : Module.Free R I := h R I\n    set κ := Module.Free.ChooseBasisIndex R I with hκdef\n    set B : Basis κ R I := Module.Free.chooseBasis R I with hBdef\n    have hsubκ : Subsingleton κ := by\n      by_contra hns\n      rw [not_subsingleton_iff_nontrivial] at hns\n      obtain ⟨i, j, hij⟩ := hns\n      let a : R := (B i : R)\n      let b : R := (B j : R)\n      let f : κ →₀ R := Finsupp.single i b - Finsupp.single j a\n      have htot : (Finsupp.total κ I R B) f = 0 := by\n        show (Finsupp.total κ I R B) (Finsupp.single i b - Finsupp.single j a) = 0\n        rw [map_sub, Finsupp.total_single, Finsupp.total_single]\n        apply Subtype.ext\n        show (b • (B i : I) - a • (B j : I) : I).val = (0 : I).val\n        show b • (B i : R) - a • (B j : R) = 0\n        change b * (B i : R) - a * (B j : R) = 0\n        change b * a - a * b = 0\n        ring\n      have hf0 : f = 0 := by\n        have hli := B.linearIndependent\n        rw [linearIndependent_iff] at hli\n        exact hli f htot\n      have hfi : f i = b := by\n        simp [f, Finsupp.single_apply, hij.symm]\n      have hb0 : b = 0 := by\n        have := congrArg (fun g : κ →₀ R => g i) hf0\n        simp [hfi] at this\n        exact this\n      have : (B j : R) = 0 := hb0\n      have hBj : B j = 0 := Subtype.ext this\n      exact B.ne_zero j hBj\n    by_cases hemp : IsEmpty κ\n    · refine ⟨⟨0, ?_⟩⟩\n      rw [Submodule.span_zero_singleton]\n      ext x\n      refine ⟨fun hx => ?_, fun hx => hx ▸ I.zero_mem⟩\n      have : (⟨x, hx⟩ : I) = 0 := by\n        have hr := B.total_repr ⟨x, hx⟩\n        have : (B.repr ⟨x, hx⟩) = 0 := by\n          ext k; exact hemp.elim k\n        rw [this, map_zero] at hr\n        exact hr.symm\n      exact congrArg Subtype.val this\n    · rw [not_isEmpty_iff] at hemp\n      haveI : Nonempty κ := hemp\n      haveI : Unique κ := uniqueOfSubsingleton (Classical.arbitrary κ)\n      refine ⟨⟨(B default : R), ?_⟩⟩\n      ext x\n      refine ⟨fun hx => ?_, fun hx => ?_⟩\n      · have hr := B.total_repr ⟨x, hx⟩\n        set c : R := B.repr ⟨x, hx⟩ default\n        have hrepr : B.repr ⟨x, hx⟩ = Finsupp.single default c := by\n          apply Finsupp.ext\n          intro k\n          have hk : k = default := Unique.eq_default k\n          subst hk\n          simp [c]\n        rw [hrepr, Finsupp.total_single] at hr\n        have hxeq : x = c • (B default : R) := by\n          have := congrArg Subtype.val hr\n          exact this.symm\n        rw [hxeq]\n        exact Submodule.smul_mem _ c (Submodule.mem_span_singleton_self _)\n      · rw [Submodule.mem_span_singleton] at hx\n        obtain ⟨c, hc⟩ := hx\n        rw [← hc]\n        exact Submodule.smul_mem _ c (B default).property",
+    "full_code": "/--Let \\( R \\) be a commutative ring. If all submodules of finitely generated free modules over\n\\( R \\) are free over \\( R \\), then \\( R \\) is a PID.-/\ntheorem isPrincipalIdealRing_of_forall_free {R : Type} [CommRing R]\n    (h : ∀ (M : Type) [AddCommGroup M] [Module R M] [Module.Finite R M] [Module.Free R M],\n      ∀ (N : Submodule R M), Module.Free R N) :\n    IsPrincipalIdealRing R := by\n  rcases subsingleton_or_nontrivial R with hsub | hnt\n  · refine ⟨fun I => ⟨⟨0, ?_⟩⟩⟩\n    ext x\n    simp [Subsingleton.elim x (0:R), Submodule.zero_mem]\n  · refine ⟨fun I => ?_⟩\n    haveI hfree : Module.Free R I := h R I\n    set κ := Module.Free.ChooseBasisIndex R I with hκdef\n    set B : Basis κ R I := Module.Free.chooseBasis R I with hBdef\n    have hsubκ : Subsingleton κ := by\n      by_contra hns\n      rw [not_subsingleton_iff_nontrivial] at hns\n      obtain ⟨i, j, hij⟩ := hns\n      let a : R := (B i : R)\n      let b : R := (B j : R)\n      let f : κ →₀ R := Finsupp.single i b - Finsupp.single j a\n      have htot : (Finsupp.total κ I R B) f = 0 := by\n        show (Finsupp.total κ I R B) (Finsupp.single i b - Finsupp.single j a) = 0\n        rw [map_sub, Finsupp.total_single, Finsupp.total_single]\n        apply Subtype.ext\n        show (b • (B i : I) - a • (B j : I) : I).val = (0 : I).val\n        show b • (B i : R) - a • (B j : R) = 0\n        change b * (B i : R) - a * (B j : R) = 0\n        change b * a - a * b = 0\n        ring\n      have hf0 : f = 0 := by\n        have hli := B.linearIndependent\n        rw [linearIndependent_iff] at hli\n        exact hli f htot\n      have hfi : f i = b := by\n        simp [f, Finsupp.single_apply, hij.symm]\n      have hb0 : b = 0 := by\n        have := congrArg (fun g : κ →₀ R => g i) hf0\n        simp [hfi] at this\n        exact this\n      have : (B j : R) = 0 := hb0\n      have hBj : B j = 0 := Subtype.ext this\n      exact B.ne_zero j hBj\n    by_cases hemp : IsEmpty κ\n    · refine ⟨⟨0, ?_⟩⟩\n      rw [Submodule.span_zero_singleton]\n      ext x\n      refine ⟨fun hx => ?_, fun hx => hx ▸ I.zero_mem⟩\n      have : (⟨x, hx⟩ : I) = 0 := by\n        have hr := B.total_repr ⟨x, hx⟩\n        have : (B.repr ⟨x, hx⟩) = 0 := by\n          ext k; exact hemp.elim k\n        rw [this, map_zero] at hr\n        exact hr.symm\n      exact congrArg Subtype.val this\n    · rw [not_isEmpty_iff] at hemp\n      haveI : Nonempty κ := hemp\n      haveI : Unique κ := uniqueOfSubsingleton (Classical.arbitrary κ)\n      refine ⟨⟨(B default : R), ?_⟩⟩\n      ext x\n      refine ⟨fun hx => ?_, fun hx => ?_⟩\n      · have hr := B.total_repr ⟨x, hx⟩\n        set c : R := B.repr ⟨x, hx⟩ default\n        have hrepr : B.repr ⟨x, hx⟩ = Finsupp.single default c := by\n          apply Finsupp.ext\n          intro k\n          have hk : k = default := Unique.eq_default k\n          subst hk\n          simp [c]\n        rw [hrepr, Finsupp.total_single] at hr\n        have hxeq : x = c • (B default : R) := by\n          have := congrArg Subtype.val hr\n          exact this.symm\n        rw [hxeq]\n        exact Submodule.smul_mem _ c (Submodule.mem_span_singleton_self _)\n      · rw [Submodule.mem_span_singleton] at hx\n        obtain ⟨c, hc⟩ := hx\n        rw [← hc]\n        exact Submodule.smul_mem _ c (B default).property",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 117.11
+    }
+  },
+  {
+    "problem_id": "FATE-H_80",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nLet \\( R \\subset R' \\) be an extension of integral domains, and let \\( \\overline{R} \\) be the integral closure of \\( R \\) in \\( R' \\).\nShow that for any two monic polynomials \\( f, g \\in R'[t] \\) with \\( f \\cdot g \\in R[t] \\),\nwe have \\( f, g \\in \\overline{R}[t] \\).-/\ntheorem mem_polynomial_integral_closure_of_prod_mem_polynomial (R S : Type) [CommRing R]\n    [IsDomain R] [CommRing S] [IsDomain S] [Algebra R S] [NoZeroSMulDivisors R S] (f g : S[X])\n    (mem : f * g ∈ lifts (algebraMap R S)) (hf : f.Monic) (hg : g.Monic) :\n    f ∈ lifts (integralClosure R S).subtype ∧ g ∈ lifts (integralClosure R S).subtype := by\n  sorry",
+    "full_code": "/--\nLet \\( R \\subset R' \\) be an extension of integral domains, and let \\( \\overline{R} \\) be the integral closure of \\( R \\) in \\( R' \\).\nShow that for any two monic polynomials \\( f, g \\in R'[t] \\) with \\( f \\cdot g \\in R[t] \\),\nwe have \\( f, g \\in \\overline{R}[t] \\).-/\ntheorem mem_polynomial_integral_closure_of_prod_mem_polynomial (R S : Type) [CommRing R]\n    [IsDomain R] [CommRing S] [IsDomain S] [Algebra R S] [NoZeroSMulDivisors R S] (f g : S[X])\n    (mem : f * g ∈ lifts (algebraMap R S)) (hf : f.Monic) (hg : g.Monic) :\n    f ∈ lifts (integralClosure R S).subtype ∧ g ∈ lifts (integralClosure R S).subtype := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 91.36
+    }
+  }
+]

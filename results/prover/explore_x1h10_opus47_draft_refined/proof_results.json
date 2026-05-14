@@ -1,0 +1,261 @@
+[
+  {
+    "problem_id": "FATE-X_1",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Let $R$ be a UFD with two nonassociate prime elements $p$ and $q$ such that every prime\nelement is an associate of either $p$ or $q$.  Prove that $R$ is a PID. -/\ntheorem isPrincipalIdealRing_of_associated_or_associated {R : Type} [CommRing R] [IsDomain R]\n    [UniqueFactorizationMonoid R] {p q : R} (hp : Prime p) (hq : Prime q) (hpq : ¬ Associated p q)\n    (h : ∀ {x : R}, Prime x → Associated x p ∨ Associated x q) :\n    IsPrincipalIdealRing R := by\n  sorry",
+    "full_code": "/-- Let $R$ be a UFD with two nonassociate prime elements $p$ and $q$ such that every prime\nelement is an associate of either $p$ or $q$.  Prove that $R$ is a PID. -/\ntheorem isPrincipalIdealRing_of_associated_or_associated {R : Type} [CommRing R] [IsDomain R]\n    [UniqueFactorizationMonoid R] {p q : R} (hp : Prime p) (hq : Prime q) (hpq : ¬ Associated p q)\n    (h : ∀ {x : R}, Prime x → Associated x p ∨ Associated x q) :\n    IsPrincipalIdealRing R := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 60.43
+    }
+  },
+  {
+    "problem_id": "FATE-X_2",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet $G$ be a finite group and $L$ a maximal subgroup of $G$. Suppose $L$ is non-Abelian and simple.\nThen there exist at most two minimal normal subgroups in $G$.\n-/\ntheorem card_minimal_normal_subgroup_le_2 (G : Type) [Group G] [Finite G]\n    (L : Subgroup G) (h_ne_top : L ≠ ⊤) (h_maximal : IsMax (⟨L, h_ne_top⟩ : {H : Subgroup G // H ≠ ⊤}))\n    (h_simple : IsSimpleGroup L) (h_non_comm : ∃ (x y : L), x * y ≠ y * x) :\n    {H : {H : Subgroup G // H.Normal} | IsMin H}.ncard ≤ 2 := by\n  have hbn : (⊥ : Subgroup G).Normal := inferInstance\n  have hsub : {H : {H : Subgroup G // H.Normal} | IsMin H} ⊆\n      {(⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal})} := by\n    intro H hH\n    simp only [Set.mem_setOf_eq] at hH\n    simp only [Set.mem_singleton_iff]\n    have hbot_le : (⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal}) ≤ H := by\n      show (⊥ : Subgroup G) ≤ H.1\n      exact bot_le\n    have hle : H ≤ (⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal}) := hH hbot_le\n    apply le_antisymm hle hbot_le\n  have h1 : {H : {H : Subgroup G // H.Normal} | IsMin H}.ncard ≤\n      ({(⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal})} : Set _).ncard := by\n    apply Set.ncard_le_ncard hsub\n  have h2 : ({(⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal})} : Set _).ncard = 1 :=\n    Set.ncard_singleton _\n  rw [h2] at h1\n  linarith",
+    "full_code": "/--\nLet $G$ be a finite group and $L$ a maximal subgroup of $G$. Suppose $L$ is non-Abelian and simple.\nThen there exist at most two minimal normal subgroups in $G$.\n-/\ntheorem card_minimal_normal_subgroup_le_2 (G : Type) [Group G] [Finite G]\n    (L : Subgroup G) (h_ne_top : L ≠ ⊤) (h_maximal : IsMax (⟨L, h_ne_top⟩ : {H : Subgroup G // H ≠ ⊤}))\n    (h_simple : IsSimpleGroup L) (h_non_comm : ∃ (x y : L), x * y ≠ y * x) :\n    {H : {H : Subgroup G // H.Normal} | IsMin H}.ncard ≤ 2 := by\n  have hbn : (⊥ : Subgroup G).Normal := inferInstance\n  have hsub : {H : {H : Subgroup G // H.Normal} | IsMin H} ⊆\n      {(⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal})} := by\n    intro H hH\n    simp only [Set.mem_setOf_eq] at hH\n    simp only [Set.mem_singleton_iff]\n    have hbot_le : (⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal}) ≤ H := by\n      show (⊥ : Subgroup G) ≤ H.1\n      exact bot_le\n    have hle : H ≤ (⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal}) := hH hbot_le\n    apply le_antisymm hle hbot_le\n  have h1 : {H : {H : Subgroup G // H.Normal} | IsMin H}.ncard ≤\n      ({(⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal})} : Set _).ncard := by\n    apply Set.ncard_le_ncard hsub\n  have h2 : ({(⟨⊥, hbn⟩ : {H : Subgroup G // H.Normal})} : Set _).ncard = 1 :=\n    Set.ncard_singleton _\n  rw [h2] at h1\n  linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 31.24
+    }
+  },
+  {
+    "problem_id": "FATE-X_3",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nLet $H$ be a subgroup of finite index of a group $G$. Show that there exists a subset $S$ of $G$, such that\n$S$ is both a set of representatives of the left and the right cosets of $H$ in $G$.\n-/\ntheorem exists_leftCoset_rightCoset_representative\n    (G : Type) [Group G] (H : Subgroup G) [H.FiniteIndex] :\n    ∃ S : Set G, Subgroup.IsComplement S H ∧ Subgroup.IsComplement H S := by\n  sorry",
+    "full_code": "/--\nLet $H$ be a subgroup of finite index of a group $G$. Show that there exists a subset $S$ of $G$, such that\n$S$ is both a set of representatives of the left and the right cosets of $H$ in $G$.\n-/\ntheorem exists_leftCoset_rightCoset_representative\n    (G : Type) [Group G] (H : Subgroup G) [H.FiniteIndex] :\n    ∃ S : Set G, Subgroup.IsComplement S H ∧ Subgroup.IsComplement H S := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 1,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝¹ : Group G\nH : Subgroup G\ninst✝ : H.FiniteIndex\n⊢ ∃ S, Subgroup.IsComplement S ↑H ∧ Subgroup.IsComplement (↑H) S",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 199.97
+    }
+  },
+  {
+    "problem_id": "FATE-X_4",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nLet $p$ be an odd prime number, and let $G$ be a finite group of order $p(p + 1)$. Assume that $G$\ndoes not have a normal Sylow $p$-subgroup. Prove that $p + 1$ is a power of $2$.\n-/\ntheorem add_one_eq_two_pow_of_sylow_subgroup_not_normal (p : ℕ) (h_odd : Odd p) (G : Type)\n    (hp : p.Prime) [Finite G] [Group G] (h_card : Nat.card G = p * (p + 1))\n    (h_sylow : ∀ (H : Sylow p G), ¬ H.Normal) : ∃ (n : ℕ), p + 1 = 2 ^ n := by\n  sorry",
+    "full_code": "/--\nLet $p$ be an odd prime number, and let $G$ be a finite group of order $p(p + 1)$. Assume that $G$\ndoes not have a normal Sylow $p$-subgroup. Prove that $p + 1$ is a power of $2$.\n-/\ntheorem add_one_eq_two_pow_of_sylow_subgroup_not_normal (p : ℕ) (h_odd : Odd p) (G : Type)\n    (hp : p.Prime) [Finite G] [Group G] (h_card : Nat.card G = p * (p + 1))\n    (h_sylow : ∀ (H : Sylow p G), ¬ H.Normal) : ∃ (n : ℕ), p + 1 = 2 ^ n := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "p : ℕ\nh_odd : Odd p\nG : Type\nhp : p.Prime\ninst✝¹ : Finite G\ninst✝ : Group G\nh_card : Nat.card G = p * (p + 1)\nh_sylow : ∀ (H : Sylow p G), ¬(↑H).Normal\n⊢ ∃ n, p + 1 = 2 ^ n",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 90.48
+    }
+  },
+  {
+    "problem_id": "FATE-X_5",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet \\(p\\) be a prime, let \\(G\\) be a finite p-group. Let A be a maximal normal abelian subgroup of \\(G\\).\nProve that A is also a maximal abelian subgroup of \\(G\\).-/\ntheorem maximal_abelian_normal_subgroup_of_p_group_is_maximal_abelian_subgroup\n    (p : ℕ) (hp : p.Prime) (G : Type) [Group G] [Finite G] (h_pgroup : IsPGroup p G)\n    (H : Subgroup G) (h_normal : H.Normal) (h_comm : IsMulCommutative H)\n    (h_maximal_normal_abelian : ∀ (K : Subgroup G), K.Normal → IsMulCommutative K → H ≤ K → H = K) :\n    ∀ (K : Subgroup G), IsMulCommutative K → H ≤ K → H = K := by\n  sorry",
+    "full_code": "/--\nLet \\(p\\) be a prime, let \\(G\\) be a finite p-group. Let A be a maximal normal abelian subgroup of \\(G\\).\nProve that A is also a maximal abelian subgroup of \\(G\\).-/\ntheorem maximal_abelian_normal_subgroup_of_p_group_is_maximal_abelian_subgroup\n    (p : ℕ) (hp : p.Prime) (G : Type) [Group G] [Finite G] (h_pgroup : IsPGroup p G)\n    (H : Subgroup G) (h_normal : H.Normal) (h_comm : IsMulCommutative H)\n    (h_maximal_normal_abelian : ∀ (K : Subgroup G), K.Normal → IsMulCommutative K → H ≤ K → H = K) :\n    ∀ (K : Subgroup G), IsMulCommutative K → H ≤ K → H = K := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 55.7
+    }
+  },
+  {
+    "problem_id": "FATE-X_6",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/-- Prove that if $\\#G = 396$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_396 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 396) : ¬ IsSimpleGroup G := by\n  sorry",
+    "full_code": "/-- Prove that if $\\#G = 396$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_396 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 396) : ¬ IsSimpleGroup G := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 62.44
+    }
+  },
+  {
+    "problem_id": "FATE-X_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1785 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1785) : ¬ IsSimpleGroup G := by\n  intro hS\n  haveI : Fact (Nat.Prime 17) := ⟨by decide⟩\n  have hpos : 0 < Nat.card G := by rw [h_card]; decide\n  sorry",
+    "full_code": "/-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1785 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1785) : ¬ IsSimpleGroup G := by\n  intro hS\n  haveI : Fact (Nat.Prime 17) := ⟨by decide⟩\n  have hpos : 0 < Nat.card G := by rw [h_card]; decide\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 8,
+          "pos": {
+            "line": 7,
+            "column": 2
+          },
+          "goal": "G : Type\ninst✝¹ : Group G\ninst✝ : Finite G\nh_card : Nat.card G = 1785\nhS : IsSimpleGroup G\nthis : Fact (Nat.Prime 17)\nhpos : 0 < Nat.card G\n⊢ False",
+          "endPos": {
+            "line": 7,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 104.4
+    }
+  },
+  {
+    "problem_id": "FATE-X_8",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet $A, B \\in \\mathbb{Q}^\\times$ be rational numbers. Consider the quaternion ring\n$$\nD_{A, B, \\mathbb{R}} = \\{a+b\\boldsymbol{i} +c\\boldsymbol{j}+d\\boldsymbol{k}\\;|\\; a,b,c,d \\in\n\\mathbb{R}\\}$$\nin which the multiplication satisfies relations: $\\boldsymbol{i}^2 = A$, $\\boldsymbol{j}^ 2 = B$,\nand $\\boldsymbol{i}\\boldsymbol{j}= -\\boldsymbol{j}\\boldsymbol{i} = \\boldsymbol{k}$.\nShow that $D_{A, B, \\mathbb{R}}$ is either isomorphic to $\\mathbb{H}$ (Hamilton quaternion) or\nisomorphic to $\\mathrm{Mat}_{2\\times 2}(\\mathbb{R})$ as $\\mathbb{R}$-algebras.\n-/\ntheorem quaternionAlgebra_isomorphic_to_matrix_ring_or_quaternion_ring\n    (A B : ℚ) (ha : A ≠ 0) (hb : B ≠ 0) :\n    ((Nonempty (ℍ[ℝ, A, B] ≃ₐ[ℝ] ℍ[ℝ, -1, -1])) ∨ (Nonempty (ℍ[ℝ, A, B] ≃ₐ[ℝ] Matrix (Fin 2) (Fin 2) ℝ)))\n    ∧ IsEmpty (Matrix (Fin 2) (Fin 2) ℝ ≃ₐ[ℝ] ℍ[ℝ, -1, -1]) := by\n  sorry",
+    "full_code": "/--\nLet $A, B \\in \\mathbb{Q}^\\times$ be rational numbers. Consider the quaternion ring\n$$\nD_{A, B, \\mathbb{R}} = \\{a+b\\boldsymbol{i} +c\\boldsymbol{j}+d\\boldsymbol{k}\\;|\\; a,b,c,d \\in\n\\mathbb{R}\\}$$\nin which the multiplication satisfies relations: $\\boldsymbol{i}^2 = A$, $\\boldsymbol{j}^ 2 = B$,\nand $\\boldsymbol{i}\\boldsymbol{j}= -\\boldsymbol{j}\\boldsymbol{i} = \\boldsymbol{k}$.\nShow that $D_{A, B, \\mathbb{R}}$ is either isomorphic to $\\mathbb{H}$ (Hamilton quaternion) or\nisomorphic to $\\mathrm{Mat}_{2\\times 2}(\\mathbb{R})$ as $\\mathbb{R}$-algebras.\n-/\ntheorem quaternionAlgebra_isomorphic_to_matrix_ring_or_quaternion_ring\n    (A B : ℚ) (ha : A ≠ 0) (hb : B ≠ 0) :\n    ((Nonempty (ℍ[ℝ, A, B] ≃ₐ[ℝ] ℍ[ℝ, -1, -1])) ∨ (Nonempty (ℍ[ℝ, A, B] ≃ₐ[ℝ] Matrix (Fin 2) (Fin 2) ℝ)))\n    ∧ IsEmpty (Matrix (Fin 2) (Fin 2) ℝ ≃ₐ[ℝ] ℍ[ℝ, -1, -1]) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 79.67
+    }
+  },
+  {
+    "problem_id": "FATE-X_9",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet $G$ be a finite group and let $\\mathrm{Syl}_p(G)$ denote its set of Sylow $p$-subgroups.\n\tSuppose that $S$ and $T$ are distinct members of\n\t$\\mathrm{Syl}_p(G)$ chosen so that $\\#(S \\cap T)$ is maximal\namong all such intersections. Prove that the normalizer $N_G(S \\cap  T)$ does not admit normal\nSylow $p$-subgroup.-/\ntheorem sylow_subgroup_not_normal_of_maximal_intersection (G : Type) [Finite G] [Group G]\n    (p : ℕ) [Fact (Nat.Prime p)] (S T : Sylow p G) (h_ne : S ≠ T)\n    (h_maximal : ∀ (S' T' : Sylow p G), S' ≠ T' →\n    ((S' : Set G) ⊓ T').ncard ≤ ((S : Set G) ⊓ T).ncard) :\n    ∀ (P : Sylow p ((S : Subgroup G) ⊓ T).normalizer), ¬ P.Normal := by\n  intro P hP\n  -- extract things\n  sorry",
+    "full_code": "/--\nLet $G$ be a finite group and let $\\mathrm{Syl}_p(G)$ denote its set of Sylow $p$-subgroups.\n\tSuppose that $S$ and $T$ are distinct members of\n\t$\\mathrm{Syl}_p(G)$ chosen so that $\\#(S \\cap T)$ is maximal\namong all such intersections. Prove that the normalizer $N_G(S \\cap  T)$ does not admit normal\nSylow $p$-subgroup.-/\ntheorem sylow_subgroup_not_normal_of_maximal_intersection (G : Type) [Finite G] [Group G]\n    (p : ℕ) [Fact (Nat.Prime p)] (S T : Sylow p G) (h_ne : S ≠ T)\n    (h_maximal : ∀ (S' T' : Sylow p G), S' ≠ T' →\n    ((S' : Set G) ⊓ T').ncard ≤ ((S : Set G) ⊓ T).ncard) :\n    ∀ (P : Sylow p ((S : Subgroup G) ⊓ T).normalizer), ¬ P.Normal := by\n  intro P hP\n  -- extract things\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 119.71
+    }
+  },
+  {
+    "problem_id": "FATE-X_10",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet \\( A = \\mathbb{R}[X, Y]/(X^2 + Y^2 + 1) \\). Then it is a principal ideal domain. -/\ntheorem isPrincipalIdealRing_quot_X_pow_two_plus_Y_pow_two_plus_one :\n    IsPrincipalIdealRing ((MvPolynomial (Fin 2) ℝ) ⧸\n    Ideal.span {(.X 0 ^ 2 + .X 1 ^ 2 + .C 1 : (MvPolynomial (Fin 2) ℝ))}) := by\n  sorry",
+    "full_code": "/--\nLet \\( A = \\mathbb{R}[X, Y]/(X^2 + Y^2 + 1) \\). Then it is a principal ideal domain. -/\ntheorem isPrincipalIdealRing_quot_X_pow_two_plus_Y_pow_two_plus_one :\n    IsPrincipalIdealRing ((MvPolynomial (Fin 2) ℝ) ⧸\n    Ideal.span {(.X 0 ^ 2 + .X 1 ^ 2 + .C 1 : (MvPolynomial (Fin 2) ℝ))}) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 3,
+      "draft_count": 1,
+      "strategy_time": 69.25
+    }
+  }
+]
