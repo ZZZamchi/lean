@@ -1,0 +1,21 @@
+[
+  {
+    "problem_id": "FATE-M_1",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nInductively define $G^n=G\\times G\\times\\cdots \\times G$, the product of $n$ same groups $G$.\nIf $G$ is a finite group, prove that this group has order $|G|^n$.\n-/\ntheorem prod_card_eq_card_pow {G : Type*} [Fintype G] [Group G] (n : ℕ) :\n    Fintype.card (Π _ : Fin n, G) = (Fintype.card G) ^ n := by\n  simp [Fintype.card_fun]",
+    "full_code": "/--\nInductively define $G^n=G\\times G\\times\\cdots \\times G$, the product of $n$ same groups $G$.\nIf $G$ is a finite group, prove that this group has order $|G|^n$.\n-/\ntheorem prod_card_eq_card_pow {G : Type*} [Fintype G] [Group G] (n : ℕ) :\n    Fintype.card (Π _ : Fin n, G) = (Fintype.card G) ^ n := by\n  simp [Fintype.card_fun]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 37.27
+    }
+  }
+]

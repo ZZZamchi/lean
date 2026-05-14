@@ -1,0 +1,58 @@
+[
+  {
+    "problem_id": "FATE-X_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 9,
+    "code": "/-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1785 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1785) : ¬ IsSimpleGroup G := by\n  /-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\n  sorry",
+    "full_code": "/-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1785 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1785) : ¬ IsSimpleGroup G := by\n  /-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 69
+          },
+          "endPos": {
+            "line": 4,
+            "column": 5
+          },
+          "data": "unexpected token '/--'; expected '{' or tactic"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 3,
+            "column": 67
+          },
+          "endPos": {
+            "line": 3,
+            "column": 69
+          },
+          "data": "unsolved goals\nG : Type\ninst✝¹ : Group G\ninst✝ : Finite G\nh_card : Nat.card G = 1785\n⊢ ¬IsSimpleGroup G"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 59
+          },
+          "endPos": {
+            "line": 5,
+            "column": 7
+          },
+          "data": "unexpected token 'sorry'; expected '#guard_msgs', 'abbrev', 'add_decl_doc', 'add_tactic_doc', 'alias', 'axiom', 'binder_predicate', 'builtin_dsimproc', 'builtin_dsimproc_decl', 'builtin_initialize', 'builtin_simproc', 'builtin_simproc_decl', 'class', 'declare_config_elab', 'declare_opaque_type', 'declare_simp_like_tactic', 'declare_syntax_cat', 'def', 'dsimproc', 'dsimproc_decl', 'elab', 'elab_rules', 'example', 'inductive', 'infix', 'infixl', 'infixr', 'initialize', 'instance', 'irreducible_def', 'lemma', 'macro', 'macro_rules', 'notation', 'notation3', 'opaque', 'postfix', 'prefix', 'proof_wanted', 'register_builtin_option', 'register_label_attr', 'register_option', 'register_simp_attr', 'scoped', 'simproc', 'simproc_decl', 'structure', 'syntax', 'theorem' or 'unif_hint'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 409.3
+    }
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "problem_id": "FATE-H_82",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/--\nLet \\( D \\) be a unique factorization domain.\nProve that if every nonzero prime ideal of \\( D \\) is maximal, then \\( D \\) is a principal ideal domain.\n-/\ntheorem isPrincipalIdealRing_of_isPrime_ne_bot_isMaximal {D : Type} [CommRing D] [IsDomain D]\n    [UniqueFactorizationMonoid D] (h : ∀ P : Ideal D, [P.IsPrime] → P ≠ ⊥ → P.IsMaximal) : IsPrincipalIdealRing D := by\n  have hprime : ∀ P : Ideal D, P.IsPrime → Submodule.IsPrincipal P := by\n    intro P hP\n    haveI : P.IsPrime := hP\n    by_cases hPbot : P = ⊥\n    · refine ⟨⟨0, ?_⟩⟩\n      rw [hPbot, Submodule.span_zero_singleton]\n    · have hmax : P.IsMaximal := h P hPbot\n      have hex : ∃ x ∈ P, x ≠ 0 := by\n        by_contra hne\n        push_neg at hne\n        apply hPbot\n        rw [eq_bot_iff]\n        intro x hx\n        have hxz := hne x hx\n        simp [hxz]\n      obtain ⟨x, hxP, hx0⟩ := hex\n      obtain ⟨s, hs_prime, hs_assoc⟩ := UniqueFactorizationMonoid.exists_prime_factors x hx0\n      have hprod_mem : s.prod ∈ P := by\n        obtain ⟨u, hu⟩ := hs_assoc\n        have hxeq : x = s.prod * (u : D) := hu.symm\n        have hsprod : s.prod = x * ((u⁻¹ : Dˣ) : D) := by\n          rw [hxeq]\n          rw [mul_assoc]\n          simp\n        rw [hsprod]\n        exact Ideal.mul_mem_right _ P hxP\n      -- find a prime in s that lies in P\n      have hex_p : ∃ p ∈ s, p ∈ P := by\n        clear hxP hx0 hs_assoc x\n        induction s using Multiset.induction with\n        | empty =>\n          rw [Multiset.prod_zero] at hprod_mem\n          exfalso\n          exact hP.ne_top (Ideal.eq_top_iff_one P |>.mpr hprod_mem)\n        | cons a t ih =>\n          rw [Multiset.prod_cons] at hprod_mem\n          rcases hP.mem_or_mem hprod_mem with ha | ht\n          · exact ⟨a, Multiset.mem_cons_self _ _, ha⟩\n          · have hpt : ∀ q ∈ t, Prime q := fun q hq => hs_prime q (Multiset.mem_cons_of_mem hq)\n            obtain ⟨p, hpt2, hpP⟩ := ih hpt ht\n            exact ⟨p, Multiset.mem_cons_of_mem hpt2, hpP⟩\n      obtain ⟨p, hps, hpP⟩ := hex_p\n      have hp_prime : Prime p := hs_prime p hps\n      have hp_ne_zero : p ≠ 0 := hp_prime.ne_zero\n      have hspan_prime : (Ideal.span {p}).IsPrime :=\n        (Ideal.span_singleton_prime hp_ne_zero).mpr hp_prime\n      have hspan_ne_bot : Ideal.span ({p} : Set D) ≠ ⊥ := by\n        rw [Ne, Ideal.span_singleton_eq_bot]\n        exact hp_ne_zero\n      have hspan_max : (Ideal.span {p}).IsMaximal := h _ hspan_ne_bot\n      have hle : Ideal.span {p} ≤ P := by\n        rw [Ideal.span_le]\n        intro y hy\n        simp at hy\n        rw [hy]\n        exact hpP\n      have heq : Ideal.span {p} = P := hspan_max.eq_of_le hP.ne_top hle\n      exact ⟨⟨p, heq.symm⟩⟩\n  exact IsPrincipalIdealRing.of_prime hprime",
+    "full_code": "/--\nLet \\( D \\) be a unique factorization domain.\nProve that if every nonzero prime ideal of \\( D \\) is maximal, then \\( D \\) is a principal ideal domain.\n-/\ntheorem isPrincipalIdealRing_of_isPrime_ne_bot_isMaximal {D : Type} [CommRing D] [IsDomain D]\n    [UniqueFactorizationMonoid D] (h : ∀ P : Ideal D, [P.IsPrime] → P ≠ ⊥ → P.IsMaximal) : IsPrincipalIdealRing D := by\n  have hprime : ∀ P : Ideal D, P.IsPrime → Submodule.IsPrincipal P := by\n    intro P hP\n    haveI : P.IsPrime := hP\n    by_cases hPbot : P = ⊥\n    · refine ⟨⟨0, ?_⟩⟩\n      rw [hPbot, Submodule.span_zero_singleton]\n    · have hmax : P.IsMaximal := h P hPbot\n      have hex : ∃ x ∈ P, x ≠ 0 := by\n        by_contra hne\n        push_neg at hne\n        apply hPbot\n        rw [eq_bot_iff]\n        intro x hx\n        have hxz := hne x hx\n        simp [hxz]\n      obtain ⟨x, hxP, hx0⟩ := hex\n      obtain ⟨s, hs_prime, hs_assoc⟩ := UniqueFactorizationMonoid.exists_prime_factors x hx0\n      have hprod_mem : s.prod ∈ P := by\n        obtain ⟨u, hu⟩ := hs_assoc\n        have hxeq : x = s.prod * (u : D) := hu.symm\n        have hsprod : s.prod = x * ((u⁻¹ : Dˣ) : D) := by\n          rw [hxeq]\n          rw [mul_assoc]\n          simp\n        rw [hsprod]\n        exact Ideal.mul_mem_right _ P hxP\n      -- find a prime in s that lies in P\n      have hex_p : ∃ p ∈ s, p ∈ P := by\n        clear hxP hx0 hs_assoc x\n        induction s using Multiset.induction with\n        | empty =>\n          rw [Multiset.prod_zero] at hprod_mem\n          exfalso\n          exact hP.ne_top (Ideal.eq_top_iff_one P |>.mpr hprod_mem)\n        | cons a t ih =>\n          rw [Multiset.prod_cons] at hprod_mem\n          rcases hP.mem_or_mem hprod_mem with ha | ht\n          · exact ⟨a, Multiset.mem_cons_self _ _, ha⟩\n          · have hpt : ∀ q ∈ t, Prime q := fun q hq => hs_prime q (Multiset.mem_cons_of_mem hq)\n            obtain ⟨p, hpt2, hpP⟩ := ih hpt ht\n            exact ⟨p, Multiset.mem_cons_of_mem hpt2, hpP⟩\n      obtain ⟨p, hps, hpP⟩ := hex_p\n      have hp_prime : Prime p := hs_prime p hps\n      have hp_ne_zero : p ≠ 0 := hp_prime.ne_zero\n      have hspan_prime : (Ideal.span {p}).IsPrime :=\n        (Ideal.span_singleton_prime hp_ne_zero).mpr hp_prime\n      have hspan_ne_bot : Ideal.span ({p} : Set D) ≠ ⊥ := by\n        rw [Ne, Ideal.span_singleton_eq_bot]\n        exact hp_ne_zero\n      have hspan_max : (Ideal.span {p}).IsMaximal := h _ hspan_ne_bot\n      have hle : Ideal.span {p} ≤ P := by\n        rw [Ideal.span_le]\n        intro y hy\n        simp at hy\n        rw [hy]\n        exact hpP\n      have heq : Ideal.span {p} = P := hspan_max.eq_of_le hP.ne_top hle\n      exact ⟨⟨p, heq.symm⟩⟩\n  exact IsPrincipalIdealRing.of_prime hprime",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 201.39
+    }
+  },
+  {
+    "problem_id": "FATE-H_83",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 14,
+    "code": "/-- Let $M$ be a finitely-generated module over a Dedekind domain. Prove that $M$ is flat if and\nonly if $M$ is torsion-free. -/\ntheorem flat_iff_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M]\n    [Module R M] [IsDedekindDomain R] [Module.Finite R M] :\n    Module.Flat R M ↔ NoZeroSMulDivisors R M := by\n  sorry",
+    "full_code": "/-- Let $M$ be a finitely-generated module over a Dedekind domain. Prove that $M$ is flat if and\nonly if $M$ is torsion-free. -/\ntheorem flat_iff_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M]\n    [Module R M] [IsDedekindDomain R] [Module.Finite R M] :\n    Module.Flat R M ↔ NoZeroSMulDivisors R M := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 52,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "R M : Type\ninst✝⁴ : CommRing R\ninst✝³ : AddCommGroup M\ninst✝² : Module R M\ninst✝¹ : IsDedekindDomain R\ninst✝ : Module.Finite R M\n⊢ Module.Flat R M ↔ NoZeroSMulDivisors R M",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 5,
+      "draft_count": 1,
+      "strategy_time": 474.46
+    }
+  },
+  {
+    "problem_id": "FATE-H_84",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 15,
+    "code": "/-- Let $A$ be a Dedekind domain and $\\mathfrak{a} \\neq 0$ an ideal in $A$. Show that every ideal in\n $A/\\mathfrak{a}$ is principal. -/\ntheorem isPrincipalIdealRing_quot_of_isDedekind {A : Type} [CommRing A]\n    [IsDedekindDomain A] (a : Ideal A) (ha : a ≠ ⊥) :\n    IsPrincipalIdealRing (A ⧸ a) := by\n  -- It suffices to show every ideal in the quotient is principal\n  refine ⟨fun I => ?_⟩\n  -- Pull back I to an ideal b of A containing a\n  set b : Ideal A := I.comap (Ideal.Quotient.mk a) with hb_def\n  have ha_le_b : a ≤ b := by\n    intro x hx\n    simp [b, Ideal.mem_comap, (Ideal.Quotient.eq_zero_iff_mem).mpr hx, I.zero_mem]\n  -- Step 1: I is the image of b under the quotient map\n  have hI_map : I = b.map (Ideal.Quotient.mk a) := by\n    rw [Ideal.map_comap_of_surjective _ Ideal.Quotient.mk_surjective]\n  -- Step 2: there exists x ∈ A such that b = Ideal.span {x} ⊔ a\n  have hx_exists : ∃ x : A, b = Ideal.span {x} ⊔ a := by\n    sorry\n  -- Step 3: extract such an x and use it as generator\n  obtain ⟨x, hx⟩ := hx_exists\n  refine ⟨⟨Ideal.Quotient.mk a x, ?_⟩⟩\n  -- Step 4: show I = span {x mod a}\n  have hI_eq : I = Submodule.span (A ⧸ a) {Ideal.Quotient.mk a x} := by\n    rw [hI_map, hx, Ideal.map_sup, Ideal.map_quotient_self]\n    simp [Ideal.map_span]\n  exact hI_eq",
+    "full_code": "/-- Let $A$ be a Dedekind domain and $\\mathfrak{a} \\neq 0$ an ideal in $A$. Show that every ideal in\n $A/\\mathfrak{a}$ is principal. -/\ntheorem isPrincipalIdealRing_quot_of_isDedekind {A : Type} [CommRing A]\n    [IsDedekindDomain A] (a : Ideal A) (ha : a ≠ ⊥) :\n    IsPrincipalIdealRing (A ⧸ a) := by\n  -- It suffices to show every ideal in the quotient is principal\n  refine ⟨fun I => ?_⟩\n  -- Pull back I to an ideal b of A containing a\n  set b : Ideal A := I.comap (Ideal.Quotient.mk a) with hb_def\n  have ha_le_b : a ≤ b := by\n    intro x hx\n    simp [b, Ideal.mem_comap, (Ideal.Quotient.eq_zero_iff_mem).mpr hx, I.zero_mem]\n  -- Step 1: I is the image of b under the quotient map\n  have hI_map : I = b.map (Ideal.Quotient.mk a) := by\n    rw [Ideal.map_comap_of_surjective _ Ideal.Quotient.mk_surjective]\n  -- Step 2: there exists x ∈ A such that b = Ideal.span {x} ⊔ a\n  have hx_exists : ∃ x : A, b = Ideal.span {x} ⊔ a := by\n    sorry\n  -- Step 3: extract such an x and use it as generator\n  obtain ⟨x, hx⟩ := hx_exists\n  refine ⟨⟨Ideal.Quotient.mk a x, ?_⟩⟩\n  -- Step 4: show I = span {x mod a}\n  have hI_eq : I = Submodule.span (A ⧸ a) {Ideal.Quotient.mk a x} := by\n    rw [hI_map, hx, Ideal.map_sup, Ideal.map_quotient_self]\n    simp [Ideal.map_span]\n  exact hI_eq",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 45,
+          "pos": {
+            "line": 18,
+            "column": 4
+          },
+          "goal": "A : Type\ninst✝¹ : CommRing A\ninst✝ : IsDedekindDomain A\na : Ideal A\nha : a ≠ ⊥\nI : Ideal (A ⧸ a)\nb : Ideal A := Ideal.comap (Ideal.Quotient.mk a) I\nhb_def : b = Ideal.comap (Ideal.Quotient.mk a) I\nha_le_b : a ≤ b\nhI_map : I = Ideal.map (Ideal.Quotient.mk a) b\n⊢ ∃ x, b = Ideal.span {x} ⊔ a",
+          "endPos": {
+            "line": 18,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 5,
+      "draft_count": 1,
+      "strategy_time": 512.31
+    }
+  },
+  {
+    "problem_id": "FATE-H_86",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 15,
+    "code": "/-- Let $M$ be an $R$-module. The following are equivalent:\n\\begin{enumerate}\n    \\item $M$ is finitely generated.\n    \\item For every family $(Q_{\\alpha})_{\\alpha \\in A}$ of $R$-modules, the canonical map\n    $M \\otimes_{R} \\left( \\prod_{\\alpha} Q_{\\alpha} \\right) \\to \\prod_{\\alpha} (M \\otimes_{R}\n    Q_{\\alpha})$ is surjective.\n\\end{enumerate} -/\ntheorem finite_iff_surjective_linearMap {R : Type} [CommRing R]\n    (M : Type) [AddCommGroup M] [Module R M] :\n    Module.Finite R M ↔ ∀ {α : Type} (Q : α → Type),\n    ∀ [(a : α) → AddCommGroup (Q a)] [(a : α) → Module R (Q a)],\n        Function.Surjective (LinearMap.pi (\n            fun i => LinearMap.lTensor M (\n                LinearMap.proj i (φ := Q) (R := R)))) := by\n  classical\n  constructor\n  · -- Forward direction\n    intro hFin α Q _ _\n    -- Extract a spanning finset\n    have hSpan : ∃ s : Finset M, Submodule.span R (s : Set M) = ⊤ := by\n      have := (Module.finite_def.mp hFin)\n      rcases (Submodule.fg_def.mp this) with ⟨T, hTfin, hTspan⟩\n      refine ⟨hTfin.toFinset, ?_⟩\n      simpa [Set.Finite.coe_toFinset] using hTspan\n    obtain ⟨s, hs⟩ := hSpan\n    -- Bridge lemma\n    have bridge : ∀ {N : Type} [AddCommGroup N] [Module R N] (z : TensorProduct R M N),\n        ∃ g : M → N, z = ∑ m ∈ s, m ⊗ₜ[R] g m := by\n      intro N _ _ z\n      sorry\n    intro y\n    choose g hg using fun a => bridge (N := Q a) (y a)\n    refine ⟨∑ m ∈ s, m ⊗ₜ[R] (fun a => g a m), ?_⟩\n    funext a\n    have hcomp : (LinearMap.lTensor M (LinearMap.proj a (φ := Q) (R := R)))\n        (∑ m ∈ s, m ⊗ₜ[R] (fun b => g b m)) = ∑ m ∈ s, m ⊗ₜ[R] g a m := by\n      rw [map_sum]\n      apply Finset.sum_congr rfl\n      intro m _\n      simp [LinearMap.lTensor_tmul]\n    simp only [LinearMap.pi_apply]\n    rw [hcomp, ← hg a]\n  · -- Backward direction\n    intro hSurj\n    obtain ⟨x, hx⟩ := hSurj (α := M) (Q := fun _ => R) (fun m => m ⊗ₜ[R] (1 : R))\n    -- Local bridge lemma\n    have bridge : ∀ (x : TensorProduct R M (M → R)),\n        ∃ t : Finset M, ∀ (L : (M → R) →ₗ[R] R),\n          (TensorProduct.rid R M) ((LinearMap.lTensor M L) x) ∈\n            Submodule.span R (t : Set M) := by\n      intro x\n      induction x using TensorProduct.induction_on with\n      | zero =>\n        refine ⟨∅, ?_⟩\n        intro L\n        simp\n      | tmul m f =>\n        refine ⟨{m}, ?_⟩\n        intro L\n        simp only [LinearMap.lTensor_tmul, TensorProduct.rid_tmul]\n        exact Submodule.smul_mem _ _ (Submodule.subset_span (by simp))\n      | add x₁ x₂ ih₁ ih₂ =>\n        obtain ⟨t₁, ht₁⟩ := ih₁\n        obtain ⟨t₂, ht₂⟩ := ih₂\n        refine ⟨t₁ ∪ t₂, ?_⟩\n        intro L\n        simp only [map_add]\n        refine Submodule.add_mem _ ?_ ?_\n        · refine Submodule.span_mono ?_ (ht₁ L)\n          intro a ha\n          simp [Finset.coe_union]\n          exact Or.inl ha\n        · refine Submodule.span_mono ?_ (ht₂ L)\n          intro a ha\n          simp [Finset.coe_union]\n          exact Or.inr ha\n    obtain ⟨t, ht⟩ := bridge x\n    have hMem : ∀ m₀ : M, m₀ ∈ Submodule.span R (t : Set M) := by\n      intro m₀\n      have hL := ht (LinearMap.proj m₀)\n      have hxm : (LinearMap.lTensor M (LinearMap.proj m₀ (φ := fun _ : M => R) (R := R))) x\n          = m₀ ⊗ₜ[R] (1 : R) := by\n        have := congrArg (fun f => f m₀) hx\n        simpa using this\n      rw [hxm] at hL\n      simpa using hL\n    have hTop : Submodule.span R (t : Set M) = ⊤ :=\n      eq_top_iff.mpr (fun m _ => hMem m)\n    refine Module.Finite.mk ?_\n    exact ⟨t, by simpa using hTop⟩",
+    "full_code": "/-- Let $M$ be an $R$-module. The following are equivalent:\n\\begin{enumerate}\n    \\item $M$ is finitely generated.\n    \\item For every family $(Q_{\\alpha})_{\\alpha \\in A}$ of $R$-modules, the canonical map\n    $M \\otimes_{R} \\left( \\prod_{\\alpha} Q_{\\alpha} \\right) \\to \\prod_{\\alpha} (M \\otimes_{R}\n    Q_{\\alpha})$ is surjective.\n\\end{enumerate} -/\ntheorem finite_iff_surjective_linearMap {R : Type} [CommRing R]\n    (M : Type) [AddCommGroup M] [Module R M] :\n    Module.Finite R M ↔ ∀ {α : Type} (Q : α → Type),\n    ∀ [(a : α) → AddCommGroup (Q a)] [(a : α) → Module R (Q a)],\n        Function.Surjective (LinearMap.pi (\n            fun i => LinearMap.lTensor M (\n                LinearMap.proj i (φ := Q) (R := R)))) := by\n  classical\n  constructor\n  · -- Forward direction\n    intro hFin α Q _ _\n    -- Extract a spanning finset\n    have hSpan : ∃ s : Finset M, Submodule.span R (s : Set M) = ⊤ := by\n      have := (Module.finite_def.mp hFin)\n      rcases (Submodule.fg_def.mp this) with ⟨T, hTfin, hTspan⟩\n      refine ⟨hTfin.toFinset, ?_⟩\n      simpa [Set.Finite.coe_toFinset] using hTspan\n    obtain ⟨s, hs⟩ := hSpan\n    -- Bridge lemma\n    have bridge : ∀ {N : Type} [AddCommGroup N] [Module R N] (z : TensorProduct R M N),\n        ∃ g : M → N, z = ∑ m ∈ s, m ⊗ₜ[R] g m := by\n      intro N _ _ z\n      sorry\n    intro y\n    choose g hg using fun a => bridge (N := Q a) (y a)\n    refine ⟨∑ m ∈ s, m ⊗ₜ[R] (fun a => g a m), ?_⟩\n    funext a\n    have hcomp : (LinearMap.lTensor M (LinearMap.proj a (φ := Q) (R := R)))\n        (∑ m ∈ s, m ⊗ₜ[R] (fun b => g b m)) = ∑ m ∈ s, m ⊗ₜ[R] g a m := by\n      rw [map_sum]\n      apply Finset.sum_congr rfl\n      intro m _\n      simp [LinearMap.lTensor_tmul]\n    simp only [LinearMap.pi_apply]\n    rw [hcomp, ← hg a]\n  · -- Backward direction\n    intro hSurj\n    obtain ⟨x, hx⟩ := hSurj (α := M) (Q := fun _ => R) (fun m => m ⊗ₜ[R] (1 : R))\n    -- Local bridge lemma\n    have bridge : ∀ (x : TensorProduct R M (M → R)),\n        ∃ t : Finset M, ∀ (L : (M → R) →ₗ[R] R),\n          (TensorProduct.rid R M) ((LinearMap.lTensor M L) x) ∈\n            Submodule.span R (t : Set M) := by\n      intro x\n      induction x using TensorProduct.induction_on with\n      | zero =>\n        refine ⟨∅, ?_⟩\n        intro L\n        simp\n      | tmul m f =>\n        refine ⟨{m}, ?_⟩\n        intro L\n        simp only [LinearMap.lTensor_tmul, TensorProduct.rid_tmul]\n        exact Submodule.smul_mem _ _ (Submodule.subset_span (by simp))\n      | add x₁ x₂ ih₁ ih₂ =>\n        obtain ⟨t₁, ht₁⟩ := ih₁\n        obtain ⟨t₂, ht₂⟩ := ih₂\n        refine ⟨t₁ ∪ t₂, ?_⟩\n        intro L\n        simp only [map_add]\n        refine Submodule.add_mem _ ?_ ?_\n        · refine Submodule.span_mono ?_ (ht₁ L)\n          intro a ha\n          simp [Finset.coe_union]\n          exact Or.inl ha\n        · refine Submodule.span_mono ?_ (ht₂ L)\n          intro a ha\n          simp [Finset.coe_union]\n          exact Or.inr ha\n    obtain ⟨t, ht⟩ := bridge x\n    have hMem : ∀ m₀ : M, m₀ ∈ Submodule.span R (t : Set M) := by\n      intro m₀\n      have hL := ht (LinearMap.proj m₀)\n      have hxm : (LinearMap.lTensor M (LinearMap.proj m₀ (φ := fun _ : M => R) (R := R))) x\n          = m₀ ⊗ₜ[R] (1 : R) := by\n        have := congrArg (fun f => f m₀) hx\n        simpa using this\n      rw [hxm] at hL\n      simpa using hL\n    have hTop : Submodule.span R (t : Set M) = ⊤ :=\n      eq_top_iff.mpr (fun m _ => hMem m)\n    refine Module.Finite.mk ?_\n    exact ⟨t, by simpa using hTop⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 13,
+          "pos": {
+            "line": 30,
+            "column": 6
+          },
+          "goal": "R : Type\ninst✝⁶ : CommRing R\nM : Type\ninst✝⁵ : AddCommGroup M\ninst✝⁴ : Module R M\nhFin : Module.Finite R M\nα : Type\nQ : α → Type\ninst✝³ : (a : α) → AddCommGroup (Q a)\ninst✝² : (a : α) → Module R (Q a)\ns : Finset M\nhs : Submodule.span R ↑s = ⊤\nN : Type\ninst✝¹ : AddCommGroup N\ninst✝ : Module R N\nz : TensorProduct R M N\n⊢ ∃ g, z = ∑ m ∈ s, m ⊗ₜ[R] g m",
+          "endPos": {
+            "line": 30,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 5,
+      "draft_count": 1,
+      "strategy_time": 411.76
+    }
+  },
+  {
+    "problem_id": "FATE-H_92",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_99",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_100",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  }
+]

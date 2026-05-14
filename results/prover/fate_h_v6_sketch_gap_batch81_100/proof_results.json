@@ -1,0 +1,604 @@
+[
+  {
+    "problem_id": "FATE-H_81",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/--\nLet \\( R = \\mathbb{C}[x_1, \\dots, x_n]/(x_1^2 + x_2^2 + \\dots + x_n^2) \\).\n-/\nabbrev R (n : ℕ) : Type :=\n  MvPolynomial (Fin n) ℂ ⧸ Ideal.span {(∑ i : Fin n, X i ^ 2 : MvPolynomial (Fin n) ℂ)}\n/--\nLet \\( R = \\mathbb{C}[x_1, \\dots, x_n]/(x_1^2 + x_2^2 + \\dots + x_n^2) \\).\nThen \\( R \\) is not a unique factorization domain for \\( n = 3 \\) or \\( 4 \\).-/\ntheorem not_UFD_of_3_or_4 (n : ℕ) (h : n = 3 ∨ n = 4) [IsDomain (R n)] :\n    ¬ UniqueFactorizationMonoid (R n) := by\n  sorry",
+    "full_code": "/--\nLet \\( R = \\mathbb{C}[x_1, \\dots, x_n]/(x_1^2 + x_2^2 + \\dots + x_n^2) \\).\n-/\nabbrev R (n : ℕ) : Type :=\n  MvPolynomial (Fin n) ℂ ⧸ Ideal.span {(∑ i : Fin n, X i ^ 2 : MvPolynomial (Fin n) ℂ)}\n/--\nLet \\( R = \\mathbb{C}[x_1, \\dots, x_n]/(x_1^2 + x_2^2 + \\dots + x_n^2) \\).\nThen \\( R \\) is not a unique factorization domain for \\( n = 3 \\) or \\( 4 \\).-/\ntheorem not_UFD_of_3_or_4 (n : ℕ) (h : n = 3 ∨ n = 4) [IsDomain (R n)] :\n    ¬ UniqueFactorizationMonoid (R n) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 162.76
+    }
+  },
+  {
+    "problem_id": "FATE-H_82",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/--\nLet \\( D \\) be a unique factorization domain.\nProve that if every nonzero prime ideal of \\( D \\) is maximal, then \\( D \\) is a principal ideal domain.\n-/\ntheorem isPrincipalIdealRing_of_isPrime_ne_bot_isMaximal {D : Type} [CommRing D] [IsDomain D]\n    [UniqueFactorizationMonoid D] (h : ∀ P : Ideal D, [P.IsPrime] → P ≠ ⊥ → P.IsMaximal) : IsPrincipalIdealRing D := by\n  have prime_principal : ∀ P : Ideal D, P.IsPrime → P ≠ ⊥ →\n      ∃ p : D, P = Ideal.span {p} := by\n    intro P hP hPne\n    sorry\n  have maximal_principal : ∀ M : Ideal D, M.IsMaximal → ∃ m, M = Ideal.span {m} := by\n    intro M hM\n    by_cases hMb : M = ⊥\n    · refine ⟨0, ?_⟩\n      subst hMb\n      rw [Ideal.span_singleton_eq_bot.mpr rfl]\n    · exact prime_principal M hM.isPrime hMb\n  have every_ideal_principal : ∀ I : Ideal D, Submodule.IsPrincipal I := by\n    intro I\n    by_cases hI : I = ⊥\n    · refine ⟨⟨0, ?_⟩⟩\n      subst hI\n      rw [Submodule.span_zero_singleton]\n    · sorry\n  exact ⟨fun I => every_ideal_principal I⟩",
+    "full_code": "/--\nLet \\( D \\) be a unique factorization domain.\nProve that if every nonzero prime ideal of \\( D \\) is maximal, then \\( D \\) is a principal ideal domain.\n-/\ntheorem isPrincipalIdealRing_of_isPrime_ne_bot_isMaximal {D : Type} [CommRing D] [IsDomain D]\n    [UniqueFactorizationMonoid D] (h : ∀ P : Ideal D, [P.IsPrime] → P ≠ ⊥ → P.IsMaximal) : IsPrincipalIdealRing D := by\n  have prime_principal : ∀ P : Ideal D, P.IsPrime → P ≠ ⊥ →\n      ∃ p : D, P = Ideal.span {p} := by\n    intro P hP hPne\n    sorry\n  have maximal_principal : ∀ M : Ideal D, M.IsMaximal → ∃ m, M = Ideal.span {m} := by\n    intro M hM\n    by_cases hMb : M = ⊥\n    · refine ⟨0, ?_⟩\n      subst hMb\n      rw [Ideal.span_singleton_eq_bot.mpr rfl]\n    · exact prime_principal M hM.isPrime hMb\n  have every_ideal_principal : ∀ I : Ideal D, Submodule.IsPrincipal I := by\n    intro I\n    by_cases hI : I = ⊥\n    · refine ⟨⟨0, ?_⟩⟩\n      subst hI\n      rw [Submodule.span_zero_singleton]\n    · sorry\n  exact ⟨fun I => every_ideal_principal I⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 45,
+          "pos": {
+            "line": 10,
+            "column": 4
+          },
+          "goal": "D : Type\ninst✝² : CommRing D\ninst✝¹ : IsDomain D\ninst✝ : UniqueFactorizationMonoid D\nh : ∀ (P : Ideal D) [inst : P.IsPrime], P ≠ ⊥ → P.IsMaximal\nP : Ideal D\nhP : P.IsPrime\nhPne : P ≠ ⊥\n⊢ ∃ p, P = Ideal.span {p}",
+          "endPos": {
+            "line": 10,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 46,
+          "pos": {
+            "line": 24,
+            "column": 6
+          },
+          "goal": "case neg\nD : Type\ninst✝² : CommRing D\ninst✝¹ : IsDomain D\ninst✝ : UniqueFactorizationMonoid D\nh : ∀ (P : Ideal D) [inst : P.IsPrime], P ≠ ⊥ → P.IsMaximal\nprime_principal : ∀ (P : Ideal D), P.IsPrime → P ≠ ⊥ → ∃ p, P = Ideal.span {p}\nmaximal_principal : ∀ (M : Ideal D), M.IsMaximal → ∃ m, M = Ideal.span {m}\nI : Ideal D\nhI : ¬I = ⊥\n⊢ Submodule.IsPrincipal I",
+          "endPos": {
+            "line": 24,
+            "column": 11
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 487.28
+    }
+  },
+  {
+    "problem_id": "FATE-H_83",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 14,
+    "code": "/-- Let $M$ be a finitely-generated module over a Dedekind domain. Prove that $M$ is flat if and\nonly if $M$ is torsion-free. -/\ntheorem flat_iff_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M]\n    [Module R M] [IsDedekindDomain R] [Module.Finite R M] :\n    Module.Flat R M ↔ NoZeroSMulDivisors R M := by\n  haveI : IsDomain R := IsDedekindDomain.toIsDomain\n  constructor\n  · intro hFlat\n    sorry\n  · intro hTF\n    sorry",
+    "full_code": "/-- Let $M$ be a finitely-generated module over a Dedekind domain. Prove that $M$ is flat if and\nonly if $M$ is torsion-free. -/\ntheorem flat_iff_noZeroSMulDivisor {R M : Type} [CommRing R] [AddCommGroup M]\n    [Module R M] [IsDedekindDomain R] [Module.Finite R M] :\n    Module.Flat R M ↔ NoZeroSMulDivisors R M := by\n  haveI : IsDomain R := IsDedekindDomain.toIsDomain\n  constructor\n  · intro hFlat\n    sorry\n  · intro hTF\n    sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 158,
+          "pos": {
+            "line": 9,
+            "column": 4
+          },
+          "goal": "case mp\nR M : Type\ninst✝⁴ : CommRing R\ninst✝³ : AddCommGroup M\ninst✝² : Module R M\ninst✝¹ : IsDedekindDomain R\ninst✝ : Module.Finite R M\nthis : IsDomain R\nhFlat : Module.Flat R M\n⊢ NoZeroSMulDivisors R M",
+          "endPos": {
+            "line": 9,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 159,
+          "pos": {
+            "line": 11,
+            "column": 4
+          },
+          "goal": "case mpr\nR M : Type\ninst✝⁴ : CommRing R\ninst✝³ : AddCommGroup M\ninst✝² : Module R M\ninst✝¹ : IsDedekindDomain R\ninst✝ : Module.Finite R M\nthis : IsDomain R\nhTF : NoZeroSMulDivisors R M\n⊢ Module.Flat R M",
+          "endPos": {
+            "line": 11,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 366.54
+    }
+  },
+  {
+    "problem_id": "FATE-H_84",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/-- Let $A$ be a Dedekind domain and $\\mathfrak{a} \\neq 0$ an ideal in $A$. Show that every ideal in\n $A/\\mathfrak{a}$ is principal. -/\ntheorem isPrincipalIdealRing_quot_of_isDedekind {A : Type} [CommRing A]\n    [IsDedekindDomain A] (a : Ideal A) (ha : a ≠ ⊥) :\n    IsPrincipalIdealRing (A ⧸ a) := by\n  -- Bridge lemma: every ideal `b ⊇ a` is of the form `span {y} ⊔ a`.\n  have bridge : ∀ (b : Ideal A), a ≤ b → ∃ y : A, b = Ideal.span {y} ⊔ a := by\n    sorry\n  -- Reduction: every ideal of `A ⧸ a` comes from an ideal of `A` containing `a`.\n  refine ⟨fun J => ?_⟩\n  -- Pull `J` back to an ideal `b` of `A` containing `a`.\n  set b : Ideal A := J.comap (Ideal.Quotient.mk a) with hb_def\n  have hab : a ≤ b := by\n    intro x hx\n    show (Ideal.Quotient.mk a) x ∈ J\n    have : (Ideal.Quotient.mk a) x = 0 := Ideal.Quotient.eq_zero_iff_mem.mpr hx\n    rw [this]\n    exact J.zero_mem\n  have hbmap : b.map (Ideal.Quotient.mk a) = J := by\n    rw [hb_def]\n    exact Ideal.map_comap_of_surjective _ Ideal.Quotient.mk_surjective J\n  -- Apply the bridge lemma.\n  obtain ⟨y, hy⟩ := bridge b hab\n  refine ⟨⟨(Ideal.Quotient.mk a) y, ?_⟩⟩\n  -- Now compute `J` from `b = span {y} ⊔ a`.\n  have hJ : J = (Ideal.span {y} ⊔ a).map (Ideal.Quotient.mk a) := by\n    rw [← hbmap, hy]\n  have hmap_sup : (Ideal.span {y} ⊔ a).map (Ideal.Quotient.mk a)\n      = (Ideal.span {y}).map (Ideal.Quotient.mk a) ⊔ a.map (Ideal.Quotient.mk a) :=\n    Ideal.map_sup _ _ _\n  have ha_map : a.map (Ideal.Quotient.mk a) = ⊥ := by\n    rw [Ideal.map_quotient_self]\n  have hspan : (Ideal.span {y}).map (Ideal.Quotient.mk a)\n      = Ideal.span {(Ideal.Quotient.mk a) y} := by\n    rw [Ideal.map_span, Set.image_singleton]\n  rw [hJ, hmap_sup, ha_map, hspan, sup_bot_eq]\n  rfl",
+    "full_code": "/-- Let $A$ be a Dedekind domain and $\\mathfrak{a} \\neq 0$ an ideal in $A$. Show that every ideal in\n $A/\\mathfrak{a}$ is principal. -/\ntheorem isPrincipalIdealRing_quot_of_isDedekind {A : Type} [CommRing A]\n    [IsDedekindDomain A] (a : Ideal A) (ha : a ≠ ⊥) :\n    IsPrincipalIdealRing (A ⧸ a) := by\n  -- Bridge lemma: every ideal `b ⊇ a` is of the form `span {y} ⊔ a`.\n  have bridge : ∀ (b : Ideal A), a ≤ b → ∃ y : A, b = Ideal.span {y} ⊔ a := by\n    sorry\n  -- Reduction: every ideal of `A ⧸ a` comes from an ideal of `A` containing `a`.\n  refine ⟨fun J => ?_⟩\n  -- Pull `J` back to an ideal `b` of `A` containing `a`.\n  set b : Ideal A := J.comap (Ideal.Quotient.mk a) with hb_def\n  have hab : a ≤ b := by\n    intro x hx\n    show (Ideal.Quotient.mk a) x ∈ J\n    have : (Ideal.Quotient.mk a) x = 0 := Ideal.Quotient.eq_zero_iff_mem.mpr hx\n    rw [this]\n    exact J.zero_mem\n  have hbmap : b.map (Ideal.Quotient.mk a) = J := by\n    rw [hb_def]\n    exact Ideal.map_comap_of_surjective _ Ideal.Quotient.mk_surjective J\n  -- Apply the bridge lemma.\n  obtain ⟨y, hy⟩ := bridge b hab\n  refine ⟨⟨(Ideal.Quotient.mk a) y, ?_⟩⟩\n  -- Now compute `J` from `b = span {y} ⊔ a`.\n  have hJ : J = (Ideal.span {y} ⊔ a).map (Ideal.Quotient.mk a) := by\n    rw [← hbmap, hy]\n  have hmap_sup : (Ideal.span {y} ⊔ a).map (Ideal.Quotient.mk a)\n      = (Ideal.span {y}).map (Ideal.Quotient.mk a) ⊔ a.map (Ideal.Quotient.mk a) :=\n    Ideal.map_sup _ _ _\n  have ha_map : a.map (Ideal.Quotient.mk a) = ⊥ := by\n    rw [Ideal.map_quotient_self]\n  have hspan : (Ideal.span {y}).map (Ideal.Quotient.mk a)\n      = Ideal.span {(Ideal.Quotient.mk a) y} := by\n    rw [Ideal.map_span, Set.image_singleton]\n  rw [hJ, hmap_sup, ha_map, hspan, sup_bot_eq]\n  rfl",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 42,
+          "pos": {
+            "line": 8,
+            "column": 4
+          },
+          "goal": "A : Type\ninst✝¹ : CommRing A\ninst✝ : IsDedekindDomain A\na : Ideal A\nha : a ≠ ⊥\n⊢ ∀ (b : Ideal A), a ≤ b → ∃ y, b = Ideal.span {y} ⊔ a",
+          "endPos": {
+            "line": 8,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 374.51
+    }
+  },
+  {
+    "problem_id": "FATE-H_85",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/-- Let $A$ be a Noetherian ring and let $\\mathfrak{a}, \\mathfrak{b}$ be ideals in $A$. If $M$ is\nany $A$-module, let $M_{\\mathfrak{a}}$, $M_{\\mathfrak{b}}$ denote its $\\mathfrak{a}$-adic and\n$\\mathfrak{b}$-adic completions respectively. If $M$ is finitely generated, prove that\n$(M_{\\mathfrak{a}})_{\\mathfrak{b}} \\cong M_{\\mathfrak{a} + \\mathfrak{b}}$. -/\ntheorem nonempty_adicCompletion_adicCompletion_linearEquiv {A M : Type} [CommRing A]\n    [IsNoetherianRing A] (𝒜 : Ideal A) [AddCommGroup M]\n    [Module A M] [Module.Finite A M] (ℬ : Ideal A) :\n    Nonempty (AdicCompletion ℬ (AdicCompletion 𝒜 M) ≃ₗ[A] AdicCompletion (𝒜 + ℬ) M) := by\n  have h1 : ∀ n : ℕ, 𝒜 ^ n ≤ (𝒜 + ℬ) ^ n := by\n    intro n\n    exact Ideal.pow_le_pow_left le_sup_left n\n  have h2 : ∀ n : ℕ, ℬ ^ n ≤ (𝒜 + ℬ) ^ n := by\n    intro n\n    exact Ideal.pow_le_pow_left le_sup_right n\n  have hf : Nonempty\n      (AdicCompletion ℬ (AdicCompletion 𝒜 M) →ₗ[A] AdicCompletion (𝒜 + ℬ) M) := by\n    exact Classical.choice inferInstance\n  have hg : Nonempty\n      (AdicCompletion (𝒜 + ℬ) M →ₗ[A] AdicCompletion ℬ (AdicCompletion 𝒜 M)) := by\n    exact Classical.choice inferInstance\n  obtain ⟨f⟩ := hf\n  obtain ⟨g⟩ := hg\n  exact ⟨LinearEquiv.ofLinear f g (by ext x; rfl) (by ext x; rfl)⟩",
+    "full_code": "/-- Let $A$ be a Noetherian ring and let $\\mathfrak{a}, \\mathfrak{b}$ be ideals in $A$. If $M$ is\nany $A$-module, let $M_{\\mathfrak{a}}$, $M_{\\mathfrak{b}}$ denote its $\\mathfrak{a}$-adic and\n$\\mathfrak{b}$-adic completions respectively. If $M$ is finitely generated, prove that\n$(M_{\\mathfrak{a}})_{\\mathfrak{b}} \\cong M_{\\mathfrak{a} + \\mathfrak{b}}$. -/\ntheorem nonempty_adicCompletion_adicCompletion_linearEquiv {A M : Type} [CommRing A]\n    [IsNoetherianRing A] (𝒜 : Ideal A) [AddCommGroup M]\n    [Module A M] [Module.Finite A M] (ℬ : Ideal A) :\n    Nonempty (AdicCompletion ℬ (AdicCompletion 𝒜 M) ≃ₗ[A] AdicCompletion (𝒜 + ℬ) M) := by\n  have h1 : ∀ n : ℕ, 𝒜 ^ n ≤ (𝒜 + ℬ) ^ n := by\n    intro n\n    exact Ideal.pow_le_pow_left le_sup_left n\n  have h2 : ∀ n : ℕ, ℬ ^ n ≤ (𝒜 + ℬ) ^ n := by\n    intro n\n    exact Ideal.pow_le_pow_left le_sup_right n\n  have hf : Nonempty\n      (AdicCompletion ℬ (AdicCompletion 𝒜 M) →ₗ[A] AdicCompletion (𝒜 + ℬ) M) := by\n    exact Classical.choice inferInstance\n  have hg : Nonempty\n      (AdicCompletion (𝒜 + ℬ) M →ₗ[A] AdicCompletion ℬ (AdicCompletion 𝒜 M)) := by\n    exact Classical.choice inferInstance\n  obtain ⟨f⟩ := hf\n  obtain ⟨g⟩ := hg\n  exact ⟨LinearEquiv.ofLinear f g (by ext x; rfl) (by ext x; rfl)⟩",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 26
+          },
+          "endPos": null,
+          "data": "expected token"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 182.99
+    }
+  },
+  {
+    "problem_id": "FATE-H_86",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/-- Let $M$ be an $R$-module. The following are equivalent:\n\\begin{enumerate}\n    \\item $M$ is finitely generated.\n    \\item For every family $(Q_{\\alpha})_{\\alpha \\in A}$ of $R$-modules, the canonical map\n    $M \\otimes_{R} \\left( \\prod_{\\alpha} Q_{\\alpha} \\right) \\to \\prod_{\\alpha} (M \\otimes_{R}\n    Q_{\\alpha})$ is surjective.\n\\end{enumerate} -/\ntheorem finite_iff_surjective_linearMap {R : Type} [CommRing R]\n    (M : Type) [AddCommGroup M] [Module R M] :\n    Module.Finite R M ↔ ∀ {α : Type} (Q : α → Type),\n    ∀ [(a : α) → AddCommGroup (Q a)] [(a : α) → Module R (Q a)],\n        Function.Surjective (LinearMap.pi (\n            fun i => LinearMap.lTensor M (\n                LinearMap.proj i (φ := Q) (R := R)))) := by\n  sorry",
+    "full_code": "/-- Let $M$ be an $R$-module. The following are equivalent:\n\\begin{enumerate}\n    \\item $M$ is finitely generated.\n    \\item For every family $(Q_{\\alpha})_{\\alpha \\in A}$ of $R$-modules, the canonical map\n    $M \\otimes_{R} \\left( \\prod_{\\alpha} Q_{\\alpha} \\right) \\to \\prod_{\\alpha} (M \\otimes_{R}\n    Q_{\\alpha})$ is surjective.\n\\end{enumerate} -/\ntheorem finite_iff_surjective_linearMap {R : Type} [CommRing R]\n    (M : Type) [AddCommGroup M] [Module R M] :\n    Module.Finite R M ↔ ∀ {α : Type} (Q : α → Type),\n    ∀ [(a : α) → AddCommGroup (Q a)] [(a : α) → Module R (Q a)],\n        Function.Surjective (LinearMap.pi (\n            fun i => LinearMap.lTensor M (\n                LinearMap.proj i (φ := Q) (R := R)))) := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 3,
+          "pos": {
+            "line": 15,
+            "column": 2
+          },
+          "goal": "R : Type\ninst✝² : CommRing R\nM : Type\ninst✝¹ : AddCommGroup M\ninst✝ : Module R M\n⊢ Module.Finite R M ↔\n    ∀ {α : Type} (Q : α → Type) [inst : (a : α) → AddCommGroup (Q a)] [inst_1 : (a : α) → Module R (Q a)],\n      Function.Surjective ⇑(LinearMap.pi fun i => LinearMap.lTensor M (LinearMap.proj i))",
+          "endPos": {
+            "line": 15,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 271.44
+    }
+  },
+  {
+    "problem_id": "FATE-H_87",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/-- If $R$ is a valuation ring of Krull dimension 1 and $K$ its field of fractions, then there do\nnot exist any rings intermediate between $R$ and $K$. -/\ntheorem eq_bot_or_eq_top_of_ringKrullDim_eq_one {R K : Type} [CommRing R] [IsDomain R]\n    [Field K] [Algebra R K] [IsFractionRing R K] [ValuationRing R] (hD : ringKrullDim R = 1)\n    (S : Subalgebra R K) : S = ⊥ ∨ S = ⊤ := by\n  sorry",
+    "full_code": "/-- If $R$ is a valuation ring of Krull dimension 1 and $K$ its field of fractions, then there do\nnot exist any rings intermediate between $R$ and $K$. -/\ntheorem eq_bot_or_eq_top_of_ringKrullDim_eq_one {R K : Type} [CommRing R] [IsDomain R]\n    [Field K] [Algebra R K] [IsFractionRing R K] [ValuationRing R] (hD : ringKrullDim R = 1)\n    (S : Subalgebra R K) : S = ⊥ ∨ S = ⊤ := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 142.43
+    }
+  },
+  {
+    "problem_id": "FATE-H_88",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--Let \\((R, \\mathfrak{m})\\) be a Noetherian local ring. Let \\(x, y \\in \\mathfrak{m}\\) be a regular\nsequence of length \\(2\\). For any \\(n \\geq 2\\) show that there do not exist \\(a, b \\in R\\) with\n\\[\nx^{n-1}y^{n-1} = a x^{n} + b y^{n}\n\\]-/\ntheorem not_exists_pow_sub_one_mul_pow_sub_one_eq {R : Type} [CommRing R] [IsNoetherianRing R]\n    [IsLocalRing R] {n : ℕ} {x y : R} (hn : n ≥ 2) (hx : x ∈ IsLocalRing.maximalIdeal R)\n    (hy : y ∈ IsLocalRing.maximalIdeal R) (h : Sequence.IsRegular R [x, y]) :\n    ¬ ∃ a b : R, x ^ (n - 1) * y ^ (n - 1) = a * x ^ n + b * y ^ n := by\n  sorry",
+    "full_code": "/--Let \\((R, \\mathfrak{m})\\) be a Noetherian local ring. Let \\(x, y \\in \\mathfrak{m}\\) be a regular\nsequence of length \\(2\\). For any \\(n \\geq 2\\) show that there do not exist \\(a, b \\in R\\) with\n\\[\nx^{n-1}y^{n-1} = a x^{n} + b y^{n}\n\\]-/\ntheorem not_exists_pow_sub_one_mul_pow_sub_one_eq {R : Type} [CommRing R] [IsNoetherianRing R]\n    [IsLocalRing R] {n : ℕ} {x y : R} (hn : n ≥ 2) (hx : x ∈ IsLocalRing.maximalIdeal R)\n    (hy : y ∈ IsLocalRing.maximalIdeal R) (h : Sequence.IsRegular R [x, y]) :\n    ¬ ∃ a b : R, x ^ (n - 1) * y ^ (n - 1) = a * x ^ n + b * y ^ n := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 150.17
+    }
+  },
+  {
+    "problem_id": "FATE-H_89",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/--Let \\( K \\) be a field and \\( L \\) an extension field of \\( K \\). If \\( P \\) is a prime ideal of\n\\( L[X_1, \\dots, X_n] \\) and \\( \\mathfrak{p} = P \\cap K[X_1, \\dots, X_n] \\), then \\(\n\\operatorname{ht}(P) \\geq \\operatorname{ht}(\\mathfrak{p}) \\).-/\ntheorem primeHeight_le_of_comap_eq {K L : Type} (n : ℕ) [Field K] [Field L] [Algebra K L]\n    (P : Ideal (MvPolynomial (Fin n) L)) (p : Ideal (MvPolynomial (Fin n) K)) [P.IsPrime]\n    [p.IsPrime] (h : P.comap (MvPolynomial.map (algebraMap K L)) = p) :\n    p.primeHeight ≤ P.primeHeight := by\n  sorry",
+    "full_code": "/--Let \\( K \\) be a field and \\( L \\) an extension field of \\( K \\). If \\( P \\) is a prime ideal of\n\\( L[X_1, \\dots, X_n] \\) and \\( \\mathfrak{p} = P \\cap K[X_1, \\dots, X_n] \\), then \\(\n\\operatorname{ht}(P) \\geq \\operatorname{ht}(\\mathfrak{p}) \\).-/\ntheorem primeHeight_le_of_comap_eq {K L : Type} (n : ℕ) [Field K] [Field L] [Algebra K L]\n    (P : Ideal (MvPolynomial (Fin n) L)) (p : Ideal (MvPolynomial (Fin n) K)) [P.IsPrime]\n    [p.IsPrime] (h : P.comap (MvPolynomial.map (algebraMap K L)) = p) :\n    p.primeHeight ≤ P.primeHeight := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 137.06
+    }
+  },
+  {
+    "problem_id": "FATE-H_90",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--\nSuppose that \\( R \\) is a Noetherian local ring with maximal ideal \\( \\mathfrak{m} \\) and residue field \\( \\kappa \\).\nIn this case the projective dimension of \\( \\kappa \\) is \\( \\geq \\dim_{\\kappa} \\mathfrak{m} / \\mathfrak{m}^{2} \\).-/\ntheorem not_hasProjectiveDimensionLT_finrank_cotangentSpace {R : Type} [CommRing R] [IsLocalRing R]\n    [IsNoetherianRing R] :\n      ¬ CategoryTheory.HasProjectiveDimensionLT\n        (ModuleCat.of R (IsLocalRing.ResidueField R))\n          (Module.finrank (IsLocalRing.ResidueField R) (IsLocalRing.CotangentSpace R)) := by\n  intro h\n  -- Set up notation\n  set κ := IsLocalRing.ResidueField R\n  set n := Module.finrank κ (IsLocalRing.CotangentSpace R)\n  -- Step 1: From projective dimension bound, derive vanishing of Tor at degree n.\n  have hTorVanish :\n      ∀ (M : ModuleCat.{0} R),\n        IsZero ((Tor R n).obj (ModuleCat.of R κ) |>.obj M) := by\n    sorry\n  -- Step 2: Tor_n^R(κ, κ) is isomorphic (as κ-vector space) to the n-th exterior\n  -- power of the cotangent space, which has positive κ-dimension when n equals\n  -- the embedding dimension.\n  have hTorNonzero :\n      ¬ IsZero ((Tor R n).obj (ModuleCat.of R κ) |>.obj (ModuleCat.of R κ)) := by\n    sorry\n  -- Step 3: Derive contradiction.\n  have hZero : IsZero ((Tor R n).obj (ModuleCat.of R κ) |>.obj (ModuleCat.of R κ)) :=\n    hTorVanish (ModuleCat.of R κ)\n  exact hTorNonzero hZero",
+    "full_code": "/--\nSuppose that \\( R \\) is a Noetherian local ring with maximal ideal \\( \\mathfrak{m} \\) and residue field \\( \\kappa \\).\nIn this case the projective dimension of \\( \\kappa \\) is \\( \\geq \\dim_{\\kappa} \\mathfrak{m} / \\mathfrak{m}^{2} \\).-/\ntheorem not_hasProjectiveDimensionLT_finrank_cotangentSpace {R : Type} [CommRing R] [IsLocalRing R]\n    [IsNoetherianRing R] :\n      ¬ CategoryTheory.HasProjectiveDimensionLT\n        (ModuleCat.of R (IsLocalRing.ResidueField R))\n          (Module.finrank (IsLocalRing.ResidueField R) (IsLocalRing.CotangentSpace R)) := by\n  intro h\n  -- Set up notation\n  set κ := IsLocalRing.ResidueField R\n  set n := Module.finrank κ (IsLocalRing.CotangentSpace R)\n  -- Step 1: From projective dimension bound, derive vanishing of Tor at degree n.\n  have hTorVanish :\n      ∀ (M : ModuleCat.{0} R),\n        IsZero ((Tor R n).obj (ModuleCat.of R κ) |>.obj M) := by\n    sorry\n  -- Step 2: Tor_n^R(κ, κ) is isomorphic (as κ-vector space) to the n-th exterior\n  -- power of the cotangent space, which has positive κ-dimension when n equals\n  -- the embedding dimension.\n  have hTorNonzero :\n      ¬ IsZero ((Tor R n).obj (ModuleCat.of R κ) |>.obj (ModuleCat.of R κ)) := by\n    sorry\n  -- Step 3: Derive contradiction.\n  have hZero : IsZero ((Tor R n).obj (ModuleCat.of R κ) |>.obj (ModuleCat.of R κ)) :=\n    hTorVanish (ModuleCat.of R κ)\n  exact hTorNonzero hZero",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 4,
+            "column": 85
+          },
+          "endPos": {
+            "line": 4,
+            "column": 96
+          },
+          "data": "unknown identifier 'IsLocalRing'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 120.71
+    }
+  },
+  {
+    "problem_id": "FATE-H_91",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/--If a ring \\( R \\), not a field, is a maximal proper subring of a field \\( K \\), show \\( R \\) is\na valuation ring of Krull dimension 1.-/\ntheorem exists_toSubring_eq_and_ringKrullDim_eq_one {K : Type} [Field K] (R : Subring K)\n    (h : IsCoatom R) (hR : ¬ IsField R) :\n    (∃ V : ValuationSubring K, V.toSubring = R) ∧ ringKrullDim R = 1 := by\n  sorry",
+    "full_code": "/--If a ring \\( R \\), not a field, is a maximal proper subring of a field \\( K \\), show \\( R \\) is\na valuation ring of Krull dimension 1.-/\ntheorem exists_toSubring_eq_and_ringKrullDim_eq_one {K : Type} [Field K] (R : Subring K)\n    (h : IsCoatom R) (hR : ¬ IsField R) :\n    (∃ V : ValuationSubring K, V.toSubring = R) ∧ ringKrullDim R = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 155.86
+    }
+  },
+  {
+    "problem_id": "FATE-H_92",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 14,
+    "code": "/--\nLet \\( R \\) be a Dedekind domain. Show the following:\nIf \\( P_1, \\dots, P_n \\in \\operatorname{Spec}(R) \\) are pairwise distinct, non-zero prime ideals\nand \\( e_1, \\dots, e_n \\) are non-negative integers, there exists \\( a \\in R \\setminus \\{0\\} \\) such that\n\\[\n(a) = P_1^{e_1} \\cdots P_n^{e_n} \\cdot J,\n\\]\nwith \\( J \\subseteq R \\) an ideal in whose factorization none of the \\( P_i \\) appear.\n-/\ntheorem exists_factor_principal_ideal (R : Type) [CommRing R] [IsDedekindDomain R]\n    (n : ℕ) (p : (Fin n) → PrimeSpectrum R) (h_nonzero : ∀ i, (p i).asIdeal ≠ ⊥)\n    (h_inj : Function.Injective p) (e : (Fin n) → ℕ) :\n    ∃ (a : R) (J : Ideal R), a ≠ 0 ∧ Ideal.span {a} = J * ∏ (i : Fin n), (p i).1 ^ (e i) ∧\n    (∀ (i : Fin n), ¬ ∃ (K : Ideal R), J = K * (p i).1) := by\n  -- Set Q to be the product ideal\n  set Q : Ideal R := ∏ i : Fin n, (p i).1 ^ (e i) with hQ\n  -- Step 1: Q is nonzero\n  have hQ_ne : Q ≠ ⊥ := by\n    rw [hQ]\n    exact Finset.prod_ne_zero_iff.mpr (fun i _ => pow_ne_zero _ (h_nonzero i))\n  -- Step 2: pick a nonzero element of Q\n  have hex : ∃ a : R, a ∈ Q ∧ a ≠ 0 := by\n    exact (Submodule.ne_bot_iff Q).mp hQ_ne\n  obtain ⟨a₀, ha₀_mem, ha₀_ne⟩ := hex\n  -- Step 3: Q divides span {a₀}\n  have hI_ne : Ideal.span {a₀} ≠ ⊥ := by\n    rwa [Ne, Ideal.span_singleton_eq_bot]\n  have hdvd : Q ∣ Ideal.span {a₀} := by\n    rw [Ideal.dvd_iff_le, Ideal.span_singleton_le_iff_mem]\n    exact ha₀_mem\n  -- Step 4: extract the cofactor\n  obtain ⟨J', hJ'⟩ := hdvd\n  -- Step 5: produce the desired witness using J' purified of the P_i's\n  refine ⟨a₀, J', ha₀_ne, ?_, ?_⟩\n  · -- equation: span {a₀} = J' * Q\n    rw [hJ']; ring\n  · -- the no-P_i condition (left as sorry hole in this decomposition step)\n    intro i ⟨K, hK⟩\n    sorry",
+    "full_code": "/--\nLet \\( R \\) be a Dedekind domain. Show the following:\nIf \\( P_1, \\dots, P_n \\in \\operatorname{Spec}(R) \\) are pairwise distinct, non-zero prime ideals\nand \\( e_1, \\dots, e_n \\) are non-negative integers, there exists \\( a \\in R \\setminus \\{0\\} \\) such that\n\\[\n(a) = P_1^{e_1} \\cdots P_n^{e_n} \\cdot J,\n\\]\nwith \\( J \\subseteq R \\) an ideal in whose factorization none of the \\( P_i \\) appear.\n-/\ntheorem exists_factor_principal_ideal (R : Type) [CommRing R] [IsDedekindDomain R]\n    (n : ℕ) (p : (Fin n) → PrimeSpectrum R) (h_nonzero : ∀ i, (p i).asIdeal ≠ ⊥)\n    (h_inj : Function.Injective p) (e : (Fin n) → ℕ) :\n    ∃ (a : R) (J : Ideal R), a ≠ 0 ∧ Ideal.span {a} = J * ∏ (i : Fin n), (p i).1 ^ (e i) ∧\n    (∀ (i : Fin n), ¬ ∃ (K : Ideal R), J = K * (p i).1) := by\n  -- Set Q to be the product ideal\n  set Q : Ideal R := ∏ i : Fin n, (p i).1 ^ (e i) with hQ\n  -- Step 1: Q is nonzero\n  have hQ_ne : Q ≠ ⊥ := by\n    rw [hQ]\n    exact Finset.prod_ne_zero_iff.mpr (fun i _ => pow_ne_zero _ (h_nonzero i))\n  -- Step 2: pick a nonzero element of Q\n  have hex : ∃ a : R, a ∈ Q ∧ a ≠ 0 := by\n    exact (Submodule.ne_bot_iff Q).mp hQ_ne\n  obtain ⟨a₀, ha₀_mem, ha₀_ne⟩ := hex\n  -- Step 3: Q divides span {a₀}\n  have hI_ne : Ideal.span {a₀} ≠ ⊥ := by\n    rwa [Ne, Ideal.span_singleton_eq_bot]\n  have hdvd : Q ∣ Ideal.span {a₀} := by\n    rw [Ideal.dvd_iff_le, Ideal.span_singleton_le_iff_mem]\n    exact ha₀_mem\n  -- Step 4: extract the cofactor\n  obtain ⟨J', hJ'⟩ := hdvd\n  -- Step 5: produce the desired witness using J' purified of the P_i's\n  refine ⟨a₀, J', ha₀_ne, ?_, ?_⟩\n  · -- equation: span {a₀} = J' * Q\n    rw [hJ']; ring\n  · -- the no-P_i condition (left as sorry hole in this decomposition step)\n    intro i ⟨K, hK⟩\n    sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 88,
+          "pos": {
+            "line": 39,
+            "column": 4
+          },
+          "goal": "case intro.intro.intro.refine_2\nR : Type\ninst✝¹ : CommRing R\ninst✝ : IsDedekindDomain R\nn : ℕ\np : Fin n → PrimeSpectrum R\nh_nonzero : ∀ (i : Fin n), (p i).asIdeal ≠ ⊥\nh_inj : Function.Injective p\ne : Fin n → ℕ\nQ : Ideal R := ∏ i : Fin n, (p i).asIdeal ^ e i\nhQ : Q = ∏ i : Fin n, (p i).asIdeal ^ e i\nhQ_ne : Q ≠ ⊥\na₀ : R\nha₀_mem : a₀ ∈ Q\nha₀_ne : a₀ ≠ 0\nhI_ne : Ideal.span {a₀} ≠ ⊥\nJ' : Ideal R\nhJ' : Ideal.span {a₀} = Q * J'\ni : Fin n\nK : Ideal R\nhK : J' = K * (p i).asIdeal\n⊢ False",
+          "endPos": {
+            "line": 39,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 400.52
+    }
+  },
+  {
+    "problem_id": "FATE-H_93",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--\nLet $\\mathcal{O}$ be an integral domain in which all nonzero ideals admit a unique factorization into prime ideals.\nShow that $\\mathcal{O}$ is a Dedekind domain. -/\ntheorem isDedekindDomain_of_ideal_UFD (O : Type) [CommRing O] [IsDomain O]\n    [CancelCommMonoidWithZero (Ideal O)] [UniqueFactorizationMonoid (Ideal O)] :\n    IsDedekindDomain O := by\n  rw [isDedekindDomain_iff]\n  ...",
+    "full_code": "/--\nLet $\\mathcal{O}$ be an integral domain in which all nonzero ideals admit a unique factorization into prime ideals.\nShow that $\\mathcal{O}$ is a Dedekind domain. -/\ntheorem isDedekindDomain_of_ideal_UFD (O : Type) [CommRing O] [IsDomain O]\n    [CancelCommMonoidWithZero (Ideal O)] [UniqueFactorizationMonoid (Ideal O)] :\n    IsDedekindDomain O := by\n  rw [isDedekindDomain_iff]\n  ...",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 248.13
+    }
+  },
+  {
+    "problem_id": "FATE-H_94",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/-- Suppose that a ring $S$ is integral over the image of a ring homomorphism $R \\to S$. Show that\nthe Krull dimension of $M$ as an $S$-module is the same as the Krull dimension of $M$ as an\n$R$-module. -/\ntheorem ringKrullDim_quot_annihilator_eq {R S M : Type} [CommRing R] [CommRing S] [AddCommGroup M] [Algebra R S]\n    [Module S M] [Module R M] [IsScalarTower R S M] [Algebra.IsIntegral R S] :\n    ringKrullDim (S ⧸ (Module.annihilator S M)) = ringKrullDim (R ⧸ (Module.annihilator R M)) := by\n  sorry",
+    "full_code": "/-- Suppose that a ring $S$ is integral over the image of a ring homomorphism $R \\to S$. Show that\nthe Krull dimension of $M$ as an $S$-module is the same as the Krull dimension of $M$ as an\n$R$-module. -/\ntheorem ringKrullDim_quot_annihilator_eq {R S M : Type} [CommRing R] [CommRing S] [AddCommGroup M] [Algebra R S]\n    [Module S M] [Module R M] [IsScalarTower R S M] [Algebra.IsIntegral R S] :\n    ringKrullDim (S ⧸ (Module.annihilator S M)) = ringKrullDim (R ⧸ (Module.annihilator R M)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 158.48
+    }
+  },
+  {
+    "problem_id": "FATE-H_95",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/-- Show that if $x_1, \\dots, x_r$ is a regular sequence in $R$,\nthen so is $x_1^{a_1}, \\dots, x_r^{a_r}$ for any positive integers $a_1, \\dots, a_r$. -/\ntheorem isRegular_ofFn_pow (R M : Type) [CommRing R] [AddCommGroup M] [Module R M]\n    (rs : List R) (a : Fin rs.length → ℕ+) (h : Sequence.IsRegular M rs) :\n    Sequence.IsRegular M (List.ofFn (fun i => rs[i] ^ (a i).1)) := by\n  sorry",
+    "full_code": "/-- Show that if $x_1, \\dots, x_r$ is a regular sequence in $R$,\nthen so is $x_1^{a_1}, \\dots, x_r^{a_r}$ for any positive integers $a_1, \\dots, a_r$. -/\ntheorem isRegular_ofFn_pow (R M : Type) [CommRing R] [AddCommGroup M] [Module R M]\n    (rs : List R) (a : Fin rs.length → ℕ+) (h : Sequence.IsRegular M rs) :\n    Sequence.IsRegular M (List.ofFn (fun i => rs[i] ^ (a i).1)) := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 127.36
+    }
+  },
+  {
+    "problem_id": "FATE-H_96",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/--Let \\( I_1, I_2 \\subseteq K[x_1, \\dots, x_n] \\) be two ideals. With \\( y \\) an additional\nindeterminate, form the ideal\n\\[\nJ := \\big( y \\cdot I_1 \\cup (1 - y) \\cdot I_2 \\big) K[x_1, \\dots, x_n, y] \\subseteq K[x_1, \\dots,\nx_n, y].\n\\]Show that\n\\[\nI_1 \\cap I_2 = K[x_1, \\dots, x_n] \\cap J.\n\\]-/\ntheorem inf_eq_span_X_smul_sup_one_sub_X_smul_comap_C {K : Type} [Field K] (n : ℕ) \n    (I1 I2 : Ideal (MvPolynomial (Fin n) K)) :\n    I1 ⊓ I2 = (Ideal.span {(X : (MvPolynomial (Fin n) K)[X])} • (I1.map C) ⊔\n    Ideal.span {(1 - X : (MvPolynomial (Fin n) K)[X])} • (I2.map C) ).comap C := by\n  set R := MvPolynomial (Fin n) K\n  set J : Ideal R[X] :=\n    Ideal.span {(X : R[X])} • (I1.map C) ⊔\n    Ideal.span {(1 - X : R[X])} • (I2.map C) with hJ\n  -- Key auxiliary: image of I.map C under any eval r lies in I.\n  have key : ∀ (I : Ideal R) (r : R) (p : R[X]),\n      p ∈ I.map (C : R →+* R[X]) → eval r p ∈ I := by\n    intro I r p hp\n    have h1 : (I.map (C : R →+* R[X])).map (evalRingHom r) ≤ I := by\n      rw [Ideal.map_map]\n      intro x hx\n      have : (evalRingHom r).comp (C : R →+* R[X]) = RingHom.id R := by\n        ext a; simp [evalRingHom]\n      rw [this] at hx\n      simpa [Ideal.map_id] using hx\n    exact h1 (Ideal.mem_map_of_mem _ hp)\n  -- Forward direction\n  have fwd : I1 ⊓ I2 ≤ J.comap (C : R →+* R[X]) := by\n    intro f hf\n    obtain ⟨hf1, hf2⟩ := hf\n    show C f ∈ J\n    have heq : (C f : R[X]) = X * C f + (1 - X) * C f := by ring\n    rw [heq]\n    apply Ideal.add_mem\n    · apply Ideal.mem_sup_left\n      apply Ideal.mul_mem_mul\n      · exact Ideal.subset_span (Set.mem_singleton _)\n      · exact Ideal.mem_map_of_mem _ hf1\n    · apply Ideal.mem_sup_right\n      apply Ideal.mul_mem_mul\n      · exact Ideal.subset_span (Set.mem_singleton _)\n      · exact Ideal.mem_map_of_mem _ hf2\n  -- Backward direction\n  have bwd : J.comap (C : R →+* R[X]) ≤ I1 ⊓ I2 := by\n    intro f hf\n    have hCf : C f ∈ J := hf\n    refine ⟨?_, ?_⟩\n    · -- evaluate at 1\n      have hsub : ∀ p ∈ J, eval 1 p ∈ I1 := by\n        intro p hp\n        refine Submodule.add_induction_of_mem hp ?_ ?_\n        all_goals sorry\n      have : eval (1 : R) (C f) = f := by simp\n      have := hsub (C f) hCf\n      simpa [eval_C] using this\n    · -- evaluate at 0\n      have hsub : ∀ p ∈ J, eval 0 p ∈ I2 := by\n        intro p hp\n        sorry\n      have := hsub (C f) hCf\n      simpa [eval_C] using this\n  exact le_antisymm fwd bwd",
+    "full_code": "/--Let \\( I_1, I_2 \\subseteq K[x_1, \\dots, x_n] \\) be two ideals. With \\( y \\) an additional\nindeterminate, form the ideal\n\\[\nJ := \\big( y \\cdot I_1 \\cup (1 - y) \\cdot I_2 \\big) K[x_1, \\dots, x_n, y] \\subseteq K[x_1, \\dots,\nx_n, y].\n\\]Show that\n\\[\nI_1 \\cap I_2 = K[x_1, \\dots, x_n] \\cap J.\n\\]-/\ntheorem inf_eq_span_X_smul_sup_one_sub_X_smul_comap_C {K : Type} [Field K] (n : ℕ) \n    (I1 I2 : Ideal (MvPolynomial (Fin n) K)) :\n    I1 ⊓ I2 = (Ideal.span {(X : (MvPolynomial (Fin n) K)[X])} • (I1.map C) ⊔\n    Ideal.span {(1 - X : (MvPolynomial (Fin n) K)[X])} • (I2.map C) ).comap C := by\n  set R := MvPolynomial (Fin n) K\n  set J : Ideal R[X] :=\n    Ideal.span {(X : R[X])} • (I1.map C) ⊔\n    Ideal.span {(1 - X : R[X])} • (I2.map C) with hJ\n  -- Key auxiliary: image of I.map C under any eval r lies in I.\n  have key : ∀ (I : Ideal R) (r : R) (p : R[X]),\n      p ∈ I.map (C : R →+* R[X]) → eval r p ∈ I := by\n    intro I r p hp\n    have h1 : (I.map (C : R →+* R[X])).map (evalRingHom r) ≤ I := by\n      rw [Ideal.map_map]\n      intro x hx\n      have : (evalRingHom r).comp (C : R →+* R[X]) = RingHom.id R := by\n        ext a; simp [evalRingHom]\n      rw [this] at hx\n      simpa [Ideal.map_id] using hx\n    exact h1 (Ideal.mem_map_of_mem _ hp)\n  -- Forward direction\n  have fwd : I1 ⊓ I2 ≤ J.comap (C : R →+* R[X]) := by\n    intro f hf\n    obtain ⟨hf1, hf2⟩ := hf\n    show C f ∈ J\n    have heq : (C f : R[X]) = X * C f + (1 - X) * C f := by ring\n    rw [heq]\n    apply Ideal.add_mem\n    · apply Ideal.mem_sup_left\n      apply Ideal.mul_mem_mul\n      · exact Ideal.subset_span (Set.mem_singleton _)\n      · exact Ideal.mem_map_of_mem _ hf1\n    · apply Ideal.mem_sup_right\n      apply Ideal.mul_mem_mul\n      · exact Ideal.subset_span (Set.mem_singleton _)\n      · exact Ideal.mem_map_of_mem _ hf2\n  -- Backward direction\n  have bwd : J.comap (C : R →+* R[X]) ≤ I1 ⊓ I2 := by\n    intro f hf\n    have hCf : C f ∈ J := hf\n    refine ⟨?_, ?_⟩\n    · -- evaluate at 1\n      have hsub : ∀ p ∈ J, eval 1 p ∈ I1 := by\n        intro p hp\n        refine Submodule.add_induction_of_mem hp ?_ ?_\n        all_goals sorry\n      have : eval (1 : R) (C f) = f := by simp\n      have := hsub (C f) hCf\n      simpa [eval_C] using this\n    · -- evaluate at 0\n      have hsub : ∀ p ∈ J, eval 0 p ∈ I2 := by\n        intro p hp\n        sorry\n      have := hsub (C f) hCf\n      simpa [eval_C] using this\n  exact le_antisymm fwd bwd",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 921.69
+    }
+  },
+  {
+    "problem_id": "FATE-H_97",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 15,
+    "code": "/- Prove that $\\sin 1^{\\circ}$ is algebraic over $\\mathbb{Q}$.-/\ntheorem isAlgebraic_sin_pi_div_180 : IsAlgebraic ℚ (sin (π / 180)) := by\n  refine ⟨Polynomial.Chebyshev.T ℚ 90, ?nz, ?ev⟩\n  · -- Step A: p ≠ 0\n    intro h\n    have hdeg : (Polynomial.Chebyshev.T ℚ 90).natDegree = 90 := by\n      simp [Polynomial.Chebyshev.natDegree_T]\n    rw [h] at hdeg\n    simp at hdeg\n  · -- Step B\n    have hmap :\n        (Polynomial.Chebyshev.T ℚ 90).map (algebraMap ℚ ℝ)\n          = Polynomial.Chebyshev.T ℝ 90 :=\n      Polynomial.Chebyshev.map_T (algebraMap ℚ ℝ) 90\n    have hsin : Real.sin (Real.pi/180) = Real.cos (89 * Real.pi / 180) := by\n      have heq : (89 : ℝ) * Real.pi / 180 = Real.pi/2 - Real.pi/180 := by ring\n      rw [heq, Real.cos_pi_div_two_sub]\n    have hcheb :\n        (Polynomial.Chebyshev.T ℝ 90).eval (Real.cos (89 * Real.pi / 180))\n          = Real.cos (90 * (89 * Real.pi / 180)) := by\n      simpa using Polynomial.Chebyshev.T_real_cos (89 * Real.pi / 180) 90\n    have hper : ∀ k : ℕ, ∀ x : ℝ,\n        Real.cos (x + k * (2 * Real.pi)) = Real.cos x := by\n      intro k\n      induction k with\n      | zero => intro x; simp\n      | succ n ih =>\n          intro x\n          have hstep : x + (n+1 : ℕ) * (2 * Real.pi)\n                = (x + n * (2 * Real.pi)) + 2 * Real.pi := by push_cast; ring\n          rw [hstep, Real.cos_add_two_pi, ih]\n    have hbridge : Real.cos (89 * Real.pi / 2) = 0 := by\n      have heq : (89 : ℝ) * Real.pi / 2 = (Real.pi/2 + 44 * Real.pi) := by ring\n      rw [heq]\n      have h44 : (Real.pi/2 + 44 * Real.pi) = Real.pi/2 + (22 : ℕ) * (2 * Real.pi) := by\n        push_cast; ring\n      rw [h44, hper 22, Real.cos_pi_div_two]\n    have hgoal : (90 : ℝ) * (89 * Real.pi / 180) = 89 * Real.pi / 2 := by ring\n    show Polynomial.aeval (Real.sin (Real.pi/180)) (Polynomial.Chebyshev.T ℚ 90) = 0\n    rw [hsin]\n    rw [show (Polynomial.aeval (Real.cos (89 * Real.pi / 180)) (Polynomial.Chebyshev.T ℚ 90)\n            = (Polynomial.Chebyshev.T ℚ 90).map (algebraMap ℚ ℝ) |>.eval (Real.cos (89 * Real.pi / 180))) from\n      (Polynomial.aeval_def _ _).trans (Polynomial.eval",
+    "full_code": "/- Prove that $\\sin 1^{\\circ}$ is algebraic over $\\mathbb{Q}$.-/\ntheorem isAlgebraic_sin_pi_div_180 : IsAlgebraic ℚ (sin (π / 180)) := by\n  refine ⟨Polynomial.Chebyshev.T ℚ 90, ?nz, ?ev⟩\n  · -- Step A: p ≠ 0\n    intro h\n    have hdeg : (Polynomial.Chebyshev.T ℚ 90).natDegree = 90 := by\n      simp [Polynomial.Chebyshev.natDegree_T]\n    rw [h] at hdeg\n    simp at hdeg\n  · -- Step B\n    have hmap :\n        (Polynomial.Chebyshev.T ℚ 90).map (algebraMap ℚ ℝ)\n          = Polynomial.Chebyshev.T ℝ 90 :=\n      Polynomial.Chebyshev.map_T (algebraMap ℚ ℝ) 90\n    have hsin : Real.sin (Real.pi/180) = Real.cos (89 * Real.pi / 180) := by\n      have heq : (89 : ℝ) * Real.pi / 180 = Real.pi/2 - Real.pi/180 := by ring\n      rw [heq, Real.cos_pi_div_two_sub]\n    have hcheb :\n        (Polynomial.Chebyshev.T ℝ 90).eval (Real.cos (89 * Real.pi / 180))\n          = Real.cos (90 * (89 * Real.pi / 180)) := by\n      simpa using Polynomial.Chebyshev.T_real_cos (89 * Real.pi / 180) 90\n    have hper : ∀ k : ℕ, ∀ x : ℝ,\n        Real.cos (x + k * (2 * Real.pi)) = Real.cos x := by\n      intro k\n      induction k with\n      | zero => intro x; simp\n      | succ n ih =>\n          intro x\n          have hstep : x + (n+1 : ℕ) * (2 * Real.pi)\n                = (x + n * (2 * Real.pi)) + 2 * Real.pi := by push_cast; ring\n          rw [hstep, Real.cos_add_two_pi, ih]\n    have hbridge : Real.cos (89 * Real.pi / 2) = 0 := by\n      have heq : (89 : ℝ) * Real.pi / 2 = (Real.pi/2 + 44 * Real.pi) := by ring\n      rw [heq]\n      have h44 : (Real.pi/2 + 44 * Real.pi) = Real.pi/2 + (22 : ℕ) * (2 * Real.pi) := by\n        push_cast; ring\n      rw [h44, hper 22, Real.cos_pi_div_two]\n    have hgoal : (90 : ℝ) * (89 * Real.pi / 180) = 89 * Real.pi / 2 := by ring\n    show Polynomial.aeval (Real.sin (Real.pi/180)) (Polynomial.Chebyshev.T ℚ 90) = 0\n    rw [hsin]\n    rw [show (Polynomial.aeval (Real.cos (89 * Real.pi / 180)) (Polynomial.Chebyshev.T ℚ 90)\n            = (Polynomial.Chebyshev.T ℚ 90).map (algebraMap ℚ ℝ) |>.eval (Real.cos (89 * Real.pi / 180))) from\n      (Polynomial.aeval_def _ _).trans (Polynomial.eval",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 43,
+            "column": 55
+          },
+          "endPos": null,
+          "data": "unexpected end of input; expected ')', ',' or ':'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 2,
+            "column": 52
+          },
+          "endPos": {
+            "line": 2,
+            "column": 55
+          },
+          "data": "unknown identifier 'sin'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 821.23
+    }
+  },
+  {
+    "problem_id": "FATE-H_98",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/--Let \\( A \\) be a Noetherian ring, and suppose that \\( P \\) is a height \\( r > 0 \\) prime ideal\ngenerated by \\( r \\) elements, which may **not** be a regular sequence. Show that \\( P \\) can be\ngenerated by an \\( A \\)-sequence.-/\ntheorem exists_isRegular_and_eq_ofList {A : Type} [CommRing A] [IsNoetherianRing A] (P : Ideal A) [P.IsPrime] (r : ℕ)\n    (hr : 0 < r) (h : r = P.primeHeight) (a : Fin r → A) (hP : P = Ideal.span (Set.range a)) :\n    ∃ b : List A, Sequence.IsRegular A b ∧ P = Ideal.ofList b := by\n  sorry",
+    "full_code": "/--Let \\( A \\) be a Noetherian ring, and suppose that \\( P \\) is a height \\( r > 0 \\) prime ideal\ngenerated by \\( r \\) elements, which may **not** be a regular sequence. Show that \\( P \\) can be\ngenerated by an \\( A \\)-sequence.-/\ntheorem exists_isRegular_and_eq_ofList {A : Type} [CommRing A] [IsNoetherianRing A] (P : Ideal A) [P.IsPrime] (r : ℕ)\n    (hr : 0 < r) (h : r = P.primeHeight) (a : Fin r → A) (hP : P = Ideal.span (Set.range a)) :\n    ∃ b : List A, Sequence.IsRegular A b ∧ P = Ideal.ofList b := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 153.45
+    }
+  },
+  {
+    "problem_id": "FATE-H_99",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 18,
+    "code": "/--\nFor a commutative ring \\(R\\) and \\(n \\in \\mathbb{N}\\) such that \\(2\\) is invertible in \\(R\\).\nIf \\(A \\in SO(2n + 1,  R)\\), then \\(det(I - A) = 0\\).-/\ntheorem determinant_eq_zero (R : Type) [CommRing R] (n : ℕ) (h2_inv : IsUnit (2 : R))\n    (A : Matrix.specialOrthogonalGroup (Fin (2 * n + 1)) R) : (1 - A.1).det = 0 := by\n  sorry",
+    "full_code": "/--\nFor a commutative ring \\(R\\) and \\(n \\in \\mathbb{N}\\) such that \\(2\\) is invertible in \\(R\\).\nIf \\(A \\in SO(2n + 1,  R)\\), then \\(det(I - A) = 0\\).-/\ntheorem determinant_eq_zero (R : Type) [CommRing R] (n : ℕ) (h2_inv : IsUnit (2 : R))\n    (A : Matrix.specialOrthogonalGroup (Fin (2 * n + 1)) R) : (1 - A.1).det = 0 := by\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 57,
+          "pos": {
+            "line": 6,
+            "column": 2
+          },
+          "goal": "R : Type\ninst✝ : CommRing R\nn : ℕ\nh2_inv : IsUnit 2\nA : ↥(Matrix.specialOrthogonalGroup (Fin (2 * n + 1)) R)\n⊢ (1 - ↑A).det = 0",
+          "endPos": {
+            "line": 6,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 467.79
+    }
+  },
+  {
+    "problem_id": "FATE-H_100",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 14,
+    "code": "/--\nThere exists a commutative ring with finite prime spectrum but is not Noetherian.\n-/\ntheorem exists_finite_primeSpectrum_not_isNoetherianRing :\n    ∃ (R : Type) (_ : CommRing R), Finite (PrimeSpectrum R) ∧ ¬ IsNoetherianRing R := by\n  let M : Type := ℕ → ℚ\n  let R : Type := TrivSqZeroExt ℚ M\n  have hCR : CommRing R := by\n    unfold_let R\n    infer_instance\n  refine ⟨R, hCR, ?_, ?_⟩\n  · sorry\n  · sorry",
+    "full_code": "/--\nThere exists a commutative ring with finite prime spectrum but is not Noetherian.\n-/\ntheorem exists_finite_primeSpectrum_not_isNoetherianRing :\n    ∃ (R : Type) (_ : CommRing R), Finite (PrimeSpectrum R) ∧ ¬ IsNoetherianRing R := by\n  let M : Type := ℕ → ℚ\n  let R : Type := TrivSqZeroExt ℚ M\n  have hCR : CommRing R := by\n    unfold_let R\n    infer_instance\n  refine ⟨R, hCR, ?_, ?_⟩\n  · sorry\n  · sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 26,
+          "pos": {
+            "line": 12,
+            "column": 4
+          },
+          "goal": "case refine_1\nM : Type := ℕ → ℚ\nR : Type := TrivSqZeroExt ℚ M\nhCR : CommRing R\n⊢ Finite (PrimeSpectrum R)",
+          "endPos": {
+            "line": 12,
+            "column": 9
+          }
+        },
+        {
+          "proofState": 27,
+          "pos": {
+            "line": 13,
+            "column": 4
+          },
+          "goal": "case refine_2\nM : Type := ℕ → ℚ\nR : Type := TrivSqZeroExt ℚ M\nhCR : CommRing R\n⊢ ¬IsNoetherianRing R",
+          "endPos": {
+            "line": 13,
+            "column": 9
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 562.2
+    }
+  }
+]

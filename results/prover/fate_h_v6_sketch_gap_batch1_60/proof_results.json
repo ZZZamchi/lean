@@ -1,0 +1,723 @@
+[
+  {
+    "problem_id": "FATE-H_1",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_2",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_3",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_4",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := (↑u⁻¹ : R) with hv_def\n  have h1 : (1 - a * b) * v = 1 := by\n    rw [← hu]; exact Units.mul_inv u\n  have h2 : v * (1 - a * b) = 1 := by\n    rw [← hu]; exact Units.inv_mul u\n  have e1 : v - a * b * v = 1 := by\n    have := h1\n    rw [sub_mul, one_mul] at this\n    exact this\n  have e2 : v - v * (a * b) = 1 := by\n    have := h2\n    rw [mul_sub, mul_one] at this\n    exact this\n  refine ⟨⟨1 - b * a, 1 + b * v * a, ?_, ?_⟩, rfl⟩\n  · have key : b * v * a - b * (a * b) * v * a = b * a := by\n      have step1 : b * v * a - b * (a * b) * v * a = b * (v - a * b * v) * a := by\n        noncomm_ring\n      rw [step1, e1]\n      noncomm_ring\n    have expand : (1 - b * a) * (1 + b * v * a)\n        = 1 - b * a + (b * v * a - b * (a * b) * v * a) := by\n      noncomm_ring\n    rw [expand, key]\n    rw [sub_add_cancel]\n  · have key : b * v * a - b * v * (a * b) * a = b * a := by\n      have step1 : b * v * a - b * v * (a * b) * a = b * (v - v * (a * b)) * a := by\n        noncomm_ring\n      rw [step1, e2]\n      noncomm_ring\n    have expand : (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + (b * v * a - b * v * (a * b) * a) := by\n      noncomm_ring\n    rw [expand, key]\n    rw [sub_add_cancel]",
+    "full_code": "/- Let $R$ be a ring with $1 \\neq 0$.\\nFor two elements $a,b \\in R$, if $1-ab$ is a unit,\nthen $1-ba$ is a unit. -/\ntheorem isUnit_one_sub_mul {R : Type} [Ring R] [Nontrivial R] {a b : R} (h : IsUnit (1 - a * b)) :\n    IsUnit (1 - b * a) := by\n  obtain ⟨u, hu⟩ := h\n  set v : R := (↑u⁻¹ : R) with hv_def\n  have h1 : (1 - a * b) * v = 1 := by\n    rw [← hu]; exact Units.mul_inv u\n  have h2 : v * (1 - a * b) = 1 := by\n    rw [← hu]; exact Units.inv_mul u\n  have e1 : v - a * b * v = 1 := by\n    have := h1\n    rw [sub_mul, one_mul] at this\n    exact this\n  have e2 : v - v * (a * b) = 1 := by\n    have := h2\n    rw [mul_sub, mul_one] at this\n    exact this\n  refine ⟨⟨1 - b * a, 1 + b * v * a, ?_, ?_⟩, rfl⟩\n  · have key : b * v * a - b * (a * b) * v * a = b * a := by\n      have step1 : b * v * a - b * (a * b) * v * a = b * (v - a * b * v) * a := by\n        noncomm_ring\n      rw [step1, e1]\n      noncomm_ring\n    have expand : (1 - b * a) * (1 + b * v * a)\n        = 1 - b * a + (b * v * a - b * (a * b) * v * a) := by\n      noncomm_ring\n    rw [expand, key]\n    rw [sub_add_cancel]\n  · have key : b * v * a - b * v * (a * b) * a = b * a := by\n      have step1 : b * v * a - b * v * (a * b) * a = b * (v - v * (a * b)) * a := by\n        noncomm_ring\n      rw [step1, e2]\n      noncomm_ring\n    have expand : (1 + b * v * a) * (1 - b * a)\n        = 1 - b * a + (b * v * a - b * v * (a * b) * a) := by\n      noncomm_ring\n    rw [expand, key]\n    rw [sub_add_cancel]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 372.01
+    }
+  },
+  {
+    "problem_id": "FATE-H_6",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_7",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_8",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_9",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_10",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_11",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_12",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_13",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_14",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_15",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_16",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_17",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_18",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_19",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_20",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_21",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_22",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_23",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_24",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_25",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_26",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_27",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_28",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_29",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_30",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_31",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_32",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_33",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_34",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_35",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_36",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_37",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_38",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_39",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_40",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_41",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_42",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_43",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/-- Let $F$ be a field with $\\mathbb{Q} \\subseteq F \\subseteq \\mathbb{C}$, where $F/\\mathbb{Q}$ is a finite \\emph\n{abelian} Galois extension. Let $\\alpha \\in F$ and let $f(x) \\in \\mathbb{Q}[x]$ be its minimal monic\npolynomial. Assume that $|\\alpha | =1$. Prove that $|\\beta| = 1$ for every complex root $\\beta$ of\n$f(x)$. -/\ntheorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F]\n    (h : ∀ f g : F ≃ₐ[ℚ] F, f * g = g * f) (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by\n  sorry",
+    "full_code": "/-- Let $F$ be a field with $\\mathbb{Q} \\subseteq F \\subseteq \\mathbb{C}$, where $F/\\mathbb{Q}$ is a finite \\emph\n{abelian} Galois extension. Let $\\alpha \\in F$ and let $f(x) \\in \\mathbb{Q}[x]$ be its minimal monic\npolynomial. Assume that $|\\alpha | =1$. Prove that $|\\beta| = 1$ for every complex root $\\beta$ of\n$f(x)$. -/\ntheorem norm_eq_one_of_mem_rootSet (F : IntermediateField ℚ ℂ) [FiniteDimensional ℚ F] [IsGalois ℚ F]\n    (h : ∀ f g : F ≃ₐ[ℚ] F, f * g = g * f) (α : F) (f : ℚ[X])\n    (h_min : f = minpoly ℚ α) (ha : ‖α‖ = 1)\n    (β : ℂ) (hb : β ∈ f.rootSet ℂ) : ‖β‖ = 1 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 215.26
+    }
+  },
+  {
+    "problem_id": "FATE-H_44",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 11,
+    "code": "/-- Let $k$ be a finite field of size $q$. Show that the number of degree-$19$ monic irreducible\npolynomials over $k$ is $\\frac{q^{19} - q}{19}$. -/\ntheorem card_monic_and_irreducible_and_natDegree_eq_19 {F : Type} (q : ℕ) [Field F]\n    [Fintype F] (hF : Fintype.card F = q) :\n    Nat.card { P : F[X] | P.Monic ∧ Irreducible P ∧ P.natDegree = 19 } =\n    (q ^ 19 - q) / 19 := by\n  sorry",
+    "full_code": "/-- Let $k$ be a finite field of size $q$. Show that the number of degree-$19$ monic irreducible\npolynomials over $k$ is $\\frac{q^{19} - q}{19}$. -/\ntheorem card_monic_and_irreducible_and_natDegree_eq_19 {F : Type} (q : ℕ) [Field F]\n    [Fintype F] (hF : Fintype.card F = q) :\n    Nat.card { P : F[X] | P.Monic ∧ Irreducible P ∧ P.natDegree = 19 } =\n    (q ^ 19 - q) / 19 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 159.74
+    }
+  },
+  {
+    "problem_id": "FATE-H_45",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-H_46",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--Let \\( \\alpha \\) be a non-zero complex number such that \\( \\alpha + \\alpha^{-1} \\) is contained\nin a quadratic number field. Let \\( L \\) be the normal closure of \\( \\mathbb{Q}(\\alpha) \\). Show\nthat \\( [L : \\mathbb{Q}] \\) divides \\( 8 \\).-/\ntheorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by\n  sorry",
+    "full_code": "/--Let \\( \\alpha \\) be a non-zero complex number such that \\( \\alpha + \\alpha^{-1} \\) is contained\nin a quadratic number field. Let \\( L \\) be the normal closure of \\( \\mathbb{Q}(\\alpha) \\). Show\nthat \\( [L : \\mathbb{Q}] \\) divides \\( 8 \\).-/\ntheorem finrank_dvd_eight_of_add_inv_eq_algebraMap {α : ℂ} {K L : Type} [Field K] [NumberField K]\n    [Algebra K ℂ] (hk : Module.finrank ℚ K = 2) {a : K} (h : α + α⁻¹ = algebraMap K ℂ a)\n    [Field L] [Algebra ℚ L] [IsNormalClosure ℚ ℚ⟮a⟯ L] : Module.finrank ℚ L ∣ 8 := by\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "data": "placeholder_or_hole_detected"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 179.78
+    }
+  }
+]

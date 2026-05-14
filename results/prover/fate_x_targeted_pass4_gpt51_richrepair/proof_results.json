@@ -1,0 +1,104 @@
+[
+  {
+    "problem_id": "FATE-X_7",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 19,
+    "code": "/-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1785 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1785) : ¬ IsSimpleGroup G := by\n  classical\n  -- Convert the cardinality statement to `Fintype.card`.\n  have _ := Fintype.ofFinite G\n  have h' : Fintype.card G = 1785 := by\n    simpa using h_card\n  -- A complete proof would use Sylow theory and group-theoretic arguments\n  -- for the order `1785 = 3 * 5 * 7 * 17`, ruling out simplicity.\n  -- This is nontrivial and not fully formalized here.\n  intro hSimple\n  -- Placeholder for the (missing) group-theoretic contradiction.\n  admit",
+    "full_code": "/-- Prove that if $\\#G = 1785$ then $G$ is not simple. -/\ntheorem not_isSimpleGroup_of_card_eq_1785 (G : Type) [Group G]\n    [Finite G] (h_card : Nat.card G = 1785) : ¬ IsSimpleGroup G := by\n  classical\n  -- Convert the cardinality statement to `Fintype.card`.\n  have _ := Fintype.ofFinite G\n  have h' : Fintype.card G = 1785 := by\n    simpa using h_card\n  -- A complete proof would use Sylow theory and group-theoretic arguments\n  -- for the order `1785 = 3 * 5 * 7 * 17`, ruling out simplicity.\n  -- This is nontrivial and not fully formalized here.\n  intro hSimple\n  -- Placeholder for the (missing) group-theoretic contradiction.\n  admit",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 116.14
+    }
+  },
+  {
+    "problem_id": "FATE-X_10",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 27,
+    "code": "/--\nLet \\( A = \\mathbb{R}[X, Y]/(X^2 + Y^2 + 1) \\). Then it is a principal ideal domain. -/\ntheorem isPrincipalIdealRing_quot_X_pow_two_plus_Y_pow_two_plus_one :\n    IsPrincipalIdealRing ((MvPolynomial (Fin 2) ℝ) ⧸\n    Ideal.span {(.X 0 ^ 2 + .X 1 ^ 2 + .C 1 : (MvPolynomial (Fin 2) ℝ))}) := by\n  -- This deep result is not currently available in mathlib.\n  -- We leave it as an admitted theorem for now.\n  admit\n  sorry",
+    "full_code": "/--\nLet \\( A = \\mathbb{R}[X, Y]/(X^2 + Y^2 + 1) \\). Then it is a principal ideal domain. -/\ntheorem isPrincipalIdealRing_quot_X_pow_two_plus_Y_pow_two_plus_one :\n    IsPrincipalIdealRing ((MvPolynomial (Fin 2) ℝ) ⧸\n    Ideal.span {(.X 0 ^ 2 + .X 1 ^ 2 + .C 1 : (MvPolynomial (Fin 2) ℝ))}) := by\n  -- This deep result is not currently available in mathlib.\n  -- We leave it as an admitted theorem for now.\n  admit\n  sorry",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 9,
+            "column": 2
+          },
+          "endPos": {
+            "line": 9,
+            "column": 7
+          },
+          "data": "no goals to be solved"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 154.64
+    }
+  },
+  {
+    "problem_id": "FATE-X_12",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 13,
+    "code": "/--\nProve that the ring $\\mathbb{Z}[\\frac{1+\\sqrt{-19}}{2}]$ is a principal ideal domain.\n-/\ntheorem isPrincipalIdealRing_of_quadratic_integer_19 :\n    IsPrincipalIdealRing (Algebra.adjoin ℤ {(1 + (Real.sqrt 19) * Complex.I) / 2}) ∧ IsDomain (Algebra.adjoin ℤ {(1 + (Real.sqrt 19) * Complex.I) / 2}) := by\n  -- This deep algebraic number theory result is not currently available in mathlib.\n  -- We keep it as an axiom (single `sorry`) for now.\n  sorry",
+    "full_code": "/--\nProve that the ring $\\mathbb{Z}[\\frac{1+\\sqrt{-19}}{2}]$ is a principal ideal domain.\n-/\ntheorem isPrincipalIdealRing_of_quadratic_integer_19 :\n    IsPrincipalIdealRing (Algebra.adjoin ℤ {(1 + (Real.sqrt 19) * Complex.I) / 2}) ∧ IsDomain (Algebra.adjoin ℤ {(1 + (Real.sqrt 19) * Complex.I) / 2}) := by\n  -- This deep algebraic number theory result is not currently available in mathlib.\n  -- We keep it as an axiom (single `sorry`) for now.\n  sorry",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [
+        {
+          "proofState": 50,
+          "pos": {
+            "line": 8,
+            "column": 2
+          },
+          "goal": "⊢ IsPrincipalIdealRing ↑(AlgebraCat.of ℤ ↥(Algebra.adjoin ℤ {(1 + ↑√19 * Complex.I) / 2})) ∧\n    IsDomain ↑(AlgebraCat.of ℤ ↥(Algebra.adjoin ℤ {(1 + ↑√19 * Complex.I) / 2}))",
+          "endPos": {
+            "line": 8,
+            "column": 7
+          }
+        }
+      ],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 430.97
+    }
+  },
+  {
+    "problem_id": "FATE-X_14",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 20,
+    "code": "/--\nShow that if $R$ is a unique factorization domain such that the quotient field of $R$ is isomorphic\nto $\\mathbb{R}$, then R is isomorphic to $\\mathbb{R}$.\n-/\ntheorem isomorphic_real_of_fractionRing_isomorphic_real_of_UFD (R : Type) [CommRing R] [IsDomain R]\n    [UniqueFactorizationMonoid R] (h : Nonempty ((FractionRing R) ≃+* ℝ)) :\n    Nonempty (R ≃+* ℝ) := by\n  classical\n  /-\n  This statement is in general not provable from the given algebraic hypotheses alone.\n  It requires additional structure (for example, a topology or an order compatible with\n  the ring structure) to conclude that an integral domain with quotient field isomorphic\n  to `ℝ` is itself isomorphic to `ℝ`. We therefore leave this as an explicit placeholder.\n  -/\n  have : False := by\n    -- Placeholder: no purely algebraic contradiction or construction is available.\n    admit\n  exact this.elim",
+    "full_code": "/--\nShow that if $R$ is a unique factorization domain such that the quotient field of $R$ is isomorphic\nto $\\mathbb{R}$, then R is isomorphic to $\\mathbb{R}$.\n-/\ntheorem isomorphic_real_of_fractionRing_isomorphic_real_of_UFD (R : Type) [CommRing R] [IsDomain R]\n    [UniqueFactorizationMonoid R] (h : Nonempty ((FractionRing R) ≃+* ℝ)) :\n    Nonempty (R ≃+* ℝ) := by\n  classical\n  /-\n  This statement is in general not provable from the given algebraic hypotheses alone.\n  It requires additional structure (for example, a topology or an order compatible with\n  the ring structure) to conclude that an integral domain with quotient field isomorphic\n  to `ℝ` is itself isomorphic to `ℝ`. We therefore leave this as an explicit placeholder.\n  -/\n  have : False := by\n    -- Placeholder: no purely algebraic contradiction or construction is available.\n    admit\n  exact this.elim",
+    "compilation_result": {
+      "pass": true,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 158.2
+    }
+  }
+]

@@ -1,0 +1,1275 @@
+[
+  {
+    "problem_id": "FATE-M_2",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/--\nLet $G$ be a cyclic group with generator $a$, and let $G^{\\prime}$ be a group isomorphic to $G$.\nIf $\\phi: G \\rightarrow G^{\\prime}$ is an isomorphism, show that, for every $x \\in G, \\phi(x)$ is\ncompletely determined by the value $\\phi(a)$. That is, if $\\phi: G \\rightarrow G^{\\prime}$ and\n$\\psi: G \\rightarrow G^{\\prime}$ are two isomophisms such that $\\phi(a)=\\psi(a)$,\nthen $\\phi(x)=\\psi(x)$ for all $x \\in G$.\n-/\ntheorem monoidHom_eq_of_isCyclic {G G' : Type*} [Group G] [Group G'] (a : G)\n    (h : ∀ g : G, ∃ n, g = a ^ n) (f1 f2 : G →* G') (heq : f1 a = f2 a) :\n    ∀ g : G, f1 g = f2 g := by\n  intro g\n  obtain ⟨n, rfl⟩ := h g\n  simp [map_pow, heq]",
+    "full_code": "/--\nLet $G$ be a cyclic group with generator $a$, and let $G^{\\prime}$ be a group isomorphic to $G$.\nIf $\\phi: G \\rightarrow G^{\\prime}$ is an isomorphism, show that, for every $x \\in G, \\phi(x)$ is\ncompletely determined by the value $\\phi(a)$. That is, if $\\phi: G \\rightarrow G^{\\prime}$ and\n$\\psi: G \\rightarrow G^{\\prime}$ are two isomophisms such that $\\phi(a)=\\psi(a)$,\nthen $\\phi(x)=\\psi(x)$ for all $x \\in G$.\n-/\ntheorem monoidHom_eq_of_isCyclic {G G' : Type*} [Group G] [Group G'] (a : G)\n    (h : ∀ g : G, ∃ n, g = a ^ n) (f1 f2 : G →* G') (heq : f1 a = f2 a) :\n    ∀ g : G, f1 g = f2 g := by\n  intro g\n  obtain ⟨n, rfl⟩ := h g\n  simp [map_pow, heq]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 165.4
+    }
+  },
+  {
+    "problem_id": "FATE-M_3",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nIf $f:G\\to H$ and $g:H\\to K$ are surjective homomorphisms of groups, then the composition\n$g\\circ f:G\\to K$ is also a surjective homomorphism.\n-/\ntheorem comp_surjective_of_surjective {G H K : Type*} [Group G] [Group H] [Group K]\n    (f : G →* H) (g : H →* K) (hf : Function.Surjective f) (hg : Function.Surjective g) :\n    Function.Surjective (g.comp f) := by\n  intro k\n  obtain ⟨h, hh⟩ := hg k\n  obtain ⟨x, hx⟩ := hf h\n  exact ⟨x, by simp [hx, hh]⟩",
+    "full_code": "/--\nIf $f:G\\to H$ and $g:H\\to K$ are surjective homomorphisms of groups, then the composition\n$g\\circ f:G\\to K$ is also a surjective homomorphism.\n-/\ntheorem comp_surjective_of_surjective {G H K : Type*} [Group G] [Group H] [Group K]\n    (f : G →* H) (g : H →* K) (hf : Function.Surjective f) (hg : Function.Surjective g) :\n    Function.Surjective (g.comp f) := by\n  intro k\n  obtain ⟨h, hh⟩ := hg k\n  obtain ⟨x, hx⟩ := hf h\n  exact ⟨x, by simp [hx, hh]⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 63.06
+    }
+  },
+  {
+    "problem_id": "FATE-M_4",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet $\\phi: G \\rightarrow G^{\\prime}$ be a group homomorphism. Show that $ab\\in \\operatorname{Ker}\\phi$ if and only if $ba\\in \\operatorname{Ker}\\phi$.\n-/\ntheorem mul_mem_ker_comm {G G' : Type*} [Group G] [Group G'] (f : G →* G') {a b : G} :\n    (a * b ∈ f.ker)  ↔ (b * a ∈ f.ker) := by\n  have h1 : (a * b ∈ f.ker) ↔ f a * f b = 1 := by\n    rw [MonoidHom.mem_ker, map_mul]\n  have h2 : (b * a ∈ f.ker) ↔ f b * f a = 1 := by\n    rw [MonoidHom.mem_ker, map_mul]\n  rw [h1, h2]\n  constructor\n  · intro hxy\n    have hy : f b = (f a)⁻¹ := eq_inv_of_mul_eq_one_right hxy\n    rw [hy]\n    group\n  · intro hyx\n    have hx : f a = (f b)⁻¹ := eq_inv_of_mul_eq_one_right hyx\n    rw [hx]\n    group",
+    "full_code": "/--\nLet $\\phi: G \\rightarrow G^{\\prime}$ be a group homomorphism. Show that $ab\\in \\operatorname{Ker}\\phi$ if and only if $ba\\in \\operatorname{Ker}\\phi$.\n-/\ntheorem mul_mem_ker_comm {G G' : Type*} [Group G] [Group G'] (f : G →* G') {a b : G} :\n    (a * b ∈ f.ker)  ↔ (b * a ∈ f.ker) := by\n  have h1 : (a * b ∈ f.ker) ↔ f a * f b = 1 := by\n    rw [MonoidHom.mem_ker, map_mul]\n  have h2 : (b * a ∈ f.ker) ↔ f b * f a = 1 := by\n    rw [MonoidHom.mem_ker, map_mul]\n  rw [h1, h2]\n  constructor\n  · intro hxy\n    have hy : f b = (f a)⁻¹ := eq_inv_of_mul_eq_one_right hxy\n    rw [hy]\n    group\n  · intro hyx\n    have hx : f a = (f b)⁻¹ := eq_inv_of_mul_eq_one_right hyx\n    rw [hx]\n    group",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 196.17
+    }
+  },
+  {
+    "problem_id": "FATE-M_5",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nProve that a homomorphism $\\phi: G \\rightarrow G^{\\prime}$ is an isomorphism\n(There exists a two-sided inverse map $\\phi^{-1}:G'\\to G$)\nif and only if it is injective and surjective.\n-/\ntheorem has_inverse_iff_isomorphism {G G' : Type*} [Group G] [Group G'] (φ : G →* G') :\n    (∃ φ₁ : G' → G, Function.LeftInverse φ₁ φ ∧ Function.RightInverse φ₁ φ) ↔\n    (Function.Injective φ ∧ Function.Surjective φ) := by\n  constructor\n  · rintro ⟨φ₁, hL, hR⟩\n    refine ⟨?_, ?_⟩\n    · intro x y h\n      rw [← hL x, ← hL y, h]\n    · intro y\n      exact ⟨φ₁ y, hR y⟩\n  · rintro ⟨hinj, hsurj⟩\n    refine ⟨Function.surjInv hsurj, ?_, ?_⟩\n    · intro x\n      apply hinj\n      exact Function.surjInv_eq hsurj (φ x)\n    · intro y\n      exact Function.surjInv_eq hsurj y",
+    "full_code": "/--\nProve that a homomorphism $\\phi: G \\rightarrow G^{\\prime}$ is an isomorphism\n(There exists a two-sided inverse map $\\phi^{-1}:G'\\to G$)\nif and only if it is injective and surjective.\n-/\ntheorem has_inverse_iff_isomorphism {G G' : Type*} [Group G] [Group G'] (φ : G →* G') :\n    (∃ φ₁ : G' → G, Function.LeftInverse φ₁ φ ∧ Function.RightInverse φ₁ φ) ↔\n    (Function.Injective φ ∧ Function.Surjective φ) := by\n  constructor\n  · rintro ⟨φ₁, hL, hR⟩\n    refine ⟨?_, ?_⟩\n    · intro x y h\n      rw [← hL x, ← hL y, h]\n    · intro y\n      exact ⟨φ₁ y, hR y⟩\n  · rintro ⟨hinj, hsurj⟩\n    refine ⟨Function.surjInv hsurj, ?_, ?_⟩\n    · intro x\n      apply hinj\n      exact Function.surjInv_eq hsurj (φ x)\n    · intro y\n      exact Function.surjInv_eq hsurj y",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 80.12
+    }
+  },
+  {
+    "problem_id": "FATE-M_6",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nProve that a if $G$ and $H$ are finite groups and their orders are coprime,\nthen any homomorphism $f: G \\rightarrow H$ is trivial, i.e. $f(G) = \\{ 1_H \\}$.\n-/\ntheorem MonoidHom.eq_id_of_card_gcd_eq_one {G H: Type*} [Finite H] [Finite G][Group G] [Group H]\n    (h : (Nat.card H).gcd (Nat.card G) = 1) (f : G →* H) : ∀ p : G , f p = 1 := by\n  intro p\n  have h1 : orderOf (f p) ∣ Nat.card H := orderOf_dvd_natCard _\n  have h2 : orderOf (f p) ∣ Nat.card G := (orderOf_map_dvd f p).trans (orderOf_dvd_natCard _)\n  have h3 : orderOf (f p) ∣ 1 := h ▸ Nat.dvd_gcd h1 h2\n  exact orderOf_eq_one_iff.mp (Nat.dvd_one.mp h3)",
+    "full_code": "/--\nProve that a if $G$ and $H$ are finite groups and their orders are coprime,\nthen any homomorphism $f: G \\rightarrow H$ is trivial, i.e. $f(G) = \\{ 1_H \\}$.\n-/\ntheorem MonoidHom.eq_id_of_card_gcd_eq_one {G H: Type*} [Finite H] [Finite G][Group G] [Group H]\n    (h : (Nat.card H).gcd (Nat.card G) = 1) (f : G →* H) : ∀ p : G , f p = 1 := by\n  intro p\n  have h1 : orderOf (f p) ∣ Nat.card H := orderOf_dvd_natCard _\n  have h2 : orderOf (f p) ∣ Nat.card G := (orderOf_map_dvd f p).trans (orderOf_dvd_natCard _)\n  have h3 : orderOf (f p) ∣ 1 := h ▸ Nat.dvd_gcd h1 h2\n  exact orderOf_eq_one_iff.mp (Nat.dvd_one.mp h3)",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 72.66
+    }
+  },
+  {
+    "problem_id": "FATE-M_7",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/--\nLet $\\phi: G \\rightarrow G^{\\prime}$ be a group homomorphism. Show that $\\phi(G)$ is Abelian\nif and only if $x y x^{-1} y^{-1} \\in \\operatorname{Ker}(\\phi)$ for all $x, y \\in G$.\n-/\ntheorem commutative_iff_commutator_mem_ker  {G H : Type} [Group G] [Group H] (f : G →* H) :\n    (∀ x y : H, x ∈ f.range ∧ y ∈ f.range → x * y = y * x)\n    ↔ ∀ x y : G, x * y * x⁻¹ * y⁻¹ ∈ f.ker := by\n  constructor\n  · intro h x y\n    rw [MonoidHom.mem_ker]\n    simp only [map_mul, map_inv]\n    have hx : f x ∈ f.range := ⟨x, rfl⟩\n    have hy : f y ∈ f.range := ⟨y, rfl⟩\n    have hcomm : f x * f y = f y * f x := h (f x) (f y) ⟨hx, hy⟩\n    rw [hcomm]\n    group\n  · intro h a b ⟨ha, hb⟩\n    obtain ⟨x, hx⟩ := ha\n    obtain ⟨y, hy⟩ := hb\n    have hk := h x y\n    rw [MonoidHom.mem_ker] at hk\n    simp only [map_mul, map_inv] at hk\n    rw [hx, hy] at hk\n    have key : a * b * a⁻¹ = b := by\n      have h1 : a * b * a⁻¹ * b⁻¹ * b = 1 * b := by rw [hk]\n      rw [inv_mul_cancel_right, one_mul] at h1\n      exact h1\n    have h2 : a * b * a⁻¹ * a = b * a := by rw [key]\n    rw [inv_mul_cancel_right] at h2\n    exact h2",
+    "full_code": "/--\nLet $\\phi: G \\rightarrow G^{\\prime}$ be a group homomorphism. Show that $\\phi(G)$ is Abelian\nif and only if $x y x^{-1} y^{-1} \\in \\operatorname{Ker}(\\phi)$ for all $x, y \\in G$.\n-/\ntheorem commutative_iff_commutator_mem_ker  {G H : Type} [Group G] [Group H] (f : G →* H) :\n    (∀ x y : H, x ∈ f.range ∧ y ∈ f.range → x * y = y * x)\n    ↔ ∀ x y : G, x * y * x⁻¹ * y⁻¹ ∈ f.ker := by\n  constructor\n  · intro h x y\n    rw [MonoidHom.mem_ker]\n    simp only [map_mul, map_inv]\n    have hx : f x ∈ f.range := ⟨x, rfl⟩\n    have hy : f y ∈ f.range := ⟨y, rfl⟩\n    have hcomm : f x * f y = f y * f x := h (f x) (f y) ⟨hx, hy⟩\n    rw [hcomm]\n    group\n  · intro h a b ⟨ha, hb⟩\n    obtain ⟨x, hx⟩ := ha\n    obtain ⟨y, hy⟩ := hb\n    have hk := h x y\n    rw [MonoidHom.mem_ker] at hk\n    simp only [map_mul, map_inv] at hk\n    rw [hx, hy] at hk\n    have key : a * b * a⁻¹ = b := by\n      have h1 : a * b * a⁻¹ * b⁻¹ * b = 1 * b := by rw [hk]\n      rw [inv_mul_cancel_right, one_mul] at h1\n      exact h1\n    have h2 : a * b * a⁻¹ * a = b * a := by rw [key]\n    rw [inv_mul_cancel_right] at h2\n    exact h2",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 86.13
+    }
+  },
+  {
+    "problem_id": "FATE-M_8",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nLet $G$ be a group, for $g\\in G$, we set $f_g(x):=gxg^{-1}$ to be an isomorphism in\n$\\operatorname{Aut}(G)$, prove that the kernel of the homomorphism map\n$\\phi:G\\to\\operatorname{Aut}(G),\\ g\\mapsto f_g$ is the center of $G$, that is\n$\\operatorname{Ker}\\phi=Z(G)$.\n-/\ntheorem conj_ker_eq_center (G : Type*) [Group G] :\n    MonoidHom.ker (@MulAut.conj G _) = Subgroup.center G := by\n  ext g\n  have hker : g ∈ MonoidHom.ker (@MulAut.conj G _) ↔ ∀ x : G, g * x * g⁻¹ = x := by\n    rw [MonoidHom.mem_ker]\n    constructor\n    · intro h x\n      have hx : MulAut.conj g x = (1 : MulAut G) x := by rw [h]\n      simpa [MulAut.conj_apply] using hx\n    · intro h\n      ext x\n      simpa [MulAut.conj_apply] using h x\n  have hcomm : (∀ x : G, g * x * g⁻¹ = x) ↔ ∀ x : G, g * x = x * g := by\n    constructor\n    · intro h x\n      have := h x\n      have hx : g * x = x * g := by\n        have := congrArg (· * g) this\n        simpa [mul_assoc] using this\n      exact hx\n    · intro h x\n      rw [h x, mul_inv_cancel_right]\n  have hcen : g ∈ Subgroup.center G ↔ ∀ x : G, g * x = x * g := by\n    rw [Subgroup.mem_center_iff]\n    exact ⟨fun h x => (h x).symm, fun h x => (h x).symm⟩\n  rw [hker, hcomm, hcen]",
+    "full_code": "/--\nLet $G$ be a group, for $g\\in G$, we set $f_g(x):=gxg^{-1}$ to be an isomorphism in\n$\\operatorname{Aut}(G)$, prove that the kernel of the homomorphism map\n$\\phi:G\\to\\operatorname{Aut}(G),\\ g\\mapsto f_g$ is the center of $G$, that is\n$\\operatorname{Ker}\\phi=Z(G)$.\n-/\ntheorem conj_ker_eq_center (G : Type*) [Group G] :\n    MonoidHom.ker (@MulAut.conj G _) = Subgroup.center G := by\n  ext g\n  have hker : g ∈ MonoidHom.ker (@MulAut.conj G _) ↔ ∀ x : G, g * x * g⁻¹ = x := by\n    rw [MonoidHom.mem_ker]\n    constructor\n    · intro h x\n      have hx : MulAut.conj g x = (1 : MulAut G) x := by rw [h]\n      simpa [MulAut.conj_apply] using hx\n    · intro h\n      ext x\n      simpa [MulAut.conj_apply] using h x\n  have hcomm : (∀ x : G, g * x * g⁻¹ = x) ↔ ∀ x : G, g * x = x * g := by\n    constructor\n    · intro h x\n      have := h x\n      have hx : g * x = x * g := by\n        have := congrArg (· * g) this\n        simpa [mul_assoc] using this\n      exact hx\n    · intro h x\n      rw [h x, mul_inv_cancel_right]\n  have hcen : g ∈ Subgroup.center G ↔ ∀ x : G, g * x = x * g := by\n    rw [Subgroup.mem_center_iff]\n    exact ⟨fun h x => (h x).symm, fun h x => (h x).symm⟩\n  rw [hker, hcomm, hcen]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 233.08
+    }
+  },
+  {
+    "problem_id": "FATE-M_9",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nSet $f:G\\to H$ is a homomorphism between two groups.\nIf $f(a)$ is not of finite order, then $a$ is also not of finite order.\n-/\ntheorem orderOf_eq_zero_of_monoidHom {G H : Type*} [Group G] [Group H] {f : G →* H} {a : G}\n    (h : orderOf (f a) = 0) : orderOf a = 0 := by\n  by_contra hne\n  have hpow : (f a) ^ (orderOf a) = 1 := by\n    rw [← map_pow, pow_orderOf_eq_one, map_one]\n  have hdvd : orderOf (f a) ∣ orderOf a := orderOf_dvd_of_pow_eq_one hpow\n  rw [h] at hdvd\n  exact hne (Nat.eq_zero_of_zero_dvd hdvd)",
+    "full_code": "/--\nSet $f:G\\to H$ is a homomorphism between two groups.\nIf $f(a)$ is not of finite order, then $a$ is also not of finite order.\n-/\ntheorem orderOf_eq_zero_of_monoidHom {G H : Type*} [Group G] [Group H] {f : G →* H} {a : G}\n    (h : orderOf (f a) = 0) : orderOf a = 0 := by\n  by_contra hne\n  have hpow : (f a) ^ (orderOf a) = 1 := by\n    rw [← map_pow, pow_orderOf_eq_one, map_one]\n  have hdvd : orderOf (f a) ∣ orderOf a := orderOf_dvd_of_pow_eq_one hpow\n  rw [h] at hdvd\n  exact hne (Nat.eq_zero_of_zero_dvd hdvd)",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 253.7
+    }
+  },
+  {
+    "problem_id": "FATE-M_10",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/--\nSet $f:G\\to H$ is a homomorphism between two groups.\nIf the range of $f$ has $n$ elements, then $x^{n} \\in \\operatorname{Ker} f$ for every $x \\in G$.\n-/\ntheorem pow_mem_ker_of_card_eq {G H : Type*} [Group G] [Group H] (f : G →* H) (n : ℕ)\n    (h : Nat.card f.range = n) : ∀ g : G, (g ^ n) ∈ f.ker := by\n  intro g\n  rw [MonoidHom.mem_ker, map_pow]\n  subst h\n  have hmem : f g ∈ f.range := ⟨g, rfl⟩\n  have key : (⟨f g, hmem⟩ : f.range) ^ (Nat.card f.range) = 1 := pow_card_eq_one'\n  have := congrArg (Subgroup.subtype f.range) key\n  simpa using this",
+    "full_code": "/--\nSet $f:G\\to H$ is a homomorphism between two groups.\nIf the range of $f$ has $n$ elements, then $x^{n} \\in \\operatorname{Ker} f$ for every $x \\in G$.\n-/\ntheorem pow_mem_ker_of_card_eq {G H : Type*} [Group G] [Group H] (f : G →* H) (n : ℕ)\n    (h : Nat.card f.range = n) : ∀ g : G, (g ^ n) ∈ f.ker := by\n  intro g\n  rw [MonoidHom.mem_ker, map_pow]\n  subst h\n  have hmem : f g ∈ f.range := ⟨g, rfl⟩\n  have key : (⟨f g, hmem⟩ : f.range) ^ (Nat.card f.range) = 1 := pow_card_eq_one'\n  have := congrArg (Subgroup.subtype f.range) key\n  simpa using this",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 102.07
+    }
+  },
+  {
+    "problem_id": "FATE-M_11",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/--\nIn any ring $R$ and $a,b,c\\in R$, $a(b-c)=a b-a c$ and $(b-c) a=b a-c a$.\n-/\ntheorem mul_sub_and_sub_mul {R : Type*} [Ring R] (a b c : R) :\n    a * (b - c) = a * b - a * c ∧ (b - c) * a = b * a - c * a := by\n  have h1 : a * (b - c) = a * b - a * c := by\n    exact mul_sub a b c\n  have h2 : (b - c) * a = b * a - c * a := by\n    exact sub_mul b c a\n  have h3 : a * (b - c) = a * b - a * c ∧ (b - c) * a = b * a - c * a :=\n    ⟨h1, h2⟩\n  exact h3",
+    "full_code": "/--\nIn any ring $R$ and $a,b,c\\in R$, $a(b-c)=a b-a c$ and $(b-c) a=b a-c a$.\n-/\ntheorem mul_sub_and_sub_mul {R : Type*} [Ring R] (a b c : R) :\n    a * (b - c) = a * b - a * c ∧ (b - c) * a = b * a - c * a := by\n  have h1 : a * (b - c) = a * b - a * c := by\n    exact mul_sub a b c\n  have h2 : (b - c) * a = b * a - c * a := by\n    exact sub_mul b c a\n  have h3 : a * (b - c) = a * b - a * c ∧ (b - c) * a = b * a - c * a :=\n    ⟨h1, h2⟩\n  exact h3",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 84.93
+    }
+  },
+  {
+    "problem_id": "FATE-M_12",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nLet $R$ be a ring with unit. Then there is a unique homomorphism\n$f:\\mathbb Z\\to R$ such that $1\\mapsto 1_R$.\n-/\ntheorem existUnique_ringHom_int {R : Type*} [Ring R] : ∃! f : ℤ →+* R, True := by\n  refine ⟨Int.castRingHom R, trivial, ?_⟩\n  intro f _\n  exact RingHom.ext_int f (Int.castRingHom R)",
+    "full_code": "/--\nLet $R$ be a ring with unit. Then there is a unique homomorphism\n$f:\\mathbb Z\\to R$ such that $1\\mapsto 1_R$.\n-/\ntheorem existUnique_ringHom_int {R : Type*} [Ring R] : ∃! f : ℤ →+* R, True := by\n  refine ⟨Int.castRingHom R, trivial, ?_⟩\n  intro f _\n  exact RingHom.ext_int f (Int.castRingHom R)",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 82.35
+    }
+  },
+  {
+    "problem_id": "FATE-M_13",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_14",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nIn an integral domain $R$, if $a\\in R$ and natural number $n\\in\\mathbb N$ satisfy $a^n=0$,\nthen $a=0$.\n-/\ntheorem zero_of_pow_eq_zero {R : Type*} [Ring R] [IsDomain R] (a : R) (n : ℕ)\n    (eq : a ^ n = 0) : a = 0 := by\n  induction n with\n  | zero =>\n    rw [pow_zero] at eq\n    exact absurd eq one_ne_zero\n  | succ k ih =>\n    rw [pow_succ] at eq\n    rcases mul_eq_zero.mp eq with h | h\n    · exact ih h\n    · exact h",
+    "full_code": "/--\nIn an integral domain $R$, if $a\\in R$ and natural number $n\\in\\mathbb N$ satisfy $a^n=0$,\nthen $a=0$.\n-/\ntheorem zero_of_pow_eq_zero {R : Type*} [Ring R] [IsDomain R] (a : R) (n : ℕ)\n    (eq : a ^ n = 0) : a = 0 := by\n  induction n with\n  | zero =>\n    rw [pow_zero] at eq\n    exact absurd eq one_ne_zero\n  | succ k ih =>\n    rw [pow_succ] at eq\n    rcases mul_eq_zero.mp eq with h | h\n    · exact ih h\n    · exact h",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 67.45
+    }
+  },
+  {
+    "problem_id": "FATE-M_15",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nLet $R$ be a ring with identity $1$ and $x$ be an element not equal to zero. If there exists\n$y \\in R$ s.t. $xy = 1$ and $z \\in R$ s.t. $zx = 1$, then $y=z$.\n-/\ntheorem left_right_inverse_eq {R : Type*} [Ring R] {x : R} (hx : x ≠ 0) :\n    ∃ y, x * y = 1 → ∃ z, z * x = 1 → y = z := by\n  refine ⟨0, fun _ => ⟨0, fun _ => rfl⟩⟩",
+    "full_code": "/--\nLet $R$ be a ring with identity $1$ and $x$ be an element not equal to zero. If there exists\n$y \\in R$ s.t. $xy = 1$ and $z \\in R$ s.t. $zx = 1$, then $y=z$.\n-/\ntheorem left_right_inverse_eq {R : Type*} [Ring R] {x : R} (hx : x ≠ 0) :\n    ∃ y, x * y = 1 → ∃ z, z * x = 1 → y = z := by\n  refine ⟨0, fun _ => ⟨0, fun _ => rfl⟩⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 158.37
+    }
+  },
+  {
+    "problem_id": "FATE-M_16",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_17",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_18",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nLet $R$ be a commutative ring with identity and $I_1$ and $I_2$ be two ideals of $R$.\nAssume that $I$ is an ideal containing $I_1$ and $I_2$, prove that $I$ contains $I_1+I_2$.\n-/\ntheorem Ideal.add_le_of_le {R : Type*} [CommRing R] (I : Ideal R) (J : Ideal R) (K : Ideal R)\n    (h₁ : I ≤ K) (h₂ : J ≤ K) : I + J ≤ K := by\n  rw [Ideal.add_eq_sup]\n  exact sup_le h₁ h₂",
+    "full_code": "/--\nLet $R$ be a commutative ring with identity and $I_1$ and $I_2$ be two ideals of $R$.\nAssume that $I$ is an ideal containing $I_1$ and $I_2$, prove that $I$ contains $I_1+I_2$.\n-/\ntheorem Ideal.add_le_of_le {R : Type*} [CommRing R] (I : Ideal R) (J : Ideal R) (K : Ideal R)\n    (h₁ : I ≤ K) (h₂ : J ≤ K) : I + J ≤ K := by\n  rw [Ideal.add_eq_sup]\n  exact sup_le h₁ h₂",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 78.86
+    }
+  },
+  {
+    "problem_id": "FATE-M_19",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_20",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_21",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_22",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_23",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_24",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nLet $R$ be an integral domain. An element $p \\in R$ is a prime element if and only if the principal\nideal $\\langle p \\rangle$ is a nonzero prime ideal of $R$.\n-/\ntheorem isPrime_singleton {R : Type*} [CommRing R] [IsDomain R] {p : R} (hp : p ≠ 0) :\n    Ideal.IsPrime (Ideal.span {p}) ↔ Prime p := by\n  exact Ideal.span_singleton_prime hp",
+    "full_code": "/--\nLet $R$ be an integral domain. An element $p \\in R$ is a prime element if and only if the principal\nideal $\\langle p \\rangle$ is a nonzero prime ideal of $R$.\n-/\ntheorem isPrime_singleton {R : Type*} [CommRing R] [IsDomain R] {p : R} (hp : p ≠ 0) :\n    Ideal.IsPrime (Ideal.span {p}) ↔ Prime p := by\n  exact Ideal.span_singleton_prime hp",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 235.93
+    }
+  },
+  {
+    "problem_id": "FATE-M_25",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_26",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_27",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_28",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_29",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_30",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_31",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_32",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_33",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_34",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_35",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_36",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_37",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_38",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_39",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_40",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_41",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_42",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_43",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_44",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_45",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_46",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_47",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_48",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_49",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_50",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_51",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_52",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_53",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_54",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nProve that if $G$ is a cyclic group and $|G| \\geq 3$, then $G$ has at least 2 generators.\n-/\ntheorem exist_two_generators {G : Type*} [Group G] [Fintype G] [hc : IsCyclic G]\n    (h : Fintype.card G ≥ 3) :\n    ∃ g₁ g₂ : G, g₁ ≠ g₂ ∧ Subgroup.zpowers g₁ = ⊤ ∧ Subgroup.zpowers g₂ = ⊤ := by\n  classical\n  obtain ⟨g, hg⟩ := hc.exists_generator\n  have hgtop : Subgroup.zpowers g = ⊤ := by\n    rw [Subgroup.eq_top_iff']\n    exact hg\n  have hginvtop : Subgroup.zpowers g⁻¹ = ⊤ := by\n    rw [Subgroup.eq_top_iff']\n    intro x\n    have hx : x ∈ Subgroup.zpowers g := hg x\n    rcases hx with ⟨n, hn⟩\n    simp only at hn\n    refine ⟨-n, ?_⟩\n    show g⁻¹ ^ (-n) = x\n    rw [zpow_neg, inv_zpow, inv_inv]\n    exact hn\n  refine ⟨g, g⁻¹, ?_, hgtop, hginvtop⟩\n  intro heq\n  have hgg : g * g = 1 := by\n    nth_rewrite 2 [heq]\n    exact mul_inv_self g\n  have hcard : Fintype.card G ≤ 2 := by\n    have hall : ∀ x : G, x = 1 ∨ x = g := by\n      intro x\n      have hx : x ∈ Subgroup.zpowers g := hg x\n      rcases hx with ⟨n, hn⟩\n      simp only at hn\n      have hgsq : g ^ (2 : ℤ) = 1 := by\n        rw [show (2 : ℤ) = 1 + 1 from rfl]\n        rw [zpow_add, zpow_one]\n        exact hgg\n      have hmod : n % 2 = 0 ∨ n % 2 = 1 := by omega\n      have hndecomp : g ^ n = g ^ (n % 2) := by\n        conv_lhs => rw [← Int.emod_add_ediv n 2]\n        rw [zpow_add, zpow_mul]\n        rw [hgsq, one_zpow, mul_one]\n      rcases hmod with h0 | h1\n      · left\n        rw [← hn, hndecomp, h0]\n        simp\n      · right\n        rw [← hn, hndecomp, h1, zpow_one]\n    have hsub : (Finset.univ : Finset G) ⊆ ({1, g} : Finset G) := by\n      intro x _\n      rcases hall x with h1 | hg'\n      · simp [h1]\n      · simp [hg']\n    calc Fintype.card G = (Finset.univ : Finset G).card := rfl\n      _ ≤ ({1, g} : Finset G).card := Finset.card_le_card hsub\n      _ ≤ 2 := by\n        apply le_trans (Finset.card_insert_le _ _)\n        simp\n  omega",
+    "full_code": "/--\nProve that if $G$ is a cyclic group and $|G| \\geq 3$, then $G$ has at least 2 generators.\n-/\ntheorem exist_two_generators {G : Type*} [Group G] [Fintype G] [hc : IsCyclic G]\n    (h : Fintype.card G ≥ 3) :\n    ∃ g₁ g₂ : G, g₁ ≠ g₂ ∧ Subgroup.zpowers g₁ = ⊤ ∧ Subgroup.zpowers g₂ = ⊤ := by\n  classical\n  obtain ⟨g, hg⟩ := hc.exists_generator\n  have hgtop : Subgroup.zpowers g = ⊤ := by\n    rw [Subgroup.eq_top_iff']\n    exact hg\n  have hginvtop : Subgroup.zpowers g⁻¹ = ⊤ := by\n    rw [Subgroup.eq_top_iff']\n    intro x\n    have hx : x ∈ Subgroup.zpowers g := hg x\n    rcases hx with ⟨n, hn⟩\n    simp only at hn\n    refine ⟨-n, ?_⟩\n    show g⁻¹ ^ (-n) = x\n    rw [zpow_neg, inv_zpow, inv_inv]\n    exact hn\n  refine ⟨g, g⁻¹, ?_, hgtop, hginvtop⟩\n  intro heq\n  have hgg : g * g = 1 := by\n    nth_rewrite 2 [heq]\n    exact mul_inv_self g\n  have hcard : Fintype.card G ≤ 2 := by\n    have hall : ∀ x : G, x = 1 ∨ x = g := by\n      intro x\n      have hx : x ∈ Subgroup.zpowers g := hg x\n      rcases hx with ⟨n, hn⟩\n      simp only at hn\n      have hgsq : g ^ (2 : ℤ) = 1 := by\n        rw [show (2 : ℤ) = 1 + 1 from rfl]\n        rw [zpow_add, zpow_one]\n        exact hgg\n      have hmod : n % 2 = 0 ∨ n % 2 = 1 := by omega\n      have hndecomp : g ^ n = g ^ (n % 2) := by\n        conv_lhs => rw [← Int.emod_add_ediv n 2]\n        rw [zpow_add, zpow_mul]\n        rw [hgsq, one_zpow, mul_one]\n      rcases hmod with h0 | h1\n      · left\n        rw [← hn, hndecomp, h0]\n        simp\n      · right\n        rw [← hn, hndecomp, h1, zpow_one]\n    have hsub : (Finset.univ : Finset G) ⊆ ({1, g} : Finset G) := by\n      intro x _\n      rcases hall x with h1 | hg'\n      · simp [h1]\n      · simp [hg']\n    calc Fintype.card G = (Finset.univ : Finset G).card := rfl\n      _ ≤ ({1, g} : Finset G).card := Finset.card_le_card hsub\n      _ ≤ 2 := by\n        apply le_trans (Finset.card_insert_le _ _)\n        simp\n  omega",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 41.77
+    }
+  },
+  {
+    "problem_id": "FATE-M_55",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nShow that a group with no proper nontrivial subgroups is cyclic.\n-/\ntheorem isCyclic_of_subgroup_eq_bot_or_top {G : Type*} [Group G]\n    (h : ∀ H : Subgroup G, H = ⊥ ∨ H = ⊤) : IsCyclic G := by\n  by_cases htriv : ∀ x : G, x = 1\n  · refine ⟨⟨1, ?_⟩⟩\n    intro x\n    rw [htriv x]\n    exact Subgroup.one_mem _\n  · push_neg at htriv\n    obtain ⟨g, hg⟩ := htriv\n    refine ⟨⟨g, ?_⟩⟩\n    rcases h (Subgroup.zpowers g) with hbot | htop\n    · exfalso\n      apply hg\n      have : g ∈ (⊥ : Subgroup G) := hbot ▸ Subgroup.mem_zpowers g\n      rwa [Subgroup.mem_bot] at this\n    · intro x\n      rw [htop]\n      exact Subgroup.mem_top x",
+    "full_code": "/--\nShow that a group with no proper nontrivial subgroups is cyclic.\n-/\ntheorem isCyclic_of_subgroup_eq_bot_or_top {G : Type*} [Group G]\n    (h : ∀ H : Subgroup G, H = ⊥ ∨ H = ⊤) : IsCyclic G := by\n  by_cases htriv : ∀ x : G, x = 1\n  · refine ⟨⟨1, ?_⟩⟩\n    intro x\n    rw [htriv x]\n    exact Subgroup.one_mem _\n  · push_neg at htriv\n    obtain ⟨g, hg⟩ := htriv\n    refine ⟨⟨g, ?_⟩⟩\n    rcases h (Subgroup.zpowers g) with hbot | htop\n    · exfalso\n      apply hg\n      have : g ∈ (⊥ : Subgroup G) := hbot ▸ Subgroup.mem_zpowers g\n      rwa [Subgroup.mem_bot] at this\n    · intro x\n      rw [htop]\n      exact Subgroup.mem_top x",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 15.49
+    }
+  },
+  {
+    "problem_id": "FATE-M_56",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 4,
+    "code": "/--\nShow that $\\mathbb{Z}_{p}$ has no proper nontrivial subgroups if $p$ is a prime number.\n-/\ntheorem ZMod.subgroup_eq_bot_or_top_of_prime {G : Type} [Group G] [Fintype G] (H : Subgroup G)\n    (p : ℕ) [Fact p.Prime] (hGp : Fintype.card G = p) : H = ⊥ ∨ H = ⊤ := by\n  have hp : p.Prime := (Fact.out : p.Prime)\n  classical\n  have hHfin : Fintype H := Fintype.ofFinite _\n  have hGnat : Nat.card G = p := by\n    rw [Nat.card_eq_fintype_card]; exact hGp\n  have hdvd : Nat.card H ∣ p := by\n    have h := Subgroup.card_subgroup_dvd_card H\n    rw [hGnat] at h\n    exact h\n  have hcases : Nat.card H = 1 ∨ Nat.card H = p :=\n    (Nat.dvd_prime hp).mp hdvd\n  rcases hcases with h1 | hp'\n  · left\n    exact Subgroup.eq_bot_of_card_eq H h1\n  · right\n    have hcard : Nat.card H = Nat.card G := by rw [hp', hGnat]\n    exact Subgroup.eq_top_of_card_eq H hcard",
+    "full_code": "/--\nShow that $\\mathbb{Z}_{p}$ has no proper nontrivial subgroups if $p$ is a prime number.\n-/\ntheorem ZMod.subgroup_eq_bot_or_top_of_prime {G : Type} [Group G] [Fintype G] (H : Subgroup G)\n    (p : ℕ) [Fact p.Prime] (hGp : Fintype.card G = p) : H = ⊥ ∨ H = ⊤ := by\n  have hp : p.Prime := (Fact.out : p.Prime)\n  classical\n  have hHfin : Fintype H := Fintype.ofFinite _\n  have hGnat : Nat.card G = p := by\n    rw [Nat.card_eq_fintype_card]; exact hGp\n  have hdvd : Nat.card H ∣ p := by\n    have h := Subgroup.card_subgroup_dvd_card H\n    rw [hGnat] at h\n    exact h\n  have hcases : Nat.card H = 1 ∨ Nat.card H = p :=\n    (Nat.dvd_prime hp).mp hdvd\n  rcases hcases with h1 | hp'\n  · left\n    exact Subgroup.eq_bot_of_card_eq H h1\n  · right\n    have hcard : Nat.card H = Nat.card G := by rw [hp', hGnat]\n    exact Subgroup.eq_top_of_card_eq H hcard",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 23.13
+    }
+  },
+  {
+    "problem_id": "FATE-M_57",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nConsider $S_{n}$ for a fixed $n \\geq 2$ and let $\\sigma$ be a fixed odd permutation.\nShow that every odd permutation in $S_{n}$ is a product of $\\sigma$ and some permutation in $A_{n}$.\n-/\ntheorem odd_eq_alternatingGroup_mul (n : ℕ) (σ : Equiv.Perm (Fin n))\n    (odd : Equiv.Perm.sign σ = -1) : ∀ τ : Equiv.Perm (Fin n), Equiv.Perm.sign τ = -1 →\n    ∃ (π : Equiv.Perm (Fin n)), π ∈ alternatingGroup (Fin n) ∧ τ = σ * π := by\n  intro τ hτ\n  refine ⟨σ⁻¹ * τ, ?_, ?_⟩\n  · rw [Equiv.Perm.mem_alternatingGroup]\n    rw [map_mul, map_inv, odd, hτ]\n    decide\n  · rw [mul_inv_cancel_left]",
+    "full_code": "/--\nConsider $S_{n}$ for a fixed $n \\geq 2$ and let $\\sigma$ be a fixed odd permutation.\nShow that every odd permutation in $S_{n}$ is a product of $\\sigma$ and some permutation in $A_{n}$.\n-/\ntheorem odd_eq_alternatingGroup_mul (n : ℕ) (σ : Equiv.Perm (Fin n))\n    (odd : Equiv.Perm.sign σ = -1) : ∀ τ : Equiv.Perm (Fin n), Equiv.Perm.sign τ = -1 →\n    ∃ (π : Equiv.Perm (Fin n)), π ∈ alternatingGroup (Fin n) ∧ τ = σ * π := by\n  intro τ hτ\n  refine ⟨σ⁻¹ * τ, ?_, ?_⟩\n  · rw [Equiv.Perm.mem_alternatingGroup]\n    rw [map_mul, map_inv, odd, hτ]\n    decide\n  · rw [mul_inv_cancel_left]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 11.56
+    }
+  },
+  {
+    "problem_id": "FATE-M_58",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 8,
+    "code": "/--\nShow that if $\\sigma$ is a cycle of odd length, then $\\sigma^{2}$ is a cycle.\n-/\ntheorem Equiv.Perm.pow_two_isCycle_of_odd (n : ℕ) (f : Equiv.Perm (Fin n))\n    (cyc : Equiv.Perm.IsCycle f) (oddcyc : Odd (orderOf f)) : Equiv.Perm.IsCycle (f ^ 2) := by\n  have hcop : Nat.Coprime 2 (orderOf f) := by\n    rw [Nat.coprime_two_left]\n    rcases oddcyc with ⟨k, hk⟩\n    exact ⟨k, hk⟩\n  exact cyc.pow_iff.mpr hcop",
+    "full_code": "/--\nShow that if $\\sigma$ is a cycle of odd length, then $\\sigma^{2}$ is a cycle.\n-/\ntheorem Equiv.Perm.pow_two_isCycle_of_odd (n : ℕ) (f : Equiv.Perm (Fin n))\n    (cyc : Equiv.Perm.IsCycle f) (oddcyc : Odd (orderOf f)) : Equiv.Perm.IsCycle (f ^ 2) := by\n  have hcop : Nat.Coprime 2 (orderOf f) := by\n    rw [Nat.coprime_two_left]\n    rcases oddcyc with ⟨k, hk⟩\n    exact ⟨k, hk⟩\n  exact cyc.pow_iff.mpr hcop",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 123.34
+    }
+  },
+  {
+    "problem_id": "FATE-M_59",
+    "complete": false,
+    "strategy": "draft_formalize",
+    "attempts": 12,
+    "code": "/--\nProve that if a finite abelian group has order a power of a prime $p$,\nthen the order of every element in the group is a power of $p$.\n-/\ntheorem orderOf_eq_pow_of_card_pow {G : Type*} [CommGroup G] [Fintype G] (hp : p.Prime)\n    (order : Fintype.card G = p ^ n) :\n    ∀ (g : G), ∃ k ≤ n, orderOf g = p ^ k := by\n  intro g\n  have h1 : orderOf g ∣ Fintype.card G := orderOf_dvd_card\n  rw [order] at h1\n  obtain ⟨k, hkn, hk⟩ := (Nat.dvd_prime_pow hp).mp h1\n  exact ⟨k, hkn, hk⟩",
+    "full_code": "/--\nProve that if a finite abelian group has order a power of a prime $p$,\nthen the order of every element in the group is a power of $p$.\n-/\ntheorem orderOf_eq_pow_of_card_pow {G : Type*} [CommGroup G] [Fintype G] (hp : p.Prime)\n    (order : Fintype.card G = p ^ n) :\n    ∀ (g : G), ∃ k ≤ n, orderOf g = p ^ k := by\n  intro g\n  have h1 : orderOf g ∣ Fintype.card G := orderOf_dvd_card\n  rw [order] at h1\n  obtain ⟨k, hkn, hk⟩ := (Nat.dvd_prime_pow hp).mp h1\n  exact ⟨k, hkn, hk⟩",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": [
+        {
+          "severity": "error",
+          "pos": {
+            "line": 5,
+            "column": 79
+          },
+          "endPos": {
+            "line": 5,
+            "column": 86
+          },
+          "data": "unknown identifier 'p.Prime'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 30
+          },
+          "endPos": {
+            "line": 6,
+            "column": 31
+          },
+          "data": "unknown identifier 'p'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 6,
+            "column": 34
+          },
+          "endPos": {
+            "line": 6,
+            "column": 35
+          },
+          "data": "unknown identifier 'n'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 21
+          },
+          "endPos": {
+            "line": 7,
+            "column": 22
+          },
+          "data": "unknown identifier 'n'"
+        },
+        {
+          "severity": "error",
+          "pos": {
+            "line": 7,
+            "column": 36
+          },
+          "endPos": {
+            "line": 7,
+            "column": 37
+          },
+          "data": "unknown identifier 'p'"
+        }
+      ]
+    },
+    "metadata": {
+      "rounds_used": 4,
+      "draft_count": 1,
+      "strategy_time": 124.66
+    }
+  },
+  {
+    "problem_id": "FATE-M_60",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_61",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nShow that an intersection of normal subgroups of a group $G$ is again a normal subgroup of $G$.\n-/\ntheorem Subgroup.inf_normal_of_normal {G : Type*} [Group G]\n    (M : Subgroup G) [hM : M.Normal] (N : Subgroup G) [hN: N.Normal] :\n    (M ⊓ N).Normal := by\n  constructor\n  intro n hn g\n  rw [Subgroup.mem_inf] at hn ⊢\n  exact ⟨hM.conj_mem n hn.1 g, hN.conj_mem n hn.2 g⟩",
+    "full_code": "/--\nShow that an intersection of normal subgroups of a group $G$ is again a normal subgroup of $G$.\n-/\ntheorem Subgroup.inf_normal_of_normal {G : Type*} [Group G]\n    (M : Subgroup G) [hM : M.Normal] (N : Subgroup G) [hN: N.Normal] :\n    (M ⊓ N).Normal := by\n  constructor\n  intro n hn g\n  rw [Subgroup.mem_inf] at hn ⊢\n  exact ⟨hM.conj_mem n hn.1 g, hN.conj_mem n hn.2 g⟩",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 9.07
+    }
+  },
+  {
+    "problem_id": "FATE-M_62",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nShow that if $H$ and $K$ are normal subgroups of a group $G$ such that $H \\cap K=\\{e\\}$, then\n$h k=k h$ for all $h \\in H$ and $k \\in K$.\n-/\ntheorem mul_comm_of_normal_inf_eq_bot {G : Type*} [Group G] (N K : Subgroup G)\n    [nN : N.Normal] [nK : K.Normal] (h1 : N ⊓ K = ⊥)\n    {n k : G} (nin : n ∈ N) (kin : k ∈ K) : n * k = k * n := by\n  set c := n * k * n⁻¹ * k⁻¹ with hc\n  have cN : c ∈ N := by\n    have h2 : k * n⁻¹ * k⁻¹ ∈ N := by\n      have := nN.conj_mem n⁻¹ (N.inv_mem nin) k\n      simpa [mul_assoc] using this\n    have h3 : n * (k * n⁻¹ * k⁻¹) ∈ N := N.mul_mem nin h2\n    simpa [hc, mul_assoc] using h3\n  have cK : c ∈ K := by\n    have h2 : n * k * n⁻¹ ∈ K := nK.conj_mem k kin n\n    have h3 : (n * k * n⁻¹) * k⁻¹ ∈ K := K.mul_mem h2 (K.inv_mem kin)\n    simpa [hc] using h3\n  have cmem : c ∈ N ⊓ K := Subgroup.mem_inf.mpr ⟨cN, cK⟩\n  rw [h1] at cmem\n  have ceq : c = 1 := Subgroup.mem_bot.mp cmem\n  have hh : n * k * n⁻¹ * k⁻¹ = 1 := ceq\n  have h5 : n * k * n⁻¹ = k := by\n    have := mul_eq_one_iff_eq_inv.mp hh\n    rw [this]\n    group\n  have h6 : n * k = k * n := by\n    have := h5\n    have : n * k = k * n := by\n      have h7 : n * k * n⁻¹ * n = k * n := by rw [h5]\n      simpa [mul_assoc] using h7\n    exact this\n  exact h6",
+    "full_code": "/--\nShow that if $H$ and $K$ are normal subgroups of a group $G$ such that $H \\cap K=\\{e\\}$, then\n$h k=k h$ for all $h \\in H$ and $k \\in K$.\n-/\ntheorem mul_comm_of_normal_inf_eq_bot {G : Type*} [Group G] (N K : Subgroup G)\n    [nN : N.Normal] [nK : K.Normal] (h1 : N ⊓ K = ⊥)\n    {n k : G} (nin : n ∈ N) (kin : k ∈ K) : n * k = k * n := by\n  set c := n * k * n⁻¹ * k⁻¹ with hc\n  have cN : c ∈ N := by\n    have h2 : k * n⁻¹ * k⁻¹ ∈ N := by\n      have := nN.conj_mem n⁻¹ (N.inv_mem nin) k\n      simpa [mul_assoc] using this\n    have h3 : n * (k * n⁻¹ * k⁻¹) ∈ N := N.mul_mem nin h2\n    simpa [hc, mul_assoc] using h3\n  have cK : c ∈ K := by\n    have h2 : n * k * n⁻¹ ∈ K := nK.conj_mem k kin n\n    have h3 : (n * k * n⁻¹) * k⁻¹ ∈ K := K.mul_mem h2 (K.inv_mem kin)\n    simpa [hc] using h3\n  have cmem : c ∈ N ⊓ K := Subgroup.mem_inf.mpr ⟨cN, cK⟩\n  rw [h1] at cmem\n  have ceq : c = 1 := Subgroup.mem_bot.mp cmem\n  have hh : n * k * n⁻¹ * k⁻¹ = 1 := ceq\n  have h5 : n * k * n⁻¹ = k := by\n    have := mul_eq_one_iff_eq_inv.mp hh\n    rw [this]\n    group\n  have h6 : n * k = k * n := by\n    have := h5\n    have : n * k = k * n := by\n      have h7 : n * k * n⁻¹ * n = k * n := by rw [h5]\n      simpa [mul_assoc] using h7\n    exact this\n  exact h6",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 26.05
+    }
+  },
+  {
+    "problem_id": "FATE-M_63",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nShow that $\\operatorname{Aut}(\\mathbb{Q})$ is a group with only a single element.\n-/\ntheorem ringAut_rat_card_eq_one : Nat.card (RingAut ℚ) = 1 := by\n  have hsub : Subsingleton (RingAut ℚ) := by\n    refine ⟨fun a b => ?_⟩\n    apply RingEquiv.ext\n    intro x\n    have h : a.toRingHom = b.toRingHom := RingHom.ext_rat _ _\n    exact RingHom.congr_fun h x\n  have huniq : Unique (RingAut ℚ) :=\n    { default := RingEquiv.refl ℚ\n      uniq := fun _ => Subsingleton.elim _ _ }\n  exact Nat.card_unique",
+    "full_code": "/--\nShow that $\\operatorname{Aut}(\\mathbb{Q})$ is a group with only a single element.\n-/\ntheorem ringAut_rat_card_eq_one : Nat.card (RingAut ℚ) = 1 := by\n  have hsub : Subsingleton (RingAut ℚ) := by\n    refine ⟨fun a b => ?_⟩\n    apply RingEquiv.ext\n    intro x\n    have h : a.toRingHom = b.toRingHom := RingHom.ext_rat _ _\n    exact RingHom.congr_fun h x\n  have huniq : Unique (RingAut ℚ) :=\n    { default := RingEquiv.refl ℚ\n      uniq := fun _ => Subsingleton.elim _ _ }\n  exact Nat.card_unique",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 25.02
+    }
+  },
+  {
+    "problem_id": "FATE-M_64",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nSuppose that $G$ is a group and $g, h \\in G$. Prove that $g x=h$ has a unique solution;\nlikewise, prove that $x g=h$ has a unique solution.\n-/\ntheorem existUnique_inverse {G : Type*} [Group G] (g h : G) :\n    ∃! x, g * x = h ∧ ∃! x, x * g = h := by\n  refine ⟨g⁻¹ * h, ⟨?_, ?_⟩, ?_⟩\n  · simp [mul_inv_cancel_left]\n  · refine ⟨h * g⁻¹, ?_, ?_⟩\n    · simp [inv_mul_cancel_right]\n    · intro y hy\n      have : y * g * g⁻¹ = h * g⁻¹ := by rw [hy]\n      simpa [mul_inv_cancel_right] using this\n  · intro x' hx'\n    obtain ⟨hgx, _⟩ := hx'\n    have : g⁻¹ * (g * x') = g⁻¹ * h := by rw [hgx]\n    simpa [inv_mul_cancel_left] using this",
+    "full_code": "/--\nSuppose that $G$ is a group and $g, h \\in G$. Prove that $g x=h$ has a unique solution;\nlikewise, prove that $x g=h$ has a unique solution.\n-/\ntheorem existUnique_inverse {G : Type*} [Group G] (g h : G) :\n    ∃! x, g * x = h ∧ ∃! x, x * g = h := by\n  refine ⟨g⁻¹ * h, ⟨?_, ?_⟩, ?_⟩\n  · simp [mul_inv_cancel_left]\n  · refine ⟨h * g⁻¹, ?_, ?_⟩\n    · simp [inv_mul_cancel_right]\n    · intro y hy\n      have : y * g * g⁻¹ = h * g⁻¹ := by rw [hy]\n      simpa [mul_inv_cancel_right] using this\n  · intro x' hx'\n    obtain ⟨hgx, _⟩ := hx'\n    have : g⁻¹ * (g * x') = g⁻¹ * h := by rw [hgx]\n    simpa [inv_mul_cancel_left] using this",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 18.47
+    }
+  },
+  {
+    "problem_id": "FATE-M_65",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nProve that in a group, every element has exactly one inverse.\n-/\ntheorem existUnique_inverse {G : Type*} [Group G] {g : G} : ∃! (h : G), g * h = 1 ∧ h * g = 1 := by\n  refine ⟨g⁻¹, ⟨?_, ?_⟩, ?_⟩\n  · exact mul_inv_self g\n  · exact inv_mul_self g\n  · rintro h ⟨h1, h2⟩\n    have : g⁻¹ * (g * h) = g⁻¹ * 1 := by rw [h1]\n    rw [← mul_assoc, inv_mul_self, one_mul, mul_one] at this\n    exact this",
+    "full_code": "/--\nProve that in a group, every element has exactly one inverse.\n-/\ntheorem existUnique_inverse {G : Type*} [Group G] {g : G} : ∃! (h : G), g * h = 1 ∧ h * g = 1 := by\n  refine ⟨g⁻¹, ⟨?_, ?_⟩, ?_⟩\n  · exact mul_inv_self g\n  · exact inv_mul_self g\n  · rintro h ⟨h1, h2⟩\n    have : g⁻¹ * (g * h) = g⁻¹ * 1 := by rw [h1]\n    rw [← mul_assoc, inv_mul_self, one_mul, mul_one] at this\n    exact this",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 11.21
+    }
+  },
+  {
+    "problem_id": "FATE-M_66",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nLet $G$ be a group, and $a, b, c \\in G$.\nProve that the equation $a x c=b$ has a unique solution in $G$.\n-/\ntheorem existUnique_mul_eq {G : Type*} [Group G] (a b c : G) : ∃! x : G, a * x * b = c := by\n  refine ⟨a⁻¹ * c * b⁻¹, ?_, ?_⟩\n  · group\n  · intro y hy\n    rw [← hy]\n    group",
+    "full_code": "/--\nLet $G$ be a group, and $a, b, c \\in G$.\nProve that the equation $a x c=b$ has a unique solution in $G$.\n-/\ntheorem existUnique_mul_eq {G : Type*} [Group G] (a b c : G) : ∃! x : G, a * x * b = c := by\n  refine ⟨a⁻¹ * c * b⁻¹, ?_, ?_⟩\n  · group\n  · intro y hy\n    rw [← hy]\n    group",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 11.92
+    }
+  },
+  {
+    "problem_id": "FATE-M_67",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nSuppose that $G$ and $H$ are groups with operations $\\circ$ and $*$ and suppose\n$g, k \\in G$ are inverses; that is, $g \\circ k=e_{G}$. If $\\varphi: G \\rightarrow H$ is a group\nisomorphism, prove that $\\varphi(g)$ and $\\varphi(k)$ are inverses in $H$.\n-/\ntheorem MonoidHom.map_inv_eq_inv_map {G H : Type*} [Group G] [Group H] (φ : G →* H)\n    (g k : G) (hgk : g = k⁻¹) : φ g = (φ k)⁻¹ := by\n  rw [hgk, map_inv]",
+    "full_code": "/--\nSuppose that $G$ and $H$ are groups with operations $\\circ$ and $*$ and suppose\n$g, k \\in G$ are inverses; that is, $g \\circ k=e_{G}$. If $\\varphi: G \\rightarrow H$ is a group\nisomorphism, prove that $\\varphi(g)$ and $\\varphi(k)$ are inverses in $H$.\n-/\ntheorem MonoidHom.map_inv_eq_inv_map {G H : Type*} [Group G] [Group H] (φ : G →* H)\n    (g k : G) (hgk : g = k⁻¹) : φ g = (φ k)⁻¹ := by\n  rw [hgk, map_inv]",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 7.19
+    }
+  },
+  {
+    "problem_id": "FATE-M_68",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nShow that the order of $g^{-1}$ is the same as $g$.\n-/\ntheorem orderOf_inv_eq_orderOf {G : Type*} [Group G] (a : G) : orderOf a = orderOf (a⁻¹) := by\n  exact (orderOf_inv a).symm",
+    "full_code": "/--\nShow that the order of $g^{-1}$ is the same as $g$.\n-/\ntheorem orderOf_inv_eq_orderOf {G : Type*} [Group G] (a : G) : orderOf a = orderOf (a⁻¹) := by\n  exact (orderOf_inv a).symm",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 15.23
+    }
+  },
+  {
+    "problem_id": "FATE-M_69",
+    "complete": false,
+    "strategy": "",
+    "attempts": 0,
+    "code": "",
+    "full_code": "",
+    "compilation_result": {
+      "pass": false,
+      "complete": false,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {}
+  },
+  {
+    "problem_id": "FATE-M_70",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 2,
+    "code": "/--\nLet $R$ be a finite ring, and consider its additive group and its group of units.\nShow that these two groups cannot be isomorphic.\n-/\ntheorem not_mulEquiv_units {R : Type} [Fintype R] [Ring R] (h1 : Nontrivial R) :\n    (Multiplicative R ≃* Rˣ) → False := by\n  intro e\n  haveI : DecidableEq R := Classical.decEq R\n  haveI : Fintype Rˣ := Fintype.ofFinite Rˣ\n  -- Cardinality from the equivalence\n  have hcard : Fintype.card R = Fintype.card Rˣ := by\n    have := Fintype.card_congr e.toEquiv\n    simpa using this\n  -- Units.val is injective\n  have hinj : Function.Injective (Units.val : Rˣ → R) := Units.ext\n  -- 0 is not in the image of Units.val\n  have hnot : ∀ u : Rˣ, (u : R) ≠ 0 := by\n    intro u hu\n    have h10 : (1 : R) = 0 := by\n      have := u.val_inv\n      rw [hu, zero_mul] at this\n      exact this.symm\n    exact (one_ne_zero h10)\n  -- Strict inequality of cardinalities\n  have hlt : Fintype.card Rˣ < Fintype.card R := by\n    apply Fintype.card_lt_of_injective_not_surjective (Units.val : Rˣ → R) hinj\n    intro hsurj\n    obtain ⟨u, hu⟩ := hsurj (0 : R)\n    exact hnot u hu\n  omega",
+    "full_code": "/--\nLet $R$ be a finite ring, and consider its additive group and its group of units.\nShow that these two groups cannot be isomorphic.\n-/\ntheorem not_mulEquiv_units {R : Type} [Fintype R] [Ring R] (h1 : Nontrivial R) :\n    (Multiplicative R ≃* Rˣ) → False := by\n  intro e\n  haveI : DecidableEq R := Classical.decEq R\n  haveI : Fintype Rˣ := Fintype.ofFinite Rˣ\n  -- Cardinality from the equivalence\n  have hcard : Fintype.card R = Fintype.card Rˣ := by\n    have := Fintype.card_congr e.toEquiv\n    simpa using this\n  -- Units.val is injective\n  have hinj : Function.Injective (Units.val : Rˣ → R) := Units.ext\n  -- 0 is not in the image of Units.val\n  have hnot : ∀ u : Rˣ, (u : R) ≠ 0 := by\n    intro u hu\n    have h10 : (1 : R) = 0 := by\n      have := u.val_inv\n      rw [hu, zero_mul] at this\n      exact this.symm\n    exact (one_ne_zero h10)\n  -- Strict inequality of cardinalities\n  have hlt : Fintype.card Rˣ < Fintype.card R := by\n    apply Fintype.card_lt_of_injective_not_surjective (Units.val : Rˣ → R) hinj\n    intro hsurj\n    obtain ⟨u, hu⟩ := hsurj (0 : R)\n    exact hnot u hu\n  omega",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 36.06
+    }
+  },
+  {
+    "problem_id": "FATE-M_71",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 1,
+    "code": "/--\nProve that every subgroup of a cyclic group is cyclic.\n-/\ntheorem subgroup_isCyclic_of_isCyclic {G : Type*} [Group G] {H : Subgroup G} (h : IsCyclic G) :\n    IsCyclic H := by\n  haveI := h\n  exact Subgroup.isCyclic H",
+    "full_code": "/--\nProve that every subgroup of a cyclic group is cyclic.\n-/\ntheorem subgroup_isCyclic_of_isCyclic {G : Type*} [Group G] {H : Subgroup G} (h : IsCyclic G) :\n    IsCyclic H := by\n  haveI := h\n  exact Subgroup.isCyclic H",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 8.83
+    }
+  },
+  {
+    "problem_id": "FATE-M_72",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 3,
+    "code": "/--\nProve that if $G$ is a finite cyclic group with more than two elements,\nthen $G$ has more than one element whose order equals to $|G|$.\n-/\ntheorem exists_elements_with_max_order {G : Type*} [Group G] [IsCyclic G] [Fintype G]\n    (hG_card : Fintype.card G > 2) :\n    ∃ a b : G, a ≠ b ∧ orderOf a = Fintype.card G ∧ orderOf b = Fintype.card G := by\n  obtain ⟨g, hg⟩ := IsCyclic.exists_generator (α := G)\n  have hord : orderOf g = Fintype.card G := orderOf_eq_card_of_forall_mem_zpowers hg\n  have hord_inv : orderOf g⁻¹ = Fintype.card G := by\n    rw [orderOf_inv]; exact hord\n  refine ⟨g, g⁻¹, ?_, hord, hord_inv⟩\n  intro heq\n  have hgg : g * g = 1 := by\n    have h1 : g * g⁻¹ = 1 := mul_inv_self g\n    rw [← heq] at h1\n    exact h1\n  have hpow : g ^ 2 = 1 := by rw [pow_two]; exact hgg\n  have hdvd : orderOf g ∣ 2 := orderOf_dvd_of_pow_eq_one hpow\n  rw [hord] at hdvd\n  have : Fintype.card G ≤ 2 := Nat.le_of_dvd (by norm_num) hdvd\n  linarith",
+    "full_code": "/--\nProve that if $G$ is a finite cyclic group with more than two elements,\nthen $G$ has more than one element whose order equals to $|G|$.\n-/\ntheorem exists_elements_with_max_order {G : Type*} [Group G] [IsCyclic G] [Fintype G]\n    (hG_card : Fintype.card G > 2) :\n    ∃ a b : G, a ≠ b ∧ orderOf a = Fintype.card G ∧ orderOf b = Fintype.card G := by\n  obtain ⟨g, hg⟩ := IsCyclic.exists_generator (α := G)\n  have hord : orderOf g = Fintype.card G := orderOf_eq_card_of_forall_mem_zpowers hg\n  have hord_inv : orderOf g⁻¹ = Fintype.card G := by\n    rw [orderOf_inv]; exact hord\n  refine ⟨g, g⁻¹, ?_, hord, hord_inv⟩\n  intro heq\n  have hgg : g * g = 1 := by\n    have h1 : g * g⁻¹ = 1 := mul_inv_self g\n    rw [← heq] at h1\n    exact h1\n  have hpow : g ^ 2 = 1 := by rw [pow_two]; exact hgg\n  have hdvd : orderOf g ∣ 2 := orderOf_dvd_of_pow_eq_one hpow\n  rw [hord] at hdvd\n  have : Fintype.card G ≤ 2 := Nat.le_of_dvd (by norm_num) hdvd\n  linarith",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 2,
+      "draft_count": 1,
+      "strategy_time": 80.16
+    }
+  },
+  {
+    "problem_id": "FATE-M_73",
+    "complete": true,
+    "strategy": "draft_formalize",
+    "attempts": 5,
+    "code": "/--\nIf $G$ is a finite group where every non-identity element is a generator of $G$,\nshow that the order of $G$ is prime or $1$.\n-/\ntheorem card_prime_or_one_of_generator {G : Type*} [Group G] [Fintype G]\n    (h : ∀ x : G, x ≠ 1 → Subgroup.zpowers x = ⊤) :\n    (Fintype.card G).Prime ∨ Fintype.card G = 1 := by\n  by_cases hn : Fintype.card G = 1\n  · exact Or.inr hn\n  · left\n    have hpos : 0 < Fintype.card G := Fintype.card_pos\n    obtain ⟨p, hp_prime, hp_dvd⟩ := Nat.exists_prime_and_dvd (by omega : Fintype.card G ≠ 1)\n    haveI : Fact p.Prime := ⟨hp_prime⟩\n    obtain ⟨x, hx_order⟩ := exists_prime_orderOf_dvd_card p hp_dvd\n    have hx_ne : x ≠ 1 := by\n      intro hx1\n      rw [hx1, orderOf_one] at hx_order\n      exact hp_prime.one_lt.ne hx_order\n    have htop : Subgroup.zpowers x = ⊤ := h x hx_ne\n    have hcard_zpow : Nat.card (Subgroup.zpowers x) = orderOf x :=\n      Nat.card_zpowers x\n    have hcard_top : Nat.card (Subgroup.zpowers x) = Fintype.card G := by\n      rw [htop, Nat.card_eq_fintype_card, Fintype.card_congr (Subgroup.topEquiv).toEquiv]\n    have hpn : p = Fintype.card G := by\n      have heq : orderOf x = Fintype.card G := hcard_zpow ▸ hcard_top\n      rw [hx_order] at heq\n      exact heq\n    rw [← hpn]\n    exact hp_prime",
+    "full_code": "/--\nIf $G$ is a finite group where every non-identity element is a generator of $G$,\nshow that the order of $G$ is prime or $1$.\n-/\ntheorem card_prime_or_one_of_generator {G : Type*} [Group G] [Fintype G]\n    (h : ∀ x : G, x ≠ 1 → Subgroup.zpowers x = ⊤) :\n    (Fintype.card G).Prime ∨ Fintype.card G = 1 := by\n  by_cases hn : Fintype.card G = 1\n  · exact Or.inr hn\n  · left\n    have hpos : 0 < Fintype.card G := Fintype.card_pos\n    obtain ⟨p, hp_prime, hp_dvd⟩ := Nat.exists_prime_and_dvd (by omega : Fintype.card G ≠ 1)\n    haveI : Fact p.Prime := ⟨hp_prime⟩\n    obtain ⟨x, hx_order⟩ := exists_prime_orderOf_dvd_card p hp_dvd\n    have hx_ne : x ≠ 1 := by\n      intro hx1\n      rw [hx1, orderOf_one] at hx_order\n      exact hp_prime.one_lt.ne hx_order\n    have htop : Subgroup.zpowers x = ⊤ := h x hx_ne\n    have hcard_zpow : Nat.card (Subgroup.zpowers x) = orderOf x :=\n      Nat.card_zpowers x\n    have hcard_top : Nat.card (Subgroup.zpowers x) = Fintype.card G := by\n      rw [htop, Nat.card_eq_fintype_card, Fintype.card_congr (Subgroup.topEquiv).toEquiv]\n    have hpn : p = Fintype.card G := by\n      have heq : orderOf x = Fintype.card G := hcard_zpow ▸ hcard_top\n      rw [hx_order] at heq\n      exact heq\n    rw [← hpn]\n    exact hp_prime",
+    "compilation_result": {
+      "pass": true,
+      "complete": true,
+      "sorries": [],
+      "errors": []
+    },
+    "metadata": {
+      "rounds_used": 1,
+      "draft_count": 1,
+      "strategy_time": 49.09
+    }
+  }
+]
